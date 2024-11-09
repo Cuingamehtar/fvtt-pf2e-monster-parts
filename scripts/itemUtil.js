@@ -58,25 +58,23 @@ export function hasSpell(){
     returns(false);
 }
 
-export function addFlatDamage(damageType, damage, label) {
+export function addFlatDamage(params) {
     const re = {
-        "damageType": damageType,
         "key": "FlatModifier",
         "selector": "{item|_id}-damage",
-        "value": damage,
-        "label": label
+        "value": 1,
+        ...params
     };
     return (actor) => actor.update({ "system.rules": [...system.rules, re] });
 }
 
-export function addDamageDie(damageType, damageDie, label) {
+export function addDamageDie(params) {
     const re = {
-        "damageType": damageType,
         "diceNumber": 1,
-        "dieSize": damageDie,
+        "dieSize": "d4",
         "key": "DamageDice",
         "selector": "{item|_id}-damage",
-        "label": label
+        ...params
     };
     return (actor) => actor.update({ "system.rules": [...system.rules, re] });
 }

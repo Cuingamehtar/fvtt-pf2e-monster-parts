@@ -6,9 +6,9 @@ export function registerSettings(){
         scope: "world",
         type: String,
         choices: {
-            light: "Light",
-            hybrid: "Hybrid",
-            full: "Full"
+            light: t("Settings.Variant.Light"),
+            hybrid: t("Settings.Variant.Hybrid"),
+            full: t("Settings.Variant.Full")
         },
         default: "light",
 		requiresReload: false

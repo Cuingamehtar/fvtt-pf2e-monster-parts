@@ -1,5 +1,5 @@
 import { Imbue } from "./classes.js";
-import { t, sentenceCase } from './util.js';
+import { t, sentenceCase } from '../util.js';
 
 const CREATURE_TYPES = ["aberration", "animal", "astral", "beast", "celestial", "construct", "dragon", "dream", "elemental", "ethereal", "fey", "fiend", "giant", "monitor", "negative", "ooze", "positive", "spirit", "time"]
 const ENERGY_TYPES = ["acid", "cold", "electricity", "fire", "force", "positive", "sonic"]
