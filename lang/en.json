@@ -1,23 +1,31 @@
 {
     "pf2e-monster-parts": {
+        "Material": {
+            "Item": {
+                "Name": "Monster Parts of {actor} ({value} gp)"
+            }
+        },
+        "Refinement": {
+            "Bludgeoning": "Bludgeoning",
+            "Piercing": "Piercing",
+            "Slashing": "Slashing",
+            "ArmorLight": "Light Armor",
+            "ArmorMedium": "Medium Armor",
+            "ArmorHeavy": "Heavy Armor",
+            "Perception": "Perception"
+        },
         "Damage": {
-            "Acid": {
-                "Flat1": "Strikes with the weapon additionally deal 1 acid damage",
-                "D4": "Strikes with the weapon additionally deal 1d4 acid damage",
-                "D6": "Strikes with the weapon additionally deal 1d6 acid damage",
-                "D8": "Strikes with the weapon additionally deal 1d8 acid damage",
-                "D10": "Strikes with the weapon additionally deal 1d10 acid damage",
-                "Persistent1": "Strikes with the weapon deal 1 persistent acid damage",
-                "PersistentD6": "Strikes with the weapon deal 1d6 persistent acid damage",
-                "PersistentD8": "Strikes with the weapon deal 1d8 persistent acid damage",
-                "PersistentD10": "Strikes with the weapon deal 1d10 persistent acid damage"
+            "Normal": "Strikes with the weapon additionally deal {damage} {damageType} damage",
+            "Persistent": "Strikes with the weapon additionally deal {damage} persistent {damageType} damage",
+            "Type": {
+                "Acid": "acid"
             },
             "Bane": {
-                "Flat1":"Strikes with the weapon additionally deal 1 damage of the weapon’s base damage type to creatures of type {creature}",
-                "D4":"Strikes with the weapon additionally deal 1d4 damage of the weapon’s base damage type to creatures of type {creature}",
-                "D6":"Strikes with the weapon additionally deal 1d6 damage of the weapon’s base damage type to creatures of type {creature}",
-                "D8":"Strikes with the weapon additionally deal 1d8 damage of the weapon’s base damage type to creatures of type {creature}",
-                "D10":"Strikes with the weapon additionally deal 1d10 damage of the weapon’s base damage type to creatures of type {creature}",
+                "Flat1": "Strikes with the weapon additionally deal 1 damage of the weapon’s base damage type to creatures of type {creature}",
+                "D4": "Strikes with the weapon additionally deal 1d4 damage of the weapon’s base damage type to creatures of type {creature}",
+                "D6": "Strikes with the weapon additionally deal 1d6 damage of the weapon’s base damage type to creatures of type {creature}",
+                "D8": "Strikes with the weapon additionally deal 1d8 damage of the weapon’s base damage type to creatures of type {creature}",
+                "D10": "Strikes with the weapon additionally deal 1d10 damage of the weapon’s base damage type to creatures of type {creature}",
                 "Persistent1": "Strikes with the weapon cause external or internal bleeding in creatures of type {creature}. Against such creatures, Strikes with the weapon deal 1 persistent bleed damage",
                 "PersistentD6": "Strikes with the weapon cause external or internal bleeding in creatures of type {creature}. Against such creatures, Strikes with the weapon deal 1d6 persistent bleed damage",
                 "PersistentD8": "Strikes with the weapon cause external or internal bleeding in creatures of type {creature}. Against such creatures, Strikes with the weapon deal 1d8 persistent bleed damage",
@@ -28,12 +36,12 @@
             "AddCantrip": "The weapon can cast {cantrip} as a cantrip, heightened to half the item’s level rounded up",
             "Acid": {
                 "Magic": {
-                    "Level4": "The weapon can cast 1st rank Acidic Burst rank once per day",
-                    "Level6": "The weapon can cast either 2nd rank Acid Arrow or 2nd rank Acidic Burst once per day, but not both",
-                    "Level8": "The weapon can cast 2nd rank Acid Arrow and 3rd rank Acidic Burst each once per day",
-                    "Level12": "The weapon can cast 4nd rank Acid Arrow, 3rd rank Acidic Burst, and 5th rank Acid Storm each once per day",
-                    "Level16": "The weapon can cast 6nd rank Acid Arrow, 3rd rank Acidic Burst, and 7th rank Acid Storm each once per day",
-                    "Level20": "The weapon can cast Storm of Vengeance once per day but you can only choose the acid rain effect. You can choose the acid rain effect twice in a row"
+                    "Level4": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] once per day",
+                    "Level6": "The weapon can cast either 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] or 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] once per day, but not both",
+                    "Level8": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] and 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] each once per day",
+                    "Level12": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0], 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws], and 5th rank Acid Storm each once per day",
+                    "Level16": "The weapon can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0], 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws], and 7th rank Acid Storm each once per day",
+                    "Level20": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl] once per day but you can only choose the acid rain effect. You can choose the acid rain effect twice in a row"
                 },
                 "Might": {
                     "Level8": "On a critical hit, the target’s armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead",
@@ -41,7 +49,7 @@
                     "Level14": "On a critical hit, the target’s armor (if any) takes 6d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead",
                     "Level20": "On a successful Strike with the weapon, before applying acid damage, the target gains weakness 1 to acid until the beginning of your next turn"
                 },
-                "Tech":{
+                "Tech": {
                     "Level8": "On a critical hit, the target’s armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead",
                     "Level12": "The acid damage dealt by Acid Imbue's Technique Path (including the persistent acid damage) ignores resistances",
                     "Level14": "The persistent acid damage from the imbued property eats away at a foe’s resistances. Every time a foe or the foe’s armor or shield takes damage from the persistent acid damage at the end of their turn, any resistances and Hardness decrease by 1 for 1 minute. This effect is cumulative",
@@ -60,7 +68,6 @@
                     "Level14": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} is enfeebled 2 until the end of your next turn. It must also attempt a Fortitude save. On a failure, it’s enfeebled 3 until the end of your next turn, and on a critical failure, it’s destroyed. This effect has the incapacitation trait",
                     "Level20": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} is enfeebled 2. It must also attempt a Fortitude save. On a failure, it’s enfeebled 3, and on a critical failure, it’s destroyed. This effect has the incapacitation trait. The enfeebled condition from a critical hit lasts as long as the persistent bleed damage lasts, or until the end of your next turn, whichever is longer"
                 }
-
             }
         },
         "Settings": {

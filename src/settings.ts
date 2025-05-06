@@ -1,7 +1,9 @@
-import { moduleId, t } from "./utils.js";
+import { MODULE_ID } from "./module";
+import { t } from "./utils";
+
 
 export function registerSettings(){
-    game.settings.register(moduleId, "valueVariant",{
+    game.settings.register(MODULE_ID, "variant",{
         name: t("Settings.Variant.Name"),
         scope: "world",
         type: String,
@@ -14,7 +16,7 @@ export function registerSettings(){
 		requiresReload: false
     });
 
-    game.settings.register(moduleId, "groupSenses",{
+    game.settings.register(MODULE_ID, "groupSenses",{
         name: t("Settings.GroupSenses.Name"),
         scope: "world",
         type: Boolean,

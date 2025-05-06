@@ -1,10 +1,9 @@
 {
   "id": "pf2e-monster-parts",
   "title": "PF2e Monster Parts",
-  "description": "",
+  "description": "Implementation of Monster Parts.",
   "version": "#{VERSION}#",
   "library": "false",
-  "manifestPlusVersion": "1.2.0",
   "compatibility": {
     "minimum": 12,
     "verified": 12
@@ -15,20 +14,24 @@
     }
   ],
   "relationships": {
-    "systems": [],
+    "systems": [{
+      "id": "pf2e",
+      "type": "system",
+      "manifest": "https://raw.githubusercontent.com/foundryvtt/pf2e/master/system.json",
+      "compatibility": {
+          "minimum": "6.10.0"
+      }
+  }],
     "requires": []
   },
-  "esmodules": [
+  "scripts": [
     "scripts/module.js"
-  ],
-  "styles": [
-    "styles/module.css"
   ],
   "languages": [
     {
       "lang": "en",
       "name": "English",
-      "path": "languages/en.json"
+      "path": "lang/en.json"
     }
   ],
   "url": "#{URL}#",
