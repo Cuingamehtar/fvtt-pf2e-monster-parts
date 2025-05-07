@@ -1,105 +1,176 @@
+import { t } from "../../utils";
 import { ImbueSource } from "../data-types";
+import { addDamage, levelRange } from "../helpers";
 
 const CREATURETYPES = ["aberration", "animal", "astral", "beast", "celestial", "construct", "dragon", "dream", "elemental", "ethereal", "fey", "fiend", "giant", "monitor", "ooze", "spirit", "time", "vitality", "void"]
 
-function createBaneImbues():ImbueSource[] {
-    const baneImbues:ImbueSource[] = [];
-    for (const creature of CREATURETYPES) {
-        const creatureLabel = t(`CreatureTypes.${creature}`);
-        const predicate = [`target:trait:${creature}`];
-        const labelMight = t("Imbues.Bane.Might.Label", { bane: creatureLabel });
-        const labelTech = t("Imbues.Bane.Tech.Label", { bane: creatureLabel })
+export function createImbueBane() {
+    return CREATURETYPES.flatMap(baneImbue);
+}
 
-        baneImbues[`imbue:bane:${creature}:might`] = {
-            type: "weapon",
-            isMaterial: hasTrait(creature),
+function baneImbue(creature: string): ImbueSource[] {
+    const creatureLabel = game.i18n.localize(`PF2E.Trait${creature[0].toUpperCase() + creature.slice(1)}`);
+    const predicate = [`target:trait:${creature}`];
+    const labelMight = t("Imbue.Bane.Label", { creature: creatureLabel, variant: t("Imbue.Variant.Might") });
+    const labelTech = t("Imbue.Bane.Label", { creature: creatureLabel, variant: t("Imbue.Variant.Tech") });
+
+    return [
+        {
+            key: `imbue:bane:${creature}:might`,
+            type: "imbue",
+            label: labelMight,
+            monsterPredicate: [`self:trait:${creature}`],
+            itemPredicate: ["item:type:weapon"],
             effects: [
                 {
-                    levelMin: 2,
-                    levelMax: 3,
-                    effect: forEach(addNote(t("Damage.Bane.Flat1", { bane: creatureLabel })), addFlatDamage({ label: labelMight, predicate }))
+                    ...levelRange(2, 3),
+                    effects: addDamage({
+                        value: 1,
+                        text: t("Imbue.Bane.Damage", { damage: 1, creature: creatureLabel }),
+                        predicate,
+                        label: labelMight
+                    })
                 },
                 {
-                    levelMin: 4,
-                    levelMax: 5,
-                    effects: forEach(addNote(t("Damage.Bane.D4", { bane: creatureLabel })), addDamageDie({ label: labelMight, dieSize: "d4", predicate }))
+                    ...levelRange(4, 5),
+                    effects: addDamage({
+                        value: "d4",
+                        text: t("Imbue.Bane.Damage", { damage: "1d4", creature: creatureLabel }),
+                        predicate,
+                        label: labelMight
+                    })
                 },
                 {
-                    levelMin: 6,
-                    levelMax: 15,
-                    effect: forEach(addNote(t("Damage.Bane.D6", { bane: creatureLabel })), addDamageDie({ label: labelMight, dieSize: "d6", predicate }))
+                    ...levelRange(6, 15),
+                    effects: addDamage({
+                        value: "d6",
+                        text: t("Imbue.Bane.Damage", { damage: "1d6", creature: creatureLabel }),
+                        predicate,
+                        label: labelMight
+                    })
                 },
                 {
-                    levelMin: 6,
-                    levelMax: 13,
-                    effect: addNote(t("Imbue.Bane.Might.Level6", { bane: creatureLabel }))
+                    ...levelRange(16, 19),
+                    effects: addDamage({
+                        value: "d8",
+                        text: t("Imbue.Bane.Damage", { damage: "1d8", creature: creatureLabel }),
+                        predicate,
+                        label: labelMight
+                    })
                 },
                 {
-                    levelMin: 10,
-                    effect: addNote(t("Imbue.Bane.Might.Level10", { bane: creatureLabel }))
+                    ...levelRange(20),
+                    effects: addDamage({
+                        value: "d10",
+                        text: t("Imbue.Bane.Damage", { damage: "1d10", creature: creatureLabel }),
+                        predicate,
+                        label: labelMight
+                    })
                 },
                 {
-                    levelMin: 14,
-                    effect: addNote(t("Imbue.Bane.Might.Level14", { bane: creatureLabel }))
+                    ...levelRange(6, 13),
+                    effects: [{
+                        key: "InlineNote",
+                        text: t("Imbue.Bane.Might.Level6", {creature:creatureLabel})
+                    }]
                 },
                 {
-                    levelMin: 16,
-                    levelMax: 19,
-                    effect: forEach(addNote(t("Damage.Bane.D8", { bane: creatureLabel })), addDamageDie({ label: labelMight, dieSize: "d8", predicate }))
+                    ...levelRange(14),
+                    effects: [{
+                        key: "InlineNote",
+                        text: t("Imbue.Bane.Might.Level14", {creature:creatureLabel})
+                    }]
                 },
                 {
-                    levelMin: 20,
-                    effect: forEach(addNote(t("Damage.Bane.D10", { bane: creatureLabel })), addDamageDie({ label: labelMight, dieSize: "d10", predicate }))
+                    ...levelRange(10),
+                    effects: [{
+                        key: "InlineNote",
+                        text: t("Imbue.Bane.Might.Level10", {creature:creatureLabel})
+                    }]
                 }
             ]
-        };
-        baneImbues[`imbue:bane:${creature}:tech`] = {
-            type: "weapon",
-            isMaterial: hasTrait(creature),
+        },
+        {
+            key: `imbue:bane:${creature}:tech`,
+            type: "imbue",
+            label: labelTech,
+            monsterPredicate: [`self:trait:${creature}`],
+            itemPredicate: ["item:type:weapon"],
             effects: [
                 {
-                    levelMin: 2,
-                    levelMax: 5,
-                    effect: forEach(addNote(t("Damage.Bane.Persistent1", { bane: creatureLabel })), addFlatDamage({ label: labelTech, damageType: "bleed", damageCategory: "persistent", predicate }))
+                    ...levelRange(4),
+                    effects: addDamage({
+                        value: 1,
+                        text: t("Imbue.Bane.Damage", { damage: 1, creature: creatureLabel }),
+                        predicate,
+                        label: labelTech
+                    })
                 },
                 {
-                    levelMin: 4,
-                    effects: forEach(addNote(t("Damage.Bane.Flat1", { bane: creatureLabel })), addFlatDamage({ label: labelTech, predicate }))
+                    ...levelRange(2, 5),
+                    effects: addDamage({
+                        value: 1,
+                        text: t("Imbue.Bane.Persistent", { damage: 1, creature: creatureLabel }),
+                        predicate,
+                        label: labelTech
+                    })
                 },
                 {
-                    levelMin: 6,
-                    levelMax: 11,
-                    effect: forEach(addNote(t("Damage.Bane.PersistentD6", { bane: creatureLabel })), addDamageDie({ label: labelTech, dieSize: "d6", damageType: "bleed", category: "persistent", predicate }))
+                    ...levelRange(6, 11),
+                    effects: addDamage({
+                        value: "d6",
+                        text: t("Imbue.Bane.Persistent", { damage: "1d6", creature: creatureLabel }),
+                        predicate,
+                        label: labelTech
+                    })
                 },
                 {
-                    levelMin: 6,
-                    levelMax: 13,
-                    effect: addNote(t("Imbue.Bane.Tech.Level6", { bane: creatureLabel }))
+                    ...levelRange(12, 15),
+                    effects: addDamage({
+                        value: "d8",
+                        text: t("Imbue.Bane.Persistent", { damage: "1d8", creature: creatureLabel }),
+                        predicate,
+                        label: labelTech
+                    })
                 },
                 {
-                    levelMin: 10,
-                    effect: addNote(t("Imbue.Bane.Tech.Level10", { bane: creatureLabel }))
+                    ...levelRange(16),
+                    effects: addDamage({
+                        value: "d10",
+                        text: t("Imbue.Bane.Persistent", { damage: "1d10", creature: creatureLabel }),
+                        predicate,
+                        label: labelTech
+                    })
                 },
                 {
-                    levelMin: 12,
-                    levelMax: 15,
-                    effect: forEach(addNote(t("Damage.Bane.PersistentD8", { bane: creatureLabel })), addDamageDie({ label: labelTech, dieSize: "d8", damageType: "bleed", category: "persistent", predicate }))
+                    ...levelRange(6, 13),
+                    effects: [{
+                        key: "InlineNote",
+                        text: t("Imbue.Bane.Tech.Level6", {creature:creatureLabel})
+                    }]
                 },
                 {
-                    levelMin: 14,
-                    levelMax: 19,
-                    effect: addNote(t("Imbue.Bane.Might.Level14", { bane: creatureLabel }))
+                    ...levelRange(14),
+                    effects: [{
+                        key: "InlineNote",
+                        text: t("Imbue.Bane.Tech.Level14", {creature:creatureLabel})
+                    }]
                 },
                 {
-                    levelMin: 16,
-                    effect: forEach(addNote(t("Damage.Bane.PersistentD10", { bane: creatureLabel })), addDamageDie({ label: labelTech, dieSize: "d10", damageType: "bleed", category: "persistent", predicate }))
+                    ...levelRange(20),
+                    effects: [{
+                        key: "InlineNote",
+                        text: t("Imbue.Bane.Tech.Level20", {creature:creatureLabel})
+                    }]
                 },
                 {
-                    levelMin: 20,
-                    effect: addNote(t("Imbue.Bane.Might.Level20", { bane: creatureLabel }))
+                    ...levelRange(10),
+                    effects: [{
+                        key: "InlineNote",
+                        text: t("Imbue.Bane.Tech.Level10", {creature:creatureLabel})
+                    }]
                 }
             ]
         }
-    }
-    return baneImbues;
+    ];
 }

@@ -1,4 +1,7 @@
 import type { ActorPF2e, ArmorPF2e, CreaturePF2e, DamageType, ItemPF2e, PhysicalItemPF2e, ShieldPF2e, SkillSlug, WeaponPF2e } from "foundry-pf2e";
+import { MODULE_ID } from "./module";
+import { getMaterialLevel, RefinedItemFlags } from "./flags";
+import { unique } from "./utils";
 
 export function setPotency(value: number) {
     return (item: WeaponPF2e) => item.update({ "system.runes.potency": value });
@@ -53,7 +56,11 @@ export function hasSkill(skill: SkillSlug) {
 }
 
 export function getExtendedItemRollOptions(item: ItemPF2e) {
-    return [...item.getRollOptions(), `item:type:${item.type}`]
+    const options = [...item.getRollOptions(), `item:type:${item.type}`];
+    const flags = (item.getFlag(MODULE_ID, "refinedItem") as RefinedItemFlags);
+    if (!flags)
+        return options;
+    return [...options, ...[flags.refinement, ...flags.imbues].map(v => `${v.key}:${getMaterialLevel(v, item)}`)];
 }
 
 export function getExtendedNPCRollOptions(actor: CreaturePF2e): string[] {
@@ -68,5 +75,15 @@ export function getExtendedNPCRollOptions(actor: CreaturePF2e): string[] {
         .filter(r => ["physical", "bludgeoning", "piercing", "slashing"].includes(r.type))
         .map(r => `self:resistance:${r.type}:${r.value}`);
 
-    return [...baseRollOptions, ...senses, ...skills, `self:hardness:${actor.hardness}`, ...resistances];
+    const abilityRanks = getAbilityRanks(actor);
+
+    return [...baseRollOptions, ...senses, ...skills, `self:hardness:${actor.hardness}`, ...resistances, ...abilityRanks];
+}
+
+function getAbilityRanks(actor: CreaturePF2e) {
+    const abilities = actor.system.abilities;
+    if (!abilities)
+        return [];
+    const values = unique(Object.values(abilities).map(a => a.mod)).sort((a, b) => b - a);
+    return Object.entries(abilities).map(([k, v]) => `ability:${k}:rank:${values.indexOf(v.mod)+1}`);
 }

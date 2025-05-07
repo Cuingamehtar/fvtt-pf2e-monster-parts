@@ -1,13 +1,12 @@
 import { CreaturePF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
-import { MonsterPartsConfig } from "./config";
+import { getConfig } from "./config";
 import { t } from "./utils";
 import { MonsterPartFlags } from "./flags";
 import { getExtendedItemRollOptions, getExtendedNPCRollOptions } from "./itemUtil";
 
 export function createMaterial(actor: CreaturePF2e) {
-    // @ts-ignore
-    const config = CONFIG[MODULE_ID] as MonsterPartsConfig;
+    const config = getConfig();
 
     const bulk = config.materialBulk[actor.system.traits.size.value];
     const materialValue = config.valueForMonsterLevel[actor.system.details.level.value + 1];
@@ -20,15 +19,15 @@ export function createMaterial(actor: CreaturePF2e) {
     const materials = config.materials.filter(m => {
         const p = new Predicate(m.monsterPredicate ?? []);
         return rollOptions.some(ro => p.test(ro));
-    }).map(m => m.key);
-    const flags: MonsterPartFlags = { value: materialValue, materials };
+    });
+    const flags: MonsterPartFlags = { value: materialValue, materials:materials.map(m=>m.key) };
 
 
     const item = {
         name,
         img: config.materialItem.image,
-        system: { bulk: { value: bulk }, description: { value: materials.map(m=>`<p>${m}</p>`).join("") } },
-        type: "treasure",
+        system: { bulk: { value: bulk }, description: { value: materials.map(m=>`<p>${game.i18n.localize(m.label)}</p>`).join("") } },
+        type: "equipment",
         flags: { [MODULE_ID]: flags }
     }
     // @ts-ignore

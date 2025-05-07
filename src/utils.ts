@@ -28,3 +28,7 @@ export function all<T>(...predicates:((_: T) => boolean)[]) {
 export function forEach<T>(...functions:((_: T) => undefined)[]) {
     return (item:T) => functions.forEach(f => f(item));
 }
+
+export function unique<T>(array:T[]) {
+    return Array.from(new Set(array));
+}

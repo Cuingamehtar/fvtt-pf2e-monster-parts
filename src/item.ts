@@ -1,8 +1,8 @@
 import { ActorPF2e, ItemPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { getExtendedItemRollOptions } from "./itemUtil";
 import { MODULE_ID } from "./module";
-import { MonsterPartsConfig } from "./config";
-import { RefinedItemFlags } from "./flags";
+import { getConfig } from "./config";
+import { getMaterialLevel, RefinedItemFlags } from "./flags";
 import { RefinementSource } from "./data/data-types";
 
 function optionChoiceDialog(options: (RefinementSource)[]):Promise<RefinementSource> {
@@ -34,7 +34,7 @@ function optionChoiceDialog(options: (RefinementSource)[]):Promise<RefinementSou
 
 export async function createRefinedItem(actor: ActorPF2e, uuid: ItemUUID) {
     // @ts-ignore
-    const config = CONFIG[MODULE_ID] as MonsterPartsConfig;
+    const config = getConfig();
 
     const item = await fromUuid(uuid) as PhysicalItemPF2e;
     if (!item) {
@@ -54,7 +54,7 @@ export async function createRefinedItem(actor: ActorPF2e, uuid: ItemUUID) {
 
     foundry.utils.mergeObject(data, {
         flags: { [MODULE_ID]: { refinedItem: flags } },
-        system: { description: { value: "<p>Generated item</p><hr>" + data.system.description.value } }
+        system: { description: { value: "<div class=\"monster-parts-header\">Generated item</div><hr>" + data.system.description.value } }
     }, { inplace: true });
 
     ChatMessage.create({
@@ -63,3 +63,18 @@ export async function createRefinedItem(actor: ActorPF2e, uuid: ItemUUID) {
 
     return actor.createEmbeddedDocuments("Item", [data]);
 }
+
+Hooks.on("renderItemSheetPF2e", (sheet, htmlArray, _) => {
+    const html = (htmlArray[0] as HTMLDivElement);
+    const div = html.querySelector("div.monster-parts-header");
+    if(!div)
+        return;
+    const item = (sheet.item as ItemPF2e);
+    const config = getConfig();
+    const flags = item.getFlag(MODULE_ID, "refinedItem") as RefinedItemFlags;
+    const refinement = flags.refinement;
+    const material = config.materials.find(m => m.key == refinement.key)!;
+    let content = `<p>${game.i18n.localize(material.label)} <strong>${getMaterialLevel(refinement, item)} (${Math.floor(refinement.value)} gp)</strong></p>`;
+    div.innerHTML = content;
+
+})

@@ -1,7 +1,11 @@
 import { createImbueAcid } from "./acid";
+import { createImbueBane } from "./bane";
+import { createImbueCharisma } from "./charisma";
 
 export function createDefaultImbues(){
     return [
-        ...createImbueAcid()
+        ...createImbueAcid(),
+        ...createImbueBane(),
+        createImbueCharisma()
     ]
 }

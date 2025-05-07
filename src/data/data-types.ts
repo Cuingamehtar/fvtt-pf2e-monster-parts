@@ -3,7 +3,7 @@ import type { DamageDiceSource, FlatModifierSource, PredicateStatement, RollNote
 // materials
 type MaterialSource = {
     key: string,
-    label:string,
+    label: string,
     monsterPredicate?: Array<PredicateStatement>
 }
 
@@ -93,11 +93,20 @@ type RuleElementEffectSource = {
 type InlineNoteEffectSource = {
     key: "InlineNote",
     text: string,
-    parameters?: Record<string, string|number|undefined|null>
+    parameters?: Record<string, string | number | undefined | null>
 }
 
 type ImbueEffectSource = MaterialEffectSource & {
-    effects: (RuleElementEffectSource| InlineNoteEffectSource)[]
+    effects: (RuleElementEffectSource | InlineNoteEffectSource)[]
 }
 
-export type { RefinementSource, ImbueSource, WeaponRefinementEffectSource, ArmorRefinementEffectSource, ShieldRefinementEffectSource, EquipmentRefinementEffectSource }
+export type {
+    RefinementSource,
+    ImbueSource,
+    WeaponRefinementEffectSource,
+    ArmorRefinementEffectSource,
+    ShieldRefinementEffectSource,
+    EquipmentRefinementEffectSource,
+    RuleElementEffectSource,
+    InlineNoteEffectSource
+}
