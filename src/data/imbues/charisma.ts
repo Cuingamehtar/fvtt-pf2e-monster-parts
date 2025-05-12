@@ -2,17 +2,17 @@ import { tkey } from "../../utils";
 import { ImbueSource } from "../data-types";
 import { levelRange } from "../helpers";
 
-export function createImbueCharisma():ImbueSource {
+export function createImbueCharisma(): ImbueSource {
     return {
-        key:"imbue:charisma",
+        key: "imbue:charisma",
         type: "imbue",
         label: tkey("Imbue.Charisma.Label"),
-        monsterPredicate: [{lte:["ability:cha:rank", 2]}],
-        itemPredicate: [{or:["refinement:skill:deception", "refinement:skill:diplomacy", "refinement:skill:intimidation", "refinement:skill:performance"]}],
+        monsterPredicate: [{ lte: ["ability:cha:rank", 2] }],
+        itemPredicate: [{ or: ["refinement:skill:deception", "refinement:skill:diplomacy", "refinement:skill:intimidation", "refinement:skill:performance"] }],
         effects: [
             {
                 ...levelRange(8, 13),
-                effects:[
+                effects: [
                     {
                         key: "InlineNote",
                         text: tkey("Imbue.Charisma.Level8")
@@ -21,7 +21,7 @@ export function createImbueCharisma():ImbueSource {
             },
             {
                 ...levelRange(14, 19),
-                effects:[
+                effects: [
                     {
                         key: "InlineNote",
                         text: tkey("Imbue.Charisma.Level14")
@@ -30,7 +30,7 @@ export function createImbueCharisma():ImbueSource {
             },
             {
                 ...levelRange(20),
-                effects:[
+                effects: [
                     {
                         key: "InlineNote",
                         text: tkey("Imbue.Charisma.Level20")
@@ -39,7 +39,7 @@ export function createImbueCharisma():ImbueSource {
             },
             {
                 ...levelRange(17),
-                effects:[
+                effects: [
                     {
                         key: "InlineNote",
                         text: tkey("Imbue.Charisma.Level17")

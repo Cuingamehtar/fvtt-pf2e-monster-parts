@@ -1,11 +1,11 @@
+import { MODULE_ID } from "../../module";
 import { t } from "../../utils";
 import { ImbueSource } from "../data-types";
 import { addDamage, levelRange } from "../helpers";
 
-const CREATURETYPES = ["aberration", "animal", "astral", "beast", "celestial", "construct", "dragon", "dream", "elemental", "ethereal", "fey", "fiend", "giant", "monitor", "ooze", "spirit", "time", "vitality", "void"]
-
-export function createImbueBane() {
-    return CREATURETYPES.flatMap(baneImbue);
+export function createImbueBane(): ImbueSource[] {
+    // @ts-ignore
+    return CONFIG[MODULE_ID].baneCreatureTraits.flatMap(baneImbue);
 }
 
 function baneImbue(creature: string): ImbueSource[] {
@@ -71,21 +71,21 @@ function baneImbue(creature: string): ImbueSource[] {
                     ...levelRange(6, 13),
                     effects: [{
                         key: "InlineNote",
-                        text: t("Imbue.Bane.Might.Level6", {creature:creatureLabel})
+                        text: t("Imbue.Bane.Might.Level6", { creature: creatureLabel })
                     }]
                 },
                 {
                     ...levelRange(14),
                     effects: [{
                         key: "InlineNote",
-                        text: t("Imbue.Bane.Might.Level14", {creature:creatureLabel})
+                        text: t("Imbue.Bane.Might.Level14", { creature: creatureLabel })
                     }]
                 },
                 {
                     ...levelRange(10),
                     effects: [{
                         key: "InlineNote",
-                        text: t("Imbue.Bane.Might.Level10", {creature:creatureLabel})
+                        text: t("Imbue.Bane.Might.Level10", { creature: creatureLabel })
                     }]
                 }
             ]
@@ -146,28 +146,28 @@ function baneImbue(creature: string): ImbueSource[] {
                     ...levelRange(6, 13),
                     effects: [{
                         key: "InlineNote",
-                        text: t("Imbue.Bane.Tech.Level6", {creature:creatureLabel})
+                        text: t("Imbue.Bane.Tech.Level6", { creature: creatureLabel })
                     }]
                 },
                 {
                     ...levelRange(14),
                     effects: [{
                         key: "InlineNote",
-                        text: t("Imbue.Bane.Tech.Level14", {creature:creatureLabel})
+                        text: t("Imbue.Bane.Tech.Level14", { creature: creatureLabel })
                     }]
                 },
                 {
                     ...levelRange(20),
                     effects: [{
                         key: "InlineNote",
-                        text: t("Imbue.Bane.Tech.Level20", {creature:creatureLabel})
+                        text: t("Imbue.Bane.Tech.Level20", { creature: creatureLabel })
                     }]
                 },
                 {
                     ...levelRange(10),
                     effects: [{
                         key: "InlineNote",
-                        text: t("Imbue.Bane.Tech.Level10", {creature:creatureLabel})
+                        text: t("Imbue.Bane.Tech.Level10", { creature: creatureLabel })
                     }]
                 }
             ]

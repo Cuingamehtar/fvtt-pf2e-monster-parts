@@ -24,7 +24,8 @@ export type MonsterPartsConfig = {
     materialItem: {
         image: string
     },
-    materialBulk: Record<Size, number>
+    materialBulk: Record<Size, number>,
+    baneCreatureTraits: string[]
 }
 
 export function createConfig() {
@@ -41,8 +42,7 @@ export function createConfig() {
     }
     const variant: ("light" | "hybrid" | "full") = game.settings.get(MODULE_ID, "variant");
 
-    var config: MonsterPartsConfig = {
-        materials: [...createDefaultRefinements(), ...createDefaultImbues()],
+    var config: Partial<MonsterPartsConfig> = {
         thresholds: {
             refinement:itemValueThresholdDefaults,
             imbue: itemValueThresholdDefaults
@@ -56,12 +56,17 @@ export function createConfig() {
             lg: 2,
             huge: 4,
             grg: 8
-        }
+        },
+        baneCreatureTraits: ["aberration", "animal", "astral", "beast", "celestial", "construct", "dragon", "dream", "elemental", "ethereal", "fey", "fiend", "giant", "monitor", "ooze", "spirit", "time", "vitality", "void"]
     }
     // @ts-ignore
     CONFIG[MODULE_ID] = config;
     console.log(`${MODULE_ID} | Config initialized`)
     Hooks.call(`${MODULE_ID}.configInit`);
+    // @ts-ignore
+    CONFIG[MODULE_ID].materials = [...createDefaultRefinements(), ...createDefaultImbues()];
+    console.log(`${MODULE_ID} | Default materials generated`)
+    Hooks.call(`${MODULE_ID}.defaultMaterialsGenerated`);
 }
 
 export function getConfig(){

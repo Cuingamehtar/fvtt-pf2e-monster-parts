@@ -7,7 +7,7 @@ export function createImbueAcid(): ImbueSource[] {
         {
             key: "imbue:acid:magic",
             type: "imbue",
-            label: t("Imbue.Acid.Label", {variant: t("Imbue.Variant.Magic")}),
+            label: t("Imbue.Acid.Label", { variant: t("Imbue.Variant.Magic") }),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [{
                 or: ["self:trait:acid", {
@@ -21,15 +21,15 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(10, 13),
                     effects: addDamage({
-                        type:"acid",
-                        value:1,
+                        type: "acid",
+                        value: 1,
                         label: tkey("Imbue.Acid.Magic.Label"),
                     })
                 },
                 {
                     ...levelRange(14, 17),
                     effects: addDamage({
-                        type:"acid",
+                        type: "acid",
                         value: "d4",
                         label: tkey("Imbue.Acid.Magic.Label"),
                     })
@@ -37,7 +37,7 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(18),
                     effects: addDamage({
-                        type:"acid",
+                        type: "acid",
                         value: "d6",
                         label: tkey("Imbue.Acid.Magic.Label"),
                     })
@@ -97,7 +97,7 @@ export function createImbueAcid(): ImbueSource[] {
         {
             key: "imbue:acid:might",
             type: "imbue",
-            label: t("Imbue.Acid.Label", {variant: t("Imbue.Variant.Might")}),
+            label: t("Imbue.Acid.Label", { variant: t("Imbue.Variant.Might") }),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [{
                 or: ["self:trait:acid", {
@@ -111,7 +111,7 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(4, 5),
                     effects: addDamage({
-                        type:"acid",
+                        type: "acid",
                         value: 1,
                         label: tkey("Imbue.Acid.Might.Label"),
                     })
@@ -119,7 +119,7 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(6, 7),
                     effects: addDamage({
-                        type:"acid",
+                        type: "acid",
                         value: "d4",
                         label: tkey("Imbue.Acid.Might.Label"),
                     })
@@ -127,7 +127,7 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(8, 17),
                     effects: addDamage({
-                        type:"acid",
+                        type: "acid",
                         value: "d6",
                         label: tkey("Imbue.Acid.Might.Label"),
                     })
@@ -135,7 +135,7 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(18),
                     effects: addDamage({
-                        type:"acid",
+                        type: "acid",
                         value: "d8",
                         label: tkey("Imbue.Acid.Might.Label"),
                     })
@@ -173,7 +173,7 @@ export function createImbueAcid(): ImbueSource[] {
         {
             key: "imbue:acid:tech",
             type: "imbue",
-            label: t("Imbue.Acid.Label", {variant: t("Imbue.Variant.Tech")}),
+            label: t("Imbue.Acid.Label", { variant: t("Imbue.Variant.Tech") }),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [{
                 or: ["self:trait:acid", {
@@ -187,7 +187,7 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(4, 7),
                     effects: addDamage({
-                        type:"acid",
+                        type: "acid",
                         value: 1,
                         category: "persistent",
                         label: tkey("Imbue.Acid.Might.Label"),
@@ -196,7 +196,7 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(6),
                     effects: addDamage({
-                        type:"acid",
+                        type: "acid",
                         value: 1,
                         label: tkey("Imbue.Acid.Tech.Label"),
                     })
@@ -204,7 +204,7 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(8, 13),
                     effects: addDamage({
-                        type:"acid",
+                        type: "acid",
                         value: "d6",
                         category: "persistent",
                         label: tkey("Imbue.Acid.Tech.Label"),
@@ -213,7 +213,7 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(14, 17),
                     effects: addDamage({
-                        type:"acid",
+                        type: "acid",
                         value: "d8",
                         category: "persistent",
                         label: tkey("Imbue.Acid.Tech.Label"),
@@ -222,7 +222,7 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(18),
                     effects: addDamage({
-                        type:"acid",
+                        type: "acid",
                         value: "d10",
                         category: "persistent",
                         label: tkey("Imbue.Acid.Tech.Label"),
