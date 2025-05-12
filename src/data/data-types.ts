@@ -7,36 +7,17 @@ type MaterialSource = {
     monsterPredicate?: Array<PredicateStatement>
 }
 
-type WeaponRefinementSource = MaterialSource & {
+type RefinementSource = MaterialSource & {
     type: "refinement",
     itemPredicate: Array<PredicateStatement>,
-    effects: WeaponRefinementEffectSource[]
+    effects: MaterialEffectSource[]
 }
-
-type ArmorRefinementSource = MaterialSource & {
-    type: "refinement",
-    itemPredicate: Array<PredicateStatement>,
-    effects: ArmorRefinementEffectSource[]
-}
-
-type ShieldRefinementSource = MaterialSource & {
-    type: "refinement",
-    itemPredicate: Array<PredicateStatement>,
-    effects: ShieldRefinementEffectSource[]
-}
-
-type EquipmentRefinementSource = MaterialSource & {
-    type: "refinement",
-    itemPredicate: Array<PredicateStatement>,
-    effects: EquipmentRefinementEffectSource[]
-}
-type RefinementSource = WeaponRefinementSource | ArmorRefinementSource | ShieldRefinementSource | EquipmentRefinementSource
 
 type ImbueSource = MaterialSource & {
     type: "imbue"
     itemPredicate: Array<PredicateStatement>,
     subtype?: string,
-    effects: ImbueEffectSource[]
+    effects: MaterialEffectSource[]
 }
 
 type LevelRange = {
@@ -44,9 +25,6 @@ type LevelRange = {
     to?: number
 }
 
-type MaterialEffectSource = {
-    levels: LevelRange
-}
 // Refinement Effect
 type PotencyEffectSource = {
     key: "ItemPotency",
@@ -67,46 +45,33 @@ type ShieldImprovementEffectSource = {
     hardness: number,
     hp: number
 }
+
 type SkillModifierEffectSource = {
     key: "SkillModifier",
     skill: SkillSlug | "perception",
     value: number
 }
 
-type WeaponRefinementEffectSource = MaterialEffectSource & {
-    effects: (PotencyEffectSource | StrikingEffectSource)[]
-}
-type ArmorRefinementEffectSource = MaterialEffectSource & {
-    effects: (PotencyEffectSource | ResilientEffectSource)[]
-}
-type ShieldRefinementEffectSource = MaterialEffectSource & {
-    effects: ShieldImprovementEffectSource[]
-}
-type EquipmentRefinementEffectSource = MaterialEffectSource & {
-    effects: SkillModifierEffectSource[]
-}
-
 type RuleElementEffectSource = {
     key: "RuleElement",
     rule: DamageDiceSource | FlatModifierSource | RollNoteSource
 }
+
 type InlineNoteEffectSource = {
     key: "InlineNote",
     text: string,
     parameters?: Record<string, string | number | undefined | null>
 }
 
-type ImbueEffectSource = MaterialEffectSource & {
-    effects: (RuleElementEffectSource | InlineNoteEffectSource)[]
+type MaterialEffectSource = {
+    levels: LevelRange,
+    effects: (PotencyEffectSource | StrikingEffectSource | ResilientEffectSource | ShieldImprovementEffectSource | RuleElementEffectSource | InlineNoteEffectSource | SkillModifierEffectSource)[]
 }
 
 export type {
     RefinementSource,
     ImbueSource,
-    WeaponRefinementEffectSource,
-    ArmorRefinementEffectSource,
-    ShieldRefinementEffectSource,
-    EquipmentRefinementEffectSource,
     RuleElementEffectSource,
-    InlineNoteEffectSource
+    InlineNoteEffectSource,
+    MaterialEffectSource
 }

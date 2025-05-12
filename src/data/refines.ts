@@ -1,5 +1,5 @@
 import { SkillSlug } from "foundry-pf2e";
-import { ArmorRefinementEffectSource, EquipmentRefinementEffectSource, RefinementSource, ShieldRefinementEffectSource, WeaponRefinementEffectSource } from "./data-types";
+import { MaterialEffectSource, RefinementSource } from "./data-types";
 import { levelRange, predicateAnySense } from "./helpers";
 import { tkey } from "../utils";
 
@@ -7,7 +7,7 @@ export function createDefaultRefinements() {
 
     const skills = Object.keys(CONFIG.PF2E.skills) as SkillSlug[];
 
-    const weaponEffects: WeaponRefinementEffectSource[] = [
+    const weaponEffects: MaterialEffectSource[] = [
         {
             ...levelRange(2, 9),
             effects: [{ key: "ItemPotency", value: 1 }]
@@ -34,7 +34,7 @@ export function createDefaultRefinements() {
         }
     ]
 
-    const armorEffects: ArmorRefinementEffectSource[] = [
+    const armorEffects: MaterialEffectSource[] = [
         {
             ...levelRange(5, 10),
             effects: [{ key: "ItemPotency", value: 1 }]
@@ -61,7 +61,7 @@ export function createDefaultRefinements() {
         }
     ]
 
-    const shieldEffects: ShieldRefinementEffectSource[] = [
+    const shieldEffects: MaterialEffectSource[] = [
         {
             ...levelRange(3, 4),
             effects: [{ key: "ShieldImprovement", hardness: 5, hp: 30 }]
@@ -120,7 +120,7 @@ export function createDefaultRefinements() {
         }
     ]
 
-    const skillEffects: ((_: SkillSlug | "perception") => EquipmentRefinementEffectSource[]) = (skill) => [
+    const skillEffects: ((_: SkillSlug | "perception") => MaterialEffectSource[]) = (skill) => [
         {
             ...levelRange(3, 8),
             effects: [{ key: "SkillModifier", skill, value: 1 }]
