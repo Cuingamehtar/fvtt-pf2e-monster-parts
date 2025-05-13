@@ -28,7 +28,7 @@
                 "Magic": "Magic",
                 "Tech": "Technique"
             },
-            "AddCantrip": "The weapon can cast {cantrip} as a cantrip, heightened to half the item’s level rounded up",
+            "AddCantrip": "The weapon can cast {cantrip} as a cantrip, heightened to half the item's level rounded up",
             "Acid": {
                 "Label": "Acid ({variant})",
                 "Magic": {
@@ -40,40 +40,40 @@
                     "Level20": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl] once per day but you can only choose the acid rain effect. You can choose the acid rain effect twice in a row"
                 },
                 "Might": {
-                    "Level8": "On a critical hit, the target’s armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead",
+                    "Level8": "On a critical hit, the target's armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead",
                     "Level12": "The acid damage dealt by Acid Imbue's Might Path ignores resistances",
-                    "Level14": "On a critical hit, the target’s armor (if any) takes 6d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead",
+                    "Level14": "On a critical hit, the target's armor (if any) takes 6d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead",
                     "Level20": "On a successful Strike with the weapon, before applying acid damage, the target gains weakness 1 to acid until the beginning of your next turn"
                 },
                 "Tech": {
-                    "Level8": "On a critical hit, the target’s armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead",
+                    "Level8": "On a critical hit, the target's armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead",
                     "Level12": "The acid damage dealt by Acid Imbue's Technique Path (including the persistent acid damage) ignores resistances",
-                    "Level14": "The persistent acid damage from the imbued property eats away at a foe’s resistances. Every time a foe or the foe’s armor or shield takes damage from the persistent acid damage at the end of their turn, any resistances and Hardness decrease by 1 for 1 minute. This effect is cumulative",
-                    "Level20": "On a critical hit, acid eats away at the foe’s innards, and they are drained 1"
+                    "Level14": "The persistent acid damage from the imbued property eats away at a foe's resistances. Every time a foe or the foe's armor or shield takes damage from the persistent acid damage at the end of their turn, any resistances and Hardness decrease by 1 for 1 minute. This effect is cumulative",
+                    "Level20": "On a critical hit, acid eats away at the foe's innards, and they are drained 1"
                 }
             },
             "Bane": {
-                "Damage": "Strikes with the weapon additionally deal {damage} damage of the weapon’s base damage type to creatures of type {creature}",
+                "Damage": "Strikes with the weapon additionally deal {damage} damage of the weapon's base damage type to creatures of type {creature}",
                 "Persistent": "Strikes with the weapon cause external or internal bleeding in creatures of type {creature}. Against such creatures, Strikes with the weapon deal {damage} persistent bleed damage",
                 "Label": "{creature} Bane ({variant})",
                 "Might": {
-                    "Level6": "On a critical hit, you sap the strength of a creature of type {creature}, causing it to be enfeebled 1 until the end of your next turn",
-                    "Level10": "Against a creature of type {creature}, the weapon’s base damage ignores the first 5 points of the target’s resistance",
-                    "Level14": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} must attempt a Fortitude save. On a critical success, it’s enfeebled 1 until the end of your next turn, on a success, it’s enfeebled 2 until the end of your next turn, on a failure, it’s enfeebled 3 until the end of your next turn, and on a critical failure, it’s destroyed. This effect has the incapacitation trait"
+                    "Level6": "On a critical hit, you sap the strength of a creature of type {creature}, causing it to be @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn",
+                    "Level10": "Against a creature of type {creature}, the weapon's base damage ignores the first 5 points of the target's resistance",
+                    "Level14": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} must attempt a Fortitude save. On a critical success, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn, on a success, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn, on a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn, and on a critical failure, it's destroyed. This effect has the incapacitation trait"
                 },
                 "Tech": {
-                    "Level6": "On a critical hit, you sap the strength of a creature of the bane type, causing it to be enfeebled 1 until the end of your next turn",
-                    "Level10": "Against a creature of type {creature}, the weapon’s base damage ignores the first 5 points of the target’s resistance and the persistent bleed damage from Bane Imbue's Technique Path ignores the target’s resistance",
-                    "Level14": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} is enfeebled 2 until the end of your next turn. It must also attempt a Fortitude save. On a failure, it’s enfeebled 3 until the end of your next turn, and on a critical failure, it’s destroyed. This effect has the incapacitation trait",
-                    "Level20": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} is enfeebled 2. It must also attempt a Fortitude save. On a failure, it’s enfeebled 3, and on a critical failure, it’s destroyed. This effect has the incapacitation trait. The enfeebled condition from a critical hit lasts as long as the persistent bleed damage lasts, or until the end of your next turn, whichever is longer"
+                    "Level6": "On a critical hit, you sap the strength of a creature of the bane type, causing it to be @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn",
+                    "Level10": "Against a creature of type {creature}, the weapon's base damage ignores the first 5 points of the target's resistance and the persistent bleed damage from Bane Imbue's Technique Path ignores the target's resistance",
+                    "Level14": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn. It must also attempt a Fortitude save. On a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn, and on a critical failure, it's destroyed. This effect has the incapacitation trait",
+                    "Level20": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}. It must also attempt a Fortitude save. On a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3}, and on a critical failure, it's destroyed. This effect has the incapacitation trait. The enfeebled condition from a critical hit lasts as long as the persistent bleed damage lasts, or until the end of your next turn, whichever is longer"
                 }
             },
             "Charisma": {
                 "Label": "Charisma",
-                "Level8": "The item can cast heroism once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness.",
-                "Level14": "The item can cast 6th rank heroism once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness.",
+                "Level8": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Heroism} once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness.",
+                "Level14": "The item can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Heroism} once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness.",
                 "Level17": "When you invest the item, you either increase your Charisma attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
-                "Level20": "The item can cast 9th rank heroism once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness."
+                "Level20": "The item can cast 9th rank @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Heroism} once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness."
             },
             "Cold": {
                 "Label": "Cold ({variant})",
@@ -99,6 +99,21 @@
                     "Level16": "Foes adjacent to a surface who critically fail the save against the slow effect freeze to that surface (usually the ground), becoming @UUID[Compendium.pf2e.conditionitems.Item.eIcWbB5o3pP6OIMe] until they [[/act escape]] against the item's DC",
                     "Level20": "On a successful Strike with the weapon, the target takes a –15-foot status penalty to its Speeds for 1 round. On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC"
                 }
+            },
+            "Constitution": {
+                "Label": "Constitution",
+                "Level8": "The item can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only, once per day as a divine spell.",
+                "Level14": "The item can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only, once per day as a divine spell.",
+                "Level17": "When you invest the item, you either increase your Constitution attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
+                "Level18": "The item can either cast 7th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only, once per day as a divine spell, or cast @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Regenerate} on you once per day.",
+                "Level20": "If you rest for 10 minutes, you recover 100 Hit Points."
+            },
+            "Dexterity": {
+                "Label": "Constitution",
+                "Level8": "Once per day, you can use a single action Interact activation to gain a +10-foot status bonus to all your Speeds for 10 minutes.",
+                "Level14": "Once per day, you can use a single action Interact activation to gain a +20-foot status bonus to all your Speeds for 10 minutes. While activated, you gain the effects of @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Water Walk}.",
+                "Level17": "When you invest the item, you either increase your Dexterity attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
+                "Level20": "Once per day, you can use a single action Interact activation to gain a +30-foot status bonus to all your Speeds for 10 minutes. While activated, you gain the effects of both @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Water Walk} and @UUID[Compendium.pf2e.spells-srd.Item.b5sGjGlBf58f8jn0]{Air Walk}."
             }
         },
         "Settings": {
