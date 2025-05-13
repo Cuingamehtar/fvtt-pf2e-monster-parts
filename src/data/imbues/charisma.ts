@@ -1,14 +1,15 @@
 import { tkey } from "../../utils";
 import { ImbueSource } from "../data-types";
-import { levelRange } from "../helpers";
+import { levelRange, skillsOfAttribute } from "../helpers";
 
 export function createImbueCharisma(): ImbueSource {
+    const skills = skillsOfAttribute("cha");
     return {
         key: "imbue:charisma",
         type: "imbue",
         label: tkey("Imbue.Charisma.Label"),
         monsterPredicate: [{ lte: ["ability:cha:rank", 2] }],
-        itemPredicate: [{ or: ["refinement:skill:deception", "refinement:skill:diplomacy", "refinement:skill:intimidation", "refinement:skill:performance"] }],
+        itemPredicate: [{ or: skills.map(s=>`refinement:skill:${s}`) }],
         effects: [
             {
                 ...levelRange(8, 13),

@@ -1,14 +1,15 @@
 import { tkey } from "../../utils";
 import { ImbueSource } from "../data-types";
-import { levelRange } from "../helpers";
+import { levelRange, skillsOfAttribute } from "../helpers";
 
 export function createImbueDexterity(): ImbueSource {
+    const skills = skillsOfAttribute("dex");
     return {
         key: "imbue:dexterity",
         type: "imbue",
         label: tkey("Imbue.Charisma.Label"),
         monsterPredicate: [{ lte: ["ability:dex:rank", 2] }],
-        itemPredicate: [{ or: ["refinement:skill:acrobatics", "refinement:skill:stealth", "refinement:skill:thievery"] }],
+        itemPredicate: [{ or: skills.map(s=>`refinement:skill:${s}`) }],
         effects: [
             {
                 ...levelRange(8, 13),

@@ -190,7 +190,7 @@ export function createImbueCold(): ImbueSource[] {
                         type: "cold",
                         value: 1,
                         category: "persistent",
-                        label: tkey("Imbue.Cold.Might.Label"),
+                        label: tkey("Imbue.Cold.Tech.Label"),
                     })
                 },
                 {
