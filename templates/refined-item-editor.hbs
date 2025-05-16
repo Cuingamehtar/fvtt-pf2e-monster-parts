@@ -1,0 +1,75 @@
+<fieldset>
+    <legend>Refinement</legend>
+    <label for="refinement-type">Refinement type</label>
+    <select name="refinement-type" id="refinement-type">
+        <option value=""></option>
+        {{#each possibleRefinements}}
+        <option value="{{this.key}}" {{#if this.isSelected}}selected{{/if}}>{{this.label}}</option>
+    </select>
+    <label for="refinement-value">Value</label>
+    <input type="number" name="refinement-value" id="refinement-value" value="{{value}}"/>
+</fieldset>
+
+{{#if imbue1}}
+{{#with imbue1}}
+<fieldset>
+    <legend>Imbue 1</legend>
+    <label for="imbue-1-type">Imbue type</label>
+    <select name="imbue-1-type" id="imbue-1-type">
+        <option value=""></option>
+        {{#each possibleImbues}}
+        <option value="{{this.key}}" {{#if this.isSelected}}selected{{/if}}>{{this.label}}</option>
+    </select>
+    <label for="imbue-1-value">Value</label>
+    <input type="number" name="imbue-1-value" id="imbue-1-value" value="{{value}}"/>
+</fieldset>
+{{/with}}
+{{/if}}
+
+{{#if imbue2}}
+{{#with imbue1}}
+<fieldset>
+    <legend>Imbue 2</legend>
+    <label for="imbue-2-type">Imbue type</label>
+    <select name="imbue-2-type" id="imbue-2-type">
+        <option value=""></option>
+        {{#each possibleImbues}}
+        <option value="{{this.key}}" {{#if this.isSelected}}selected{{/if}}>{{this.label}}</option>
+    </select>
+    <label for="imbue-2-value">Value</label>
+    <input type="number" name="imbue-2-value" id="imbue-2-value" value="{{value}}"/>
+</fieldset>
+{{/with}}
+{{/if}}
+
+{{#if imbue3}}
+{{#with imbue1}}
+<fieldset>
+    <legend>Imbue 3</legend>
+    <label for="imbue-3-type">Imbue type</label>
+    <select name="imbue-3-type" id="imbue-3-type">
+        <option value=""></option>
+        {{#each possibleImbues}}
+        <option value="{{this.key}}" {{#if this.isSelected}}selected{{/if}}>{{this.label}}</option>
+    </select>
+    <label for="imbue-1-value">Value</label>
+    <input type="number" name="imbue-3-value" id="imbue-3-value" value="{{value}}"/>
+</fieldset>
+{{/with}}
+{{/if}}
+
+{{#if imbue4}}
+{{#with imbue1}}
+<fieldset>
+    <legend>Imbue 4</legend>
+    <label for="imbue-4-type">Imbue type</label>
+    <select name="imbue-4-type" id="imbue-4-type">
+        <option value=""></option>
+        {{#each possibleImbues}}
+        <option value="{{this.key}}" {{#if this.isSelected}}selected{{/if}}>{{this.label}}</option>
+    </select>
+    <label for="imbue-4-value">Value</label>
+    <input type="number" name="imbue-4-value" id="imbue-4-value" value="{{value}}"/>
+</fieldset>
+{{/with}}
+{{/if}}

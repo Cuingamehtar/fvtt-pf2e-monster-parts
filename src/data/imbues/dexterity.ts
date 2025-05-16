@@ -7,7 +7,7 @@ export function createImbueDexterity(): ImbueSource {
     return {
         key: "imbue:dexterity",
         type: "imbue",
-        label: tkey("Imbue.Charisma.Label"),
+        label: tkey("Imbue.Dexterity.Label"),
         monsterPredicate: [{ lte: ["ability:dex:rank", 2] }],
         itemPredicate: [{ or: skills.map(s=>`refinement:skill:${s}`) }],
         effects: [

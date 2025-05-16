@@ -5,7 +5,7 @@ import { t } from "./utils";
 import { MonsterPartFlags } from "./flags";
 import { getExtendedItemRollOptions, getExtendedNPCRollOptions } from "./itemUtil";
 
-export function createMaterial(actor: CreaturePF2e) {
+export async function createMaterial(actor: CreaturePF2e) {
     const config = getConfig();
 
     const bulk = config.materialBulk[actor.system.traits.size.value];
@@ -20,15 +20,18 @@ export function createMaterial(actor: CreaturePF2e) {
         const p = new Predicate(m.monsterPredicate ?? []);
         return rollOptions.some(ro => p.test(ro));
     });
-    const flags: MonsterPartFlags = { value: materialValue, materials:materials.map(m=>m.key) };
+    const flags: MonsterPartFlags = { value: materialValue, materials: materials.map(m => m.key) };
 
 
     const item = {
         name,
         img: config.materialItem.image,
-        system: { bulk: { value: bulk }, description: { value: materials.map(m=>`<p>${game.i18n.localize(m.label)}</p>`).join("") } },
+        system: { bulk: { value: bulk }, description: { value: materials.map(m => `<p>${game.i18n.localize(m.label)}</p>`).join("") } },
         type: "equipment",
-        flags: { [MODULE_ID]: flags }
+        flags: { [MODULE_ID]: { monsterPart: flags } }
+    }
+    if (game.settings.get(MODULE_ID, "actorLootable")) {
+        await actor.setFlag("pf2e", "lootable", true);
     }
     // @ts-ignore
     return actor.createEmbeddedDocuments("Item", [item])

@@ -1,0 +1,33 @@
+<div>
+    <label for="material-value">Value</label>
+    <input type="number" name="material-value" id="material-value" value="{{settings.value}}" />
+    <table>
+        <tr>
+            <td>
+                <fieldset>
+                    <legend>Refinements</legend>
+                    <div style="overflow-y:scroll;height:400px;">
+                    {{#each settings.refinements}}
+                    <p>
+                        <input type="checkbox" name="{{this.key}}" id="{{this.key}}" {{checked this.checked}}/>
+                        <label for="{{this.key}}">{{localize this.label}}</label>
+                    </p>
+                    {{/each}}</div>
+                </fieldset>
+            </td>
+            <td>
+                <fieldset>
+                    <legend>Imbues</legend>
+                    <div style="overflow-y:scroll;height:400px;">
+                    {{#each settings.imbues}}
+                    <p>
+                        <input type="checkbox" name="{{this.key}}" id="{{this.key}}" {{checked this.checked}}/>
+                        <label for="{{this.key}}">{{localize this.label}}</label>
+                    </p>
+                    {{/each}}
+                    </div>
+                </fieldset>
+            </td>
+        </tr>
+    </table>
+</div>

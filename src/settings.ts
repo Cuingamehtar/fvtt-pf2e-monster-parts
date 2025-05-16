@@ -22,5 +22,14 @@ export function registerSettings(){
         type: Boolean,
         default: false,
 		requiresReload: false
-    })
+    });
+
+    game.settings.register(MODULE_ID, "actorLootable", {
+        name:t("Settings.ActorLootable.Name"),
+        hint: t("Settings.ActorLootable.Hint"),
+        scope: "world",
+        type:Boolean,
+        default:true,
+        requiresReload:false
+    });
 }

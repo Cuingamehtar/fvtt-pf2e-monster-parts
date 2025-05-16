@@ -3,6 +3,9 @@
         "Material": {
             "Item": {
                 "Name": "Monster Parts of {actor} ({value} gp)"
+            },
+            "Editor": {
+                "Title": "Edit provided materials"
             }
         },
         "Refinement": {
@@ -30,7 +33,7 @@
                 "Magic": "Magic",
                 "Tech": "Technique"
             },
-            "AddCantrip": "The weapon can cast {cantrip} as a cantrip, heightened to half the item's level rounded up",
+            "AddCantrip": "The weapon can cast {cantrip} as a cantrip, heightened to half the item's level rounded up.",
             "Acid": {
                 "Label": "Acid ({variant})",
                 "Magic": {
@@ -57,7 +60,7 @@
             "Bane": {
                 "Damage": "Strikes with the weapon additionally deal {damage} damage of the weapon's base damage type to creatures of type {creature}",
                 "Persistent": "Strikes with the weapon cause external or internal bleeding in creatures of type {creature}. Against such creatures, Strikes with the weapon deal {damage} persistent bleed damage",
-                "Label": "{creature} Bane ({variant})",
+                "Label": "Bane ({creature}, {variant})",
                 "Might": {
                     "Level6": "On a critical hit, you sap the strength of a creature of type {creature}, causing it to be @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
                     "Level10": "Against a creature of type {creature}, the weapon's base damage ignores the first 5 points of the target's resistance.",
@@ -111,7 +114,7 @@
                 "Level20": "If you rest for 10 minutes, you recover 100 Hit Points."
             },
             "Dexterity": {
-                "Label": "Constitution",
+                "Label": "Dexterity",
                 "Level8": "Once per day, you can use a single action activation with manipulate trait to gain a +10-foot status bonus to all your Speeds for 10 minutes.",
                 "Level14": "Once per day, you can use a single action activation with manipulate trait to gain a +20-foot status bonus to all your Speeds for 10 minutes. While activated, you gain the effects of @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Water Walk}.",
                 "Level17": "When you invest the item, you either increase your Dexterity attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
@@ -142,6 +145,10 @@
             }
         },
         "Settings": {
+            "ActorLootable": {
+                "Name": "Make actors lootable",
+                "Hint": "Allows players to loot the actor after creating monster parts"
+            },
             "Variant": {
                 "Name": "Variant",
                 "Light": "Light",
