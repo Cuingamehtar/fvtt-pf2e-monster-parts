@@ -2,7 +2,7 @@ import { ActorPF2e, ItemPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { getExtendedItemRollOptions } from "./itemUtil";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
-import { getMaterialLevel, RefinedItemFlags } from "./flags";
+import { getMaterialLevel, getRefinedItemFlags, RefinedItemFlags } from "./flags";
 import { RefinementSource } from "./data/data-types";
 
 function optionChoiceDialog(options: (RefinementSource)[]):Promise<RefinementSource> {
@@ -76,5 +76,13 @@ Hooks.on("renderItemSheetPF2e", (sheet, htmlArray, _) => {
     const material = config.materials.find(m => m.key == refinement.key)!;
     let content = `<p>${game.i18n.localize(material.label)} <strong>${getMaterialLevel(refinement, item)} (${Math.floor(refinement.value)} gp)</strong></p>`;
     div.innerHTML = content;
-
 })
+
+
+export function prepareRefinedItem(item:PhysicalItemPF2e){
+    const rules = [];
+    const flags = getRefinedItemFlags(item);
+    if(!flags)
+        return;
+    
+}

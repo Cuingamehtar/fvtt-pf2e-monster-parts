@@ -2,7 +2,7 @@ import { EquipmentSheetPF2e, NPCSheetPF2e } from "foundry-pf2e";
 import { createConfig } from "./config";
 import { createRefinedItem } from "./item";
 import { getExtendedItemRollOptions, getExtendedNPCRollOptions } from "./itemUtil";
-import { createMaterial } from "./material";
+import { createMonsterPart } from "./monster-part";
 import { registerSettings } from "./settings";
 import { registerEnricher } from "./enricher";
 import { configureMonsterPart } from "./app/monster-part-editor";
@@ -14,7 +14,7 @@ Hooks.once("init", () => {
     Hooks.once("i18nInit", () => createConfig());
 
     // @ts-ignore
-    game[MODULE_ID] = { createMaterial, createRefinedItem, getExtendedItemRollOptions, getExtendedNPCRollOptions, configureMonsterPart }
+    game[MODULE_ID] = { createMaterial: createMonsterPart, createRefinedItem, getExtendedItemRollOptions, getExtendedNPCRollOptions, configureMonsterPart }
     registerEnricher();
 
 });
@@ -29,7 +29,7 @@ Hooks.on("renderNPCSheetPF2e", (sheet: NPCSheetPF2e, html: HTMLDivElement[], { e
     btn.innerHTML = "<i class=\"fa-solid fa-fw fa-skull\"></i>";
     btn.classList.add("create-monster-parts");
     btn.setAttribute("data-tooltip", "Create Monster Parts");
-    btn.addEventListener("click", () => createMaterial(actor));
+    btn.addEventListener("click", () => createMonsterPart(actor));
 
     elem?.insertBefore(btn, elem.firstChild);
 });

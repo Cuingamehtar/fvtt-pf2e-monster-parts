@@ -1,0 +1,23 @@
+<div>
+    <table>
+        <tr>
+            <td><img src="{{item.img}}" /></td>
+            <td>
+                <p>{{item.name}}</p>
+                <div class="item-refinement draggable {{item.refinement.key}}">
+                    <p>{{localize item.refinement.label}}<span style="float:right;">{{item.refinement.value}}</span></p>
+                </div>
+                {{#each item.imbues}}
+                <div class="item-imbue draggable {{this.key}}">
+                    <p>{{localize this.label}}<span style="float:right;">{{this.value}}</span></p>
+                </div>
+                {{/each}}
+                {{#if setting.canAddImbue}}
+                <div class="item-imbue">
+                    <p>{{localize this.label}}<span style="float:right;">{{this.value}}</span></p>
+                </div>
+                {{/if}}
+            </td>
+        </tr>
+    </table>
+</div>

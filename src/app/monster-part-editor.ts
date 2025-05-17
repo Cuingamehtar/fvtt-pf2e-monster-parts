@@ -3,7 +3,7 @@ import { getConfig } from "../config";
 import { tkey } from "../utils";
 import { ApplicationConfiguration } from "foundry-pf2e/foundry/client-esm/applications/_types.js";
 import { MODULE_ID } from "../module";
-import { MonsterPartFlags } from "../flags";
+import { MonsterPartFlags, setMonsterPartFlags } from "../flags";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api
 
@@ -15,7 +15,7 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
 
     static PARTS = {
         form: {
-            template: "modules/pf2e-monster-parts/templates/material-editor.hbs"
+            template: "modules/pf2e-monster-parts/templates/monster-part-editor.hbs"
         },
         footer: {
             template: "templates/generic/form-footer.hbs"
@@ -63,7 +63,12 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
 
 export async function configureMonsterPart(item: PhysicalItemPF2e) {
     const promise = new Promise((resolve) => {
-        new MonsterPartEditor({ item, form: { handler: (event: Event | SubmitEvent, form: HTMLFormElement, formData: FormDataExtended) => resolve(formData.object) } }).render(true);
+        new MonsterPartEditor({
+            item,
+            form: {
+                handler: async (event: Event | SubmitEvent, form: HTMLFormElement, formData: FormDataExtended) => resolve(formData.object)
+            }
+        }).render(true);
     });
     const data = (await promise) as any;
     const config = getConfig();
@@ -71,5 +76,6 @@ export async function configureMonsterPart(item: PhysicalItemPF2e) {
         value: data["material-value"] as number,
         materials: config.materials.filter(m => data[m.key]).map(m => m.key)
     }
-    item?.setFlag(MODULE_ID, "monsterPart", flags);
+    if(item)
+        setMonsterPartFlags(item, flags);
 }

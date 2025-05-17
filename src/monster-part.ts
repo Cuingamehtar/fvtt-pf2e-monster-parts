@@ -5,7 +5,7 @@ import { t } from "./utils";
 import { MonsterPartFlags } from "./flags";
 import { getExtendedItemRollOptions, getExtendedNPCRollOptions } from "./itemUtil";
 
-export async function createMaterial(actor: CreaturePF2e) {
+export async function createMonsterPart(actor: CreaturePF2e) {
     const config = getConfig();
 
     const bulk = config.materialBulk[actor.system.traits.size.value];
@@ -21,7 +21,6 @@ export async function createMaterial(actor: CreaturePF2e) {
         return rollOptions.some(ro => p.test(ro));
     });
     const flags: MonsterPartFlags = { value: materialValue, materials: materials.map(m => m.key) };
-
 
     const item = {
         name,
