@@ -11,15 +11,15 @@ export function predicateAnySense() {
 
 export function skillsOfAttribute(attribute: keyof Abilities): SkillSlug[] {
     return Object.entries(CONFIG.PF2E.skills)
-        .filter(([_, v]) => v.attribute == attribute)
+        .filter(([_, v]) => v.attribute === attribute)
         .map(([k, _]) => k as SkillSlug)
 }
 
-export function addDamage({ type, category, value, text, label, predicate }: { type?: string, category?: "persistent", value: number | `${number}d${number}` | `d${number}`, label: string, text?: string, predicate?: Array<PredicateStatement> }) {
+export function addDamage({ type, category, value, text, label, predicate }: { type?: string, category?: "persistent", value: number | `${number}d${number}` | `d${number}`, label: string, text?: string, predicate?: PredicateStatement[] }) {
     const effects: (RuleElementEffectSource | InlineNoteEffectSource)[] = [
         {
             key: "InlineNote",
-            text: text ?? tkey(category == "persistent" ? "Damage.Persisitent" : "Damage.Normal"),
+            text: text ?? tkey(category === "persistent" ? "Damage.Persisitent" : "Damage.Normal"),
             parameters: {
                 damage: value ?? 1,
                 damageType: type

@@ -1,6 +1,5 @@
 import { ItemPF2e } from "foundry-pf2e"
 import { getConfig } from "./config"
-import { MODULE_ID } from "./module"
 
 type MaterialValue = {
     key: string,
@@ -23,51 +22,26 @@ export type ModuleFlags = {
     text?: string
 };
 
-export function getMaterialLevel(value: MaterialValue, item: ItemPF2e) {
+export function getMaterialLevel(value: MaterialValue, item: ItemPF2e):number {
     const config = getConfig();
-    const material = config.materials.find(m => m.key == value.key);
+    const material = config.materials.find(m => m.key === value.key);
     if (!material) {
         ui.notifications.error(`Unknown material key: ${value.key}`);
         return 0;
     }
     const thresholds = config.thresholds[material.type];
-    if (!Object.keys(thresholds).includes(item.type)) {
+    if (Object.keys(thresholds).includes(item.type)) {
         const type = item.type as ("weapon" | "armor" | "shield" | "equipment");
         const thr = thresholds[type];
-        const level = thr.findIndex(e => e < value.value);
-        return level == -1 ? 20 : level;
+        const level = thr.findLastIndex(e => e < value.value);
+        return level === -1 ? 0 : level;
     }
     return 0;
 }
 
-export function getMonsterPartFlags(item: ItemPF2e) {
-    return item.getFlag(MODULE_ID, "monsterPart");
-}
-
-export function setMonsterPartFlags(item: ItemPF2e, value: MonsterPartFlags) {
-    return item.setFlag(MODULE_ID, "monsterPart", value);
-}
-
-export function getRefinedItemFlags(item: ItemPF2e) {
-    return item.getFlag(MODULE_ID, "refinedItem");
-}
-
-export function setRefinedItemFlags(item: ItemPF2e, value: RefinedItemFlags) {
-    return item.setFlag(MODULE_ID, "refinedItem", value);
-}
-
-export function getTextFlag(item: ItemPF2e) {
-    return item.getFlag(MODULE_ID, "text");
-}
-
-export function setTextFlag(item: ItemPF2e, value: string) {
-    return item.setFlag(MODULE_ID, "text", value);
-}
-
 declare module "foundry-pf2e" {
     interface ItemPF2e {
-        getFlag(scope:"pf2e-monster-parts", key:"monsterPart"): ModuleFlags["monsterPart"];
-        getFlag(scope:"pf2e-monster-parts", key:"refinedItem"): ModuleFlags["refinedItem"];
-        getFlag(scope:"pf2e-monster-parts", key:"text"): ModuleFlags["text"];
+        getFlag(scope: "pf2e-monster-parts", key: "monsterPart"): ModuleFlags["monsterPart"];
+        getFlag(scope: "pf2e-monster-parts", key: "refinedItem"): ModuleFlags["refinedItem"];
     }
 }

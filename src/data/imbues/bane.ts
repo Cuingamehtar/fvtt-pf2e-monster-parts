@@ -1,11 +1,10 @@
-import { MODULE_ID } from "../../module";
+import { getConfig } from "../../config";
 import { t } from "../../utils";
 import { ImbueSource } from "../data-types";
 import { addDamage, levelRange } from "../helpers";
 
 export function createImbueBane(): ImbueSource[] {
-    // @ts-ignore
-    return CONFIG[MODULE_ID].baneCreatureTraits.flatMap(baneImbue);
+    return getConfig().baneCreatureTraits.flatMap(baneImbue);
 }
 
 function baneImbue(creature: string): ImbueSource[] {

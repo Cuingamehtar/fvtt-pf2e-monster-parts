@@ -1,26 +1,30 @@
-import { PhysicalItemPF2e } from "foundry-pf2e";
+import { ItemPF2e } from "foundry-pf2e";
 import { getConfig } from "../config";
-import { tkey } from "../utils";
+import { t } from "../utils";
 import { ApplicationConfiguration } from "foundry-pf2e/foundry/client-esm/applications/_types.js";
 import { MODULE_ID } from "../module";
-import { MonsterPartFlags, setMonsterPartFlags } from "../flags";
 
-const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
-    constructor(options: DeepPartial<ApplicationConfiguration> & { item: PhysicalItemPF2e }) {
+    item: ItemPF2e;
+
+    constructor(
+        options: DeepPartial<ApplicationConfiguration> & { item: ItemPF2e },
+    ) {
         super(options);
         this.item = options.item;
     }
 
     static PARTS = {
         form: {
-            template: "modules/pf2e-monster-parts/templates/monster-part-editor.hbs"
+            template:
+                "modules/pf2e-monster-parts/templates/monster-part-editor.hbs",
         },
         footer: {
-            template: "templates/generic/form-footer.hbs"
-        }
-    }
+            template: "templates/generic/form-footer.hbs",
+        },
+    };
 
     static DEFAULT_OPTIONS = {
         tag: "form",
@@ -29,53 +33,78 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             closeOnSubmit: true,
         },
         window: {
-            title: tkey("Material.Editor.Title"),
+            title: "",
             width: 550,
             height: 600,
             closeOnSubmit: true,
-        }
-    }
-
+        },
+    };
 
     async _prepareContext() {
         const config = getConfig();
-        const flags = this.item.getFlag(MODULE_ID, "monsterPart") as MonsterPartFlags;
+        const flags = this.item.getFlag(MODULE_ID, "monsterPart") ?? {
+            materials: [],
+            value: 0,
+        };
 
-        const refinements = config.materials.filter(m => m.type == "refinement")
-            .map(m => ({ key: m.key, label: m.label, checked: flags.materials.includes(m.key) }))
+        const refinements = config.materials
+            .filter((m) => m.type === "refinement")
+            .map((m) => ({
+                key: m.key,
+                label: m.label,
+                checked: flags.materials.includes(m.key),
+            }))
             .sort((a, b) => a.label.localeCompare(b.label));
-        const imbues = config.materials.filter(m => m.type == "imbue")
-            .map(m => ({ key: m.key, label: m.label, checked: flags.materials.includes(m.key) }))
+        const imbues = config.materials
+            .filter((m) => m.type === "imbue")
+            .map((m) => ({
+                key: m.key,
+                label: m.label,
+                checked: flags.materials.includes(m.key),
+            }))
             .sort((a, b) => a.label.localeCompare(b.label));
 
         const buttons = [
-            { type: "submit", icon: "fa-solid fa-save", label: "SETTINGS.Save" }
+            {
+                type: "submit",
+                icon: "fa-solid fa-save",
+                label: "SETTINGS.Save",
+            },
         ];
         return {
             settings: {
                 value: flags.value,
-                refinements, imbues
+                refinements,
+                imbues,
             },
-            buttons
+            buttons,
         };
     }
 }
 
-export async function configureMonsterPart(item: PhysicalItemPF2e) {
+export async function configureMonsterPart(item: ItemPF2e) {
     const promise = new Promise((resolve) => {
         new MonsterPartEditor({
             item,
             form: {
-                handler: async (event: Event | SubmitEvent, form: HTMLFormElement, formData: FormDataExtended) => resolve(formData.object)
-            }
+                handler: async (
+                    event: Event | SubmitEvent,
+                    form: HTMLFormElement,
+                    formData: FormDataExtended,
+                ) => resolve(formData.object),
+            },
+            window: {
+                title: t("Material.Editor.Title"),
+            },
         }).render(true);
     });
     const data = (await promise) as any;
     const config = getConfig();
-    const flags: MonsterPartFlags = {
+    const flags = {
         value: data["material-value"] as number,
-        materials: config.materials.filter(m => data[m.key]).map(m => m.key)
-    }
-    if(item)
-        setMonsterPartFlags(item, flags);
+        materials: config.materials
+            .filter((m) => data[m.key])
+            .map((m) => m.key),
+    };
+    if (item) item.setFlag(MODULE_ID, "monsterPart", flags);
 }

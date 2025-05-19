@@ -1,11 +1,11 @@
-import { CreaturePF2e } from "foundry-pf2e";
+import { NPCPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
 import { t } from "./utils";
 import { MonsterPartFlags } from "./flags";
 import { getExtendedItemRollOptions, getExtendedNPCRollOptions } from "./itemUtil";
 
-export async function createMonsterPart(actor: CreaturePF2e) {
+export async function createMonsterPart(actor: NPCPF2e) {
     const config = getConfig();
 
     const bulk = config.materialBulk[actor.system.traits.size.value];
@@ -32,6 +32,6 @@ export async function createMonsterPart(actor: CreaturePF2e) {
     if (game.settings.get(MODULE_ID, "actorLootable")) {
         await actor.setFlag("pf2e", "lootable", true);
     }
-    // @ts-ignore
+
     return actor.createEmbeddedDocuments("Item", [item])
 }

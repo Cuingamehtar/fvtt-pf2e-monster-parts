@@ -4,18 +4,18 @@ import type { DamageDiceSource, FlatModifierSource, PredicateStatement, RollNote
 type MaterialSource = {
     key: string,
     label: string,
-    monsterPredicate?: Array<PredicateStatement>
+    monsterPredicate?: PredicateStatement[]
 }
 
 type RefinementSource = MaterialSource & {
     type: "refinement",
-    itemPredicate: Array<PredicateStatement>,
+    itemPredicate: PredicateStatement[],
     effects: MaterialEffectSource[]
 }
 
 type ImbueSource = MaterialSource & {
     type: "imbue"
-    itemPredicate: Array<PredicateStatement>,
+    itemPredicate: PredicateStatement[],
     subtype?: string,
     effects: MaterialEffectSource[]
 }
@@ -60,7 +60,7 @@ type RuleElementEffectSource = {
 type InlineNoteEffectSource = {
     key: "InlineNote",
     text: string,
-    parameters?: Record<string, string | number | undefined | null>
+    parameters?: Record<string, string | number | null |undefined>
 }
 
 type MaterialEffectSource = {

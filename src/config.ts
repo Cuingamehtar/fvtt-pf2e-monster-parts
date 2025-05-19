@@ -22,13 +22,13 @@ export type MonsterPartsConfig = {
     },
     valueForMonsterLevel: number[],
     materialItem: {
-        image: string
+        image: `${string}.webp`
     },
     materialBulk: Record<Size, number>,
     baneCreatureTraits: string[]
 }
 
-export function createConfig() {
+export function createConfig():void {
     const valueForMonsterLevelDefaults = {
         light: [1.5, 2.25, 3.5, 5, 7, 12, 18, 30, 45, 64, 90, 125, 175, 250, 375, 560, 810, 1250, 1875, 3000, 5000, 8750, 10000, 17500, 20000, 35000, 40000],
         hybrid: [3.5, 5, 7, 12, 18, 27, 45, 65, 100, 140, 200, 275, 390, 560, 840, 1250, 1850, 2800, 4300, 7000, 12000, 17500, 24000, 35000, 48000, 70000, 96000],
@@ -40,9 +40,9 @@ export function createConfig() {
         shield: [10, 20, 35, 60, 100, 160, 240, 340, 470, 670, 950, 1350, 2000, 3000, 4300, 6500, 1000, 16000, 25000, 45000],
         equipment: [10, 20, 35, 60, 100, 160, 240, 340, 470, 670, 950, 1350, 2000, 3000, 4300, 6500, 1000, 16000, 25000, 45000]
     }
-    const variant: ("light" | "hybrid" | "full") = game.settings.get(MODULE_ID, "variant");
+    const variant = game.settings.get(MODULE_ID, "variant") as ("light"|"hybrid"|"full");
 
-    var config: Partial<MonsterPartsConfig> = {
+    const config: Partial<MonsterPartsConfig> = {
         thresholds: {
             refinement:itemValueThresholdDefaults,
             imbue: itemValueThresholdDefaults
@@ -59,17 +59,17 @@ export function createConfig() {
         },
         baneCreatureTraits: ["aberration", "animal", "astral", "beast", "celestial", "construct", "dragon", "dream", "elemental", "ethereal", "fey", "fiend", "giant", "monitor", "ooze", "spirit", "time", "vitality", "void"]
     }
-    // @ts-ignore
+    // @ts-expect-error "key not defined in type"
     CONFIG[MODULE_ID] = config;
     console.log(`${MODULE_ID} | Config initialized`)
     Hooks.call(`${MODULE_ID}.configInit`);
-    // @ts-ignore
+    // @ts-expect-error "key not defined in type"
     CONFIG[MODULE_ID].materials = [...createDefaultRefinements(), ...createDefaultImbues()];
     console.log(`${MODULE_ID} | Default materials generated`)
     Hooks.call(`${MODULE_ID}.defaultMaterialsGenerated`);
 }
 
-export function getConfig(){
-    // @ts-ignore
-    return (CONFIG[MODULE_ID] as MonsterPartsConfig);
+export function getConfig():MonsterPartsConfig{
+    // @ts-expect-error "key not defined in type"
+    return CONFIG[MODULE_ID] as MonsterPartsConfig;
 }

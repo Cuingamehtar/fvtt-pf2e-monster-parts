@@ -5,7 +5,7 @@
   "scripts": {
     "build": "esbuild src/module.ts --bundle --keep-names --minify --sourcemap --outdir=scripts",
     "dev": "esbuild src/module.ts --bundle --keep-names --watch --sourcemap --outdir=scripts"
-},
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Cuingamehtar/fvtt-pf2e-monster-parts.git"
@@ -20,5 +20,8 @@
     "esbuild": "^0.25.3",
     "foundry-pf2e": "github:7H3LaughingMan/foundry-pf2e",
     "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "prettier": "3.5.3"
   }
 }

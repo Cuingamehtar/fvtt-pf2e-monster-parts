@@ -33,7 +33,7 @@
                 "Magic": "Magic",
                 "Tech": "Technique"
             },
-            "AddCantrip": "The weapon can cast {cantrip} as a cantrip, heightened to half the item's level rounded up.",
+            "AddCantrip": "The weapon can cast {spell} as a cantrip, heightened to half the item's level rounded up.",
             "Acid": {
                 "Label": "Acid ({variant})",
                 "Magic": {
@@ -58,8 +58,8 @@
                 }
             },
             "Bane": {
-                "Damage": "Strikes with the weapon additionally deal {damage} damage of the weapon's base damage type to creatures of type {creature}",
-                "Persistent": "Strikes with the weapon cause external or internal bleeding in creatures of type {creature}. Against such creatures, Strikes with the weapon deal {damage} persistent bleed damage",
+                "Damage": "Strikes with the weapon additionally deal {damage} damage of the weapon's base damage type to creatures of type {creature}.",
+                "Persistent": "Strikes with the weapon cause external or internal bleeding in creatures of type {creature}. Against such creatures, Strikes with the weapon deal {damage} persistent bleed damage.",
                 "Label": "Bane ({creature}, {variant})",
                 "Might": {
                     "Level6": "On a critical hit, you sap the strength of a creature of type {creature}, causing it to be @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
@@ -91,14 +91,14 @@
                     "Level20": "The weapon can cast 9th rank @UUID[Compendium.pf2e.spells-srd.Item.BKIet436snMNcnez] once per day."
                 },
                 "Might": {
-                    "Level8":"On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC.",
+                    "Level8": "On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC.",
                     "Level12": "The cold damage dealt by Cold Imbue's Might Path ignores resistances.",
                     "Level14": "On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC, and takes –10-foot status penalty to its Speeds for 1 round.",
                     "Level20": "On a successful Strike with the weapon, before applying cold damage, the target gains weakness 1 to cold until the beginning of your next turn."
                 },
                 "Tech": {
                     "Level6": "On a successful Strike with the weapon, the target takes a –5-foot status penalty to its Speeds for 1 round.",
-                    "Level8": "On a successful Strike with the weapon, the target takes a –10-foot status penalty to its Speeds for 1 round. On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC",
+                    "Level8": "On a successful Strike with the weapon, the target takes a –10-foot status penalty to its Speeds for 1 round. On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC.",
                     "Level12": "The persistent cold damage dealt by Cold Imbue's Technique Path ignores resistances.",
                     "Level14": "A creature with their Speeds decreased by the imbued property thaws more slowly. The penalty lasts as long as the persistent cold damage does.",
                     "Level16": "Foes adjacent to a surface who critically fail the save against the slow effect freeze to that surface (usually the ground), becoming @UUID[Compendium.pf2e.conditionitems.Item.eIcWbB5o3pP6OIMe] until they [[/act escape]] against the item's DC.",
@@ -131,7 +131,7 @@
                     "Level20": "The weapon can cast 7th rank @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} once per day, 7th rank @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Lightning Storm} once per day, and 9th rank @UUID[Compendium.pf2e.spells-srd.Item.TDNlDWbYb58Y55Da]{Chain Lightning} once per day."
                 },
                 "Might": {
-                    "Level8":"On a critical hit, electricity arcs out to deal an equal amount of electricity damage to up to two other creatures of your choice within 10 feet of the target.",
+                    "Level8": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage to up to two other creatures of your choice within 10 feet of the target.",
                     "Level12": "The electricity damage dealt by Electricity Imbue's Might Path ignores resistances.",
                     "Level14": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage to up to two other creatures of your choice within 20 feet of the target.",
                     "Level20": "On a successful Strike with the weapon, before applying electricity damage, the target gains weakness 1 to electricity until the beginning of your next turn."
