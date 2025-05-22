@@ -9,8 +9,9 @@ import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
 import { getMaterialLevel, RefinedItemFlags } from "./flags";
 import { RefinementSource } from "./data/data-types";
+import { Material } from "./material";
 
-function optionChoiceDialog(
+export function optionChoiceDialog(
     options: RefinementSource[],
 ): Promise<RefinementSource | undefined> {
     if (options.length === 1) return Promise.resolve(options[0]);
@@ -50,10 +51,10 @@ export async function createRefinedItem(actor: ActorPF2e, uuid: ItemUUID) {
         ui.notifications.error(`Invalid item UUID: ${uuid}`);
         return null;
     }
-    const ro = getExtendedItemRollOptions(item as ItemPF2e);
+    const rollOptions = getExtendedItemRollOptions(item as ItemPF2e);
     const applicableRefinements = config.materials
         .filter((m) => m.type === "refinement")
-        .filter((m) => new game.pf2e.Predicate(m.itemPredicate).test(ro));
+        .filter((m) => new Material(m).testItem({ rollOptions }));
     if (applicableRefinements.length === 0) {
         ui.notifications.error(`No applicable refinements`);
         return null;
@@ -163,7 +164,8 @@ export async function prepareRefinedItem(item: ItemPF2e) {
             case "ShieldImprovement":
                 let hardness = effect.hardness;
                 let hp = effect.hp;
-                const isBuckler = item.system.baseItem === "buckler";
+                const isBuckler =
+                    (item as PhysicalItemPF2e).system.baseItem === "buckler";
                 if (isBuckler) {
                     hardness -= 2;
                     hp -= 12;

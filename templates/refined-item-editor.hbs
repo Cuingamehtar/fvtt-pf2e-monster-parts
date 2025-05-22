@@ -1,5 +1,5 @@
 <div style="overflow-y:scroll;height:400px;">
-    <fieldset>
+    <fieldset class="droppable refinement">
         <legend>Refinement</legend>
         <label for="refinement-type">Refinement type</label>
         <select name="refinement-type" id="refinement-type" class="refinement-type">
@@ -13,7 +13,7 @@
     </fieldset>
 
     {{#each data.imbues as | imbue |}}
-    <fieldset class="imbue">
+    <fieldset class="droppable imbue">
         <legend>Imbue</legend>
         <label for="imbue-{{@index}}-type">Imbue type</label>
         <select name="imbue-{{@index}}-type" id="imbue-{{@index}}-type" class="imbue-type">
@@ -28,7 +28,7 @@
     </fieldset>
     {{/each}}
 
-    <fieldset>
+    <fieldset class="droppable new-imbue">
         <legend>New Imbue</legend>
         <label for="new-imbue-type">Imbue type</label>
         <select name="new-imbue-type" id="new-imbue-type">

@@ -73,3 +73,9 @@ export function getConfig():MonsterPartsConfig{
     // @ts-expect-error "key not defined in type"
     return CONFIG[MODULE_ID] as MonsterPartsConfig;
 }
+
+export function getMaterialLabel(material:string){
+    // @ts-expect-error "key not defined in type"
+    const config = CONFIG[MODULE_ID] as MonsterPartsConfig;
+    return config.materials.find(m=>m.key===material)?.label;
+}

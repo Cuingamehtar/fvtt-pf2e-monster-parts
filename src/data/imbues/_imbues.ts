@@ -5,6 +5,8 @@ import { createImbueCold } from "./cold";
 import { createImbueConstitution } from "./constitution";
 import { createImbueDexterity } from "./dexterity";
 import { createImbueElectricity } from "./electricity";
+import { createImbueFire } from "./fire";
+import { createImbueWild } from "./wild";
 
 export function createDefaultImbues(){
     return [
@@ -14,6 +16,8 @@ export function createDefaultImbues(){
         ...createImbueCold(),
         createImbueConstitution(),
         createImbueDexterity(),
-        ...createImbueElectricity()
+        ...createImbueElectricity(),
+        ...createImbueFire(),
+        createImbueWild(),
     ]
 }

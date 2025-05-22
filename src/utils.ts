@@ -31,3 +31,7 @@ export function getPartyActors() {
 export function unique<T>(array: T[]) {
     return Array.from(new Set(array));
 }
+
+export function getRandomInt(max:number) {
+  return Math.floor(Math.random() * max);
+}

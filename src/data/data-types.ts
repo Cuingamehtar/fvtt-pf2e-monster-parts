@@ -1,4 +1,4 @@
-import type { DamageDiceSource, FlatModifierSource, PredicateStatement, RollNoteSource, SkillSlug } from "foundry-pf2e"
+import type { DamageDiceSource, FlatModifierSource, PredicateStatement, RollNoteSource, RollOptionSource, SkillSlug } from "foundry-pf2e"
 
 // materials
 type MaterialSource = {
@@ -54,7 +54,7 @@ type SkillModifierEffectSource = {
 
 type RuleElementEffectSource = {
     key: "RuleElement",
-    rule: DamageDiceSource | FlatModifierSource | RollNoteSource
+    rule: DamageDiceSource | FlatModifierSource | RollNoteSource | RollOptionSource
 }
 
 type InlineNoteEffectSource = {

@@ -109,6 +109,8 @@ function baneImbue(creature: string): ImbueSource[] {
                     ...levelRange(2, 5),
                     effects: addDamage({
                         value: 1,
+                        type: "bleed",
+                        category: "persistent",
                         text: t("Imbue.Bane.Persistent", { damage: 1, creature: creatureLabel }),
                         predicate,
                         label: labelTech
@@ -118,6 +120,8 @@ function baneImbue(creature: string): ImbueSource[] {
                     ...levelRange(6, 11),
                     effects: addDamage({
                         value: "d6",
+                        type: "bleed",
+                        category: "persistent",
                         text: t("Imbue.Bane.Persistent", { damage: "1d6", creature: creatureLabel }),
                         predicate,
                         label: labelTech
@@ -127,6 +131,8 @@ function baneImbue(creature: string): ImbueSource[] {
                     ...levelRange(12, 15),
                     effects: addDamage({
                         value: "d8",
+                        type: "bleed",
+                        category: "persistent",
                         text: t("Imbue.Bane.Persistent", { damage: "1d8", creature: creatureLabel }),
                         predicate,
                         label: labelTech
@@ -136,6 +142,8 @@ function baneImbue(creature: string): ImbueSource[] {
                     ...levelRange(16),
                     effects: addDamage({
                         value: "d10",
+                        type: "bleed",
+                        category: "persistent",
                         text: t("Imbue.Bane.Persistent", { damage: "1d10", creature: creatureLabel }),
                         predicate,
                         label: labelTech

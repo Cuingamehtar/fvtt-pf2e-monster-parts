@@ -1,5 +1,5 @@
 import { ItemPF2e } from "foundry-pf2e";
-import { getConfig } from "../config";
+import { getConfig, getMaterialLabel } from "../config";
 import { i18nFormat, t } from "../utils";
 import {
     ApplicationConfiguration,
@@ -10,6 +10,8 @@ import { MODULE_ID } from "../module";
 import { getExtendedItemRollOptions } from "../itemUtil";
 import { RefinedItemFlags } from "../flags";
 import { prepareRefinedItem } from "../item";
+import { dialogConfirmCancel, dialogSelectFromOptions } from "./dialogs";
+import { Material } from "../material";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -79,8 +81,8 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             ?.addEventListener("change", (e) => {
                 e.preventDefault();
                 e.stopImmediatePropagation();
-                if (e.target.value) {
-                    this.data.refinement.selected = e.target.value;
+                if ((e.target as any).value) {
+                    this.data.refinement.selected = (e.target as any).value;
                 }
             });
         this.element
@@ -88,7 +90,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             ?.addEventListener("change", (e) => {
                 e.preventDefault();
                 e.stopImmediatePropagation();
-                this.data.refinement.value = e.target.value ?? 0;
+                this.data.refinement.value = (e.target as any).value ?? 0;
             });
 
         this.element
@@ -97,8 +99,8 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                 element.addEventListener("change", (e) => {
                     e.preventDefault();
                     e.stopImmediatePropagation();
-                    if (e.target.value) {
-                        this.data.imbues[i].selected = e.target.value;
+                    if ((e.target as any).value) {
+                        this.data.imbues[i].selected = (e.target as any).value;
                     } else {
                         this.data.imbues.splice(i, 1);
                         this.render();
@@ -112,7 +114,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                 element.addEventListener("change", (e) => {
                     e.preventDefault();
                     e.stopImmediatePropagation();
-                    this.data.imbues[i].value = e.target.value ?? 0;
+                    this.data.imbues[i].value = (e.target as any).value ?? 0;
                 });
             });
 
@@ -122,14 +124,95 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         newImbue.addEventListener("change", (e) => {
             e.preventDefault();
             e.stopImmediatePropagation();
-            if (e.target.value) {
+            if ((e.target as any).value) {
                 this.data.imbues.push({
-                    selected: e.target.value,
+                    selected: (e.target as any).value,
                     value: 0,
                 });
             }
             this.render();
         });
+
+        this.element
+            .querySelectorAll("fieldset.droppable")
+            .forEach((element) => {
+                element.addEventListener("drop", async (e) => {
+                    const select = element.querySelector("select");
+                    if (!select) return;
+
+                    const dropData = TextEditor.getDragEventData(
+                        e as DragEvent,
+                    );
+                    if (dropData.type !== "Item") e.preventDefault();
+                    e.stopImmediatePropagation();
+
+                    if (!dropData.fromInventory)
+                        return ui.notifications.error(
+                            "Can add only items from inventory.",
+                        );
+
+                    const item = (await fromUuid(
+                        dropData.uuid as string,
+                    )) as ItemPF2e | null;
+                    if (!item) return ui.notifications.error("Can't find item");
+
+                    const flag = item.getFlag(MODULE_ID, "monsterPart");
+                    if (!flag)
+                        return ui.notifications.error(
+                            "Item is not a recognized monster part",
+                        );
+
+                    const expectedMaterial = select.value;
+                    if (expectedMaterial === "") {
+                        const allowedMaterials =
+                            this.data.possibleImbues.filter((i) =>
+                                flag.materials.includes(i.key),
+                            );
+                        const addedMaterial = await dialogSelectFromOptions(
+                            allowedMaterials,
+                            t("Dialog.ChooseMaterial.Title"),
+                        );
+                        if (addedMaterial) {
+                            this.data.imbues.push({
+                                selected: addedMaterial,
+                                value: flag.value,
+                            });
+                            this.render();
+                            return item.actor?.deleteEmbeddedDocuments("Item", [
+                                item.id,
+                            ]);
+                        }
+                    } else {
+                        const expectedMaterialLabel =
+                            getMaterialLabel(expectedMaterial) ?? "";
+                        if (flag.materials.includes(expectedMaterial)) {
+                            const addedValue = flag.value;
+                            if (
+                                await dialogConfirmCancel(
+                                    t("Dialog.ConfirmApplyMaterial.Title"),
+                                    t("Dialog.ConfirmApplyMaterial.Content", {
+                                        value: addedValue,
+                                        material: expectedMaterialLabel,
+                                    }),
+                                )
+                            ) {
+                                const input = element.querySelector("input")!;
+                                input.value = String(
+                                    Number(input.value) + addedValue,
+                                );
+                                return item.actor?.deleteEmbeddedDocuments(
+                                    "Item",
+                                    [item.id],
+                                );
+                            }
+                        } else {
+                            return ui.notifications.error(
+                                "Monster part doesn't contain an applicable material",
+                            );
+                        }
+                    }
+                });
+            });
     }
 }
 
@@ -149,7 +232,7 @@ export async function configureRefinedItem(item: ItemPF2e) {
             .filter(
                 (m) =>
                     m.type === "refinement" &&
-                    new game.pf2e.Predicate(m.itemPredicate).test(rollOptions),
+                    new Material(m).testItem({ rollOptions }),
             )
             .map((m) => ({ key: m.key, label: i18nFormat(m.label) }))
             .sort((a, b) => a.label.localeCompare(b.label)),
@@ -157,7 +240,7 @@ export async function configureRefinedItem(item: ItemPF2e) {
             .filter(
                 (m) =>
                     m.type === "imbue" &&
-                    new game.pf2e.Predicate(m.itemPredicate).test(rollOptions),
+                    new Material(m).testItem({ rollOptions }),
             )
             .map((m) => ({ key: m.key, label: i18nFormat(m.label) }))
             .sort((a, b) => a.label.localeCompare(b.label)),
@@ -171,10 +254,10 @@ export async function configureRefinedItem(item: ItemPF2e) {
         })),
     };
 
-    const promise = new Promise((resolve) => {
+    const promise = new Promise<void>((resolve) => {
         new RefinedItemEditor({
             data,
-            form: { handler: resolve },
+            form: { handler: async () => resolve() },
             window: {
                 title: t("Material.Editor.Title"),
             },

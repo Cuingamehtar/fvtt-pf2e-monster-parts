@@ -1,5 +1,13 @@
 {
     "pf2e-monster-parts": {
+        "Dialog": {
+            "DefaultTitle": "Choose an option",
+            "ChooseMaterialTitle": "Choose material type",
+            "ConfirmApplyMaterial":{
+                "Title": "Confirm applying material",
+                "Content": "This will add {value} gp to {material} material of the item and delete the monster part."
+            }
+        },
         "Material": {
             "Item": {
                 "Name": "Monster Parts of {actor} ({value} gp)"
@@ -141,6 +149,37 @@
                     "Level12": "The electricity damage dealt by Electricity Imbue's Technique Path (including persistent electricity damage) ignores resistances.",
                     "Level16": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage and persistent electricity damage to up to four other creatures of your choice within 20 feet of the target.",
                     "Level20": "Creatures suffering persistent electricity damage from this imbued property become magnetized, attracting metal weapons. Strikes with metal weapons gain a +1 circumstance bonus to hit them as long as they have the persistent electricity damage."
+                }
+            },
+            "Fire": {
+                "Label": "Fire ({variant})",
+                "Magic": {
+                    "Level4": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t]{Breathe Fire} once per day.",
+                    "Level6": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t]{Breathe Fire} once per day.",
+                    "Level8": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Floating Flame} and @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Fireball} once per day.",
+                    "Level12": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Floating Flame},  @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Fireball} and @UUID[Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu]{Wall of Fire} once per day each.",
+                    "Level16": "The weapon can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Floating Flame},  @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Fireball} and @UUID[Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu]{Wall of Fire} once per day each.",
+                    "Level20": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.jrBa9deU2ULFWvSl]{Falling Stars} once per day."
+                },
+                "Might": {
+                    "Level8": "On a critical hit, Strikes with the weapon deal 1d10 persistent fire damage.",
+                    "Level12": "The fire damage dealt by Fire Imbue's Might Path (including persistent fire damage) ignores resistances.",
+                    "Level14": "On a critical hit, Strikes with the weapon deal 2d10 persistent fire damage.",
+                    "Level20": "On a successful Strike with the weapon, before applying fire damage, the target gains weakness 1 to fire until the beginning of your next turn."
+                },
+                "Tech": {
+                    "Level8": "On a critical hit, the weapon deals 1d10 additional persistent fire damage. (The additional persistent fire damage on a critical hit is cumulative with the regular persistent fire damage, and as normal you add it in only after doubling the regular persistent fire damage).",
+                    "Level12": "The electricity damage dealt by Fire Imbue's Technique Path (including persistent fire damage) ignores resistances.",
+                    "Level16": "Foes currently affected by persistent fire damage from the imbued property are distracted as they burn, making them @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Off-Guard}.",
+                    "Level20": "At the end of a burning foe’s turn, when they take damage from the imbued property’s persistent fire damage, all foes adjacent to that foe are set on fire as well, taking the same amount of persistent fire damage."
+                }
+            },
+            "Wild": {
+                "Label": "Wild ({variant})",
+                "Might": {
+                    "Damage": "Strikes with the weapon additionally deal {damage} damage. Each time you deal damage, roll 1d6: On a 1, the weapon deals acid damage. On a 2, it deals cold damage. On a 3, it deals electricity damage. On a 4, it deals fire damage. On a 5, it deals negative damage. Finally, on a 6, it deals sonic damage.",
+                    "Level12":"The damage dealt by Wild Imbue's Might Path ignores resistances.",
+                    "Level20": "On a successful Strike with the weapon, before applying the additional damage, the target gains weakness 1 to that damage type until the beginning of your next turn."
                 }
             }
         },
