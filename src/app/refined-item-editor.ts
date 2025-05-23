@@ -10,7 +10,7 @@ import { MODULE_ID } from "../module";
 import { getExtendedItemRollOptions } from "../itemUtil";
 import { RefinedItemFlags } from "../flags";
 import { prepareRefinedItem } from "../item";
-import { dialogConfirmCancel, dialogSelectFromOptions } from "./dialogs";
+import { dialogConfirmCancel, dialogSelectMaterial } from "./dialogs";
 import { Material } from "../material";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
@@ -168,8 +168,9 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                             this.data.possibleImbues.filter((i) =>
                                 flag.materials.includes(i.key),
                             );
-                        const addedMaterial = await dialogSelectFromOptions(
+                        const addedMaterial = await dialogSelectMaterial(
                             allowedMaterials,
+                            flag.value,
                             t("Dialog.ChooseMaterial.Title"),
                         );
                         if (addedMaterial) {
@@ -228,22 +229,26 @@ export async function configureRefinedItem(item: ItemPF2e) {
     }
 
     const data: RefinedItemEditorData = {
-        possibleRefinements: config.materials
-            .filter(
-                (m) =>
-                    m.type === "refinement" &&
-                    new Material(m).testItem({ rollOptions }),
-            )
-            .map((m) => ({ key: m.key, label: i18nFormat(m.label) }))
-            .sort((a, b) => a.label.localeCompare(b.label)),
-        possibleImbues: config.materials
-            .filter(
-                (m) =>
-                    m.type === "imbue" &&
-                    new Material(m).testItem({ rollOptions }),
-            )
-            .map((m) => ({ key: m.key, label: i18nFormat(m.label) }))
-            .sort((a, b) => a.label.localeCompare(b.label)),
+        possibleRefinements: [
+            ...config.materials
+                .values()
+                .filter(
+                    (m) =>
+                        m.type === "refinement" &&
+                        new Material(m).testItem({ rollOptions }),
+                )
+                .map((m) => ({ key: m.key, label: i18nFormat(m.label) })),
+        ].sort((a, b) => a.label.localeCompare(b.label)),
+        possibleImbues: [
+            ...config.materials
+                .values()
+                .filter(
+                    (m) =>
+                        m.type === "imbue" &&
+                        new Material(m).testItem({ rollOptions }),
+                )
+                .map((m) => ({ key: m.key, label: i18nFormat(m.label) })),
+        ].sort((a, b) => a.label.localeCompare(b.label)),
         refinement: {
             selected: flag.refinement.key,
             value: flag.refinement.value,

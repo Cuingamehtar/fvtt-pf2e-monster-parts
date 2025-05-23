@@ -24,7 +24,7 @@ export type ModuleFlags = {
 
 export function getMaterialLevel(value: MaterialValue, item: ItemPF2e):number {
     const config = getConfig();
-    const material = config.materials.find(m => m.key === value.key);
+    const material = config.materials.get(value.key);
     if (!material) {
         ui.notifications.error(`Unknown material key: ${value.key}`);
         return 0;

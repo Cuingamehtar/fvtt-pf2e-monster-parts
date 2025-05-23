@@ -1,81 +1,135 @@
-import { Size } from "foundry-pf2e"
-import { ImbueSource, RefinementSource } from "./data/data-types"
-import { createDefaultRefinements } from "./data/refines"
-import { MODULE_ID } from "./module"
-import { createDefaultImbues } from "./data/imbues/_imbues"
+import { Size } from "foundry-pf2e";
+import { ImbueSource, RefinementSource } from "./data/data-types";
+import { createDefaultRefinements } from "./data/refines";
+import { MODULE_ID } from "./module";
+import { createDefaultImbues } from "./data/imbues/_imbues";
 
 export type MonsterPartsConfig = {
-    materials: (RefinementSource | ImbueSource)[]
+    materials: Map<string, RefinementSource | ImbueSource>;
     thresholds: {
-        refinement:{
-            weapon: number[],
-            armor: number[],
-            shield: number[],
-            equipment: number[]
-        },
+        refinement: {
+            weapon: number[];
+            armor: number[];
+            shield: number[];
+            equipment: number[];
+        };
         imbue: {
-            weapon: number[],
-            armor: number[],
-            shield: number[],
-            equipment: number[]
-        }
-    },
-    valueForMonsterLevel: number[],
+            weapon: number[];
+            armor: number[];
+            shield: number[];
+            equipment: number[];
+        };
+    };
+    valueForMonsterLevel: number[];
     materialItem: {
-        image: `${string}.webp`
-    },
-    materialBulk: Record<Size, number>,
-    baneCreatureTraits: string[]
-}
+        image: `${string}.webp`;
+    };
+    materialBulk: Record<Size, number>;
+    baneCreatureTraits: string[];
+};
 
-export function createConfig():void {
+export function createConfig(): void {
     const valueForMonsterLevelDefaults = {
-        light: [1.5, 2.25, 3.5, 5, 7, 12, 18, 30, 45, 64, 90, 125, 175, 250, 375, 560, 810, 1250, 1875, 3000, 5000, 8750, 10000, 17500, 20000, 35000, 40000],
-        hybrid: [3.5, 5, 7, 12, 18, 27, 45, 65, 100, 140, 200, 275, 390, 560, 840, 1250, 1850, 2800, 4300, 7000, 12000, 17500, 24000, 35000, 48000, 70000, 96000],
-        full: [6.5, 9, 13, 22, 30, 50, 80, 125, 180, 250, 360, 500, 720, 1030, 1560, 2300, 3400, 5150, 8000, 13000, 22500, 30000, 45000, 60000, 90000, 120000, 180000]
+        light: [
+            1.5, 2.25, 3.5, 5, 7, 12, 18, 30, 45, 64, 90, 125, 175, 250, 375,
+            560, 810, 1250, 1875, 3000, 5000, 8750, 10000, 17500, 20000, 35000,
+            40000,
+        ],
+        hybrid: [
+            3.5, 5, 7, 12, 18, 27, 45, 65, 100, 140, 200, 275, 390, 560, 840,
+            1250, 1850, 2800, 4300, 7000, 12000, 17500, 24000, 35000, 48000,
+            70000, 96000,
+        ],
+        full: [
+            6.5, 9, 13, 22, 30, 50, 80, 125, 180, 250, 360, 500, 720, 1030,
+            1560, 2300, 3400, 5150, 8000, 13000, 22500, 30000, 45000, 60000,
+            90000, 120000, 180000,
+        ],
     };
     const itemValueThresholdDefaults = {
-        weapon: [20, 35, 60, 100, 160, 250, 360, 500, 700, 1000, 1400, 2000, 3000, 4500, 6500, 10000, 15000, 24000, 40000, 70000],
-        armor: [20, 35, 60, 100, 160, 250, 360, 500, 700, 1000, 1400, 2000, 3000, 4500, 6500, 10000, 15000, 24000, 40000, 70000],
-        shield: [10, 20, 35, 60, 100, 160, 240, 340, 470, 670, 950, 1350, 2000, 3000, 4300, 6500, 1000, 16000, 25000, 45000],
-        equipment: [10, 20, 35, 60, 100, 160, 240, 340, 470, 670, 950, 1350, 2000, 3000, 4300, 6500, 1000, 16000, 25000, 45000]
-    }
-    const variant = game.settings.get(MODULE_ID, "variant") as ("light"|"hybrid"|"full");
+        weapon: [
+            20, 35, 60, 100, 160, 250, 360, 500, 700, 1000, 1400, 2000, 3000,
+            4500, 6500, 10000, 15000, 24000, 40000, 70000,
+        ],
+        armor: [
+            20, 35, 60, 100, 160, 250, 360, 500, 700, 1000, 1400, 2000, 3000,
+            4500, 6500, 10000, 15000, 24000, 40000, 70000,
+        ],
+        shield: [
+            10, 20, 35, 60, 100, 160, 240, 340, 470, 670, 950, 1350, 2000, 3000,
+            4300, 6500, 1000, 16000, 25000, 45000,
+        ],
+        equipment: [
+            10, 20, 35, 60, 100, 160, 240, 340, 470, 670, 950, 1350, 2000, 3000,
+            4300, 6500, 1000, 16000, 25000, 45000,
+        ],
+    };
+    const variant = game.settings.get(MODULE_ID, "variant") as
+        | "light"
+        | "hybrid"
+        | "full";
 
-    const config: Partial<MonsterPartsConfig> = {
+    const config: MonsterPartsConfig = {
         thresholds: {
-            refinement:itemValueThresholdDefaults,
-            imbue: itemValueThresholdDefaults
+            refinement: itemValueThresholdDefaults,
+            imbue: itemValueThresholdDefaults,
         },
         valueForMonsterLevel: valueForMonsterLevelDefaults[variant],
-        materialItem: { image: "systems/pf2e/icons/equipment/treasure/art-objects/lesser-art-object/inscribed-crocodile-skull.webp" },
+        materialItem: {
+            image: "systems/pf2e/icons/equipment/treasure/art-objects/lesser-art-object/inscribed-crocodile-skull.webp",
+        },
         materialBulk: {
             tiny: 0.1,
             sm: 0.1,
             med: 1,
             lg: 2,
             huge: 4,
-            grg: 8
+            grg: 8,
         },
-        baneCreatureTraits: ["aberration", "animal", "astral", "beast", "celestial", "construct", "dragon", "dream", "elemental", "ethereal", "fey", "fiend", "giant", "monitor", "ooze", "spirit", "time", "vitality", "void"]
-    }
+        baneCreatureTraits: [
+            "aberration",
+            "animal",
+            "astral",
+            "beast",
+            "celestial",
+            "construct",
+            "dragon",
+            "dream",
+            "elemental",
+            "ethereal",
+            "fey",
+            "fiend",
+            "giant",
+            "monitor",
+            "ooze",
+            "spirit",
+            "time",
+            "vitality",
+            "void",
+        ],
+        materials: new Map(),
+    };
     // @ts-expect-error "key not defined in type"
     CONFIG[MODULE_ID] = config;
-    console.log(`${MODULE_ID} | Config initialized`)
+
+    console.log(`${MODULE_ID} | Config initialized`);
     Hooks.call(`${MODULE_ID}.configInit`);
-    // @ts-expect-error "key not defined in type"
-    CONFIG[MODULE_ID].materials = [...createDefaultRefinements(), ...createDefaultImbues()];
-    console.log(`${MODULE_ID} | Default materials generated`)
+
+    [...createDefaultRefinements(), ...createDefaultImbues()].forEach((m) =>
+        config.materials.set(m.key, m),
+    );
+    
+    console.log(`${MODULE_ID} | Default materials generated`);
     Hooks.call(`${MODULE_ID}.defaultMaterialsGenerated`);
 }
 
-export function getConfig():MonsterPartsConfig{
+export function getConfig(): MonsterPartsConfig {
     // @ts-expect-error "key not defined in type"
     return CONFIG[MODULE_ID] as MonsterPartsConfig;
 }
 
-export function getMaterialLabel(material:string){
+export function getMaterialLabel(material: string) {
     // @ts-expect-error "key not defined in type"
     const config = CONFIG[MODULE_ID] as MonsterPartsConfig;
-    return config.materials.find(m=>m.key===material)?.label;
+    return config.materials.get(material)?.label;
 }

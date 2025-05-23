@@ -4,8 +4,9 @@ interface SelectDialogOption {
     key: string;
     label: string;
 }
-export function dialogSelectFromOptions(
+export function dialogSelectMaterial(
     options: SelectDialogOption[],
+    maxValue: number,
     title?: string,
     content?: string,
 ): Promise<string | undefined> {
@@ -17,10 +18,15 @@ export function dialogSelectFromOptions(
             })),
             name: "selectedOption",
         });
+        const valueField = foundry.applications.fields.createNumberInput({
+            min: 0,
+            max: maxValue,
+            step: Math.round(maxValue) === maxValue ? 1 : 0.1,
+        });
         new foundry.applications.api.DialogV2({
             window: { title: title ?? t("Dialog.DefaultTitle") },
             content: content
-                ? `<p>${content}</p>${select.outerHTML}`
+                ? `<p>${content}</p>${select.outerHTML}${valueField.outerHTML}`
                 : select.outerHTML,
             buttons: [
                 {

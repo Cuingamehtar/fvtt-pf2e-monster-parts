@@ -29,10 +29,14 @@ export async function createMonsterPart(actor: NPCPF2e) {
         ]),
     ];
 
-    const materials = config.materials.filter((m) => {
-        const mat = new Material(m);
-        return rollOptions.some((ro) => mat.testCreature({ rollOptions: ro }));
-    });
+    const materials = [
+        ...config.materials.values().filter((m) => {
+            const mat = new Material(m);
+            return rollOptions.some((ro) =>
+                mat.testCreature({ rollOptions: ro }),
+            );
+        }),
+    ];
     const flags: MonsterPartFlags = {
         value: materialValue,
         materials: materials.map((m) => m.key),

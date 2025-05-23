@@ -52,10 +52,13 @@ export async function createRefinedItem(actor: ActorPF2e, uuid: ItemUUID) {
         return null;
     }
     const rollOptions = getExtendedItemRollOptions(item as ItemPF2e);
-    const applicableRefinements = config.materials
-        .filter((m) => m.type === "refinement")
-        .filter((m) => new Material(m).testItem({ rollOptions }));
-    if (applicableRefinements.length === 0) {
+    const applicableRefinements = [
+        ...config.materials
+            .values()
+            .filter((m) => m.type === "refinement")
+            .filter((m) => new Material(m).testItem({ rollOptions })),
+    ];
+    if (!applicableRefinements) {
         ui.notifications.error(`No applicable refinements`);
         return null;
     }
@@ -99,7 +102,7 @@ Hooks.on("renderItemSheetPF2e", (sheet, htmlArray, _) => {
     if (!flags) return;
     const config = getConfig();
     const refinement = flags.refinement;
-    const material = config.materials.find((m) => m.key === refinement.key)!;
+    const material = config.materials.get(refinement.key)!;
     let content = `<p>${game.i18n.localize(material.label)} <strong>${getMaterialLevel(refinement, item)} (${Math.floor(refinement.value)} gp)</strong></p>`;
     div.innerHTML = content;
 });
@@ -109,7 +112,7 @@ export function getEffects(item: ItemPF2e) {
     const flags = item.getFlag(MODULE_ID, "refinedItem");
     if (!flags) return [];
     return [flags.refinement, ...flags.imbues].map((m) => {
-        const material = config.materials.find((e) => e.key === m.key);
+        const material = config.materials.get(m.key);
         if (!material) return null;
         const level = getMaterialLevel(m, item);
         return {
