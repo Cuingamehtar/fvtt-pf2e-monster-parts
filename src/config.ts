@@ -64,10 +64,7 @@ export function createConfig(): void {
             4300, 6500, 1000, 16000, 25000, 45000,
         ],
     };
-    const variant = game.settings.get(MODULE_ID, "variant") as
-        | "light"
-        | "hybrid"
-        | "full";
+    const variant = game.settings.get(MODULE_ID, "variant");
 
     const config: MonsterPartsConfig = {
         thresholds: {
@@ -109,7 +106,6 @@ export function createConfig(): void {
         ],
         materials: new Map(),
     };
-    // @ts-expect-error "key not defined in type"
     CONFIG[MODULE_ID] = config;
 
     console.log(`${MODULE_ID} | Config initialized`);
@@ -123,13 +119,12 @@ export function createConfig(): void {
     Hooks.call(`${MODULE_ID}.defaultMaterialsGenerated`);
 }
 
-export function getConfig(): MonsterPartsConfig {
-    // @ts-expect-error "key not defined in type"
-    return CONFIG[MODULE_ID] as MonsterPartsConfig;
+export function getConfig() {
+    return CONFIG[MODULE_ID];
 }
 
 export function getMaterialLabel(material: string) {
-    // @ts-expect-error "key not defined in type"
-    const config = CONFIG[MODULE_ID] as MonsterPartsConfig;
+    const config = CONFIG[MODULE_ID];
     return config.materials.get(material)?.label;
 }
+

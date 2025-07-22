@@ -2,8 +2,8 @@ import { EnrichmentOptionsPF2e } from "foundry-pf2e";
 import { getEffects } from "./item";
 import { i18nFormat } from "./utils";
 
-export function registerEnricher():void {
-    CONFIG.TextEditor.enrichers.push({ pattern: /@MPdata/g, enricher })
+export function registerEnricher(): void {
+    CONFIG.TextEditor.enrichers.push({ pattern: /@MPdata/g, enricher });
 }
 
 async function enricher(match: RegExpMatchArray, options: EnrichmentOptionsPF2e): Promise<HTMLDivElement | null> {

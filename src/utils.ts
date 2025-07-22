@@ -1,26 +1,27 @@
 import { MODULE_ID } from "./module";
 
 export function t(
-    m: string,
-    data?: { [key: string]: string | number | boolean | null },
+    m: keyof Flatten<I18nKeyType[typeof MODULE_ID]>,
+    data?: { [key: string]: string | number | boolean | null }
 ) {
     return i18nFormat(`${MODULE_ID}.${m}`, data);
 }
 
 export function i18nFormat(
-    m: string,
-    data?: { [key: string]: string | number | boolean | null | undefined },
+    m: I18nKey|I18nString,
+    data?: { [key: string]: string | number | boolean | null | undefined }
 ) {
-    let s = game.i18n.localize(m);
-    if (!data) return s;
+    let s = game.i18n.localize(m as string);
+    if (!data) return s as I18nString;
     for (const k in data) {
         const f = `{${k}}`;
         const v = String(data[k]);
         s = s.replaceAll(f, v);
     }
-    return s;
+    return s as I18nString;
 }
-export function tkey(s: string) {
+
+export function tkey(s: keyof Flatten<I18nKeyType[typeof MODULE_ID]>): I18nKey {
     return `${MODULE_ID}.${s}`;
 }
 
@@ -32,6 +33,6 @@ export function unique<T>(array: T[]) {
     return Array.from(new Set(array));
 }
 
-export function getRandomInt(max:number) {
-  return Math.floor(Math.random() * max);
+export function getRandomInt(max: number) {
+    return Math.floor(Math.random() * max);
 }

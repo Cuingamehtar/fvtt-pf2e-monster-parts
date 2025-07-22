@@ -2,7 +2,7 @@
     "pf2e-monster-parts": {
         "Dialog": {
             "DefaultTitle": "Choose an option",
-            "ChooseMaterialTitle": "Choose material type",
+            "ChooseMaterial.Title": "Choose material type",
             "ConfirmApplyMaterial":{
                 "Title": "Confirm applying material",
                 "Content": "This will add {value} gp to {material} material of the item and delete the monster part."

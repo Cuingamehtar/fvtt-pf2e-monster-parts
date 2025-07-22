@@ -1,9 +1,17 @@
-import type { DamageDiceSource, FlatModifierSource, PredicateStatement, RollNoteSource, RollOptionSource, SkillSlug } from "foundry-pf2e"
+import type {
+    DamageDiceSource,
+    FlatModifierSource,
+    PredicateStatement,
+    RollNoteSource,
+    RollOptionSource,
+    SkillSlug
+} from "foundry-pf2e";
+
 
 // materials
 type MaterialSource = {
     key: string,
-    label: string,
+    label: I18nKey,
     monsterPredicate?: PredicateStatement[]
 }
 
@@ -59,9 +67,12 @@ type RuleElementEffectSource = {
 
 type InlineNoteEffectSource = {
     key: "InlineNote",
-    text: string,
-    parameters?: Record<string, string | number | null |undefined>
-}
+} &
+    ({ text: I18nString } |
+        {
+            text: I18nKey,
+            parameters?: Record<string, string | number | null | undefined>
+        })
 
 type MaterialEffectSource = {
     levels: LevelRange,
@@ -74,4 +85,4 @@ export type {
     RuleElementEffectSource,
     InlineNoteEffectSource,
     MaterialEffectSource
-}
+};

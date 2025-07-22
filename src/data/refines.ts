@@ -32,7 +32,7 @@ export function createDefaultRefinements() {
             ...levelRange(19),
             effects: [{ key: "WeaponStriking", value: 3 }]
         }
-    ]
+    ];
 
     const armorEffects: MaterialEffectSource[] = [
         {
@@ -59,7 +59,7 @@ export function createDefaultRefinements() {
             ...levelRange(20),
             effects: [{ key: "ArmorResilient", value: 3 }]
         }
-    ]
+    ];
 
     const shieldEffects: MaterialEffectSource[] = [
         {
@@ -118,7 +118,7 @@ export function createDefaultRefinements() {
             ...levelRange(20),
             effects: [{ key: "ShieldImprovement", hardness: 18, hp: 108 }]
         }
-    ]
+    ];
 
     const skillEffects: ((_: SkillSlug | "perception") => MaterialEffectSource[]) = (skill) => [
         {
@@ -133,17 +133,17 @@ export function createDefaultRefinements() {
             ...levelRange(17),
             effects: [{ key: "SkillModifier", skill, value: 3 }]
         }
-    ]
+    ];
 
     function skillRefinement(skill: SkillSlug): RefinementSource {
         return {
             key: `refinement:skill:${skill}`,
-            label: CONFIG.PF2E.skills[skill].label,
+            label: CONFIG.PF2E.skills[skill].label as I18nKey,
             type: "refinement",
             itemPredicate: ["item:type:equipment"],
             monsterPredicate: [`skill:${skill}:rank:1`],
             effects: skillEffects(skill)
-        }
+        };
     }
 
     const refines: RefinementSource[] = [
@@ -203,10 +203,10 @@ export function createDefaultRefinements() {
             monsterPredicate: [
                 {
                     "or": [{ "gte": ["self:hardness", 0] },
-                    { "gte": ["self:resistance:physical", 0] },
-                    { "gte": ["self:resistance:bludgeoning", 0] },
-                    { "gte": ["self:resistance:piercing", 0] },
-                    { "gte": ["self:resistance:slashing", 0] }]
+                        { "gte": ["self:resistance:physical", 0] },
+                        { "gte": ["self:resistance:bludgeoning", 0] },
+                        { "gte": ["self:resistance:piercing", 0] },
+                        { "gte": ["self:resistance:slashing", 0] }]
                 }],
             effects: shieldEffects
         },

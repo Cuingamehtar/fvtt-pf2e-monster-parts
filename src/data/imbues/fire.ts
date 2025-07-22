@@ -3,7 +3,7 @@ import { ImbueSource } from "../data-types";
 import { addDamage, levelRange } from "../helpers";
 
 export function createImbueFire(): ImbueSource[] {
-    const imbues: ImbueSource[] = [
+    return [
         {
             key: "imbue:fire:magic",
             type: "imbue",
@@ -360,6 +360,4 @@ export function createImbueFire(): ImbueSource[] {
             ],
         },
     ];
-
-    return imbues;
 }

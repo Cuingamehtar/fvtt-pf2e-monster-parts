@@ -16,6 +16,7 @@
         "strictNullChecks": true,
         "strictPropertyInitialization": true,
         "strictBindCallApply": true,
+        "resolveJsonModule": true,
         "lib": ["DOM", "DOM.Iterable", "ESNext"],
         "rootDir": "src",
         "outDir": "scripts"

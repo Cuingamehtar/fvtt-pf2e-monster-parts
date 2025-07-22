@@ -16,8 +16,8 @@ import { Material } from "../material";
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 interface RefinedItemEditorData {
-    possibleRefinements: { key: string; label: string }[];
-    possibleImbues: { key: string; label: string }[];
+    possibleRefinements: { key: string; label: I18nString|I18nKey }[];
+    possibleImbues: { key: string; label: I18nString|I18nKey }[];
     refinement: { selected: string; value: number };
     imbues: { selected: string; value: number }[];
 }
@@ -264,7 +264,7 @@ export async function configureRefinedItem(item: ItemPF2e) {
             data,
             form: { handler: async () => resolve() },
             window: {
-                title: t("Material.Editor.Title"),
+                title: t("Material.Editor.Title") as string,
             },
         }).render(true);
     });

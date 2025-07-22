@@ -50,7 +50,7 @@ export function addDamage({
                 text ??
                 tkey(
                     category === "persistent"
-                        ? "Damage.Persisitent"
+                        ? "Damage.Persistent"
                         : "Damage.Normal",
                 ),
             parameters: {
@@ -100,7 +100,7 @@ export function addWildDamage(
     const effects: (RuleElementEffectSource | InlineNoteEffectSource)[] = [
         {
             key: "InlineNote",
-            text: t("Imbue.Wild.Might.Damage", { damage: value }),
+            text: tkey("Imbue.Wild.Might.Damage"),
             parameters: {
                 damage: value,
             },

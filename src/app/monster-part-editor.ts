@@ -47,7 +47,7 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             value: 0,
         };
 
-        const refinements = config.materials
+        const refinements = [...config.materials.values()]
             .filter((m) => m.type === "refinement")
             .map((m) => ({
                 key: m.key,
@@ -55,7 +55,7 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                 checked: flags.materials.includes(m.key),
             }))
             .sort((a, b) => a.label.localeCompare(b.label));
-        const imbues = config.materials
+        const imbues = [...config.materials.values()]
             .filter((m) => m.type === "imbue")
             .map((m) => ({
                 key: m.key,
@@ -94,7 +94,7 @@ export async function configureMonsterPart(item: ItemPF2e) {
                 ) => resolve(formData.object),
             },
             window: {
-                title: t("Material.Editor.Title"),
+                title: t("Material.Editor.Title") as string,
             },
         }).render(true);
     });
@@ -102,7 +102,7 @@ export async function configureMonsterPart(item: ItemPF2e) {
     const config = getConfig();
     const flags = {
         value: data["material-value"] as number,
-        materials: config.materials
+        materials: [...config.materials.values()]
             .filter((m) => data[m.key])
             .map((m) => m.key),
     };

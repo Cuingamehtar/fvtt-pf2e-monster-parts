@@ -18,7 +18,6 @@ Hooks.once("init", () => {
     // @ts-expect-error
     game[MODULE_ID] = { createMaterial: createMonsterPart, createRefinedItem, getExtendedItemRollOptions, getExtendedNPCRollOptions, configureMonsterPart, prepareRefinedItem, configureRefinedItem }
     registerEnricher();
-
 });
 
 Hooks.on("renderNPCSheetPF2e", (sheet: NPCSheetPF2e, html: HTMLDivElement[], { editable }: { editable: boolean }) => {
@@ -39,9 +38,24 @@ Hooks.on("renderNPCSheetPF2e", (sheet: NPCSheetPF2e, html: HTMLDivElement[], { e
 Hooks.on("getItemSheetPF2eHeaderButtons", (sheet: ItemSheetPF2e<ItemPF2e>, buttons: ApplicationHeaderButton[]) => {
     const item = sheet.object;
     if (item.getFlag(MODULE_ID, "monsterPart")) {
-        buttons.unshift(({ icon: "fas fa-skull", label: "Modify", class: "configure-monster-part", onclick: () => configureMonsterPart(item) }));
+        buttons.unshift({ icon: "fas fa-skull", label: "Modify", class: "configure-monster-part", onclick: () => configureMonsterPart(item) });
     }
     if (item.getFlag(MODULE_ID, "refinedItem")) {
-        buttons.unshift(({ icon: "fas fa-skull", label: "Modify", class: "configure-refined-item", onclick: () => configureRefinedItem(item) }));
+        buttons.unshift({ icon: "fas fa-skull", label: "Modify", class: "configure-refined-item", onclick: () => configureRefinedItem(item) });
     }
+})
+
+Hooks.on("renderDialogV2", (dialog:foundry.applications.api.DialogV2, html: HTMLElement) => {
+    if(!dialog.options.classes.includes("dialog-item-create"))
+        return;
+    const footer = html.querySelector("footer");
+    const button = document.createElement("button");
+    button.innerHTML = "<i class=\"fa-solid fa-fw fa-skull\"></i>";
+    button.title = "Create refined item";
+    button.style = "flex-grow:inherit";
+    button.addEventListener("click",() => {
+        dialog.close();
+    });
+    footer?.appendChild(button);
+
 })

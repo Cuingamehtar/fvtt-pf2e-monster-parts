@@ -43,7 +43,7 @@ export async function createMonsterPart(actor: NPCPF2e) {
     };
 
     const item = {
-        name,
+        name: name as string,
         img: config.materialItem.image,
         system: {
             bulk: { value: bulk },
