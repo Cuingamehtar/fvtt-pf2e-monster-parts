@@ -1,0 +1,16 @@
+/*button.mp-footer {
+    flex-basis: 0;
+    transition: flex-basis 1s;
+    div.text{
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 1s 0s ease, opacity 1s 0.3s ease;
+    }
+}
+button.mp-footer:hover {
+    flex-basis: 1;
+    div.text{
+        visibility: visible;
+        opacity: 100;
+    }
+}*/

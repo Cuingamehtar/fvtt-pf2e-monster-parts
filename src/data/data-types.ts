@@ -11,7 +11,7 @@ import type {
 // materials
 type MaterialSource = {
     key: string,
-    label: I18nKey,
+    label: I18nKey | I18nString,
     monsterPredicate?: PredicateStatement[]
 }
 

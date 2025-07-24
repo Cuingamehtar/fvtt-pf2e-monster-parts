@@ -16,8 +16,8 @@ import { Material } from "../material";
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 interface RefinedItemEditorData {
-    possibleRefinements: { key: string; label: I18nString|I18nKey }[];
-    possibleImbues: { key: string; label: I18nString|I18nKey }[];
+    possibleRefinements: { key: string; label: I18nString | I18nKey }[];
+    possibleImbues: { key: string; label: I18nString | I18nKey }[];
     refinement: { selected: string; value: number };
     imbues: { selected: string; value: number }[];
 }
@@ -73,8 +73,8 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     _onRender(
-        context: ApplicationRenderContext,
-        options: ApplicationRenderOptions,
+        _context: ApplicationRenderContext,
+        _options: ApplicationRenderOptions,
     ): void {
         this.element
             .querySelector("select.refinement-type")
@@ -86,11 +86,11 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                 }
             });
         this.element
-            .querySelector("input.refinement-value")
+            .querySelector("input#refinement-value")
             ?.addEventListener("change", (e) => {
                 e.preventDefault();
                 e.stopImmediatePropagation();
-                this.data.refinement.value = (e.target as any).value ?? 0;
+                this.data.refinement.value = Number((e.target as any).value);
             });
 
         this.element
@@ -114,7 +114,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                 element.addEventListener("change", (e) => {
                     e.preventDefault();
                     e.stopImmediatePropagation();
-                    this.data.imbues[i].value = (e.target as any).value ?? 0;
+                    this.data.imbues[i].value = Number((e.target as any).value);
                 });
             });
 
@@ -140,9 +140,10 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                     const select = element.querySelector("select");
                     if (!select) return;
 
-                    const dropData = TextEditor.getDragEventData(
-                        e as DragEvent,
-                    );
+                    const dropData =
+                        foundry.applications.ux.TextEditor.implementation.getDragEventData(
+                            e as DragEvent,
+                        );
                     if (dropData.type !== "Item") e.preventDefault();
                     e.stopImmediatePropagation();
 

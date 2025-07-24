@@ -2,14 +2,14 @@ import { MODULE_ID } from "./module";
 
 export function t(
     m: keyof Flatten<I18nKeyType[typeof MODULE_ID]>,
-    data?: { [key: string]: string | number | boolean | null }
+    data?: { [key: string]: string | number | boolean | null | I18nString }
 ) {
     return i18nFormat(`${MODULE_ID}.${m}`, data);
 }
 
 export function i18nFormat(
     m: I18nKey|I18nString,
-    data?: { [key: string]: string | number | boolean | null | undefined }
+    data?: { [key: string]: string | number | boolean | null | undefined | I18nString }
 ) {
     let s = game.i18n.localize(m as string);
     if (!data) return s as I18nString;

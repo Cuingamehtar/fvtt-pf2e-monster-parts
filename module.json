@@ -26,6 +26,11 @@
   "scripts": [
     "scripts/module.js"
   ],
+  "styles": [
+    {
+      "src": "styles/module.css"
+    }
+  ],
   "languages": [
     {
       "lang": "en",

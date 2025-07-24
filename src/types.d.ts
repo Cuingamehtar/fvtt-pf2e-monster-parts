@@ -39,4 +39,8 @@ declare global {
     interface ConfigPF2e {
         [MODULE_ID]: MonsterPartsConfig
     }
+
+    interface AttributeBasedTraceData {
+        base: number;
+    }
 }

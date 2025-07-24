@@ -9,7 +9,7 @@
             {{/each}}
         </select>
         <label for="refinement-value">Value</label>
-        <input type="number" name="refinement-value" id="refinement-value" value="{{data.refinement.value}}" />
+        <input type="number" name="refinement-value" id="refinement-value" value="{{data.refinement.value}}" step="0.1" />
     </fieldset>
 
     {{#each data.imbues as | imbue |}}

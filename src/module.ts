@@ -1,7 +1,10 @@
 import { ItemSheetPF2e, NPCSheetPF2e } from "foundry-pf2e";
 import { createConfig } from "./config";
 import { createRefinedItem, prepareRefinedItem } from "./item";
-import { getExtendedItemRollOptions, getExtendedNPCRollOptions } from "./itemUtil";
+import {
+    getExtendedItemRollOptions,
+    getExtendedNPCRollOptions,
+} from "./itemUtil";
 import { createMonsterPart } from "./monster-part";
 import { registerSettings } from "./settings";
 import { registerEnricher } from "./enricher";
@@ -16,46 +19,80 @@ Hooks.once("init", () => {
     Hooks.once("i18nInit", () => createConfig());
 
     // @ts-expect-error
-    game[MODULE_ID] = { createMaterial: createMonsterPart, createRefinedItem, getExtendedItemRollOptions, getExtendedNPCRollOptions, configureMonsterPart, prepareRefinedItem, configureRefinedItem }
+    game[MODULE_ID] = {
+        createMaterial: createMonsterPart,
+        createRefinedItem,
+        getExtendedItemRollOptions,
+        getExtendedNPCRollOptions,
+        configureMonsterPart,
+        prepareRefinedItem,
+        configureRefinedItem,
+    };
     registerEnricher();
 });
 
-Hooks.on("renderNPCSheetPF2e", (sheet: NPCSheetPF2e, html: HTMLDivElement[], { editable }: { editable: boolean }) => {
-    if (!editable)
-        return;
-    const actor = sheet.actor;
-    const elem = html[0]?.querySelector("[data-item-types=\"equipment\"]")?.previousElementSibling?.querySelector("div.item-controls");
+Hooks.on(
+    "renderNPCSheetPF2e",
+    (
+        sheet: NPCSheetPF2e,
+        html: HTMLDivElement[],
+        { editable }: { editable: boolean },
+    ) => {
+        if (!editable) return;
+        const actor = sheet.actor;
+        const elem = html[0]
+            ?.querySelector('[data-item-types="equipment"]')
+            ?.previousElementSibling?.querySelector("div.item-controls");
 
-    const btn = document.createElement("a");
-    btn.innerHTML = "<i class=\"fa-solid fa-fw fa-skull\"></i>";
-    btn.classList.add("create-monster-parts");
-    btn.setAttribute("data-tooltip", "Create Monster Parts");
-    btn.addEventListener("click", () => createMonsterPart(actor));
+        const btn = document.createElement("a");
+        btn.innerHTML = '<i class="fa-solid fa-fw fa-skull"></i>';
+        btn.classList.add("create-monster-parts");
+        btn.setAttribute("data-tooltip", "Create Monster Parts");
+        btn.addEventListener("click", () => createMonsterPart(actor));
 
-    elem?.insertBefore(btn, elem.firstChild);
-});
+        elem?.insertBefore(btn, elem.firstChild);
+    },
+);
 
-Hooks.on("getItemSheetPF2eHeaderButtons", (sheet: ItemSheetPF2e<ItemPF2e>, buttons: ApplicationHeaderButton[]) => {
-    const item = sheet.object;
-    if (item.getFlag(MODULE_ID, "monsterPart")) {
-        buttons.unshift({ icon: "fas fa-skull", label: "Modify", class: "configure-monster-part", onclick: () => configureMonsterPart(item) });
-    }
-    if (item.getFlag(MODULE_ID, "refinedItem")) {
-        buttons.unshift({ icon: "fas fa-skull", label: "Modify", class: "configure-refined-item", onclick: () => configureRefinedItem(item) });
-    }
-})
+Hooks.on(
+    "getItemSheetPF2eHeaderButtons",
+    (sheet: ItemSheetPF2e<ItemPF2e>, buttons: ApplicationHeaderButton[]) => {
+        const item = sheet.object;
+        if (item.getFlag(MODULE_ID, "monsterPart")) {
+            buttons.unshift({
+                icon: "fas fa-skull",
+                label: "Modify",
+                class: "configure-monster-part",
+                onclick: () => configureMonsterPart(item),
+            });
+        }
+        if (item.getFlag(MODULE_ID, "refinedItem")) {
+            buttons.unshift({
+                icon: "fas fa-skull",
+                label: "Modify",
+                class: "configure-refined-item",
+                onclick: () => configureRefinedItem(item),
+            });
+        }
+    },
+);
 
-Hooks.on("renderDialogV2", (dialog:foundry.applications.api.DialogV2, html: HTMLElement) => {
-    if(!dialog.options.classes.includes("dialog-item-create"))
-        return;
-    const footer = html.querySelector("footer");
-    const button = document.createElement("button");
-    button.innerHTML = "<i class=\"fa-solid fa-fw fa-skull\"></i>";
-    button.title = "Create refined item";
-    button.style = "flex-grow:inherit";
-    button.addEventListener("click",() => {
-        dialog.close();
-    });
-    footer?.appendChild(button);
-
-})
+Hooks.on(
+    "renderDialogV2",
+    (dialog: foundry.applications.api.DialogV2, html: HTMLElement) => {
+        if (!dialog.options.classes.includes("dialog-item-create")) return;
+        const footer = html.querySelector("footer");
+        const button = document.createElement("button");
+        button.classList.add("mp-footer");
+        button.innerHTML = '<i class="fa-solid fa-fw fa-skull"></i>';
+        button.style = "flex-grow:inherit";
+        button.setAttribute(
+            "data-tooltip",
+            "Monster parts: Create refined item",
+        );
+        button.addEventListener("click", () => {
+            dialog.close();
+        });
+        footer?.appendChild(button);
+    },
+);

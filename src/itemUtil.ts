@@ -79,8 +79,3 @@ function getAbilityRanks(actor: NPCPF2e) {
     );
 }
 
-declare module "foundry-pf2e" {
-    interface AttributeBasedTraceData {
-        base: number;
-    }
-}

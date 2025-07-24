@@ -61,7 +61,7 @@
                 "Tech": {
                     "Level8": "On a critical hit, the target's armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
                     "Level12": "The acid damage dealt by Acid Imbue's Technique Path (including the persistent acid damage) ignores resistances.",
-                    "Level14": "The persistent acid damage from the imbued property eats away at a foe's resistances. Every time a foe or the foe's armor or shield takes damage from the persistent acid damage at the end of their turn, any resistances and Hardness decrease by 1 for 1 minute. This effect is cumulative.",
+                    "Level16": "The persistent acid damage from the imbued property eats away at a foe's resistances. Every time a foe or the foe's armor or shield takes damage from the persistent acid damage at the end of their turn, any resistances and Hardness decrease by 1 for 1 minute. This effect is cumulative.",
                     "Level20": "On a critical hit, acid eats away at the foe's innards, and they are @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
                 }
             },

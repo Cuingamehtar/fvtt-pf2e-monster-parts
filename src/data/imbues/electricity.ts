@@ -3,7 +3,7 @@ import { ImbueSource } from "../data-types";
 import { addDamage, levelRange } from "../helpers";
 
 export function createImbueElectricity(): ImbueSource[] {
-    const imbues: ImbueSource[] = [
+    return [
         {
             key: "imbue:electricity:magic",
             type: "imbue",
@@ -366,6 +366,4 @@ export function createImbueElectricity(): ImbueSource[] {
             ],
         },
     ];
-
-    return imbues;
 }

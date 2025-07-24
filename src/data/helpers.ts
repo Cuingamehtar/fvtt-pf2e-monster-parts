@@ -1,5 +1,5 @@
 import { Abilities, PredicateStatement, SkillSlug } from "foundry-pf2e";
-import { t, tkey } from "../utils";
+import { tkey } from "../utils";
 import { InlineNoteEffectSource, RuleElementEffectSource } from "./data-types";
 
 export function levelRange(from: number, to?: number) {
@@ -39,8 +39,8 @@ export function addDamage({
     type?: string;
     category?: "persistent";
     value: number | `${number}d${number}` | `d${number}`;
-    label: string;
-    text?: string;
+    label: I18nKey | I18nString;
+    text?: I18nKey | I18nString;
     predicate?: PredicateStatement[];
 }) {
     const effects: (RuleElementEffectSource | InlineNoteEffectSource)[] = [
@@ -93,7 +93,7 @@ export function addDamage({
 
 export function addWildDamage(
     value: number | `${number}d${number}` | `d${number}`,
-    label: string,
+    label: I18nKey | I18nString,
 ) {
     const damages = ["acid", "cold", "electricity", "fire", "void", "sonic"];
 

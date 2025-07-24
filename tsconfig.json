@@ -21,5 +21,8 @@
         "rootDir": "src",
         "outDir": "scripts"
     },
-    "include": ["./src/**/*"]
+    "include": [
+      "./src/**/*",
+      "node_modules/foundry-pf2e/types/lib-wrapper/index.d.ts"
+    ]
 }

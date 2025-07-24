@@ -3,25 +3,26 @@ import {
     getExtendedItemRollOptions,
     setPotency,
     setResilient,
-    setStriking
+    setStriking,
 } from "./itemUtil";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
 import { getMaterialLevel, RefinedItemFlags } from "./flags";
 import { RefinementSource } from "./data/data-types";
 import { Material } from "./material";
+import { i18nFormat } from "./utils";
 
 export function optionChoiceDialog(
-    options: RefinementSource[]
+    options: RefinementSource[],
 ): Promise<RefinementSource | undefined> {
     if (options.length === 1) return Promise.resolve(options[0]);
     return new Promise((resolve) => {
         const select = foundry.applications.fields.createSelectInput({
             options: options.map((o) => ({
                 label: game.i18n.localize(o.label),
-                value: o.key
+                value: o.key,
             })),
-            name: "selectRefinement"
+            name: "selectRefinement",
         });
         new foundry.applications.api.DialogV2({
             window: { title: "Choose an option" },
@@ -33,12 +34,12 @@ export function optionChoiceDialog(
                     default: true,
                     callback: (_event, button, _dialog) =>
                         // @ts-expect-error "elements don't have property in their type"
-                        button.form?.elements.selectRefinement.value
-                }
+                        button.form?.elements.selectRefinement.value,
+                },
             ],
             submit: async (result) => {
                 resolve(options.find((o) => o.key === result));
-            }
+            },
         }).render({ force: true });
     });
 }
@@ -56,7 +57,7 @@ export async function createRefinedItem(actor: ActorPF2e, uuid: ItemUUID) {
         ...config.materials
             .values()
             .filter((m) => m.type === "refinement")
-            .filter((m) => new Material(m).testItem({ rollOptions }))
+            .filter((m) => new Material(m).testItem({ rollOptions })),
     ];
     if (!applicableRefinements) {
         ui.notifications.error(`No applicable refinements`);
@@ -67,9 +68,9 @@ export async function createRefinedItem(actor: ActorPF2e, uuid: ItemUUID) {
     const flags: RefinedItemFlags = {
         refinement: {
             key: refinement.key,
-            value: -item.system.price.value.goldValue
+            value: -item.system.price.value.goldValue,
         },
-        imbues: []
+        imbues: [],
     };
     const data = item?.toObject();
 
@@ -79,15 +80,15 @@ export async function createRefinedItem(actor: ActorPF2e, uuid: ItemUUID) {
             flags: { [MODULE_ID]: { refinedItem: flags } },
             system: {
                 description: {
-                    value: "@MPdata<hr>" + data.system.description.value
-                }
-            }
+                    value: "@MPdata<hr>" + data.system.description.value,
+                },
+            },
         },
-        { inplace: true }
+        { inplace: true },
     );
 
     ChatMessage.create({
-        content: `Item ${data.name} with refinement ${game.i18n.localize(refinement.label)} was created`
+        content: `Item ${data.name} with refinement ${i18nFormat(refinement.label)} was created`,
     });
 
     return actor.createEmbeddedDocuments("Item", [data]);
@@ -103,31 +104,31 @@ Hooks.on("renderItemSheetPF2e", (sheet, htmlArray, _) => {
     const config = getConfig();
     const refinement = flags.refinement;
     const material = config.materials.get(refinement.key)!;
-    let content = `<p>${game.i18n.localize(material.label)} <strong>${getMaterialLevel(refinement, item)} (${Math.floor(refinement.value)} gp)</strong></p>`;
-    div.innerHTML = content;
+    div.innerHTML = `<p>${i18nFormat(material.label)} <strong>${getMaterialLevel(refinement, item)} (${Math.floor(refinement.value)} gp)</strong></p>`;
 });
 
 export function getEffects(item: ItemPF2e) {
     const config = getConfig();
     const flags = item.getFlag(MODULE_ID, "refinedItem");
     if (!flags) return [];
-    return [flags.refinement, ...flags.imbues].map((m) => {
-        const material = config.materials.get(m.key);
-        if (!material) return null;
-        const level = getMaterialLevel(m, item);
-        return {
-            label: material.label,
-            level,
-            value: m.value,
-            effects: material.effects
-                .filter(
-                    (e) =>
-                        e.levels.from <= level &&
-                        (!e.levels.to || level <= e.levels.to)
-                )
-                .flatMap((e) => e.effects)
-        };
-    });
+    return [flags.refinement, ...flags.imbues]
+        .filter((m) => config.materials.has(m.key))
+        .map((m) => {
+            const material = config.materials.get(m.key)!;
+            const level = getMaterialLevel(m, item);
+            return {
+                label: material.label,
+                level,
+                value: m.value,
+                effects: material.effects
+                    .filter(
+                        (e) =>
+                            e.levels.from <= level &&
+                            (!e.levels.to || level <= e.levels.to),
+                    )
+                    .flatMap((e) => e.effects),
+            };
+        });
 }
 
 export async function prepareRefinedItem(item: ItemPF2e) {
@@ -142,8 +143,8 @@ export async function prepareRefinedItem(item: ItemPF2e) {
                     updatedData,
                     setPotency(effect.value),
                     {
-                        inplace: true
-                    }
+                        inplace: true,
+                    },
                 );
                 break;
             case "WeaponStriking":
@@ -151,8 +152,8 @@ export async function prepareRefinedItem(item: ItemPF2e) {
                     updatedData,
                     setStriking(effect.value),
                     {
-                        inplace: true
-                    }
+                        inplace: true,
+                    },
                 );
                 break;
             case "ArmorResilient":
@@ -160,8 +161,8 @@ export async function prepareRefinedItem(item: ItemPF2e) {
                     updatedData,
                     setResilient(effect.value),
                     {
-                        inplace: true
-                    }
+                        inplace: true,
+                    },
                 );
                 break;
             case "ShieldImprovement":
@@ -179,15 +180,15 @@ export async function prepareRefinedItem(item: ItemPF2e) {
                         property: "hp-max",
                         mode: "upgrade",
                         value: hp,
-                        itemId: "{item|id}"
+                        itemId: "{item|id}",
                     },
                     {
                         key: "ItemAlteration",
                         property: "hardness",
                         mode: "upgrade",
                         value: hardness,
-                        itemId: "{item|id}"
-                    }
+                        itemId: "{item|id}",
+                    },
                 ];
                 break;
             case "SkillModifier":
@@ -195,7 +196,7 @@ export async function prepareRefinedItem(item: ItemPF2e) {
                     key: "FlatModifier",
                     selector: effect.skill,
                     type: "item",
-                    value: effect.value
+                    value: effect.value,
                 });
                 break;
             case "RuleElement":

@@ -117,7 +117,7 @@ export function createImbueWild(): ImbueSource {
         ],
     };
 
-    // @ts-ignore
+    // @ts-expect-error
     libWrapper.register(
         MODULE_ID,
         "CONFIG.PF2E.Actor.documentClasses.character.prototype.getRollOptions",
