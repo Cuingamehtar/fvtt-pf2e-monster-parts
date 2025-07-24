@@ -11,6 +11,7 @@ import { registerEnricher } from "./enricher";
 import { configureMonsterPart } from "./app/monster-part-editor";
 import { configureRefinedItem } from "./app/refined-item-editor";
 import type { ItemPF2e } from "foundry-pf2e";
+import { createElement, t } from "./utils";
 
 export const MODULE_ID = "pf2e-monster-parts";
 
@@ -81,18 +82,44 @@ Hooks.on(
     "renderDialogV2",
     (dialog: foundry.applications.api.DialogV2, html: HTMLElement) => {
         if (!dialog.options.classes.includes("dialog-item-create")) return;
-        const footer = html.querySelector("footer");
-        const button = document.createElement("button");
-        button.classList.add("mp-footer");
-        button.innerHTML = '<i class="fa-solid fa-fw fa-skull"></i>';
-        button.style = "flex-grow:inherit";
-        button.setAttribute(
-            "data-tooltip",
-            "Monster parts: Create refined item",
-        );
-        button.addEventListener("click", () => {
-            dialog.close();
+        const selector = html.querySelector("select")!;
+        const refinedItemOption = createElement("option", {
+            attributes: { value: "refined-item" },
+            innerHTML: t("RefinedItem"),
         });
-        footer?.appendChild(button);
+        const monsterPartOption = createElement("option", {
+            attributes: { value: "monster-part" },
+            innerHTML: t("MonsterPart"),
+        });
+        const optgroup = createElement("optgroup", {
+            attributes: {
+                label: t("MonsterParts") as string,
+            },
+            children: [refinedItemOption, monsterPartOption],
+        });
+        selector.appendChild(optgroup);
+        // @ts-expect-error
+        const callback = dialog.options.buttons.ok.callback;
+        // @ts-expect-error
+        dialog.options.buttons.ok.callback = (
+            event: SubmitEvent,
+            button: HTMLButtonElement,
+        ) => {
+            const value = selector.value;
+            if (value == "refined-item") {
+                dialog.close();
+                event.stopImmediatePropagation();
+                console.log("refined-item");
+                // TODO: open refined item window
+            }
+            if (value == "monster-part") {
+                dialog.close();
+                event.stopImmediatePropagation();
+                console.log("monster-part");
+                // TODO: open monster part window
+            } else {
+                callback(event, button);
+            }
+        };
     },
 );

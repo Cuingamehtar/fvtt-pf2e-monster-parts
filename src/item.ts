@@ -19,7 +19,7 @@ export function optionChoiceDialog(
     return new Promise((resolve) => {
         const select = foundry.applications.fields.createSelectInput({
             options: options.map((o) => ({
-                label: game.i18n.localize(o.label),
+                label: i18nFormat(o.label) as string,
                 value: o.key,
             })),
             name: "selectRefinement",
@@ -174,7 +174,7 @@ export async function prepareRefinedItem(item: ItemPF2e) {
                     hardness -= 2;
                     hp -= 12;
                 }
-                return [
+                rules.push(
                     {
                         key: "ItemAlteration",
                         property: "hp-max",
@@ -189,7 +189,7 @@ export async function prepareRefinedItem(item: ItemPF2e) {
                         value: hardness,
                         itemId: "{item|id}",
                     },
-                ];
+                );
                 break;
             case "SkillModifier":
                 rules.push({

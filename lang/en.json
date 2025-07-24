@@ -1,5 +1,8 @@
 {
     "pf2e-monster-parts": {
+        "MonsterParts": "Monster Parts",
+        "MonsterPart": "Monster Part",
+        "RefinedItem": "Refined Item",
         "Dialog": {
             "DefaultTitle": "Choose an option",
             "ChooseMaterial.Title": "Choose material type",
