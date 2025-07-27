@@ -19,10 +19,11 @@
         "resolveJsonModule": true,
         "lib": ["DOM", "DOM.Iterable", "ESNext"],
         "rootDir": "src",
-        "outDir": "scripts"
+        "outDir": "scripts",
+        "types": [
+            "foundry-pf2e/foundry",
+            "foundry-pf2e/pf2e",
+            "foundry-pf2e/lib-wrapper",
+        ]
     },
-    "include": [
-      "./src/**/*",
-      "node_modules/foundry-pf2e/types/lib-wrapper/index.d.ts"
-    ]
 }

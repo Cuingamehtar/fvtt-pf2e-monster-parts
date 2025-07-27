@@ -17,7 +17,7 @@ export function setResilient(value: number) {
 
 export function getExtendedItemRollOptions(item: ItemPF2e) {
     const options = [...item.getRollOptions(), `item:type:${item.type}`];
-    const flags = item.getFlag(MODULE_ID, "refinedItem") as RefinedItemFlags;
+    const flags = item.getFlag(MODULE_ID, "refined-item") as RefinedItemFlags;
     if (!flags) return options;
     return [
         ...options,
@@ -78,4 +78,3 @@ function getAbilityRanks(actor: NPCPF2e) {
         ([k, v]) => `ability:${k}:rank:${values.indexOf(v.mod) + 1}`,
     );
 }
-

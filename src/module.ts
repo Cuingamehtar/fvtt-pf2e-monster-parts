@@ -1,6 +1,5 @@
 import { ItemSheetPF2e, NPCSheetPF2e } from "foundry-pf2e";
 import { createConfig } from "./config";
-import { createRefinedItem, prepareRefinedItem } from "./item";
 import {
     getExtendedItemRollOptions,
     getExtendedNPCRollOptions,
@@ -12,6 +11,7 @@ import { configureMonsterPart } from "./app/monster-part-editor";
 import { configureRefinedItem } from "./app/refined-item-editor";
 import type { ItemPF2e } from "foundry-pf2e";
 import { createElement, t } from "./utils";
+import { createRefinedItemDialog } from "./app/refined-item-create";
 
 export const MODULE_ID = "pf2e-monster-parts";
 
@@ -22,11 +22,9 @@ Hooks.once("init", () => {
     // @ts-expect-error
     game[MODULE_ID] = {
         createMaterial: createMonsterPart,
-        createRefinedItem,
         getExtendedItemRollOptions,
         getExtendedNPCRollOptions,
         configureMonsterPart,
-        prepareRefinedItem,
         configureRefinedItem,
     };
     registerEnricher();
@@ -57,9 +55,9 @@ Hooks.on(
 
 Hooks.on(
     "getItemSheetPF2eHeaderButtons",
-    (sheet: ItemSheetPF2e<ItemPF2e>, buttons: ApplicationHeaderButton[]) => {
+    (sheet: ItemSheetPF2e<ItemPF2e>, buttons) => {
         const item = sheet.object;
-        if (item.getFlag(MODULE_ID, "monsterPart")) {
+        if (item.getFlag(MODULE_ID, "monster-part")) {
             buttons.unshift({
                 icon: "fas fa-skull",
                 label: "Modify",
@@ -67,7 +65,7 @@ Hooks.on(
                 onclick: () => configureMonsterPart(item),
             });
         }
-        if (item.getFlag(MODULE_ID, "refinedItem")) {
+        if (item.getFlag(MODULE_ID, "refined-item")) {
             buttons.unshift({
                 icon: "fas fa-skull",
                 label: "Modify",
@@ -87,15 +85,15 @@ Hooks.on(
             attributes: { value: "refined-item" },
             innerHTML: t("RefinedItem"),
         });
-        const monsterPartOption = createElement("option", {
+        /*const monsterPartOption = createElement("option", {
             attributes: { value: "monster-part" },
             innerHTML: t("MonsterPart"),
-        });
+        });*/
         const optgroup = createElement("optgroup", {
             attributes: {
                 label: t("MonsterParts") as string,
             },
-            children: [refinedItemOption, monsterPartOption],
+            children: [refinedItemOption],
         });
         selector.appendChild(optgroup);
         // @ts-expect-error
@@ -106,17 +104,12 @@ Hooks.on(
             button: HTMLButtonElement,
         ) => {
             const value = selector.value;
-            if (value == "refined-item") {
+            if (["refined-item", "monster-part"].includes(value)) {
                 dialog.close();
                 event.stopImmediatePropagation();
-                console.log("refined-item");
+                console.log(value);
+                if (value == "refined-item") createRefinedItemDialog();
                 // TODO: open refined item window
-            }
-            if (value == "monster-part") {
-                dialog.close();
-                event.stopImmediatePropagation();
-                console.log("monster-part");
-                // TODO: open monster part window
             } else {
                 callback(event, button);
             }

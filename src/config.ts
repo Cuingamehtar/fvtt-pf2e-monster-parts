@@ -5,7 +5,7 @@ import { MODULE_ID } from "./module";
 import { createDefaultImbues } from "./data/imbues/_imbues";
 
 export type MonsterPartsConfig = {
-    materials: Map<string, RefinementSource | ImbueSource>;
+    materials: Map<MaterialKey, RefinementSource | ImbueSource>;
     thresholds: {
         refinement: {
             weapon: number[];
@@ -114,7 +114,7 @@ export function createConfig(): void {
     [...createDefaultRefinements(), ...createDefaultImbues()].forEach((m) =>
         config.materials.set(m.key, m),
     );
-    
+
     console.log(`${MODULE_ID} | Default materials generated`);
     Hooks.call(`${MODULE_ID}.defaultMaterialsGenerated`);
 }
@@ -127,4 +127,3 @@ export function getMaterialLabel(material: string) {
     const config = CONFIG[MODULE_ID];
     return config.materials.get(material)?.label;
 }
-

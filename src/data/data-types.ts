@@ -4,85 +4,97 @@ import type {
     PredicateStatement,
     RollNoteSource,
     RollOptionSource,
-    SkillSlug
+    SkillSlug,
 } from "foundry-pf2e";
-
 
 // materials
 type MaterialSource = {
-    key: string,
-    label: I18nKey | I18nString,
-    monsterPredicate?: PredicateStatement[]
-}
+    key: MaterialKey;
+    label: I18nKey | I18nString;
+    monsterPredicate?: PredicateStatement[];
+};
 
 type RefinementSource = MaterialSource & {
-    type: "refinement",
-    itemPredicate: PredicateStatement[],
-    effects: MaterialEffectSource[]
-}
+    type: "refinement";
+    itemPredicate: PredicateStatement[];
+    effects: MaterialEffectSource[];
+};
 
 type ImbueSource = MaterialSource & {
-    type: "imbue"
-    itemPredicate: PredicateStatement[],
-    subtype?: string,
-    effects: MaterialEffectSource[]
-}
+    type: "imbue";
+    itemPredicate: PredicateStatement[];
+    subtype?: string;
+    effects: MaterialEffectSource[];
+};
 
 type LevelRange = {
-    from: number,
-    to?: number
-}
+    from: number;
+    to?: number;
+};
 
 // Refinement Effect
 type PotencyEffectSource = {
-    key: "ItemPotency",
-    value: number
-}
+    key: "ItemPotency";
+    value: number;
+};
 type StrikingEffectSource = {
-    key: "WeaponStriking",
-    value: number
-}
+    key: "WeaponStriking";
+    value: number;
+};
 
 type ResilientEffectSource = {
-    key: "ArmorResilient",
-    value: number
-}
+    key: "ArmorResilient";
+    value: number;
+};
 
 type ShieldImprovementEffectSource = {
-    key: "ShieldImprovement",
-    hardness: number,
-    hp: number
-}
+    key: "ShieldImprovement";
+    hardness: number;
+    hp: number;
+};
 
 type SkillModifierEffectSource = {
-    key: "SkillModifier",
-    skill: SkillSlug | "perception",
-    value: number
-}
+    key: "SkillModifier";
+    skill: SkillSlug | "perception";
+    value: number;
+};
 
 type RuleElementEffectSource = {
-    key: "RuleElement",
-    rule: DamageDiceSource | FlatModifierSource | RollNoteSource | RollOptionSource
-}
+    key: "RuleElement";
+    rule:
+        | DamageDiceSource
+        | FlatModifierSource
+        | RollNoteSource
+        | RollOptionSource;
+};
 
 type InlineNoteEffectSource = {
-    key: "InlineNote",
-} &
-    ({ text: I18nString } |
-        {
-            text: I18nKey,
-            parameters?: Record<string, string | number | null | undefined>
-        })
+    key: "InlineNote";
+} & (
+    | { text: I18nString }
+    | {
+          text: I18nKey;
+          parameters?: Record<string, string | number | null | undefined>;
+      }
+);
 
 type MaterialEffectSource = {
-    levels: LevelRange,
-    effects: (PotencyEffectSource | StrikingEffectSource | ResilientEffectSource | ShieldImprovementEffectSource | RuleElementEffectSource | InlineNoteEffectSource | SkillModifierEffectSource)[]
-}
+    levels: LevelRange;
+    effects: (
+        | PotencyEffectSource
+        | StrikingEffectSource
+        | ResilientEffectSource
+        | ShieldImprovementEffectSource
+        | RuleElementEffectSource
+        | InlineNoteEffectSource
+        | SkillModifierEffectSource
+    )[];
+};
 
 export type {
     RefinementSource,
     ImbueSource,
     RuleElementEffectSource,
     InlineNoteEffectSource,
-    MaterialEffectSource
+    MaterialEffectSource,
 };

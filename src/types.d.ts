@@ -4,19 +4,33 @@ import { MonsterPartsConfig } from "./config";
 
 declare global {
     type Flatten<T> = {
-        [K in keyof T as T[K] extends object ? K extends string ? `${K}.${keyof Flatten<T[K]>}` : never : K]: T[K] extends object ? Flatten<T[K]>[keyof Flatten<T[K]>] : T[K];
+        [K in keyof T as T[K] extends object
+            ? K extends string
+                ? `${K}.${keyof Flatten<T[K]>}`
+                : never
+            : K]: T[K] extends object
+            ? Flatten<T[K]>[keyof Flatten<T[K]>]
+            : T[K];
     };
 
     type I18nKeyType = typeof i18nKeys;
+    /** String that is passed to `game.i18n.localize` */
     type I18nKey = keyof Flatten<I18nKeyType>;
 
+    /** String that is used as material identifier */
+    class MaterialKey {}
+
+    /** String that is the result of `game.i18n.localize` */
     class I18nString {
         localeCompare(other: I18nString): number;
     }
 
-    interface ClientSettings {
-        get(m: typeof MODULE_ID, key: "actorLootable"): boolean;
-
+    interface ClientSettingsPF2e {
+        get(m: typeof MODULE_ID, key: "actor-lootable"): boolean;
+        get(
+            m: typeof MODULE_ID,
+            key: "armor-refinements",
+        ): "none" | "ask" | "all";
         get(m: typeof MODULE_ID, key: "variant"): "light" | "hybrid" | "full";
     }
 
@@ -31,13 +45,13 @@ declare global {
     }
 
     interface RollNoteSource {
-        title?: I18nKey | I18nString,
-        text: I18nKey | I18nString
+        title?: I18nKey | I18nString;
+        text: I18nKey | I18nString;
     }
 
     // config
     interface ConfigPF2e {
-        [MODULE_ID]: MonsterPartsConfig
+        [MODULE_ID]: MonsterPartsConfig;
     }
 
     interface AttributeBasedTraceData {

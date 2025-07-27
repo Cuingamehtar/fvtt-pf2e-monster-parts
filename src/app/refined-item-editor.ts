@@ -1,32 +1,27 @@
 import { ItemPF2e } from "foundry-pf2e";
 import { getConfig, getMaterialLabel } from "../config";
-import { i18nFormat, t } from "../utils";
-import {
-    ApplicationConfiguration,
-    ApplicationRenderContext,
-    ApplicationRenderOptions,
-} from "foundry-pf2e/foundry/client-esm/applications/_types.js";
+import { getDroppedItem, i18nFormat, t } from "../utils";
 import { MODULE_ID } from "../module";
 import { getExtendedItemRollOptions } from "../itemUtil";
 import { RefinedItemFlags } from "../flags";
-import { prepareRefinedItem } from "../item";
-import { dialogConfirmCancel, dialogSelectMaterial } from "./dialogs";
+import { RefinedItem } from "../refined-item";
 import { Material } from "../material";
+import { dialogs } from "./dialogs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 interface RefinedItemEditorData {
-    possibleRefinements: { key: string; label: I18nString | I18nKey }[];
-    possibleImbues: { key: string; label: I18nString | I18nKey }[];
-    refinement: { selected: string; value: number };
-    imbues: { selected: string; value: number }[];
+    possibleRefinements: { key: MaterialKey; label: I18nString | I18nKey }[];
+    possibleImbues: { key: MaterialKey; label: I18nString | I18nKey }[];
+    refinement: { selected: MaterialKey; value: number };
+    imbues: { selected: MaterialKey; value: number }[];
 }
 
 class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
     data: RefinedItemEditorData;
 
     constructor(
-        options: DeepPartial<ApplicationConfiguration> & {
+        options: DeepPartial<foundry.applications.ApplicationConfiguration> & {
             data: RefinedItemEditorData;
         },
     ) {
@@ -72,10 +67,10 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         };
     }
 
-    _onRender(
-        _context: ApplicationRenderContext,
-        _options: ApplicationRenderOptions,
-    ): void {
+    override async _onRender(
+        _context: object,
+        _options: foundry.applications.ApplicationRenderOptions,
+    ) {
         this.element
             .querySelector("select.refinement-type")
             ?.addEventListener("change", (e) => {
@@ -140,24 +135,10 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                     const select = element.querySelector("select");
                     if (!select) return;
 
-                    const dropData =
-                        foundry.applications.ux.TextEditor.implementation.getDragEventData(
-                            e as DragEvent,
-                        );
-                    if (dropData.type !== "Item") e.preventDefault();
-                    e.stopImmediatePropagation();
-
-                    if (!dropData.fromInventory)
-                        return ui.notifications.error(
-                            "Can add only items from inventory.",
-                        );
-
-                    const item = (await fromUuid(
-                        dropData.uuid as string,
-                    )) as ItemPF2e | null;
+                    const item = await getDroppedItem(e as DragEvent, "Item");
                     if (!item) return ui.notifications.error("Can't find item");
 
-                    const flag = item.getFlag(MODULE_ID, "monsterPart");
+                    const flag = item.getFlag(MODULE_ID, "monster-part");
                     if (!flag)
                         return ui.notifications.error(
                             "Item is not a recognized monster part",
@@ -169,14 +150,13 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                             this.data.possibleImbues.filter((i) =>
                                 flag.materials.includes(i.key),
                             );
-                        const addedMaterial = await dialogSelectMaterial(
+                        const addedMaterial = await dialogs.choice(
                             allowedMaterials,
-                            flag.value,
                             t("Dialog.ChooseMaterial.Title"),
                         );
                         if (addedMaterial) {
                             this.data.imbues.push({
-                                selected: addedMaterial,
+                                selected: addedMaterial.selected,
                                 value: flag.value,
                             });
                             this.render();
@@ -190,7 +170,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                         if (flag.materials.includes(expectedMaterial)) {
                             const addedValue = flag.value;
                             if (
-                                await dialogConfirmCancel(
+                                await dialogs.confirm(
                                     t("Dialog.ConfirmApplyMaterial.Title"),
                                     t("Dialog.ConfirmApplyMaterial.Content", {
                                         value: addedValue,
@@ -221,7 +201,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
 export async function configureRefinedItem(item: ItemPF2e) {
     const config = getConfig();
     const rollOptions = getExtendedItemRollOptions(item);
-    const flag = item.getFlag(MODULE_ID, "refinedItem");
+    const flag = item.getFlag(MODULE_ID, "refined-item");
     if (!flag) {
         ui.notifications.error("Expected refined item data");
         throw new Error(
@@ -277,6 +257,6 @@ export async function configureRefinedItem(item: ItemPF2e) {
         },
         imbues: data.imbues.map((i) => ({ key: i.selected, value: i.value })),
     };
-    await item.setFlag(MODULE_ID, "refinedItem", newFlag);
-    return prepareRefinedItem(item);
+    await item.setFlag(MODULE_ID, "refined-item", newFlag);
+    RefinedItem.prepareItem(item);
 }

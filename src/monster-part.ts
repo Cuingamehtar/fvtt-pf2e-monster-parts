@@ -1,7 +1,7 @@
 import { NPCPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
-import { t } from "./utils";
+import { i18nFormat, t } from "./utils";
 import { MonsterPartFlags } from "./flags";
 import {
     getExtendedItemRollOptions,
@@ -9,16 +9,24 @@ import {
 } from "./itemUtil";
 import { Material } from "./material";
 
+/**
+ * Generates a new Monster Part Item. If passed the actor, puts the new Item into their inventory.
+ * @param actor
+ */
 export async function createMonsterPart(actor: NPCPF2e) {
     const config = getConfig();
 
-    const bulk = config.materialBulk[actor.system.traits.size.value];
+    const bulk = config.materialBulk[actor?.system.traits.size.value ?? "med"];
     const materialValue =
-        config.valueForMonsterLevel[actor.system.details.level.value + 1];
-    const name = t("Material.Item.Name", {
-        actor: actor.name,
-        value: materialValue,
-    });
+        config.valueForMonsterLevel[
+            (actor?.system.details.level.value ?? -1) + 1
+        ];
+    const name = actor
+        ? t("Material.Item.NameOwned", {
+              actor: actor.name,
+              value: materialValue,
+          })
+        : t("Material.Item.Name");
 
     const actorRollOptions = getExtendedNPCRollOptions(actor);
     const rollOptions = [
@@ -49,14 +57,14 @@ export async function createMonsterPart(actor: NPCPF2e) {
             bulk: { value: bulk },
             description: {
                 value: materials
-                    .map((m) => `<p>${game.i18n.localize(m.label)}</p>`)
+                    .map((m) => `<p>${i18nFormat(m.label)}</p>`)
                     .join(""),
             },
         },
         type: "equipment",
-        flags: { [MODULE_ID]: { monsterPart: flags } },
+        flags: { [MODULE_ID]: { ["monster-part"]: flags } },
     };
-    if (game.settings.get(MODULE_ID, "actorLootable")) {
+    if (game.settings.get(MODULE_ID, "actor-lootable")) {
         await actor.setFlag("pf2e", "lootable", true);
     }
 

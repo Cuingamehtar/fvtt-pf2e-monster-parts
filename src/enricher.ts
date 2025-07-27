@@ -1,5 +1,5 @@
 import { PhysicalItemPF2e } from "foundry-pf2e";
-import { getEffects } from "./item";
+import { getEffects } from "./refined-item";
 import { i18nFormat } from "./utils";
 import { MODULE_ID } from "./module";
 
@@ -16,7 +16,7 @@ export function registerEnricher(): void {
             args: any,
         ) {
             const description = await wrapped(args);
-            if (!this.getFlag(MODULE_ID, "refinedItem")) return description;
+            if (!this.getFlag(MODULE_ID, "refined-item")) return description;
             const effects = getEffects(this);
             const text = effects.map((m) => {
                 const notes = m.effects

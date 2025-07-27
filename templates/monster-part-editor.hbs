@@ -1,30 +1,30 @@
 <div>
-    <label for="material-value">Value</label>
-    <input type="number" name="material-value" id="material-value" value="{{settings.value}}" />
+    <label for="material-value">{{localize pf2e-monster-parts.Dialog.MonsterPartEdit.Value}}</label>
+    <input type="number" name="material-value" id="material-value" value="{{settings.value}}" step="0.1" />
     <table>
         <tr>
             <td>
                 <fieldset>
-                    <legend>Refinements</legend>
+                    <legend>{{localize pf2e-monster-parts.Dialog.MonsterPartEdit.Refinements}}</legend>
                     <div style="overflow-y:scroll;height:400px;">
-                    {{#each settings.refinements}}
-                    <p>
-                        <input type="checkbox" name="{{this.key}}" id="{{this.key}}" {{checked this.checked}}/>
-                        <label for="{{this.key}}">{{localize this.label}}</label>
-                    </p>
-                    {{/each}}</div>
+                        {{#each settings.refinements}}
+                            <p>
+                                <input type="checkbox" name="{{this.key}}" id="{{this.key}}" {{checked this.checked}}/>
+                                <label for="{{this.key}}">{{localize this.label}}</label>
+                            </p>
+                        {{/each}}</div>
                 </fieldset>
             </td>
             <td>
                 <fieldset>
-                    <legend>Imbues</legend>
+                    <legend>{{localize pf2e-monster-parts.Dialog.MonsterPartEdit.Imbues}}</legend>
                     <div style="overflow-y:scroll;height:400px;">
-                    {{#each settings.imbues}}
-                    <p>
-                        <input type="checkbox" name="{{this.key}}" id="{{this.key}}" {{checked this.checked}}/>
-                        <label for="{{this.key}}">{{localize this.label}}</label>
-                    </p>
-                    {{/each}}
+                        {{#each settings.imbues}}
+                            <p>
+                                <input type="checkbox" name="{{this.key}}" id="{{this.key}}" {{checked this.checked}}/>
+                                <label for="{{this.key}}">{{localize this.label}}</label>
+                            </p>
+                        {{/each}}
                     </div>
                 </fieldset>
             </td>

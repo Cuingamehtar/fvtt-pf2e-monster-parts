@@ -1,40 +1,43 @@
 <div style="overflow-y:scroll;height:400px;">
     <fieldset class="droppable refinement">
-        <legend>Refinement</legend>
-        <label for="refinement-type">Refinement type</label>
+        <legend>{{localize pf2e-monster-parts.Dialog.RefinedItemEdit.Refinement}}</legend>
+        <label for="refinement-type">{{localize pf2e-monster-parts.Dialog.RefinedItemEdit.RefinementType}}</label>
         <select name="refinement-type" id="refinement-type" class="refinement-type">
             {{#each data.possibleRefinements }}
-            <option value="{{this.key}}" {{#if (eq this.key refinement.selected)}}selected{{/if}}>{{this.label}}
-            </option>
+                <option value="{{this.key}}" {{#if (eq this.key refinement.selected)}}selected{{/if}}>{{this.label}}
+                </option>
             {{/each}}
         </select>
-        <label for="refinement-value">Value</label>
-        <input type="number" name="refinement-value" id="refinement-value" value="{{data.refinement.value}}" step="0.1" />
+        <label for="refinement-value">{{localize pf2e-monster-parts.Dialog.RefinedItemEdit.Value}}</label>
+        <input type="number" name="refinement-value" id="refinement-value" value="{{data.refinement.value}}"
+               step="0.1" />
     </fieldset>
 
     {{#each data.imbues as | imbue |}}
-    <fieldset class="droppable imbue">
-        <legend>Imbue</legend>
-        <label for="imbue-{{@index}}-type">Imbue type</label>
-        <select name="imbue-{{@index}}-type" id="imbue-{{@index}}-type" class="imbue-type">
-            <option value=""></option>
-            {{#each ../data.possibleImbues }}
-            <option value="{{this.key}}" {{#if (eq this.key imbue.selected)}}selected{{/if}}>{{this.label}}</option>
-            {{/each}}
-        </select>
-        <label for="imbue-{{@index}}-value">Value</label>
-        <input type="number" name="imbue-{{@index}}-value" id="imbue-{{@index}}-value" data-imbue-index="{{@index}}" class="imbue-value"
-            value="{{this.value}}" />
-    </fieldset>
+        <fieldset class="droppable imbue">
+            <legend>{{localize pf2e-monster-parts.Dialog.RefinedItemEdit.Imbue}}</legend>
+            <label for="imbue-{{@index}}-type">{{localize pf2e-monster-parts.Dialog.RefinedItemEdit.ImbueType}}</label>
+            <select name="imbue-{{@index}}-type" id="imbue-{{@index}}-type" class="imbue-type">
+                <option value=""></option>
+                {{#each ../data.possibleImbues }}
+                    <option value="{{this.key}}"
+                            {{#if (eq this.key imbue.selected)}}selected{{/if}}>{{this.label}}</option>
+                {{/each}}
+            </select>
+            <label for="imbue-{{@index}}-value">{{localize pf2e-monster-parts.Dialog.RefinedItemEdit.Value}}</label>
+            <input type="number" name="imbue-{{@index}}-value" id="imbue-{{@index}}-value" data-imbue-index="{{@index}}"
+                   class="imbue-value"
+                   value="{{this.value}}" step="0.1" />
+        </fieldset>
     {{/each}}
 
     <fieldset class="droppable new-imbue">
-        <legend>New Imbue</legend>
-        <label for="new-imbue-type">Imbue type</label>
+        <legend>{{localize pf2e-monster-parts.Dialog.RefinedItemEdit.NewImbue}}</legend>
+        <label for="new-imbue-type">{{localize pf2e-monster-parts.Dialog.RefinedItemEdit.ImbueType}}</label>
         <select name="new-imbue-type" id="new-imbue-type">
             <option value=""></option>
             {{#each data.possibleImbues }}
-            <option value="{{this.key}}">{{this.label}}</option>
+                <option value="{{this.key}}">{{this.label}}</option>
             {{/each}}
         </select>
     </fieldset>

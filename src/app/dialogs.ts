@@ -1,91 +1,78 @@
-import { i18nFormat, t } from "../utils";
+import { t } from "../utils";
 import { configureMonsterPart } from "./monster-part-editor";
 import { configureRefinedItem } from "./refined-item-editor";
 
 const { DialogV2 } = foundry.applications.api;
 
-interface SelectDialogOption {
-    key: string;
-    label: I18nKey | I18nString;
+interface SelectDialogOption<T> {
+    key: T;
+    label: I18nString;
 }
 
-export function dialogSelectMaterial(
-    options: SelectDialogOption[],
-    maxValue: number,
+function optionChoiceDialog<T>(
+    options: SelectDialogOption<T>[],
     title?: I18nString,
-    content?: I18nString
-): Promise<string | undefined> {
-    return new Promise((resolve) => {
-        const select = foundry.applications.fields.createSelectInput({
-            options: options.map((o) => ({
-                label: i18nFormat(o.label) as string,
-                value: o.key
-            })),
-            name: "selectedOption"
-        });
-        const valueField = foundry.applications.fields.createNumberInput({
-            min: 0,
-            max: maxValue,
-            step: Math.round(maxValue) === maxValue ? 1 : 0.1
-        });
-        new DialogV2({
-            window: { title: (title ?? t("Dialog.DefaultTitle")) as string },
-            content: content
-                ? `<p>${content}</p>${select.outerHTML}${valueField.outerHTML}`
-                : select.outerHTML,
-            buttons: [
-                {
-                    action: "select",
-                    label: "Select",
-                    default: true,
-                    callback: (_event, button, _dialog) =>
-                        // @ts-expect-error "elements don't have property in their type"
-                        button.form?.elements.selectedOption.value
-                }
-            ],
-            submit: async (result) => {
-                resolve(result);
-            }
-        }).render({ force: true });
+): Promise<{ selected: string } | null> {
+    const select = foundry.applications.fields.createSelectInput({
+        options: options.map((o) => ({
+            label: o.label as string,
+            value: o.key as string,
+        })),
+        name: "selected",
+    });
+    let content = select.outerHTML;
+    return foundry.applications.api.DialogV2.input({
+        window: { title: (title ?? t("Dialog.DefaultTitle")) as string },
+        content: content,
+        ok: {
+            label: "Select",
+            icon: "fa-solid fa-check",
+        },
     });
 }
 
-export function dialogConfirmCancel(
+function dialogConfirmCancel(
     title: I18nString,
-    content: I18nString
-): Promise<boolean> {
+    content: I18nString,
+): Promise<boolean | undefined> {
     return DialogV2.prompt({
         window: {
-            title: title as string
+            title: title as string,
         },
         content: content as string,
-        modal: true
-    });
+        modal: true,
+    }) as Promise<boolean | undefined>;
 }
 
-export function dialogSlider(
-    title: I18nString, value: number,
-    min: number, max: number
-): Promise<number | null> {
-    const content = `<input type="range", id="numberValue" name="numberValue" value="${value}" min="${min} max="${max} />"<div class="display">${value}</div>`;
-    return new Promise((resolve, _reject) => {
-        new DialogV2({
-            window: {
-                title: title as string
-            },
-            content,
-            modal: true,
-            submit: async (result) => {
-                resolve(result);
-            }
-        }).render(true);
+function dialogSlider(
+    title: I18nString,
+    value: number,
+    min: number,
+    max: number,
+): Promise<{ value: number } | null> {
+    const content = `<input type="range" id="value" name="value" value="${value}" min="${min}" max="${max}" />
+<p>${t("Dialog.SliderValue")}: <output id="display">${value}</output></p>`;
+    return foundry.applications.api.DialogV2.input({
+        window: { title: title as string },
+        content: content,
+        ok: {
+            label: "Ok",
+            icon: "fa-solid fa-check",
+        },
+        render: (renderEvent, dialog) => {
+            const input = dialog.window.content.querySelector("input#value");
+            const v = dialog.window.content.querySelector("output#display");
+            input.addEventListener("input", (event) => {
+                v.innerHTML = event.target.value;
+            });
+        },
     });
 }
 
 export const dialogs = {
-    selectMaterial: dialogSelectMaterial,
+    choice: optionChoiceDialog,
     confirm: dialogConfirmCancel,
     slider: dialogSlider,
     monsterPart: configureMonsterPart,
-    refinedItem: configureRefinedItem
-}
+    refinedItem: configureRefinedItem,
+};

@@ -1,4 +1,5 @@
 import { MODULE_ID } from "./module";
+import { ActorPF2e, ItemPF2e } from "foundry-pf2e";
 
 export function t(
     m: keyof Flatten<I18nKeyType[typeof MODULE_ID]>,
@@ -33,10 +34,6 @@ export function tkey(s: keyof Flatten<I18nKeyType[typeof MODULE_ID]>): I18nKey {
     return `${MODULE_ID}.${s}`;
 }
 
-export function getPartyActors() {
-    return game.actors.party?.members ?? [];
-}
-
 export function unique<T>(array: T[]) {
     return Array.from(new Set(array));
 }
@@ -54,7 +51,7 @@ export function createElement(
         innerHTML,
     }: {
         classes?: string[];
-        attributes?: { [key: string]: string };
+        attributes?: { [_: string]: string };
         children?: HTMLElement[];
         innerHTML?: I18nString;
     },
@@ -77,4 +74,22 @@ export function createElement(
         element.innerHTML = innerHTML as string;
     }
     return element;
+}
+
+export async function getDroppedItem(
+    event: DragEvent,
+    type: "Item",
+): Promise<ItemPF2e | null>;
+export async function getDroppedItem(
+    event: DragEvent,
+    type: "Actor",
+): Promise<ActorPF2e | null>;
+export async function getDroppedItem(event: DragEvent, type?: string) {
+    const dropData =
+        foundry.applications.ux.TextEditor.implementation.getDragEventData(
+            event as DragEvent,
+        ) as { type: string; uuid: string; fromInventory: boolean } | null;
+    if (!dropData) return null;
+    if (type && dropData.type !== type) return null;
+    return fromUuid(dropData.uuid);
 }

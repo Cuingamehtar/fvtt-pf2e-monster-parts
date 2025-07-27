@@ -10,28 +10,44 @@ export function registerSettings() {
         choices: {
             light: t("Settings.Variant.Light") as string,
             hybrid: t("Settings.Variant.Hybrid") as string,
-            full: t("Settings.Variant.Full") as string
+            full: t("Settings.Variant.Full") as string,
         },
         default: "light",
-        requiresReload: false
+        requiresReload: false,
     });
 
+    /*
     game.settings.register(MODULE_ID, "groupSenses", {
         name: t("Settings.GroupSenses.Name") as string,
         scope: "world",
         type: Boolean,
         config: true,
         default: false,
-        requiresReload: false
+        requiresReload: false,
     });
+    */
 
-    game.settings.register(MODULE_ID, "actorLootable", {
+    game.settings.register(MODULE_ID, "actor-lootable", {
         name: t("Settings.ActorLootable.Name") as string,
         hint: t("Settings.ActorLootable.Hint") as string,
         scope: "world",
         type: Boolean,
         config: true,
         default: true,
-        requiresReload: false
+        requiresReload: false,
+    });
+
+    game.settings.register(MODULE_ID, "armor-refinements", {
+        name: t("Settings.ArmorRefinements.Name") as string,
+        hint: t("Settings.ArmorRefinements.Hint") as string,
+        type: String,
+        config: true,
+        choices: {
+            none: t("Settings.ArmorRefinements.None") as string,
+            ask: t("Settings.ArmorRefinements.Ask") as string,
+            all: t("Settings.ArmorRefinements.All") as string,
+        },
+        default: "light",
+        requiresReload: false,
     });
 }

@@ -1,7 +1,6 @@
 import { ItemPF2e } from "foundry-pf2e";
 import { getConfig } from "../config";
-import { t } from "../utils";
-import { ApplicationConfiguration } from "foundry-pf2e/foundry/client-esm/applications/_types.js";
+import { i18nFormat, t } from "../utils";
 import { MODULE_ID } from "../module";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
@@ -10,7 +9,9 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
     item: ItemPF2e;
 
     constructor(
-        options: DeepPartial<ApplicationConfiguration> & { item: ItemPF2e },
+        options: DeepPartial<foundry.applications.ApplicationConfiguration> & {
+            item: ItemPF2e;
+        },
     ) {
         super(options);
         this.item = options.item;
@@ -40,9 +41,9 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         },
     };
 
-    async _prepareContext() {
+    override async _prepareContext() {
         const config = getConfig();
-        const flags = this.item.getFlag(MODULE_ID, "monsterPart") ?? {
+        const flags = this.item.getFlag(MODULE_ID, "monster-part") ?? {
             materials: [],
             value: 0,
         };
@@ -51,7 +52,7 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             .filter((m) => m.type === "refinement")
             .map((m) => ({
                 key: m.key,
-                label: m.label,
+                label: i18nFormat(m.label),
                 checked: flags.materials.includes(m.key),
             }))
             .sort((a, b) => a.label.localeCompare(b.label));
@@ -59,7 +60,7 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             .filter((m) => m.type === "imbue")
             .map((m) => ({
                 key: m.key,
-                label: m.label,
+                label: i18nFormat(m.label),
                 checked: flags.materials.includes(m.key),
             }))
             .sort((a, b) => a.label.localeCompare(b.label));
@@ -90,7 +91,7 @@ export async function configureMonsterPart(item: ItemPF2e) {
                 handler: async (
                     event: Event | SubmitEvent,
                     form: HTMLFormElement,
-                    formData: FormDataExtended,
+                    formData: foundry.applications.ux.FormDataExtended,
                 ) => resolve(formData.object),
             },
             window: {
@@ -99,12 +100,13 @@ export async function configureMonsterPart(item: ItemPF2e) {
         }).render(true);
     });
     const data = (await promise) as any;
+    console.log(data);
     const config = getConfig();
     const flags = {
         value: data["material-value"] as number,
         materials: [...config.materials.values()]
-            .filter((m) => data[m.key])
+            .filter((m) => data[m.key as keyof typeof data])
             .map((m) => m.key),
     };
-    if (item) item.setFlag(MODULE_ID, "monsterPart", flags);
+    if (item) item.setFlag(MODULE_ID, "monster-part", flags);
 }

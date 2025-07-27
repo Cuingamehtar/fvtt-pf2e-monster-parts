@@ -5,15 +5,37 @@
         "RefinedItem": "Refined Item",
         "Dialog": {
             "DefaultTitle": "Choose an option",
-            "ChooseMaterial.Title": "Choose material type",
+            "ChooseMaterial": {
+                "Title": "Choose material type",
+                "Count": "Number of Monster Parts"
+            },
             "ConfirmApplyMaterial":{
                 "Title": "Confirm applying material",
                 "Content": "This will add {value} gp to {material} material of the item and delete the monster part."
+            },
+            "Slider.Value": "Value",
+            "CreateRefinedItem": {
+                "Content": "Drag Actor-owned Item here",
+                "Title": "Create Refined Item"
+            },
+            "MonsterPartEdit": {
+                "Refinements": "Refinements",
+                "Imbues": "Imbues",
+                "Value": "Value"
+            },
+            "RefinedItemEdit": {
+                "Refinement": "Refinement",
+                "Imbue": "Imbue",
+                "NewImbue": "New Imbue",
+                "RefinementType": "Refinement Type",
+                "ImbueType": "Imbue Type",
+                "Value": "Value"
             }
         },
         "Material": {
             "Item": {
-                "Name": "Monster Parts of {actor} ({value} gp)"
+                "NameOwned": "Monster Parts of {actor} ({value} gp)",
+                "Name": "Monster Parts"
             },
             "Editor": {
                 "Title": "Edit provided materials"
@@ -196,6 +218,13 @@
                 "Light": "Light",
                 "Hybrid": "Hybrid",
                 "Full": "Full"
+            },
+            "ArmorRefinements": {
+                "Name": "Default Armor Refinements on Monster Parts",
+                "Hint": "BZ armor refinements can't be checked by a predicate. Whether they are suitable is up to GM. This setting sets their default behavior",
+                "None": "None",
+                "Ask": "Ask",
+                "All": "All"
             }
         }
     }
