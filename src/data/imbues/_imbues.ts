@@ -7,6 +7,7 @@ import { createImbueDexterity } from "./dexterity";
 import { createImbueElectricity } from "./electricity";
 import { createImbueFire } from "./fire";
 import { createImbueWild } from "./wild";
+import { createImbueForce } from "./force";
 
 export function createDefaultImbues() {
     return [
@@ -18,10 +19,11 @@ export function createDefaultImbues() {
         createImbueDexterity(),
         ...createImbueElectricity(),
         ...createImbueFire(),
+        ...createImbueForce(),
         createImbueWild(),
     ];
 }
 
 /*
-Chaotic, Energy Resistant, Evil, Force, Fortification, Good, Intelligence, Lawful, Mental, Negative, Poison, Positive, Sensory, Sonic, Spell, Strength, Sturdy, Wild, Winged, Wisdom
+Chaotic, Energy Resistant, Evil, Fortification, Good, Intelligence, Lawful, Mental, Negative, Poison, Positive, Sensory, Sonic, Spell, Strength, Sturdy, Wild, Winged, Wisdom
  */

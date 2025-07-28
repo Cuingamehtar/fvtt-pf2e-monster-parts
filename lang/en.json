@@ -224,6 +224,30 @@
                     "Level20": "At the end of a burning foe’s turn, if it fails to remove the persistent force damage from the Force Imbue's Technique Path, it must succeed at a Fortitude save or be knocked @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60]{Prone}."
                 }
             },
+            "Mental": {
+                "Label": "Mental ({variant})",
+                "Magic": {
+                    "Level4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain} once per day.",
+                    "Level6": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain} or @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM]{Warrior's Regret} once per day, but not both.",
+                    "Level8": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain} and 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM]{Warrior's Regret} once per day each.",
+                    "Level12": "The weapon can cast 4rd rank @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain},  4th rank @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM]{Warrior's Regret} and @UUID[Compendium.pf2e.spells-srd.Item.tlcrVRqW1MSKJ5IC]{Phantasmal Killer} once per day each.",
+                    "Level16": "The weapon can cast 6rd rank @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain},  6th rank @UUID[Compendium.pf2e.spells-srd.Item.tlcrVRqW1MSKJ5IC]{Phantasmal Killer} and @UUID[Compendium.pf2e.spells-srd.Item.0XP2XOxT9VSiXFDr]{Phantasmal Calamity} once per day each.",
+                    "Level20": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.qDjeG6dxT4aEEC6J]{Weird} once per day."
+                },
+                "Might": {
+                    "Level10": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 1} for 1 round.",
+                    "Level12": "The mental damage dealt by Mental Imbue's Might Path ignores resistances.",
+                    "Level16": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 2} for 1 round.",
+                    "Level20": "On a successful Strike with the weapon, before applying mental damage, the target gains weakness 1 to mental until the beginning of your next turn."
+                },
+                "Tech": {
+                    "Level8": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 1} for 1 round.",
+                    "Level12": "The mental damage dealt by Mental Imbue's Technique Path (including persistent mental damage) ignores resistances.",
+                    "Level16": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 2} for 1 round.",
+                    "Level18": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 20 feet away from you.",
+                    "Level20": "While the foe has persistent mental damage from the Mental Imbue's Technique Path, the Stupefied condition from a critical hit lasts until the persistent damage ends or for 1 round, whichever is longer."
+                }
+            },
             "Wild": {
                 "Label": "Wild ({variant})",
                 "Might": {
