@@ -78,46 +78,9 @@ export function createImbueWild(): ImbueSource {
                     },
                 ],
             },
-            {
-                ...levelRange(8, 11),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("Imbue.Fire.Magic.Level8"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(12, 15),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("Imbue.Fire.Magic.Level12"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(16),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("Imbue.Fire.Magic.Level16"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(20),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("Imbue.Fire.Magic.Level20"),
-                    },
-                ],
-            },
         ],
     };
 
-    // @ts-expect-error
     libWrapper.register(
         MODULE_ID,
         "CONFIG.PF2E.Actor.documentClasses.character.prototype.getRollOptions",

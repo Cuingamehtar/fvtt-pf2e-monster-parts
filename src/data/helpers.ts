@@ -69,7 +69,7 @@ export function addDamage({
                 damageCategory: category,
                 value: value ?? 1,
                 predicate,
-                label,
+                label: label as string,
             },
         });
     } else {
@@ -84,7 +84,7 @@ export function addDamage({
                 dieSize: m?.[2] ?? "d4",
                 diceNumber: m?.[1] ?? 1,
                 predicate,
-                label,
+                label: label as string,
             },
         });
     }

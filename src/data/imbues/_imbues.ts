@@ -8,7 +8,7 @@ import { createImbueElectricity } from "./electricity";
 import { createImbueFire } from "./fire";
 import { createImbueWild } from "./wild";
 
-export function createDefaultImbues(){
+export function createDefaultImbues() {
     return [
         ...createImbueAcid(),
         ...createImbueBane(),
@@ -19,5 +19,9 @@ export function createDefaultImbues(){
         ...createImbueElectricity(),
         ...createImbueFire(),
         createImbueWild(),
-    ]
+    ];
 }
+
+/*
+Chaotic, Energy Resistant, Evil, Force, Fortification, Good, Intelligence, Lawful, Mental, Negative, Poison, Positive, Sensory, Sonic, Spell, Strength, Sturdy, Wild, Winged, Wisdom
+ */

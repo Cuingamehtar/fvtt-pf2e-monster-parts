@@ -1,6 +1,6 @@
 import { Size } from "foundry-pf2e";
 import { ImbueSource, RefinementSource } from "./data/data-types";
-import { createDefaultRefinements } from "./data/refines";
+import { createDefaultRefinements } from "./data/refinements";
 import { MODULE_ID } from "./module";
 import { createDefaultImbues } from "./data/imbues/_imbues";
 
