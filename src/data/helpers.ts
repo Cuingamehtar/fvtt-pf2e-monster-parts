@@ -147,3 +147,5 @@ export function addWildDamage(
     }
     return effects;
 }
+
+export const or = (content: any[]) => ({ or: content });

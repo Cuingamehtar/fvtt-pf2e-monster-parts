@@ -57,7 +57,12 @@
       "Type": {
         "Acid": "acid",
         "Cold": "cold",
-        "Electricity": "electricity"
+        "Electricity": "electricity",
+        "Fire": "fire",
+        "Force": "force",
+        "Sonic": "sonic",
+        "Vitality": "vitality",
+        "Void": "void"
       }
     },
     "Imbue": {
@@ -224,6 +229,20 @@
           "Level20": "At the end of a burning foe’s turn, if it fails to remove the persistent force damage from the Force Imbue's Technique Path, it must succeed at a Fortitude save or be knocked @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60]{Prone}."
         }
       },
+      "Fortification": {
+        "Label": "Fortification",
+        "Flavor": "You imbue the armor with powerful fortifications to ward off deadly attacks.",
+        "Penalty": "The armor Bulk and Strength requirement are increased by 1.",
+        "FlatCheck": "Each time you’re critically hit while wearing the etched armor, attempt a DC {dc} flat check. On a success, it becomes a normal hit."
+      },
+      "Intelligence": {
+        "Label": "Intelligence",
+        "Flavor": "You imbue the item with brilliant <em>intelligence</em>.",
+        "Level8": "The item can cast hypercognition once per day as an occult spell.",
+        "Level14": "The item can cast hypercognition once per hour as an occult spell.",
+        "Level17": "When you invest the item, you either increase your Intelligence attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
+        "Level20": "The item can cast hypercognition once per minute as an occult spell."
+      },
       "Mental": {
         "Label": "Mental ({variant})",
         "Magic": {
@@ -248,6 +267,14 @@
           "Level20": "While the foe has persistent mental damage from the Mental Imbue's Technique Path, the Stupefied condition from a critical hit lasts until the persistent damage ends or for 1 round, whichever is longer."
         }
       },
+      "Strength": {
+        "Label": "Strength",
+        "Flavor": "You imbue the item with ferocious <em>strength</em>.",
+        "Level8": "The item can cast earthbind once per day as a primal spell.",
+        "Level14": "The item can cast earthbind once per hour as a primal spell.",
+        "Level17": "When you invest the item, you either increase your Strength attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
+        "Level20": "The item can cast earthbind once per minute as a primal spell."
+      },
       "Wild": {
         "Label": "Wild ({variant})",
         "Might": {
@@ -265,6 +292,14 @@
         "Level16": "You can choose to have armor cast 7th rank @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you instead of 4th rank <em>fly</em>. If you do, you can’t use the armor’s fly spell again for 1 day, instead of 1 hour.",
         "Level18": "You can fly constantly, with a Speed equal to your land Speed.",
         "Level20": "The armor can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on an ally once per hour."
+      },
+      "Wisdom": {
+        "Label": "Wisdom",
+        "Flavor": "You imbue the item with sagacious <em>wisdom</em>.",
+        "Level8": "The item can cast augury once per day as an occult spell.",
+        "Level14": "The item can cast augury once per hour as an occult spell.",
+        "Level17": "When you invest the item, you either increase your Wisdom attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
+        "Level20": "The item can cast augury once per minute as an occult spell."
       }
     },
     "Settings": {

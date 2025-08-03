@@ -48,13 +48,12 @@ export function getExtendedNPCRollOptions(actor: NPCPF2e): string[] {
     const skills = Object.values(actor.system.skills)
         .filter((s) => s.base > 0)
         .map((s) => `skill:${s.slug}:rank:1`);
-    const resistances = actor.system.attributes.resistances
-        .filter((r) =>
-            ["physical", "bludgeoning", "piercing", "slashing"].includes(
-                r.type,
-            ),
-        )
-        .map((r) => `self:resistance:${r.type}:${r.value}`);
+    const resistances = actor.attributes.resistances.map(
+        (r) => `self:resistance:${r.type}:${r.value}`,
+    );
+    const immunities = actor.attributes.immunities.map(
+        (i) => `self:immunity:${i.type}`,
+    );
 
     const abilityRanks = getAbilityRanks(actor);
 
@@ -64,6 +63,7 @@ export function getExtendedNPCRollOptions(actor: NPCPF2e): string[] {
         ...skills,
         `self:hardness:${actor.hardness}`,
         ...resistances,
+        ...immunities,
         ...abilityRanks,
     ];
 }

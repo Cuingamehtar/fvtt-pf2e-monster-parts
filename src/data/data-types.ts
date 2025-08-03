@@ -1,6 +1,7 @@
-import type {
+import {
     DamageDiceSource,
     FlatModifierSource,
+    ItemAlterationRuleElement,
     PredicateStatement,
     RollNoteSource,
     RollOptionSource,
@@ -22,6 +23,7 @@ type RefinementSource = MaterialSource & {
 
 type ImbueSource = MaterialSource & {
     type: "imbue";
+    flavor?: I18nKey | I18nString;
     itemPredicate: PredicateStatement[];
     subtype?: string;
     effects: MaterialEffectSource[];
@@ -65,7 +67,8 @@ type RuleElementEffectSource = {
         | DamageDiceSource
         | FlatModifierSource
         | RollNoteSource
-        | RollOptionSource;
+        | RollOptionSource
+        | ItemAlterationRuleElement;
 };
 
 type InlineNoteEffectSource = {
