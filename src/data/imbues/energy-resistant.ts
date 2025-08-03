@@ -18,11 +18,11 @@ export function createImbueEnergyResistant(): ImbueSource[] {
         return {
             key: `imbue:energy-resistant:armor:${type}`,
             type: "imbue",
-            label: t("Imbue.EnergyResitant.Label", {
+            label: t("imbue.energyresitant.label", {
                 // @ts-expect-error
                 variant: t(`Damage.${type}`),
             }),
-            flavor: t("Imbue.EnergyResistant.Flavor", {
+            flavor: t("imbue.energyresistant.flavor", {
                 // @ts-expect-error
                 type: t(`Damage.${type}`}
             ),
@@ -56,8 +56,8 @@ export function createImbueEnergyResistant(): ImbueSource[] {
                     effects: addDamage({
                         type: "electricity",
                         value: 1,
-                        label: t("Imbue.Electricity.Label", {
-                            variant: t("Imbue.Variant.Magic"),
+                        label: t("imbue.electricity.label", {
+                            variant: t("imbue.variant.magic"),
                         }),
                     }),
                 },
@@ -66,8 +66,8 @@ export function createImbueEnergyResistant(): ImbueSource[] {
                     effects: addDamage({
                         type: "electricity",
                         value: "d4",
-                        label: t("Imbue.Electricity.Label", {
-                            variant: t("Imbue.Variant.Magic"),
+                        label: t("imbue.electricity.label", {
+                            variant: t("imbue.variant.magic"),
                         }),
                     }),
                 },
@@ -76,8 +76,8 @@ export function createImbueEnergyResistant(): ImbueSource[] {
                     effects: addDamage({
                         type: "electricity",
                         value: "d6",
-                        label: t("Imbue.Electricity.Label", {
-                            variant: t("Imbue.Variant.Magic"),
+                        label: t("imbue.electricity.label", {
+                            variant: t("imbue.variant.magic"),
                         }),
                     }),
                 },
@@ -86,7 +86,7 @@ export function createImbueEnergyResistant(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.AddCantrip"),
+                            text: tkey("imbue.add-cantrip"),
                             parameters: {
                                 spell: "@UUID[Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf]",
                             },
@@ -98,7 +98,7 @@ export function createImbueEnergyResistant(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Electricity.Magic.Level4"),
+                            text: tkey("imbue.electricity.magic.level-4"),
                         },
                     ],
                 },
@@ -107,7 +107,7 @@ export function createImbueEnergyResistant(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Electricity.Magic.Level6"),
+                            text: tkey("imbue.electricity.magic.level-6"),
                         },
                     ],
                 },
@@ -116,7 +116,7 @@ export function createImbueEnergyResistant(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Electricity.Magic.Level8"),
+                            text: tkey("imbue.electricity.magic.level-8"),
                         },
                     ],
                 },
@@ -125,7 +125,7 @@ export function createImbueEnergyResistant(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Electricity.Magic.Level12"),
+                            text: tkey("imbue.electricity.magic.level-12"),
                         },
                     ],
                 },
@@ -134,7 +134,7 @@ export function createImbueEnergyResistant(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Electricity.Magic.Level16"),
+                            text: tkey("imbue.electricity.magic.level-16"),
                         },
                     ],
                 },
@@ -143,7 +143,7 @@ export function createImbueEnergyResistant(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Electricity.Magic.Level20"),
+                            text: tkey("imbue.electricity.magic.level-20"),
                         },
                     ],
                 },

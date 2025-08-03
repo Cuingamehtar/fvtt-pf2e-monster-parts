@@ -6,13 +6,14 @@ import { createImbueConstitution } from "./constitution";
 import { createImbueDexterity } from "./dexterity";
 import { createImbueElectricity } from "./electricity";
 import { createImbueFire } from "./fire";
-import { createImbueWild } from "./wild";
 import { createImbueForce } from "./force";
-import { createImbueMental } from "./mental";
-import { createImbueWinged } from "./winged";
 import { createImbueFortification } from "./fortification";
 import { createImbueIntelligence } from "./intelligence";
+import { createImbueMental } from "./mental";
 import { createImbueStrength } from "./strength";
+import { createImbueWild } from "./wild";
+import { createImbueWinged } from "./winged";
+import { createImbueWisdom } from "./wisdom";
 
 export function createDefaultImbues() {
     return [
@@ -31,9 +32,10 @@ export function createDefaultImbues() {
         createImbueStrength(),
         createImbueWild(),
         createImbueWinged(),
+        createImbueWisdom(),
     ];
 }
 
 /*
-Chaotic, Energy Resistant, Evil, Good, Lawful, Negative, Poison, Positive, Sensory, Sonic, Spell, Sturdy,  Wisdom
+Chaotic, Energy Resistant, Evil, Good, Lawful, Negative, Poison, Positive, Sensory, Sonic, Spell, Sturdy
  */

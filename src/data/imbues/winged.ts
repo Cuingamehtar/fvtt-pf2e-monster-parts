@@ -6,7 +6,7 @@ export function createImbueWinged(): ImbueSource {
     return {
         key: "imbue:winged",
         type: "imbue",
-        label: t("Imbue.Winged.Label"),
+        label: t("imbue.winged.label"),
         itemPredicate: ["item:type:armor"],
         monsterPredicate: ["self:speed:fly"],
         effects: [
@@ -15,7 +15,7 @@ export function createImbueWinged(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Winged.Level6"),
+                        text: tkey("imbue.winged.level-6"),
                     },
                 ],
             },
@@ -24,7 +24,7 @@ export function createImbueWinged(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Winged.Level8"),
+                        text: tkey("imbue.winged.level-8"),
                     },
                 ],
             },
@@ -33,7 +33,7 @@ export function createImbueWinged(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Winged.Level10"),
+                        text: tkey("imbue.winged.level-10"),
                     },
                 ],
             },
@@ -42,7 +42,7 @@ export function createImbueWinged(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Winged.Level14"),
+                        text: tkey("imbue.winged.level-14"),
                     },
                 ],
             },
@@ -51,7 +51,7 @@ export function createImbueWinged(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Winged.Level16"),
+                        text: tkey("imbue.winged.level-16"),
                     },
                 ],
             },
@@ -60,7 +60,7 @@ export function createImbueWinged(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Winged.Level18"),
+                        text: tkey("imbue.winged.level-18"),
                     },
                 ],
             },
@@ -69,7 +69,7 @@ export function createImbueWinged(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Winged.Level20"),
+                        text: tkey("imbue.winged.level-20"),
                     },
                 ],
             },

@@ -7,46 +7,46 @@ export function createImbueCharisma(): ImbueSource {
     return {
         key: "imbue:charisma",
         type: "imbue",
-        label: tkey("Imbue.Charisma.Label"),
+        label: tkey("imbue.charisma.label"),
         monsterPredicate: [{ lte: ["ability:cha:rank", 2] }],
-        itemPredicate: [{ or: skills.map(s=>`refinement:skill:${s}`) }],
+        itemPredicate: [{ or: skills.map((s) => `refinement:skill:${s}`) }],
         effects: [
             {
                 ...levelRange(8, 13),
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Charisma.Level8")
-                    }
-                ]
+                        text: tkey("imbue.charisma.level-8"),
+                    },
+                ],
             },
             {
                 ...levelRange(14, 19),
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Charisma.Level14")
-                    }
-                ]
+                        text: tkey("imbue.charisma.level-14"),
+                    },
+                ],
             },
             {
                 ...levelRange(20),
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Charisma.Level20")
-                    }
-                ]
+                        text: tkey("imbue.charisma.level-20"),
+                    },
+                ],
             },
             {
                 ...levelRange(17),
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Charisma.Level17")
-                    }
-                ]
-            }
-        ]
-    }
+                        text: tkey("imbue.charisma.level-17"),
+                    },
+                ],
+            },
+        ],
+    };
 }

@@ -7,7 +7,7 @@ export function createImbueCold(): ImbueSource[] {
         {
             key: "imbue:cold:magic",
             type: "imbue",
-            label: t("Imbue.Cold.Label", { variant: t("Imbue.Variant.Magic") }),
+            label: t("imbue.cold.label", { variant: t("imbue.variant.magic") }),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
@@ -38,8 +38,8 @@ export function createImbueCold(): ImbueSource[] {
                     effects: addDamage({
                         type: "cold",
                         value: 1,
-                        label: t("Imbue.Cold.Label", {
-                            variant: t("Imbue.Variant.Magic"),
+                        label: t("imbue.cold.label", {
+                            variant: t("imbue.variant.magic"),
                         }),
                     }),
                 },
@@ -48,8 +48,8 @@ export function createImbueCold(): ImbueSource[] {
                     effects: addDamage({
                         type: "cold",
                         value: "d4",
-                        label: t("Imbue.Cold.Label", {
-                            variant: t("Imbue.Variant.Magic"),
+                        label: t("imbue.cold.label", {
+                            variant: t("imbue.variant.magic"),
                         }),
                     }),
                 },
@@ -58,8 +58,8 @@ export function createImbueCold(): ImbueSource[] {
                     effects: addDamage({
                         type: "cold",
                         value: "d6",
-                        label: t("Imbue.Cold.Label", {
-                            variant: t("Imbue.Variant.Magic"),
+                        label: t("imbue.cold.label", {
+                            variant: t("imbue.variant.magic"),
                         }),
                     }),
                 },
@@ -68,7 +68,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.AddCantrip"),
+                            text: tkey("imbue.add-cantrip"),
                             parameters: {
                                 spell: "@UUID[Compendium.pf2e.spells-srd.Item.gYjPm7YwGtEa1oxh]",
                             },
@@ -80,7 +80,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Magic.Level4"),
+                            text: tkey("imbue.cold.magic.level-4"),
                         },
                     ],
                 },
@@ -89,7 +89,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Magic.Level6"),
+                            text: tkey("imbue.cold.magic.level-6"),
                         },
                     ],
                 },
@@ -98,7 +98,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Magic.Level10"),
+                            text: tkey("imbue.cold.magic.level-10"),
                         },
                     ],
                 },
@@ -107,7 +107,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Magic.Level12"),
+                            text: tkey("imbue.cold.magic.level-12"),
                         },
                     ],
                 },
@@ -116,7 +116,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Magic.Level16"),
+                            text: tkey("imbue.cold.magic.level-16"),
                         },
                     ],
                 },
@@ -125,7 +125,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Magic.Level20"),
+                            text: tkey("imbue.cold.magic.level-20"),
                         },
                     ],
                 },
@@ -134,7 +134,7 @@ export function createImbueCold(): ImbueSource[] {
         {
             key: "imbue:cold:might",
             type: "imbue",
-            label: t("Imbue.Cold.Label", { variant: t("Imbue.Variant.Might") }),
+            label: t("imbue.cold.label", { variant: t("imbue.variant.might") }),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
@@ -165,8 +165,8 @@ export function createImbueCold(): ImbueSource[] {
                     effects: addDamage({
                         type: "cold",
                         value: 1,
-                        label: t("Imbue.Cold.Label", {
-                            variant: t("Imbue.Variant.Might"),
+                        label: t("imbue.cold.label", {
+                            variant: t("imbue.variant.might"),
                         }),
                     }),
                 },
@@ -175,8 +175,8 @@ export function createImbueCold(): ImbueSource[] {
                     effects: addDamage({
                         type: "cold",
                         value: "d4",
-                        label: t("Imbue.Cold.Label", {
-                            variant: t("Imbue.Variant.Might"),
+                        label: t("imbue.cold.label", {
+                            variant: t("imbue.variant.might"),
                         }),
                     }),
                 },
@@ -185,8 +185,8 @@ export function createImbueCold(): ImbueSource[] {
                     effects: addDamage({
                         type: "cold",
                         value: "d6",
-                        label: t("Imbue.Cold.Label", {
-                            variant: t("Imbue.Variant.Might"),
+                        label: t("imbue.cold.label", {
+                            variant: t("imbue.variant.might"),
                         }),
                     }),
                 },
@@ -195,8 +195,8 @@ export function createImbueCold(): ImbueSource[] {
                     effects: addDamage({
                         type: "cold",
                         value: "d8",
-                        label: t("Imbue.Cold.Label", {
-                            variant: t("Imbue.Variant.Might"),
+                        label: t("imbue.cold.label", {
+                            variant: t("imbue.variant.might"),
                         }),
                     }),
                 },
@@ -205,7 +205,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Might.Level8"),
+                            text: tkey("imbue.cold.might.level-8"),
                         },
                     ],
                 },
@@ -214,7 +214,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Might.Level12"),
+                            text: tkey("imbue.cold.might.level-12"),
                         },
                     ],
                 },
@@ -223,7 +223,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Might.Level14"),
+                            text: tkey("imbue.cold.might.level-14"),
                         },
                     ],
                 },
@@ -232,7 +232,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Might.Level20"),
+                            text: tkey("imbue.cold.might.level-20"),
                         },
                     ],
                 },
@@ -241,7 +241,7 @@ export function createImbueCold(): ImbueSource[] {
         {
             key: "imbue:cold:tech",
             type: "imbue",
-            label: t("Imbue.Cold.Label", { variant: t("Imbue.Variant.Tech") }),
+            label: t("imbue.cold.label", { variant: t("imbue.variant.tech") }),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
@@ -273,8 +273,8 @@ export function createImbueCold(): ImbueSource[] {
                         type: "cold",
                         value: 1,
                         category: "persistent",
-                        label: t("Imbue.Cold.Label", {
-                            variant: t("Imbue.Variant.Tech"),
+                        label: t("imbue.cold.label", {
+                            variant: t("imbue.variant.tech"),
                         }),
                     }),
                 },
@@ -284,8 +284,8 @@ export function createImbueCold(): ImbueSource[] {
                         type: "cold",
                         value: "d4",
                         category: "persistent",
-                        label: t("Imbue.Cold.Label", {
-                            variant: t("Imbue.Variant.Tech"),
+                        label: t("imbue.cold.label", {
+                            variant: t("imbue.variant.tech"),
                         }),
                     }),
                 },
@@ -294,7 +294,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Tech.Level6"),
+                            text: tkey("imbue.cold.tech.level-6"),
                         },
                     ],
                 },
@@ -303,7 +303,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Tech.Level8"),
+                            text: tkey("imbue.cold.tech.level-8"),
                         },
                     ],
                 },
@@ -312,7 +312,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Tech.Level20"),
+                            text: tkey("imbue.cold.tech.level-20"),
                         },
                     ],
                 },
@@ -321,7 +321,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Tech.Level12"),
+                            text: tkey("imbue.cold.tech.level-12"),
                         },
                     ],
                 },
@@ -330,7 +330,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Cold.Tech.Level16"),
+                            text: tkey("imbue.cold.tech.level-16"),
                         },
                     ],
                 },

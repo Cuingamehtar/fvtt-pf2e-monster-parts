@@ -152,7 +152,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                             );
                         const addedMaterial = await dialogs.choice(
                             allowedMaterials,
-                            t("Dialog.ChooseMaterial.Title"),
+                            t("dialog.choosematerial.title"),
                         );
                         if (addedMaterial) {
                             this.data.imbues.push({
@@ -171,8 +171,8 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                             const addedValue = flag.value;
                             if (
                                 await dialogs.confirm(
-                                    t("Dialog.ConfirmApplyMaterial.Title"),
-                                    t("Dialog.ConfirmApplyMaterial.Content", {
+                                    t("dialog.confirmapplymaterial.title"),
+                                    t("dialog.confirmapplymaterial.content", {
                                         value: addedValue,
                                         material: expectedMaterialLabel,
                                     }),
@@ -245,7 +245,7 @@ export async function configureRefinedItem(item: ItemPF2e) {
             data,
             form: { handler: async () => resolve() },
             window: {
-                title: t("Material.Editor.Title") as string,
+                title: t("material.editor.title") as string,
             },
         }).render(true);
     });

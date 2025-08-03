@@ -6,8 +6,8 @@ export function createImbueFortification(): ImbueSource {
     return {
         key: "imbue:fortification",
         type: "imbue",
-        label: t("Imbue.Fortification.Label"),
-        flavor: t("Imbue.Fortification.Flavor"),
+        label: t("imbue.fortification.label"),
+        flavor: t("imbue.fortification.flavor"),
         itemPredicate: [
             "item:type:armor",
             { or: ["item:category:medium", "item:category:heavy"] },
@@ -26,7 +26,7 @@ export function createImbueFortification(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Fortification.Penalty"),
+                        text: tkey("imbue.fortification.penalty"),
                     },
                     {
                         key: "RuleElement",
@@ -65,7 +65,7 @@ export function createImbueFortification(): ImbueSource {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Fortification.FlatCheck"),
+                            text: tkey("imbue.fortification.flat-check"),
                             parameters: { dc: dc },
                         },
                     ],

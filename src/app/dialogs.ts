@@ -22,7 +22,7 @@ function optionChoiceDialog<T>(
     });
     let content = select.outerHTML;
     return foundry.applications.api.DialogV2.input({
-        window: { title: (title ?? t("Dialog.DefaultTitle")) as string },
+        window: { title: (title ?? t("dialog.defaulttitle")) as string },
         content: content,
         ok: {
             label: "Select",
@@ -51,7 +51,7 @@ function dialogSlider(
     max: number,
 ): Promise<{ value: number } | null> {
     const content = `<input type="range" id="value" name="value" value="${value}" min="${min}" max="${max}" />
-<p>${t("Dialog.SliderValue")}: <output id="display">${value}</output></p>`;
+<p>${t("dialog.slidervalue")}: <output id="display">${value}</output></p>`;
     return foundry.applications.api.DialogV2.input({
         window: { title: title as string },
         content: content,

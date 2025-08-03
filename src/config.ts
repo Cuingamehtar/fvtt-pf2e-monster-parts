@@ -64,7 +64,10 @@ export function createConfig(): void {
             4300, 6500, 1000, 16000, 25000, 45000,
         ],
     };
-    const variant = game.settings.get(MODULE_ID, "variant");
+    const variant = game.settings.get(MODULE_ID, "variant") as
+        | "light"
+        | "hybrid"
+        | "full";
 
     const config: MonsterPartsConfig = {
         thresholds: {

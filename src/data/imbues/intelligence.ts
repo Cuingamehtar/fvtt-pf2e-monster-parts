@@ -7,8 +7,8 @@ export function createImbueIntelligence(): ImbueSource {
     return {
         key: "imbue:intelligence",
         type: "imbue",
-        label: tkey("Imbue.Intelligence.Label"),
-        flavor: tkey("Imbue.Intelligence.Flavor"),
+        label: tkey("imbue.intelligence.label"),
+        flavor: tkey("imbue.intelligence.flavor"),
         monsterPredicate: [{ lte: ["ability:int:rank", 2] }],
         itemPredicate: [{ or: skills.map((s) => `refinement:skill:${s}`) }],
         effects: [
@@ -17,7 +17,7 @@ export function createImbueIntelligence(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Intelligence.Level8"),
+                        text: tkey("imbue.intelligence.level-8"),
                     },
                 ],
             },
@@ -26,7 +26,7 @@ export function createImbueIntelligence(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Intelligence.Level14"),
+                        text: tkey("imbue.intelligence.level-14"),
                     },
                 ],
             },
@@ -35,7 +35,7 @@ export function createImbueIntelligence(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Intelligence.Level20"),
+                        text: tkey("imbue.intelligence.level-20"),
                     },
                 ],
             },
@@ -44,7 +44,7 @@ export function createImbueIntelligence(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Intelligence.Level17"),
+                        text: tkey("imbue.intelligence.level-17"),
                     },
                 ],
             },

@@ -7,46 +7,46 @@ export function createImbueDexterity(): ImbueSource {
     return {
         key: "imbue:dexterity",
         type: "imbue",
-        label: tkey("Imbue.Dexterity.Label"),
+        label: tkey("imbue.dexterity.label"),
         monsterPredicate: [{ lte: ["ability:dex:rank", 2] }],
-        itemPredicate: [{ or: skills.map(s=>`refinement:skill:${s}`) }],
+        itemPredicate: [{ or: skills.map((s) => `refinement:skill:${s}`) }],
         effects: [
             {
                 ...levelRange(8, 13),
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Dexterity.Level8")
-                    }
-                ]
+                        text: tkey("imbue.dexterity.level-8"),
+                    },
+                ],
             },
             {
                 ...levelRange(14, 19),
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Dexterity.Level14")
-                    }
-                ]
+                        text: tkey("imbue.dexterity.level-14"),
+                    },
+                ],
             },
             {
                 ...levelRange(20),
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Dexterity.Level20")
-                    }
-                ]
+                        text: tkey("imbue.dexterity.level-20"),
+                    },
+                ],
             },
             {
                 ...levelRange(17),
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Dexterity.Level17")
-                    }
-                ]
-            }
-        ]
-    }
+                        text: tkey("imbue.dexterity.level-17"),
+                    },
+                ],
+            },
+        ],
+    };
 }

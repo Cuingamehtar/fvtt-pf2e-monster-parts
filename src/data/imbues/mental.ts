@@ -7,8 +7,8 @@ export function createImbueMental(): ImbueSource[] {
         {
             key: "imbue:mental:magic",
             type: "imbue",
-            label: t("Imbue.Mental.Label", {
-                variant: t("Imbue.Variant.Magic"),
+            label: t("imbue.mental.label", {
+                variant: t("imbue.variant.magic"),
             }),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
@@ -41,8 +41,8 @@ export function createImbueMental(): ImbueSource[] {
                     effects: addDamage({
                         type: "mental",
                         value: 1,
-                        label: t("Imbue.Mental.Label", {
-                            variant: t("Imbue.Variant.Magic"),
+                        label: t("imbue.mental.label", {
+                            variant: t("imbue.variant.magic"),
                         }),
                     }),
                 },
@@ -51,8 +51,8 @@ export function createImbueMental(): ImbueSource[] {
                     effects: addDamage({
                         type: "mental",
                         value: "d4",
-                        label: t("Imbue.Mental.Label", {
-                            variant: t("Imbue.Variant.Magic"),
+                        label: t("imbue.mental.label", {
+                            variant: t("imbue.variant.magic"),
                         }),
                     }),
                 },
@@ -61,8 +61,8 @@ export function createImbueMental(): ImbueSource[] {
                     effects: addDamage({
                         type: "mental",
                         value: "d6",
-                        label: t("Imbue.Mental.Label", {
-                            variant: t("Imbue.Variant.Magic"),
+                        label: t("imbue.mental.label", {
+                            variant: t("imbue.variant.magic"),
                         }),
                     }),
                 },
@@ -71,7 +71,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.AddCantrip"),
+                            text: tkey("imbue.add-cantrip"),
                             parameters: {
                                 spell: "@UUID[Compendium.pf2e.spells-srd.Item.4gBIw4IDrSfFHik4]",
                             },
@@ -83,7 +83,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Magic.Level4"),
+                            text: tkey("imbue.mental.magic.level-4"),
                         },
                     ],
                 },
@@ -92,7 +92,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Magic.Level6"),
+                            text: tkey("imbue.mental.magic.level-6"),
                         },
                     ],
                 },
@@ -101,7 +101,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Magic.Level8"),
+                            text: tkey("imbue.mental.magic.level-8"),
                         },
                     ],
                 },
@@ -110,7 +110,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Magic.Level12"),
+                            text: tkey("imbue.mental.magic.level-12"),
                         },
                     ],
                 },
@@ -119,7 +119,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Magic.Level16"),
+                            text: tkey("imbue.mental.magic.level-16"),
                         },
                     ],
                 },
@@ -128,7 +128,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Magic.Level20"),
+                            text: tkey("imbue.mental.magic.level-20"),
                         },
                     ],
                 },
@@ -137,8 +137,8 @@ export function createImbueMental(): ImbueSource[] {
         {
             key: "imbue:mental:might",
             type: "imbue",
-            label: t("Imbue.Mental.Label", {
-                variant: t("Imbue.Variant.Might"),
+            label: t("imbue.mental.label", {
+                variant: t("imbue.variant.might"),
             }),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
@@ -171,8 +171,8 @@ export function createImbueMental(): ImbueSource[] {
                     effects: addDamage({
                         type: "mental",
                         value: 1,
-                        label: t("Imbue.Mental.Label", {
-                            variant: t("Imbue.Variant.Might"),
+                        label: t("imbue.mental.label", {
+                            variant: t("imbue.variant.might"),
                         }),
                     }),
                 },
@@ -181,8 +181,8 @@ export function createImbueMental(): ImbueSource[] {
                     effects: addDamage({
                         type: "mental",
                         value: "d4",
-                        label: t("Imbue.Mental.Label", {
-                            variant: t("Imbue.Variant.Might"),
+                        label: t("imbue.mental.label", {
+                            variant: t("imbue.variant.might"),
                         }),
                     }),
                 },
@@ -191,8 +191,8 @@ export function createImbueMental(): ImbueSource[] {
                     effects: addDamage({
                         type: "mental",
                         value: "d6",
-                        label: t("Imbue.Mental.Label", {
-                            variant: t("Imbue.Variant.Might"),
+                        label: t("imbue.mental.label", {
+                            variant: t("imbue.variant.might"),
                         }),
                     }),
                 },
@@ -201,8 +201,8 @@ export function createImbueMental(): ImbueSource[] {
                     effects: addDamage({
                         type: "mental",
                         value: "d8",
-                        label: t("Imbue.Mental.Label", {
-                            variant: t("Imbue.Variant.Might"),
+                        label: t("imbue.mental.label", {
+                            variant: t("imbue.variant.might"),
                         }),
                     }),
                 },
@@ -211,7 +211,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Might.Level10"),
+                            text: tkey("imbue.mental.might.level-10"),
                         },
                     ],
                 },
@@ -220,7 +220,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Might.Level12"),
+                            text: tkey("imbue.mental.might.level-12"),
                         },
                     ],
                 },
@@ -229,7 +229,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Might.Level16"),
+                            text: tkey("imbue.mental.might.level-16"),
                         },
                     ],
                 },
@@ -238,7 +238,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Might.Level20"),
+                            text: tkey("imbue.mental.might.level-20"),
                         },
                     ],
                 },
@@ -247,8 +247,8 @@ export function createImbueMental(): ImbueSource[] {
         {
             key: "imbue:mental:tech",
             type: "imbue",
-            label: t("Imbue.Mental.Label", {
-                variant: t("Imbue.Variant.Tech"),
+            label: t("imbue.mental.label", {
+                variant: t("imbue.variant.tech"),
             }),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
@@ -281,8 +281,8 @@ export function createImbueMental(): ImbueSource[] {
                     effects: addDamage({
                         type: "mental",
                         value: 1,
-                        label: t("Imbue.Mental.Label", {
-                            variant: t("Imbue.Variant.Tech"),
+                        label: t("imbue.mental.label", {
+                            variant: t("imbue.variant.tech"),
                         }),
                     }),
                 },
@@ -292,8 +292,8 @@ export function createImbueMental(): ImbueSource[] {
                         type: "mental",
                         value: 1,
                         category: "persistent",
-                        label: t("Imbue.Mental.Label", {
-                            variant: t("Imbue.Variant.Tech"),
+                        label: t("imbue.mental.label", {
+                            variant: t("imbue.variant.tech"),
                         }),
                     }),
                 },
@@ -303,8 +303,8 @@ export function createImbueMental(): ImbueSource[] {
                         type: "mental",
                         value: "d6",
                         category: "persistent",
-                        label: t("Imbue.Mental.Label", {
-                            variant: t("Imbue.Variant.Tech"),
+                        label: t("imbue.mental.label", {
+                            variant: t("imbue.variant.tech"),
                         }),
                     }),
                 },
@@ -314,8 +314,8 @@ export function createImbueMental(): ImbueSource[] {
                         type: "mental",
                         value: "d8",
                         category: "persistent",
-                        label: t("Imbue.Mental.Label", {
-                            variant: t("Imbue.Variant.Tech"),
+                        label: t("imbue.mental.label", {
+                            variant: t("imbue.variant.tech"),
                         }),
                     }),
                 },
@@ -325,8 +325,8 @@ export function createImbueMental(): ImbueSource[] {
                         type: "mental",
                         value: "d10",
                         category: "persistent",
-                        label: t("Imbue.Mental.Label", {
-                            variant: t("Imbue.Variant.Tech"),
+                        label: t("imbue.mental.label", {
+                            variant: t("imbue.variant.tech"),
                         }),
                     }),
                 },
@@ -335,7 +335,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Tech.Level8"),
+                            text: tkey("imbue.mental.tech.level-8"),
                         },
                     ],
                 },
@@ -344,7 +344,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Tech.Level12"),
+                            text: tkey("imbue.mental.tech.level-12"),
                         },
                     ],
                 },
@@ -353,7 +353,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Tech.Level16"),
+                            text: tkey("imbue.mental.tech.level-16"),
                         },
                     ],
                 },
@@ -362,7 +362,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Tech.Level16"),
+                            text: tkey("imbue.mental.tech.level-16"),
                         },
                     ],
                 },
@@ -371,7 +371,7 @@ export function createImbueMental(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("Imbue.Mental.Tech.Level20"),
+                            text: tkey("imbue.mental.tech.level-20"),
                         },
                     ],
                 },

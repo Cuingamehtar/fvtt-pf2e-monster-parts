@@ -7,8 +7,8 @@ export function createImbueStrength(): ImbueSource {
     return {
         key: "imbue:strength",
         type: "imbue",
-        label: tkey("Imbue.Strength.Label"),
-        flavor: tkey("Imbue.Strength.Flavor"),
+        label: tkey("imbue.strength.label"),
+        flavor: tkey("imbue.strength.flavor"),
         monsterPredicate: [{ lte: ["ability:str:rank", 2] }],
         itemPredicate: [{ or: skills.map((s) => `refinement:skill:${s}`) }],
         effects: [
@@ -17,7 +17,7 @@ export function createImbueStrength(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Strength.Level8"),
+                        text: tkey("imbue.strength.level-8"),
                     },
                 ],
             },
@@ -26,7 +26,7 @@ export function createImbueStrength(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Strength.Level14"),
+                        text: tkey("imbue.strength.level-14"),
                     },
                 ],
             },
@@ -35,7 +35,7 @@ export function createImbueStrength(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Strength.Level20"),
+                        text: tkey("imbue.strength.level-20"),
                     },
                 ],
             },
@@ -44,7 +44,7 @@ export function createImbueStrength(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Strength.Level17"),
+                        text: tkey("imbue.strength.level-17"),
                     },
                 ],
             },

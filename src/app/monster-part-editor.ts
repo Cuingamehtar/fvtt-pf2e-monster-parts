@@ -95,7 +95,7 @@ export async function configureMonsterPart(item: ItemPF2e) {
                 ) => resolve(formData.object),
             },
             window: {
-                title: t("Material.Editor.Title") as string,
+                title: t("material.editor.title") as string,
             },
         }).render(true);
     });

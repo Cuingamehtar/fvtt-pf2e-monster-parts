@@ -7,7 +7,7 @@ export function createImbueWild(): ImbueSource {
     const imbue: ImbueSource = {
         key: "imbue:wild:might",
         type: "imbue",
-        label: t("Imbue.Wild.Label", { variant: t("Imbue.Variant.Might") }),
+        label: t("imbue.wild.label", { variant: t("imbue.variant.might") }),
         itemPredicate: ["item:type:weapon"],
         monsterPredicate: [],
         effects: [
@@ -28,8 +28,8 @@ export function createImbueWild(): ImbueSource {
                 ...levelRange(4, 5),
                 effects: addWildDamage(
                     1,
-                    t("Imbue.Wild.Label", {
-                        variant: t("Imbue.Variant.Might"),
+                    t("imbue.wild.label", {
+                        variant: t("imbue.variant.might"),
                     }),
                 ),
             },
@@ -37,8 +37,8 @@ export function createImbueWild(): ImbueSource {
                 ...levelRange(6, 7),
                 effects: addWildDamage(
                     "1d4",
-                    t("Imbue.Wild.Label", {
-                        variant: t("Imbue.Variant.Might"),
+                    t("imbue.wild.label", {
+                        variant: t("imbue.variant.might"),
                     }),
                 ),
             },
@@ -46,8 +46,8 @@ export function createImbueWild(): ImbueSource {
                 ...levelRange(8, 17),
                 effects: addWildDamage(
                     "1d6",
-                    t("Imbue.Wild.Label", {
-                        variant: t("Imbue.Variant.Might"),
+                    t("imbue.wild.label", {
+                        variant: t("imbue.variant.might"),
                     }),
                 ),
             },
@@ -55,8 +55,8 @@ export function createImbueWild(): ImbueSource {
                 ...levelRange(18),
                 effects: addWildDamage(
                     "1d8",
-                    t("Imbue.Wild.Label", {
-                        variant: t("Imbue.Variant.Might"),
+                    t("imbue.wild.label", {
+                        variant: t("imbue.variant.might"),
                     }),
                 ),
             },
@@ -65,7 +65,7 @@ export function createImbueWild(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Wild.Might.Level12"),
+                        text: tkey("imbue.wild.might.level-12"),
                     },
                 ],
             },
@@ -74,7 +74,7 @@ export function createImbueWild(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Wild.Might.Level20"),
+                        text: tkey("imbue.wild.might.level-20"),
                     },
                 ],
             },

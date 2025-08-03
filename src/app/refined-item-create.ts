@@ -2,11 +2,11 @@ import { getDroppedItem, t } from "../utils";
 import { RefinedItem } from "../refined-item";
 
 export function createRefinedItemDialog() {
-    const content = `<div style="text-align: center;">${t("Dialog.CreateRefinedItem.Content")}</div>`;
+    const content = `<div style="text-align: center;">${t("dialog.createrefineditem.content")}</div>`;
 
     return foundry.applications.api.DialogV2.wait({
         content: content,
-        window: { title: t("Dialog.CreateRefinedItem.Title") as string },
+        window: { title: t("dialog.createrefineditem.title") as string },
         buttons: [
             {
                 action: "ok",
@@ -21,7 +21,7 @@ export function createRefinedItemDialog() {
                 if (!item) return;
                 if (!item.parent) {
                     ui.notifications.error(
-                        t("Dialog.CreateRefinedItem.ErrorItemNotOwned"),
+                        t("dialog.createrefineditem.erroritemnotowned"),
                     );
                     return;
                 }

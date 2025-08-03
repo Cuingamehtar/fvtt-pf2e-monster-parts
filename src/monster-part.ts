@@ -22,11 +22,11 @@ export async function createMonsterPart(actor: NPCPF2e) {
             (actor?.system.details.level.value ?? -1) + 1
         ];
     const name = actor
-        ? t("Material.Item.NameOwned", {
+        ? t("material.item.name-owned", {
               actor: actor.name,
               value: materialValue,
           })
-        : t("Material.Item.Name");
+        : t("material.item.name");
 
     const actorRollOptions = getExtendedNPCRollOptions(actor);
     const rollOptions = [

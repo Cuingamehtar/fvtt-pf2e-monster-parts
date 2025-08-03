@@ -8,55 +8,55 @@ export function createImbueConstitution(): ImbueSource {
     return {
         key: "imbue:constitution",
         type: "imbue",
-        label: tkey("Imbue.Constitution.Label"),
+        label: tkey("imbue.constitution.label"),
         monsterPredicate: [{ lte: ["ability:con:rank", 2] }],
-        itemPredicate: [{ or: skills.map(s=>`refinement:skill:${s}`) }],
+        itemPredicate: [{ or: skills.map((s) => `refinement:skill:${s}`) }],
         effects: [
             {
                 ...levelRange(8, 13),
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Constitution.Level8")
-                    }
-                ]
+                        text: tkey("imbue.constitution.level-8"),
+                    },
+                ],
             },
             {
                 ...levelRange(14, 17),
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Constitution.Level14")
-                    }
-                ]
+                        text: tkey("imbue.constitution.level-14"),
+                    },
+                ],
             },
             {
                 ...levelRange(18),
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Constitution.Level18")
-                    }
-                ]
+                        text: tkey("imbue.constitution.level-18"),
+                    },
+                ],
             },
             {
                 ...levelRange(17),
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Constitution.Level17")
-                    }
-                ]
+                        text: tkey("imbue.constitution.level-17"),
+                    },
+                ],
             },
             {
                 ...levelRange(20),
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("Imbue.Constitution.Level20")
-                    }
-                ]
-            }
-        ]
-    }
+                        text: tkey("imbue.constitution.level-20"),
+                    },
+                ],
+            },
+        ],
+    };
 }

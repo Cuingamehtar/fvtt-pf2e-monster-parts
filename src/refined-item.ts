@@ -16,18 +16,20 @@ export class RefinedItem {
     static async fromItem(item: PhysicalItemPF2e) {
         if (item.getFlag(MODULE_ID, "refined-item")) {
             ui.notifications.error(
-                t("Dialog.CreateRefinedItem.ErrorItemAlreadyRefined"),
+                t("dialog.create-refined-item.error-item-already-refined"),
             );
             return;
         }
         if (item.getFlag(MODULE_ID, "monster-part")) {
             ui.notifications.error(
-                t("Dialog.CreateRefinedItem.ErrorItemIsMonsterPart"),
+                t("dialog.create-refined-item.error-item-is-monster-part"),
             );
             return;
         }
         if (!["weapon", "armor", "equipment"].includes(item.type)) {
-            ui.notifications.error("Item is not a valid item");
+            ui.notifications.error(
+                t("dialog.create-refined-item.error-item-not-valid-type"),
+            );
             return;
         }
         const config = getConfig();
@@ -41,7 +43,9 @@ export class RefinedItem {
                 .map((m) => ({ key: m.key, label: i18nFormat(m.label) })),
         ];
         if (!applicableRefinements) {
-            ui.notifications.error(`No applicable refinements`);
+            ui.notifications.error(
+                t("dialog.create-refined-item.error-no-applicable-refinements"),
+            );
             return null;
         }
         const choice = await dialogs.choice(applicableRefinements);

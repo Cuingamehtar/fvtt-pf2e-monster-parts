@@ -83,15 +83,15 @@ Hooks.on(
         const selector = html.querySelector("select")!;
         const refinedItemOption = createElement("option", {
             attributes: { value: "refined-item" },
-            innerHTML: t("RefinedItem"),
+            innerHTML: t("refineditem"),
         });
         /*const monsterPartOption = createElement("option", {
             attributes: { value: "monster-part" },
-            innerHTML: t("MonsterPart"),
+            innerHTML: t("monsterpart"),
         });*/
         const optgroup = createElement("optgroup", {
             attributes: {
-                label: t("MonsterParts") as string,
+                label: t("monsterparts") as string,
             },
             children: [refinedItemOption],
         });
