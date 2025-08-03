@@ -13,7 +13,7 @@
         "title": "Confirm applying material",
         "content": "This will add {value} gp to {material} material of the item and delete the monster part."
       },
-      "slider.value": "Value",
+      "slider":{"value": "Value"},
       "create-refined-item": {
         "content": "Drag Actor-owned Item here",
         "title": "Create Refined Item"
@@ -267,13 +267,37 @@
           "level-20": "While the foe has persistent mental damage from the Mental Imbue's Technique Path, the Stupefied condition from a critical hit lasts until the persistent damage ends or for 1 round, whichever is longer."
         }
       },
+      "poison": {
+        "label": "Poison",
+        "flavor": "You imbue the weapon with toxic venom.",
+        "magic": {
+          "level-4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting} once per day.",
+          "level-6": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Noxious Vapors} or @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting} once per day, but not both.",
+          "level-8": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Noxious Vapors}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Imp Sting} and 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting} once per day each.",
+          "level-12": "The weapon can cast 4rd rank @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Noxious Vapors}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Imp Sting}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting} and @UUID[Compendium.pf2e.spells-srd.Item.LVwmAH5NGvTuuQSU]{Swarming Wasp Stings} once per day each.",
+          "level-16": "The weapon can cast 6rd rank @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Noxious Vapors}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Imp Sting}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting}, @UUID[Compendium.pf2e.spells-srd.Item.LVwmAH5NGvTuuQSU]{Swarming Wasp Stings} and @UUID[Compendium.pf2e.spells-srd.Item.ayRXv0wQH00TTNZe]{Purple Worm Sting} once per day each.",
+          "level-20": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.ZMY58Yk5hnyfeE3q]{Linnorm Sting} once per day."
+        },
+        "might": {
+          "level-8": "On a critical hit, the target takes @Damage[1d10[persistent,poison]] damage.",
+          "level-12": "The mental damage dealt by Poison Imbue's Might Path ignores resistances.",
+          "level-14": "On a critical hit, the target takes @Damage[2d10[persistent,poison]] damage.",
+          "level-20": "On a successful Strike with the weapon, before applying poison damage, the target gains weakness 1 to mental until the beginning of your next turn."
+        },
+        "tech": {
+          "level-8": "On a critical hit, the target takes an additional @Damage[1d10[persistent,poison]] damage (As normal, the additional persistent poison damage on a critical hit is cumulative with the regular persistent poison damage, and you add it only after doubling the regular persistent poison damage).",
+          "level-12": "The poison damage dealt by Poison Imbue's Technique Path (including persistent poison damage) ignores resistances.",
+          "level-16": "At the end of a creature’s turn, if it has failed to remove the persistent poison damage from this imbued property, choose @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Clumsy}, @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled}, or @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied}. The creature gains that condition with a condition value of 1, or increases the condition value by 1 if it already had that condition, to a maximum of 3. If the creature ever removes the persistent poison damage from this property, these conditions immediately end. If you reapply the poison later, you must start again from condition values of 0.",
+          "level-20": "On a critical hit, the poison eats away at your foe’s ability to resist further poisoning. They are @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
+        }
+      },
       "strength": {
         "label": "Strength",
         "flavor": "You imbue the item with ferocious <em>strength</em>.",
-        "level-8": "The item can cast earthbind once per day as a primal spell.",
-        "level-14": "The item can cast earthbind once per hour as a primal spell.",
+        "level-8": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per day as a primal spell.",
+        "level-14": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per hour as a primal spell.",
         "level-17": "When you invest the item, you either increase your Strength attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
-        "level-20": "The item can cast earthbind once per minute as a primal spell."
+        "level-20": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per minute as a primal spell."
       },
       "wild": {
         "label": "Wild ({variant})",
@@ -296,10 +320,10 @@
       "wisdom": {
         "label": "Wisdom",
         "flavor": "You imbue the item with sagacious <em>wisdom</em>.",
-        "level-8": "The item can cast augury once per day as an occult spell.",
-        "level-14": "The item can cast augury once per hour as an occult spell.",
+        "level-8": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per day as an occult spell.",
+        "level-14": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per hour as an occult spell.",
         "level-17": "When you invest the item, you either increase your Wisdom attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
-        "level-20": "The item can cast augury once per minute as an occult spell."
+        "level-20": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per minute as an occult spell."
       }
     },
     "settings": {
