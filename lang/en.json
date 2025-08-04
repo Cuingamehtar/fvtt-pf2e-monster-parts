@@ -84,13 +84,13 @@
         },
         "might": {
           "level-8": "On a critical hit, the target's armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
-          "level-12": "The acid damage dealt by Acid Imbue's Might Path ignores resistances.",
+          "level-12": "The acid damage dealt by this imbued property ignores resistances.",
           "level-14": "On a critical hit, the target's armor (if any) takes 6d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
           "level-20": "On a successful Strike with the weapon, before applying acid damage, the target gains weakness 1 to acid until the beginning of your next turn."
         },
         "tech": {
           "level-8": "On a critical hit, the target's armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
-          "level-12": "The acid damage dealt by Acid Imbue's Technique Path (including the persistent acid damage) ignores resistances.",
+          "level-12": "The acid damage dealt by this imbued property (including the persistent acid damage) ignores resistances.",
           "level-16": "The persistent acid damage from the imbued property eats away at a foe's resistances. Every time a foe or the foe's armor or shield takes damage from the persistent acid damage at the end of their turn, any resistances and Hardness decrease by 1 for 1 minute. This effect is cumulative.",
           "level-20": "On a critical hit, acid eats away at the foe's innards, and they are @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
         }
@@ -106,7 +106,7 @@
         },
         "tech": {
           "level-6": "On a critical hit, you sap the strength of a creature of the bane type, causing it to be @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
-          "level-10": "Against a creature of type {creature}, the weapon's base damage ignores the first 5 points of the target's resistance and the persistent bleed damage from Bane Imbue's Technique Path ignores the target's resistance.",
+          "level-10": "Against a creature of type {creature}, the weapon's base damage ignores the first 5 points of the target's resistance and the persistent bleed damage from this imbued property ignores the target's resistance.",
           "level-14": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn. It must also attempt a Fortitude save. On a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn, and on a critical failure, it's destroyed. This effect has the incapacitation trait.",
           "level-20": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}. It must also attempt a Fortitude save. On a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3}, and on a critical failure, it's destroyed. This effect has the incapacitation trait. The enfeebled condition from a critical hit lasts as long as the persistent bleed damage lasts, or until the end of your next turn, whichever is longer."
         }
@@ -130,14 +130,14 @@
         },
         "might": {
           "level-8": "On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC.",
-          "level-12": "The cold damage dealt by Cold Imbue's Might Path ignores resistances.",
+          "level-12": "The cold damage dealt by this imbued property ignores resistances.",
           "level-14": "On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC, and takes –10-foot status penalty to its Speeds for 1 round.",
           "level-20": "On a successful Strike with the weapon, before applying cold damage, the target gains weakness 1 to cold until the beginning of your next turn."
         },
         "tech": {
           "level-6": "On a successful Strike with the weapon, the target takes a –5-foot status penalty to its Speeds for 1 round.",
           "level-8": "On a successful Strike with the weapon, the target takes a –10-foot status penalty to its Speeds for 1 round. On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC.",
-          "level-12": "The persistent cold damage dealt by Cold Imbue's Technique Path ignores resistances.",
+          "level-12": "The persistent cold damage dealt by this imbued property ignores resistances.",
           "level-14": "A creature with their Speeds decreased by the imbued property thaws more slowly. The penalty lasts as long as the persistent cold damage does.",
           "level-16": "Foes adjacent to a surface who critically fail the save against the slow effect freeze to that surface (usually the ground), becoming @UUID[Compendium.pf2e.conditionitems.Item.eIcWbB5o3pP6OIMe] until they [[/act escape]] against the item's DC.",
           "level-20": "On a successful Strike with the weapon, the target takes a –15-foot status penalty to its Speeds for 1 round. On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC."
@@ -170,13 +170,13 @@
         },
         "might": {
           "level-8": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage to up to two other creatures of your choice within 10 feet of the target.",
-          "level-12": "The electricity damage dealt by Electricity Imbue's Might Path ignores resistances.",
+          "level-12": "The electricity damage dealt by this imbued property ignores resistances.",
           "level-14": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage to up to two other creatures of your choice within 20 feet of the target.",
           "level-20": "On a successful Strike with the weapon, before applying electricity damage, the target gains weakness 1 to electricity until the beginning of your next turn."
         },
         "tech": {
           "level-8": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage and persistent electricity damage to up to two other creatures of your choice within 10 feet of the target.",
-          "level-12": "The electricity damage dealt by Electricity Imbue's Technique Path (including persistent electricity damage) ignores resistances.",
+          "level-12": "The electricity damage dealt by this imbued property (including persistent electricity damage) ignores resistances.",
           "level-16": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage and persistent electricity damage to up to four other creatures of your choice within 20 feet of the target.",
           "level-20": "Creatures suffering persistent electricity damage from this imbued property become magnetized, attracting metal weapons. Strikes with metal weapons gain a +1 circumstance bonus to hit them as long as they have the persistent electricity damage."
         }
@@ -193,13 +193,13 @@
         },
         "might": {
           "level-8": "On a critical hit, Strikes with the weapon deal 1d10 persistent fire damage.",
-          "level-12": "The fire damage dealt by Fire Imbue's Might Path (including persistent fire damage) ignores resistances.",
+          "level-12": "The fire damage dealt by this imbued property (including persistent fire damage) ignores resistances.",
           "level-14": "On a critical hit, Strikes with the weapon deal 2d10 persistent fire damage.",
           "level-20": "On a successful Strike with the weapon, before applying fire damage, the target gains weakness 1 to fire until the beginning of your next turn."
         },
         "tech": {
           "level-8": "On a critical hit, the weapon deals 1d10 additional persistent fire damage. (The additional persistent fire damage on a critical hit is cumulative with the regular persistent fire damage, and as normal you add it in only after doubling the regular persistent fire damage).",
-          "level-12": "The fire damage dealt by Fire Imbue's Technique Path (including persistent fire damage) ignores resistances.",
+          "level-12": "The fire damage dealt by this imbued property (including persistent fire damage) ignores resistances.",
           "level-16": "Foes currently affected by persistent fire damage from the imbued property are distracted as they burn, making them @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Off-Guard}.",
           "level-20": "At the end of a burning foe’s turn, when they take damage from the imbued property’s persistent fire damage, all foes adjacent to that foe are set on fire as well, taking the same amount of persistent fire damage."
         }
@@ -216,17 +216,17 @@
         },
         "might": {
           "level-10": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 5 feet away from you.",
-          "level-12": "The force damage dealt by Force Imbue's Might Path ignores resistances.",
+          "level-12": "The force damage dealt by this imbued property ignores resistances.",
           "level-16": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 10 feet away from you.",
           "level-20": "On a successful Strike with the weapon, before applying force damage, the target gains weakness 1 to force until the beginning of your next turn."
         },
         "tech": {
           "level-8": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 5 feet away from you.",
-          "level-12": "The force damage dealt by Force Imbue's Technique Path (including persistent force damage) ignores resistances.",
+          "level-12": "The force damage dealt by this imbued property (including persistent force damage) ignores resistances.",
           "level-14": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 10 feet away from you.",
-          "level-16": "Foes currently affected by persistent force damage from the Force Imbue's Technique Path are knocked about in all directions, making them @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Off-Guard}.",
+          "level-16": "Foes currently affected by persistent force damage from the this imbued property are knocked about in all directions, making them @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Off-Guard}.",
           "level-18": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 20 feet away from you.",
-          "level-20": "At the end of a burning foe’s turn, if it fails to remove the persistent force damage from the Force Imbue's Technique Path, it must succeed at a Fortitude save or be knocked @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60]{Prone}."
+          "level-20": "At the end of a burning foe’s turn, if it fails to remove the persistent force damage from the this imbued property, it must succeed at a Fortitude save or be knocked @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60]{Prone}."
         }
       },
       "fortification": {
@@ -255,16 +255,16 @@
         },
         "might": {
           "level-10": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 1} for 1 round.",
-          "level-12": "The mental damage dealt by Mental Imbue's Might Path ignores resistances.",
+          "level-12": "The mental damage dealt by this imbued property ignores resistances.",
           "level-16": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 2} for 1 round.",
           "level-20": "On a successful Strike with the weapon, before applying mental damage, the target gains weakness 1 to mental until the beginning of your next turn."
         },
         "tech": {
           "level-8": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 1} for 1 round.",
-          "level-12": "The mental damage dealt by Mental Imbue's Technique Path (including persistent mental damage) ignores resistances.",
+          "level-12": "The mental damage dealt by this imbued property (including persistent mental damage) ignores resistances.",
           "level-16": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 2} for 1 round.",
           "level-18": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 20 feet away from you.",
-          "level-20": "While the foe has persistent mental damage from the Mental Imbue's Technique Path, the Stupefied condition from a critical hit lasts until the persistent damage ends or for 1 round, whichever is longer."
+          "level-20": "While the foe has persistent mental damage from the this imbued property, the Stupefied condition from a critical hit lasts until the persistent damage ends or for 1 round, whichever is longer."
         }
       },
       "poison": {
@@ -280,13 +280,13 @@
         },
         "might": {
           "level-8": "On a critical hit, the target takes @Damage[1d10[persistent,poison]] damage.",
-          "level-12": "The mental damage dealt by Poison Imbue's Might Path ignores resistances.",
+          "level-12": "The mental damage dealt by this imbued property ignores resistances.",
           "level-14": "On a critical hit, the target takes @Damage[2d10[persistent,poison]] damage.",
           "level-20": "On a successful Strike with the weapon, before applying poison damage, the target gains weakness 1 to mental until the beginning of your next turn."
         },
         "tech": {
           "level-8": "On a critical hit, the target takes an additional @Damage[1d10[persistent,poison]] damage (As normal, the additional persistent poison damage on a critical hit is cumulative with the regular persistent poison damage, and you add it only after doubling the regular persistent poison damage).",
-          "level-12": "The poison damage dealt by Poison Imbue's Technique Path (including persistent poison damage) ignores resistances.",
+          "level-12": "The poison damage dealt by this imbued property (including persistent poison damage) ignores resistances.",
           "level-16": "At the end of a creature’s turn, if it has failed to remove the persistent poison damage from this imbued property, choose @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Clumsy}, @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled}, or @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied}. The creature gains that condition with a condition value of 1, or increases the condition value by 1 if it already had that condition, to a maximum of 3. If the creature ever removes the persistent poison damage from this property, these conditions immediately end. If you reapply the poison later, you must start again from condition values of 0.",
           "level-20": "On a critical hit, the poison eats away at your foe’s ability to resist further poisoning. They are @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
         }
@@ -299,11 +299,35 @@
         "level-17": "When you invest the item, you either increase your Strength attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
         "level-20": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per minute as a primal spell."
       },
+      "vitality": {
+        "label": "Vitality",
+        "flavor": "You imbue the weapon with the cleansing power of positive energy in order to damage undead. As normal, positive damage only harms undead and other creatures with void healing, such as dhampirs.",
+        "magic": {
+          "level-4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal} once per day.",
+          "level-6": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal} once per day.",
+          "level-8": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal} and 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality} once per day each.",
+          "level-12": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality} and @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Breath of Life} once per day each.",
+          "level-16": "The weapon can cast 5th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, 5th rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality}, @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Breath of Life} and @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Regenerate} once per day each.",
+          "level-20": "The weapon can cast 8th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, 5th rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality}, @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Breath of Life} and 8th rank @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Regenerate} once per day each."
+        },
+        "might": {
+          "level-6": "On a critical hit, the undead is also @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
+          "level-10": "The vitality damage dealt by this imbued property ignores resistances.",
+          "level-14": "On a critical hit, the undead must attempt a Fortitude save. On a critical success, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn, on a success, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until then, on a failure, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until then, and on a critical failure, it’s destroyed. This effect has the incapacitation trait.",
+          "level-20": "On a successful Strike with the weapon, before applying vitality damage, the target gains weakness 1 to vitality until the beginning of your next turn."
+        },
+        "tech": {
+          "level-6": "On a critical hit, the undead is also @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
+          "level-10": "The vitality damage dealt by this imbued property (including persistent vitality damage) ignores resistances.",
+          "level-14": "On a critical hit, the undead is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn. It must also attempt a Fortitude save. On a failure, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn instead of enfeebled 2, and on a critical failure, it’s destroyed. This effect has the incapacitation trait.",
+          "level-20": "Creatures suffering persistent positive damage from this imbued property have difficulty healing from void energy due to the coruscating vitality energy surging through them. If a void effect would cause the creature to recover Hit Points, it must first succeed at a counteract check against the imbued property’s level of 20 and DC of 43. Even on a successful counteract check, the Hit Points recovered are reduced by 1d10. On a critical success, the creature recovers the full amount."
+        }
+      },
       "wild": {
         "label": "Wild ({variant})",
         "might": {
           "damage": "Strikes with the weapon additionally deal {damage} damage. Each time you deal damage, roll 1d6: On a 1, the weapon deals acid damage. On a 2, it deals cold damage. On a 3, it deals electricity damage. On a 4, it deals fire damage. On a 5, it deals negative damage. Finally, on a 6, it deals sonic damage.",
-          "level-12": "The damage dealt by Wild Imbue's Might Path ignores resistances.",
+          "level-12": "The damage dealt by this imbued property ignores resistances.",
           "level-20": "On a successful Strike with the weapon, before applying the additional damage, the target gains weakness 1 to that damage type until the beginning of your next turn."
         }
       },
