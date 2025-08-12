@@ -1,9 +1,6 @@
-import { ItemPF2e } from "foundry-pf2e";
 import { getConfig, getMaterialLabel } from "../config";
 import { getDroppedItem, i18nFormat, t } from "../utils";
 import { MODULE_ID } from "../module";
-import { getExtendedItemRollOptions } from "../itemUtil";
-import { RefinedItemFlags } from "../flags";
 import { RefinedItem } from "../refined-item";
 import { Material } from "../material";
 import { dialogs } from "./dialogs";
@@ -152,7 +149,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                             );
                         const addedMaterial = await dialogs.choice(
                             allowedMaterials,
-                            t("dialog.choosematerial.title"),
+                            t("dialog.choose-material.title"),
                         );
                         if (addedMaterial) {
                             this.data.imbues.push({
@@ -171,8 +168,8 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                             const addedValue = flag.value;
                             if (
                                 await dialogs.confirm(
-                                    t("dialog.confirmapplymaterial.title"),
-                                    t("dialog.confirmapplymaterial.content", {
+                                    t("dialog.confirm-apply-material.title"),
+                                    t("dialog.confirm-apply-material.content", {
                                         value: addedValue,
                                         material: expectedMaterialLabel,
                                     }),
@@ -198,16 +195,10 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 }
 
-export async function configureRefinedItem(item: ItemPF2e) {
+export async function configureRefinedItem(item: RefinedItem) {
     const config = getConfig();
-    const rollOptions = getExtendedItemRollOptions(item);
-    const flag = item.getFlag(MODULE_ID, "refined-item");
-    if (!flag) {
-        ui.notifications.error("Expected refined item data");
-        throw new Error(
-            "Refined item editor window expected refined item data but did not find any",
-        );
-    }
+    const rollOptions = item.getRollOptions();
+    const flag = item.getFlag();
 
     const data: RefinedItemEditorData = {
         possibleRefinements: [
@@ -250,13 +241,13 @@ export async function configureRefinedItem(item: ItemPF2e) {
         }).render(true);
     });
     await promise;
-    const newFlag: RefinedItemFlags = {
+    const newFlag = {
         refinement: {
             key: data.refinement.selected,
             value: data.refinement.value,
         },
         imbues: data.imbues.map((i) => ({ key: i.selected, value: i.value })),
     };
-    await item.setFlag(MODULE_ID, "refined-item", newFlag);
-    RefinedItem.prepareItem(item);
+    await item.item.setFlag(MODULE_ID, "refined-item", newFlag);
+    return item.updateItem();
 }

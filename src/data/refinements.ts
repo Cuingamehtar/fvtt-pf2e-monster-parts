@@ -1,6 +1,11 @@
 import { SkillSlug } from "foundry-pf2e";
 import { MaterialEffectSource, RefinementSource } from "./data-types";
-import { levelRange, predicateAnySense } from "./helpers";
+import {
+    levelRange,
+    predicateAnySense,
+    selfAlteration,
+    shieldAlteration,
+} from "./helpers";
 import { tkey } from "../utils";
 
 export function createDefaultRefinements() {
@@ -9,115 +14,90 @@ export function createDefaultRefinements() {
     const weaponEffects: MaterialEffectSource[] = [
         {
             ...levelRange(2, 9),
-            effects: [{ key: "ItemPotency", value: 1 }],
+            effects: [selfAlteration("potency", 1)],
         },
         {
             ...levelRange(10, 15),
-            effects: [{ key: "ItemPotency", value: 2 }],
+            effects: [selfAlteration("potency", 2)],
         },
         {
             ...levelRange(16),
-            effects: [{ key: "ItemPotency", value: 3 }],
+            effects: [selfAlteration("potency", 3)],
         },
         {
             ...levelRange(4, 11),
-            effects: [{ key: "WeaponStriking", value: 1 }],
+            effects: [selfAlteration("striking", 1)],
         },
         {
             ...levelRange(12, 18),
-            effects: [{ key: "WeaponStriking", value: 2 }],
+            effects: [selfAlteration("striking", 2)],
         },
         {
             ...levelRange(19),
-            effects: [{ key: "WeaponStriking", value: 3 }],
+            effects: [selfAlteration("striking", 3)],
         },
     ];
 
     const armorEffects: MaterialEffectSource[] = [
         {
             ...levelRange(5, 10),
-            effects: [{ key: "ItemPotency", value: 1 }],
+            effects: [selfAlteration("potency", 1)],
         },
         {
             ...levelRange(11, 17),
-            effects: [{ key: "ItemPotency", value: 2 }],
+            effects: [selfAlteration("potency", 2)],
         },
         {
             ...levelRange(18),
-            effects: [{ key: "ItemPotency", value: 3 }],
+            effects: [selfAlteration("potency", 3)],
         },
         {
             ...levelRange(8, 13),
-            effects: [{ key: "ArmorResilient", value: 1 }],
+            effects: [selfAlteration("resilient", 1)],
         },
         {
             ...levelRange(14, 19),
-            effects: [{ key: "ArmorResilient", value: 2 }],
+            effects: [selfAlteration("resilient", 2)],
         },
         {
             ...levelRange(20),
-            effects: [{ key: "ArmorResilient", value: 3 }],
+            effects: [selfAlteration("resilient", 3)],
         },
     ];
 
-    const shieldEffects: MaterialEffectSource[] = [
-        {
-            ...levelRange(3, 4),
-            effects: [{ key: "ShieldImprovement", hardness: 5, hp: 30 }],
-        },
-        {
-            ...levelRange(5, 6),
-            effects: [{ key: "ShieldImprovement", hardness: 6, hp: 36 }],
-        },
-        {
-            ...levelRange(7, 7),
-            effects: [{ key: "ShieldImprovement", hardness: 7, hp: 42 }],
-        },
-        {
-            ...levelRange(8, 8),
-            effects: [{ key: "ShieldImprovement", hardness: 8, hp: 48 }],
-        },
-        {
-            ...levelRange(9, 9),
-            effects: [{ key: "ShieldImprovement", hardness: 9, hp: 54 }],
-        },
-        {
-            ...levelRange(10, 11),
-            effects: [{ key: "ShieldImprovement", hardness: 10, hp: 60 }],
-        },
-        {
-            ...levelRange(12, 12),
-            effects: [{ key: "ShieldImprovement", hardness: 11, hp: 66 }],
-        },
-        {
-            ...levelRange(13, 14),
-            effects: [{ key: "ShieldImprovement", hardness: 12, hp: 72 }],
-        },
-        {
-            ...levelRange(15, 15),
-            effects: [{ key: "ShieldImprovement", hardness: 13, hp: 78 }],
-        },
-        {
-            ...levelRange(16, 16),
-            effects: [{ key: "ShieldImprovement", hardness: 14, hp: 84 }],
-        },
-        {
-            ...levelRange(17, 17),
-            effects: [{ key: "ShieldImprovement", hardness: 15, hp: 90 }],
-        },
-        {
-            ...levelRange(18, 18),
-            effects: [{ key: "ShieldImprovement", hardness: 16, hp: 96 }],
-        },
-        {
-            ...levelRange(19, 19),
-            effects: [{ key: "ShieldImprovement", hardness: 17, hp: 102 }],
-        },
-        {
-            ...levelRange(20),
-            effects: [{ key: "ShieldImprovement", hardness: 18, hp: 108 }],
-        },
+    // level from / level to / hardness / hp
+    const shieldEffectValues = [
+        [3, 4, 5, 30],
+        [5, 6, 6, 36],
+        [7, 7, 7, 42],
+        [8, 8, 8, 48],
+        [9, 9, 9, 54],
+        [10, 11, 10, 60],
+        [12, 12, 11, 66],
+        [13, 14, 12, 72],
+        [15, 15, 13, 78],
+        [16, 16, 14, 84],
+        [17, 17, 15, 90],
+        [18, 18, 16, 96],
+        [19, 19, 17, 102],
+        [20, undefined, 18, 108],
     ];
+    const shieldEffects: MaterialEffectSource[] = shieldEffectValues.flatMap(
+        ([from, to, hardness, hp]) => ({
+            ...levelRange(from as number, to),
+            effects: shieldAlteration(hp as number, hardness as number),
+        }),
+    );
+
+    const bucklerEffects: MaterialEffectSource[] = shieldEffectValues.flatMap(
+        ([from, to, hardness, hp]) => ({
+            ...levelRange(from as number, to),
+            effects: shieldAlteration(
+                (hp as number) - 2,
+                (hardness as number) - 12,
+            ),
+        }),
+    );
 
     const skillEffects: (
         _: SkillSlug | "perception",
@@ -179,6 +159,14 @@ export function createDefaultRefinements() {
             effects: weaponEffects,
         },
         {
+            key: "refinement:armor:unarmored",
+            type: "refinement",
+            label: tkey(`refinement.armor-unarmored`),
+            itemPredicate: ["item:type:armor", "armor:category:unarmored"],
+            monsterPredicate: undefined,
+            effects: armorEffects,
+        },
+        {
             key: "refinement:armor:light",
             type: "refinement",
             label: tkey(`refinement.armor-light`),
@@ -205,8 +193,11 @@ export function createDefaultRefinements() {
         {
             key: "refinement:shield",
             type: "refinement",
-            label: tkey(`refinement.shield`),
-            itemPredicate: ["item:type:shield"],
+            label: tkey(`refinement.shield.label`),
+            itemPredicate: [
+                "shield:type:shield",
+                { not: ["shield:base:buckler"] },
+            ],
             monsterPredicate: [
                 {
                     or: [
@@ -219,6 +210,24 @@ export function createDefaultRefinements() {
                 },
             ],
             effects: shieldEffects,
+        },
+        {
+            key: "refinement:shield:buckler",
+            type: "refinement",
+            label: tkey(`refinement.shield.label-buckler`),
+            itemPredicate: ["shield:type:shield", "shield:base:buckler"],
+            monsterPredicate: [
+                {
+                    or: [
+                        { gte: ["self:hardness", 0] },
+                        { gte: ["self:resistance:physical", 0] },
+                        { gte: ["self:resistance:bludgeoning", 0] },
+                        { gte: ["self:resistance:piercing", 0] },
+                        { gte: ["self:resistance:slashing", 0] },
+                    ],
+                },
+            ],
+            effects: bucklerEffects,
         },
 
         ...skills.map((s) => skillRefinement(s)),

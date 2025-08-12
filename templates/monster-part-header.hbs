@@ -1,0 +1,25 @@
+<div class="monster-part-header">
+    <h3>{{localize "pf2e-monster-parts.monster-part.label"}} ({{localize "pf2e-monster-parts.material.value"}}: {{value}})</h3>
+    <table>
+        <tr>
+            <td style="width:50%"><strong>{{localize "pf2e-monster-parts.material.refinement"}}</strong></td>
+            <td><strong>{{localize "pf2e-monster-parts.material.imbue"}}</strong></td>
+        </tr>
+        <tr>
+            <td>{{#if (gt refinements.length 0)}}
+                <ul>
+                    {{#each refinements}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            {{/if}}</td>
+            <td>{{#if (gt imbues.length 0)}}
+                <ul>
+                    {{#each imbues}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            {{/if}}</td>
+        </tr>
+    </table>
+</div>

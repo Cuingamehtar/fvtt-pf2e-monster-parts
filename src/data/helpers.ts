@@ -1,6 +1,54 @@
 import { Abilities, PredicateStatement, SkillSlug } from "foundry-pf2e";
 import { tkey } from "../utils";
-import { InlineNoteEffectSource, RuleElementEffectSource } from "./data-types";
+import {
+    InlineNoteEffectSource,
+    MaterialEffectSource,
+    RuleElementEffectSource,
+} from "./data-types";
+import { ItemAlterationSource } from "./data-types";
+
+export function selfAlteration(
+    property: ItemAlterationSource["property"],
+    value: number,
+): RuleElementEffectSource {
+    return {
+        key: "RuleElement",
+        rule: {
+            key: "ItemAlteration",
+            mode: "upgrade",
+            property: property,
+            value: value,
+            itemId: "{item|id}",
+        },
+    };
+}
+
+export function shieldAlteration(hp: number, hardness: number) {
+    const effects = [
+        {
+            key: "ItemAlteration",
+            property: "hp-max",
+            mode: "upgrade",
+            value: hp,
+            itemId: "{item|id}",
+        },
+        {
+            key: "ItemAlteration",
+            property: "hardness",
+            mode: "upgrade",
+            value: hardness,
+            itemId: "{item|id}",
+        },
+    ].map((r) => ({ key: "RuleElement", rule: r }));
+    return [
+        ...effects,
+        {
+            key: "InlineNote" as "InlineNote",
+            text: tkey("refinement.shield.inline-note"),
+            parameters: { hardness: hardness, hp: hp, bt: Math.floor(hp / 2) },
+        },
+    ] as MaterialEffectSource["effects"];
+}
 
 export function levelRange(from: number, to?: number) {
     return { levels: { from, to } };
@@ -147,5 +195,3 @@ export function addWildDamage(
     }
     return effects;
 }
-
-export const or = (content: any[]) => ({ or: content });

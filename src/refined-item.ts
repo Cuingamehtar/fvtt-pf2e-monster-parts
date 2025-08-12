@@ -1,40 +1,45 @@
-import { ItemPF2e, PhysicalItemPF2e } from "foundry-pf2e";
-import {
-    getExtendedItemRollOptions,
-    setPotency,
-    setResilient,
-    setStriking,
-} from "./itemUtil";
+import { PhysicalItemPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
-import { getMaterialLevel, RefinedItemFlags } from "./flags";
 import { Material } from "./material";
 import { i18nFormat, t } from "./utils";
 import { dialogs } from "./app/dialogs";
+import { ImbueSource, RefinementSource } from "./data/data-types";
 
 export class RefinedItem {
-    static async fromItem(item: PhysicalItemPF2e) {
-        if (item.getFlag(MODULE_ID, "refined-item")) {
-            ui.notifications.error(
-                t("dialog.create-refined-item.error-item-already-refined"),
-            );
+    item: PhysicalItemPF2e;
+
+    constructor(item: PhysicalItemPF2e) {
+        if (!item.getFlag(MODULE_ID, "refined-item")) {
+            ui.notifications.error(t("refined-item.error-not-refined-item"));
+            throw new Error(t("refined-item.error-not-refined-item") as string);
+        }
+        this.item = item;
+    }
+
+    static async fromOwnedItem(item: PhysicalItemPF2e) {
+        if (!item.parent) {
+            ui.notifications.error(t("refined-item.error-item-not-owned"));
             return;
+        }
+        if (item.getFlag(MODULE_ID, "refined-item")) {
+            ui.notifications.warn(
+                t("refined-item.warn-item-already-refined", {
+                    item: item.name,
+                }),
+            );
+            return this.constructor(item);
         }
         if (item.getFlag(MODULE_ID, "monster-part")) {
             ui.notifications.error(
-                t("dialog.create-refined-item.error-item-is-monster-part"),
-            );
-            return;
-        }
-        if (!["weapon", "armor", "equipment"].includes(item.type)) {
-            ui.notifications.error(
-                t("dialog.create-refined-item.error-item-not-valid-type"),
+                t("refined-item.error-item-is-monster-part"),
             );
             return;
         }
         const config = getConfig();
 
-        const rollOptions = getExtendedItemRollOptions(item as ItemPF2e);
+        // @ts-expect-error
+        const rollOptions = item.getRollOptions();
         const applicableRefinements = [
             ...config.materials
                 .values()
@@ -42,15 +47,15 @@ export class RefinedItem {
                 .filter((m) => new Material(m).testItem({ rollOptions }))
                 .map((m) => ({ key: m.key, label: i18nFormat(m.label) })),
         ];
-        if (!applicableRefinements) {
+        if (applicableRefinements.length == 0) {
             ui.notifications.error(
-                t("dialog.create-refined-item.error-no-applicable-refinements"),
+                t("refined-item.error-no-applicable-refinements"),
             );
             return null;
         }
         const choice = await dialogs.choice(applicableRefinements);
         if (!choice) return;
-        const flags: RefinedItemFlags = {
+        const flags = {
             refinement: {
                 key: choice.selected,
                 value: -item.system.price.value.goldValue,
@@ -59,73 +64,23 @@ export class RefinedItem {
         };
         await item.setFlag(MODULE_ID, "refined-item", flags);
         const refinement = config.materials.get(flags.refinement.key)!;
-        ChatMessage.create({
+        await ChatMessage.create({
             content: `Item ${item.name} was updated to Refined Item with ${i18nFormat(refinement.label)} refinement`,
         });
-        return item;
+        return this.constructor(item);
     }
 
-    static async prepareItem(item: ItemPF2e) {
-        const effects = getEffects(item);
+    getFlag() {
+        return this.item.getFlag(MODULE_ID, "refined-item")!;
+    }
+
+    async updateItem() {
+        const effects = this.getEffects();
         const rules = [];
 
         let updatedData = {};
         for (const effect of effects.flatMap((e) => e?.effects ?? [])) {
             switch (effect.key) {
-                case "ItemPotency":
-                    foundry.utils.mergeObject(
-                        updatedData,
-                        setPotency(effect.value),
-                        {
-                            inplace: true,
-                        },
-                    );
-                    break;
-                case "WeaponStriking":
-                    foundry.utils.mergeObject(
-                        updatedData,
-                        setStriking(effect.value),
-                        {
-                            inplace: true,
-                        },
-                    );
-                    break;
-                case "ArmorResilient":
-                    foundry.utils.mergeObject(
-                        updatedData,
-                        setResilient(effect.value),
-                        {
-                            inplace: true,
-                        },
-                    );
-                    break;
-                case "ShieldImprovement":
-                    let hardness = effect.hardness;
-                    let hp = effect.hp;
-                    const isBuckler =
-                        (item as PhysicalItemPF2e).system.baseItem ===
-                        "buckler";
-                    if (isBuckler) {
-                        hardness -= 2;
-                        hp -= 12;
-                    }
-                    rules.push(
-                        {
-                            key: "ItemAlteration",
-                            property: "hp-max",
-                            mode: "upgrade",
-                            value: hp,
-                            itemId: "{item|id}",
-                        },
-                        {
-                            key: "ItemAlteration",
-                            property: "hardness",
-                            mode: "upgrade",
-                            value: hardness,
-                            itemId: "{item|id}",
-                        },
-                    );
-                    break;
                 case "SkillModifier":
                     rules.push({
                         key: "FlatModifier",
@@ -140,43 +95,76 @@ export class RefinedItem {
             }
         }
         foundry.utils.mergeObject(updatedData, { "system.rules": rules });
-        return item.update(updatedData);
+        return this.item.update(updatedData);
     }
-}
 
-Hooks.on("renderItemSheetPF2e", (sheet, htmlArray, _) => {
-    const html = htmlArray[0] as HTMLDivElement;
-    const div = html.querySelector("div.monster-parts-header");
-    if (!div) return;
-    const item = sheet.item as ItemPF2e;
-    const flags = item.getFlag(MODULE_ID, "refined-item");
-    if (!flags) return;
-    const config = getConfig();
-    const refinement = flags.refinement;
-    const material = config.materials.get(refinement.key)!;
-    div.innerHTML = `<p>${i18nFormat(material.label)} <strong>${getMaterialLevel(refinement, item)} (${Math.floor(refinement.value)} gp)</strong></p>`;
-});
+    getRollOptions() {
+        const options = [
+            // @ts-expect-error
+            ...this.item.getRollOptions(),
+            `item:type:${this.item.type}`,
+        ];
+        const flags = this.item.getFlag(MODULE_ID, "refined-item");
+        if (!flags) return options;
+        return [
+            ...options,
+            ...[flags.refinement, ...flags.imbues].map(
+                (v) =>
+                    `${v.key}:${Material.fromKey(v.key, v.value)?.getLevel(this) ?? 0}`,
+            ),
+        ];
+    }
 
-export function getEffects(item: ItemPF2e) {
-    const config = getConfig();
-    const flags = item.getFlag(MODULE_ID, "refined-item");
-    if (!flags) return [];
-    return [flags.refinement, ...flags.imbues]
-        .filter((m) => config.materials.has(m.key))
-        .map((m) => {
-            const material = config.materials.get(m.key)!;
-            const level = getMaterialLevel(m, item);
+    getEffects() {
+        const flags = this.item.getFlag(MODULE_ID, "refined-item");
+        if (!flags) return [];
+        return [flags.refinement, ...flags.imbues]
+            .map((m) => Material.fromKey(m.key, m.value))
+            .map((m?: Material<RefinementSource | ImbueSource>) => {
+                if (!m) return undefined;
+                const level = m.getLevel(this);
+                const effects = m.getEffects(this);
+                return {
+                    key: m.data.key,
+                    label: m.data.label,
+                    level,
+                    value: m.value,
+                    effects: effects,
+                };
+            });
+    }
+
+    async descriptionHeader() {
+        const flags = this.item.getFlag(MODULE_ID, "refined-item")!;
+
+        const prepare = (m?: Material<RefinementSource | ImbueSource>) => {
+            if (!m) return undefined;
+            const flavor = m.getFlavor(this);
+
             return {
-                label: material.label,
-                level,
+                label: flavor.label,
                 value: m.value,
-                effects: material.effects
-                    .filter(
-                        (e) =>
-                            e.levels.from <= level &&
-                            (!e.levels.to || level <= e.levels.to),
-                    )
-                    .flatMap((e) => e.effects),
+                level: m.getLevel(this),
+                flavor: flavor.flavor,
+                notes: flavor.effects,
             };
-        });
+        };
+
+        const refinement = prepare(
+            Material.fromKey(flags.refinement.key, flags.refinement.value),
+        );
+
+        const imbues = flags.imbues.map((i) =>
+            prepare(Material.fromKey(i.key, i.value)),
+        );
+
+        const templatePath =
+            "modules/pf2e-monster-parts/templates/refined-item-header.hbs";
+        return await foundry.applications.handlebars
+            .renderTemplate(templatePath, {
+                refinement,
+                imbues,
+            })
+            .then((t) => foundry.applications.ux.TextEditor.enrichHTML(t));
+    }
 }

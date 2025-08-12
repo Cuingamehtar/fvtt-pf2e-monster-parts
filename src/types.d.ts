@@ -58,3 +58,36 @@ declare global {
         base: number;
     }
 }
+type MaterialValue = {
+    key: MaterialKey;
+    value: number;
+};
+
+export type RefinedItemFlags = {
+    refinement: MaterialValue;
+    imbues: MaterialValue[];
+};
+
+export type MonsterPartFlags = {
+    value: number;
+    materials: MaterialKey[];
+};
+
+export type ModuleFlags = {
+    ["monster-part"]?: MonsterPartFlags;
+    ["refined-item"]?: RefinedItemFlags;
+    text?: string;
+};
+
+declare module "foundry-pf2e" {
+    interface ItemPF2e {
+        getFlag(
+            scope: "pf2e-monster-parts",
+            key: "monster-part",
+        ): ModuleFlags["monster-part"];
+        getFlag(
+            scope: "pf2e-monster-parts",
+            key: "refined-item",
+        ): ModuleFlags["refined-item"];
+    }
+}

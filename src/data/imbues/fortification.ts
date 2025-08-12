@@ -1,6 +1,6 @@
 import { ImbueSource, MaterialEffectSource } from "../data-types";
 import { t, tkey } from "../../utils";
-import { levelRange, or } from "../helpers";
+import { levelRange } from "../helpers";
 
 export function createImbueFortification(): ImbueSource {
     return {
@@ -13,12 +13,14 @@ export function createImbueFortification(): ImbueSource {
             { or: ["item:category:medium", "item:category:heavy"] },
         ],
         monsterPredicate: [
-            or([
-                "self:resistance:critical-hits",
-                "self:immunity:critical-hits",
-                "self:resistance:precision",
-                "self:immunity:precision",
-            ]),
+            {
+                or: [
+                    "self:resistance:critical-hits",
+                    "self:immunity:critical-hits",
+                    "self:resistance:precision",
+                    "self:immunity:precision",
+                ],
+            },
         ],
         effects: [
             {

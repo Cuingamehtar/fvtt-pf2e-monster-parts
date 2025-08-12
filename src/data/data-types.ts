@@ -1,17 +1,57 @@
 import {
     DamageDiceSource,
     FlatModifierSource,
-    ItemAlterationRuleElement,
     PredicateStatement,
     RollNoteSource,
     RollOptionSource,
     SkillSlug,
 } from "foundry-pf2e";
 
+type ItemAlterationSource = {
+    key: "ItemAlteration";
+    mode:
+        | "add"
+        | "downgrade"
+        | "multiply"
+        | "override"
+        | "remove"
+        | "subtract"
+        | "upgrade";
+    value: number;
+    property:
+        | "ac-bonus"
+        | "area-size"
+        | "badge-max"
+        | "badge-value"
+        | "bulk"
+        | "category"
+        | "check-penalty"
+        | "damage-dice-faces"
+        | "damage-dice-number"
+        | "damage-type"
+        | "defense-passive"
+        | "dex-cap"
+        | "focus-point-cost"
+        | "group"
+        | "hardness"
+        | "hp-max"
+        | "material-type"
+        | "pd-recovery-dc"
+        | "persistent-damage"
+        | "rarity"
+        | "range-increment"
+        | "name"
+        | "potency"
+        | "resilient"
+        | "strength"
+        | "striking";
+    itemId: string;
+};
 // materials
 type MaterialSource = {
     key: MaterialKey;
     label: I18nKey | I18nString;
+    flavor?: I18nKey | I18nString;
     monsterPredicate?: PredicateStatement[];
 };
 
@@ -23,7 +63,6 @@ type RefinementSource = MaterialSource & {
 
 type ImbueSource = MaterialSource & {
     type: "imbue";
-    flavor?: I18nKey | I18nString;
     itemPredicate: PredicateStatement[];
     subtype?: string;
     effects: MaterialEffectSource[];
@@ -68,18 +107,15 @@ type RuleElementEffectSource = {
         | FlatModifierSource
         | RollNoteSource
         | RollOptionSource
-        | ItemAlterationRuleElement;
+        | ItemAlterationSource;
 };
 
 type InlineNoteEffectSource = {
     key: "InlineNote";
-} & (
-    | { text: I18nString }
-    | {
-          text: I18nKey;
-          parameters?: Record<string, string | number | null | undefined>;
-      }
-);
+} & {
+    text: I18nKey | I18nString;
+    parameters?: Record<string, string | number | null | undefined>;
+};
 
 type MaterialEffectSource = {
     levels: LevelRange;
@@ -100,4 +136,5 @@ export type {
     RuleElementEffectSource,
     InlineNoteEffectSource,
     MaterialEffectSource,
+    ItemAlterationSource,
 };

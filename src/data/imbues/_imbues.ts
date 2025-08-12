@@ -15,6 +15,7 @@ import { createImbueWild } from "./wild";
 import { createImbueWinged } from "./winged";
 import { createImbueWisdom } from "./wisdom";
 import { createImbuePoison } from "./poison";
+import { createImbueVitality } from "./vitality";
 
 export function createDefaultImbues() {
     return [
@@ -32,6 +33,7 @@ export function createDefaultImbues() {
         ...createImbueMental(),
         ...createImbuePoison(),
         createImbueStrength(),
+        ...createImbueVitality(),
         createImbueWild(),
         createImbueWinged(),
         createImbueWisdom(),

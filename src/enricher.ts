@@ -1,52 +1,41 @@
 import { PhysicalItemPF2e } from "foundry-pf2e";
-import { getEffects } from "./refined-item";
-import { i18nFormat } from "./utils";
+import { RefinedItem } from "./refined-item";
 import { MODULE_ID } from "./module";
+import { MonsterPart } from "./monster-part";
 
-export function registerEnricher(): void {
-    libWrapper.register(
-        MODULE_ID,
-        "CONFIG.PF2E.Item.documentClasses.weapon.prototype.getDescription",
-        async function (
-            this: PhysicalItemPF2e,
-            wrapped: (options: any) => Promise<{
-                value: string;
-                gm: string;
-            }>,
-            args: any,
-        ) {
-            const description = await wrapped(args);
-            if (!this.getFlag(MODULE_ID, "refined-item")) return description;
-            const effects = getEffects(this);
-            const text = effects.map((m) => {
-                const notes = m.effects
-                    .filter((e) => e.key === "InlineNote")
-                    .map((e) => `<li>${i18nFormat(e.text, e.parameters)}</li>`);
-                const contents =
-                    notes.length === 0 ? `` : `<ul>${notes.join("")}</ul>`;
-                return {
-                    title: `${i18nFormat(m.label)} Level ${m.level} (${m.value} gp)`,
-                    text: contents,
-                };
-            });
-            const header = "Refined item description";
+async function addDescriptionNote(
+    item: PhysicalItemPF2e,
+    description: { value: string; gm: string },
+) {
+    if (item.getFlag(MODULE_ID, "monster-part")) {
+        description.value =
+            (await new MonsterPart(item).descriptionHeader()) +
+            description.value;
+    }
+    if (item.getFlag(MODULE_ID, "refined-item")) {
+        description.value =
+            (await new RefinedItem(item).descriptionHeader()) +
+            description.value;
+    }
+    return description;
+}
 
-            const templatePath =
-                "systems/pf2e/templates/items/partials/addendum.hbs";
-            const addedValue = await foundry.applications.handlebars
-                .renderTemplate(templatePath, {
-                    addendum: {
-                        label: header,
-                        contents: text,
-                    },
-                })
-                .then((e: string) =>
-                    foundry.applications.ux.TextEditor.implementation.enrichHTML(
-                        e,
-                    ),
-                );
-            description.value = addedValue + description.value;
-            return description;
-        },
-    );
+export function registerInlineNotes(): void {
+    const types = ["weapon", "armor", "equipment", "shield"];
+    for (const t of types) {
+        libWrapper.register(
+            MODULE_ID,
+            `CONFIG.PF2E.Item.documentClasses.${t}.prototype.getDescription`,
+            async function (
+                this: PhysicalItemPF2e,
+                wrapped: (options: any) => Promise<{
+                    value: string;
+                    gm: string;
+                }>,
+                args: any,
+            ) {
+                return addDescriptionNote(this, await wrapped(args));
+            },
+        );
+    }
 }

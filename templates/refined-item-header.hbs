@@ -1,0 +1,23 @@
+<div class="refined-item-header">
+    <h3>{{localize "pf2e-monster-parts.refined-item.label"}}</h3>
+    <p><strong>{{refinement.label}} (Level: {{refinement.level}}, Value: {{refinement.value}})</strong>{{#if refinement.flavor}} {{refinement.flavor}}{{/if}}</p>
+    {{#if (gt refinement.notes.length 0)}}
+        <ul>
+            {{#each refinement.notes}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    {{/if}}
+    {{#if (gt imbues.length 0)}}
+        <hr>{{/if}}
+    {{#each imbues as |imbue|}}
+        <p><strong>{{imbue.label}} (Level: {{imbue.level}}, Value: {{imbue.value}})</strong>{{#if imbue.flavor}} {{imbue.flavor}}{{/if}}</p>
+        {{#if (gt imbue.notes.length 0)}}
+            <ul>
+                {{#each imbue.notes}}
+                    <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        {{/if}}
+    {{/each}}
+</div>

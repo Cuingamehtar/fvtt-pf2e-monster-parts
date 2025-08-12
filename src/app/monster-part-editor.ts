@@ -2,6 +2,7 @@ import { ItemPF2e } from "foundry-pf2e";
 import { getConfig } from "../config";
 import { i18nFormat, t } from "../utils";
 import { MODULE_ID } from "../module";
+import { MonsterPart } from "../monster-part";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -83,10 +84,10 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 }
 
-export async function configureMonsterPart(item: ItemPF2e) {
+export async function configureMonsterPart(item: MonsterPart) {
     const promise = new Promise((resolve) => {
         new MonsterPartEditor({
-            item,
+            item: item.item,
             form: {
                 handler: async (
                     event: Event | SubmitEvent,
@@ -108,5 +109,5 @@ export async function configureMonsterPart(item: ItemPF2e) {
             .filter((m) => data[m.key as keyof typeof data])
             .map((m) => m.key),
     };
-    if (item) item.setFlag(MODULE_ID, "monster-part", flags);
+    if (item.item) item.item.setFlag(MODULE_ID, "monster-part", flags);
 }

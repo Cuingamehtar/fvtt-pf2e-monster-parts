@@ -2,11 +2,12 @@ import { getDroppedItem, t } from "../utils";
 import { RefinedItem } from "../refined-item";
 
 export function createRefinedItemDialog() {
-    const content = `<div style="text-align: center;">${t("dialog.createrefineditem.content")}</div>`;
+    const content = `<div style="text-align: center;">${t("dialog.create-refined-item.content")}</div>`;
 
     return foundry.applications.api.DialogV2.wait({
         content: content,
-        window: { title: t("dialog.createrefineditem.title") as string },
+        // @ts-expect-error
+        window: { title: t("dialog.create-refined-item.title") as string },
         buttons: [
             {
                 action: "ok",
@@ -15,17 +16,13 @@ export function createRefinedItemDialog() {
             },
         ],
         render: (renderEvent, dialog) => {
+            // @ts-expect-error
             const input = dialog.window.content as HTMLElement;
             input.addEventListener("drop", async (event) => {
                 const item = await getDroppedItem(event, "Item");
                 if (!item) return;
-                if (!item.parent) {
-                    ui.notifications.error(
-                        t("dialog.createrefineditem.erroritemnotowned"),
-                    );
-                    return;
-                }
-                if (await RefinedItem.fromItem(item)) dialog.close();
+
+                if (await RefinedItem.fromOwnedItem(item)) dialog.close();
             });
         },
     });

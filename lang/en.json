@@ -1,8 +1,18 @@
 {
   "pf2e-monster-parts": {
     "monster-parts": "Monster Parts",
-    "monster-part": "Monster Part",
-    "refined-item": "Refined Item",
+    "monster-part": {
+      "label": "Monster Part",
+      "error-not-monster-part": "This item is not a monster part."
+    },
+    "refined-item": {
+      "label": "Refined Item",
+      "warn-item-already-refined": "{item} is already a refined item.",
+      "error-item-not-owned": "Item must be owned by a character.",
+      "error-item-is-monster-part": "Item has monster part data, it can't be used as abase for refined item.",
+      "error-not-refined-item": "This item is not a refined item.",
+      "error-no-applicable-refinements": "This item type has no applicable refinements."
+    },
     "dialog": {
       "default-title": "Choose an option",
       "choose-material": {
@@ -13,7 +23,9 @@
         "title": "Confirm applying material",
         "content": "This will add {value} gp to {material} material of the item and delete the monster part."
       },
-      "slider":{"value": "Value"},
+      "slider": {
+        "value": "Value"
+      },
       "create-refined-item": {
         "content": "Drag Actor-owned Item here",
         "title": "Create Refined Item"
@@ -33,6 +45,9 @@
       }
     },
     "material": {
+      "refinement": "Refinement",
+      "imbue": "Imbue",
+      "value": "Value",
       "item": {
         "name-owned": "Monster Parts of {actor} ({value} gp)",
         "name": "Monster Parts"
@@ -42,14 +57,19 @@
       }
     },
     "refinement": {
-      "bludgeoning": "Bludgeoning",
-      "piercing": "Piercing",
-      "slashing": "Slashing",
-      "armor-light": "Light Armor",
-      "armor-medium": "Medium Armor",
-      "armor-heavy": "Heavy Armor",
+      "bludgeoning": "Weapon (Bludgeoning)",
+      "piercing": "Weapon (Piercing)",
+      "slashing": "Weapon (Slashing)",
+      "armor-light": "Armor (Light)",
+      "armor-medium": "Armor (Medium)",
+      "armor-heavy": "Armor (Heavy)",
+      "armor-unarmored": "Armor (Unarmored)",
       "perception": "Perception",
-      "shield": "Shield"
+      "shield": {
+        "label": "Shield",
+        "label-buckler": "Shield (Buckler)",
+        "inline-note": "Hardness {hardness}, HP {hp}, BT {bt}"
+      }
     },
     "damage": {
       "normal": "Strikes with the weapon additionally deal {damage} {damageType} damage.",

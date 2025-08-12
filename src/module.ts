@@ -1,17 +1,14 @@
-import { ItemSheetPF2e, NPCSheetPF2e } from "foundry-pf2e";
+import { ItemSheetPF2e, NPCSheetPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { createConfig } from "./config";
-import {
-    getExtendedItemRollOptions,
-    getExtendedNPCRollOptions,
-} from "./itemUtil";
-import { createMonsterPart } from "./monster-part";
+import { getExtendedNPCRollOptions } from "./itemUtil";
 import { registerSettings } from "./settings";
-import { registerEnricher } from "./enricher";
+import { registerInlineNotes } from "./enricher";
 import { configureMonsterPart } from "./app/monster-part-editor";
 import { configureRefinedItem } from "./app/refined-item-editor";
-import type { ItemPF2e } from "foundry-pf2e";
 import { createElement, t } from "./utils";
 import { createRefinedItemDialog } from "./app/refined-item-create";
+import { MonsterPart } from "./monster-part";
+import { RefinedItem } from "./refined-item";
 
 export const MODULE_ID = "pf2e-monster-parts";
 
@@ -21,13 +18,9 @@ Hooks.once("init", () => {
 
     // @ts-expect-error
     game[MODULE_ID] = {
-        createMaterial: createMonsterPart,
-        getExtendedItemRollOptions,
         getExtendedNPCRollOptions,
-        configureMonsterPart,
-        configureRefinedItem,
     };
-    registerEnricher();
+    registerInlineNotes();
 });
 
 Hooks.on(
@@ -47,7 +40,7 @@ Hooks.on(
         btn.innerHTML = '<i class="fa-solid fa-fw fa-skull"></i>';
         btn.classList.add("create-monster-parts");
         btn.setAttribute("data-tooltip", "Create Monster Parts");
-        btn.addEventListener("click", () => createMonsterPart(actor));
+        btn.addEventListener("click", () => MonsterPart.fromCreature(actor));
 
         elem?.insertBefore(btn, elem.firstChild);
     },
@@ -55,14 +48,17 @@ Hooks.on(
 
 Hooks.on(
     "getItemSheetPF2eHeaderButtons",
-    (sheet: ItemSheetPF2e<ItemPF2e>, buttons) => {
+    (sheet: ItemSheetPF2e<PhysicalItemPF2e>, buttons) => {
         const item = sheet.object;
         if (item.getFlag(MODULE_ID, "monster-part")) {
             buttons.unshift({
                 icon: "fas fa-skull",
                 label: "Modify",
                 class: "configure-monster-part",
-                onclick: () => configureMonsterPart(item),
+                onclick: () =>
+                    configureMonsterPart(
+                        new MonsterPart(item as PhysicalItemPF2e),
+                    ),
             });
         }
         if (item.getFlag(MODULE_ID, "refined-item")) {
@@ -70,7 +66,10 @@ Hooks.on(
                 icon: "fas fa-skull",
                 label: "Modify",
                 class: "configure-refined-item",
-                onclick: () => configureRefinedItem(item),
+                onclick: () =>
+                    configureRefinedItem(
+                        new RefinedItem(item as PhysicalItemPF2e),
+                    ),
             });
         }
     },
@@ -83,15 +82,11 @@ Hooks.on(
         const selector = html.querySelector("select")!;
         const refinedItemOption = createElement("option", {
             attributes: { value: "refined-item" },
-            innerHTML: t("refineditem"),
+            innerHTML: t("refined-item.label"),
         });
-        /*const monsterPartOption = createElement("option", {
-            attributes: { value: "monster-part" },
-            innerHTML: t("monsterpart"),
-        });*/
         const optgroup = createElement("optgroup", {
             attributes: {
-                label: t("monsterparts") as string,
+                label: t("monster-parts") as string,
             },
             children: [refinedItemOption],
         });
@@ -104,12 +99,10 @@ Hooks.on(
             button: HTMLButtonElement,
         ) => {
             const value = selector.value;
-            if (["refined-item", "monster-part"].includes(value)) {
+            if (value == "refined-item") {
                 dialog.close();
                 event.stopImmediatePropagation();
-                console.log(value);
-                if (value == "refined-item") createRefinedItemDialog();
-                // TODO: open refined item window
+                createRefinedItemDialog();
             } else {
                 callback(event, button);
             }

@@ -9,7 +9,7 @@ export function t(
 }
 
 export function i18nFormat(
-    m: I18nKey | I18nString,
+    m?: I18nKey | I18nString,
     data?: {
         [key: string]:
             | string
@@ -20,6 +20,7 @@ export function i18nFormat(
             | I18nString;
     },
 ) {
+    if (!m) return "" as I18nString;
     let s = game.i18n.localize(m as string);
     if (!data) return s as I18nString;
     for (const k in data) {

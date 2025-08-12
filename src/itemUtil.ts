@@ -1,31 +1,5 @@
-import type { NPCPF2e, ItemPF2e } from "foundry-pf2e";
-import { MODULE_ID } from "./module";
-import { getMaterialLevel, RefinedItemFlags } from "./flags";
+import type { NPCPF2e } from "foundry-pf2e";
 import { unique } from "./utils";
-
-export function setPotency(value: number) {
-    return { "system.runes.potency": value };
-}
-
-export function setStriking(value: number) {
-    return { "system.runes.striking": value };
-}
-
-export function setResilient(value: number) {
-    return { "system.runes.resilient": value };
-}
-
-export function getExtendedItemRollOptions(item: ItemPF2e) {
-    const options = [...item.getRollOptions(), `item:type:${item.type}`];
-    const flags = item.getFlag(MODULE_ID, "refined-item") as RefinedItemFlags;
-    if (!flags) return options;
-    return [
-        ...options,
-        ...[flags.refinement, ...flags.imbues].map(
-            (v) => `${v.key}:${getMaterialLevel(v, item)}`,
-        ),
-    ];
-}
 
 export function getExtendedNPCRollOptions(actor: NPCPF2e): string[] {
     const baseRollOptions = actor.getRollOptions();

@@ -1,16 +1,17 @@
-/*button.mp-footer {
-    flex-basis: 0;
-    transition: flex-basis 1s;
-    div.text{
-        visibility: hidden;
-        opacity: 0;
-        transition: visibility 1s 0s ease, opacity 1s 0.3s ease;
-    }
+/* copied from addendum style of pf2e system */
+.monster-part-header, .refined-item-header {
+    border-image-repeat: repeat;
+    border-image-slice: 11;
+    border-image-source: url("../../../systems/pf2e/assets/sheet/frame-elegant.svg");
+    border-image-width: 14px;
+    border-style: double;
+    background: rgba(68, 55, 48, 0.1);
+    border-radius: 2px;
+    color: var(--color-pf-alternate-darker);
+    padding: var(--space-4);
+    margin: 0 0 var(--space-8);
 }
-button.mp-footer:hover {
-    flex-basis: 1;
-    div.text{
-        visibility: visible;
-        opacity: 100;
-    }
-}*/
+
+.monster-part-header > table {
+    border:none;
+}
