@@ -1,12 +1,13 @@
 import { SkillSlug } from "foundry-pf2e";
 import { MaterialEffectSource, RefinementSource } from "./data-types";
 import {
+    addItemBonus,
     levelRange,
     predicateAnySense,
     selfAlteration,
     shieldAlteration,
 } from "./helpers";
-import { tkey } from "../utils";
+import { i18nFormat, tkey } from "../utils";
 
 export function createDefaultRefinements() {
     const skills = Object.keys(CONFIG.PF2E.skills) as SkillSlug[];
@@ -53,7 +54,7 @@ export function createDefaultRefinements() {
             ],
         },
         {
-            ...levelRange(16),
+            ...levelRange(16, 18),
             effects: [
                 selfAlteration("potency", 3),
                 selfAlteration("striking", 2),
@@ -78,28 +79,69 @@ export function createDefaultRefinements() {
 
     const armorEffects: MaterialEffectSource[] = [
         {
-            ...levelRange(5, 10),
-            effects: [selfAlteration("potency", 1)],
+            ...levelRange(5, 7),
+            effects: [
+                selfAlteration("potency", 1),
+                {
+                    key: "InlineNote",
+                    text: tkey("refinement.armor.+1"),
+                },
+            ],
         },
         {
-            ...levelRange(11, 17),
-            effects: [selfAlteration("potency", 2)],
+            ...levelRange(8, 10),
+            effects: [
+                selfAlteration("potency", 1),
+                selfAlteration("resilient", 1),
+                {
+                    key: "InlineNote",
+                    text: tkey("refinement.armor.resilient+1"),
+                },
+            ],
         },
         {
-            ...levelRange(18),
-            effects: [selfAlteration("potency", 3)],
+            ...levelRange(11, 13),
+            effects: [
+                selfAlteration("potency", 2),
+                selfAlteration("resilient", 1),
+                {
+                    key: "InlineNote",
+                    text: tkey("refinement.armor.resilient+2"),
+                },
+            ],
         },
         {
-            ...levelRange(8, 13),
-            effects: [selfAlteration("resilient", 1)],
+            ...levelRange(14, 17),
+            effects: [
+                selfAlteration("potency", 2),
+                selfAlteration("resilient", 2),
+                {
+                    key: "InlineNote",
+                    text: tkey("refinement.armor.greater-resilient+2"),
+                },
+            ],
         },
         {
-            ...levelRange(14, 19),
-            effects: [selfAlteration("resilient", 2)],
+            ...levelRange(18, 19),
+            effects: [
+                selfAlteration("potency", 3),
+                selfAlteration("resilient", 2),
+                {
+                    key: "InlineNote",
+                    text: tkey("refinement.armor.greater-resilient+3"),
+                },
+            ],
         },
         {
             ...levelRange(20),
-            effects: [selfAlteration("resilient", 3)],
+            effects: [
+                selfAlteration("potency", 3),
+                selfAlteration("resilient", 3),
+                {
+                    key: "InlineNote",
+                    text: tkey("refinement.armor.major-resilient+3"),
+                },
+            ],
         },
     ];
 
@@ -120,39 +162,99 @@ export function createDefaultRefinements() {
         [19, 19, 17, 102],
         [20, undefined, 18, 108],
     ];
-    const shieldEffects: MaterialEffectSource[] = shieldEffectValues.flatMap(
-        ([from, to, hardness, hp]) => ({
+    const shieldEffects: MaterialEffectSource[] = [
+        ...shieldEffectValues.flatMap(([from, to, hardness, hp]) => ({
             ...levelRange(from as number, to),
             effects: shieldAlteration(hp as number, hardness as number),
-        }),
-    );
+        })),
+        {
+            ...levelRange(4),
+            effects: [
+                {
+                    key: "InlineNote",
+                    text: tkey("refinement.shield.imbuing"),
+                },
+            ],
+        },
+    ];
 
-    const bucklerEffects: MaterialEffectSource[] = shieldEffectValues.flatMap(
-        ([from, to, hardness, hp]) => ({
+    const bucklerEffects: MaterialEffectSource[] = [
+        ...shieldEffectValues.flatMap(([from, to, hardness, hp]) => ({
             ...levelRange(from as number, to),
             effects: shieldAlteration(
                 (hp as number) - 2,
                 (hardness as number) - 12,
             ),
-        }),
-    );
-
-    const skillEffects: (
-        _: SkillSlug | "perception",
-    ) => MaterialEffectSource[] = (skill) => [
+        })),
         {
-            ...levelRange(3, 8),
-            effects: [{ key: "SkillModifier", skill, value: 1 }],
-        },
-        {
-            ...levelRange(9, 16),
-            effects: [{ key: "SkillModifier", skill, value: 2 }],
-        },
-        {
-            ...levelRange(17),
-            effects: [{ key: "SkillModifier", skill, value: 3 }],
+            ...levelRange(4),
+            effects: [
+                {
+                    key: "InlineNote",
+                    text: tkey("refinement.shield.imbuing"),
+                },
+            ],
         },
     ];
+
+    function skillEffects(
+        skill: SkillSlug | "perception",
+        label: I18nKey | I18nString,
+    ): MaterialEffectSource[] {
+        return [
+            {
+                ...levelRange(3, 8),
+                effects: [
+                    addItemBonus(skill, 1),
+                    {
+                        key: "InlineNote",
+                        text: tkey("refinement.skill.item-bonus"),
+                        parameters: {
+                            bonus: 1,
+                            skill: i18nFormat(label) as string,
+                        },
+                    },
+                ],
+            },
+            {
+                ...levelRange(9, 16),
+                effects: [
+                    addItemBonus(skill, 2),
+                    {
+                        key: "InlineNote",
+                        text: tkey("refinement.skill.item-bonus"),
+                        parameters: {
+                            bonus: 2,
+                            skill: i18nFormat(label) as string,
+                        },
+                    },
+                ],
+            },
+            {
+                ...levelRange(17),
+                effects: [
+                    addItemBonus(skill, 3),
+                    {
+                        key: "InlineNote",
+                        text: tkey("refinement.skill.item-bonus"),
+                        parameters: {
+                            bonus: 3,
+                            skill: i18nFormat(label) as string,
+                        },
+                    },
+                ],
+            },
+            {
+                ...levelRange(3),
+                effects: [
+                    {
+                        key: "InlineNote",
+                        text: tkey("refinement.skill.imbuing"),
+                    },
+                ],
+            },
+        ];
+    }
 
     function skillRefinement(skill: SkillSlug): RefinementSource {
         return {
@@ -161,7 +263,10 @@ export function createDefaultRefinements() {
             type: "refinement",
             itemPredicate: ["item:type:equipment"],
             monsterPredicate: [`skill:${skill}:rank:1`],
-            effects: skillEffects(skill),
+            effects: skillEffects(
+                skill,
+                CONFIG.PF2E.skills[skill].label as I18nKey,
+            ),
         };
     }
 
@@ -273,7 +378,7 @@ export function createDefaultRefinements() {
             label: tkey(`refinement.perception`),
             monsterPredicate: [predicateAnySense()],
             itemPredicate: ["item:type:equipment"],
-            effects: skillEffects("perception"),
+            effects: skillEffects("perception", tkey(`refinement.perception`)),
         },
     ];
     return refines;

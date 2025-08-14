@@ -10,7 +10,13 @@ export function createImbueConstitution(): ImbueSource {
         type: "imbue",
         label: tkey("imbue.constitution.label"),
         monsterPredicate: [{ lte: ["ability:con:rank", 2] }],
-        itemPredicate: [{ or: skills.map((s) => `refinement:skill:${s}`) }],
+        itemPredicate: [
+            {
+                or: skills.map((s) => ({
+                    gte: [`refinement:skill:${s}`, 0],
+                })),
+            },
+        ],
         effects: [
             {
                 ...levelRange(8, 13),

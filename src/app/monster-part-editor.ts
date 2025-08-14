@@ -36,7 +36,7 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         },
         window: {
             title: "",
-            width: 550,
+            width: 350,
             height: 600,
             closeOnSubmit: true,
         },

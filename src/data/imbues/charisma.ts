@@ -9,7 +9,13 @@ export function createImbueCharisma(): ImbueSource {
         type: "imbue",
         label: tkey("imbue.charisma.label"),
         monsterPredicate: [{ lte: ["ability:cha:rank", 2] }],
-        itemPredicate: [{ or: skills.map((s) => `refinement:skill:${s}`) }],
+        itemPredicate: [
+            {
+                or: skills.map((s) => ({
+                    gte: [`refinement:skill:${s}`, 0],
+                })),
+            },
+        ],
         effects: [
             {
                 ...levelRange(8, 13),

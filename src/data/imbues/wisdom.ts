@@ -10,7 +10,13 @@ export function createImbueWisdom(): ImbueSource {
         label: tkey("imbue.wisdom.label"),
         flavor: tkey("imbue.wisdom.flavor"),
         monsterPredicate: [{ lte: ["ability:wis:rank", 2] }],
-        itemPredicate: [{ or: skills.map((s) => `refinement:skill:${s}`) }],
+        itemPredicate: [
+            {
+                or: skills.map((s) => ({
+                    gte: [`refinement:skill:${s}`, 0],
+                })),
+            },
+        ],
         effects: [
             {
                 ...levelRange(8, 13),

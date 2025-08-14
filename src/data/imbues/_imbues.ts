@@ -17,6 +17,8 @@ import { createImbueWisdom } from "./wisdom";
 import { createImbuePoison } from "./poison";
 import { createImbueVitality } from "./vitality";
 import { createImbueEnergyResistant } from "./energy-resistant";
+import { createImbueVoid } from "./void";
+import { createImbueSensory } from "./sensory";
 
 export function createDefaultImbues() {
     return [
@@ -34,8 +36,10 @@ export function createDefaultImbues() {
         createImbueIntelligence(),
         ...createImbueMental(),
         ...createImbuePoison(),
+        createImbueSensory(),
         createImbueStrength(),
         ...createImbueVitality(),
+        ...createImbueVoid(),
         createImbueWild(),
         createImbueWinged(),
         createImbueWisdom(),
@@ -43,5 +47,5 @@ export function createDefaultImbues() {
 }
 
 /*
-Chaotic, Energy Resistant, Evil, Good, Lawful, Negative, Positive, Sensory, Sonic, Spell, Sturdy
+Chaotic, Evil, Good, Lawful, Sonic, Spell, Sturdy
  */

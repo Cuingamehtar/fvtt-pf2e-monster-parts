@@ -23,6 +23,21 @@ export function selfAlteration(
     };
 }
 
+export function addItemBonus(
+    skill: string,
+    value: number,
+): RuleElementEffectSource {
+    return {
+        key: "RuleElement",
+        rule: {
+            key: "FlatModifier",
+            selector: skill,
+            type: "item",
+            value: value,
+        },
+    };
+}
+
 export function shieldAlteration(hp: number, hardness: number) {
     const effects = [
         {

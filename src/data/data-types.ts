@@ -4,7 +4,6 @@ import {
     PredicateStatement,
     RollNoteSource,
     RollOptionSource,
-    SkillSlug,
 } from "foundry-pf2e";
 
 type ItemAlterationSource = {
@@ -74,32 +73,6 @@ type LevelRange = {
 };
 
 // Refinement Effect
-type PotencyEffectSource = {
-    key: "ItemPotency";
-    value: number;
-};
-type StrikingEffectSource = {
-    key: "WeaponStriking";
-    value: number;
-};
-
-type ResilientEffectSource = {
-    key: "ArmorResilient";
-    value: number;
-};
-
-type ShieldImprovementEffectSource = {
-    key: "ShieldImprovement";
-    hardness: number;
-    hp: number;
-};
-
-type SkillModifierEffectSource = {
-    key: "SkillModifier";
-    skill: SkillSlug | "perception";
-    value: number;
-};
-
 type RuleElementEffectSource = {
     key: "RuleElement";
     rule:
@@ -119,15 +92,7 @@ type InlineNoteEffectSource = {
 
 type MaterialEffectSource = {
     levels: LevelRange;
-    effects: (
-        | PotencyEffectSource
-        | StrikingEffectSource
-        | ResilientEffectSource
-        | ShieldImprovementEffectSource
-        | RuleElementEffectSource
-        | InlineNoteEffectSource
-        | SkillModifierEffectSource
-    )[];
+    effects: (RuleElementEffectSource | InlineNoteEffectSource)[];
 };
 
 export type {

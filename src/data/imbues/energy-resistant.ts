@@ -1,9 +1,9 @@
 import { ImbueSource, MaterialEffectSource } from "../data-types";
-import { t, tkey } from "../../utils";
+import { i18nFormat, t, tkey } from "../../utils";
 import { levelRange } from "../helpers";
 
 export function createImbueEnergyResistant(): ImbueSource[] {
-    const damageTypes = [
+    const damageTypes: (keyof typeof CONFIG.PF2E.damageTypes)[] = [
         "acid",
         "cold",
         "electricity",
@@ -18,7 +18,7 @@ export function createImbueEnergyResistant(): ImbueSource[] {
             key: `imbue:energy-resistant:armor:${type}`,
             type: "imbue",
             label: t("imbue.energy-resistant.armor-label", {
-                damage: t(`damage.${type}`),
+                damage: i18nFormat(CONFIG.PF2E.damageTypes[type] as I18nKey),
             }),
             flavor: tkey("imbue.energy-resistant.armor-flavor"),
             itemPredicate: ["item:type:armor"],
@@ -55,7 +55,7 @@ export function createImbueEnergyResistant(): ImbueSource[] {
             key: `imbue:energy-resistant:shield:${type}`,
             type: "imbue",
             label: t("imbue.energy-resistant.shield-label", {
-                damage: t(`damage.${type}`),
+                damage: i18nFormat(CONFIG.PF2E.damageTypes[type] as I18nKey),
             }),
             flavor: tkey("imbue.energy-resistant.shield-flavor"),
             itemPredicate: ["item:type:shield"],

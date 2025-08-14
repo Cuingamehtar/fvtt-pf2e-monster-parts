@@ -9,7 +9,13 @@ export function createImbueDexterity(): ImbueSource {
         type: "imbue",
         label: tkey("imbue.dexterity.label"),
         monsterPredicate: [{ lte: ["ability:dex:rank", 2] }],
-        itemPredicate: [{ or: skills.map((s) => `refinement:skill:${s}`) }],
+        itemPredicate: [
+            {
+                or: skills.map((s) => ({
+                    gte: [`refinement:skill:${s}`, 0],
+                })),
+            },
+        ],
         effects: [
             {
                 ...levelRange(8, 13),

@@ -4,7 +4,7 @@
         <label for="refinement-type">{{localize "pf2e-monster-parts.dialog.refined-item-editor.refinement-type"}}</label>
         <select name="refinement-type" id="refinement-type" class="refinement-type">
             {{#each data.possibleRefinements }}
-                <option value="{{this.key}}" {{#if (eq this.key refinement.selected)}}selected{{/if}}>{{this.label}}
+                <option value="{{this.key}}" {{#if (eq this.key ../data.refinement.selected)}}selected{{/if}}>{{this.label}}
                 </option>
             {{/each}}
         </select>
@@ -21,7 +21,7 @@
                 <option value=""></option>
                 {{#each ../data.possibleImbues }}
                     <option value="{{this.key}}"
-                            {{#if (eq this.key imbue.selected)}}selected{{/if}}>{{this.label}}</option>
+                            {{#if (eq this.key ../this.selected)}}selected{{/if}}>{{this.label}}</option>
                 {{/each}}
             </select>
             <label for="imbue-{{@index}}-value">{{localize "pf2e-monster-parts.dialog.refined-item-editor.value"}}</label>

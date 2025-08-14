@@ -144,8 +144,12 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                     const expectedMaterial = select.value;
                     if (expectedMaterial === "") {
                         const allowedMaterials =
-                            this.data.possibleImbues.filter((i) =>
-                                flag.materials.includes(i.key),
+                            this.data.possibleImbues.filter(
+                                (i) =>
+                                    flag.materials.includes(i.key) &&
+                                    !this.data.imbues.some(
+                                        (e) => e.selected == i.key,
+                                    ),
                             );
                         const addedMaterial = await dialogs.choice(
                             allowedMaterials,

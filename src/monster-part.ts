@@ -32,7 +32,6 @@ export class MonsterPart {
         const name = actor
             ? t("material.item.name-owned", {
                   actor: actor.name,
-                  value: materialValue,
               })
             : t("material.item.name");
 

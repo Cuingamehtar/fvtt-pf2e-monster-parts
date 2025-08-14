@@ -91,14 +91,6 @@ export class RefinedItem {
         let updatedData = {};
         for (const effect of effects.flatMap((e) => e?.effects ?? [])) {
             switch (effect.key) {
-                case "SkillModifier":
-                    rules.push({
-                        key: "FlatModifier",
-                        selector: effect.skill,
-                        type: "item",
-                        value: effect.value,
-                    });
-                    break;
                 case "RuleElement":
                     rules.push(effect.rule);
                     break;

@@ -49,7 +49,7 @@
       "imbue": "Imbue",
       "value": "Value",
       "item": {
-        "name-owned": "Monster Parts of {actor} ({value} gp)",
+        "name-owned": "Monster Parts of {actor}",
         "name": "Monster Parts"
       },
       "editor": {
@@ -64,19 +64,32 @@
       "armor-medium": "Armor (Medium)",
       "armor-heavy": "Armor (Heavy)",
       "armor-unarmored": "Armor (Unarmored)",
+      "armor": {
+        "+1": "This is a +1 armor. It grants +1 item bonus to AC and can be imbued 1 time.",
+        "resilient+1": "This is a +1 resilient armor. It grants +1 item bonus to AC and saving throws, and can be imbued 1 time.",
+        "resilient+2": "This is a +2 resilient armor. It grants +2 item bonus to AC, +1 item bonus to saving throws, and can be imbued 2 times.",
+        "greater-resilient+2": "This is a +2 greater resilient armor. It grants +2 item bonus to AC and saving throws, and can be imbued 2 times.",
+        "greater-resilient+3": "This is a +3 greater resilient armor. It grants +3 item bonus to AC, +2 item bonus to saving throws, and can be imbued 3 times.",
+        "major-resilient+3": "This is a +3 major resilient armor. It grants +3 item bonus to AC and saving throws, and can be imbued 3 times."
+      },
       "perception": "Perception",
       "shield": {
         "label": "Shield",
         "label-buckler": "Shield (Buckler)",
-        "inline-note": "This shield has Hardness {hardness}, HP {hp}, BT {bt}"
+        "inline-note": "This shield has Hardness {hardness}, HP {hp}, BT {bt}",
+        "imbuing": "It can be imbued once."
+      },
+      "skill": {
+        "item-bonus": "This item grants +{bonus} item bonus to {skill} checks.",
+        "imbuing": "It can be imbued once."
       },
       "weapon": {
-        "+1": "This is a +1 weapon. It can be imbued 1 time.",
-        "striking+1": "This is a +1 striking weapon. It deals 2 dice of damage and can be imbued 1 time.",
-        "striking+2": "This is a +2 striking weapon. It deals 2 dice of damage and can be imbued 2 times.",
-        "greater-striking+2": "This is a +2 greater striking weapon. It deals 3 dice of damage and can be imbued 2 times.",
-        "greater-striking+3": "This is a +3 greater striking weapon. It deals 3 dice of damage and can be imbued 3 times.",
-        "major-striking+3": "This is a +3 major striking weapon. It deals 4 dice of damage and can be imbued 3 times."
+        "+1": "This is a +1 weapon. It grants +1 item bonus to attack rolls and can be imbued 1 time.",
+        "striking+1": "This is a +1 striking weapon. It grants +1 item bonus to attack rolls, deals 2 dice of damage, and can be imbued 1 time.",
+        "striking+2": "This is a +2 striking weapon. It grants +2 item bonus to attack rolls, deals 2 dice of damage, and can be imbued 2 times.",
+        "greater-striking+2": "This is a +2 greater striking weapon. It grants +2 item bonus to attack rolls, deals 3 dice of damage, and can be imbued 2 times.",
+        "greater-striking+3": "This is a +3 greater striking weapon. It grants +3 item bonus to attack rolls, deals 3 dice of damage, and can be imbued 3 times.",
+        "major-striking+3": "This is a +3 major striking weapon. It grants +3 item bonus to attack rolls, deals 4 dice of damage, and can be imbued 3 times."
       }
     },
     "damage": {
@@ -327,6 +340,18 @@
           "level-20": "On a critical hit, the poison eats away at your foe’s ability to resist further poisoning. They are @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
         }
       },
+      "sensory": {
+        "label": "Sensory",
+        "flavor": "You imbue the item with extraordinary senses.",
+        "level-4": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p>You gain low-light vision for 1 hour.</p>",
+        "level-6": "You gain low-light vision.",
+        "level-8": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p>You gain darkvision for 1 hour.</p>",
+        "level-12": "You gain darkvision.",
+        "level-14": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p>You gain 30-foot imprecise scent for 1 hour.</p>",
+        "level-16": "You gain darkvision and 30-foot imprecise scent.",
+        "level-18": "You gain greater darkvision and 30-foot imprecise scent.",
+        "level-20": "You constantly gain the effects of 6th rank @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]{Truesight} spell."
+      },
       "strength": {
         "label": "Strength",
         "flavor": "You imbue the item with ferocious <em>strength</em>.",
@@ -357,6 +382,30 @@
           "level-10": "The vitality damage dealt by this imbued property (including persistent vitality damage) ignores resistances.",
           "level-14": "On a critical hit, the undead is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn. It must also attempt a Fortitude save. On a failure, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn instead of enfeebled 2, and on a critical failure, it’s destroyed. This effect has the incapacitation trait.",
           "level-20": "Creatures suffering persistent positive damage from this imbued property have difficulty healing from void energy due to the coruscating vitality energy surging through them. If a void effect would cause the creature to recover Hit Points, it must first succeed at a counteract check against the imbued property’s level of 20 and DC of 43. Even on a successful counteract check, the Hit Points recovered are reduced by 1d10. On a critical success, the creature recovers the full amount."
+        }
+      },
+      "void": {
+        "label": "Void",
+        "flavor": "You imbue the weapon with void energy, cosmological destruction.",
+        "magic": {
+          "level-4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} once per day.",
+          "level-6": "The weapon can cast either 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} or @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Sudden Blight} once per day, but not both.",
+          "level-8": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} and 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Sudden Blight} once per day each.",
+          "level-12": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm}, 4rd rank @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Sudden Blight} and @UUID[Compendium.pf2e.spells-srd.Item.eexkxcqnkXazsGfK]{Enervation} once per day each.",
+          "level-16": "The weapon can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm}, 6th rank @UUID[Compendium.pf2e.spells-srd.Item.eexkxcqnkXazsGfK]{Enervation} and @UUID[Compendium.pf2e.spells-srd.Item.6lO6uMQxbqmYho0e]{Necrotize} once per day each.",
+          "level-20": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.FEsuyf203wTNE2et]{Wails of the Damned} once per day."
+        },
+        "might": {
+          "level-10": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} for 1 round.",
+          "level-12": "The void damage dealt by this imbued property ignores resistances.",
+          "level-16": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} for 1 round.",
+          "level-20": "On a successful Strike with the weapon, before applying void damage, the target gains weakness 1 to void until the beginning of your next turn."
+        },
+        "tech": {
+          "level-8": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} for 1 round.",
+          "level-12": "The void damage dealt by this imbued property (including persistent void damage) ignores resistances.",
+          "level-16": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} for 1 round.",
+          "level-20": "While the foe has persistent void damage from the imbued property, the enfeebled condition from a critical hit lasts until the persistent damage ends or for 1 round, whichever is longer."
         }
       },
       "wild": {
