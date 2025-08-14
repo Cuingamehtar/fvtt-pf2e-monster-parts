@@ -10,8 +10,12 @@
     color: var(--color-pf-alternate-darker);
     padding: var(--space-4);
     margin: 0 0 var(--space-8);
-}
 
-.monster-part-header > table {
-    border:none;
+    h3{
+        text-align: center;
+    }
+
+    table {
+        border:none;
+    }
 }

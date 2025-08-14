@@ -10,7 +10,7 @@ export function createImbueFortification(): ImbueSource {
         flavor: t("imbue.fortification.flavor"),
         itemPredicate: [
             "item:type:armor",
-            { or: ["item:category:medium", "item:category:heavy"] },
+            { or: ["armor:category:medium", "armor:category:heavy"] },
         ],
         monsterPredicate: [
             {

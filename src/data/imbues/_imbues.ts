@@ -16,6 +16,7 @@ import { createImbueWinged } from "./winged";
 import { createImbueWisdom } from "./wisdom";
 import { createImbuePoison } from "./poison";
 import { createImbueVitality } from "./vitality";
+import { createImbueEnergyResistant } from "./energy-resistant";
 
 export function createDefaultImbues() {
     return [
@@ -26,6 +27,7 @@ export function createDefaultImbues() {
         createImbueConstitution(),
         createImbueDexterity(),
         ...createImbueElectricity(),
+        ...createImbueEnergyResistant(),
         ...createImbueFire(),
         ...createImbueForce(),
         createImbueFortification(),

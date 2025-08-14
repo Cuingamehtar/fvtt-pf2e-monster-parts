@@ -68,7 +68,15 @@
       "shield": {
         "label": "Shield",
         "label-buckler": "Shield (Buckler)",
-        "inline-note": "Hardness {hardness}, HP {hp}, BT {bt}"
+        "inline-note": "This shield has Hardness {hardness}, HP {hp}, BT {bt}"
+      },
+      "weapon": {
+        "+1": "This is a +1 weapon. It can be imbued 1 time.",
+        "striking+1": "This is a +1 striking weapon. It deals 2 dice of damage and can be imbued 1 time.",
+        "striking+2": "This is a +2 striking weapon. It deals 2 dice of damage and can be imbued 2 times.",
+        "greater-striking+2": "This is a +2 greater striking weapon. It deals 3 dice of damage and can be imbued 2 times.",
+        "greater-striking+3": "This is a +3 greater striking weapon. It deals 3 dice of damage and can be imbued 3 times.",
+        "major-striking+3": "This is a +3 major striking weapon. It deals 4 dice of damage and can be imbued 3 times."
       }
     },
     "damage": {
@@ -200,6 +208,14 @@
           "level-16": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage and persistent electricity damage to up to four other creatures of your choice within 20 feet of the target.",
           "level-20": "Creatures suffering persistent electricity damage from this imbued property become magnetized, attracting metal weapons. Strikes with metal weapons gain a +1 circumstance bonus to hit them as long as they have the persistent electricity damage."
         }
+      },
+      "energy-resistant": {
+        "armor-label": "Energy Resistant (Armor, {damage})",
+        "shield-label": "Energy Resistant (Shield, {damage})",
+        "armor-flavor": "You imbue the armor to protect yourself from a particular type of energy.",
+        "shield-flavor": "You imbue the shield to protect yourself from a particular type of energy.",
+        "armor-effect": "While wearing the armor, you gain resistance {level} to the chosen energy damage type. Additionally, the armor itself gains the same resistance.",
+        "shield-effect": "While wielding the shield, you gain resistance {level} to the chosen energy damage type. Additionally, the shield itself gains the same resistance (applied after you reduce the damage by the shield's Hardness). You can use Shield Block any time you would take the chosen damage type, in addition to its usual trigger."
       },
       "fire": {
         "label": "Fire ({variant})",

@@ -38,8 +38,11 @@ export class RefinedItem {
         }
         const config = getConfig();
 
-        // @ts-expect-error
-        const rollOptions = item.getRollOptions();
+        const rollOptions = [
+            `item:type:${item.type}`,
+            // @ts-expect-error
+            ...item.getRollOptions(),
+        ];
         const applicableRefinements = [
             ...config.materials
                 .values()
@@ -65,9 +68,9 @@ export class RefinedItem {
         await item.setFlag(MODULE_ID, "refined-item", flags);
         const refinement = config.materials.get(flags.refinement.key)!;
         await ChatMessage.create({
-            content: `Item ${item.name} was updated to Refined Item with ${i18nFormat(refinement.label)} refinement`,
+            content: `<p>Item <strong>${item.name}</strong> was updated to Refined Item with <strong>${i18nFormat(refinement.label)}</strong> refinement.</p>`,
         });
-        return this.constructor(item);
+        return new RefinedItem(item);
     }
 
     getFlag() {
@@ -77,6 +80,13 @@ export class RefinedItem {
     async updateItem() {
         const effects = this.getEffects();
         const rules = [];
+
+        const flag = this.getFlag();
+        const level =
+            Material.fromKey(
+                flag.refinement.key,
+                flag.refinement.value,
+            )?.getLevel(this) ?? 0;
 
         let updatedData = {};
         for (const effect of effects.flatMap((e) => e?.effects ?? [])) {
@@ -94,7 +104,10 @@ export class RefinedItem {
                     break;
             }
         }
-        foundry.utils.mergeObject(updatedData, { "system.rules": rules });
+        foundry.utils.mergeObject(updatedData, {
+            "system.rules": rules,
+            "system.level.value": level,
+        });
         return this.item.update(updatedData);
     }
 

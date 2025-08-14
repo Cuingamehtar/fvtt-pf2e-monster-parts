@@ -1,11 +1,11 @@
 <div>
-    <label for="material-value">{{localize pf2e-monster-parts.dialog.monster-part-editor.value}}</label>
+    <label for="material-value">{{localize "pf2e-monster-parts.dialog.monster-part-editor.value"}}</label>
     <input type="number" name="material-value" id="material-value" value="{{settings.value}}" step="0.1" />
     <table>
         <tr>
             <td>
                 <fieldset>
-                    <legend>{{localize pf2e-monster-parts.dialog.monster-part-editor.refinements}}</legend>
+                    <legend>{{localize "pf2e-monster-parts.dialog.monster-part-editor.refinements"}}</legend>
                     <div style="overflow-y:scroll;height:400px;">
                         {{#each settings.refinements}}
                             <p>
@@ -17,7 +17,7 @@
             </td>
             <td>
                 <fieldset>
-                    <legend>{{localize pf2e-monster-parts.dialog.monster-part-editor.imbues}}</legend>
+                    <legend>{{localize "pf2e-monster-parts.dialog.monster-part-editor.imbues"}}</legend>
                     <div style="overflow-y:scroll;height:400px;">
                         {{#each settings.imbues}}
                             <p>

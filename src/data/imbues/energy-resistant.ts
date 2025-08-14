@@ -1,7 +1,6 @@
-import { ImbueSource } from "../data-types";
+import { ImbueSource, MaterialEffectSource } from "../data-types";
 import { t, tkey } from "../../utils";
-import { addDamage, levelRange } from "../helpers";
-import { DAMAGE_TYPES } from "foundry-pf2e";
+import { levelRange } from "../helpers";
 
 export function createImbueEnergyResistant(): ImbueSource[] {
     const damageTypes = [
@@ -13,141 +12,81 @@ export function createImbueEnergyResistant(): ImbueSource[] {
         "sonic",
         "vitality",
         "void",
-    ];/*
-    return damageTypes.map((type) => {
-        return {
+    ];
+    return damageTypes.flatMap((type) => [
+        {
             key: `imbue:energy-resistant:armor:${type}`,
             type: "imbue",
-            label: t("imbue.energyresitant.label", {
-                // @ts-expect-error
-                variant: t(`Damage.${type}`),
+            label: t("imbue.energy-resistant.armor-label", {
+                damage: t(`damage.${type}`),
             }),
-            flavor: t("imbue.energyresistant.flavor", {
-                // @ts-expect-error
-                type: t(`Damage.${type}`}
-            ),
-            itemPredicate: ["item:type:armor"],*/
-            /*monsterPredicate: [
+            flavor: tkey("imbue.energy-resistant.armor-flavor"),
+            itemPredicate: ["item:type:armor"],
+            monsterPredicate: [
                 {
                     or: [
-                        "self:trait:electricity",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:electricity",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:electricity",
-                                    ],
-                                },
-                            ],
-                        },
+                        { gt: [`self:resistance:${type}` as string, 0] },
+                        `self:immunity:${type}`,
                     ],
                 },
             ],
-            effects: [
-                {
-                    ...levelRange(10, 13),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: 1,
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(14, 17),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: "d4",
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: "d6",
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(2),
+            effects: Array.fromRange(20, 1).map(
+                (level): MaterialEffectSource => ({
+                    ...levelRange(level, level),
                     effects: [
                         {
-                            key: "InlineNote",
-                            text: tkey("imbue.add-cantrip"),
-                            parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf]",
+                            key: "RuleElement",
+                            rule: {
+                                key: "Resistance",
+                                type: type,
+                                value: level,
                             },
                         },
-                    ],
-                },
-                {
-                    ...levelRange(4, 5),
-                    effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-4"),
+                            text: tkey("imbue.energy-resistant.armor-effect"),
+                            parameters: { level },
                         },
                     ],
-                },
+                }),
+            ),
+        },
+        {
+            key: `imbue:energy-resistant:shield:${type}`,
+            type: "imbue",
+            label: t("imbue.energy-resistant.shield-label", {
+                damage: t(`damage.${type}`),
+            }),
+            flavor: tkey("imbue.energy-resistant.shield-flavor"),
+            itemPredicate: ["item:type:shield"],
+            monsterPredicate: [
                 {
-                    ...levelRange(6, 15),
+                    or: [
+                        { gt: [`self:resistance:${type}` as string, 0] },
+                        `self:immunity:${type}`,
+                    ],
+                },
+            ],
+            effects: Array.fromRange(20, 1).map(
+                (level): MaterialEffectSource => ({
+                    ...levelRange(level, level),
                     effects: [
                         {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-6"),
+                            key: "RuleElement",
+                            rule: {
+                                key: "Resistance",
+                                type: type,
+                                value: level,
+                            },
                         },
-                    ],
-                },
-                {
-                    ...levelRange(8, 11),
-                    effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-8"),
+                            text: tkey("imbue.energy-resistant.shield-effect"),
+                            parameters: { level },
                         },
                     ],
-                },
-                {
-                    ...levelRange(12, 15),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(16, 19),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-16"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-20"),
-                        },
-                    ],
-                },
-            ],*/
-        };
-    });
+                }),
+            ),
+        },
+    ]);
 }

@@ -13,28 +13,66 @@ export function createDefaultRefinements() {
 
     const weaponEffects: MaterialEffectSource[] = [
         {
-            ...levelRange(2, 9),
-            effects: [selfAlteration("potency", 1)],
+            ...levelRange(2, 3),
+            effects: [
+                selfAlteration("potency", 1),
+                { key: "InlineNote", text: tkey("refinement.weapon.+1") },
+            ],
         },
         {
-            ...levelRange(10, 15),
-            effects: [selfAlteration("potency", 2)],
+            ...levelRange(4, 9),
+            effects: [
+                selfAlteration("potency", 1),
+                selfAlteration("striking", 1),
+                {
+                    key: "InlineNote",
+                    text: tkey("refinement.weapon.striking+1"),
+                },
+            ],
+        },
+        {
+            ...levelRange(10, 11),
+            effects: [
+                selfAlteration("potency", 2),
+                selfAlteration("striking", 1),
+                {
+                    key: "InlineNote",
+                    text: tkey("refinement.weapon.striking+2"),
+                },
+            ],
+        },
+        {
+            ...levelRange(12, 15),
+            effects: [
+                selfAlteration("potency", 2),
+                selfAlteration("striking", 2),
+                {
+                    key: "InlineNote",
+                    text: tkey("refinement.weapon.greater-striking+2"),
+                },
+            ],
         },
         {
             ...levelRange(16),
-            effects: [selfAlteration("potency", 3)],
-        },
-        {
-            ...levelRange(4, 11),
-            effects: [selfAlteration("striking", 1)],
-        },
-        {
-            ...levelRange(12, 18),
-            effects: [selfAlteration("striking", 2)],
+            effects: [
+                selfAlteration("potency", 3),
+                selfAlteration("striking", 2),
+                {
+                    key: "InlineNote",
+                    text: tkey("refinement.weapon.greater-striking+3"),
+                },
+            ],
         },
         {
             ...levelRange(19),
-            effects: [selfAlteration("striking", 3)],
+            effects: [
+                selfAlteration("potency", 3),
+                selfAlteration("striking", 3),
+                {
+                    key: "InlineNote",
+                    text: tkey("refinement.weapon.major-striking+3"),
+                },
+            ],
         },
     ];
 
@@ -194,10 +232,7 @@ export function createDefaultRefinements() {
             key: "refinement:shield",
             type: "refinement",
             label: tkey(`refinement.shield.label`),
-            itemPredicate: [
-                "shield:type:shield",
-                { not: ["shield:base:buckler"] },
-            ],
+            itemPredicate: ["item:type:shield", { not: "shield:base:buckler" }],
             monsterPredicate: [
                 {
                     or: [
@@ -215,7 +250,7 @@ export function createDefaultRefinements() {
             key: "refinement:shield:buckler",
             type: "refinement",
             label: tkey(`refinement.shield.label-buckler`),
-            itemPredicate: ["shield:type:shield", "shield:base:buckler"],
+            itemPredicate: ["item:type:shield", "shield:base:buckler"],
             monsterPredicate: [
                 {
                     or: [
