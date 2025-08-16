@@ -8,6 +8,7 @@ export function createImbueWild(): ImbueSource {
         key: "imbue:wild:might",
         type: "imbue",
         label: t("imbue.wild.label", { variant: t("imbue.variant.might") }),
+        flavor: tkey("imbue.wild.flavor"),
         itemPredicate: ["item:type:weapon"],
         monsterPredicate: [],
         effects: [

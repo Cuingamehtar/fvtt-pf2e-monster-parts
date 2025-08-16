@@ -3,11 +3,12 @@ import { ImbueSource } from "../data-types";
 import { addDamage, levelRange } from "../helpers";
 
 export function createImbueCold(): ImbueSource[] {
-    const imbues: ImbueSource[] = [
+    return [
         {
             key: "imbue:cold:magic",
             type: "imbue",
             label: t("imbue.cold.label", { variant: t("imbue.variant.magic") }),
+            flavor: tkey("imbue.cold.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
@@ -135,6 +136,7 @@ export function createImbueCold(): ImbueSource[] {
             key: "imbue:cold:might",
             type: "imbue",
             label: t("imbue.cold.label", { variant: t("imbue.variant.might") }),
+            flavor: tkey("imbue.cold.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
@@ -242,6 +244,7 @@ export function createImbueCold(): ImbueSource[] {
             key: "imbue:cold:tech",
             type: "imbue",
             label: t("imbue.cold.label", { variant: t("imbue.variant.tech") }),
+            flavor: tkey("imbue.cold.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
@@ -337,6 +340,4 @@ export function createImbueCold(): ImbueSource[] {
             ],
         },
     ];
-
-    return imbues;
 }

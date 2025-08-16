@@ -8,6 +8,7 @@ export function createImbueDexterity(): ImbueSource {
         key: "imbue:dexterity",
         type: "imbue",
         label: tkey("imbue.dexterity.label"),
+        flavor: tkey("imbue.dexterity.flavor"),
         monsterPredicate: [{ lte: ["ability:dex:rank", 2] }],
         itemPredicate: [
             {

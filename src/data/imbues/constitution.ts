@@ -9,6 +9,7 @@ export function createImbueConstitution(): ImbueSource {
         key: "imbue:constitution",
         type: "imbue",
         label: tkey("imbue.constitution.label"),
+        flavor: tkey("imbue.constitution.flavor"),
         monsterPredicate: [{ lte: ["ability:con:rank", 2] }],
         itemPredicate: [
             {

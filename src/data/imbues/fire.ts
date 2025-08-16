@@ -8,6 +8,7 @@ export function createImbueFire(): ImbueSource[] {
             key: "imbue:fire:magic",
             type: "imbue",
             label: t("imbue.fire.label", { variant: t("imbue.variant.magic") }),
+            flavor: tkey("imbue.fire.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
@@ -135,6 +136,7 @@ export function createImbueFire(): ImbueSource[] {
             key: "imbue:fire:might",
             type: "imbue",
             label: t("imbue.fire.label", { variant: t("imbue.variant.might") }),
+            flavor: tkey("imbue.fire.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
@@ -242,6 +244,7 @@ export function createImbueFire(): ImbueSource[] {
             key: "imbue:fire:tech",
             type: "imbue",
             label: t("imbue.fire.label", { variant: t("imbue.variant.tech") }),
+            flavor: tkey("imbue.fire.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {

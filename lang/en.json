@@ -115,6 +115,7 @@
       "add-cantrip": "The weapon can cast {spell} as a cantrip, heightened to half the item's level rounded up.",
       "acid": {
         "label": "Acid ({variant})",
+        "flavor": "You imbue the weapon with vitriolic <em>acid</em>.",
         "magic": {
           "level-4": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] once per day.",
           "level-6": "The weapon can cast either 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] or 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] once per day, but not both.",
@@ -154,6 +155,7 @@
       },
       "charisma": {
         "label": "Charisma",
+        "flavor": "You imbue the item with dazzling <em>charisma</em>.",
         "level-8": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Heroism} once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness.",
         "level-14": "The item can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Heroism} once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness.",
         "level-17": "When you invest the item, you either increase your Charisma attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
@@ -161,6 +163,7 @@
       },
       "cold": {
         "label": "Cold ({variant})",
+        "flavor": "You imbue the weapon with chilling <em>cold</em>.",
         "magic": {
           "level-4": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0] once per day.",
           "level-6": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0] once per day.",
@@ -186,6 +189,7 @@
       },
       "constitution": {
         "label": "Constitution",
+        "flavor": "You imbue the item with resilient <em>constitution</em>.",
         "level-8": "The item can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only, once per day as a divine spell.",
         "level-14": "The item can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only, once per day as a divine spell.",
         "level-17": "When you invest the item, you either increase your Constitution attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
@@ -194,6 +198,7 @@
       },
       "dexterity": {
         "label": "Dexterity",
+        "flavor": "You imbue the item with deft <em>dexterity</em>.",
         "level-8": "Once per day, you can use a single action activation with manipulate trait to gain a +10-foot status bonus to all your Speeds for 10 minutes.",
         "level-14": "Once per day, you can use a single action activation with manipulate trait to gain a +20-foot status bonus to all your Speeds for 10 minutes. While activated, you gain the effects of @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Water Walk}.",
         "level-17": "When you invest the item, you either increase your Dexterity attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
@@ -201,6 +206,7 @@
       },
       "electricity": {
         "label": "Electricity ({variant})",
+        "flavor": "You imbue the weapon with shocking <em>electricity</em>.",
         "magic": {
           "level-4": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} once per day.",
           "level-6": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} once per day.",
@@ -232,6 +238,7 @@
       },
       "fire": {
         "label": "Fire ({variant})",
+        "flavor": "You imbue the weapon with burning <em>fire</em>.",
         "magic": {
           "level-4": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t]{Breathe Fire} once per day.",
           "level-6": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t]{Breathe Fire} once per day.",
@@ -255,6 +262,7 @@
       },
       "force": {
         "label": "Force ({variant})",
+        "flavor": "You imbue the weapon with pure <em>force</em>.",
         "magic": {
           "level-4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage} once per day.",
           "level-6": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage} or @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw]{Spiritual Weapon} once per day, but not both.",
@@ -294,6 +302,7 @@
       },
       "mental": {
         "label": "Mental ({variant})",
+        "flavor": "You imbue the weapon with psychic power.",
         "magic": {
           "level-4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain} once per day.",
           "level-6": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain} or @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM]{Warrior's Regret} once per day, but not both.",
@@ -337,6 +346,22 @@
           "level-8": "On a critical hit, the target takes an additional @Damage[1d10[persistent,poison]] damage (As normal, the additional persistent poison damage on a critical hit is cumulative with the regular persistent poison damage, and you add it only after doubling the regular persistent poison damage).",
           "level-12": "The poison damage dealt by this imbued property (including persistent poison damage) ignores resistances.",
           "level-16": "At the end of a creature’s turn, if it has failed to remove the persistent poison damage from this imbued property, choose @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Clumsy}, @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled}, or @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied}. The creature gains that condition with a condition value of 1, or increases the condition value by 1 if it already had that condition, to a maximum of 3. If the creature ever removes the persistent poison damage from this property, these conditions immediately end. If you reapply the poison later, you must start again from condition values of 0.",
+          "level-20": "On a critical hit, the poison eats away at your foe’s ability to resist further poisoning. They are @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
+        }
+      },
+      "sonic": {
+        "label": "Sonic",
+        "flavor": "You imbue the weapon with reverberating sound waves.",
+        "might": {
+          "level-8": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or 1 hour on a critical failure.",
+          "level-12": "The sonic damage dealt by this imbued property ignores resistances.",
+          "level-14": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or permanently on a critical failure.",
+          "level-20": "On a successful Strike with the weapon, before applying sonic damage, the target gains weakness 1 to sonic until the beginning of your next turn."
+        },
+        "tech": {
+          "level-8": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or 1 hour on a critical failure.",
+          "level-12": "The sonic damage dealt by this imbued property (including persistent sonic damage) ignores resistances.",
+          "level-16": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or permanently on a critical failure. On failure and critical failure the target is @UUID[Compendium.pf2e.conditionitems.Item.dfCMdR4wnpbYNTix]{Stunned 1}.",
           "level-20": "On a critical hit, the poison eats away at your foe’s ability to resist further poisoning. They are @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
         }
       },
@@ -386,7 +411,7 @@
       },
       "void": {
         "label": "Void",
-        "flavor": "You imbue the weapon with void energy, cosmological destruction.",
+        "flavor": "You imbue the weapon with <em>void</em> energy, cosmological destruction.",
         "magic": {
           "level-4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} once per day.",
           "level-6": "The weapon can cast either 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} or @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Sudden Blight} once per day, but not both.",
@@ -410,6 +435,7 @@
       },
       "wild": {
         "label": "Wild ({variant})",
+        "flavor": "Sometimes you just can’t find enough parts of the same type to properly imbue your weapon, but you still want to imbue it with something. From that desperation and the haphazard imbuing of wildly different parts, a <em>wild</em> imbued property is born, inconsistent and lacking a few of the benefits of other imbued properties.",
         "might": {
           "damage": "Strikes with the weapon additionally deal {damage} damage. Each time you deal damage, roll 1d6: On a 1, the weapon deals acid damage. On a 2, it deals cold damage. On a 3, it deals electricity damage. On a 4, it deals fire damage. On a 5, it deals negative damage. Finally, on a 6, it deals sonic damage.",
           "level-12": "The damage dealt by this imbued property ignores resistances.",
@@ -418,6 +444,7 @@
       },
       "winged": {
         "label": "Winged",
+        "flavor": "You imbue the armor with wings, which protrude from the armor’s back.",
         "level-6": "The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can’t trigger again for 1 hour.",
         "level-8": "The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can’t trigger again for 10 minutes.",
         "level-10": "The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per day.",

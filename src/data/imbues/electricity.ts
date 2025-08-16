@@ -10,6 +10,7 @@ export function createImbueElectricity(): ImbueSource[] {
             label: t("imbue.electricity.label", {
                 variant: t("imbue.variant.magic"),
             }),
+            flavor: tkey("imbue.electricity.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
@@ -139,6 +140,7 @@ export function createImbueElectricity(): ImbueSource[] {
             label: t("imbue.electricity.label", {
                 variant: t("imbue.variant.might"),
             }),
+            flavor: tkey("imbue.electricity.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
@@ -248,6 +250,7 @@ export function createImbueElectricity(): ImbueSource[] {
             label: t("imbue.electricity.label", {
                 variant: t("imbue.variant.tech"),
             }),
+            flavor: tkey("imbue.electricity.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {

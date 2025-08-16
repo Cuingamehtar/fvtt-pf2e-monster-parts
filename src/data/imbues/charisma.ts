@@ -8,6 +8,7 @@ export function createImbueCharisma(): ImbueSource {
         key: "imbue:charisma",
         type: "imbue",
         label: tkey("imbue.charisma.label"),
+        flavor: tkey("imbue.charisma.flavor"),
         monsterPredicate: [{ lte: ["ability:cha:rank", 2] }],
         itemPredicate: [
             {

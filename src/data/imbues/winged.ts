@@ -7,6 +7,7 @@ export function createImbueWinged(): ImbueSource {
         key: "imbue:winged",
         type: "imbue",
         label: t("imbue.winged.label"),
+        flavor: tkey("imbue.winged.flavor"),
         itemPredicate: ["item:type:armor"],
         monsterPredicate: ["self:speed:fly"],
         effects: [

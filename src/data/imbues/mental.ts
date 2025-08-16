@@ -10,6 +10,7 @@ export function createImbueMental(): ImbueSource[] {
             label: t("imbue.mental.label", {
                 variant: t("imbue.variant.magic"),
             }),
+            flavor: tkey("imbue.mental.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
@@ -140,6 +141,7 @@ export function createImbueMental(): ImbueSource[] {
             label: t("imbue.mental.label", {
                 variant: t("imbue.variant.might"),
             }),
+            flavor: tkey("imbue.mental.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
@@ -250,6 +252,7 @@ export function createImbueMental(): ImbueSource[] {
             label: t("imbue.mental.label", {
                 variant: t("imbue.variant.tech"),
             }),
+            flavor: tkey("imbue.mental.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
