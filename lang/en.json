@@ -276,7 +276,7 @@
           "level-6": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage} or @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw]{Spiritual Weapon} once per day, but not both.",
           "level-8": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage} and @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw]{Spiritual Weapon} once per day each.",
           "level-12": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage},  4th rank @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw]{Spiritual Weapon} and @UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U]{Spiritual Guardian} once per day each.",
-          "level-16": "The weapon can cast 5rd rank @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage},  6th rank @UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U]{Spiritual Guardian} and @UUID[@UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U]{Spirit Blast} once per day each.",
+          "level-16": "The weapon can cast 5rd rank @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage},  6th rank @UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U]{Spiritual Guardian} and @UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U]{Spirit Blast} once per day each.",
           "level-20": "The weapon can cast 9th rank @UUID[Compendium.pf2e.spells-srd.Item.Ht35SDf9PDStJfoC]{Spirit Song} once per day."
         },
         "might": {
