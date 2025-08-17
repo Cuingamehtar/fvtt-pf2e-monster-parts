@@ -10,8 +10,7 @@
     "refined-item": {
       "label": "Refined Item",
       "warn-item-already-refined": "{item} is already a refined item.",
-      "error-item-not-owned": "Item must be owned by a character.",
-      "error-item-is-monster-part": "Item has monster part data, it can't be used as abase for refined item.",
+      "error-item-is-monster-part": "Item has monster part data, it can't be used as a base for refined item.",
       "error-not-refined-item": "This item is not a refined item.",
       "error-no-applicable-refinements": "This item type has no applicable refinements.",
       "error-not-physical-item": "This item is not a physical item.",

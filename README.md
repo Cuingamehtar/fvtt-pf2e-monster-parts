@@ -15,9 +15,13 @@ https://github.com/user-attachments/assets/a6ebdb25-368b-4500-8bf7-bcf51cdc30bd
 
 1a. Edit the monster part if necessary.
 
+Battlezoo armor and shield refinements are up to GM. Check the settings for the default behavior.
+
 https://github.com/user-attachments/assets/a7e09954-99d0-48a6-bd0a-0fe011dcca2c
 
 2. Create refined item from a normal item.
+
+Skill and Perception refinements need any equipment type item. The default rule elements will be removed on refinement. 
 
 https://github.com/user-attachments/assets/58827568-ca12-4056-8df4-a7ef23320f65
 
