@@ -5,6 +5,8 @@ The intent is to implement Battlezoo Bestiary monster parts system and provide a
 
 Currenty automation updates rule elements on the refined item. For imbues, only additional damage is automated at the moment.
 
+Full Battlezoo Bestiary rules for Monster parts system are available [here](https://pf2easy.com/index.php?id=19415).
+
 ## Workflow
 
 1. Create a monster part.
