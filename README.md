@@ -3,6 +3,8 @@
 This module seeks to implement the management and automation of magical items created from defeated enemies.
 The intent is to implement Battlezoo Bestiary monster parts system and provide a framework for the creation of custom materials within PF2e system of FoundryVTT.
 
+Currenty automation updates rule elements on the refined item. For imbues, only additional damage is automated at the moment.
+
 ## Workflow
 
 1. Create a monster part.
