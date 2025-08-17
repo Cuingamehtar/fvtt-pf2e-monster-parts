@@ -72,6 +72,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: "Use Node.js"
+        uses: actions/setup-node@v4
+
+      - name: "Build"
+        run: |
+          npm ci
+          npm run build
 
       # Extract version embedded in the tag.
       # This step expects the tag to be one of the following formats:
