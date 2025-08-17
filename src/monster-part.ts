@@ -2,7 +2,7 @@ import { NPCPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
 import { i18nFormat, t } from "./utils";
-import { getExtendedNPCRollOptions } from "./itemUtil";
+import { getExtendedNPCRollOptions } from "./actor-utils";
 import { Material } from "./material";
 
 export class MonsterPart {
@@ -18,6 +18,27 @@ export class MonsterPart {
 
     getFlag() {
         return this.item.getFlag(MODULE_ID, "monster-part")!;
+    }
+
+    get quantity() {
+        return this.item.quantity;
+    }
+    async setQuantity(value: number) {
+        return this.item.update({ "system.quantity": value });
+    }
+
+    get materials() {
+        return this.getFlag().materials;
+    }
+
+    get isOwnedByActor() {
+        return !!this.item.actor;
+    }
+
+    getValue(count?: number) {
+        count = count ?? this.quantity;
+        const baseValue = this.getFlag().value;
+        return baseValue * count;
     }
 
     static async fromCreature(actor: NPCPF2e) {
@@ -40,6 +61,7 @@ export class MonsterPart {
             actorRollOptions,
             ...actor.items.map((i) => [
                 ...actorRollOptions,
+                `item:type:${i.type}`,
                 ...i.getRollOptions(),
             ]),
         ];

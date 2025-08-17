@@ -44,7 +44,6 @@ export function registerSettings() {
         config: true,
         choices: {
             none: t("settings.armor-refinements.none") as string,
-            ask: t("settings.armor-refinements.ask") as string,
             all: t("settings.armor-refinements.all") as string,
         },
         default: "light",

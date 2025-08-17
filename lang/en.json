@@ -3,7 +3,9 @@
     "monster-parts": "Monster Parts",
     "monster-part": {
       "label": "Monster Part",
-      "error-not-monster-part": "This item is not a monster part."
+      "description-header": "Monster Part (Value: {value} gp)",
+      "error-not-monster-part": "This item is not a monster part.",
+      "error-not-physical-item": "This item is not a physical item."
     },
     "refined-item": {
       "label": "Refined Item",
@@ -11,29 +13,34 @@
       "error-item-not-owned": "Item must be owned by a character.",
       "error-item-is-monster-part": "Item has monster part data, it can't be used as abase for refined item.",
       "error-not-refined-item": "This item is not a refined item.",
-      "error-no-applicable-refinements": "This item type has no applicable refinements."
+      "error-no-applicable-refinements": "This item type has no applicable refinements.",
+      "error-not-physical-item": "This item is not a physical item.",
+      "imported-from-compendium": "The refined version of this item was created in the main item collection."
     },
     "dialog": {
       "default-title": "Choose an option",
       "choose-material": {
         "title": "Choose material type",
-        "count": "Number of Monster Parts"
+        "count": "Number of Monster Parts",
+        "error-no-applicable-material": "This monster part has no applicable material.",
+        "quantity-title": "Number of monster parts to consume"
       },
       "confirm-apply-material": {
         "title": "Confirm applying material",
-        "content": "This will add {value} gp to {material} material of the item and delete the monster part."
+        "content": "<p>This will add <strong>{value} gp</strong> to <strong>{material}</strong> material of the item and remove {quantity} of the monster part's quantity if it's owned by an actor (remove the item if the final quantity is 0).</p>"
       },
       "slider": {
         "value": "Value"
       },
       "create-refined-item": {
-        "content": "Drag Actor-owned Item here",
+        "content": "Drag an Item here",
         "title": "Create Refined Item"
       },
       "monster-part-editor": {
         "refinements": "Refinements",
         "imbues": "Imbues",
-        "value": "Value"
+        "value": "Value",
+        "button": "Edit Monster Part"
       },
       "refined-item-editor": {
         "refinement": "Refinement",
@@ -41,7 +48,8 @@
         "new-imbue": "New Imbue",
         "refinement-type": "Refinement Type",
         "imbue-type": "Imbue Type",
-        "value": "Value"
+        "value": "Value",
+        "button": "Edit Refined Item"
       }
     },
     "material": {
@@ -326,7 +334,7 @@
         }
       },
       "poison": {
-        "label": "Poison",
+        "label": "Poison ({variant})",
         "flavor": "You imbue the weapon with toxic venom.",
         "magic": {
           "level-4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting} once per day.",
@@ -350,7 +358,7 @@
         }
       },
       "sonic": {
-        "label": "Sonic",
+        "label": "Sonic ({variant})",
         "flavor": "You imbue the weapon with reverberating sound waves.",
         "might": {
           "level-8": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or 1 hour on a critical failure.",
@@ -386,7 +394,7 @@
         "level-20": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per minute as a primal spell."
       },
       "vitality": {
-        "label": "Vitality",
+        "label": "Vitality ({variant})",
         "flavor": "You imbue the weapon with the cleansing power of positive energy in order to damage undead. As normal, positive damage only harms undead and other creatures with void healing, such as dhampirs.",
         "magic": {
           "level-4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal} once per day.",
@@ -410,7 +418,7 @@
         }
       },
       "void": {
-        "label": "Void",
+        "label": "Void ({variant})",
         "flavor": "You imbue the weapon with <em>void</em> energy, cosmological destruction.",
         "magic": {
           "level-4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} once per day.",
@@ -474,7 +482,7 @@
         "full": "Full"
       },
       "armor-refinements": {
-        "name": "Default Armor Refinements on Monster Parts",
+        "name": "Default Armor Refinements",
         "hint": "BZ armor refinements can't be checked by a predicate. Whether they are suitable is up to GM. This setting sets their default behavior",
         "none": "None",
         "ask": "Ask",

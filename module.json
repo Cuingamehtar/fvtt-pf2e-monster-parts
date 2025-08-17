@@ -1,11 +1,12 @@
 {
   "id": "pf2e-monster-parts",
   "title": "PF2e Monster Parts",
-  "description": "Implementation of Monster Parts.",
+  "description": "Implementation of Monster Parts subsystem for PF2e system",
   "version": "dev",
   "library": "false",
   "compatibility": {
-    "minimum": 13
+    "minimum": "13",
+    "verified": "13.347"
   },
   "authors": [
     {
@@ -13,15 +14,25 @@
     }
   ],
   "relationships": {
-    "systems": [{
-      "id": "pf2e",
-      "type": "system",
-      "manifest": "https://raw.githubusercontent.com/foundryvtt/pf2e/master/system.json",
-      "compatibility": {
-          "minimum": "7.2.3"
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "manifest": "https://raw.githubusercontent.com/foundryvtt/pf2e/master/system.json",
+        "compatibility": {
+          "minimum": "7",
+          "verified": "7.3.1"
+        }
       }
-  }],
-    "requires": []
+    ],
+    "requires": [
+      {
+        "id": "lib-wrapper",
+        "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
+        "type": "module",
+        "compatibility": {}
+      }
+    ]
   },
   "scripts": [
     "scripts/module.js"

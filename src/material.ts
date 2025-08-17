@@ -1,6 +1,6 @@
 import { ItemPF2e, NPCPF2e, Predicate } from "foundry-pf2e";
 import { ImbueSource, RefinementSource } from "./data/data-types";
-import { getExtendedNPCRollOptions } from "./itemUtil";
+import { getExtendedNPCRollOptions } from "./actor-utils";
 import { getConfig } from "./config";
 import { RefinedItem } from "./refined-item";
 import { i18nFormat } from "./utils";

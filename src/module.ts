@@ -1,25 +1,19 @@
 import { ItemSheetPF2e, NPCSheetPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { createConfig } from "./config";
-import { getExtendedNPCRollOptions } from "./itemUtil";
 import { registerSettings } from "./settings";
-import { registerInlineNotes } from "./enricher";
 import { configureMonsterPart } from "./app/monster-part-editor";
 import { configureRefinedItem } from "./app/refined-item-editor";
 import { createElement, t } from "./utils";
 import { createRefinedItemDialog } from "./app/refined-item-create";
 import { MonsterPart } from "./monster-part";
 import { RefinedItem } from "./refined-item";
+import { registerInlineNotes } from "./description";
 
 export const MODULE_ID = "pf2e-monster-parts";
 
 Hooks.once("init", () => {
     registerSettings();
     Hooks.once("i18nInit", () => createConfig());
-
-    // @ts-expect-error
-    game[MODULE_ID] = {
-        getExtendedNPCRollOptions,
-    };
     registerInlineNotes();
 });
 
@@ -53,7 +47,7 @@ Hooks.on(
         if (item.getFlag(MODULE_ID, "monster-part")) {
             buttons.unshift({
                 icon: "fas fa-skull",
-                label: "Modify",
+                label: t("dialog.monster-part-editor.button"),
                 class: "configure-monster-part",
                 onclick: () =>
                     configureMonsterPart(
@@ -64,7 +58,7 @@ Hooks.on(
         if (item.getFlag(MODULE_ID, "refined-item")) {
             buttons.unshift({
                 icon: "fas fa-skull",
-                label: "Modify",
+                label: t("dialog.refined-item-editor.button"),
                 class: "configure-refined-item",
                 onclick: () =>
                     configureRefinedItem(

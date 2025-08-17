@@ -1,8 +1,8 @@
-import { PhysicalItemPF2e } from "foundry-pf2e";
+import { PhysicalItemPF2e, ItemPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
 import { Material } from "./material";
-import { i18nFormat, t } from "./utils";
+import { i18nFormat, isPhysicalItem, t } from "./utils";
 import { dialogs } from "./app/dialogs";
 import { ImbueSource, RefinementSource } from "./data/data-types";
 
@@ -17,10 +17,18 @@ export class RefinedItem {
         this.item = item;
     }
 
-    static async fromOwnedItem(item: PhysicalItemPF2e) {
-        if (!item.parent) {
-            ui.notifications.error(t("refined-item.error-item-not-owned"));
-            return;
+    static async fromItem(item: ItemPF2e) {
+        // @ts-expect-error
+        if (item.collection?.metadata && isPhysicalItem(item)) {
+            // item is in a compendium
+            item = (await Item.create(item.toObject())) as PhysicalItemPF2e;
+            ui.notifications.info(t("refined-item.imported-from-compendium"));
+        }
+        if (!isPhysicalItem(item)) {
+            ui.notifications.error(
+                t("refined-item.error-not-physical-item", { item: item.name }),
+            );
+            return null;
         }
         if (item.getFlag(MODULE_ID, "refined-item")) {
             ui.notifications.warn(

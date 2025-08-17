@@ -1,9 +1,10 @@
 import { getConfig, getMaterialLabel } from "../config";
-import { getDroppedItem, i18nFormat, t } from "../utils";
+import { getDroppedItem, i18nFormat, isPhysicalItem, t } from "../utils";
 import { MODULE_ID } from "../module";
 import { RefinedItem } from "../refined-item";
 import { Material } from "../material";
 import { dialogs } from "./dialogs";
+import { MonsterPart } from "../monster-part";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -133,65 +134,117 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                     if (!select) return;
 
                     const item = await getDroppedItem(e as DragEvent, "Item");
-                    if (!item) return ui.notifications.error("Can't find item");
+                    if (!item) return;
+                    if (!isPhysicalItem(item)) {
+                        ui.notifications.error(
+                            t("monster-part.error-not-physical-item"),
+                        );
+                        return;
+                    }
 
                     const flag = item.getFlag(MODULE_ID, "monster-part");
-                    if (!flag)
-                        return ui.notifications.error(
-                            "Item is not a recognized monster part",
+                    if (!flag) {
+                        ui.notifications.error(
+                            t("monster-part.error-not-monster-part"),
                         );
+                        return;
+                    }
+
+                    const monsterPart = new MonsterPart(item);
 
                     const expectedMaterial = select.value;
-                    if (expectedMaterial === "") {
-                        const allowedMaterials =
-                            this.data.possibleImbues.filter(
-                                (i) =>
-                                    flag.materials.includes(i.key) &&
-                                    !this.data.imbues.some(
-                                        (e) => e.selected == i.key,
-                                    ),
-                            );
-                        const addedMaterial = await dialogs.choice(
-                            allowedMaterials,
-                            t("dialog.choose-material.title"),
-                        );
-                        if (addedMaterial) {
+                    const selectedMaterial =
+                        expectedMaterial === ""
+                            ? await (async () => {
+                                  const allowedMaterials =
+                                      this.data.possibleImbues.filter(
+                                          (i) =>
+                                              monsterPart.materials.includes(
+                                                  i.key,
+                                              ) &&
+                                              !this.data.imbues.some(
+                                                  (e) => e.selected == i.key,
+                                              ),
+                                      );
+                                  if (allowedMaterials.length == 0) {
+                                      ui.notifications.error(
+                                          t(
+                                              "dialog.choose-material.error-no-applicable-material",
+                                          ),
+                                      );
+                                      return null;
+                                  }
+                                  return (
+                                      await dialogs.choice(
+                                          allowedMaterials,
+                                          t("dialog.choose-material.title"),
+                                      )
+                                  )?.selected;
+                              })()
+                            : monsterPart.materials.includes(expectedMaterial)
+                              ? expectedMaterial
+                              : (() => {
+                                    ui.notifications.error(
+                                        t(
+                                            "dialog.choose-material.error-no-applicable-material",
+                                        ),
+                                    );
+                                    return null;
+                                })();
+                    if (!selectedMaterial) return;
+                    const itemCount =
+                        monsterPart.quantity == 1
+                            ? 1
+                            : (
+                                  await dialogs.slider(
+                                      t(
+                                          "dialog.choose-material.quantity-title",
+                                      ),
+                                      monsterPart.quantity,
+                                      1,
+                                      monsterPart.quantity,
+                                  )
+                              )?.value;
+                    if (!itemCount) return;
+                    const addedValue = monsterPart.getValue(itemCount);
+                    if (
+                        await dialogs.confirm(
+                            t("dialog.confirm-apply-material.title"),
+                            t("dialog.confirm-apply-material.content", {
+                                value: addedValue,
+                                quantity: itemCount,
+                                material: i18nFormat(
+                                    getMaterialLabel(selectedMaterial) ?? "",
+                                ),
+                            }),
+                        )
+                    ) {
+                        if (expectedMaterial === "") {
                             this.data.imbues.push({
-                                selected: addedMaterial.selected,
-                                value: flag.value,
+                                selected: selectedMaterial,
+                                value: addedValue,
                             });
-                            this.render();
-                            return item.actor?.deleteEmbeddedDocuments("Item", [
-                                item.id,
-                            ]);
-                        }
-                    } else {
-                        const expectedMaterialLabel =
-                            getMaterialLabel(expectedMaterial) ?? "";
-                        if (flag.materials.includes(expectedMaterial)) {
-                            const addedValue = flag.value;
-                            if (
-                                await dialogs.confirm(
-                                    t("dialog.confirm-apply-material.title"),
-                                    t("dialog.confirm-apply-material.content", {
-                                        value: addedValue,
-                                        material: expectedMaterialLabel,
-                                    }),
-                                )
-                            ) {
-                                const input = element.querySelector("input")!;
-                                input.value = String(
-                                    Number(input.value) + addedValue,
-                                );
-                                return item.actor?.deleteEmbeddedDocuments(
-                                    "Item",
-                                    [item.id],
-                                );
-                            }
                         } else {
-                            return ui.notifications.error(
-                                "Monster part doesn't contain an applicable material",
+                            const m =
+                                this.data.refinement.selected ==
+                                selectedMaterial
+                                    ? this.data.refinement
+                                    : this.data.imbues.find(
+                                          (i) => i.selected == selectedMaterial,
+                                      );
+                            if (!m) return;
+                            m.value += addedValue;
+                        }
+                        this.render();
+                        if (monsterPart.isOwnedByActor) {
+                            await monsterPart.setQuantity(
+                                monsterPart.quantity - itemCount,
                             );
+                            if (monsterPart.quantity <= 0)
+                                monsterPart.item.actor?.deleteEmbeddedDocuments(
+                                    "Item",
+                                    [monsterPart.item.id],
+                                );
                         }
                     }
                 });

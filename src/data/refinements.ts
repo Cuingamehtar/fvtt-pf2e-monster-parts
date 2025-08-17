@@ -8,6 +8,7 @@ import {
     shieldAlteration,
 } from "./helpers";
 import { i18nFormat, tkey } from "../utils";
+import { MODULE_ID } from "../module";
 
 export function createDefaultRefinements() {
     const skills = Object.keys(CONFIG.PF2E.skills) as SkillSlug[];
@@ -306,7 +307,10 @@ export function createDefaultRefinements() {
             type: "refinement",
             label: tkey(`refinement.armor-unarmored`),
             itemPredicate: ["item:type:armor", "armor:category:unarmored"],
-            monsterPredicate: undefined,
+            monsterPredicate:
+                game.settings.get(MODULE_ID, "armor-refinements") === "all"
+                    ? undefined
+                    : ["never"],
             effects: armorEffects,
         },
         {
@@ -314,7 +318,10 @@ export function createDefaultRefinements() {
             type: "refinement",
             label: tkey(`refinement.armor-light`),
             itemPredicate: ["item:type:armor", "armor:category:light"],
-            monsterPredicate: undefined,
+            monsterPredicate:
+                game.settings.get(MODULE_ID, "armor-refinements") === "all"
+                    ? undefined
+                    : ["never"],
             effects: armorEffects,
         },
         {
@@ -322,7 +329,10 @@ export function createDefaultRefinements() {
             type: "refinement",
             label: tkey(`refinement.armor-medium`),
             itemPredicate: ["item:type:armor", "armor:category:medium"],
-            monsterPredicate: undefined,
+            monsterPredicate:
+                game.settings.get(MODULE_ID, "armor-refinements") === "all"
+                    ? undefined
+                    : ["never"],
             effects: armorEffects,
         },
         {
@@ -330,7 +340,10 @@ export function createDefaultRefinements() {
             type: "refinement",
             label: tkey(`refinement.armor-heavy`),
             itemPredicate: ["item:type:armor", "armor:category:heavy"],
-            monsterPredicate: undefined,
+            monsterPredicate:
+                game.settings.get(MODULE_ID, "armor-refinements") === "all"
+                    ? undefined
+                    : ["never"],
             effects: armorEffects,
         },
         {

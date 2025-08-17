@@ -22,7 +22,7 @@ export function createRefinedItemDialog() {
                 const item = await getDroppedItem(event, "Item");
                 if (!item) return;
 
-                if (await RefinedItem.fromOwnedItem(item)) dialog.close();
+                if (await RefinedItem.fromItem(item)) dialog.close();
             });
         },
     });

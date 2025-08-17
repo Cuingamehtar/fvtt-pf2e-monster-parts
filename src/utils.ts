@@ -1,5 +1,10 @@
 import { MODULE_ID } from "./module";
-import { ActorPF2e, ItemPF2e } from "foundry-pf2e";
+import {
+    ActorPF2e,
+    ItemPF2e,
+    PHYSICAL_ITEM_TYPES,
+    PhysicalItemPF2e,
+} from "foundry-pf2e";
 
 export function t(
     m: keyof Flatten<I18nKeyType[typeof MODULE_ID]>,
@@ -93,4 +98,18 @@ export async function getDroppedItem(event: DragEvent, type?: string) {
     if (!dropData) return null;
     if (type && dropData.type !== type) return null;
     return fromUuid(dropData.uuid);
+}
+
+export function isPhysicalItem(item: ItemPF2e): item is PhysicalItemPF2e {
+    let types: SetElement<typeof PHYSICAL_ITEM_TYPES>[] = [
+        "armor",
+        "shield",
+        "consumable",
+        "backpack",
+        "book",
+        "equipment",
+        "treasure",
+        "weapon",
+    ];
+    return (types as string[]).includes(item.type);
 }
