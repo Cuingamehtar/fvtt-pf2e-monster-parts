@@ -79,8 +79,8 @@ export class Material<T extends RefinementSource | ImbueSource> {
                 | "shield"
                 | "equipment";
             const thr = thresholds[type];
-            const level = thr.findLastIndex((e) => e < this.value);
-            return level === -1 ? 0 : level;
+            const level = thr.findLastIndex((e) => this.value >= e);
+            return level === -1 ? 0 : level + 1;
         }
         return 0;
     }
@@ -114,6 +114,7 @@ export class Material<T extends RefinementSource | ImbueSource> {
                                 ei.key == "InlineNote" &&
                                 (!ei.predicate ||
                                     new game.pf2e.Predicate(ei.predicate).test(
+                                        // @ts-expect-error
                                         item.item.getRollOptions(),
                                     )),
                         )

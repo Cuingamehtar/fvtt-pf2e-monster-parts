@@ -395,7 +395,8 @@
       "sturdy": {
         "label": "Sturdy",
         "flavor": "You imbue the shield to make it even hardier than other shields.",
-        "effect": "This shield's Hardiness is increased by {hardiness}, HP by {hp}, BT by {bt}."
+        "effect": "This shield's Hardiness is increased by {hardiness}. It's HP is increased by double it's Hardiness and BT by half that value.",
+        "no-effect": "The difference between this imbuement level and the item level is too great. This imbuement has no effect."
       },
       "vitality": {
         "label": "Vitality ({variant})",

@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Fixed
 
 - Fix dark theme fix removing the style from header in the default theme
+- Fix an error in material level calculation
 
 ## [0.1.1] - 2025-08-17
 
