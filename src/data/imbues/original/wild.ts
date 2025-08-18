@@ -1,7 +1,7 @@
-import { MODULE_ID } from "../../module";
-import { getRandomInt, t, tkey } from "../../utils";
-import { ImbueSource } from "../data-types";
-import { addWildDamage, levelRange } from "../helpers";
+import { MODULE_ID } from "../../../module";
+import { getRandomInt, t, tkey } from "../../../utils";
+import { ImbueSource } from "../../data-types";
+import { addWildDamage, levelRange } from "../../helpers";
 
 export function createImbueWild(): ImbueSource {
     const imbue: ImbueSource = {

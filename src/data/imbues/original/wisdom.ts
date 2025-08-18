@@ -1,6 +1,6 @@
-import { tkey } from "../../utils";
-import { ImbueSource } from "../data-types";
-import { levelRange, skillsOfAttribute } from "../helpers";
+import { tkey } from "../../../utils";
+import { ImbueSource } from "../../data-types";
+import { levelRange, skillsOfAttribute } from "../../helpers";
 
 export function createImbueWisdom(): ImbueSource {
     const skills = skillsOfAttribute("wis");

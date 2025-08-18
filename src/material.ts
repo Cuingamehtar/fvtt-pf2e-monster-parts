@@ -1,5 +1,9 @@
 import { ItemPF2e, NPCPF2e, Predicate } from "foundry-pf2e";
-import { ImbueSource, RefinementSource } from "./data/data-types";
+import {
+    ImbueSource,
+    InlineNoteEffectSource,
+    RefinementSource,
+} from "./data/data-types";
 import { getExtendedNPCRollOptions } from "./actor-utils";
 import { getConfig } from "./config";
 import { RefinedItem } from "./refined-item";
@@ -105,7 +109,14 @@ export class Material<T extends RefinementSource | ImbueSource> {
                 )
                 .flatMap((e) =>
                     e.effects
-                        .filter((ei) => ei.key == "InlineNote")
+                        .filter(
+                            (ei): ei is InlineNoteEffectSource =>
+                                ei.key == "InlineNote" &&
+                                (!ei.predicate ||
+                                    new game.pf2e.Predicate(ei.predicate).test(
+                                        item.item.getRollOptions(),
+                                    )),
+                        )
                         .map((ei) => i18nFormat(ei.text, ei.parameters)),
                 ),
         };

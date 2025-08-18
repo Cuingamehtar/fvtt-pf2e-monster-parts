@@ -1,33 +1,33 @@
-import { t, tkey } from "../../utils";
-import { ImbueSource } from "../data-types";
-import { addDamage, levelRange } from "../helpers";
+import { t, tkey } from "../../../utils";
+import { ImbueSource } from "../../data-types";
+import { addDamage, levelRange } from "../../helpers";
 
-export function createImbueVoid(): ImbueSource[] {
+export function createImbuePoison(): ImbueSource[] {
     return [
         {
-            key: "imbue:void:magic",
+            key: "imbue:poison:magic",
             type: "imbue",
-            label: t("imbue.void.label", {
+            label: t("imbue.poison.label", {
                 variant: t("imbue.variant.magic"),
             }),
-            flavor: tkey("imbue.void.flavor"),
+            flavor: tkey("imbue.poison.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:void",
+                        "self:trait:poison",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:void",
+                                        "melee:damage:type:poison",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:void",
+                                        "spell:damage:type:poison",
                                     ],
                                 },
                             ],
@@ -45,9 +45,9 @@ export function createImbueVoid(): ImbueSource[] {
                     return {
                         ...levelRange(from as number, to as number),
                         effects: addDamage({
-                            type: "void",
+                            type: "poison",
                             value: damage as number | `d${number}`,
-                            label: t("imbue.void.label", {
+                            label: t("imbue.poison.label", {
                                 variant: t("imbue.variant.magic"),
                             }),
                         }),
@@ -60,7 +60,7 @@ export function createImbueVoid(): ImbueSource[] {
                             key: "InlineNote",
                             text: tkey("imbue.add-cantrip"),
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN]",
+                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.D7ZEhTNIDWDLC2J4]",
                             },
                         },
                     ],
@@ -70,7 +70,7 @@ export function createImbueVoid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.void.magic.level-4"),
+                            text: tkey("imbue.poison.magic.level-4"),
                         },
                     ],
                 },
@@ -79,7 +79,7 @@ export function createImbueVoid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.void.magic.level-6"),
+                            text: tkey("imbue.poison.magic.level-6"),
                         },
                     ],
                 },
@@ -88,7 +88,7 @@ export function createImbueVoid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.void.magic.level-8"),
+                            text: tkey("imbue.poison.magic.level-8"),
                         },
                     ],
                 },
@@ -97,7 +97,7 @@ export function createImbueVoid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.void.magic.level-12"),
+                            text: tkey("imbue.poison.magic.level-12"),
                         },
                     ],
                 },
@@ -106,7 +106,7 @@ export function createImbueVoid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.void.magic.level-16"),
+                            text: tkey("imbue.poison.magic.level-16"),
                         },
                     ],
                 },
@@ -115,36 +115,36 @@ export function createImbueVoid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.void.magic.level-20"),
+                            text: tkey("imbue.poison.magic.level-20"),
                         },
                     ],
                 },
             ],
         },
         {
-            key: "imbue:void:might",
+            key: "imbue:poison:might",
             type: "imbue",
-            label: t("imbue.void.label", {
+            label: t("imbue.poison.label", {
                 variant: t("imbue.variant.might"),
             }),
-            flavor: tkey("imbue.void.flavor"),
+            flavor: tkey("imbue.poison.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:void",
+                        "self:trait:poison",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:void",
+                                        "melee:damage:type:poison",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:void",
+                                        "spell:damage:type:poison",
                                     ],
                                 },
                             ],
@@ -163,20 +163,29 @@ export function createImbueVoid(): ImbueSource[] {
                     return {
                         ...levelRange(from as number, to as number),
                         effects: addDamage({
-                            type: "void",
+                            type: "poison",
                             value: damage as number | `d${number}`,
-                            label: t("imbue.void.label", {
+                            label: t("imbue.poison.label", {
                                 variant: t("imbue.variant.magic"),
                             }),
                         }),
                     };
                 }),
                 {
-                    ...levelRange(10, 15),
+                    ...levelRange(8, 13),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.void.might.level-10"),
+                            text: tkey("imbue.poison.might.level-8"),
+                        },
+                    ],
+                },
+                {
+                    ...levelRange(14),
+                    effects: [
+                        {
+                            key: "InlineNote",
+                            text: tkey("imbue.poison.might.level-14"),
                         },
                     ],
                 },
@@ -185,7 +194,7 @@ export function createImbueVoid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.void.might.level-12"),
+                            text: tkey("imbue.poison.might.level-12"),
                         },
                     ],
                 },
@@ -194,36 +203,36 @@ export function createImbueVoid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.void.might.level-20"),
+                            text: tkey("imbue.poison.might.level-20"),
                         },
                     ],
                 },
             ],
         },
         {
-            key: "imbue:void:tech",
+            key: "imbue:poison:tech",
             type: "imbue",
-            label: t("imbue.void.label", {
+            label: t("imbue.poison.label", {
                 variant: t("imbue.variant.tech"),
             }),
-            flavor: tkey("imbue.void.flavor"),
+            flavor: tkey("imbue.poison.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:void",
+                        "self:trait:poison",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:void",
+                                        "melee:damage:type:poison",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:void",
+                                        "spell:damage:type:poison",
                                     ],
                                 },
                             ],
@@ -235,47 +244,38 @@ export function createImbueVoid(): ImbueSource[] {
                 {
                     ...levelRange(6),
                     effects: addDamage({
-                        type: "void",
+                        type: "poison",
                         value: 1,
-                        label: t("imbue.void.label", {
+                        label: t("imbue.poison.label", {
                             variant: t("imbue.variant.tech"),
                         }),
                     }),
                 },
                 // persistent damage
                 ...[
-                    [4, 9, 1],
-                    [10, 13, "d6"],
+                    [4, 7, 1],
+                    [8, 13, "d6"],
                     [14, 17, "d8"],
                     [18, undefined, "d10"],
                 ].map(([from, to, damage]) => {
                     return {
                         ...levelRange(from as number, to as number),
                         effects: addDamage({
-                            type: "void",
+                            type: "poison",
                             value: damage as number | `d${number}`,
                             category: "persistent",
-                            label: t("imbue.void.label", {
+                            label: t("imbue.poison.label", {
                                 variant: t("imbue.variant.magic"),
                             }),
                         }),
                     };
                 }),
                 {
-                    ...levelRange(8, 15),
+                    ...levelRange(8),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.void.tech.level-8"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(16),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.void.tech.level-16"),
+                            text: tkey("imbue.poison.tech.level-8"),
                         },
                     ],
                 },
@@ -284,7 +284,16 @@ export function createImbueVoid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.void.tech.level-12"),
+                            text: tkey("imbue.poison.tech.level-12"),
+                        },
+                    ],
+                },
+                {
+                    ...levelRange(16),
+                    effects: [
+                        {
+                            key: "InlineNote",
+                            text: tkey("imbue.poison.tech.level-16"),
                         },
                     ],
                 },
@@ -293,7 +302,7 @@ export function createImbueVoid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.void.tech.level-20"),
+                            text: tkey("imbue.poison.tech.level-20"),
                         },
                     ],
                 },

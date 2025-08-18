@@ -8,7 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
-- This changelog file
+- Add this changelog file
+- Add Sturdy imbuement
+
+### Fixed
+
+- Fix dark theme fix removing the style from header in the default theme
 
 ## [0.1.1] - 2025-08-17
 

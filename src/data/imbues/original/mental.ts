@@ -1,31 +1,34 @@
-import { t, tkey } from "../../utils";
-import { ImbueSource } from "../data-types";
-import { addDamage, levelRange } from "../helpers";
+import { t, tkey } from "../../../utils";
+import { ImbueSource } from "../../data-types";
+import { addDamage, levelRange } from "../../helpers";
 
-export function createImbueFire(): ImbueSource[] {
+export function createImbueMental(): ImbueSource[] {
     return [
         {
-            key: "imbue:fire:magic",
+            key: "imbue:mental:magic",
             type: "imbue",
-            label: t("imbue.fire.label", { variant: t("imbue.variant.magic") }),
-            flavor: tkey("imbue.fire.flavor"),
+            label: t("imbue.mental.label", {
+                variant: t("imbue.variant.magic"),
+            }),
+            flavor: tkey("imbue.mental.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:fire",
+                        "self:trait:mental",
+                        "self:trait:astral",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:fire",
+                                        "melee:damage:type:mental",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:fire",
+                                        "spell:damage:type:mental",
                                     ],
                                 },
                             ],
@@ -37,9 +40,9 @@ export function createImbueFire(): ImbueSource[] {
                 {
                     ...levelRange(10, 13),
                     effects: addDamage({
-                        type: "fire",
+                        type: "mental",
                         value: 1,
-                        label: t("imbue.fire.label", {
+                        label: t("imbue.mental.label", {
                             variant: t("imbue.variant.magic"),
                         }),
                     }),
@@ -47,9 +50,9 @@ export function createImbueFire(): ImbueSource[] {
                 {
                     ...levelRange(14, 17),
                     effects: addDamage({
-                        type: "fire",
+                        type: "mental",
                         value: "d4",
-                        label: t("imbue.fire.label", {
+                        label: t("imbue.mental.label", {
                             variant: t("imbue.variant.magic"),
                         }),
                     }),
@@ -57,9 +60,9 @@ export function createImbueFire(): ImbueSource[] {
                 {
                     ...levelRange(18),
                     effects: addDamage({
-                        type: "fire",
+                        type: "mental",
                         value: "d6",
-                        label: t("imbue.fire.label", {
+                        label: t("imbue.mental.label", {
                             variant: t("imbue.variant.magic"),
                         }),
                     }),
@@ -71,7 +74,7 @@ export function createImbueFire(): ImbueSource[] {
                             key: "InlineNote",
                             text: tkey("imbue.add-cantrip"),
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq]",
+                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.4gBIw4IDrSfFHik4]",
                             },
                         },
                     ],
@@ -81,7 +84,7 @@ export function createImbueFire(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.fire.magic.level-4"),
+                            text: tkey("imbue.mental.magic.level-4"),
                         },
                     ],
                 },
@@ -90,7 +93,7 @@ export function createImbueFire(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.fire.magic.level-6"),
+                            text: tkey("imbue.mental.magic.level-6"),
                         },
                     ],
                 },
@@ -99,7 +102,7 @@ export function createImbueFire(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.fire.magic.level-8"),
+                            text: tkey("imbue.mental.magic.level-8"),
                         },
                     ],
                 },
@@ -108,7 +111,7 @@ export function createImbueFire(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.fire.magic.level-12"),
+                            text: tkey("imbue.mental.magic.level-12"),
                         },
                     ],
                 },
@@ -117,7 +120,7 @@ export function createImbueFire(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.fire.magic.level-16"),
+                            text: tkey("imbue.mental.magic.level-16"),
                         },
                     ],
                 },
@@ -126,34 +129,37 @@ export function createImbueFire(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.fire.magic.level-20"),
+                            text: tkey("imbue.mental.magic.level-20"),
                         },
                     ],
                 },
             ],
         },
         {
-            key: "imbue:fire:might",
+            key: "imbue:mental:might",
             type: "imbue",
-            label: t("imbue.fire.label", { variant: t("imbue.variant.might") }),
-            flavor: tkey("imbue.fire.flavor"),
+            label: t("imbue.mental.label", {
+                variant: t("imbue.variant.might"),
+            }),
+            flavor: tkey("imbue.mental.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:fire",
+                        "self:trait:mental",
+                        "self:trait:astral",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:fire",
+                                        "melee:damage:type:mental",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:fire",
+                                        "spell:damage:type:mental",
                                     ],
                                 },
                             ],
@@ -165,9 +171,9 @@ export function createImbueFire(): ImbueSource[] {
                 {
                     ...levelRange(4, 5),
                     effects: addDamage({
-                        type: "fire",
+                        type: "mental",
                         value: 1,
-                        label: t("imbue.fire.label", {
+                        label: t("imbue.mental.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
@@ -175,9 +181,9 @@ export function createImbueFire(): ImbueSource[] {
                 {
                     ...levelRange(6, 7),
                     effects: addDamage({
-                        type: "fire",
+                        type: "mental",
                         value: "d4",
-                        label: t("imbue.fire.label", {
+                        label: t("imbue.mental.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
@@ -185,9 +191,9 @@ export function createImbueFire(): ImbueSource[] {
                 {
                     ...levelRange(8, 17),
                     effects: addDamage({
-                        type: "fire",
+                        type: "mental",
                         value: "d6",
-                        label: t("imbue.fire.label", {
+                        label: t("imbue.mental.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
@@ -195,19 +201,19 @@ export function createImbueFire(): ImbueSource[] {
                 {
                     ...levelRange(18),
                     effects: addDamage({
-                        type: "fire",
+                        type: "mental",
                         value: "d8",
-                        label: t("imbue.fire.label", {
+                        label: t("imbue.mental.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
                 },
                 {
-                    ...levelRange(8, 13),
+                    ...levelRange(10, 15),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.fire.might.level-8"),
+                            text: tkey("imbue.mental.might.level-10"),
                         },
                     ],
                 },
@@ -216,16 +222,16 @@ export function createImbueFire(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.fire.might.level-12"),
+                            text: tkey("imbue.mental.might.level-12"),
                         },
                     ],
                 },
                 {
-                    ...levelRange(14),
+                    ...levelRange(16),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.fire.might.level-14"),
+                            text: tkey("imbue.mental.might.level-16"),
                         },
                     ],
                 },
@@ -234,34 +240,37 @@ export function createImbueFire(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.fire.might.level-20"),
+                            text: tkey("imbue.mental.might.level-20"),
                         },
                     ],
                 },
             ],
         },
         {
-            key: "imbue:fire:tech",
+            key: "imbue:mental:tech",
             type: "imbue",
-            label: t("imbue.fire.label", { variant: t("imbue.variant.tech") }),
-            flavor: tkey("imbue.fire.flavor"),
+            label: t("imbue.mental.label", {
+                variant: t("imbue.variant.tech"),
+            }),
+            flavor: tkey("imbue.mental.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:fire",
+                        "self:trait:mental",
+                        "self:trait:astral",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:fire",
+                                        "melee:damage:type:mental",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:fire",
+                                        "spell:damage:type:mental",
                                     ],
                                 },
                             ],
@@ -273,31 +282,31 @@ export function createImbueFire(): ImbueSource[] {
                 {
                     ...levelRange(6),
                     effects: addDamage({
-                        type: "fire",
+                        type: "mental",
                         value: 1,
-                        label: t("imbue.fire.label", {
+                        label: t("imbue.mental.label", {
                             variant: t("imbue.variant.tech"),
                         }),
                     }),
                 },
                 {
-                    ...levelRange(4, 7),
+                    ...levelRange(4, 9),
                     effects: addDamage({
-                        type: "fire",
+                        type: "mental",
                         value: 1,
                         category: "persistent",
-                        label: t("imbue.fire.label", {
+                        label: t("imbue.mental.label", {
                             variant: t("imbue.variant.tech"),
                         }),
                     }),
                 },
                 {
-                    ...levelRange(8, 13),
+                    ...levelRange(10, 13),
                     effects: addDamage({
-                        type: "fire",
+                        type: "mental",
                         value: "d6",
                         category: "persistent",
-                        label: t("imbue.fire.label", {
+                        label: t("imbue.mental.label", {
                             variant: t("imbue.variant.tech"),
                         }),
                     }),
@@ -305,10 +314,10 @@ export function createImbueFire(): ImbueSource[] {
                 {
                     ...levelRange(14, 17),
                     effects: addDamage({
-                        type: "fire",
+                        type: "mental",
                         value: "d8",
                         category: "persistent",
-                        label: t("imbue.fire.label", {
+                        label: t("imbue.mental.label", {
                             variant: t("imbue.variant.tech"),
                         }),
                     }),
@@ -316,10 +325,10 @@ export function createImbueFire(): ImbueSource[] {
                 {
                     ...levelRange(18),
                     effects: addDamage({
-                        type: "fire",
-                        value: "d8",
+                        type: "mental",
+                        value: "d10",
                         category: "persistent",
-                        label: t("imbue.fire.label", {
+                        label: t("imbue.mental.label", {
                             variant: t("imbue.variant.tech"),
                         }),
                     }),
@@ -329,7 +338,7 @@ export function createImbueFire(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.fire.tech.level-8"),
+                            text: tkey("imbue.mental.tech.level-8"),
                         },
                     ],
                 },
@@ -338,7 +347,7 @@ export function createImbueFire(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.fire.tech.level-12"),
+                            text: tkey("imbue.mental.tech.level-12"),
                         },
                     ],
                 },
@@ -347,7 +356,16 @@ export function createImbueFire(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.fire.tech.level-16"),
+                            text: tkey("imbue.mental.tech.level-16"),
+                        },
+                    ],
+                },
+                {
+                    ...levelRange(18),
+                    effects: [
+                        {
+                            key: "InlineNote",
+                            text: tkey("imbue.mental.tech.level-16"),
                         },
                     ],
                 },
@@ -356,7 +374,7 @@ export function createImbueFire(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.fire.tech.level-20"),
+                            text: tkey("imbue.mental.tech.level-20"),
                         },
                     ],
                 },

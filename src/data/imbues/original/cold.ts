@@ -1,31 +1,31 @@
-import { t, tkey } from "../../utils";
-import { ImbueSource } from "../data-types";
-import { addDamage, levelRange } from "../helpers";
+import { t, tkey } from "../../../utils";
+import { ImbueSource } from "../../data-types";
+import { addDamage, levelRange } from "../../helpers";
 
-export function createImbueAcid(): ImbueSource[] {
+export function createImbueCold(): ImbueSource[] {
     return [
         {
-            key: "imbue:acid:magic",
+            key: "imbue:cold:magic",
             type: "imbue",
-            label: t("imbue.acid.label", { variant: t("imbue.variant.magic") }),
-            flavor: tkey("imbue.acid.flavor"),
+            label: t("imbue.cold.label", { variant: t("imbue.variant.magic") }),
+            flavor: tkey("imbue.cold.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:acid",
+                        "self:trait:cold",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:acid",
+                                        "melee:damage:type:cold",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:acid",
+                                        "spell:damage:type:cold",
                                     ],
                                 },
                             ],
@@ -35,11 +35,11 @@ export function createImbueAcid(): ImbueSource[] {
             ],
             effects: [
                 {
-                    ...levelRange(10, 13),
+                    ...levelRange(8, 13),
                     effects: addDamage({
-                        type: "acid",
+                        type: "cold",
                         value: 1,
-                        label: t("imbue.acid.label", {
+                        label: t("imbue.cold.label", {
                             variant: t("imbue.variant.magic"),
                         }),
                     }),
@@ -47,9 +47,9 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(14, 17),
                     effects: addDamage({
-                        type: "acid",
+                        type: "cold",
                         value: "d4",
-                        label: t("imbue.acid.label", {
+                        label: t("imbue.cold.label", {
                             variant: t("imbue.variant.magic"),
                         }),
                     }),
@@ -57,9 +57,9 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(18),
                     effects: addDamage({
-                        type: "acid",
+                        type: "cold",
                         value: "d6",
-                        label: t("imbue.acid.label", {
+                        label: t("imbue.cold.label", {
                             variant: t("imbue.variant.magic"),
                         }),
                     }),
@@ -71,7 +71,7 @@ export function createImbueAcid(): ImbueSource[] {
                             key: "InlineNote",
                             text: tkey("imbue.add-cantrip"),
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt]",
+                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.gYjPm7YwGtEa1oxh]",
                             },
                         },
                     ],
@@ -81,25 +81,25 @@ export function createImbueAcid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.acid.magic.level-4"),
+                            text: tkey("imbue.cold.magic.level-4"),
                         },
                     ],
                 },
                 {
-                    ...levelRange(6, 7),
+                    ...levelRange(6, 11),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.acid.magic.level-6"),
+                            text: tkey("imbue.cold.magic.level-6"),
                         },
                     ],
                 },
                 {
-                    ...levelRange(8, 11),
+                    ...levelRange(10, 15),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.acid.magic.level-8"),
+                            text: tkey("imbue.cold.magic.level-10"),
                         },
                     ],
                 },
@@ -108,7 +108,7 @@ export function createImbueAcid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.acid.magic.level-12"),
+                            text: tkey("imbue.cold.magic.level-12"),
                         },
                     ],
                 },
@@ -117,7 +117,7 @@ export function createImbueAcid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.acid.magic.level-16"),
+                            text: tkey("imbue.cold.magic.level-16"),
                         },
                     ],
                 },
@@ -126,34 +126,34 @@ export function createImbueAcid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.acid.magic.level-20"),
+                            text: tkey("imbue.cold.magic.level-20"),
                         },
                     ],
                 },
             ],
         },
         {
-            key: "imbue:acid:might",
+            key: "imbue:cold:might",
             type: "imbue",
-            label: t("imbue.acid.label", { variant: t("imbue.variant.might") }),
-            flavor: tkey("imbue.acid.flavor"),
+            label: t("imbue.cold.label", { variant: t("imbue.variant.might") }),
+            flavor: tkey("imbue.cold.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:acid",
+                        "self:trait:cold",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:acid",
+                                        "melee:damage:type:cold",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:acid",
+                                        "spell:damage:type:cold",
                                     ],
                                 },
                             ],
@@ -165,9 +165,9 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(4, 5),
                     effects: addDamage({
-                        type: "acid",
+                        type: "cold",
                         value: 1,
-                        label: t("imbue.acid.label", {
+                        label: t("imbue.cold.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
@@ -175,9 +175,9 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(6, 7),
                     effects: addDamage({
-                        type: "acid",
+                        type: "cold",
                         value: "d4",
-                        label: t("imbue.acid.label", {
+                        label: t("imbue.cold.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
@@ -185,9 +185,9 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(8, 17),
                     effects: addDamage({
-                        type: "acid",
+                        type: "cold",
                         value: "d6",
-                        label: t("imbue.acid.label", {
+                        label: t("imbue.cold.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
@@ -195,9 +195,9 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(18),
                     effects: addDamage({
-                        type: "acid",
+                        type: "cold",
                         value: "d8",
-                        label: t("imbue.acid.label", {
+                        label: t("imbue.cold.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
@@ -207,7 +207,7 @@ export function createImbueAcid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.acid.might.level-8"),
+                            text: tkey("imbue.cold.might.level-8"),
                         },
                     ],
                 },
@@ -216,7 +216,7 @@ export function createImbueAcid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.acid.might.level-12"),
+                            text: tkey("imbue.cold.might.level-12"),
                         },
                     ],
                 },
@@ -225,7 +225,7 @@ export function createImbueAcid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.acid.might.level-14"),
+                            text: tkey("imbue.cold.might.level-14"),
                         },
                     ],
                 },
@@ -234,34 +234,34 @@ export function createImbueAcid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.acid.might.level-20"),
+                            text: tkey("imbue.cold.might.level-20"),
                         },
                     ],
                 },
             ],
         },
         {
-            key: "imbue:acid:tech",
+            key: "imbue:cold:tech",
             type: "imbue",
-            label: t("imbue.acid.label", { variant: t("imbue.variant.tech") }),
-            flavor: tkey("imbue.acid.flavor"),
+            label: t("imbue.cold.label", { variant: t("imbue.variant.tech") }),
+            flavor: tkey("imbue.cold.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:acid",
+                        "self:trait:cold",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:acid",
+                                        "melee:damage:type:cold",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:acid",
+                                        "spell:damage:type:cold",
                                     ],
                                 },
                             ],
@@ -271,44 +271,12 @@ export function createImbueAcid(): ImbueSource[] {
             ],
             effects: [
                 {
-                    ...levelRange(4, 7),
+                    ...levelRange(4, 17),
                     effects: addDamage({
-                        type: "acid",
+                        type: "cold",
                         value: 1,
                         category: "persistent",
-                        label: t("imbue.acid.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(6),
-                    effects: addDamage({
-                        type: "acid",
-                        value: 1,
-                        label: t("imbue.acid.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(8, 13),
-                    effects: addDamage({
-                        type: "acid",
-                        value: "d6",
-                        category: "persistent",
-                        label: t("imbue.acid.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(14, 17),
-                    effects: addDamage({
-                        type: "acid",
-                        value: "d8",
-                        category: "persistent",
-                        label: t("imbue.acid.label", {
+                        label: t("imbue.cold.label", {
                             variant: t("imbue.variant.tech"),
                         }),
                     }),
@@ -316,38 +284,29 @@ export function createImbueAcid(): ImbueSource[] {
                 {
                     ...levelRange(18),
                     effects: addDamage({
-                        type: "acid",
-                        value: "d10",
+                        type: "cold",
+                        value: "d4",
                         category: "persistent",
-                        label: t("imbue.acid.label", {
+                        label: t("imbue.cold.label", {
                             variant: t("imbue.variant.tech"),
                         }),
                     }),
                 },
                 {
-                    ...levelRange(8),
+                    ...levelRange(6, 7),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.acid.tech.level-8"),
+                            text: tkey("imbue.cold.tech.level-6"),
                         },
                     ],
                 },
                 {
-                    ...levelRange(12),
+                    ...levelRange(8, 19),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.acid.tech.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(16),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.acid.tech.level-16"),
+                            text: tkey("imbue.cold.tech.level-8"),
                         },
                     ],
                 },
@@ -356,7 +315,25 @@ export function createImbueAcid(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.acid.tech.level-20"),
+                            text: tkey("imbue.cold.tech.level-20"),
+                        },
+                    ],
+                },
+                {
+                    ...levelRange(12),
+                    effects: [
+                        {
+                            key: "InlineNote",
+                            text: tkey("imbue.cold.tech.level-12"),
+                        },
+                    ],
+                },
+                {
+                    ...levelRange(16),
+                    effects: [
+                        {
+                            key: "InlineNote",
+                            text: tkey("imbue.cold.tech.level-16"),
                         },
                     ],
                 },

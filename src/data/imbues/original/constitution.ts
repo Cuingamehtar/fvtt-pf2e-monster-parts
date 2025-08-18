@@ -1,7 +1,7 @@
 import { SkillSlug } from "foundry-pf2e";
-import { tkey } from "../../utils";
-import { ImbueSource } from "../data-types";
-import { levelRange } from "../helpers";
+import { tkey } from "../../../utils";
+import { ImbueSource } from "../../data-types";
+import { levelRange } from "../../helpers";
 
 export function createImbueConstitution(): ImbueSource {
     const skills = Object.keys(CONFIG.PF2E.skills) as SkillSlug[];

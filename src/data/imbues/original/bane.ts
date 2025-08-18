@@ -1,7 +1,7 @@
-import { getConfig } from "../../config";
-import { t } from "../../utils";
-import { ImbueSource } from "../data-types";
-import { addDamage, levelRange } from "../helpers";
+import { getConfig } from "../../../config";
+import { t } from "../../../utils";
+import { ImbueSource } from "../../data-types";
+import { addDamage, levelRange } from "../../helpers";
 
 export function createImbueBane(): ImbueSource[] {
     return getConfig().baneCreatureTraits.flatMap(baneImbue);

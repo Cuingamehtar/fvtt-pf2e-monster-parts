@@ -1,33 +1,33 @@
-import { t, tkey } from "../../utils";
-import { ImbueSource } from "../data-types";
-import { addDamage, levelRange } from "../helpers";
+import { t, tkey } from "../../../utils";
+import { ImbueSource } from "../../data-types";
+import { addDamage, levelRange } from "../../helpers";
 
-export function createImbueElectricity(): ImbueSource[] {
+export function createImbueForce(): ImbueSource[] {
     return [
         {
-            key: "imbue:electricity:magic",
+            key: "imbue:force:magic",
             type: "imbue",
-            label: t("imbue.electricity.label", {
+            label: t("imbue.force.label", {
                 variant: t("imbue.variant.magic"),
             }),
-            flavor: tkey("imbue.electricity.flavor"),
+            flavor: tkey("imbue.force.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:electricity",
+                        "self:trait:force",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:electricity",
+                                        "melee:damage:type:force",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:electricity",
+                                        "spell:damage:type:force",
                                     ],
                                 },
                             ],
@@ -39,9 +39,9 @@ export function createImbueElectricity(): ImbueSource[] {
                 {
                     ...levelRange(10, 13),
                     effects: addDamage({
-                        type: "electricity",
+                        type: "force",
                         value: 1,
-                        label: t("imbue.electricity.label", {
+                        label: t("imbue.force.label", {
                             variant: t("imbue.variant.magic"),
                         }),
                     }),
@@ -49,9 +49,9 @@ export function createImbueElectricity(): ImbueSource[] {
                 {
                     ...levelRange(14, 17),
                     effects: addDamage({
-                        type: "electricity",
+                        type: "force",
                         value: "d4",
-                        label: t("imbue.electricity.label", {
+                        label: t("imbue.force.label", {
                             variant: t("imbue.variant.magic"),
                         }),
                     }),
@@ -59,9 +59,9 @@ export function createImbueElectricity(): ImbueSource[] {
                 {
                     ...levelRange(18),
                     effects: addDamage({
-                        type: "electricity",
+                        type: "force",
                         value: "d6",
-                        label: t("imbue.electricity.label", {
+                        label: t("imbue.force.label", {
                             variant: t("imbue.variant.magic"),
                         }),
                     }),
@@ -73,7 +73,7 @@ export function createImbueElectricity(): ImbueSource[] {
                             key: "InlineNote",
                             text: tkey("imbue.add-cantrip"),
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf]",
+                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.TVKNbcgTee19PXZR]",
                             },
                         },
                     ],
@@ -83,16 +83,16 @@ export function createImbueElectricity(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-4"),
+                            text: tkey("imbue.force.magic.level-4"),
                         },
                     ],
                 },
                 {
-                    ...levelRange(6, 15),
+                    ...levelRange(6, 7),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-6"),
+                            text: tkey("imbue.force.magic.level-6"),
                         },
                     ],
                 },
@@ -101,7 +101,7 @@ export function createImbueElectricity(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-8"),
+                            text: tkey("imbue.force.magic.level-8"),
                         },
                     ],
                 },
@@ -110,16 +110,16 @@ export function createImbueElectricity(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-12"),
+                            text: tkey("imbue.force.magic.level-12"),
                         },
                     ],
                 },
                 {
-                    ...levelRange(16, 19),
+                    ...levelRange(16),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-16"),
+                            text: tkey("imbue.force.magic.level-16"),
                         },
                     ],
                 },
@@ -128,36 +128,36 @@ export function createImbueElectricity(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-20"),
+                            text: tkey("imbue.force.magic.level-20"),
                         },
                     ],
                 },
             ],
         },
         {
-            key: "imbue:electricity:might",
+            key: "imbue:force:might",
             type: "imbue",
-            label: t("imbue.electricity.label", {
+            label: t("imbue.force.label", {
                 variant: t("imbue.variant.might"),
             }),
-            flavor: tkey("imbue.electricity.flavor"),
+            flavor: tkey("imbue.force.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:electricity",
+                        "self:trait:force",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:electricity",
+                                        "melee:damage:type:force",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:electricity",
+                                        "spell:damage:type:force",
                                     ],
                                 },
                             ],
@@ -169,9 +169,9 @@ export function createImbueElectricity(): ImbueSource[] {
                 {
                     ...levelRange(4, 5),
                     effects: addDamage({
-                        type: "electricity",
+                        type: "force",
                         value: 1,
-                        label: t("imbue.electricity.label", {
+                        label: t("imbue.force.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
@@ -179,9 +179,9 @@ export function createImbueElectricity(): ImbueSource[] {
                 {
                     ...levelRange(6, 7),
                     effects: addDamage({
-                        type: "electricity",
+                        type: "force",
                         value: "d4",
-                        label: t("imbue.electricity.label", {
+                        label: t("imbue.force.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
@@ -189,9 +189,9 @@ export function createImbueElectricity(): ImbueSource[] {
                 {
                     ...levelRange(8, 17),
                     effects: addDamage({
-                        type: "electricity",
+                        type: "force",
                         value: "d6",
-                        label: t("imbue.electricity.label", {
+                        label: t("imbue.force.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
@@ -199,19 +199,19 @@ export function createImbueElectricity(): ImbueSource[] {
                 {
                     ...levelRange(18),
                     effects: addDamage({
-                        type: "electricity",
+                        type: "force",
                         value: "d8",
-                        label: t("imbue.electricity.label", {
+                        label: t("imbue.force.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
                 },
                 {
-                    ...levelRange(8, 13),
+                    ...levelRange(10, 15),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.might.level-8"),
+                            text: tkey("imbue.force.might.level-10"),
                         },
                     ],
                 },
@@ -220,16 +220,16 @@ export function createImbueElectricity(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.might.level-12"),
+                            text: tkey("imbue.force.might.level-12"),
                         },
                     ],
                 },
                 {
-                    ...levelRange(14),
+                    ...levelRange(16),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.might.level-14"),
+                            text: tkey("imbue.force.might.level-16"),
                         },
                     ],
                 },
@@ -238,36 +238,34 @@ export function createImbueElectricity(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.might.level-20"),
+                            text: tkey("imbue.force.might.level-20"),
                         },
                     ],
                 },
             ],
         },
         {
-            key: "imbue:electricity:tech",
+            key: "imbue:force:tech",
             type: "imbue",
-            label: t("imbue.electricity.label", {
-                variant: t("imbue.variant.tech"),
-            }),
-            flavor: tkey("imbue.electricity.flavor"),
+            label: t("imbue.force.label", { variant: t("imbue.variant.tech") }),
+            flavor: tkey("imbue.force.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:electricity",
+                        "self:trait:force",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:electricity",
+                                        "melee:damage:type:force",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:electricity",
+                                        "spell:damage:type:force",
                                     ],
                                 },
                             ],
@@ -279,72 +277,59 @@ export function createImbueElectricity(): ImbueSource[] {
                 {
                     ...levelRange(6),
                     effects: addDamage({
-                        type: "electricity",
+                        type: "force",
                         value: 1,
-                        label: t("imbue.electricity.label", {
+                        label: t("imbue.force.label", {
                             variant: t("imbue.variant.tech"),
                         }),
                     }),
                 },
                 {
-                    ...levelRange(4, 7),
+                    ...levelRange(4, 9),
                     effects: addDamage({
-                        type: "electricity",
+                        type: "force",
                         value: 1,
                         category: "persistent",
-                        label: t("imbue.electricity.label", {
+                        label: t("imbue.force.label", {
                             variant: t("imbue.variant.tech"),
                         }),
                     }),
                 },
                 {
-                    ...levelRange(8, 13),
+                    ...levelRange(10),
                     effects: addDamage({
-                        type: "electricity",
+                        type: "force",
                         value: "d6",
                         category: "persistent",
-                        label: t("imbue.electricity.label", {
+                        label: t("imbue.force.label", {
                             variant: t("imbue.variant.tech"),
                         }),
                     }),
                 },
                 {
-                    ...levelRange(14, 17),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: "d8",
-                        category: "persistent",
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: "d10",
-                        category: "persistent",
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
+                    ...levelRange(8),
+                    effects: [
+                        {
+                            key: "InlineNote",
+                            text: tkey("imbue.force.tech.level-8"),
+                        },
+                    ],
                 },
                 {
                     ...levelRange(12),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.tech.level-12"),
+                            text: tkey("imbue.force.tech.level-12"),
                         },
                     ],
                 },
                 {
-                    ...levelRange(8, 15),
+                    ...levelRange(14),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.tech.level-8"),
+                            text: tkey("imbue.force.tech.level-14"),
                         },
                     ],
                 },
@@ -353,7 +338,16 @@ export function createImbueElectricity(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.tech.level-16"),
+                            text: tkey("imbue.force.tech.level-16"),
+                        },
+                    ],
+                },
+                {
+                    ...levelRange(18),
+                    effects: [
+                        {
+                            key: "InlineNote",
+                            text: tkey("imbue.force.tech.level-16"),
                         },
                     ],
                 },
@@ -362,7 +356,7 @@ export function createImbueElectricity(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.electricity.tech.level-20"),
+                            text: tkey("imbue.force.tech.level-20"),
                         },
                     ],
                 },

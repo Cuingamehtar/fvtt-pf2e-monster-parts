@@ -1,6 +1,6 @@
-import { ImbueSource, MaterialEffectSource } from "../data-types";
-import { i18nFormat, t, tkey } from "../../utils";
-import { levelRange } from "../helpers";
+import { ImbueSource, MaterialEffectSource } from "../../data-types";
+import { i18nFormat, t, tkey } from "../../../utils";
+import { levelRange } from "../../helpers";
 
 export function createImbueEnergyResistant(): ImbueSource[] {
     const damageTypes: (keyof typeof CONFIG.PF2E.damageTypes)[] = [

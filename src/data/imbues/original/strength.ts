@@ -1,15 +1,15 @@
-import { tkey } from "../../utils";
-import { ImbueSource } from "../data-types";
-import { levelRange, skillsOfAttribute } from "../helpers";
+import { tkey } from "../../../utils";
+import { ImbueSource } from "../../data-types";
+import { levelRange, skillsOfAttribute } from "../../helpers";
 
-export function createImbueDexterity(): ImbueSource {
-    const skills = skillsOfAttribute("dex");
+export function createImbueStrength(): ImbueSource {
+    const skills = skillsOfAttribute("str");
     return {
-        key: "imbue:dexterity",
+        key: "imbue:strength",
         type: "imbue",
-        label: tkey("imbue.dexterity.label"),
-        flavor: tkey("imbue.dexterity.flavor"),
-        monsterPredicate: [{ lte: ["ability:dex:rank", 2] }],
+        label: tkey("imbue.strength.label"),
+        flavor: tkey("imbue.strength.flavor"),
+        monsterPredicate: [{ lte: ["ability:str:rank", 2] }],
         itemPredicate: [
             {
                 or: skills.map((s) => ({
@@ -23,7 +23,7 @@ export function createImbueDexterity(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("imbue.dexterity.level-8"),
+                        text: tkey("imbue.strength.level-8"),
                     },
                 ],
             },
@@ -32,7 +32,7 @@ export function createImbueDexterity(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("imbue.dexterity.level-14"),
+                        text: tkey("imbue.strength.level-14"),
                     },
                 ],
             },
@@ -41,7 +41,7 @@ export function createImbueDexterity(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("imbue.dexterity.level-20"),
+                        text: tkey("imbue.strength.level-20"),
                     },
                 ],
             },
@@ -50,7 +50,7 @@ export function createImbueDexterity(): ImbueSource {
                 effects: [
                     {
                         key: "InlineNote",
-                        text: tkey("imbue.dexterity.level-17"),
+                        text: tkey("imbue.strength.level-17"),
                     },
                 ],
             },

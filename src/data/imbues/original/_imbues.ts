@@ -20,8 +20,9 @@ import { createImbueEnergyResistant } from "./energy-resistant";
 import { createImbueVoid } from "./void";
 import { createImbueSensory } from "./sensory";
 import { createImbueSonic } from "./sonic";
+import { createImbueSturdy } from "./sturdy";
 
-export function createDefaultImbues() {
+export function createOriginalImbues() {
     return [
         ...createImbueAcid(),
         ...createImbueBane(),
@@ -39,6 +40,7 @@ export function createDefaultImbues() {
         ...createImbuePoison(),
         createImbueSensory(),
         ...createImbueSonic(),
+        createImbueSturdy(),
         createImbueStrength(),
         ...createImbueVitality(),
         ...createImbueVoid(),
@@ -50,5 +52,5 @@ export function createDefaultImbues() {
 
 /*
 Missing
-Chaotic, Evil, Good, Lawful, Spell, Sturdy
+Chaotic, Evil, Good, Lawful, Spell
  */

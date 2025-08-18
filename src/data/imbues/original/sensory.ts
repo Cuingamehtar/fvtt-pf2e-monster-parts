@@ -1,6 +1,6 @@
-import { tkey } from "../../utils";
-import { ImbueSource } from "../data-types";
-import { levelRange } from "../helpers";
+import { tkey } from "../../../utils";
+import { ImbueSource } from "../../data-types";
+import { levelRange } from "../../helpers";
 
 export function createImbueSensory(): ImbueSource {
     const senses = [

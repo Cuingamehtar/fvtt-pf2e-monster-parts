@@ -85,6 +85,7 @@ type RuleElementEffectSource = {
 
 type InlineNoteEffectSource = {
     key: "InlineNote";
+    predicate?: PredicateStatement[];
 } & {
     text: I18nKey | I18nString;
     parameters?: Record<string, string | number | null | undefined>;

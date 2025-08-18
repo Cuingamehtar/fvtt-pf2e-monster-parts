@@ -1,31 +1,33 @@
-import { t, tkey } from "../../utils";
-import { ImbueSource } from "../data-types";
-import { addDamage, levelRange } from "../helpers";
+import { t, tkey } from "../../../utils";
+import { ImbueSource } from "../../data-types";
+import { addDamage, levelRange } from "../../helpers";
 
-export function createImbueCold(): ImbueSource[] {
+export function createImbueElectricity(): ImbueSource[] {
     return [
         {
-            key: "imbue:cold:magic",
+            key: "imbue:electricity:magic",
             type: "imbue",
-            label: t("imbue.cold.label", { variant: t("imbue.variant.magic") }),
-            flavor: tkey("imbue.cold.flavor"),
+            label: t("imbue.electricity.label", {
+                variant: t("imbue.variant.magic"),
+            }),
+            flavor: tkey("imbue.electricity.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:cold",
+                        "self:trait:electricity",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:cold",
+                                        "melee:damage:type:electricity",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:cold",
+                                        "spell:damage:type:electricity",
                                     ],
                                 },
                             ],
@@ -35,11 +37,11 @@ export function createImbueCold(): ImbueSource[] {
             ],
             effects: [
                 {
-                    ...levelRange(8, 13),
+                    ...levelRange(10, 13),
                     effects: addDamage({
-                        type: "cold",
+                        type: "electricity",
                         value: 1,
-                        label: t("imbue.cold.label", {
+                        label: t("imbue.electricity.label", {
                             variant: t("imbue.variant.magic"),
                         }),
                     }),
@@ -47,9 +49,9 @@ export function createImbueCold(): ImbueSource[] {
                 {
                     ...levelRange(14, 17),
                     effects: addDamage({
-                        type: "cold",
+                        type: "electricity",
                         value: "d4",
-                        label: t("imbue.cold.label", {
+                        label: t("imbue.electricity.label", {
                             variant: t("imbue.variant.magic"),
                         }),
                     }),
@@ -57,9 +59,9 @@ export function createImbueCold(): ImbueSource[] {
                 {
                     ...levelRange(18),
                     effects: addDamage({
-                        type: "cold",
+                        type: "electricity",
                         value: "d6",
-                        label: t("imbue.cold.label", {
+                        label: t("imbue.electricity.label", {
                             variant: t("imbue.variant.magic"),
                         }),
                     }),
@@ -71,7 +73,7 @@ export function createImbueCold(): ImbueSource[] {
                             key: "InlineNote",
                             text: tkey("imbue.add-cantrip"),
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.gYjPm7YwGtEa1oxh]",
+                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf]",
                             },
                         },
                     ],
@@ -81,25 +83,25 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.cold.magic.level-4"),
+                            text: tkey("imbue.electricity.magic.level-4"),
                         },
                     ],
                 },
                 {
-                    ...levelRange(6, 11),
+                    ...levelRange(6, 15),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.cold.magic.level-6"),
+                            text: tkey("imbue.electricity.magic.level-6"),
                         },
                     ],
                 },
                 {
-                    ...levelRange(10, 15),
+                    ...levelRange(8, 11),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.cold.magic.level-10"),
+                            text: tkey("imbue.electricity.magic.level-8"),
                         },
                     ],
                 },
@@ -108,16 +110,16 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.cold.magic.level-12"),
+                            text: tkey("imbue.electricity.magic.level-12"),
                         },
                     ],
                 },
                 {
-                    ...levelRange(16),
+                    ...levelRange(16, 19),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.cold.magic.level-16"),
+                            text: tkey("imbue.electricity.magic.level-16"),
                         },
                     ],
                 },
@@ -126,34 +128,36 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.cold.magic.level-20"),
+                            text: tkey("imbue.electricity.magic.level-20"),
                         },
                     ],
                 },
             ],
         },
         {
-            key: "imbue:cold:might",
+            key: "imbue:electricity:might",
             type: "imbue",
-            label: t("imbue.cold.label", { variant: t("imbue.variant.might") }),
-            flavor: tkey("imbue.cold.flavor"),
+            label: t("imbue.electricity.label", {
+                variant: t("imbue.variant.might"),
+            }),
+            flavor: tkey("imbue.electricity.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:cold",
+                        "self:trait:electricity",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:cold",
+                                        "melee:damage:type:electricity",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:cold",
+                                        "spell:damage:type:electricity",
                                     ],
                                 },
                             ],
@@ -165,9 +169,9 @@ export function createImbueCold(): ImbueSource[] {
                 {
                     ...levelRange(4, 5),
                     effects: addDamage({
-                        type: "cold",
+                        type: "electricity",
                         value: 1,
-                        label: t("imbue.cold.label", {
+                        label: t("imbue.electricity.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
@@ -175,9 +179,9 @@ export function createImbueCold(): ImbueSource[] {
                 {
                     ...levelRange(6, 7),
                     effects: addDamage({
-                        type: "cold",
+                        type: "electricity",
                         value: "d4",
-                        label: t("imbue.cold.label", {
+                        label: t("imbue.electricity.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
@@ -185,9 +189,9 @@ export function createImbueCold(): ImbueSource[] {
                 {
                     ...levelRange(8, 17),
                     effects: addDamage({
-                        type: "cold",
+                        type: "electricity",
                         value: "d6",
-                        label: t("imbue.cold.label", {
+                        label: t("imbue.electricity.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
@@ -195,9 +199,9 @@ export function createImbueCold(): ImbueSource[] {
                 {
                     ...levelRange(18),
                     effects: addDamage({
-                        type: "cold",
+                        type: "electricity",
                         value: "d8",
-                        label: t("imbue.cold.label", {
+                        label: t("imbue.electricity.label", {
                             variant: t("imbue.variant.might"),
                         }),
                     }),
@@ -207,7 +211,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.cold.might.level-8"),
+                            text: tkey("imbue.electricity.might.level-8"),
                         },
                     ],
                 },
@@ -216,7 +220,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.cold.might.level-12"),
+                            text: tkey("imbue.electricity.might.level-12"),
                         },
                     ],
                 },
@@ -225,7 +229,7 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.cold.might.level-14"),
+                            text: tkey("imbue.electricity.might.level-14"),
                         },
                     ],
                 },
@@ -234,34 +238,36 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.cold.might.level-20"),
+                            text: tkey("imbue.electricity.might.level-20"),
                         },
                     ],
                 },
             ],
         },
         {
-            key: "imbue:cold:tech",
+            key: "imbue:electricity:tech",
             type: "imbue",
-            label: t("imbue.cold.label", { variant: t("imbue.variant.tech") }),
-            flavor: tkey("imbue.cold.flavor"),
+            label: t("imbue.electricity.label", {
+                variant: t("imbue.variant.tech"),
+            }),
+            flavor: tkey("imbue.electricity.flavor"),
             itemPredicate: ["item:type:weapon"],
             monsterPredicate: [
                 {
                     or: [
-                        "self:trait:cold",
+                        "self:trait:electricity",
                         {
                             or: [
                                 {
                                     and: [
                                         "item:type:melee",
-                                        "melee:damage:type:cold",
+                                        "melee:damage:type:electricity",
                                     ],
                                 },
                                 {
                                     and: [
                                         "item:type:spell",
-                                        "spell:damage:type:cold",
+                                        "spell:damage:type:electricity",
                                     ],
                                 },
                             ],
@@ -271,12 +277,44 @@ export function createImbueCold(): ImbueSource[] {
             ],
             effects: [
                 {
-                    ...levelRange(4, 17),
+                    ...levelRange(6),
                     effects: addDamage({
-                        type: "cold",
+                        type: "electricity",
+                        value: 1,
+                        label: t("imbue.electricity.label", {
+                            variant: t("imbue.variant.tech"),
+                        }),
+                    }),
+                },
+                {
+                    ...levelRange(4, 7),
+                    effects: addDamage({
+                        type: "electricity",
                         value: 1,
                         category: "persistent",
-                        label: t("imbue.cold.label", {
+                        label: t("imbue.electricity.label", {
+                            variant: t("imbue.variant.tech"),
+                        }),
+                    }),
+                },
+                {
+                    ...levelRange(8, 13),
+                    effects: addDamage({
+                        type: "electricity",
+                        value: "d6",
+                        category: "persistent",
+                        label: t("imbue.electricity.label", {
+                            variant: t("imbue.variant.tech"),
+                        }),
+                    }),
+                },
+                {
+                    ...levelRange(14, 17),
+                    effects: addDamage({
+                        type: "electricity",
+                        value: "d8",
+                        category: "persistent",
+                        label: t("imbue.electricity.label", {
                             variant: t("imbue.variant.tech"),
                         }),
                     }),
@@ -284,47 +322,29 @@ export function createImbueCold(): ImbueSource[] {
                 {
                     ...levelRange(18),
                     effects: addDamage({
-                        type: "cold",
-                        value: "d4",
+                        type: "electricity",
+                        value: "d10",
                         category: "persistent",
-                        label: t("imbue.cold.label", {
+                        label: t("imbue.electricity.label", {
                             variant: t("imbue.variant.tech"),
                         }),
                     }),
-                },
-                {
-                    ...levelRange(6, 7),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.tech.level-6"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(8, 19),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.tech.level-8"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.tech.level-20"),
-                        },
-                    ],
                 },
                 {
                     ...levelRange(12),
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.cold.tech.level-12"),
+                            text: tkey("imbue.electricity.tech.level-12"),
+                        },
+                    ],
+                },
+                {
+                    ...levelRange(8, 15),
+                    effects: [
+                        {
+                            key: "InlineNote",
+                            text: tkey("imbue.electricity.tech.level-8"),
                         },
                     ],
                 },
@@ -333,7 +353,16 @@ export function createImbueCold(): ImbueSource[] {
                     effects: [
                         {
                             key: "InlineNote",
-                            text: tkey("imbue.cold.tech.level-16"),
+                            text: tkey("imbue.electricity.tech.level-16"),
+                        },
+                    ],
+                },
+                {
+                    ...levelRange(20),
+                    effects: [
+                        {
+                            key: "InlineNote",
+                            text: tkey("imbue.electricity.tech.level-20"),
                         },
                     ],
                 },
