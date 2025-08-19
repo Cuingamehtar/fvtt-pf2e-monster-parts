@@ -2,7 +2,7 @@ import { PhysicalItemPF2e, ItemPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
 import { Material } from "./material";
-import { i18nFormat, isPhysicalItem, t } from "./utils";
+import { i18nFormat, t } from "./utils";
 import { dialogs } from "./app/dialogs";
 import { ImbueSource, RefinementSource } from "./data/data-types";
 
@@ -19,12 +19,12 @@ export class RefinedItem {
 
     static async fromItem(item: ItemPF2e) {
         // @ts-expect-error
-        if (item.collection?.metadata && isPhysicalItem(item)) {
+        if (item.collection?.metadata && item.isOfType("physical")) {
             // item is in a compendium
             item = (await Item.create(item.toObject())) as PhysicalItemPF2e;
             ui.notifications.info(t("refined-item.imported-from-compendium"));
         }
-        if (!isPhysicalItem(item)) {
+        if (!item.isOfType("physical")) {
             ui.notifications.error(
                 t("refined-item.error-not-physical-item", { item: item.name }),
             );

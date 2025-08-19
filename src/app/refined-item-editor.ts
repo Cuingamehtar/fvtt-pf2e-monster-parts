@@ -1,5 +1,5 @@
 import { getConfig, getMaterialLabel } from "../config";
-import { getDroppedItem, i18nFormat, isPhysicalItem, t } from "../utils";
+import { getDroppedItem, i18nFormat, t } from "../utils";
 import { MODULE_ID } from "../module";
 import { RefinedItem } from "../refined-item";
 import { Material } from "../material";
@@ -135,7 +135,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
 
                     const item = await getDroppedItem(e as DragEvent, "Item");
                     if (!item) return;
-                    if (!isPhysicalItem(item)) {
+                    if (!item.isOfType("physical")) {
                         ui.notifications.error(
                             t("monster-part.error-not-physical-item"),
                         );

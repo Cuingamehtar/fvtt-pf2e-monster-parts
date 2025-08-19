@@ -60,6 +60,14 @@ export function createImbueWinged(): ImbueSource {
                 ...levelRange(18),
                 effects: [
                     {
+                        key: "RuleElement",
+                        rule: {
+                            key: "BaseSpeed",
+                            selector: "fly",
+                            value: "@actor.system.attributes.speed.total",
+                        },
+                    },
+                    {
                         key: "InlineNote",
                         text: tkey("imbue.winged.level-18"),
                     },
