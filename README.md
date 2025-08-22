@@ -3,8 +3,6 @@
 This module seeks to implement the management and automation of magical items created from defeated enemies.
 The intent is to implement Battlezoo Bestiary monster parts system and provide a framework for the creation of custom materials within PF2e system of FoundryVTT.
 
-Current automation updates rule elements on the refined item. Standard refinements should all work. For imbues, only additional damage and resistances are automated at the moment.
-
 Full Battlezoo Bestiary rules for Monster parts system are available [here](https://pf2easy.com/index.php?id=19415).
 
 Discuss the module [here](https://discord.com/channels/880968862240239708/1406595957390577774).
@@ -33,3 +31,14 @@ https://github.com/user-attachments/assets/58827568-ca12-4056-8df4-a7ef23320f65
 
 https://github.com/user-attachments/assets/fd3ff1c9-3438-48ab-9c9f-5c89fe398bba
 
+## Current status
+
+All Battlezoo Bestiary refinements should be automated
+
+### Imbuements
+
+**Full automation with rule elements:** Energy Resistant, Sensory, Sturdy, Winged
+
+**Damage only:** Acid, Bane, Cold, Electricity, Fire, Force, Mental, Poison, Sonic, Vitality, Void, Wild
+
+**Text only:** Charisma, Dexterity, Fortification, Intelligence, Strength, Wisdom
