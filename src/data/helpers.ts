@@ -9,13 +9,14 @@ import { ItemAlterationSource } from "./data-types";
 
 export function selfAlteration(
     property: ItemAlterationSource["property"],
-    value: number,
+    value: ItemAlterationSource["value"],
+    mode: ItemAlterationSource["mode"] = "upgrade",
 ): RuleElementEffectSource {
     return {
         key: "RuleElement",
         rule: {
             key: "ItemAlteration",
-            mode: "upgrade",
+            mode: mode,
             property: property,
             value: value,
             itemId: "{item|id}",
@@ -91,6 +92,22 @@ export function skillsOfAttribute(attribute: keyof Abilities): SkillSlug[] {
         .map(([k, _]) => k as SkillSlug);
 }
 
+type RollString = number | `${number}` | `${number}d${number}` | `d${number}`;
+
+export function damageSeries(
+    levelRanges: number[][],
+    damages: RollString[],
+    commonParameters: Omit<Parameters<typeof addDamage>[0], "value">,
+) {
+    return levelRanges.map((levels, i) => ({
+        ...levelRange(levels[0], levels[1]),
+        effects: addDamage({
+            ...commonParameters,
+            value: damages[i],
+        }),
+    }));
+}
+
 export function addDamage({
     type,
     category,
@@ -100,8 +117,8 @@ export function addDamage({
     predicate,
 }: {
     type?: string;
-    category?: "persistent";
-    value: number | `${number}d${number}` | `d${number}`;
+    category?: "persistent" | "splash";
+    value: RollString;
     label: I18nKey | I18nString;
     text?: I18nKey | I18nString;
     predicate?: PredicateStatement[];
@@ -143,7 +160,7 @@ export function addDamage({
                 key: "DamageDice",
                 selector: "{item|_id}-damage",
                 damageType: type,
-                damageCategory: category,
+                category: category,
                 dieSize: m?.[2] ?? "d4",
                 diceNumber: m?.[1] ?? 1,
                 predicate,
@@ -209,4 +226,10 @@ export function addWildDamage(
         );
     }
     return effects;
+}
+
+export function addTraits(traits: string | string[]) {
+    return (Array.isArray(traits) ? traits : [traits]).map((t) =>
+        selfAlteration("traits", t, "add"),
+    );
 }

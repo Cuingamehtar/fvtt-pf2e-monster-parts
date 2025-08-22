@@ -3,6 +3,85 @@ import i18nKeys from "../lang/en.json";
 import { MonsterPartsConfig } from "./config";
 
 declare global {
+    type FromDataModel<T> =
+        T extends foundry.data.fields.StringField<
+            infer _A,
+            infer _B,
+            infer _C,
+            infer _D,
+            infer _E
+        >
+            ? FromStringModel<T>
+            : T extends foundry.data.fields.NumberField<
+                    infer _A,
+                    infer _B,
+                    infer _C,
+                    infer _D,
+                    infer _E
+                >
+              ? FromNumberModel<T>
+              : T extends foundry.data.fields.SchemaField
+                ? FromSchemaModel<T>
+                : never;
+
+    type FromSchemaModel<T> =
+        T extends foundry.data.fields.SchemaField<
+            infer TType,
+            infer _TSourceProp,
+            infer _TModelProp,
+            infer TRequired,
+            infer TNullable,
+            infer THasInitial
+        >
+            ? ResolveNullable<
+                  ResolveRequired<
+                      { [TKey in keyof TType]: FromDataModel<TType[TKey]> },
+                      TRequired,
+                      THasInitial
+                  >,
+                  TNullable
+              >
+            : never;
+    type FromNumberModel<T> =
+        T extends foundry.data.fields.NumberField<
+            infer TType,
+            infer _B,
+            infer TRequired,
+            infer TNullable,
+            infer THasInitial
+        >
+            ? ResolveNullable<
+                  ResolveRequired<TType, TRequired, THasInitial>,
+                  TNullable
+              >
+            : never;
+    type FromStringModel<T> =
+        T extends foundry.data.fields.StringField<
+            infer TType,
+            infer _B,
+            infer TRequired,
+            infer TNullable,
+            infer THasInitial
+        >
+            ? ResolveNullable<
+                  ResolveRequired<TType, TRequired, THasInitial>,
+                  TNullable
+              >
+            : never;
+    type ResolveRequired<
+        TProp,
+        TRequired extends boolean,
+        THasInitial extends boolean,
+    > = TRequired extends true
+        ? TProp
+        : THasInitial extends true
+          ? TProp
+          : TProp | undefined;
+    type ResolveNullable<
+        TProp,
+        TNullable extends boolean,
+    > = TNullable extends false ? TProp : TProp | null;
+
     type Flatten<T> = {
         [K in keyof T as T[K] extends object
             ? K extends string

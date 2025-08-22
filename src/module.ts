@@ -13,7 +13,27 @@ export const MODULE_ID = "pf2e-monster-parts";
 
 Hooks.once("init", () => {
     registerSettings();
-    Hooks.once("i18nInit", () => createConfig());
+    Hooks.once("i18nInit", () => {
+        createConfig();
+    });
+    Hooks.once("ready", () => {
+        if (
+            game.settings.get(MODULE_ID, "refresh-refined-items") &&
+            game.user.isActiveGM
+        ) {
+            for (const actor of game.actors) {
+                for (const item of actor.items) {
+                    if (
+                        item.getFlag(MODULE_ID, "refined-item") &&
+                        item.isOfType("physical")
+                    ) {
+                        const refinedItem = new RefinedItem(item);
+                        refinedItem.updateItem();
+                    }
+                }
+            }
+        }
+    });
     registerInlineNotes();
 });
 

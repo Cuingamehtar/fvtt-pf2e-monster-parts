@@ -4,11 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Unreleased]
+## [0.1.3] - 2025-08-22
 
-### Add
+### Added
 
-- Add Winged automation
+- Add Winged imbuement automation
+- Add an option to automatically refresh items when GM logs in (on by default)
+- Add Sensory imbuement automation
+
+### Changed
+
+- Add `magical` trait when item's refinement gets it's first bonus
+
+### Fixed
+
+- Fix imbuements dealing normal damage instead of persistent damage
+- Fix armor and equipment being useless by adding `invested` trait to them.
+- Fix incorrect shield and equipment level thresholds
 
 ## [0.1.2] - 2025-08-18
 

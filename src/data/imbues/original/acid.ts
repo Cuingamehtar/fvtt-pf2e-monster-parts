@@ -1,6 +1,6 @@
 import { t, tkey } from "../../../utils";
 import { ImbueSource } from "../../data-types";
-import { addDamage, levelRange } from "../../helpers";
+import { addDamage, damageSeries, levelRange } from "../../helpers";
 
 export function createImbueAcid(): ImbueSource[] {
     return [
@@ -34,36 +34,12 @@ export function createImbueAcid(): ImbueSource[] {
                 },
             ],
             effects: [
-                {
-                    ...levelRange(10, 13),
-                    effects: addDamage({
-                        type: "acid",
-                        value: 1,
-                        label: t("imbue.acid.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
+                ...damageSeries([[10, 13], [14, 17], [18]], [1, "d4", "d6"], {
+                    type: "acid",
+                    label: t("imbue.acid.label", {
+                        variant: t("imbue.variant.magic"),
                     }),
-                },
-                {
-                    ...levelRange(14, 17),
-                    effects: addDamage({
-                        type: "acid",
-                        value: "d4",
-                        label: t("imbue.acid.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "acid",
-                        value: "d6",
-                        label: t("imbue.acid.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
+                }),
                 {
                     ...levelRange(2),
                     effects: [
@@ -162,46 +138,16 @@ export function createImbueAcid(): ImbueSource[] {
                 },
             ],
             effects: [
-                {
-                    ...levelRange(4, 5),
-                    effects: addDamage({
+                ...damageSeries(
+                    [[4, 5], [6, 7], [8, 17], [20]],
+                    [1, "d4", "d6", "d8"],
+                    {
                         type: "acid",
-                        value: 1,
                         label: t("imbue.acid.label", {
                             variant: t("imbue.variant.might"),
                         }),
-                    }),
-                },
-                {
-                    ...levelRange(6, 7),
-                    effects: addDamage({
-                        type: "acid",
-                        value: "d4",
-                        label: t("imbue.acid.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(8, 17),
-                    effects: addDamage({
-                        type: "acid",
-                        value: "d6",
-                        label: t("imbue.acid.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "acid",
-                        value: "d8",
-                        label: t("imbue.acid.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
+                    },
+                ),
                 {
                     ...levelRange(8, 13),
                     effects: [
@@ -271,17 +217,6 @@ export function createImbueAcid(): ImbueSource[] {
             ],
             effects: [
                 {
-                    ...levelRange(4, 7),
-                    effects: addDamage({
-                        type: "acid",
-                        value: 1,
-                        category: "persistent",
-                        label: t("imbue.acid.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
                     ...levelRange(6),
                     effects: addDamage({
                         type: "acid",
@@ -291,39 +226,17 @@ export function createImbueAcid(): ImbueSource[] {
                         }),
                     }),
                 },
-                {
-                    ...levelRange(8, 13),
-                    effects: addDamage({
+                ...damageSeries(
+                    [[4, 7], [8, 13], [14, 17], [18]],
+                    [1, "d6", "d8", "d10"],
+                    {
                         type: "acid",
-                        value: "d6",
                         category: "persistent",
                         label: t("imbue.acid.label", {
                             variant: t("imbue.variant.tech"),
                         }),
-                    }),
-                },
-                {
-                    ...levelRange(14, 17),
-                    effects: addDamage({
-                        type: "acid",
-                        value: "d8",
-                        category: "persistent",
-                        label: t("imbue.acid.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "acid",
-                        value: "d10",
-                        category: "persistent",
-                        label: t("imbue.acid.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
+                    },
+                ),
                 {
                     ...levelRange(8),
                     effects: [

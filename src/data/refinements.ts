@@ -2,6 +2,7 @@ import { SkillSlug } from "foundry-pf2e";
 import { MaterialEffectSource, RefinementSource } from "./data-types";
 import {
     addItemBonus,
+    addTraits,
     levelRange,
     predicateAnySense,
     selfAlteration,
@@ -20,6 +21,10 @@ export function createDefaultRefinements() {
                 selfAlteration("potency", 1),
                 { key: "InlineNote", text: tkey("refinement.weapon.+1") },
             ],
+        },
+        {
+            ...levelRange(2),
+            effects: addTraits("magical"),
         },
         {
             ...levelRange(4, 9),
@@ -79,6 +84,10 @@ export function createDefaultRefinements() {
     ];
 
     const armorEffects: MaterialEffectSource[] = [
+        {
+            ...levelRange(5),
+            effects: addTraits(["invested", "magical"]),
+        },
         {
             ...levelRange(5, 7),
             effects: [
@@ -170,6 +179,10 @@ export function createDefaultRefinements() {
         })),
         {
             ...levelRange(4),
+            effects: addTraits(["invested", "magical"]),
+        },
+        {
+            ...levelRange(4),
             effects: [
                 {
                     key: "InlineNote",
@@ -189,6 +202,10 @@ export function createDefaultRefinements() {
         })),
         {
             ...levelRange(4),
+            effects: addTraits(["invested", "magical"]),
+        },
+        {
+            ...levelRange(4),
             effects: [
                 {
                     key: "InlineNote",
@@ -203,6 +220,10 @@ export function createDefaultRefinements() {
         label: I18nKey | I18nString,
     ): MaterialEffectSource[] {
         return [
+            {
+                ...levelRange(3),
+                effects: addTraits(["invested", "magical"]),
+            },
             {
                 ...levelRange(3, 8),
                 effects: [

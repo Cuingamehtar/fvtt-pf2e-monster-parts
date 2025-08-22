@@ -4,6 +4,7 @@ import {
     PredicateStatement,
     RollNoteSource,
     RollOptionSource,
+    RuleElementSource,
 } from "foundry-pf2e";
 
 type ItemAlterationSource = {
@@ -16,7 +17,7 @@ type ItemAlterationSource = {
         | "remove"
         | "subtract"
         | "upgrade";
-    value: number;
+    value: number | string;
     property:
         | "ac-bonus"
         | "area-size"
@@ -43,7 +44,8 @@ type ItemAlterationSource = {
         | "potency"
         | "resilient"
         | "strength"
-        | "striking";
+        | "striking"
+        | "traits";
     itemId: string;
 };
 // materials
@@ -80,7 +82,15 @@ type RuleElementEffectSource = {
         | FlatModifierSource
         | RollNoteSource
         | RollOptionSource
-        | ItemAlterationSource;
+        | ItemAlterationSource
+        | SenseSource;
+};
+
+type SenseSource = Omit<RuleElementSource, "key"> & {
+    key: "Sense";
+    acuity?: "precise" | "imprecise" | "vague";
+    selector: string;
+    range?: number | string;
 };
 
 type InlineNoteEffectSource = {

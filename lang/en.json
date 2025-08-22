@@ -120,6 +120,7 @@
         "tech": "Technique"
       },
       "add-cantrip": "The weapon can cast {spell} as a cantrip, heightened to half the item's level rounded up.",
+      "vulnerability-before-strike": "Before applying additional damage, the target gains weakness 1 to <em>{damage}</em> until the beginning of your next turn.",
       "acid": {
         "label": "Acid ({variant})",
         "flavor": "You imbue the weapon with vitriolic <em>acid</em>.",
@@ -374,6 +375,9 @@
       },
       "sensory": {
         "label": "Sensory",
+        "temporary-low-light-vision": "Sensory Imbuement - Temporary Low-Light Vision",
+        "temporary-darkvision": "Sensory Imbuement - Temporary Darkvision",
+        "temporary-scent": "Sensory Imbuement - Temporary Scent",
         "flavor": "You imbue the item with extraordinary senses.",
         "level-4": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p>You gain low-light vision for 1 hour.</p>",
         "level-6": "You gain low-light vision.",
@@ -478,7 +482,7 @@
     "settings": {
       "actor-lootable": {
         "name": "Make actors lootable",
-        "hint": "Allows players to loot the actor after creating monster parts"
+        "hint": "Allows players to loot the actor after creating monster parts."
       },
       "variant": {
         "name": "Variant",
@@ -488,10 +492,14 @@
       },
       "armor-refinements": {
         "name": "Default Armor Refinements",
-        "hint": "BZ armor refinements can't be checked by a predicate. Whether they are suitable is up to GM. This setting sets their default behavior",
+        "hint": "BZ armor refinements can't be checked by a predicate. Whether they are suitable is up to GM. This setting sets their default behavior.",
         "none": "None",
         "ask": "Ask",
         "all": "All"
+      },
+      "refresh-refined-items": {
+        "name": "Refresh refined items",
+        "hint": "Update refined items on every actor in the actors tab when GM logs in."
       }
     }
   }

@@ -34,6 +34,13 @@ export function createImbueSensory(): ImbueSource {
                         key: "InlineNote",
                         text: tkey("imbue.sensory.level-6"),
                     },
+                    {
+                        key: "RuleElement",
+                        rule: {
+                            key: "Sense",
+                            selector: "low-light-vision",
+                        },
+                    },
                 ],
             },
             {
@@ -42,6 +49,13 @@ export function createImbueSensory(): ImbueSource {
                     {
                         key: "InlineNote",
                         text: tkey("imbue.sensory.level-12"),
+                    },
+                    {
+                        key: "RuleElement",
+                        rule: {
+                            key: "Sense",
+                            selector: "darkvision",
+                        },
                     },
                 ],
             },
@@ -52,6 +66,22 @@ export function createImbueSensory(): ImbueSource {
                         key: "InlineNote",
                         text: tkey("imbue.sensory.level-16"),
                     },
+                    {
+                        key: "RuleElement",
+                        rule: {
+                            key: "Sense",
+                            selector: "darkvision",
+                        },
+                    },
+                    {
+                        key: "RuleElement",
+                        rule: {
+                            acuity: "imprecise",
+                            key: "Sense",
+                            range: 30,
+                            selector: "scent",
+                        },
+                    },
                 ],
             },
             {
@@ -60,6 +90,22 @@ export function createImbueSensory(): ImbueSource {
                     {
                         key: "InlineNote",
                         text: tkey("imbue.sensory.level-18"),
+                    },
+                    {
+                        key: "RuleElement",
+                        rule: {
+                            key: "Sense",
+                            selector: "greater-darkvision",
+                        },
+                    },
+                    {
+                        key: "RuleElement",
+                        rule: {
+                            acuity: "imprecise",
+                            key: "Sense",
+                            range: 30,
+                            selector: "scent",
+                        },
                     },
                 ],
             },
@@ -79,6 +125,28 @@ export function createImbueSensory(): ImbueSource {
                         key: "InlineNote",
                         text: tkey("imbue.sensory.level-4"),
                     },
+                    {
+                        key: "RuleElement",
+                        rule: {
+                            key: "RollOption",
+                            domain: "all",
+                            label: tkey(
+                                "imbue.sensory.temporary-low-light-vision",
+                            ),
+                            option: "imbue:sensory:temporary-low-light-vision",
+                            toggleable: true,
+                        },
+                    },
+                    {
+                        key: "RuleElement",
+                        rule: {
+                            key: "Sense",
+                            selector: "low-light-vision",
+                            predicate: [
+                                "imbue:sensory:temporary-low-light-vision",
+                            ],
+                        },
+                    },
                 ],
             },
             {
@@ -88,6 +156,24 @@ export function createImbueSensory(): ImbueSource {
                         key: "InlineNote",
                         text: tkey("imbue.sensory.level-8"),
                     },
+                    {
+                        key: "RuleElement",
+                        rule: {
+                            key: "RollOption",
+                            domain: "all",
+                            label: tkey("imbue.sensory.temporary-darkvision"),
+                            option: "imbue:sensory:temporary-darkvision",
+                            toggleable: true,
+                        },
+                    },
+                    {
+                        key: "RuleElement",
+                        rule: {
+                            key: "Sense",
+                            selector: "darkvision",
+                            predicate: ["imbue:sensory:temporary-darkvision"],
+                        },
+                    },
                 ],
             },
             {
@@ -96,6 +182,26 @@ export function createImbueSensory(): ImbueSource {
                     {
                         key: "InlineNote",
                         text: tkey("imbue.sensory.level-14"),
+                    },
+                    {
+                        key: "RuleElement",
+                        rule: {
+                            key: "RollOption",
+                            domain: "all",
+                            label: tkey("imbue.sensory.temporary-scent"),
+                            option: "imbue:sensory:temporary-scent",
+                            toggleable: true,
+                        },
+                    },
+                    {
+                        key: "RuleElement",
+                        rule: {
+                            acuity: "imprecise",
+                            key: "Sense",
+                            range: 30,
+                            predicate: ["imbue:sensory:temporary-scent"],
+                            selector: "scent",
+                        },
                     },
                 ],
             },

@@ -3,6 +3,8 @@ import { getRandomInt, t, tkey } from "../../../utils";
 import { ImbueSource } from "../../data-types";
 import { addWildDamage, levelRange } from "../../helpers";
 
+const damages = ["acid", "cold", "electricity", "fire", "void", "sonic"];
+
 export function createImbueWild(): ImbueSource {
     const imbue: ImbueSource = {
         key: "imbue:wild:might",
@@ -19,7 +21,7 @@ export function createImbueWild(): ImbueSource {
                         key: "RuleElement",
                         rule: {
                             key: "RollOption",
-                            option: "item:imbue:wild:6",
+                            option: "item:imbue:wild",
                             domain: "{item|_id}-damage",
                         },
                     },
@@ -79,6 +81,23 @@ export function createImbueWild(): ImbueSource {
                     },
                 ],
             },
+            {
+                ...levelRange(20),
+                effects: damages.map((type, i) => ({
+                    key: "RuleElement" as "RuleElement",
+                    rule: {
+                        key: "Note",
+                        selector: "strike-damage",
+                        text: t("imbue.vulnerability-before-strike", {
+                            damage: type,
+                        }),
+                        title: t("imbue.wild.label", {
+                            variant: t("imbue.variant.might"),
+                        }),
+                        predicate: [`wild:damage-type:${i + 1}`],
+                    },
+                })),
+            },
         ],
     };
 
@@ -90,7 +109,7 @@ export function createImbueWild(): ImbueSource {
             let res: string[] = wrapped(...args);
             if (
                 args[0]?.includes("strike-damage") &&
-                res.some((o) => o.includes("imbue:wild"))
+                res.includes("item:imbue:wild")
             ) {
                 let r = getRandomInt(6) + 1;
                 res.push(`wild:damage-type:${r}`);

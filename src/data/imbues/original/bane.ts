@@ -29,66 +29,24 @@ function baneImbue(creature: string): ImbueSource[] {
             monsterPredicate: [`self:trait:${creature}`],
             itemPredicate: ["item:type:weapon"],
             effects: [
-                {
-                    ...levelRange(2, 3),
+                ...[
+                    [2, 3, 1],
+                    [4, 5, "d4"],
+                    [6, 15, "d6"],
+                    [16, 19, "d8"],
+                    [20, undefined, "d10"],
+                ].map(([from, to, damage]) => ({
+                    ...levelRange(from as number, to as number),
                     effects: addDamage({
-                        value: 1,
+                        value: damage as number,
                         text: t("imbue.bane.damage", {
-                            damage: 1,
+                            damage: damage as number | string,
                             creature: creatureLabel,
                         }),
                         predicate,
                         label: labelMight,
                     }),
-                },
-                {
-                    ...levelRange(4, 5),
-                    effects: addDamage({
-                        value: "d4",
-                        text: t("imbue.bane.damage", {
-                            damage: "1d4",
-                            creature: creatureLabel,
-                        }),
-                        predicate,
-                        label: labelMight,
-                    }),
-                },
-                {
-                    ...levelRange(6, 15),
-                    effects: addDamage({
-                        value: "d6",
-                        text: t("imbue.bane.damage", {
-                            damage: "1d6",
-                            creature: creatureLabel,
-                        }),
-                        predicate,
-                        label: labelMight,
-                    }),
-                },
-                {
-                    ...levelRange(16, 19),
-                    effects: addDamage({
-                        value: "d8",
-                        text: t("imbue.bane.damage", {
-                            damage: "1d8",
-                            creature: creatureLabel,
-                        }),
-                        predicate,
-                        label: labelMight,
-                    }),
-                },
-                {
-                    ...levelRange(20),
-                    effects: addDamage({
-                        value: "d10",
-                        text: t("imbue.bane.damage", {
-                            damage: "1d10",
-                            creature: creatureLabel,
-                        }),
-                        predicate,
-                        label: labelMight,
-                    }),
-                },
+                })),
                 {
                     ...levelRange(6, 13),
                     effects: [
@@ -143,62 +101,25 @@ function baneImbue(creature: string): ImbueSource[] {
                         label: labelTech,
                     }),
                 },
-                {
-                    ...levelRange(2, 5),
+                ...[
+                    [2, 5, 1],
+                    [6, 11, "d6"],
+                    [12, 15, "d8"],
+                    [16, undefined, "d10"],
+                ].map(([from, to, damage]) => ({
+                    ...levelRange(from as number, to as number),
                     effects: addDamage({
-                        value: 1,
+                        value: damage as number,
                         type: "bleed",
                         category: "persistent",
                         text: t("imbue.bane.persistent", {
-                            damage: 1,
+                            damage: damage as number | string,
                             creature: creatureLabel,
                         }),
                         predicate,
                         label: labelTech,
                     }),
-                },
-                {
-                    ...levelRange(6, 11),
-                    effects: addDamage({
-                        value: "d6",
-                        type: "bleed",
-                        category: "persistent",
-                        text: t("imbue.bane.persistent", {
-                            damage: "1d6",
-                            creature: creatureLabel,
-                        }),
-                        predicate,
-                        label: labelTech,
-                    }),
-                },
-                {
-                    ...levelRange(12, 15),
-                    effects: addDamage({
-                        value: "d8",
-                        type: "bleed",
-                        category: "persistent",
-                        text: t("imbue.bane.persistent", {
-                            damage: "1d8",
-                            creature: creatureLabel,
-                        }),
-                        predicate,
-                        label: labelTech,
-                    }),
-                },
-                {
-                    ...levelRange(16),
-                    effects: addDamage({
-                        value: "d10",
-                        type: "bleed",
-                        category: "persistent",
-                        text: t("imbue.bane.persistent", {
-                            damage: "1d10",
-                            creature: creatureLabel,
-                        }),
-                        predicate,
-                        label: labelTech,
-                    }),
-                },
+                })),
                 {
                     ...levelRange(6, 13),
                     effects: [

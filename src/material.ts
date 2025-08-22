@@ -9,6 +9,8 @@ import { getConfig } from "./config";
 import { RefinedItem } from "./refined-item";
 import { i18nFormat } from "./utils";
 
+const materialAliases:Record<string,MaterialKey> = {};
+
 export class Material<T extends RefinementSource | ImbueSource> {
     data: T;
     value: number;
@@ -22,7 +24,7 @@ export class Material<T extends RefinementSource | ImbueSource> {
 
     static fromKey(key: MaterialKey, value = 0) {
         const config = getConfig();
-        const m = config.materials.get(key);
+        const m = config.materials.get(materialAliases[key as string] ?? key);
         if (!m) return undefined;
         return new Material(m, value);
     }

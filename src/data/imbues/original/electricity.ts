@@ -1,6 +1,6 @@
 import { t, tkey } from "../../../utils";
 import { ImbueSource } from "../../data-types";
-import { addDamage, levelRange } from "../../helpers";
+import { addDamage, damageSeries, levelRange } from "../../helpers";
 
 export function createImbueElectricity(): ImbueSource[] {
     return [
@@ -276,6 +276,7 @@ export function createImbueElectricity(): ImbueSource[] {
                 },
             ],
             effects: [
+                // damage
                 {
                     ...levelRange(6),
                     effects: addDamage({
@@ -286,50 +287,18 @@ export function createImbueElectricity(): ImbueSource[] {
                         }),
                     }),
                 },
-                {
-                    ...levelRange(4, 7),
-                    effects: addDamage({
+                // persistent damage
+                ...damageSeries(
+                    [[4, 7], [8, 13], [14, 17], [18]],
+                    [1, "d6", "d8", "d10"],
+                    {
                         type: "electricity",
-                        value: 1,
                         category: "persistent",
                         label: t("imbue.electricity.label", {
                             variant: t("imbue.variant.tech"),
                         }),
-                    }),
-                },
-                {
-                    ...levelRange(8, 13),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: "d6",
-                        category: "persistent",
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(14, 17),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: "d8",
-                        category: "persistent",
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: "d10",
-                        category: "persistent",
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
+                    },
+                ),
                 {
                     ...levelRange(12),
                     effects: [
