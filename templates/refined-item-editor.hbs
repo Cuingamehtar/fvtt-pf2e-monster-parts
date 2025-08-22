@@ -9,8 +9,7 @@
             {{/each}}
         </select>
         <label for="refinement-value">{{localize "pf2e-monster-parts.dialog.refined-item-editor.value"}}</label>
-        <input type="number" name="refinement-value" id="refinement-value" value="{{data.refinement.value}}"
-               step="0.1" />
+        <input type="number" name="refinement-value" id="refinement-value" value="{{data.refinement.value}}"/>
     </fieldset>
 
     {{#each data.imbues as | imbue |}}
@@ -27,7 +26,7 @@
             <label for="imbue-{{@index}}-value">{{localize "pf2e-monster-parts.dialog.refined-item-editor.value"}}</label>
             <input type="number" name="imbue-{{@index}}-value" id="imbue-{{@index}}-value" data-imbue-index="{{@index}}"
                    class="imbue-value"
-                   value="{{this.value}}" step="0.1" />
+                   value="{{this.value}}" />
         </fieldset>
     {{/each}}
 
