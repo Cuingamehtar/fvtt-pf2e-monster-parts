@@ -1,342 +1,242 @@
-import { t, tkey } from "../../../utils";
-import { ImbueSource } from "../../data-types";
-import { addDamage, levelRange } from "../../helpers";
+import { tkey } from "../../../utils";
+import { helpers } from "../../helpers";
+import { MaterialData } from "../../material";
+import { RollString } from "../../../types";
 
-export function createImbueCold(): ImbueSource[] {
+export function createImbueCold(): MaterialData[] {
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.cold"
+            >
+        >,
+    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.cold.${k}`);
+
+    const base = {
+        type: "imbuement" as "imbuement",
+        itemPredicate: ["item:type:weapon"],
+        monsterPredicate: [
+            {
+                or: [
+                    "self:trait:cold",
+                    {
+                        or: [
+                            {
+                                and: [
+                                    "item:type:melee",
+                                    "item:damage:type:cold",
+                                ],
+                            },
+                            {
+                                and: [
+                                    "item:type:spell",
+                                    "item:damage:type:cold",
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            },
+        ],
+    };
+
     return [
         {
+            ...base,
             key: "imbue:cold:magic",
-            type: "imbue",
-            label: t("imbue.cold.label", { variant: t("imbue.variant.magic") }),
-            flavor: tkey("imbue.cold.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:cold",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:cold",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:cold",
-                                    ],
-                                },
-                            ],
-                        },
-                    ],
-                },
-            ],
-            effects: [
-                {
-                    ...levelRange(8, 13),
-                    effects: addDamage({
-                        type: "cold",
-                        value: 1,
-                        label: t("imbue.cold.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(14, 17),
-                    effects: addDamage({
-                        type: "cold",
-                        value: "d4",
-                        label: t("imbue.cold.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "cold",
-                        value: "d6",
-                        label: t("imbue.cold.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(2),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.add-cantrip"),
+            label: { type: "key", key: lkey("magic.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    ...helpers.leveledLabels(
+                        [8, 14, 18],
+                        ["1", "d4", "d6"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "cold",
+                                value: damage,
+                            }),
+                    ),
+                    {
+                        levelMin: 2,
+                        text: {
+                            type: "key",
+                            key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.gYjPm7YwGtEa1oxh]",
+                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.gYjPm7YwGtEa1oxh]" as I18nString,
                             },
                         },
-                    ],
-                },
-                {
-                    ...levelRange(4, 5),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.magic.level-4"),
+                        sort: 1,
+                    },
+                    ...helpers.leveledLabels(
+                        [4, 6, 10, 12, 16],
+                        [
+                            "magic.level-4-spells",
+                            "magic.level-6-spells",
+                            "magic.level-10-spells",
+                            "magic.level-12-spells",
+                            "magic.level-16-spells",
+                        ],
+                        (key: Parameters<typeof lkey>[0]) => ({
+                            text: { type: "key", key: lkey(key) },
+                            sort: 2,
+                        }),
+                    ),
+                    {
+                        levelMin: 20,
+                        text: {
+                            type: "key",
+                            key: lkey("magic.level-20-polar-ray"),
                         },
-                    ],
-                },
-                {
-                    ...levelRange(6, 11),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.magic.level-6"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(10, 15),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.magic.level-10"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(12, 15),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.magic.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(16),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.magic.level-16"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.magic.level-20"),
-                        },
-                    ],
-                },
+                        sort: 3,
+                    },
+                ],
+            },
+            effects: [
+                ...helpers.leveledEffects(
+                    [8, 14, 18],
+                    ["1", "d4", "d6"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            type: "cold",
+                            value: damage,
+                            label: lkey("magic.label"),
+                        }),
+                ),
             ],
         },
         {
+            ...base,
             key: "imbue:cold:might",
-            type: "imbue",
-            label: t("imbue.cold.label", { variant: t("imbue.variant.might") }),
-            flavor: tkey("imbue.cold.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:cold",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:cold",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:cold",
-                                    ],
-                                },
-                            ],
+            label: { type: "key", key: lkey("might.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    ...helpers.leveledLabels(
+                        [4, 6, 8, 18],
+                        ["1", "d4", "d6", "d8"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "cold",
+                                value: damage,
+                            }),
+                    ),
+                    {
+                        levelMin: 8,
+                        levelMax: 13,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-8-slowed"),
                         },
-                    ],
-                },
-            ],
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 12,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-12-resistance"),
+                        },
+                        sort: 2,
+                    },
+                    {
+                        levelMin: 14,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-14-slowed"),
+                        },
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 20,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-20-weakness"),
+                        },
+                        sort: 3,
+                    },
+                ],
+            },
             effects: [
-                {
-                    ...levelRange(4, 5),
-                    effects: addDamage({
-                        type: "cold",
-                        value: 1,
-                        label: t("imbue.cold.label", {
-                            variant: t("imbue.variant.might"),
+                ...helpers.leveledEffects(
+                    [4, 6, 8, 18],
+                    ["1", "d4", "d6", "d8"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            type: "cold",
+                            value: damage,
+                            label: lkey("might.label"),
                         }),
-                    }),
-                },
-                {
-                    ...levelRange(6, 7),
-                    effects: addDamage({
-                        type: "cold",
-                        value: "d4",
-                        label: t("imbue.cold.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(8, 17),
-                    effects: addDamage({
-                        type: "cold",
-                        value: "d6",
-                        label: t("imbue.cold.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "cold",
-                        value: "d8",
-                        label: t("imbue.cold.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(8, 13),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.might.level-8"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(12),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.might.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(14),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.might.level-14"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.might.level-20"),
-                        },
-                    ],
-                },
+                ),
             ],
         },
         {
+            ...base,
             key: "imbue:cold:tech",
-            type: "imbue",
-            label: t("imbue.cold.label", { variant: t("imbue.variant.tech") }),
-            flavor: tkey("imbue.cold.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:cold",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:cold",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:cold",
-                                    ],
-                                },
-                            ],
+            label: { type: "key", key: lkey("tech.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    ...helpers.leveledLabels(
+                        [4, 18],
+                        ["1", "d4"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "cold",
+                                category: "persistent",
+                                value: damage,
+                            }),
+                    ),
+                    ...helpers.leveledLabels(
+                        [6, 8, 20],
+                        [
+                            "tech.level-6-slow",
+                            "tech.level-8-slow",
+                            "tech.level-20-slow",
+                        ],
+                        (key: Parameters<typeof lkey>[0]) => ({
+                            text: { type: "key", key: lkey(key) },
+                            sort: 1,
+                        }),
+                    ),
+                    {
+                        levelMin: 12,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-12-resistance"),
                         },
-                    ],
-                },
-            ],
+                        sort: 2,
+                    },
+                    {
+                        levelMin: 14,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-14-thaw"),
+                        },
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 16,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-16-surface"),
+                        },
+                        sort: 3,
+                    },
+                ],
+            },
             effects: [
-                {
-                    ...levelRange(4, 17),
-                    effects: addDamage({
-                        type: "cold",
-                        value: 1,
-                        category: "persistent",
-                        label: t("imbue.cold.label", {
-                            variant: t("imbue.variant.tech"),
+                ...helpers.leveledEffects(
+                    [4, 18],
+                    ["1", "d4"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            type: "cold",
+                            category: "persistent",
+                            value: damage,
+                            label: lkey("tech.label"),
                         }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "cold",
-                        value: "d4",
-                        category: "persistent",
-                        label: t("imbue.cold.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(6, 7),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.tech.level-6"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(8, 19),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.tech.level-8"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.tech.level-20"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(12),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.tech.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(16),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.cold.tech.level-16"),
-                        },
-                    ],
-                },
+                ),
             ],
         },
     ];

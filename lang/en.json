@@ -63,420 +63,26 @@
         "title": "Edit provided materials"
       }
     },
-    "refinement": {
-      "bludgeoning": "Weapon (Bludgeoning)",
-      "piercing": "Weapon (Piercing)",
-      "slashing": "Weapon (Slashing)",
-      "armor-light": "Armor (Light)",
-      "armor-medium": "Armor (Medium)",
-      "armor-heavy": "Armor (Heavy)",
-      "armor-unarmored": "Armor (Unarmored)",
-      "armor": {
-        "+1": "This is a +1 armor. It grants +1 item bonus to AC and can be imbued 1 time.",
-        "resilient+1": "This is a +1 resilient armor. It grants +1 item bonus to AC and saving throws, and can be imbued 1 time.",
-        "resilient+2": "This is a +2 resilient armor. It grants +2 item bonus to AC, +1 item bonus to saving throws, and can be imbued 2 times.",
-        "greater-resilient+2": "This is a +2 greater resilient armor. It grants +2 item bonus to AC and saving throws, and can be imbued 2 times.",
-        "greater-resilient+3": "This is a +3 greater resilient armor. It grants +3 item bonus to AC, +2 item bonus to saving throws, and can be imbued 3 times.",
-        "major-resilient+3": "This is a +3 major resilient armor. It grants +3 item bonus to AC and saving throws, and can be imbued 3 times."
-      },
-      "perception": "Perception",
-      "shield": {
-        "label": "Shield",
-        "label-buckler": "Shield (Buckler)",
-        "inline-note": "This shield has Hardness {hardness}, HP {hp}, BT {bt}",
-        "imbuing": "It can be imbued once."
-      },
-      "skill": {
-        "item-bonus": "This item grants +{bonus} item bonus to {skill} checks.",
-        "imbuing": "It can be imbued once."
-      },
-      "weapon": {
-        "+1": "This is a +1 weapon. It grants +1 item bonus to attack rolls and can be imbued 1 time.",
-        "striking+1": "This is a +1 striking weapon. It grants +1 item bonus to attack rolls, deals 2 dice of damage, and can be imbued 1 time.",
-        "striking+2": "This is a +2 striking weapon. It grants +2 item bonus to attack rolls, deals 2 dice of damage, and can be imbued 2 times.",
-        "greater-striking+2": "This is a +2 greater striking weapon. It grants +2 item bonus to attack rolls, deals 3 dice of damage, and can be imbued 2 times.",
-        "greater-striking+3": "This is a +3 greater striking weapon. It grants +3 item bonus to attack rolls, deals 3 dice of damage, and can be imbued 3 times.",
-        "major-striking+3": "This is a +3 major striking weapon. It grants +3 item bonus to attack rolls, deals 4 dice of damage, and can be imbued 3 times."
-      }
-    },
     "damage": {
-      "normal": "Strikes with the weapon additionally deal {damage} {damageType} damage.",
-      "persistent": "Strikes with the weapon additionally deal {damage} persistent {damageType} damage.",
+      "strikes": "Strikes with the weapon additionally deal {damage} damage.",
       "type": {
-        "acid": "acid",
-        "cold": "cold",
-        "electricity": "electricity",
-        "fire": "fire",
-        "force": "force",
-        "sonic": "sonic",
-        "vitality": "vitality",
-        "void": "void"
-      }
-    },
-    "imbue": {
-      "variant": {
-        "might": "Might",
-        "magic": "Magic",
-        "tech": "Technique"
-      },
-      "add-cantrip": "The weapon can cast {spell} as a cantrip, heightened to half the item's level rounded up.",
-      "vulnerability-before-strike": "Before applying additional damage, the target gains weakness 1 to <em>{damage}</em> until the beginning of your next turn.",
-      "acid": {
-        "label": "Acid ({variant})",
-        "flavor": "You imbue the weapon with vitriolic <em>acid</em>.",
-        "magic": {
-          "level-4": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] once per day.",
-          "level-6": "The weapon can cast either 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] or 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] once per day, but not both.",
-          "level-8": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] and 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] each once per day.",
-          "level-12": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0], 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws], and 5th rank Acid Storm each once per day.",
-          "level-16": "The weapon can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0], 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws], and 7th rank Acid Storm each once per day.",
-          "level-20": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl] once per day but you can only choose the acid rain effect. You can choose the acid rain effect twice in a row."
-        },
-        "might": {
-          "level-8": "On a critical hit, the target's armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
-          "level-12": "The acid damage dealt by this imbued property ignores resistances.",
-          "level-14": "On a critical hit, the target's armor (if any) takes 6d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
-          "level-20": "On a successful Strike with the weapon, before applying acid damage, the target gains weakness 1 to acid until the beginning of your next turn."
-        },
-        "tech": {
-          "level-8": "On a critical hit, the target's armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
-          "level-12": "The acid damage dealt by this imbued property (including the persistent acid damage) ignores resistances.",
-          "level-16": "The persistent acid damage from the imbued property eats away at a foe's resistances. Every time a foe or the foe's armor or shield takes damage from the persistent acid damage at the end of their turn, any resistances and Hardness decrease by 1 for 1 minute. This effect is cumulative.",
-          "level-20": "On a critical hit, acid eats away at the foe's innards, and they are @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
-        }
-      },
-      "bane": {
-        "damage": "Strikes with the weapon additionally deal {damage} damage of the weapon's base damage type to creatures of type {creature}.",
-        "persistent": "Strikes with the weapon cause external or internal bleeding in creatures of type {creature}. Against such creatures, Strikes with the weapon deal {damage} persistent bleed damage.",
-        "label": "Bane ({creature}, {variant})",
-        "might": {
-          "level-6": "On a critical hit, you sap the strength of a creature of type {creature}, causing it to be @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
-          "level-10": "Against a creature of type {creature}, the weapon's base damage ignores the first 5 points of the target's resistance.",
-          "level-14": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} must attempt a Fortitude save. On a critical success, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn, on a success, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn, on a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn, and on a critical failure, it's destroyed. This effect has the incapacitation trait."
-        },
-        "tech": {
-          "level-6": "On a critical hit, you sap the strength of a creature of the bane type, causing it to be @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
-          "level-10": "Against a creature of type {creature}, the weapon's base damage ignores the first 5 points of the target's resistance and the persistent bleed damage from this imbued property ignores the target's resistance.",
-          "level-14": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn. It must also attempt a Fortitude save. On a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn, and on a critical failure, it's destroyed. This effect has the incapacitation trait.",
-          "level-20": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}. It must also attempt a Fortitude save. On a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3}, and on a critical failure, it's destroyed. This effect has the incapacitation trait. The enfeebled condition from a critical hit lasts as long as the persistent bleed damage lasts, or until the end of your next turn, whichever is longer."
-        }
-      },
-      "charisma": {
-        "label": "Charisma",
-        "flavor": "You imbue the item with dazzling <em>charisma</em>.",
-        "level-8": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Heroism} once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness.",
-        "level-14": "The item can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Heroism} once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness.",
-        "level-17": "When you invest the item, you either increase your Charisma attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
-        "level-20": "The item can cast 9th rank @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Heroism} once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness."
-      },
-      "cold": {
-        "label": "Cold ({variant})",
-        "flavor": "You imbue the weapon with chilling <em>cold</em>.",
-        "magic": {
-          "level-4": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0] once per day.",
-          "level-6": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0] once per day.",
-          "level-10": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx] once per day.",
-          "level-12": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0] once per day, and @UUID[Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k] once per day.",
-          "level-16": "The weapon can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0] once per day, 6th rank @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx] once per day, and 6th rank @UUID[Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k] once per day.",
-          "level-20": "The weapon can cast 9th rank @UUID[Compendium.pf2e.spells-srd.Item.BKIet436snMNcnez] once per day."
-        },
-        "might": {
-          "level-8": "On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC.",
-          "level-12": "The cold damage dealt by this imbued property ignores resistances.",
-          "level-14": "On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC, and takes –10-foot status penalty to its Speeds for 1 round.",
-          "level-20": "On a successful Strike with the weapon, before applying cold damage, the target gains weakness 1 to cold until the beginning of your next turn."
-        },
-        "tech": {
-          "level-6": "On a successful Strike with the weapon, the target takes a –5-foot status penalty to its Speeds for 1 round.",
-          "level-8": "On a successful Strike with the weapon, the target takes a –10-foot status penalty to its Speeds for 1 round. On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC.",
-          "level-12": "The persistent cold damage dealt by this imbued property ignores resistances.",
-          "level-14": "A creature with their Speeds decreased by the imbued property thaws more slowly. The penalty lasts as long as the persistent cold damage does.",
-          "level-16": "Foes adjacent to a surface who critically fail the save against the slow effect freeze to that surface (usually the ground), becoming @UUID[Compendium.pf2e.conditionitems.Item.eIcWbB5o3pP6OIMe] until they [[/act escape]] against the item's DC.",
-          "level-20": "On a successful Strike with the weapon, the target takes a –15-foot status penalty to its Speeds for 1 round. On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC."
-        }
-      },
-      "constitution": {
-        "label": "Constitution",
-        "flavor": "You imbue the item with resilient <em>constitution</em>.",
-        "level-8": "The item can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only, once per day as a divine spell.",
-        "level-14": "The item can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only, once per day as a divine spell.",
-        "level-17": "When you invest the item, you either increase your Constitution attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
-        "level-18": "The item can either cast 7th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only, once per day as a divine spell, or cast @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Regenerate} on you once per day.",
-        "level-20": "If you rest for 10 minutes, you recover 100 Hit Points."
-      },
-      "dexterity": {
-        "label": "Dexterity",
-        "flavor": "You imbue the item with deft <em>dexterity</em>.",
-        "level-8": "Once per day, you can use a single action activation with manipulate trait to gain a +10-foot status bonus to all your Speeds for 10 minutes.",
-        "level-14": "Once per day, you can use a single action activation with manipulate trait to gain a +20-foot status bonus to all your Speeds for 10 minutes. While activated, you gain the effects of @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Water Walk}.",
-        "level-17": "When you invest the item, you either increase your Dexterity attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
-        "level-20": "Once per day, you can use a single action activation with manipulate trait to gain a +30-foot status bonus to all your Speeds for 10 minutes. While activated, you gain the effects of both @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Water Walk} and @UUID[Compendium.pf2e.spells-srd.Item.b5sGjGlBf58f8jn0]{Air Walk}."
-      },
-      "electricity": {
-        "label": "Electricity ({variant})",
-        "flavor": "You imbue the weapon with shocking <em>electricity</em>.",
-        "magic": {
-          "level-4": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} once per day.",
-          "level-6": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} once per day.",
-          "level-8": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2]{Lightning Bolt} once per day.",
-          "level-12": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2]{Lightning Bolt} once per day, and @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Lightning Storm} once per day.",
-          "level-16": "The weapon can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} once per day, 6th rank @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Lightning Storm} once per day, and 6th rank @UUID[Compendium.pf2e.spells-srd.Item.TDNlDWbYb58Y55Da]{Chain Lightning} once per day.",
-          "level-20": "The weapon can cast 7th rank @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} once per day, 7th rank @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Lightning Storm} once per day, and 9th rank @UUID[Compendium.pf2e.spells-srd.Item.TDNlDWbYb58Y55Da]{Chain Lightning} once per day."
-        },
-        "might": {
-          "level-8": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage to up to two other creatures of your choice within 10 feet of the target.",
-          "level-12": "The electricity damage dealt by this imbued property ignores resistances.",
-          "level-14": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage to up to two other creatures of your choice within 20 feet of the target.",
-          "level-20": "On a successful Strike with the weapon, before applying electricity damage, the target gains weakness 1 to electricity until the beginning of your next turn."
-        },
-        "tech": {
-          "level-8": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage and persistent electricity damage to up to two other creatures of your choice within 10 feet of the target.",
-          "level-12": "The electricity damage dealt by this imbued property (including persistent electricity damage) ignores resistances.",
-          "level-16": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage and persistent electricity damage to up to four other creatures of your choice within 20 feet of the target.",
-          "level-20": "Creatures suffering persistent electricity damage from this imbued property become magnetized, attracting metal weapons. Strikes with metal weapons gain a +1 circumstance bonus to hit them as long as they have the persistent electricity damage."
-        }
-      },
-      "energy-resistant": {
-        "armor-label": "Energy Resistant (Armor, {damage})",
-        "shield-label": "Energy Resistant (Shield, {damage})",
-        "armor-flavor": "You imbue the armor to protect yourself from a particular type of energy.",
-        "shield-flavor": "You imbue the shield to protect yourself from a particular type of energy.",
-        "armor-effect": "While wearing the armor, you gain resistance {level} to the chosen energy damage type. Additionally, the armor itself gains the same resistance.",
-        "shield-effect": "While wielding the shield, you gain resistance {level} to the chosen energy damage type. Additionally, the shield itself gains the same resistance (applied after you reduce the damage by the shield's Hardness). You can use Shield Block any time you would take the chosen damage type, in addition to its usual trigger."
-      },
-      "fire": {
-        "label": "Fire ({variant})",
-        "flavor": "You imbue the weapon with burning <em>fire</em>.",
-        "magic": {
-          "level-4": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t]{Breathe Fire} once per day.",
-          "level-6": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t]{Breathe Fire} once per day.",
-          "level-8": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Floating Flame} and @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Fireball} once per day.",
-          "level-12": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Floating Flame},  @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Fireball} and @UUID[Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu]{Wall of Fire} once per day each.",
-          "level-16": "The weapon can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Floating Flame},  @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Fireball} and @UUID[Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu]{Wall of Fire} once per day each.",
-          "level-20": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.jrBa9deU2ULFWvSl]{Falling Stars} once per day."
-        },
-        "might": {
-          "level-8": "On a critical hit, Strikes with the weapon deal 1d10 persistent fire damage.",
-          "level-12": "The fire damage dealt by this imbued property (including persistent fire damage) ignores resistances.",
-          "level-14": "On a critical hit, Strikes with the weapon deal 2d10 persistent fire damage.",
-          "level-20": "On a successful Strike with the weapon, before applying fire damage, the target gains weakness 1 to fire until the beginning of your next turn."
-        },
-        "tech": {
-          "level-8": "On a critical hit, the weapon deals 1d10 additional persistent fire damage. (The additional persistent fire damage on a critical hit is cumulative with the regular persistent fire damage, and as normal you add it in only after doubling the regular persistent fire damage).",
-          "level-12": "The fire damage dealt by this imbued property (including persistent fire damage) ignores resistances.",
-          "level-16": "Foes currently affected by persistent fire damage from the imbued property are distracted as they burn, making them @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Off-Guard}.",
-          "level-20": "At the end of a burning foe’s turn, when they take damage from the imbued property’s persistent fire damage, all foes adjacent to that foe are set on fire as well, taking the same amount of persistent fire damage."
-        }
-      },
-      "force": {
-        "label": "Force ({variant})",
-        "flavor": "You imbue the weapon with pure <em>force</em>.",
-        "magic": {
-          "level-4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage} once per day.",
-          "level-6": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage} or @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw]{Spiritual Weapon} once per day, but not both.",
-          "level-8": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage} and @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw]{Spiritual Weapon} once per day each.",
-          "level-12": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage},  4th rank @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw]{Spiritual Weapon} and @UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U]{Spiritual Guardian} once per day each.",
-          "level-16": "The weapon can cast 5rd rank @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage},  6th rank @UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U]{Spiritual Guardian} and @UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U]{Spirit Blast} once per day each.",
-          "level-20": "The weapon can cast 9th rank @UUID[Compendium.pf2e.spells-srd.Item.Ht35SDf9PDStJfoC]{Spirit Song} once per day."
-        },
-        "might": {
-          "level-10": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 5 feet away from you.",
-          "level-12": "The force damage dealt by this imbued property ignores resistances.",
-          "level-16": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 10 feet away from you.",
-          "level-20": "On a successful Strike with the weapon, before applying force damage, the target gains weakness 1 to force until the beginning of your next turn."
-        },
-        "tech": {
-          "level-8": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 5 feet away from you.",
-          "level-12": "The force damage dealt by this imbued property (including persistent force damage) ignores resistances.",
-          "level-14": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 10 feet away from you.",
-          "level-16": "Foes currently affected by persistent force damage from the this imbued property are knocked about in all directions, making them @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Off-Guard}.",
-          "level-18": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 20 feet away from you.",
-          "level-20": "At the end of a burning foe’s turn, if it fails to remove the persistent force damage from the this imbued property, it must succeed at a Fortitude save or be knocked @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60]{Prone}."
-        }
-      },
-      "fortification": {
-        "label": "Fortification",
-        "flavor": "You imbue the armor with powerful fortifications to ward off deadly attacks.",
-        "penalty": "The armor Bulk and Strength requirement are increased by 1.",
-        "flat-check": "Each time you’re critically hit while wearing the etched armor, attempt a DC {dc} flat check. On a success, it becomes a normal hit."
-      },
-      "intelligence": {
-        "label": "Intelligence",
-        "flavor": "You imbue the item with brilliant <em>intelligence</em>.",
-        "level-8": "The item can cast hypercognition once per day as an occult spell.",
-        "level-14": "The item can cast hypercognition once per hour as an occult spell.",
-        "level-17": "When you invest the item, you either increase your Intelligence attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
-        "level-20": "The item can cast hypercognition once per minute as an occult spell."
-      },
-      "mental": {
-        "label": "Mental ({variant})",
-        "flavor": "You imbue the weapon with psychic power.",
-        "magic": {
-          "level-4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain} once per day.",
-          "level-6": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain} or @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM]{Warrior's Regret} once per day, but not both.",
-          "level-8": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain} and 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM]{Warrior's Regret} once per day each.",
-          "level-12": "The weapon can cast 4rd rank @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain},  4th rank @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM]{Warrior's Regret} and @UUID[Compendium.pf2e.spells-srd.Item.tlcrVRqW1MSKJ5IC]{Phantasmal Killer} once per day each.",
-          "level-16": "The weapon can cast 6rd rank @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain},  6th rank @UUID[Compendium.pf2e.spells-srd.Item.tlcrVRqW1MSKJ5IC]{Phantasmal Killer} and @UUID[Compendium.pf2e.spells-srd.Item.0XP2XOxT9VSiXFDr]{Phantasmal Calamity} once per day each.",
-          "level-20": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.qDjeG6dxT4aEEC6J]{Weird} once per day."
-        },
-        "might": {
-          "level-10": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 1} for 1 round.",
-          "level-12": "The mental damage dealt by this imbued property ignores resistances.",
-          "level-16": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 2} for 1 round.",
-          "level-20": "On a successful Strike with the weapon, before applying mental damage, the target gains weakness 1 to mental until the beginning of your next turn."
-        },
-        "tech": {
-          "level-8": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 1} for 1 round.",
-          "level-12": "The mental damage dealt by this imbued property (including persistent mental damage) ignores resistances.",
-          "level-16": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 2} for 1 round.",
-          "level-18": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 20 feet away from you.",
-          "level-20": "While the foe has persistent mental damage from the this imbued property, the Stupefied condition from a critical hit lasts until the persistent damage ends or for 1 round, whichever is longer."
-        }
-      },
-      "poison": {
-        "label": "Poison ({variant})",
-        "flavor": "You imbue the weapon with toxic venom.",
-        "magic": {
-          "level-4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting} once per day.",
-          "level-6": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Noxious Vapors} or @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting} once per day, but not both.",
-          "level-8": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Noxious Vapors}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Imp Sting} and 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting} once per day each.",
-          "level-12": "The weapon can cast 4rd rank @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Noxious Vapors}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Imp Sting}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting} and @UUID[Compendium.pf2e.spells-srd.Item.LVwmAH5NGvTuuQSU]{Swarming Wasp Stings} once per day each.",
-          "level-16": "The weapon can cast 6rd rank @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Noxious Vapors}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Imp Sting}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting}, @UUID[Compendium.pf2e.spells-srd.Item.LVwmAH5NGvTuuQSU]{Swarming Wasp Stings} and @UUID[Compendium.pf2e.spells-srd.Item.ayRXv0wQH00TTNZe]{Purple Worm Sting} once per day each.",
-          "level-20": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.ZMY58Yk5hnyfeE3q]{Linnorm Sting} once per day."
-        },
-        "might": {
-          "level-8": "On a critical hit, the target takes @Damage[1d10[persistent,poison]] damage.",
-          "level-12": "The mental damage dealt by this imbued property ignores resistances.",
-          "level-14": "On a critical hit, the target takes @Damage[2d10[persistent,poison]] damage.",
-          "level-20": "On a successful Strike with the weapon, before applying poison damage, the target gains weakness 1 to mental until the beginning of your next turn."
-        },
-        "tech": {
-          "level-8": "On a critical hit, the target takes an additional @Damage[1d10[persistent,poison]] damage (As normal, the additional persistent poison damage on a critical hit is cumulative with the regular persistent poison damage, and you add it only after doubling the regular persistent poison damage).",
-          "level-12": "The poison damage dealt by this imbued property (including persistent poison damage) ignores resistances.",
-          "level-16": "At the end of a creature’s turn, if it has failed to remove the persistent poison damage from this imbued property, choose @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Clumsy}, @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled}, or @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied}. The creature gains that condition with a condition value of 1, or increases the condition value by 1 if it already had that condition, to a maximum of 3. If the creature ever removes the persistent poison damage from this property, these conditions immediately end. If you reapply the poison later, you must start again from condition values of 0.",
-          "level-20": "On a critical hit, the poison eats away at your foe’s ability to resist further poisoning. They are @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
-        }
-      },
-      "sonic": {
-        "label": "Sonic ({variant})",
-        "flavor": "You imbue the weapon with reverberating sound waves.",
-        "might": {
-          "level-8": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or 1 hour on a critical failure.",
-          "level-12": "The sonic damage dealt by this imbued property ignores resistances.",
-          "level-14": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or permanently on a critical failure.",
-          "level-20": "On a successful Strike with the weapon, before applying sonic damage, the target gains weakness 1 to sonic until the beginning of your next turn."
-        },
-        "tech": {
-          "level-8": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or 1 hour on a critical failure.",
-          "level-12": "The sonic damage dealt by this imbued property (including persistent sonic damage) ignores resistances.",
-          "level-16": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or permanently on a critical failure. On failure and critical failure the target is @UUID[Compendium.pf2e.conditionitems.Item.dfCMdR4wnpbYNTix]{Stunned 1}.",
-          "level-20": "On a critical hit, the poison eats away at your foe’s ability to resist further poisoning. They are @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
-        }
-      },
-      "sensory": {
-        "label": "Sensory",
-        "temporary-low-light-vision": "Sensory Imbuement - Temporary Low-Light Vision",
-        "temporary-darkvision": "Sensory Imbuement - Temporary Darkvision",
-        "temporary-scent": "Sensory Imbuement - Temporary Scent",
-        "flavor": "You imbue the item with extraordinary senses.",
-        "level-4": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p>You gain low-light vision for 1 hour.</p>",
-        "level-6": "You gain low-light vision.",
-        "level-8": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p>You gain darkvision for 1 hour.</p>",
-        "level-12": "You gain darkvision.",
-        "level-14": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p>You gain 30-foot imprecise scent for 1 hour.</p>",
-        "level-16": "You gain darkvision and 30-foot imprecise scent.",
-        "level-18": "You gain greater darkvision and 30-foot imprecise scent.",
-        "level-20": "You constantly gain the effects of 6th rank @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]{Truesight} spell."
-      },
-      "strength": {
-        "label": "Strength",
-        "flavor": "You imbue the item with ferocious <em>strength</em>.",
-        "level-8": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per day as a primal spell.",
-        "level-14": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per hour as a primal spell.",
-        "level-17": "When you invest the item, you either increase your Strength attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
-        "level-20": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per minute as a primal spell."
-      },
-      "sturdy": {
-        "label": "Sturdy",
-        "flavor": "You imbue the shield to make it even hardier than other shields.",
-        "effect": "This shield's Hardiness is increased by {hardiness}. It's HP is increased by double it's Hardiness and BT by half that value.",
-        "no-effect": "The difference between this imbuement level and the item level is too great. This imbuement has no effect."
-      },
-      "vitality": {
-        "label": "Vitality ({variant})",
-        "flavor": "You imbue the weapon with the cleansing power of positive energy in order to damage undead. As normal, positive damage only harms undead and other creatures with void healing, such as dhampirs.",
-        "magic": {
-          "level-4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal} once per day.",
-          "level-6": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal} once per day.",
-          "level-8": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal} and 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality} once per day each.",
-          "level-12": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality} and @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Breath of Life} once per day each.",
-          "level-16": "The weapon can cast 5th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, 5th rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality}, @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Breath of Life} and @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Regenerate} once per day each.",
-          "level-20": "The weapon can cast 8th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, 5th rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality}, @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Breath of Life} and 8th rank @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Regenerate} once per day each."
-        },
-        "might": {
-          "level-6": "On a critical hit, the undead is also @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
-          "level-10": "The vitality damage dealt by this imbued property ignores resistances.",
-          "level-14": "On a critical hit, the undead must attempt a Fortitude save. On a critical success, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn, on a success, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until then, on a failure, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until then, and on a critical failure, it’s destroyed. This effect has the incapacitation trait.",
-          "level-20": "On a successful Strike with the weapon, before applying vitality damage, the target gains weakness 1 to vitality until the beginning of your next turn."
-        },
-        "tech": {
-          "level-6": "On a critical hit, the undead is also @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
-          "level-10": "The vitality damage dealt by this imbued property (including persistent vitality damage) ignores resistances.",
-          "level-14": "On a critical hit, the undead is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn. It must also attempt a Fortitude save. On a failure, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn instead of enfeebled 2, and on a critical failure, it’s destroyed. This effect has the incapacitation trait.",
-          "level-20": "Creatures suffering persistent positive damage from this imbued property have difficulty healing from void energy due to the coruscating vitality energy surging through them. If a void effect would cause the creature to recover Hit Points, it must first succeed at a counteract check against the imbued property’s level of 20 and DC of 43. Even on a successful counteract check, the Hit Points recovered are reduced by 1d10. On a critical success, the creature recovers the full amount."
-        }
-      },
-      "void": {
-        "label": "Void ({variant})",
-        "flavor": "You imbue the weapon with <em>void</em> energy, cosmological destruction.",
-        "magic": {
-          "level-4": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} once per day.",
-          "level-6": "The weapon can cast either 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} or @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Sudden Blight} once per day, but not both.",
-          "level-8": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} and 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Sudden Blight} once per day each.",
-          "level-12": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm}, 4rd rank @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Sudden Blight} and @UUID[Compendium.pf2e.spells-srd.Item.eexkxcqnkXazsGfK]{Enervation} once per day each.",
-          "level-16": "The weapon can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm}, 6th rank @UUID[Compendium.pf2e.spells-srd.Item.eexkxcqnkXazsGfK]{Enervation} and @UUID[Compendium.pf2e.spells-srd.Item.6lO6uMQxbqmYho0e]{Necrotize} once per day each.",
-          "level-20": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.FEsuyf203wTNE2et]{Wails of the Damned} once per day."
-        },
-        "might": {
-          "level-10": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} for 1 round.",
-          "level-12": "The void damage dealt by this imbued property ignores resistances.",
-          "level-16": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} for 1 round.",
-          "level-20": "On a successful Strike with the weapon, before applying void damage, the target gains weakness 1 to void until the beginning of your next turn."
-        },
-        "tech": {
-          "level-8": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} for 1 round.",
-          "level-12": "The void damage dealt by this imbued property (including persistent void damage) ignores resistances.",
-          "level-16": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} for 1 round.",
-          "level-20": "While the foe has persistent void damage from the imbued property, the enfeebled condition from a critical hit lasts until the persistent damage ends or for 1 round, whichever is longer."
-        }
-      },
-      "wild": {
-        "label": "Wild ({variant})",
-        "flavor": "Sometimes you just can’t find enough parts of the same type to properly imbue your weapon, but you still want to imbue it with something. From that desperation and the haphazard imbuing of wildly different parts, a <em>wild</em> imbued property is born, inconsistent and lacking a few of the benefits of other imbued properties.",
-        "might": {
-          "damage": "Strikes with the weapon additionally deal {damage} damage. Each time you deal damage, roll 1d6: On a 1, the weapon deals acid damage. On a 2, it deals cold damage. On a 3, it deals electricity damage. On a 4, it deals fire damage. On a 5, it deals negative damage. Finally, on a 6, it deals sonic damage.",
-          "level-12": "The damage dealt by this imbued property ignores resistances.",
-          "level-20": "On a successful Strike with the weapon, before applying the additional damage, the target gains weakness 1 to that damage type until the beginning of your next turn."
-        }
-      },
-      "winged": {
-        "label": "Winged",
-        "flavor": "You imbue the armor with wings, which protrude from the armor’s back.",
-        "level-6": "The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can’t trigger again for 1 hour.",
-        "level-8": "The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can’t trigger again for 10 minutes.",
-        "level-10": "The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per day.",
-        "level-14": "The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per hour.",
-        "level-16": "You can choose to have armor cast 7th rank @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you instead of 4th rank <em>fly</em>. If you do, you can’t use the armor’s fly spell again for 1 day, instead of 1 hour.",
-        "level-18": "You can fly constantly, with a Speed equal to your land Speed.",
-        "level-20": "The armor can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on an ally once per hour."
-      },
-      "wisdom": {
-        "label": "Wisdom",
-        "flavor": "You imbue the item with sagacious <em>wisdom</em>.",
-        "level-8": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per day as an occult spell.",
-        "level-14": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per hour as an occult spell.",
-        "level-17": "When you invest the item, you either increase your Wisdom attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
-        "level-20": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per minute as an occult spell."
+        "acid": "{value} acid damage",
+        "cold": "{value} cold damage",
+        "electricity": "{value} electricity damage",
+        "fire": "{value} fire damage",
+        "force": "{value} force damage",
+        "sonic": "{value} sonic damage",
+        "vitality": "{value} vitality damage",
+        "void": "{value} void damage",
+        "precision": "{value} precision damage",
+        "persistentAcid": "{value} persistent acid damage",
+        "persistentCold": "{value} persistent cold damage",
+        "persistentElectricity": "{value} persistent electricity damage",
+        "persistentFire": "{value} persistent fire damage",
+        "persistentForce": "{value} persistent force damage",
+        "persistentSonic": "{value} persistent sonic damage",
+        "persistentVitality": "{value} persistent vitality damage",
+        "persistentVoid": "{value} persistent void damage"
       }
     },
     "settings": {
@@ -500,6 +106,437 @@
       "refresh-refined-items": {
         "name": "Refresh refined items",
         "hint": "Update refined items on every actor in the actors tab when GM logs in."
+      }
+    },
+    "data": {
+      "refinement": {
+        "bludgeoning": "Weapon (Bludgeoning)",
+        "piercing": "Weapon (Piercing)",
+        "slashing": "Weapon (Slashing)",
+        "armor-light": "Armor (Light)",
+        "armor-medium": "Armor (Medium)",
+        "armor-heavy": "Armor (Heavy)",
+        "armor-unarmored": "Armor (Unarmored)",
+        "armor": {
+          "+1": "This is a +1 armor. It grants +1 item bonus to AC and can be imbued 1 time.",
+          "resilient+1": "This is a +1 resilient armor. It grants +1 item bonus to AC and saving throws, and can be imbued 1 time.",
+          "resilient+2": "This is a +2 resilient armor. It grants +2 item bonus to AC, +1 item bonus to saving throws, and can be imbued 2 times.",
+          "greater-resilient+2": "This is a +2 greater resilient armor. It grants +2 item bonus to AC and saving throws, and can be imbued 2 times.",
+          "greater-resilient+3": "This is a +3 greater resilient armor. It grants +3 item bonus to AC, +2 item bonus to saving throws, and can be imbued 3 times.",
+          "major-resilient+3": "This is a +3 major resilient armor. It grants +3 item bonus to AC and saving throws, and can be imbued 3 times."
+        },
+        "perception": "Perception",
+        "shield": {
+          "label": "Shield",
+          "label-buckler": "Shield (Buckler)",
+          "inline-note": "This shield has Hardness {hardness}, HP {hp}, BT {bt}",
+          "imbuing": "It can be imbued once."
+        },
+        "skill": {
+          "item-bonus": "This item grants +{bonus} item bonus to {skill} checks.",
+          "imbuing": "It can be imbued once."
+        },
+        "weapon": {
+          "+1": "This is a +1 weapon. It grants +1 item bonus to attack rolls and can be imbued 1 time.",
+          "striking+1": "This is a +1 striking weapon. It grants +1 item bonus to attack rolls, deals 2 dice of damage, and can be imbued 1 time.",
+          "striking+2": "This is a +2 striking weapon. It grants +2 item bonus to attack rolls, deals 2 dice of damage, and can be imbued 2 times.",
+          "greater-striking+2": "This is a +2 greater striking weapon. It grants +2 item bonus to attack rolls, deals 3 dice of damage, and can be imbued 2 times.",
+          "greater-striking+3": "This is a +3 greater striking weapon. It grants +3 item bonus to attack rolls, deals 3 dice of damage, and can be imbued 3 times.",
+          "major-striking+3": "This is a +3 major striking weapon. It grants +3 item bonus to attack rolls, deals 4 dice of damage, and can be imbued 3 times."
+        }
+      },
+      "imbuement": {
+        "add-cantrip": "The weapon can cast {spell} as a cantrip, heightened to half the item's level rounded up.",
+        "vulnerability-before-strike": "Before applying additional damage, the target gains weakness 1 to <em>{damage}</em> until the beginning of your next turn.",
+        "battlezoo-bestiary": {
+          "acid": {
+            "header-description": "You imbue the weapon with vitriolic <em>acid</em>.",
+            "magic": {
+              "label": "Acid (Magic)",
+              "description": "<p><strong>Type</strong> Weapon</p><p><strong>Parts</strong> The monster must have the acid trait or an attack or spell that deals acid damage.</p><p><strong>Effect</strong> You imbue the weapon with vitriolic acid.</p><hr><p><strong>Path</strong> Magic; Choose when you first imbue the weapon for the granted spells to be either arcane or primal</p><ul><li><p><strong>2nd</strong> The weapon can cast @UUID[Actor.FkMaOIMu9XP4rP2k.Item.kChQWhlKT2mnLHr4]{Acid Splash} as a cantrip, heightened to half the item’s level rounded up</p></li><li><p><strong>4th</strong> The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Acidic Burst} once per day</p></li><li><p><strong>6th</strong> The weapon’s <em>acidic burst</em> heightens to 2nd rank and it can cast either @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0]{Acid Arrow} or <em>acidic burst</em> once per day, but not both</p></li><li><p><strong>8th</strong> The weapon’s <em>acidic burst</em> heightens to 3rd rank, and it can cast <em>acid arrow</em> and <em>acidic burst</em> each once per day</p></li><li><p><strong>10th</strong> Strikes with the weapon deal 1 additional acid damage</p></li><li><p><strong>12th</strong> The weapon’s <em>acid arrow</em> heightens to 4th rank, and the weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]{Acid Storm} once per day</p></li><li><p><strong>14th</strong> The additional acid damage increases to 1d4</p></li><li><p><strong>16th</strong> The weapon’s <em>acid arrow</em> heightens to 6th rank and <em>acid storm</em> heightens to 7th rank</p></li><li><p><strong>18th</strong> The additional acid damage increases to 1d6</p></li><li><p><strong>20th</strong> The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl]{Storm of Vengeance} once per day but you can only choose the acid rain effect. You can choose the acid rain effect twice in a row</p></li></ul>",
+              "header": {
+                "level-2-cantrip": "The weapon can cast @UUID[Actor.FkMaOIMu9XP4rP2k.Item.kChQWhlKT2mnLHr4]{Acid Splash} as a cantrip, heightened to half the item’s level rounded up.",
+                "level-4-spells": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] once per day.",
+                "level-6-spells": "The weapon can cast either 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] or 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] once per day, but not both.",
+                "level-8-spells": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] and 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] each once per day.",
+                "level-12-spells": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0], 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws], and 5th rank Acid Storm each once per day.",
+                "level-16-spells": "The weapon can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0], 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws], and 7th rank Acid Storm each once per day.",
+                "level-20-spell": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl] once per day but you can only choose the acid rain effect. You can choose the acid rain effect twice in a row."
+              }
+            },
+            "might": {
+              "label": "Acid (Might)",
+              "header": {
+                "level-8-armor": "On a critical hit, the target's armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
+                "level-12-resistance": "The acid damage dealt by this imbued property ignores resistances.",
+                "level-14-armor": "On a critical hit, the target's armor (if any) takes 6d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
+                "level-20-weakness": "On a successful Strike with the weapon, before applying acid damage, the target gains weakness 1 to acid until the beginning of your next turn."
+              }
+            },
+            "tech": {
+              "label": "Acid (Technique)",
+              "header": {
+                "level-8-armor": "On a critical hit, the target's armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
+                "level-12-resistance": "The acid damage dealt by this imbued property (including the persistent acid damage) ignores resistances.",
+                "level-16-persistent-resistance": "The persistent acid damage from the imbued property eats away at a foe's resistances. Every time a foe or the foe's armor or shield takes damage from the persistent acid damage at the end of their turn, any resistances and Hardness decrease by 1 for 1 minute. This effect is cumulative.",
+                "level-20-drained": "On a critical hit, acid eats away at the foe's innards, and they are @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
+              }
+            }
+          },
+          "bane": {
+            "damage": "Strikes with the weapon additionally deal {damage} damage of the weapon's base damage type to creatures of type {creature}.",
+            "persistent": "Strikes with the weapon cause external or internal bleeding in creatures of type {creature}. Against such creatures, Strikes with the weapon deal {damage} persistent bleed damage.",
+            "flavor": "You imbue the weapon with energies spawned by your previous defeat of the creatures whose parts reside within it, or from energies anathematic to a certain type of creature, in order to make the weapon particularly effective against a specific type of creature.",
+            "might": {
+              "label": "Bane ({creature}, Might)",
+              "level-6-enfeebled": "On a critical hit, you sap the strength of a creature of type {creature}, causing it to be @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
+              "level-10-resistance": "Against a creature of type {creature}, the weapon's base damage ignores the first 5 points of the target's resistance.",
+              "level-14-enfeebled": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} must attempt a Fortitude save. On a critical success, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn, on a success, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn, on a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn, and on a critical failure, it's destroyed. This effect has the incapacitation trait."
+            },
+            "tech": {
+              "label": "Bane ({creature}, Technique)",
+              "level-6-enfeebled": "On a critical hit, you sap the strength of a creature of the bane type, causing it to be @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
+              "level-10-resistance": "Against a creature of type {creature}, the weapon's base damage ignores the first 5 points of the target's resistance and the persistent bleed damage from this imbued property ignores the target's resistance.",
+              "level-14-enfeebled": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn. It must also attempt a Fortitude save. On a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn, and on a critical failure, it's destroyed. This effect has the incapacitation trait.",
+              "level-20-enfeebled": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}. It must also attempt a Fortitude save. On a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3}, and on a critical failure, it's destroyed. This effect has the incapacitation trait. The enfeebled condition from a critical hit lasts as long as the persistent bleed damage lasts, or until the end of your next turn, whichever is longer."
+            }
+          },
+          "charisma": {
+            "label": "Charisma",
+            "flavor": "You imbue the item with dazzling <em>charisma</em>.",
+            "level-8-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Heroism} once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness.",
+            "level-14-spell": "The item can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Heroism} once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness.",
+            "level-17-apex": "When you invest the item, you either increase your Charisma attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
+            "level-20-spell": "The item can cast 9th rank @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Heroism} once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness."
+          },
+          "cold": {
+            "flavor": "You imbue the weapon with chilling <em>cold</em>.",
+            "magic": {
+              "label": "Cold (Magic)",
+              "level-4-spells": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Chilling Spray} once per day.",
+              "level-6-spells": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Chilling Spray} once per day.",
+              "level-10-spells": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Chilling Spray} and @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx]{Ice Storm} once per day each.",
+              "level-12-spells": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Chilling Spray}, @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx]{Ice Storm} and @UUID[Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k]{Cone of Cold} once per day each.",
+              "level-16-spells": "The weapon can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Chilling Spray}, 6th rank @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx]{Ice Storm}, and 6th rank @UUID[Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k]{Cone of Cold} once per day each.",
+              "level-20-polar-ray": "The weapon can cast 9th rank @UUID[Compendium.pf2e.spells-srd.Item.BKIet436snMNcnez]{Polar Ray} once per day."
+            },
+            "might": {
+              "label": "Cold (Might)",
+              "level-8-slowed": "On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC.",
+              "level-12-resistance": "The cold damage dealt by this imbued property ignores resistances.",
+              "level-14-slowed": "On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC, and takes –10-foot status penalty to its Speeds for 1 round.",
+              "level-20-weakness": "On a successful Strike with the weapon, before applying cold damage, the target gains weakness 1 to cold until the beginning of your next turn."
+            },
+            "tech": {
+              "label": "Cold (Technique)",
+              "level-6-slow": "On a successful Strike with the weapon, the target takes a –5-foot status penalty to its Speeds for 1 round.",
+              "level-8-slow": "On a successful Strike with the weapon, the target takes a –10-foot status penalty to its Speeds for 1 round. On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC.",
+              "level-12-resistance": "The persistent cold damage dealt by this imbued property ignores resistances.",
+              "level-14-thaw": "A creature with their Speeds decreased by the imbued property thaws more slowly. The penalty lasts as long as the persistent cold damage does.",
+              "level-16-surface": "Foes adjacent to a surface who critically fail the save against the slow effect freeze to that surface (usually the ground), becoming @UUID[Compendium.pf2e.conditionitems.Item.eIcWbB5o3pP6OIMe] until they [[/act escape]] against the item's DC.",
+              "level-20-slow": "On a successful Strike with the weapon, the target takes a –15-foot status penalty to its Speeds for 1 round. On a critical hit, the target is also @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} until the end of your next turn unless it succeeds at a Fortitude save against the weapon's DC."
+            }
+          },
+          "constitution": {
+            "label": "Constitution",
+            "flavor": "You imbue the item with resilient <em>constitution</em>.",
+            "level-8-spell": "The item can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only, once per day as a divine spell.",
+            "level-14-spell": "The item can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only, once per day as a divine spell.",
+            "level-17-apex": "When you invest the item, you either increase your Constitution attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
+            "level-18-spell": "The item can either cast 7th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only, once per day as a divine spell, or cast @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Regenerate} on you once per day.",
+            "level-20-hp": "If you rest for 10 minutes, you recover 100 Hit Points."
+          },
+          "dexterity": {
+            "label": "Dexterity",
+            "flavor": "You imbue the item with deft <em>dexterity</em>.",
+            "level-8-speed": "Once per day, you can use a single action activation with manipulate trait to gain a +10-foot status bonus to all your Speeds for 10 minutes.",
+            "level-14-speed": "Once per day, you can use a single action activation with manipulate trait to gain a +20-foot status bonus to all your Speeds for 10 minutes. While activated, you gain the effects of @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Water Walk}.",
+            "level-17-apex": "When you invest the item, you either increase your Dexterity attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
+            "level-20-speed": "Once per day, you can use a single action activation with manipulate trait to gain a +30-foot status bonus to all your Speeds for 10 minutes. While activated, you gain the effects of both @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Water Walk} and @UUID[Compendium.pf2e.spells-srd.Item.b5sGjGlBf58f8jn0]{Air Walk}."
+          },
+          "electricity": {
+            "flavor": "You imbue the weapon with shocking <em>electricity</em>.",
+            "magic": {
+              "label": "Electricity (Magic)",
+              "level-4-spells": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} once per day.",
+              "level-6-spells": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} once per day.",
+              "level-8-spells": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} and @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2]{Lightning Bolt} once per day each.",
+              "level-12-spells": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp}, 4th rank @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2]{Lightning Bolt} and @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Lightning Storm} once per day each.",
+              "level-16-spells": "The weapon can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp}, 6th rank @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Lightning Storm}, and 6th rank @UUID[Compendium.pf2e.spells-srd.Item.TDNlDWbYb58Y55Da]{Chain Lightning} once per day each.",
+              "level-20-spells": "The weapon can cast 7th rank @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp}, 7th rank @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Lightning Storm} and 9th rank @UUID[Compendium.pf2e.spells-srd.Item.TDNlDWbYb58Y55Da]{Chain Lightning} once per day each."
+            },
+            "might": {
+              "label": "Electricity (Might)",
+              "level-8-arc": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage to up to two other creatures of your choice within 10 feet of the target.",
+              "level-12-resistance": "The electricity damage dealt by this imbued property ignores resistances.",
+              "level-14-arc": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage to up to two other creatures of your choice within 20 feet of the target.",
+              "level-20-weakness": "On a successful Strike with the weapon, before applying electricity damage, the target gains weakness 1 to electricity until the beginning of your next turn."
+            },
+            "tech": {
+              "label": "Electricity (Technique)",
+              "level-8-arc": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage and persistent electricity damage to up to two other creatures of your choice within 10 feet of the target.",
+              "level-12-resistance": "The electricity damage dealt by this imbued property (including persistent electricity damage) ignores resistances.",
+              "level-16-arc": "On a critical hit, electricity arcs out to deal an equal amount of electricity damage and persistent electricity damage to up to four other creatures of your choice within 20 feet of the target.",
+              "level-20-magnetized": "Creatures suffering persistent electricity damage from this imbued property become magnetized, attracting metal weapons. Strikes with metal weapons gain a +1 circumstance bonus to hit them as long as they have the persistent electricity damage."
+            }
+          },
+          "energy-resistant": {
+            "armor-label": "Energy Resistant (Armor, {damage})",
+            "shield-label": "Energy Resistant (Shield, {damage})",
+            "armor-flavor": "You imbue the armor to protect yourself from a particular type of energy.",
+            "shield-flavor": "You imbue the shield to protect yourself from a particular type of energy.",
+            "armor-effect": "While wearing the armor, you gain resistance {level} to the chosen energy damage type. Additionally, the armor itself gains the same resistance.",
+            "shield-effect": "While wielding the shield, you gain resistance {level} to the chosen energy damage type. Additionally, the shield itself gains the same resistance (applied after you reduce the damage by the shield's Hardness). You can use Shield Block any time you would take the chosen damage type, in addition to its usual trigger."
+          },
+          "fire": {
+            "flavor": "You imbue the weapon with burning <em>fire</em>.",
+            "magic": {
+              "label": "Fire (Magic)",
+              "level-4-spells": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t]{Breathe Fire} once per day.",
+              "level-6-spells": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t]{Breathe Fire} once per day.",
+              "level-8-spells": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Floating Flame} and @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Fireball} once per day each.",
+              "level-12-spells": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Floating Flame},  @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Fireball} and @UUID[Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu]{Wall of Fire} once per day each.",
+              "level-16-spells": "The weapon can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Floating Flame},  @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Fireball} and @UUID[Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu]{Wall of Fire} once per day each.",
+              "level-20-falling-stars": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.jrBa9deU2ULFWvSl]{Falling Stars} once per day."
+            },
+            "might": {
+              "label": "Fire (Might)",
+              "level-8-persistent": "On a critical hit, Strikes with the weapon deal 1d10 persistent fire damage.",
+              "level-12-resistance": "The fire damage dealt by this imbued property (including persistent fire damage) ignores resistances.",
+              "level-14-persistent": "On a critical hit, Strikes with the weapon deal 2d10 persistent fire damage.",
+              "level-20-weakness": "On a successful Strike with the weapon, before applying fire damage, the target gains weakness 1 to fire until the beginning of your next turn."
+            },
+            "tech": {
+              "label": "Fire (Technique)",
+              "level-8-persistent": "On a critical hit, the weapon deals 1d10 additional persistent fire damage. (The additional persistent fire damage on a critical hit is cumulative with the regular persistent fire damage, and as normal you add it in only after doubling the regular persistent fire damage).",
+              "level-12-resistance": "The fire damage dealt by this imbued property (including persistent fire damage) ignores resistances.",
+              "level-16-off-guard": "Foes currently affected by persistent fire damage from the imbued property are distracted as they burn, making them @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Off-Guard}.",
+              "level-20-weakness": "At the end of a burning foe’s turn, when they take damage from the imbued property’s persistent fire damage, all foes adjacent to that foe are set on fire as well, taking the same amount of persistent fire damage."
+            }
+          },
+          "force": {
+            "flavor": "You imbue the weapon with pure <em>force</em>.",
+            "magic": {
+              "label": "Force (Magic)",
+              "level-4-spells": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage} once per day.",
+              "level-6-spells": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage} or @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw]{Spiritual Weapon} once per day, but not both.",
+              "level-8-spells": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage} and @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw]{Spiritual Weapon} once per day each.",
+              "level-12-spells": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage},  4th rank @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw]{Spiritual Weapon} and @UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U]{Spiritual Guardian} once per day each.",
+              "level-16-spells": "The weapon can cast 5rd rank @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage},  6th rank @UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U]{Spiritual Guardian} and @UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U]{Spirit Blast} once per day each.",
+              "level-20-spirit-song": "The weapon can cast 9th rank @UUID[Compendium.pf2e.spells-srd.Item.Ht35SDf9PDStJfoC]{Spirit Song} once per day."
+            },
+            "might": {
+              "label": "Force (Might)",
+              "level-10-push": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 5 feet away from you.",
+              "level-12-resistance": "The force damage dealt by this imbued property ignores resistances.",
+              "level-16-push": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 10 feet away from you.",
+              "level-20-weakness": "On a successful Strike with the weapon, before applying force damage, the target gains weakness 1 to force until the beginning of your next turn."
+            },
+            "tech": {
+              "label": "Force (Technique)",
+              "level-8-push": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 5 feet away from you.",
+              "level-12-resistance": "The force damage dealt by this imbued property (including persistent force damage) ignores resistances.",
+              "level-14-push": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 10 feet away from you.",
+              "level-16-off-guard": "Foes currently affected by persistent force damage from the this imbued property are knocked about in all directions, making them @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Off-Guard}.",
+              "level-18-push": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 20 feet away from you.",
+              "level-20-prone": "At the end of a foe’s turn, if it fails to remove the persistent force damage from the this imbued property, it must succeed at a Fortitude save or be knocked @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60]{Prone}."
+            }
+          },
+          "fortification": {
+            "label": "Fortification",
+            "flavor": "You imbue the armor with powerful fortifications to ward off deadly attacks.",
+            "penalty": "The armor Bulk and Strength requirement are increased by 1.",
+            "flat-check": "Each time you’re critically hit while wearing the etched armor, attempt a DC {dc} flat check. On a success, it becomes a normal hit."
+          },
+          "intelligence": {
+            "label": "Intelligence",
+            "flavor": "You imbue the item with brilliant <em>intelligence</em>.",
+            "level-8-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.ZYoC630tNGutgbE0]{Hypercognition} once per day as an occult spell.",
+            "level-14-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.ZYoC630tNGutgbE0]{Hypercognition} once per hour as an occult spell.",
+            "level-17-apex": "When you invest the item, you either increase your Intelligence attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
+            "level-20-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.ZYoC630tNGutgbE0]{Hypercognition} once per minute as an occult spell."
+          },
+          "mental": {
+            "flavor": "You imbue the weapon with psychic power.",
+            "magic": {
+              "label": "Mental (Magic)",
+              "level-4-spells": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain} once per day.",
+              "level-6-spells": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain} or @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM]{Warrior's Regret} once per day, but not both.",
+              "level-8-spells": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain} and 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM]{Warrior's Regret} once per day each.",
+              "level-12-spells": "The weapon can cast 4rd rank @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain}, 4th rank @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM]{Warrior's Regret} and @UUID[Compendium.pf2e.spells-srd.Item.tlcrVRqW1MSKJ5IC]{Phantasmal Killer} once per day each.",
+              "level-16-spells": "The weapon can cast 6rd rank @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Phantom Pain},  6th rank @UUID[Compendium.pf2e.spells-srd.Item.tlcrVRqW1MSKJ5IC]{Phantasmal Killer} and @UUID[Compendium.pf2e.spells-srd.Item.0XP2XOxT9VSiXFDr]{Phantasmal Calamity} once per day each.",
+              "level-20-weird": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.qDjeG6dxT4aEEC6J]{Weird} once per day."
+            },
+            "might": {
+              "label": "Mental (Might)",
+              "level-10-stupefied": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 1} for 1 round.",
+              "level-12-resistance": "The mental damage dealt by this imbued property ignores resistances.",
+              "level-16-stupefied": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 2} for 1 round.",
+              "level-20-weakness": "On a successful Strike with the weapon, before applying mental damage, the target gains weakness 1 to mental until the beginning of your next turn."
+            },
+            "tech": {
+              "label": "Mental (Technique)",
+              "level-8-stupefied": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 1} for 1 round.",
+              "level-12-resistance": "The mental damage dealt by this imbued property (including persistent mental damage) ignores resistances.",
+              "level-16-stupefied": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 2} for 1 round.",
+              "level-20-weakness": "While the foe has persistent mental damage from the this imbued property, the stupefied condition from a critical hit lasts until the persistent damage ends or for 1 round, whichever is longer."
+            }
+          },
+          "poison": {
+            "flavor": "You imbue the weapon with toxic venom.",
+            "magic": {
+              "label": "Poison (Magic)",
+              "level-4-spells": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting} once per day.",
+              "level-6-spells": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Noxious Vapors} or @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting} once per day, but not both.",
+              "level-8-spells": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Noxious Vapors}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Imp Sting} and 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting} once per day each.",
+              "level-12-spells": "The weapon can cast 4rd rank @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Noxious Vapors}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Imp Sting}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting} and @UUID[Compendium.pf2e.spells-srd.Item.LVwmAH5NGvTuuQSU]{Swarming Wasp Stings} once per day each.",
+              "level-16-spells": "The weapon can cast 6rd rank @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Noxious Vapors}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Imp Sting}, 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting}, @UUID[Compendium.pf2e.spells-srd.Item.LVwmAH5NGvTuuQSU]{Swarming Wasp Stings} and @UUID[Compendium.pf2e.spells-srd.Item.ayRXv0wQH00TTNZe]{Purple Worm Sting} once per day each.",
+              "level-20-linnorm-sting": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.ZMY58Yk5hnyfeE3q]{Linnorm Sting} once per day."
+            },
+            "might": {
+              "label": "Poison (Might)",
+              "level-8-persistent": "On a critical hit, the target takes @Damage[1d10[persistent,poison]] damage.",
+              "level-12-resistance": "The mental damage dealt by this imbued property ignores resistances.",
+              "level-14-persistent": "On a critical hit, the target takes @Damage[2d10[persistent,poison]] damage.",
+              "level-20-weakness": "On a successful Strike with the weapon, before applying poison damage, the target gains weakness 1 to mental until the beginning of your next turn."
+            },
+            "tech": {
+              "label": "Poison (Technique)",
+              "level-8-persistent": "On a critical hit, the target takes an additional @Damage[1d10[persistent,poison]] damage (As normal, the additional persistent poison damage on a critical hit is cumulative with the regular persistent poison damage, and you add it only after doubling the regular persistent poison damage).",
+              "level-12-resistance": "The poison damage dealt by this imbued property (including persistent poison damage) ignores resistances.",
+              "level-16-condition": "At the end of a creature’s turn, if it has failed to remove the persistent poison damage from this imbued property, choose @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Clumsy}, @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled}, or @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied}. The creature gains that condition with a condition value of 1, or increases the condition value by 1 if it already had that condition, to a maximum of 3. If the creature ever removes the persistent poison damage from this property, these conditions immediately end. If you reapply the poison later, you must start again from condition values of 0.",
+              "level-20-drained": "On a critical hit, the poison eats away at your foe’s ability to resist further poisoning. They are @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
+            }
+          },
+          "sensory": {
+            "label": "Sensory",
+            "temporary-low-light-vision": "Sensory Imbuement - Temporary Low-Light Vision",
+            "temporary-darkvision": "Sensory Imbuement - Temporary Darkvision",
+            "temporary-scent": "Sensory Imbuement - Temporary Scent",
+            "flavor": "You imbue the item with extraordinary senses.",
+            "level-4-activation": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p>You gain low-light vision for 1 hour.</p>",
+            "level-6-permanent": "You gain low-light vision.",
+            "level-8-activation": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p>You gain darkvision for 1 hour.</p>",
+            "level-12-permanent": "You gain darkvision.",
+            "level-14-activation": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p>You gain 30-foot imprecise scent for 1 hour.</p>",
+            "level-16-permanent": "You gain darkvision and 30-foot imprecise scent.",
+            "level-18-permanent": "You gain greater darkvision and 30-foot imprecise scent.",
+            "level-20-truesight": "You constantly gain the effects of 6th rank @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]{Truesight} spell."
+          },
+          "sonic": {
+            "flavor": "You imbue the weapon with reverberating sound waves.",
+            "might": {
+              "label": "Sonic (Might)",
+              "level-8-deafened": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or 1 hour on a critical failure.",
+              "level-12-resistance": "The sonic damage dealt by this imbued property ignores resistances.",
+              "level-14-deafened": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or permanently on a critical failure.",
+              "level-20-weakness": "On a successful Strike with the weapon, before applying sonic damage, the target gains weakness 1 to sonic until the beginning of your next turn."
+            },
+            "tech": {
+              "label": "Sonic (Technique)",
+              "level-8-deafened": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or 1 hour on a critical failure-deafened.",
+              "level-12-resistance": "The sonic damage dealt by this imbued property (including persistent sonic damage) ignores resistances.",
+              "level-16-deafened": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or permanently on a critical failure. On failure and critical failure the target is @UUID[Compendium.pf2e.conditionitems.Item.dfCMdR4wnpbYNTix]{Stunned 1}.",
+              "level-20-boom": "The sonic damage and persistent sonic damage create a sonic boom, affecting all creatures adjacent to the target with an AC lower than or equal to your attack roll. On a critical hit, all creatures that take sonic damage in this way must attempt the Fortitude save to avoid being deafened and stunned."
+            }
+          },
+          "strength": {
+            "label": "Strength",
+            "flavor": "You imbue the item with ferocious <em>strength</em>.",
+            "level-8-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per day as a primal spell.",
+            "level-14-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per hour as a primal spell.",
+            "level-17-apex": "When you invest the item, you either increase your Strength attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
+            "level-20-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per minute as a primal spell."
+          },
+          "sturdy": {
+            "label": "Sturdy",
+            "flavor": "You imbue the shield to make it even hardier than other shields.",
+            "effect": "This shield's Hardness is increased by {hardness}. It's HP is increased by double it's Hardness and BT by half that value.",
+            "no-effect": "The difference between this imbuement level and the item level is too great. This imbuement has no effect."
+          },
+          "wild": {
+            "label": "Wild (Might)",
+            "flavor": "Sometimes you just can’t find enough parts of the same type to properly imbue your weapon, but you still want to imbue it with something. From that desperation and the haphazard imbuing of wildly different parts, a <em>wild</em> imbued property is born, inconsistent and lacking a few of the benefits of other imbued properties.",
+            "might": {
+              "damage": "Strikes with the weapon additionally deal {damage} damage. Each time you deal damage, roll 1d6: On a 1, the weapon deals acid damage. On a 2, it deals cold damage. On a 3, it deals electricity damage. On a 4, it deals fire damage. On a 5, it deals negative damage. Finally, on a 6, it deals sonic damage.",
+              "level-12-resistance": "The damage dealt by this imbued property ignores resistances.",
+              "level-20-weakness": "On a successful Strike with the weapon, before applying the additional damage, the target gains weakness 1 to that damage type until the beginning of your next turn."
+            }
+          },
+          "winged": {
+            "label": "Winged",
+            "flavor": "You imbue the armor with wings, which protrude from the armor’s back.",
+            "level-6-landing": "The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can’t trigger again for 1 hour.",
+            "level-8-landing": "The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can’t trigger again for 10 minutes.",
+            "level-10-fly": "The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per day.",
+            "level-14-fly": "The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per hour.",
+            "level-16-fly-extend": "The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per hour. You can choose to have armor cast 7th rank @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you instead of 4th rank <em>fly</em>. If you do, you can’t use the armor’s fly spell again for 1 day, instead of 1 hour.",
+            "level-18-fly": "You can fly constantly, with a Speed equal to your land Speed.",
+            "level-20-ally": "The armor can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on an ally once per hour."
+          },
+          "wisdom": {
+            "label": "Wisdom",
+            "flavor": "You imbue the item with sagacious <em>wisdom</em>.",
+            "level-8-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per day as an occult spell.",
+            "level-14-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per hour as an occult spell.",
+            "level-17-apex": "When you invest the item, you either increase your Wisdom attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
+            "level-20-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per minute as an occult spell."
+          }
+        },
+        "elemental-storm": {
+          "death": {
+            "flavor": "You imbue the weapon with the void energy of death.",
+            "magic": {
+              "label": "Death (Magic)",
+              "level-4-spells": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} once per day.",
+              "level-6-spells": "The weapon can cast either 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} or @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Sudden Blight} once per day, but not both.",
+              "level-8-spells": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} and 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Sudden Blight} once per day each.",
+              "level-12-spells": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm}, 4rd rank @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Sudden Blight} and @UUID[Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt]{Vampiric Maiden} once per day each.",
+              "level-16-spells": "The weapon can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm}, 6th rank @UUID[Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt]{Vampiric Maiden} and <em>raise the reaper's scythe</em> (source: Battlezoo Bestiary Elemental Storm) (original negative imbuement used @UUID[Compendium.pf2e.spells-srd.Item.6lO6uMQxbqmYho0e]{Necrotize}) once per day each.",
+              "level-20-wails-of-the-damned": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.FEsuyf203wTNE2et]{Wails of the Damned} once per day."
+            },
+            "might": {
+              "label": "Death (Might)",
+              "level-10-enfeebled": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} for 1 round.",
+              "level-12-resistance": "The void damage dealt by this imbued property ignores resistances.",
+              "level-16-enfeebled": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} for 1 round.",
+              "level-20-weakness": "On a successful Strike with the weapon, before applying void damage, the target gains weakness 1 to void until the beginning of your next turn."
+            },
+            "tech": {
+              "label": "Death (Technique)",
+              "level-8-enfeebled": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} for 1 round.",
+              "level-12-resistance": "The void damage dealt by this imbued property (including persistent void damage) ignores resistances.",
+              "level-16-enfeebled": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} for 1 round.",
+              "level-20-weakness": "While the foe has persistent void damage from the imbued property, the enfeebled condition from a critical hit lasts until the persistent damage ends or for 1 round, whichever is longer."
+            }
+          },
+          "life": {
+            "flavor": "You imbue the weapon with the cleansing power of life energy in order to damage undead. As normal, vitality damage only harms undead and other creatures with void healing, such as dhampirs.",
+            "magic": {
+              "label": "Life (Magic)",
+              "level-4-spells": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal} once per day.",
+              "level-6-spells": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal} once per day.",
+              "level-8-spells": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal} and 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality} once per day each.",
+              "level-12-spells": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality} and @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Breath of Life} once per day each.",
+              "level-16-spells": "The weapon can cast 5th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, 5th rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality}, @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Breath of Life} and @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Regenerate} once per day each.",
+              "level-20-spells": "The weapon can cast 8th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, 5th rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality}, @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Breath of Life} and 8th rank @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Regenerate} once per day each."
+            },
+            "might": {
+              "label": "Life (Might)",
+              "level-6-enfeebled": "On a critical hit, the undead is also @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
+              "level-10-resistance": "The vitality damage dealt by this imbued property ignores resistances.",
+              "level-14-enfeebled": "On a critical hit, the undead must attempt a Fortitude save. On a critical success, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn, on a success, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until then, on a failure, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until then, and on a critical failure, it’s destroyed. This effect has the incapacitation trait.",
+              "level-20-weakness": "On a successful Strike with the weapon, before applying vitality damage, the target gains weakness 1 to vitality until the beginning of your next turn."
+            },
+            "tech": {
+              "label": "Life (Technique)",
+              "level-6-enfeebled": "On a critical hit, the undead is also @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
+              "level-10-resistance": "The vitality damage dealt by this imbued property (including persistent vitality damage) ignores resistances.",
+              "level-14-enfeebled": "On a critical hit, the undead is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn. It must also attempt a Fortitude save. On a failure, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn instead of enfeebled 2, and on a critical failure, it’s destroyed. This effect has the incapacitation trait.",
+              "level-20-counteract": "Creatures suffering persistent positive damage from this imbued property have difficulty healing from void energy due to the coruscating vitality energy surging through them. If a void effect would cause the creature to recover Hit Points, it must first succeed at a counteract check against the imbued property’s level of 20 and DC of 43. Even on a successful counteract check, the Hit Points recovered are reduced by 1d10. On a critical success, the creature recovers the full amount."
+            }
+          }
+        }
       }
     }
   }

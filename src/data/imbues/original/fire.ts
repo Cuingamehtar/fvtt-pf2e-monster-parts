@@ -1,365 +1,252 @@
-import { t, tkey } from "../../../utils";
-import { ImbueSource } from "../../data-types";
-import { addDamage, levelRange } from "../../helpers";
+import { tkey } from "../../../utils";
+import { RollString } from "../../../types";
+import { MaterialData } from "../../material";
+import { helpers } from "../../helpers";
 
-export function createImbueFire(): ImbueSource[] {
+export function createImbueFire(): MaterialData[] {
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.fire"
+            >
+        >,
+    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.fire.${k}`);
+
+    const base = {
+        type: "imbuement" as "imbuement",
+        itemPredicate: ["item:type:weapon"],
+        monsterPredicate: [
+            {
+                or: [
+                    "self:trait:fire",
+                    {
+                        or: [
+                            {
+                                and: [
+                                    "item:type:melee",
+                                    "item:damage:type:fire",
+                                ],
+                            },
+                            {
+                                and: [
+                                    "item:type:spell",
+                                    "item:damage:type:fire",
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            },
+        ],
+    };
     return [
         {
+            ...base,
             key: "imbue:fire:magic",
-            type: "imbue",
-            label: t("imbue.fire.label", { variant: t("imbue.variant.magic") }),
-            flavor: tkey("imbue.fire.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:fire",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:fire",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:fire",
-                                    ],
-                                },
-                            ],
-                        },
-                    ],
-                },
-            ],
-            effects: [
-                {
-                    ...levelRange(10, 13),
-                    effects: addDamage({
-                        type: "fire",
-                        value: 1,
-                        label: t("imbue.fire.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(14, 17),
-                    effects: addDamage({
-                        type: "fire",
-                        value: "d4",
-                        label: t("imbue.fire.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "fire",
-                        value: "d6",
-                        label: t("imbue.fire.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(2),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.add-cantrip"),
+            label: { type: "key", key: lkey("magic.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    ...helpers.leveledLabels(
+                        [10, 14, 18],
+                        ["1", "d4", "d6"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "fire",
+                                value: damage,
+                            }),
+                    ),
+                    {
+                        levelMin: 2,
+                        text: {
+                            type: "key",
+                            key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                             parameters: {
                                 spell: "@UUID[Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq]",
                             },
                         },
-                    ],
-                },
-                {
-                    ...levelRange(4, 5),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fire.magic.level-4"),
+                        sort: 1,
+                    },
+                    ...helpers.leveledLabels(
+                        [4, 6, 8, 12, 16],
+                        [
+                            "magic.level-4-spells",
+                            "magic.level-6-spells",
+                            "magic.level-8-spells",
+                            "magic.level-12-spells",
+                            "magic.level-16-spells",
+                        ],
+                        (key: Parameters<typeof lkey>[0]) => ({
+                            text: { type: "key", key: lkey(key) },
+                            sort: 2,
+                        }),
+                    ),
+                    {
+                        levelMin: 20,
+                        text: {
+                            type: "key",
+                            key: lkey("magic.level-20-falling-stars"),
                         },
-                    ],
-                },
-                {
-                    ...levelRange(6, 7),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fire.magic.level-6"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(8, 11),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fire.magic.level-8"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(12, 15),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fire.magic.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(16),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fire.magic.level-16"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fire.magic.level-20"),
-                        },
-                    ],
-                },
+                        sort: 3,
+                    },
+                ],
+            },
+            effects: [
+                ...helpers.leveledEffects(
+                    [10, 14, 18],
+                    ["1", "d4", "d6"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            type: "fire",
+                            value: damage,
+                            label: lkey("magic.label"),
+                        }),
+                ),
             ],
         },
         {
+            ...base,
             key: "imbue:fire:might",
-            type: "imbue",
-            label: t("imbue.fire.label", { variant: t("imbue.variant.might") }),
-            flavor: tkey("imbue.fire.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:fire",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:fire",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:fire",
-                                    ],
-                                },
-                            ],
+            label: { type: "key", key: lkey("might.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    ...helpers.leveledLabels(
+                        [4, 6, 8, 18],
+                        ["1", "d4", "d6", "d8"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "fire",
+                                value: damage,
+                            }),
+                    ),
+                    {
+                        levelMin: 8,
+                        levelMax: 13,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-8-persistent"),
                         },
-                    ],
-                },
-            ],
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 14,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-14-persistent"),
+                        },
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 12,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-12-resistance"),
+                        },
+                        sort: 2,
+                    },
+                    {
+                        levelMin: 20,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-20-weakness"),
+                        },
+                        sort: 3,
+                    },
+                ],
+            },
             effects: [
-                {
-                    ...levelRange(4, 5),
-                    effects: addDamage({
-                        type: "fire",
-                        value: 1,
-                        label: t("imbue.fire.label", {
-                            variant: t("imbue.variant.might"),
+                ...helpers.leveledEffects(
+                    [4, 6, 8, 18],
+                    ["1", "d4", "d6", "d8"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            type: "fire",
+                            value: damage,
+                            label: lkey("might.label"),
                         }),
-                    }),
-                },
-                {
-                    ...levelRange(6, 7),
-                    effects: addDamage({
-                        type: "fire",
-                        value: "d4",
-                        label: t("imbue.fire.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(8, 17),
-                    effects: addDamage({
-                        type: "fire",
-                        value: "d6",
-                        label: t("imbue.fire.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "fire",
-                        value: "d8",
-                        label: t("imbue.fire.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(8, 13),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fire.might.level-8"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(12),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fire.might.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(14),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fire.might.level-14"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fire.might.level-20"),
-                        },
-                    ],
-                },
+                ),
             ],
         },
         {
+            ...base,
             key: "imbue:fire:tech",
-            type: "imbue",
-            label: t("imbue.fire.label", { variant: t("imbue.variant.tech") }),
-            flavor: tkey("imbue.fire.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:fire",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:fire",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:fire",
-                                    ],
-                                },
-                            ],
+            label: { type: "key", key: lkey("tech.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    {
+                        levelMin: 6,
+                        ...helpers.damage.label({
+                            type: "fire",
+                            value: 1,
+                        }),
+                    },
+                    ...helpers.leveledLabels(
+                        [4, 8, 14, 18],
+                        ["1", "d6", "d8", "d10"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "fire",
+                                category: "persistent",
+                                value: damage,
+                            }),
+                    ),
+                    {
+                        levelMin: 8,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-8-persistent"),
                         },
-                    ],
-                },
-            ],
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 16,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-16-off-guard"),
+                        },
+                        sort: 2,
+                    },
+                    {
+                        levelMin: 12,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-12-resistance"),
+                        },
+                        sort: 3,
+                    },
+                    {
+                        levelMin: 20,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-20-weakness"),
+                        },
+                        sort: 4,
+                    },
+                ],
+            },
             effects: [
                 {
-                    ...levelRange(6),
-                    effects: addDamage({
+                    levelMin: 6,
+                    ...helpers.damage.effect({
                         type: "fire",
                         value: 1,
-                        label: t("imbue.fire.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
+                        label: lkey("tech.label"),
                     }),
                 },
-                {
-                    ...levelRange(4, 7),
-                    effects: addDamage({
-                        type: "fire",
-                        value: 1,
-                        category: "persistent",
-                        label: t("imbue.fire.label", {
-                            variant: t("imbue.variant.tech"),
+                ...helpers.leveledEffects(
+                    [4, 8, 14, 18],
+                    ["1", "d6", "d8", "d10"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            type: "fire",
+                            category: "persistent",
+                            value: damage,
+                            label: lkey("tech.label"),
                         }),
-                    }),
-                },
-                {
-                    ...levelRange(8, 13),
-                    effects: addDamage({
-                        type: "fire",
-                        value: "d6",
-                        category: "persistent",
-                        label: t("imbue.fire.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(14, 17),
-                    effects: addDamage({
-                        type: "fire",
-                        value: "d8",
-                        category: "persistent",
-                        label: t("imbue.fire.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "fire",
-                        value: "d8",
-                        category: "persistent",
-                        label: t("imbue.fire.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(8),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fire.tech.level-8"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(12),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fire.tech.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(16),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fire.tech.level-16"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fire.tech.level-20"),
-                        },
-                    ],
-                },
+                ),
             ],
         },
     ];

@@ -1,14 +1,22 @@
 import { tkey } from "../../../utils";
-import { ImbueSource } from "../../data-types";
-import { levelRange, skillsOfAttribute } from "../../helpers";
+import { skillsOfAttribute } from "../../helpers";
+import { MaterialData } from "../../material";
 
-export function createImbueDexterity(): ImbueSource {
+export function createImbueDexterity(): MaterialData {
     const skills = skillsOfAttribute("dex");
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.dexterity"
+            >
+        >,
+    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.dexterity.${k}`);
+
     return {
         key: "imbue:dexterity",
-        type: "imbue",
-        label: tkey("imbue.dexterity.label"),
-        flavor: tkey("imbue.dexterity.flavor"),
+        type: "imbuement",
+        label: { type: "key", key: lkey("label") },
         monsterPredicate: [{ lte: ["ability:dex:rank", 2] }],
         itemPredicate: [
             {
@@ -17,43 +25,33 @@ export function createImbueDexterity(): ImbueSource {
                 })),
             },
         ],
-        effects: [
-            {
-                ...levelRange(8, 13),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.dexterity.level-8"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(14, 19),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.dexterity.level-14"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(20),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.dexterity.level-20"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(17),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.dexterity.level-17"),
-                    },
-                ],
-            },
-        ],
+        header: {
+            description: { type: "key", key: lkey("flavor") },
+            labels: [
+                {
+                    levelMin: 8,
+                    levelMax: 13,
+                    text: lkey("level-8-speed"),
+                    sort: 1,
+                },
+                {
+                    levelMin: 14,
+                    levelMax: 19,
+                    text: lkey("level-14-speed"),
+                    sort: 1,
+                },
+                {
+                    levelMin: 20,
+                    text: lkey("level-20-speed"),
+                    sort: 1,
+                },
+                {
+                    levelMin: 17,
+                    text: lkey("level-17-apex"),
+                    sort: 2,
+                },
+            ],
+        },
+        effects: [],
     };
 }

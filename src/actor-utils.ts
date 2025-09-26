@@ -3,18 +3,7 @@ import { unique } from "./utils";
 
 export function getExtendedNPCRollOptions(actor: NPCPF2e): string[] {
     const baseRollOptions = actor.getRollOptions();
-    const senses = [
-        "darkvision",
-        "truesight",
-        "scent",
-        "tremorsense",
-        "echolocation",
-        "greater-darkvision",
-        "infrared-vision",
-        "motion-sense",
-        "see-invisibility",
-        "wavesense",
-    ]
+    const senses = Object.keys(CONFIG.PF2E.senses)
         .filter((s) =>
             actor.system.perception.senses.some((sense) => sense.type === s),
         )

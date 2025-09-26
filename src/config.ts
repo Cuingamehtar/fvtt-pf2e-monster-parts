@@ -1,11 +1,11 @@
 import { Size } from "foundry-pf2e";
-import { ImbueSource, RefinementSource } from "./data/data-types";
 import { createDefaultRefinements } from "./data/refinements";
 import { MODULE_ID } from "./module";
 import { createDefaultImbues } from "./data/imbues";
+import { MaterialData, materialDataSchema } from "./data/material";
 
 export type MonsterPartsConfig = {
-    materials: Map<MaterialKey, RefinementSource | ImbueSource>;
+    materials: Map<MaterialKey, MaterialData>;
     thresholds: {
         refinement: {
             weapon: number[];
@@ -13,7 +13,7 @@ export type MonsterPartsConfig = {
             shield: number[];
             equipment: number[];
         };
-        imbue: {
+        imbuement: {
             weapon: number[];
             armor: number[];
             shield: number[];
@@ -72,7 +72,7 @@ export function createConfig(): void {
     const config: MonsterPartsConfig = {
         thresholds: {
             refinement: itemValueThresholdDefaults,
-            imbue: itemValueThresholdDefaults,
+            imbuement: itemValueThresholdDefaults,
         },
         valueForMonsterLevel: valueForMonsterLevelDefaults[variant],
         materialItem: {
@@ -114,9 +114,16 @@ export function createConfig(): void {
     console.log(`${MODULE_ID} | Config initialized`);
     Hooks.call(`${MODULE_ID}.configInit`);
 
-    [...createDefaultRefinements(), ...createDefaultImbues()].forEach((m) =>
-        config.materials.set(m.key, m),
-    );
+    [...createDefaultRefinements(), ...createDefaultImbues()].forEach((m) => {
+        try {
+            const failure = materialDataSchema.validate(m);
+            if (failure)
+                console.warn(`Material ${m.key} failed to validate:${failure}`);
+            config.materials.set(m.key, m);
+        } catch (e) {
+            console.error(`Material ${m.key} failed to validate:`, e);
+        }
+    });
 
     console.log(`${MODULE_ID} | Default materials generated`);
     Hooks.call(`${MODULE_ID}.defaultMaterialsGenerated`);

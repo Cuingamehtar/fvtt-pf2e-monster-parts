@@ -1,340 +1,246 @@
-import { t, tkey } from "../../../utils";
-import { ImbueSource } from "../../data-types";
-import { addDamage, damageSeries, levelRange } from "../../helpers";
+import { tkey } from "../../../utils";
+import { helpers } from "../../helpers";
+import { MaterialData } from "../../material";
+import { RollString } from "../../../types";
 
-export function createImbueElectricity(): ImbueSource[] {
+export function createImbueElectricity(): MaterialData[] {
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.electricity"
+            >
+        >,
+    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.electricity.${k}`);
+
+    const base = {
+        type: "imbuement" as "imbuement",
+        itemPredicate: ["item:type:weapon"],
+        monsterPredicate: [
+            {
+                or: [
+                    "self:trait:electricity",
+                    {
+                        or: [
+                            {
+                                and: [
+                                    "item:type:melee",
+                                    "item:damage:type:electricity",
+                                ],
+                            },
+                            {
+                                and: [
+                                    "item:type:spell",
+                                    "item:damage:type:electricity",
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            },
+        ],
+    };
     return [
         {
+            ...base,
             key: "imbue:electricity:magic",
-            type: "imbue",
-            label: t("imbue.electricity.label", {
-                variant: t("imbue.variant.magic"),
-            }),
-            flavor: tkey("imbue.electricity.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:electricity",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:electricity",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:electricity",
-                                    ],
-                                },
-                            ],
-                        },
-                    ],
-                },
-            ],
-            effects: [
-                {
-                    ...levelRange(10, 13),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: 1,
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(14, 17),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: "d4",
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: "d6",
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(2),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.add-cantrip"),
+            label: { type: "key", key: lkey("magic.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    ...helpers.leveledLabels(
+                        [10, 14, 18],
+                        ["1", "d4", "d6"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "electricity",
+                                value: damage,
+                            }),
+                    ),
+                    {
+                        levelMin: 2,
+                        text: {
+                            type: "key",
+                            key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                             parameters: {
                                 spell: "@UUID[Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf]",
                             },
                         },
-                    ],
-                },
-                {
-                    ...levelRange(4, 5),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-4"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(6, 15),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-6"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(8, 11),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-8"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(12, 15),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(16, 19),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-16"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.magic.level-20"),
-                        },
-                    ],
-                },
+                        sort: 1,
+                    },
+                    ...helpers.leveledLabels(
+                        [4, 6, 8, 12, 16, 20],
+                        [
+                            "magic.level-4-spells",
+                            "magic.level-6-spells",
+                            "magic.level-8-spells",
+                            "magic.level-12-spells",
+                            "magic.level-16-spells",
+                            "magic.level-20-spells",
+                        ],
+                        (key: Parameters<typeof lkey>[0]) => ({
+                            text: { type: "key", key: lkey(key) },
+                            sort: 2,
+                        }),
+                    ),
+                ],
+            },
+            effects: [
+                ...helpers.leveledEffects(
+                    [10, 14, 18],
+                    ["1", "d4", "d6"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            type: "electricity",
+                            value: damage,
+                            label: lkey("magic.label"),
+                        }),
+                ),
             ],
         },
         {
+            ...base,
             key: "imbue:electricity:might",
-            type: "imbue",
-            label: t("imbue.electricity.label", {
-                variant: t("imbue.variant.might"),
-            }),
-            flavor: tkey("imbue.electricity.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:electricity",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:electricity",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:electricity",
-                                    ],
-                                },
-                            ],
+            label: { type: "key", key: lkey("might.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    ...helpers.leveledLabels(
+                        [4, 6, 8, 18],
+                        ["1", "d4", "d6", "d8"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "electricity",
+                                value: damage,
+                            }),
+                    ),
+                    {
+                        levelMin: 8,
+                        levelMax: 13,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-8-arc"),
                         },
-                    ],
-                },
-            ],
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 14,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-14-arc"),
+                        },
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 12,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-12-resistance"),
+                        },
+                        sort: 2,
+                    },
+                    {
+                        levelMin: 20,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-20-weakness"),
+                        },
+                        sort: 3,
+                    },
+                ],
+            },
             effects: [
-                {
-                    ...levelRange(4, 5),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: 1,
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.might"),
+                ...helpers.leveledEffects(
+                    [4, 6, 8, 18],
+                    ["1", "d4", "d6", "d8"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            type: "electricity",
+                            value: damage,
+                            label: lkey("might.label"),
                         }),
-                    }),
-                },
-                {
-                    ...levelRange(6, 7),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: "d4",
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(8, 17),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: "d6",
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: "d8",
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(8, 13),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.might.level-8"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(12),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.might.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(14),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.might.level-14"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.might.level-20"),
-                        },
-                    ],
-                },
+                ),
             ],
         },
         {
+            ...base,
             key: "imbue:electricity:tech",
-            type: "imbue",
-            label: t("imbue.electricity.label", {
-                variant: t("imbue.variant.tech"),
-            }),
-            flavor: tkey("imbue.electricity.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:electricity",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:electricity",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:electricity",
-                                    ],
-                                },
-                            ],
-                        },
-                    ],
-                },
-            ],
-            effects: [
-                // damage
-                {
-                    ...levelRange(6),
-                    effects: addDamage({
-                        type: "electricity",
-                        value: 1,
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                // persistent damage
-                ...damageSeries(
-                    [[4, 7], [8, 13], [14, 17], [18]],
-                    [1, "d6", "d8", "d10"],
+            label: { type: "key", key: lkey("tech.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
                     {
-                        type: "electricity",
-                        category: "persistent",
-                        label: t("imbue.electricity.label", {
-                            variant: t("imbue.variant.tech"),
+                        levelMin: 6,
+                        ...helpers.damage.label({
+                            type: "electricity",
+                            value: 1,
                         }),
                     },
+                    ...helpers.leveledLabels(
+                        [4, 8, 14, 18],
+                        ["1", "d6", "d8", "d10"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "electricity",
+                                category: "persistent",
+                                value: damage,
+                            }),
+                    ),
+                    {
+                        levelMin: 8,
+                        levelMax: 15,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-8-arc"),
+                        },
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 16,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-16-arc"),
+                        },
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 12,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-12-resistance"),
+                        },
+                        sort: 2,
+                    },
+                    {
+                        levelMin: 20,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-20-magnetized"),
+                        },
+                        sort: 3,
+                    },
+                ],
+            },
+            effects: [
+                {
+                    levelMin: 6,
+                    ...helpers.damage.effect({
+                        type: "electricity",
+                        value: 1,
+                        label: lkey("tech.label"),
+                    }),
+                },
+                ...helpers.leveledEffects(
+                    [4, 8, 14, 18],
+                    ["1", "d6", "d8", "d10"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            type: "electricity",
+                            category: "persistent",
+                            value: damage,
+                            label: lkey("tech.label"),
+                        }),
                 ),
-                {
-                    ...levelRange(12),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.tech.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(8, 15),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.tech.level-8"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(16),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.tech.level-16"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.electricity.tech.level-20"),
-                        },
-                    ],
-                },
             ],
         },
     ];

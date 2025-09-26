@@ -273,7 +273,7 @@ export async function configureRefinedItem(item: RefinedItem) {
                 .values()
                 .filter(
                     (m) =>
-                        m.type === "imbue" &&
+                        m.type === "imbuement" &&
                         new Material(m).testItem({ rollOptions }),
                 )
                 .map((m) => ({ key: m.key, label: i18nFormat(m.label) })),

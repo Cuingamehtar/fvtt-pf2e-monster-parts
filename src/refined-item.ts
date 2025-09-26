@@ -4,7 +4,6 @@ import { getConfig } from "./config";
 import { Material } from "./material";
 import { i18nFormat, t } from "./utils";
 import { dialogs } from "./app/dialogs";
-import { ImbueSource, RefinementSource } from "./data/data-types";
 
 export class RefinedItem {
     item: PhysicalItemPF2e;
@@ -98,7 +97,7 @@ export class RefinedItem {
 
         let updatedData = {};
         for (const effect of effects.flatMap((e) => e?.effects ?? [])) {
-            switch (effect.key) {
+            switch (effect.type) {
                 case "RuleElement":
                     rules.push(effect.rule);
                     break;
@@ -133,7 +132,7 @@ export class RefinedItem {
         if (!flags) return [];
         return [flags.refinement, ...flags.imbues]
             .map((m) => Material.fromKey(m.key, m.value))
-            .map((m?: Material<RefinementSource | ImbueSource>) => {
+            .map((m?: Material) => {
                 if (!m) return undefined;
                 const level = m.getLevel(this);
                 const effects = m.getEffects(this);
@@ -150,7 +149,7 @@ export class RefinedItem {
     async descriptionHeader() {
         const flags = this.item.getFlag(MODULE_ID, "refined-item")!;
 
-        const prepare = (m?: Material<RefinementSource | ImbueSource>) => {
+        const prepare = (m?: Material) => {
             if (!m) return undefined;
             const flavor = m.getFlavor(this);
 
@@ -159,7 +158,7 @@ export class RefinedItem {
                 value: m.value,
                 level: m.getLevel(this),
                 flavor: flavor.flavor,
-                notes: flavor.effects,
+                notes: flavor.parts,
             };
         };
 

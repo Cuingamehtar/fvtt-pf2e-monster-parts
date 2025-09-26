@@ -100,13 +100,17 @@ export class MonsterPart {
         const config = getConfig();
         const flags = this.item.getFlag(MODULE_ID, "monster-part")!;
         const value = flags.value;
-        const materials = flags.materials.map((k) => config.materials.get(k));
+        const materials = [
+            ...config.materials
+                .values()
+                .filter((m) => flags.materials.includes(m.key)),
+        ];
         const refinements = materials
             .filter((m) => m?.type === "refinement")
             .map((m) => i18nFormat(m.label))
             .sort((a, b) => a.localeCompare(b));
         const imbues = materials
-            .filter((m) => m?.type === "imbue")
+            .filter((m) => m?.type === "imbuement")
             .map((m) => i18nFormat(m.label))
             .sort((a, b) => a.localeCompare(b));
 

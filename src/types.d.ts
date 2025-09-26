@@ -3,85 +3,6 @@ import i18nKeys from "../lang/en.json";
 import { MonsterPartsConfig } from "./config";
 
 declare global {
-    type FromDataModel<T> =
-        T extends foundry.data.fields.StringField<
-            infer _A,
-            infer _B,
-            infer _C,
-            infer _D,
-            infer _E
-        >
-            ? FromStringModel<T>
-            : T extends foundry.data.fields.NumberField<
-                    infer _A,
-                    infer _B,
-                    infer _C,
-                    infer _D,
-                    infer _E
-                >
-              ? FromNumberModel<T>
-              : T extends foundry.data.fields.SchemaField
-                ? FromSchemaModel<T>
-                : never;
-
-    type FromSchemaModel<T> =
-        T extends foundry.data.fields.SchemaField<
-            infer TType,
-            infer _TSourceProp,
-            infer _TModelProp,
-            infer TRequired,
-            infer TNullable,
-            infer THasInitial
-        >
-            ? ResolveNullable<
-                  ResolveRequired<
-                      { [TKey in keyof TType]: FromDataModel<TType[TKey]> },
-                      TRequired,
-                      THasInitial
-                  >,
-                  TNullable
-              >
-            : never;
-    type FromNumberModel<T> =
-        T extends foundry.data.fields.NumberField<
-            infer TType,
-            infer _B,
-            infer TRequired,
-            infer TNullable,
-            infer THasInitial
-        >
-            ? ResolveNullable<
-                  ResolveRequired<TType, TRequired, THasInitial>,
-                  TNullable
-              >
-            : never;
-    type FromStringModel<T> =
-        T extends foundry.data.fields.StringField<
-            infer TType,
-            infer _B,
-            infer TRequired,
-            infer TNullable,
-            infer THasInitial
-        >
-            ? ResolveNullable<
-                  ResolveRequired<TType, TRequired, THasInitial>,
-                  TNullable
-              >
-            : never;
-    type ResolveRequired<
-        TProp,
-        TRequired extends boolean,
-        THasInitial extends boolean,
-    > = TRequired extends true
-        ? TProp
-        : THasInitial extends true
-          ? TProp
-          : TProp | undefined;
-    type ResolveNullable<
-        TProp,
-        TNullable extends boolean,
-    > = TNullable extends false ? TProp : TProp | null;
-
     type Flatten<T> = {
         [K in keyof T as T[K] extends object
             ? K extends string
@@ -91,6 +12,29 @@ declare global {
             ? Flatten<T[K]>[keyof Flatten<T[K]>]
             : T[K];
     };
+    type Nested<T, K> = K extends `${infer Pre}.${infer Post}`
+        ? Pre extends keyof T
+            ? Nested<T[Pre], Post>
+            : never
+        : K extends keyof T
+          ? T[K]
+          : never;
+
+    type Join<H extends string, T extends string> = `${H}.${T}`;
+    type I18nLocalizableKey = {
+        type: "key";
+        key: I18nKey;
+        parameters?: { [key: string]: I18nEntry };
+    };
+    type ResolvableParameter = {
+        type: "resolve";
+        value: string;
+    };
+    type I18nEntry =
+        | I18nString
+        | I18nLocalizableKey
+        | ResolvableParameter
+        | number;
 
     type I18nKeyType = typeof i18nKeys;
     /** String that is passed to `game.i18n.localize` */
@@ -158,6 +102,11 @@ export type ModuleFlags = {
     text?: string;
 };
 
+export type RollString =
+    | number
+    | `${number}`
+    | `${number}d${number}`
+    | `d${number}`;
 declare module "foundry-pf2e" {
     interface ItemPF2e {
         getFlag(

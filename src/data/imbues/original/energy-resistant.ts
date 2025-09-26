@@ -1,8 +1,7 @@
-import { ImbueSource, MaterialEffectSource } from "../../data-types";
-import { i18nFormat, t, tkey } from "../../../utils";
-import { levelRange } from "../../helpers";
+import { tkey } from "../../../utils";
+import { MaterialData } from "../../material";
 
-export function createImbueEnergyResistant(): ImbueSource[] {
+export function createImbueEnergyResistant(): MaterialData[] {
     const damageTypes: (keyof typeof CONFIG.PF2E.damageTypes)[] = [
         "acid",
         "cold",
@@ -13,80 +12,111 @@ export function createImbueEnergyResistant(): ImbueSource[] {
         "vitality",
         "void",
     ];
-    return damageTypes.flatMap((type) => [
-        {
-            key: `imbue:energy-resistant:armor:${type}`,
-            type: "imbue",
-            label: t("imbue.energy-resistant.armor-label", {
-                damage: i18nFormat(CONFIG.PF2E.damageTypes[type] as I18nKey),
-            }),
-            flavor: tkey("imbue.energy-resistant.armor-flavor"),
-            itemPredicate: ["item:type:armor"],
-            monsterPredicate: [
-                {
-                    or: [
-                        { gt: [`self:resistance:${type}` as string, 0] },
-                        `self:immunity:${type}`,
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.energy-resistant"
+            >
+        >,
+    ): I18nKey =>
+        tkey(`data.imbuement.battlezoo-bestiary.energy-resistant.${k}`);
+
+    return damageTypes.flatMap((type) => {
+        const damageLabel = CONFIG.PF2E.damageTypes[type] as I18nKey;
+        return [
+            {
+                key: `imbue:energy-resistant:armor:${type}`,
+                type: "imbuement",
+                label: {
+                    type: "key",
+                    key: lkey("armor-label"),
+                    parameters: {
+                        damage: { type: "key", key: damageLabel },
+                    },
+                },
+                itemPredicate: ["item:type:armor"],
+                monsterPredicate: [
+                    {
+                        or: [
+                            { gt: [`self:resistance:${type}` as string, 0] },
+                            `self:immunity:${type}`,
+                        ],
+                    },
+                ],
+                header: {
+                    description: { type: "key", key: lkey("armor-flavor") },
+                    labels: [
+                        ...Array.fromRange(20, 1).map((level) => ({
+                            levelMin: level,
+                            levelMax: level != 20 ? level : undefined,
+                            text: {
+                                type: "key" as "key",
+                                key: lkey("armor-effect"),
+                                parameters: { level },
+                            },
+                        })),
                     ],
                 },
-            ],
-            effects: Array.fromRange(20, 1).map(
-                (level): MaterialEffectSource => ({
-                    ...levelRange(level, level),
-                    effects: [
-                        {
-                            key: "RuleElement",
-                            rule: {
-                                key: "Resistance",
-                                type: type,
-                                value: level,
+                effects: [
+                    ...Array.fromRange(20, 1).map((level) => ({
+                        type: "RuleElement" as "RuleElement",
+                        levelMin: level,
+                        levelMax: level != 20 ? level : undefined,
+                        rule: {
+                            key: "Resistance",
+                            type: type,
+                            value: level,
+                        },
+                    })),
+                ],
+            },
+            {
+                key: `imbue:energy-resistant:shield:${type}`,
+                type: "imbuement",
+                label: {
+                    type: "key",
+                    key: lkey("shield-label"),
+                    parameters: {
+                        damage: { type: "key", key: damageLabel },
+                    },
+                },
+                itemPredicate: ["item:type:shield"],
+                monsterPredicate: [
+                    {
+                        or: [
+                            { gt: [`self:resistance:${type}` as string, 0] },
+                            `self:immunity:${type}`,
+                        ],
+                    },
+                ],
+                header: {
+                    description: { type: "key", key: lkey("shield-flavor") },
+                    labels: [
+                        ...Array.fromRange(20, 1).map((level) => ({
+                            levelMin: level,
+                            levelMax: level != 20 ? level : undefined,
+                            text: {
+                                type: "key" as "key",
+                                key: lkey("shield-effect"),
+                                parameters: { level },
                             },
-                        },
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.energy-resistant.armor-effect"),
-                            parameters: { level },
-                        },
-                    ],
-                }),
-            ),
-        },
-        {
-            key: `imbue:energy-resistant:shield:${type}`,
-            type: "imbue",
-            label: t("imbue.energy-resistant.shield-label", {
-                damage: i18nFormat(CONFIG.PF2E.damageTypes[type] as I18nKey),
-            }),
-            flavor: tkey("imbue.energy-resistant.shield-flavor"),
-            itemPredicate: ["item:type:shield"],
-            monsterPredicate: [
-                {
-                    or: [
-                        { gt: [`self:resistance:${type}` as string, 0] },
-                        `self:immunity:${type}`,
+                        })),
                     ],
                 },
-            ],
-            effects: Array.fromRange(20, 1).map(
-                (level): MaterialEffectSource => ({
-                    ...levelRange(level, level),
-                    effects: [
-                        {
-                            key: "RuleElement",
-                            rule: {
-                                key: "Resistance",
-                                type: type,
-                                value: level,
-                            },
+                effects: [
+                    ...Array.fromRange(20, 1).map((level) => ({
+                        type: "RuleElement" as "RuleElement",
+                        levelMin: level,
+                        levelMax: level != 20 ? level : undefined,
+                        rule: {
+                            key: "Resistance",
+                            type: type,
+                            value: level,
                         },
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.energy-resistant.shield-effect"),
-                            parameters: { level },
-                        },
-                    ],
-                }),
-            ),
-        },
-    ]);
+                    })),
+                ],
+            },
+        ];
+    });
 }

@@ -1,23 +1,19 @@
 import { ItemPF2e, NPCPF2e, Predicate } from "foundry-pf2e";
-import {
-    ImbueSource,
-    InlineNoteEffectSource,
-    RefinementSource,
-} from "./data/data-types";
 import { getExtendedNPCRollOptions } from "./actor-utils";
 import { getConfig } from "./config";
 import { RefinedItem } from "./refined-item";
 import { i18nFormat } from "./utils";
+import { MaterialData } from "./data/material";
 
-const materialAliases:Record<string,MaterialKey> = {};
+const materialAliases: Record<string, MaterialKey> = {};
 
-export class Material<T extends RefinementSource | ImbueSource> {
-    data: T;
+export class Material {
+    data: MaterialData;
     value: number;
     #itemPredicate?: Predicate;
     #creaturePredicate?: Predicate;
 
-    constructor(data: T, value = 0) {
+    constructor(data: MaterialData, value = 0) {
         this.data = data;
         this.value = value;
     }
@@ -89,39 +85,42 @@ export class Material<T extends RefinementSource | ImbueSource> {
 
     getEffects(item: RefinedItem) {
         const level = this.getLevel(item);
-        return this.data.effects
-            .filter(
-                (e) =>
-                    e.levels.from <= level &&
-                    (!e.levels.to || level <= e.levels.to),
-            )
-            .flatMap((e) => e.effects);
+        return this.data.effects.filter(
+            (e) => e.levelMin <= level && (!e.levelMax || level <= e.levelMax),
+        );
     }
 
     getFlavor(item: RefinedItem) {
         const level = this.getLevel(item);
         return {
             label: i18nFormat(this.data.label),
-            flavor: i18nFormat(this.data.flavor),
-            effects: this.data.effects
-                .filter(
+            flavor: i18nFormat(this.data.header.description),
+            parts: this.data.header.labels
+                ?.filter(
                     (e) =>
-                        e.levels.from <= level &&
-                        (!e.levels.to || level <= e.levels.to),
+                        e.levelMin <= level &&
+                        (!e.levelMax || level <= e.levelMax),
                 )
-                .flatMap((e) =>
-                    e.effects
-                        .filter(
-                            (ei): ei is InlineNoteEffectSource =>
-                                ei.key == "InlineNote" &&
-                                (!ei.predicate ||
-                                    new game.pf2e.Predicate(ei.predicate).test(
-                                        // @ts-expect-error
-                                        item.item.getRollOptions(),
-                                    )),
-                        )
-                        .map((ei) => i18nFormat(ei.text, ei.parameters)),
-                ),
+                .sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0))
+                .map((e) => i18nFormat(e.text)),
         };
+    }
+
+    static getRollDataPath(materialKey: string, value: string) {
+        function convertSlug(s: string) {
+            return s
+                .split("-")
+                .reduce(
+                    (acc, e) => acc + e[0].toUpperCase() + e.slice(1),
+                    s[0],
+                );
+        }
+
+        return (
+            "@item.flags.pf2e-monster-parts.values." +
+            convertSlug(
+                `${game.pf2e.system.sluggify(materialKey)}-${game.pf2e.system.sluggify(value)}`,
+            )
+        );
     }
 }

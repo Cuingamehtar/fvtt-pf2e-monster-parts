@@ -1,86 +1,72 @@
-import { t, tkey } from "../../../utils";
-import { ImbueSource } from "../../data-types";
-import { levelRange } from "../../helpers";
+import { tkey } from "../../../utils";
+import { MaterialData } from "../../material";
 
-export function createImbueWinged(): ImbueSource {
+export function createImbueWinged(): MaterialData {
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.winged"
+            >
+        >,
+    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.winged.${k}`);
+
     return {
         key: "imbue:winged",
-        type: "imbue",
-        label: t("imbue.winged.label"),
-        flavor: tkey("imbue.winged.flavor"),
+        type: "imbuement",
+        label: { type: "key", key: lkey("label") },
         itemPredicate: ["item:type:armor"],
         monsterPredicate: ["self:speed:fly"],
+        header: {
+            description: { type: "key", key: lkey("flavor") },
+            labels: [
+                {
+                    levelMin: 6,
+                    levelMax: 7,
+                    text: { type: "key", key: lkey("level-6-landing") },
+                    sort: 1,
+                },
+                {
+                    levelMin: 8,
+                    text: { type: "key", key: lkey("level-8-landing") },
+                    sort: 1,
+                },
+                {
+                    levelMin: 10,
+                    text: { type: "key", key: lkey("level-10-fly") },
+                    sort: 1,
+                },
+                {
+                    levelMin: 14,
+                    text: { type: "key", key: lkey("level-14-fly") },
+                    sort: 1,
+                },
+                {
+                    levelMin: 16,
+                    text: { type: "key", key: lkey("level-16-fly-extend") },
+                    sort: 2,
+                },
+                {
+                    levelMin: 18,
+                    text: { type: "key", key: lkey("level-18-fly") },
+                    sort: 0,
+                },
+                {
+                    levelMin: 20,
+                    text: { type: "key", key: lkey("level-20-ally") },
+                    sort: 3,
+                },
+            ],
+        },
         effects: [
             {
-                ...levelRange(6, 7),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.winged.level-6"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(8),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.winged.level-8"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(10, 13),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.winged.level-10"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(14, 17),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.winged.level-14"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(16, 17),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.winged.level-16"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(18),
-                effects: [
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            key: "BaseSpeed",
-                            selector: "fly",
-                            value: "@actor.system.attributes.speed.total",
-                        },
-                    },
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.winged.level-18"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(20),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.winged.level-20"),
-                    },
-                ],
+                levelMin: 18,
+                type: "RuleElement",
+                rule: {
+                    key: "BaseSpeed",
+                    selector: "fly",
+                    value: "@actor.system.attributes.speed.total",
+                },
             },
         ],
     };

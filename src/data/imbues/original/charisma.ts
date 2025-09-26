@@ -1,14 +1,22 @@
 import { tkey } from "../../../utils";
-import { ImbueSource } from "../../data-types";
-import { levelRange, skillsOfAttribute } from "../../helpers";
+import { skillsOfAttribute } from "../../helpers";
+import { MaterialData } from "../../material";
 
-export function createImbueCharisma(): ImbueSource {
+export function createImbueCharisma(): MaterialData {
     const skills = skillsOfAttribute("cha");
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.charisma"
+            >
+        >,
+    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.charisma.${k}`);
+
     return {
         key: "imbue:charisma",
-        type: "imbue",
-        label: tkey("imbue.charisma.label"),
-        flavor: tkey("imbue.charisma.flavor"),
+        type: "imbuement",
+        label: { type: "key", key: lkey("label") },
         monsterPredicate: [{ lte: ["ability:cha:rank", 2] }],
         itemPredicate: [
             {
@@ -17,43 +25,33 @@ export function createImbueCharisma(): ImbueSource {
                 })),
             },
         ],
-        effects: [
-            {
-                ...levelRange(8, 13),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.charisma.level-8"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(14, 19),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.charisma.level-14"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(20),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.charisma.level-20"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(17),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.charisma.level-17"),
-                    },
-                ],
-            },
-        ],
+        header: {
+            description: { type: "key", key: lkey("flavor") },
+            labels: [
+                {
+                    levelMin: 8,
+                    levelMax: 13,
+                    text: { type: "key", key: lkey("level-8-spell") },
+                    sort: 1,
+                },
+                {
+                    levelMin: 14,
+                    levelMax: 19,
+                    text: { type: "key", key: lkey("level-14-spell") },
+                    sort: 1,
+                },
+                {
+                    levelMin: 20,
+                    text: { type: "key", key: lkey("level-20-spell") },
+                    sort: 1,
+                },
+                {
+                    levelMin: 17,
+                    text: { type: "key", key: lkey("level-17-apex") },
+                    sort: 2,
+                },
+            ],
+        },
+        effects: [],
     };
 }

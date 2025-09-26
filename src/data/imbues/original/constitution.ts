@@ -1,15 +1,22 @@
 import { SkillSlug } from "foundry-pf2e";
 import { tkey } from "../../../utils";
-import { ImbueSource } from "../../data-types";
-import { levelRange } from "../../helpers";
+import { MaterialData } from "../../material";
 
-export function createImbueConstitution(): ImbueSource {
+export function createImbueConstitution(): MaterialData {
     const skills = Object.keys(CONFIG.PF2E.skills) as SkillSlug[];
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.constitution"
+            >
+        >,
+    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.constitution.${k}`);
+
     return {
         key: "imbue:constitution",
-        type: "imbue",
-        label: tkey("imbue.constitution.label"),
-        flavor: tkey("imbue.constitution.flavor"),
+        type: "imbuement",
+        label: { type: "key", key: lkey("label") },
         monsterPredicate: [{ lte: ["ability:con:rank", 2] }],
         itemPredicate: [
             {
@@ -18,52 +25,38 @@ export function createImbueConstitution(): ImbueSource {
                 })),
             },
         ],
-        effects: [
-            {
-                ...levelRange(8, 13),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.constitution.level-8"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(14, 17),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.constitution.level-14"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(18),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.constitution.level-18"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(17),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.constitution.level-17"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(20),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.constitution.level-20"),
-                    },
-                ],
-            },
-        ],
+        header: {
+            description: { type: "key", key: lkey("flavor") },
+            labels: [
+                {
+                    levelMin: 8,
+                    levelMax: 13,
+                    text: { type: "key", key: lkey("level-8-spell") },
+                    sort: 1,
+                },
+                {
+                    levelMin: 14,
+                    levelMax: 17,
+                    text: { type: "key", key: lkey("level-14-spell") },
+                    sort: 1,
+                },
+                {
+                    levelMin: 18,
+                    text: { type: "key", key: lkey("level-18-spell") },
+                    sort: 1,
+                },
+                {
+                    levelMin: 17,
+                    text: { type: "key", key: lkey("level-17-apex") },
+                    sort: 2,
+                },
+                {
+                    levelMin: 20,
+                    text: { type: "key", key: lkey("level-20-hp") },
+                    sort: 3,
+                },
+            ],
+        },
+        effects: [],
     };
 }

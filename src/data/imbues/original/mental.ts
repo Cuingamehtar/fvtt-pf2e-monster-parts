@@ -1,383 +1,253 @@
-import { t, tkey } from "../../../utils";
-import { ImbueSource } from "../../data-types";
-import { addDamage, levelRange } from "../../helpers";
+import { tkey } from "../../../utils";
+import { helpers } from "../../helpers";
+import { MaterialData } from "../../material";
+import { RollString } from "../../../types";
 
-export function createImbueMental(): ImbueSource[] {
+export function createImbueMental(): MaterialData[] {
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.mental"
+            >
+        >,
+    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.mental.${k}`);
+
+    const base = {
+        type: "imbuement" as "imbuement",
+        itemPredicate: ["item:type:weapon"],
+        monsterPredicate: [
+            {
+                or: [
+                    "self:trait:mental",
+                    {
+                        or: [
+                            {
+                                and: [
+                                    "item:type:melee",
+                                    "item:damage:type:mental",
+                                ],
+                            },
+                            {
+                                and: [
+                                    "item:type:spell",
+                                    "item:damage:type:mental",
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            },
+        ],
+    };
     return [
         {
+            ...base,
             key: "imbue:mental:magic",
-            type: "imbue",
-            label: t("imbue.mental.label", {
-                variant: t("imbue.variant.magic"),
-            }),
-            flavor: tkey("imbue.mental.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:mental",
-                        "self:trait:astral",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:mental",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:mental",
-                                    ],
-                                },
-                            ],
-                        },
-                    ],
-                },
-            ],
-            effects: [
-                {
-                    ...levelRange(10, 13),
-                    effects: addDamage({
-                        type: "mental",
-                        value: 1,
-                        label: t("imbue.mental.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(14, 17),
-                    effects: addDamage({
-                        type: "mental",
-                        value: "d4",
-                        label: t("imbue.mental.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "mental",
-                        value: "d6",
-                        label: t("imbue.mental.label", {
-                            variant: t("imbue.variant.magic"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(2),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.add-cantrip"),
+            label: { type: "key", key: lkey("magic.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    ...helpers.leveledLabels(
+                        [10, 14, 18],
+                        ["1", "d4", "d6"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "mental",
+                                value: damage,
+                            }),
+                    ),
+                    {
+                        levelMin: 2,
+                        text: {
+                            type: "key",
+                            key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                             parameters: {
                                 spell: "@UUID[Compendium.pf2e.spells-srd.Item.4gBIw4IDrSfFHik4]",
                             },
                         },
-                    ],
-                },
-                {
-                    ...levelRange(4, 5),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.magic.level-4"),
+                        sort: 1,
+                    },
+                    ...helpers.leveledLabels(
+                        [4, 6, 8, 12, 16],
+                        [
+                            "magic.level-4-spells",
+                            "magic.level-6-spells",
+                            "magic.level-8-spells",
+                            "magic.level-12-spells",
+                            "magic.level-16-spells",
+                        ],
+                        (key: Parameters<typeof lkey>[0]) => ({
+                            text: { type: "key", key: lkey(key) },
+                            sort: 2,
+                        }),
+                    ),
+                    {
+                        levelMin: 20,
+                        text: {
+                            type: "key",
+                            key: lkey("magic.level-20-weird"),
                         },
-                    ],
-                },
-                {
-                    ...levelRange(6, 7),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.magic.level-6"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(8, 11),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.magic.level-8"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(12, 15),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.magic.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(16),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.magic.level-16"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.magic.level-20"),
-                        },
-                    ],
-                },
+                        sort: 3,
+                    },
+                ],
+            },
+            effects: [
+                ...helpers.leveledEffects(
+                    [10, 14, 18],
+                    ["1", "d4", "d6"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            type: "mental",
+                            value: damage,
+                            label: lkey("magic.label"),
+                        }),
+                ),
             ],
         },
         {
+            ...base,
             key: "imbue:mental:might",
-            type: "imbue",
-            label: t("imbue.mental.label", {
-                variant: t("imbue.variant.might"),
-            }),
-            flavor: tkey("imbue.mental.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:mental",
-                        "self:trait:astral",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:mental",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:mental",
-                                    ],
-                                },
-                            ],
+            label: { type: "key", key: lkey("might.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    ...helpers.leveledLabels(
+                        [4, 6, 8, 18],
+                        ["1", "d4", "d6", "d8"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "mental",
+                                value: damage,
+                            }),
+                    ),
+                    {
+                        levelMin: 10,
+                        levelMax: 15,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-10-stupefied"),
                         },
-                    ],
-                },
-            ],
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 16,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-16-stupefied"),
+                        },
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 12,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-12-resistance"),
+                        },
+                        sort: 2,
+                    },
+                    {
+                        levelMin: 20,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-20-weakness"),
+                        },
+                        sort: 3,
+                    },
+                ],
+            },
             effects: [
-                {
-                    ...levelRange(4, 5),
-                    effects: addDamage({
-                        type: "mental",
-                        value: 1,
-                        label: t("imbue.mental.label", {
-                            variant: t("imbue.variant.might"),
+                ...helpers.leveledEffects(
+                    [4, 6, 8, 18],
+                    ["1", "d4", "d6", "d8"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            type: "mental",
+                            value: damage,
+                            label: lkey("might.label"),
                         }),
-                    }),
-                },
-                {
-                    ...levelRange(6, 7),
-                    effects: addDamage({
-                        type: "mental",
-                        value: "d4",
-                        label: t("imbue.mental.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(8, 17),
-                    effects: addDamage({
-                        type: "mental",
-                        value: "d6",
-                        label: t("imbue.mental.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "mental",
-                        value: "d8",
-                        label: t("imbue.mental.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(10, 15),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.might.level-10"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(12),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.might.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(16),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.might.level-16"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.might.level-20"),
-                        },
-                    ],
-                },
+                ),
             ],
         },
         {
+            ...base,
             key: "imbue:mental:tech",
-            type: "imbue",
-            label: t("imbue.mental.label", {
-                variant: t("imbue.variant.tech"),
-            }),
-            flavor: tkey("imbue.mental.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:mental",
-                        "self:trait:astral",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:mental",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:mental",
-                                    ],
-                                },
-                            ],
+            label: { type: "key", key: lkey("tech.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    {
+                        levelMin: 6,
+                        ...helpers.damage.label({
+                            type: "mental",
+                            value: 1,
+                        }),
+                    },
+                    ...helpers.leveledLabels(
+                        [4, 10],
+                        ["1", "d6"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "mental",
+                                category: "persistent",
+                                value: damage,
+                            }),
+                    ),
+                    {
+                        levelMin: 8,
+                        levelMax: 15,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-8-stupefied"),
                         },
-                    ],
-                },
-            ],
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 16,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-16-stupefied"),
+                        },
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 12,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-12-resistance"),
+                        },
+                        sort: 2,
+                    },
+                    {
+                        levelMin: 20,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-20-weakness"),
+                        },
+                        sort: 3,
+                    },
+                ],
+            },
             effects: [
                 {
-                    ...levelRange(6),
-                    effects: addDamage({
+                    levelMin: 6,
+                    ...helpers.damage.effect({
                         type: "mental",
                         value: 1,
-                        label: t("imbue.mental.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
+                        label: lkey("tech.label"),
                     }),
                 },
-                {
-                    ...levelRange(4, 9),
-                    effects: addDamage({
-                        type: "mental",
-                        value: 1,
-                        category: "persistent",
-                        label: t("imbue.mental.label", {
-                            variant: t("imbue.variant.tech"),
+                ...helpers.leveledEffects(
+                    [4, 10],
+                    ["1", "d6"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            type: "mental",
+                            category: "persistent",
+                            value: damage,
+                            label: lkey("tech.label"),
                         }),
-                    }),
-                },
-                {
-                    ...levelRange(10, 13),
-                    effects: addDamage({
-                        type: "mental",
-                        value: "d6",
-                        category: "persistent",
-                        label: t("imbue.mental.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(14, 17),
-                    effects: addDamage({
-                        type: "mental",
-                        value: "d8",
-                        category: "persistent",
-                        label: t("imbue.mental.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(18),
-                    effects: addDamage({
-                        type: "mental",
-                        value: "d10",
-                        category: "persistent",
-                        label: t("imbue.mental.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
-                    }),
-                },
-                {
-                    ...levelRange(8),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.tech.level-8"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(12),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.tech.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(16),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.tech.level-16"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(18),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.tech.level-16"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.mental.tech.level-20"),
-                        },
-                    ],
-                },
+                ),
             ],
         },
     ];

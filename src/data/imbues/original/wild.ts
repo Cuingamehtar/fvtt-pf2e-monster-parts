@@ -1,103 +1,101 @@
 import { MODULE_ID } from "../../../module";
-import { getRandomInt, t, tkey } from "../../../utils";
-import { ImbueSource } from "../../data-types";
-import { addWildDamage, levelRange } from "../../helpers";
+import { getRandomInt, i18nFormat, tkey } from "../../../utils";
+import { helpers } from "../../helpers";
+import { MaterialData } from "../../material";
+import { RollString } from "../../../types";
 
-const damages = ["acid", "cold", "electricity", "fire", "void", "sonic"];
+export function createImbueWild(): MaterialData {
+    const damages = ["acid", "cold", "electricity", "fire", "void", "sonic"];
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.wild"
+            >
+        >,
+    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.wild.${k}`);
 
-export function createImbueWild(): ImbueSource {
-    const imbue: ImbueSource = {
+    const imbue: MaterialData = {
         key: "imbue:wild:might",
-        type: "imbue",
-        label: t("imbue.wild.label", { variant: t("imbue.variant.might") }),
-        flavor: tkey("imbue.wild.flavor"),
+        type: "imbuement",
+        label: { type: "key", key: lkey("label") },
         itemPredicate: ["item:type:weapon"],
         monsterPredicate: [],
+        header: {
+            description: { type: "key", key: lkey("flavor") },
+            labels: [
+                ...helpers.leveledLabels(
+                    [4, 6, 8, 18],
+                    ["1", "1d4", "1d6", "1d8"],
+                    (damage) => ({
+                        text: {
+                            type: "key",
+                            key: lkey("might.damage"),
+                            parameters: { damage: damage },
+                        },
+                        sort: 1,
+                    }),
+                ),
+
+                {
+                    levelMin: 12,
+                    text: {
+                        type: "key",
+                        key: lkey("might.level-12-resistance"),
+                    },
+                    sort: 2,
+                },
+                {
+                    levelMin: 20,
+                    text: { type: "key", key: lkey("might.level-20-weakness") },
+                    sort: 3,
+                },
+            ],
+        },
         effects: [
             {
-                ...levelRange(4),
-                effects: [
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            key: "RollOption",
-                            option: "item:imbue:wild",
-                            domain: "{item|_id}-damage",
-                        },
+                levelMin: 4,
+                type: "RuleElement",
+                rule: {
+                    key: "RollOption",
+                    option: "item:imbue:wild",
+                    domain: "{item|_id}-damage",
+                },
+            },
+            ...damages.flatMap((type, i) => {
+                return helpers.leveledEffects(
+                    [4, 6, 8, 18],
+                    ["1", "d4", "d6", "d8"],
+                    (damage: RollString) => {
+                        const rule = helpers.damage.effect({
+                            type,
+                            value: damage,
+                            predicate: [`wild:damage-type:${i + 1}`],
+                            label: lkey("label"),
+                        });
+                        //@ts-expect-error
+                        rule.rule.hideIfDisabled = true;
+                        return rule;
                     },
-                ],
-            },
-            {
-                ...levelRange(4, 5),
-                effects: addWildDamage(
-                    1,
-                    t("imbue.wild.label", {
-                        variant: t("imbue.variant.might"),
-                    }),
-                ),
-            },
-            {
-                ...levelRange(6, 7),
-                effects: addWildDamage(
-                    "1d4",
-                    t("imbue.wild.label", {
-                        variant: t("imbue.variant.might"),
-                    }),
-                ),
-            },
-            {
-                ...levelRange(8, 17),
-                effects: addWildDamage(
-                    "1d6",
-                    t("imbue.wild.label", {
-                        variant: t("imbue.variant.might"),
-                    }),
-                ),
-            },
-            {
-                ...levelRange(18),
-                effects: addWildDamage(
-                    "1d8",
-                    t("imbue.wild.label", {
-                        variant: t("imbue.variant.might"),
-                    }),
-                ),
-            },
-            {
-                ...levelRange(12),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.wild.might.level-12"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(20),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.wild.might.level-20"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(20),
-                effects: damages.map((type, i) => ({
-                    key: "RuleElement" as "RuleElement",
-                    rule: {
-                        key: "Note",
-                        selector: "strike-damage",
-                        text: t("imbue.vulnerability-before-strike", {
+                );
+            }),
+            ...damages.map((type, i) => ({
+                levelMin: 20,
+                type: "RuleElement" as "RuleElement",
+                rule: {
+                    key: "Note",
+                    selector: "strike-damage",
+                    text: i18nFormat({
+                        type: "key",
+                        key: tkey("data.imbuement.vulnerability-before-strike"),
+                        parameters: {
                             damage: type,
-                        }),
-                        title: t("imbue.wild.label", {
-                            variant: t("imbue.variant.might"),
-                        }),
-                        predicate: [`wild:damage-type:${i + 1}`],
-                    },
-                })),
-            },
+                        },
+                    }),
+                    title: lkey("label"),
+                    predicate: [`wild:damage-type:${i + 1}`],
+                },
+            })),
         ],
     };
 

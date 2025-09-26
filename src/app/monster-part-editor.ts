@@ -58,7 +58,7 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             }))
             .sort((a, b) => a.label.localeCompare(b.label));
         const imbues = [...config.materials.values()]
-            .filter((m) => m.type === "imbue")
+            .filter((m) => m.type === "imbuement")
             .map((m) => ({
                 key: m.key,
                 label: i18nFormat(m.label),

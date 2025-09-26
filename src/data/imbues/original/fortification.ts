@@ -1,13 +1,21 @@
-import { ImbueSource, MaterialEffectSource } from "../../data-types";
-import { t, tkey } from "../../../utils";
-import { levelRange } from "../../helpers";
+import { tkey } from "../../../utils";
+import { helpers } from "../../helpers";
+import { MaterialData } from "../../material";
 
-export function createImbueFortification(): ImbueSource {
+export function createImbueFortification(): MaterialData {
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.fortification"
+            >
+        >,
+    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.fortification.${k}`);
+
     return {
         key: "imbue:fortification",
-        type: "imbue",
-        label: t("imbue.fortification.label"),
-        flavor: t("imbue.fortification.flavor"),
+        type: "imbuement",
+        label: { type: "key", key: lkey("label") },
         itemPredicate: [
             "item:type:armor",
             { or: ["armor:category:medium", "armor:category:heavy"] },
@@ -22,57 +30,55 @@ export function createImbueFortification(): ImbueSource {
                 ],
             },
         ],
+        header: {
+            description: { type: "key", key: lkey("flavor") },
+            labels: [
+                {
+                    levelMin: 0,
+                    text: {
+                        type: "key",
+                        key: lkey("penalty"),
+                    },
+                    sort: 1,
+                },
+
+                ...helpers.leveledLabels(
+                    [6, 8, 10, 12, 14, 16, 18, 20],
+                    [20, 19, 18, 17, 16, 15, 14, 13],
+                    (dc) => ({
+                        text: {
+                            type: "key",
+                            key: lkey("flat-check"),
+                            parameters: { dc },
+                        },
+                        sort: 2,
+                    }),
+                ),
+            ],
+        },
         effects: [
             {
-                ...levelRange(0),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.fortification.penalty"),
-                    },
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            key: "ItemAlteration",
-                            mode: "add",
-                            property: "bulk",
-                            value: 1,
-                            itemId: "{item|id}",
-                        },
-                    },
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            key: "ItemAlteration",
-                            mode: "add",
-                            property: "strength",
-                            value: 1,
-                            itemId: "{item|id}",
-                        },
-                    },
-                ],
+                levelMin: 0,
+                type: "RuleElement",
+                rule: {
+                    key: "ItemAlteration",
+                    mode: "add",
+                    property: "bulk",
+                    value: 1,
+                    itemId: "{item|id}",
+                },
             },
-            ...[
-                [6, 7, 20],
-                [8, 9, 19],
-                [10, 11, 18],
-                [12, 13, 17],
-                [14, 15, 16],
-                [16, 17, 15],
-                [18, 19, 14],
-                [20, undefined, 13],
-            ].map(([from, to, dc]): MaterialEffectSource => {
-                return {
-                    ...levelRange(from!, to),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.fortification.flat-check"),
-                            parameters: { dc: dc },
-                        },
-                    ],
-                };
-            }),
+            {
+                levelMin: 0,
+                type: "RuleElement",
+                rule: {
+                    key: "ItemAlteration",
+                    mode: "add",
+                    property: "strength",
+                    value: 1,
+                    itemId: "{item|id}",
+                },
+            },
         ],
     };
 }

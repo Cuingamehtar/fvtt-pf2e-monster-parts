@@ -1,209 +1,169 @@
 import { tkey } from "../../../utils";
-import { ImbueSource } from "../../data-types";
-import { levelRange } from "../../helpers";
+import { helpers } from "../../helpers";
+import { MaterialData } from "../../material";
 
-export function createImbueSensory(): ImbueSource {
-    const senses = [
-        "darkvision",
-        "truesight",
-        "scent",
-        "tremorsense",
-        "echolocation",
-        "greater-darkvision",
-        "infrared-vision",
-        "motion-sense",
-        "see-invisibility",
-        "wavesense",
-    ].map((s) => `sense:${s}`);
+export function createImbueSensory(): MaterialData {
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.sensory"
+            >
+        >,
+    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.sensory.${k}`);
+
+    // The actual requirements for sensory imbuement are complex to automate, so currently this material is satisfied by any special sense
+    const senses = Object.keys(CONFIG.PF2E.senses).map((s) => `sense:${s}`);
     return {
         key: "imbue:sensory",
-        type: "imbue",
-        label: tkey("imbue.sensory.label"),
-        flavor: tkey("imbue.sensory.flavor"),
+        type: "imbuement",
+        label: { type: "key", key: lkey("label") },
         monsterPredicate: [{ or: senses }],
         itemPredicate: [
             {
                 gte: [`refinement:perception`, 0],
             },
         ],
+        header: {
+            description: { type: "key", key: lkey("flavor") },
+            labels: [
+                ...helpers.leveledLabels(
+                    [6, 12, 16, 18],
+                    [
+                        "level-6-permanent",
+                        "level-12-permanent",
+                        "level-16-permanent",
+                        "level-18-permanent",
+                    ],
+                    (k: Parameters<typeof lkey>[0]) => ({
+                        text: { type: "key", key: lkey(k) },
+                        sort: 1,
+                    }),
+                ),
+                ...helpers.leveledLabels(
+                    [4, 8, 14],
+                    [
+                        "level-4-activation",
+                        "level-8-activation",
+                        "level-14-activation",
+                    ],
+                    (k: Parameters<typeof lkey>[0]) => ({
+                        text: { type: "key", key: lkey(k) },
+                        sort: 2,
+                    }),
+                ),
+                {
+                    levelMin: 20,
+                    text: { type: "key", key: lkey("level-20-truesight") },
+                    sort: 3,
+                },
+            ],
+        },
         effects: [
             {
-                ...levelRange(6, 11),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.sensory.level-6"),
-                    },
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            key: "Sense",
-                            selector: "low-light-vision",
-                        },
-                    },
-                ],
+                levelMin: 6,
+                levelMax: 11,
+                type: "RuleElement",
+                rule: {
+                    key: "Sense",
+                    selector: "low-light-vision",
+                },
             },
             {
-                ...levelRange(12, 15),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.sensory.level-12"),
-                    },
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            key: "Sense",
-                            selector: "darkvision",
-                        },
-                    },
-                ],
+                levelMin: 12,
+                levelMax: 17,
+                type: "RuleElement",
+                rule: {
+                    key: "Sense",
+                    selector: "darkvision",
+                },
             },
             {
-                ...levelRange(16, 17),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.sensory.level-16"),
-                    },
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            key: "Sense",
-                            selector: "darkvision",
-                        },
-                    },
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            acuity: "imprecise",
-                            key: "Sense",
-                            range: 30,
-                            selector: "scent",
-                        },
-                    },
-                ],
+                levelMin: 16,
+                type: "RuleElement",
+                rule: {
+                    acuity: "imprecise",
+                    key: "Sense",
+                    range: 30,
+                    selector: "scent",
+                },
             },
             {
-                ...levelRange(18),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.sensory.level-18"),
-                    },
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            key: "Sense",
-                            selector: "greater-darkvision",
-                        },
-                    },
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            acuity: "imprecise",
-                            key: "Sense",
-                            range: 30,
-                            selector: "scent",
-                        },
-                    },
-                ],
+                levelMin: 18,
+                type: "RuleElement",
+                rule: {
+                    key: "Sense",
+                    selector: "greater-darkvision",
+                },
+            },
+            // temporary roll options
+            {
+                levelMin: 4,
+                levelMax: 5,
+                type: "RuleElement",
+                rule: {
+                    key: "RollOption",
+                    domain: "all",
+                    label: lkey("temporary-low-light-vision"),
+                    option: "imbue:sensory:temporary-low-light-vision",
+                    toggleable: true,
+                },
             },
             {
-                ...levelRange(20),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.sensory.level-20"),
-                    },
-                ],
+                levelMin: 4,
+                levelMax: 5,
+                type: "RuleElement",
+                rule: {
+                    key: "Sense",
+                    selector: "low-light-vision",
+                    predicate: ["imbue:sensory:temporary-low-light-vision"],
+                },
             },
             {
-                ...levelRange(4, 5),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.sensory.level-4"),
-                    },
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            key: "RollOption",
-                            domain: "all",
-                            label: tkey(
-                                "imbue.sensory.temporary-low-light-vision",
-                            ),
-                            option: "imbue:sensory:temporary-low-light-vision",
-                            toggleable: true,
-                        },
-                    },
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            key: "Sense",
-                            selector: "low-light-vision",
-                            predicate: [
-                                "imbue:sensory:temporary-low-light-vision",
-                            ],
-                        },
-                    },
-                ],
+                levelMin: 8,
+                levelMax: 11,
+                type: "RuleElement",
+                rule: {
+                    key: "RollOption",
+                    domain: "all",
+                    label: lkey("temporary-darkvision"),
+                    option: "imbue:sensory:temporary-darkvision",
+                    toggleable: true,
+                },
             },
             {
-                ...levelRange(8, 11),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.sensory.level-8"),
-                    },
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            key: "RollOption",
-                            domain: "all",
-                            label: tkey("imbue.sensory.temporary-darkvision"),
-                            option: "imbue:sensory:temporary-darkvision",
-                            toggleable: true,
-                        },
-                    },
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            key: "Sense",
-                            selector: "darkvision",
-                            predicate: ["imbue:sensory:temporary-darkvision"],
-                        },
-                    },
-                ],
+                levelMin: 8,
+                levelMax: 11,
+                type: "RuleElement",
+                rule: {
+                    key: "Sense",
+                    selector: "darkvision",
+                    predicate: ["imbue:sensory:temporary-darkvision"],
+                },
             },
             {
-                ...levelRange(14, 15),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.sensory.level-14"),
-                    },
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            key: "RollOption",
-                            domain: "all",
-                            label: tkey("imbue.sensory.temporary-scent"),
-                            option: "imbue:sensory:temporary-scent",
-                            toggleable: true,
-                        },
-                    },
-                    {
-                        key: "RuleElement",
-                        rule: {
-                            acuity: "imprecise",
-                            key: "Sense",
-                            range: 30,
-                            predicate: ["imbue:sensory:temporary-scent"],
-                            selector: "scent",
-                        },
-                    },
-                ],
+                levelMin: 14,
+                levelMax: 15,
+                type: "RuleElement",
+                rule: {
+                    key: "RollOption",
+                    domain: "all",
+                    label: lkey("temporary-scent"),
+                    option: "imbue:sensory:temporary-scent",
+                    toggleable: true,
+                },
+            },
+            {
+                levelMin: 14,
+                levelMax: 15,
+                type: "RuleElement",
+                rule: {
+                    acuity: "imprecise",
+                    key: "Sense",
+                    range: 30,
+                    predicate: ["imbue:sensory:temporary-scent"],
+                    selector: "scent",
+                },
             },
         ],
     };

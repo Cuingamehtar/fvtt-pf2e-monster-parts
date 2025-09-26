@@ -15,9 +15,7 @@ import { createImbueWild } from "./wild";
 import { createImbueWinged } from "./winged";
 import { createImbueWisdom } from "./wisdom";
 import { createImbuePoison } from "./poison";
-import { createImbueVitality } from "./vitality";
 import { createImbueEnergyResistant } from "./energy-resistant";
-import { createImbueVoid } from "./void";
 import { createImbueSensory } from "./sensory";
 import { createImbueSonic } from "./sonic";
 import { createImbueSturdy } from "./sturdy";
@@ -42,8 +40,8 @@ export function createOriginalImbues() {
         ...createImbueSonic(),
         createImbueSturdy(),
         createImbueStrength(),
-        ...createImbueVitality(),
-        ...createImbueVoid(),
+        //...createImbueVitality(),
+        //...createImbueVoid(),
         createImbueWild(),
         createImbueWinged(),
         createImbueWisdom(),

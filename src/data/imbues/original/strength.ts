@@ -1,14 +1,22 @@
 import { tkey } from "../../../utils";
-import { ImbueSource } from "../../data-types";
-import { levelRange, skillsOfAttribute } from "../../helpers";
+import { skillsOfAttribute } from "../../helpers";
+import { MaterialData } from "../../material";
 
-export function createImbueStrength(): ImbueSource {
+export function createImbueStrength(): MaterialData {
     const skills = skillsOfAttribute("str");
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.strength"
+            >
+        >,
+    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.strength.${k}`);
+
     return {
         key: "imbue:strength",
-        type: "imbue",
-        label: tkey("imbue.strength.label"),
-        flavor: tkey("imbue.strength.flavor"),
+        type: "imbuement",
+        label: { type: "key", key: lkey("label") },
         monsterPredicate: [{ lte: ["ability:str:rank", 2] }],
         itemPredicate: [
             {
@@ -17,43 +25,33 @@ export function createImbueStrength(): ImbueSource {
                 })),
             },
         ],
-        effects: [
-            {
-                ...levelRange(8, 13),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.strength.level-8"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(14, 19),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.strength.level-14"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(20),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.strength.level-20"),
-                    },
-                ],
-            },
-            {
-                ...levelRange(17),
-                effects: [
-                    {
-                        key: "InlineNote",
-                        text: tkey("imbue.strength.level-17"),
-                    },
-                ],
-            },
-        ],
+        header: {
+            description: { type: "key", key: lkey("flavor") },
+            labels: [
+                {
+                    levelMin: 8,
+                    levelMax: 13,
+                    text: { type: "key", key: lkey("level-8-spell") },
+                    sort: 1,
+                },
+                {
+                    levelMin: 14,
+                    levelMax: 19,
+                    text: { type: "key", key: lkey("level-14-spell") },
+                    sort: 1,
+                },
+                {
+                    levelMin: 20,
+                    text: { type: "key", key: lkey("level-20-spell") },
+                    sort: 1,
+                },
+                {
+                    levelMin: 17,
+                    text: { type: "key", key: lkey("level-17-apex") },
+                    sort: 2,
+                },
+            ],
+        },
+        effects: [],
     };
 }

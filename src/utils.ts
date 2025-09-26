@@ -2,33 +2,43 @@ import { MODULE_ID } from "./module";
 import { ActorPF2e, ItemPF2e } from "foundry-pf2e";
 
 export function t(
-    m: keyof Flatten<I18nKeyType[typeof MODULE_ID]>,
-    data?: { [key: string]: string | number | boolean | null | I18nString },
+    m: keyof Flatten<I18nKeyType["pf2e-monster-parts"]>,
+    params?: I18nLocalizableKey["parameters"],
 ) {
-    return i18nFormat(`${MODULE_ID}.${m}`, data);
+    return i18nFormat({
+        type: "key",
+        key: `${MODULE_ID}.${m}`,
+        parameters: params,
+    });
 }
 
 export function i18nFormat(
-    m?: I18nKey | I18nString,
-    data?: {
-        [key: string]:
-            | string
-            | number
-            | boolean
-            | null
-            | undefined
-            | I18nString;
-    },
-) {
-    if (!m) return "" as I18nString;
-    let s = game.i18n.localize(m as string);
-    if (!data) return s as I18nString;
-    for (const k in data) {
-        const f = `{${k}}`;
-        const v = String(data[k]);
-        s = s.replaceAll(f, v);
+    m?: I18nEntry,
+    data?: Record<string, unknown>,
+): I18nString {
+    if (typeof m === "undefined") return "" as I18nString;
+    if (typeof m === "number") return String(m) as I18nString;
+    if (typeof (m as string) == "string") return m as I18nString;
+    if ("type" in m && m.type === "resolve") {
+        if (typeof data === "undefined") {
+            console.warn(`Couldn't evaluate string ${m.value}: no data`);
+            return m.value as I18nString;
+        }
+        return String(
+            Roll.safeEval(Roll.replaceFormulaData(m.value, data)),
+        ) as I18nString;
     }
-    return s as I18nString;
+    if ("type" in m && m.type == "key") {
+        let s = game.i18n.localize(m.key as string);
+        if (!data) return s as I18nString;
+        for (const k in m.parameters) {
+            const f = `{${k}}`;
+            const v = String(m.parameters[k]);
+            s = s.replaceAll(f, v);
+        }
+        return s as I18nString;
+    }
+    return "" as I18nString;
 }
 
 export function tkey(s: keyof Flatten<I18nKeyType[typeof MODULE_ID]>): I18nKey {
@@ -93,4 +103,11 @@ export async function getDroppedItem(event: DragEvent, type?: string) {
     if (!dropData) return null;
     if (type && dropData.type !== type) return null;
     return fromUuid(dropData.uuid);
+}
+
+export function slugToCamelCase(s: string) {
+    return s
+        .split("-")
+        .map((w) => w[0].toUpperCase() + s.slice(1))
+        .join("");
 }

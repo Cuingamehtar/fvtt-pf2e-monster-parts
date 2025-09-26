@@ -1,311 +1,252 @@
-import { t, tkey } from "../../../utils";
-import { ImbueSource } from "../../data-types";
-import { addDamage, levelRange } from "../../helpers";
+import { tkey } from "../../../utils";
+import { helpers } from "../../helpers";
+import { MaterialData } from "../../material";
+import { RollString } from "../../../types";
 
-export function createImbuePoison(): ImbueSource[] {
+export function createImbuePoison(): MaterialData[] {
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.poison"
+            >
+        >,
+    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.poison.${k}`);
+
+    const base = {
+        type: "imbuement" as "imbuement",
+        itemPredicate: ["item:type:weapon"],
+        monsterPredicate: [
+            {
+                or: [
+                    "self:trait:poison",
+                    {
+                        or: [
+                            {
+                                and: [
+                                    "item:type:melee",
+                                    "item:damage:type:poison",
+                                ],
+                            },
+                            {
+                                and: [
+                                    "item:type:spell",
+                                    "item:damage:type:poison",
+                                ],
+                            },
+                        ],
+                    },
+                ],
+            },
+        ],
+    };
     return [
         {
+            ...base,
             key: "imbue:poison:magic",
-            type: "imbue",
-            label: t("imbue.poison.label", {
-                variant: t("imbue.variant.magic"),
-            }),
-            flavor: tkey("imbue.poison.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:poison",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:poison",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:poison",
-                                    ],
-                                },
-                            ],
-                        },
-                    ],
-                },
-            ],
-            effects: [
-                // Damage
-                ...[
-                    [10, 13, 1],
-                    [14, 17, "d4"],
-                    [18, undefined, "d6"],
-                ].map(([from, to, damage]) => {
-                    return {
-                        ...levelRange(from as number, to as number),
-                        effects: addDamage({
-                            type: "poison",
-                            value: damage as number | `d${number}`,
-                            label: t("imbue.poison.label", {
-                                variant: t("imbue.variant.magic"),
+            label: { type: "key", key: lkey("magic.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    ...helpers.leveledLabels(
+                        [10, 14, 18],
+                        ["1", "d4", "d6"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "poison",
+                                value: damage,
                             }),
-                        }),
-                    };
-                }),
-                {
-                    ...levelRange(2),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.add-cantrip"),
+                    ),
+                    {
+                        levelMin: 2,
+                        text: {
+                            type: "key",
+                            key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                             parameters: {
                                 spell: "@UUID[Compendium.pf2e.spells-srd.Item.D7ZEhTNIDWDLC2J4]",
                             },
                         },
-                    ],
-                },
-                {
-                    ...levelRange(4, 5),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.poison.magic.level-4"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(6, 7),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.poison.magic.level-6"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(8, 11),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.poison.magic.level-8"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(12, 15),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.poison.magic.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(16),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.poison.magic.level-16"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.poison.magic.level-20"),
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            key: "imbue:poison:might",
-            type: "imbue",
-            label: t("imbue.poison.label", {
-                variant: t("imbue.variant.might"),
-            }),
-            flavor: tkey("imbue.poison.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:poison",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:poison",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:poison",
-                                    ],
-                                },
-                            ],
-                        },
-                    ],
-                },
-            ],
-            effects: [
-                // Damage
-                ...[
-                    [4, 5, 1],
-                    [6, 7, "d4"],
-                    [8, 17, "d6"],
-                    [18, undefined, "d8"],
-                ].map(([from, to, damage]) => {
-                    return {
-                        ...levelRange(from as number, to as number),
-                        effects: addDamage({
-                            type: "poison",
-                            value: damage as number | `d${number}`,
-                            label: t("imbue.poison.label", {
-                                variant: t("imbue.variant.magic"),
-                            }),
+                        sort: 1,
+                    },
+                    ...helpers.leveledLabels(
+                        [4, 6, 8, 12, 16],
+                        [
+                            "magic.level-4-spells",
+                            "magic.level-6-spells",
+                            "magic.level-8-spells",
+                            "magic.level-12-spells",
+                            "magic.level-16-spells",
+                        ],
+                        (key: Parameters<typeof lkey>[0]) => ({
+                            text: { type: "key", key: lkey(key) },
+                            sort: 2,
                         }),
-                    };
-                }),
-                {
-                    ...levelRange(8, 13),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.poison.might.level-8"),
+                    ),
+                    {
+                        levelMin: 20,
+                        text: {
+                            type: "key",
+                            key: lkey("magic.level-20-linnorm-sting"),
                         },
-                    ],
-                },
-                {
-                    ...levelRange(14),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.poison.might.level-14"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(12),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.poison.might.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.poison.might.level-20"),
-                        },
-                    ],
-                },
+                        sort: 3,
+                    },
+                ],
+            },
+            effects: [
+                ...helpers.leveledEffects(
+                    [10, 14, 18],
+                    ["1", "d4", "d6"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            type: "poison",
+                            value: damage,
+                            label: lkey("magic.label"),
+                        }),
+                ),
             ],
         },
         {
-            key: "imbue:poison:tech",
-            type: "imbue",
-            label: t("imbue.poison.label", {
-                variant: t("imbue.variant.tech"),
-            }),
-            flavor: tkey("imbue.poison.flavor"),
-            itemPredicate: ["item:type:weapon"],
-            monsterPredicate: [
-                {
-                    or: [
-                        "self:trait:poison",
-                        {
-                            or: [
-                                {
-                                    and: [
-                                        "item:type:melee",
-                                        "melee:damage:type:poison",
-                                    ],
-                                },
-                                {
-                                    and: [
-                                        "item:type:spell",
-                                        "spell:damage:type:poison",
-                                    ],
-                                },
-                            ],
+            ...base,
+            key: "imbue:poison:might",
+            label: { type: "key", key: lkey("might.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    ...helpers.leveledLabels(
+                        [4, 6, 8, 18],
+                        ["1", "d4", "d6", "d8"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "poison",
+                                value: damage,
+                            }),
+                    ),
+                    {
+                        levelMin: 8,
+                        levelMax: 13,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-8-persistent"),
                         },
-                    ],
-                },
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 14,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-14-persistent"),
+                        },
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 12,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-12-resistance"),
+                        },
+                        sort: 2,
+                    },
+                    {
+                        levelMin: 20,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-20-weakness"),
+                        },
+                        sort: 3,
+                    },
+                ],
+            },
+            effects: [
+                ...helpers.leveledEffects(
+                    [4, 6, 8, 18],
+                    ["1", "d4", "d6", "d8"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            type: "poison",
+                            value: damage,
+                            label: lkey("might.label"),
+                        }),
+                ),
             ],
+        },
+        {
+            ...base,
+            key: "imbue:poison:tech",
+            label: { type: "key", key: lkey("tech.label") },
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    {
+                        levelMin: 6,
+                        ...helpers.damage.label({
+                            type: "poison",
+                            value: 1,
+                        }),
+                    },
+                    ...helpers.leveledLabels(
+                        [4, 8, 14, 18],
+                        ["1", "d6", "d8", "d10"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "poison",
+                                category: "persistent",
+                                value: damage,
+                            }),
+                    ),
+                    {
+                        levelMin: 8,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-8-persistent"),
+                        },
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 12,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-12-resistance"),
+                        },
+                        sort: 2,
+                    },
+                    {
+                        levelMin: 16,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-16-condition"),
+                        },
+                        sort: 3,
+                    },
+                    {
+                        levelMin: 20,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-20-drained"),
+                        },
+                        sort: 4,
+                    },
+                ],
+            },
             effects: [
                 {
-                    ...levelRange(6),
-                    effects: addDamage({
+                    levelMin: 6,
+                    ...helpers.damage.effect({
                         type: "poison",
                         value: 1,
-                        label: t("imbue.poison.label", {
-                            variant: t("imbue.variant.tech"),
-                        }),
+                        label: lkey("tech.label"),
                     }),
                 },
-                // persistent damage
-                ...[
-                    [4, 7, 1],
-                    [8, 13, "d6"],
-                    [14, 17, "d8"],
-                    [18, undefined, "d10"],
-                ].map(([from, to, damage]) => {
-                    return {
-                        ...levelRange(from as number, to as number),
-                        effects: addDamage({
+                ...helpers.leveledEffects(
+                    [4, 8, 14, 18],
+                    ["1", "d6", "d8", "d10"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
                             type: "poison",
-                            value: damage as number | `d${number}`,
                             category: "persistent",
-                            label: t("imbue.poison.label", {
-                                variant: t("imbue.variant.magic"),
-                            }),
+                            value: damage,
+                            label: lkey("tech.label"),
                         }),
-                    };
-                }),
-                {
-                    ...levelRange(8),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.poison.tech.level-8"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(12),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.poison.tech.level-12"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(16),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.poison.tech.level-16"),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: tkey("imbue.poison.tech.level-20"),
-                        },
-                    ],
-                },
+                ),
             ],
         },
     ];

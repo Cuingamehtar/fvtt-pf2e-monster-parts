@@ -1,169 +1,204 @@
 import { getConfig } from "../../../config";
-import { t } from "../../../utils";
-import { ImbueSource } from "../../data-types";
-import { addDamage, levelRange } from "../../helpers";
+import { i18nFormat, tkey } from "../../../utils";
+import { helpers } from "../../helpers";
+import { MaterialData } from "../../material";
+import { PredicateStatement } from "foundry-pf2e";
+import { RollString } from "../../../types";
 
-export function createImbueBane(): ImbueSource[] {
+export function createImbueBane(): MaterialData[] {
     return getConfig().baneCreatureTraits.flatMap(baneImbue);
 }
 
-function baneImbue(creature: string): ImbueSource[] {
-    const creatureLabel = game.i18n.localize(
-        `PF2E.Trait${creature[0].toUpperCase() + creature.slice(1)}`,
-    );
-    const predicate = [`target:trait:${creature}`];
-    const labelMight = t("imbue.bane.label", {
-        creature: creatureLabel,
-        variant: t("imbue.variant.might"),
+function baneImbue(creature: string): MaterialData[] {
+    const lkey = (
+        k: keyof Flatten<
+            Nested<
+                I18nKeyType,
+                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.bane"
+            >
+        >,
+    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.bane.${k}`);
+
+    const creatureLabel = i18nFormat({
+        type: "key",
+        key: CONFIG.PF2E.creatureTraits[
+            creature as keyof typeof CONFIG.PF2E.creatureTraits
+        ] as I18nKey,
     });
-    const labelTech = t("imbue.bane.label", {
-        creature: creatureLabel,
-        variant: t("imbue.variant.tech"),
+
+    const predicate = [`target:trait:${creature}`] as PredicateStatement[];
+    const labelMight = i18nFormat({
+        type: "key",
+        key: lkey("might.label"),
+        parameters: { creature: creatureLabel },
+    });
+    const labelTech = i18nFormat({
+        type: "key",
+        key: lkey("tech.label"),
+        parameters: { creature: creatureLabel },
     });
 
     return [
         {
             key: `imbue:bane:${creature}:might`,
-            type: "imbue",
+            type: "imbuement",
             label: labelMight,
             monsterPredicate: [`self:trait:${creature}`],
             itemPredicate: ["item:type:weapon"],
-            effects: [
-                ...[
-                    [2, 3, 1],
-                    [4, 5, "d4"],
-                    [6, 15, "d6"],
-                    [16, 19, "d8"],
-                    [20, undefined, "d10"],
-                ].map(([from, to, damage]) => ({
-                    ...levelRange(from as number, to as number),
-                    effects: addDamage({
-                        value: damage as number,
-                        text: t("imbue.bane.damage", {
-                            damage: damage as number | string,
-                            creature: creatureLabel,
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    ...helpers.leveledLabels(
+                        [2, 4, 6, 16, 20],
+                        ["1", "d4", "d6", "d8", "d10"],
+                        (damage) => ({
+                            text: {
+                                type: "key",
+                                key: lkey("damage"),
+                                parameters: {
+                                    damage: damage,
+                                    creature: creatureLabel,
+                                },
+                            },
+                            sort: -5,
                         }),
-                        predicate,
-                        label: labelMight,
-                    }),
-                })),
-                {
-                    ...levelRange(6, 13),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: t("imbue.bane.might.level-6", {
-                                creature: creatureLabel,
-                            }),
+                    ),
+                    {
+                        levelMin: 6,
+                        levelMax: 13,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-6-enfeebled"),
+                            parameters: { creature: creatureLabel },
                         },
-                    ],
-                },
-                {
-                    ...levelRange(14),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: t("imbue.bane.might.level-14", {
-                                creature: creatureLabel,
-                            }),
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 14,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-14-enfeebled"),
+                            parameters: { creature: creatureLabel },
                         },
-                    ],
-                },
-                {
-                    ...levelRange(10),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: t("imbue.bane.might.level-10", {
-                                creature: creatureLabel,
-                            }),
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 10,
+                        text: {
+                            type: "key",
+                            key: lkey("might.level-10-resistance"),
+                            parameters: { creature: creatureLabel },
                         },
-                    ],
-                },
+                        sort: 2,
+                    },
+                ],
+            },
+            effects: [
+                ...helpers.leveledEffects(
+                    [2, 4, 6, 16, 20],
+                    ["1", "d4", "d6", "d8", "d10"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            value: damage,
+                            label: labelMight,
+                            predicate: predicate,
+                        }),
+                ),
             ],
         },
         {
             key: `imbue:bane:${creature}:tech`,
-            type: "imbue",
+            type: "imbuement",
             label: labelTech,
             monsterPredicate: [`self:trait:${creature}`],
             itemPredicate: ["item:type:weapon"],
+            header: {
+                description: { type: "key", key: lkey("flavor") },
+                labels: [
+                    {
+                        levelMin: 4,
+                        text: {
+                            type: "key",
+                            key: lkey("damage"),
+                            parameters: { damage: 1, creature: creatureLabel },
+                        },
+                        sort: -5,
+                    },
+                    ...helpers.leveledLabels(
+                        [2, 6, 12, 16],
+                        ["1", "d6", "d8", "d10"],
+                        (damage) => ({
+                            text: {
+                                type: "key",
+                                key: lkey("persistent"),
+                                parameters: {
+                                    damage: damage,
+                                    creature: creatureLabel,
+                                },
+                            },
+                            sort: -5,
+                        }),
+                    ),
+                    {
+                        levelMin: 6,
+                        levelMax: 13,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-6-enfeebled"),
+                            parameters: { creature: creatureLabel },
+                        },
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 14,
+                        levelMax: 19,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-14-enfeebled"),
+                            parameters: { creature: creatureLabel },
+                        },
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 20,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-20-enfeebled"),
+                            parameters: { creature: creatureLabel },
+                        },
+                        sort: 1,
+                    },
+                    {
+                        levelMin: 10,
+                        text: {
+                            type: "key",
+                            key: lkey("tech.level-10-resistance"),
+                            parameters: { creature: creatureLabel },
+                        },
+                        sort: 2,
+                    },
+                ],
+            },
             effects: [
                 {
-                    ...levelRange(4),
-                    effects: addDamage({
+                    ...helpers.damage.effect({
                         value: 1,
-                        text: t("imbue.bane.damage", {
-                            damage: 1,
-                            creature: creatureLabel,
-                        }),
-                        predicate,
-                        label: labelTech,
+                        label: labelMight,
+                        predicate: predicate,
                     }),
+                    levelMin: 4,
                 },
-                ...[
-                    [2, 5, 1],
-                    [6, 11, "d6"],
-                    [12, 15, "d8"],
-                    [16, undefined, "d10"],
-                ].map(([from, to, damage]) => ({
-                    ...levelRange(from as number, to as number),
-                    effects: addDamage({
-                        value: damage as number,
-                        type: "bleed",
-                        category: "persistent",
-                        text: t("imbue.bane.persistent", {
-                            damage: damage as number | string,
-                            creature: creatureLabel,
+                ...helpers.leveledEffects(
+                    [2, 6, 12, 16],
+                    ["1", "d6", "d8", "d10"],
+                    (damage: RollString) =>
+                        helpers.damage.effect({
+                            value: damage,
+                            category: "persistent",
+                            label: labelMight,
+                            predicate: predicate,
                         }),
-                        predicate,
-                        label: labelTech,
-                    }),
-                })),
-                {
-                    ...levelRange(6, 13),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: t("imbue.bane.tech.level-6", {
-                                creature: creatureLabel,
-                            }),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(14),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: t("imbue.bane.tech.level-14", {
-                                creature: creatureLabel,
-                            }),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(20),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: t("imbue.bane.tech.level-20", {
-                                creature: creatureLabel,
-                            }),
-                        },
-                    ],
-                },
-                {
-                    ...levelRange(10),
-                    effects: [
-                        {
-                            key: "InlineNote",
-                            text: t("imbue.bane.tech.level-10", {
-                                creature: creatureLabel,
-                            }),
-                        },
-                    ],
-                },
+                ),
             ],
         },
     ];
