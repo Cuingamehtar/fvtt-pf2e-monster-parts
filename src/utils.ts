@@ -30,10 +30,10 @@ export function i18nFormat(
     }
     if ("type" in m && m.type == "key") {
         let s = game.i18n.localize(m.key as string);
-        if (!data) return s as I18nString;
+        if (!m.parameters) return s as I18nString;
         for (const k in m.parameters) {
             const f = `{${k}}`;
-            const v = String(m.parameters[k]);
+            const v = i18nFormat(m.parameters[k], data) as string;
             s = s.replaceAll(f, v);
         }
         return s as I18nString;

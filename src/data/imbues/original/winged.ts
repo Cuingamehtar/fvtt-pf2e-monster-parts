@@ -33,6 +33,7 @@ export function createImbueWinged(): MaterialData {
                 },
                 {
                     levelMin: 10,
+                    levelMax: 13,
                     text: { type: "key", key: lkey("level-10-fly") },
                     sort: 1,
                 },
@@ -48,7 +49,7 @@ export function createImbueWinged(): MaterialData {
                 },
                 {
                     levelMin: 18,
-                    text: { type: "key", key: lkey("level-18-fly") },
+                    text: { type: "key", key: lkey("level-18-speed") },
                     sort: 0,
                 },
                 {
@@ -65,7 +66,7 @@ export function createImbueWinged(): MaterialData {
                 rule: {
                     key: "BaseSpeed",
                     selector: "fly",
-                    value: "@actor.system.attributes.speed.total",
+                    value: "@actor.system.movement.speeds.land.value",
                 },
             },
         ],

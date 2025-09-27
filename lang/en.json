@@ -71,6 +71,8 @@
         "electricity": "{value} electricity damage",
         "fire": "{value} fire damage",
         "force": "{value} force damage",
+        "mental": "{value} mental damage",
+        "poison": "{value} poison damage",
         "sonic": "{value} sonic damage",
         "vitality": "{value} vitality damage",
         "void": "{value} void damage",
@@ -80,6 +82,8 @@
         "persistentElectricity": "{value} persistent electricity damage",
         "persistentFire": "{value} persistent fire damage",
         "persistentForce": "{value} persistent force damage",
+        "persistentMental": "{value} persistent mental damage",
+        "persistentPoison": "{value} persistent poison damage",
         "persistentSonic": "{value} persistent sonic damage",
         "persistentVitality": "{value} persistent vitality damage",
         "persistentVoid": "{value} persistent void damage"
@@ -106,6 +110,15 @@
       "refresh-refined-items": {
         "name": "Refresh refined items",
         "hint": "Update refined items on every actor in the actors tab when GM logs in."
+      },
+      "bane-traits": {
+        "name": "Bane Traits",
+        "hint": "Selected traits will have their specific Bane material.",
+        "confirm-reset": "Do you want to reset the selection to the default value? Requires reload."
+      },
+      "homebrew-folder": {
+        "name": "Homebrew folder",
+        "hint": "Path to homebrew content. Instances of \"@world\" in the path will be replaced with the path to current world."
       }
     },
     "data": {
@@ -414,12 +427,12 @@
             "temporary-darkvision": "Sensory Imbuement - Temporary Darkvision",
             "temporary-scent": "Sensory Imbuement - Temporary Scent",
             "flavor": "You imbue the item with extraordinary senses.",
-            "level-4-activation": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p>You gain low-light vision for 1 hour.</p>",
-            "level-6-permanent": "You gain low-light vision.",
-            "level-8-activation": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p>You gain darkvision for 1 hour.</p>",
-            "level-12-permanent": "You gain darkvision.",
-            "level-14-activation": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p>You gain 30-foot imprecise scent for 1 hour.</p>",
-            "level-16-permanent": "You gain darkvision and 30-foot imprecise scent.",
+            "level-4-activation-low-light": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br><strong>Frequency</strong> once per day<br>You gain low-light vision for 1 hour.</p>",
+            "level-6-permanent-low-light": "You gain low-light vision.",
+            "level-8-activation-darkvision": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br><strong>Frequency</strong> once per day<br>You gain darkvision for 1 hour.</p>",
+            "level-12-permanent-darkvision": "You gain darkvision.",
+            "level-14-activation-scent": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br><strong>Frequency</strong> once per day<br>You gain 30-foot imprecise scent for 1 hour.</p>",
+            "level-16-permanent-scent": "You gain darkvision and 30-foot imprecise scent.",
             "level-18-permanent": "You gain greater darkvision and 30-foot imprecise scent.",
             "level-20-truesight": "You constantly gain the effects of 6th rank @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]{Truesight} spell."
           },
@@ -471,7 +484,7 @@
             "level-10-fly": "The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per day.",
             "level-14-fly": "The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per hour.",
             "level-16-fly-extend": "The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per hour. You can choose to have armor cast 7th rank @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you instead of 4th rank <em>fly</em>. If you do, you can’t use the armor’s fly spell again for 1 day, instead of 1 hour.",
-            "level-18-fly": "You can fly constantly, with a Speed equal to your land Speed.",
+            "level-18-speed": "You can fly constantly, with a Speed equal to your land Speed.",
             "level-20-ally": "The armor can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on an ally once per hour."
           },
           "wisdom": {

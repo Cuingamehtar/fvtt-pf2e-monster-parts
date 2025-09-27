@@ -47,8 +47,7 @@ export class RefinedItem {
 
         const rollOptions = [
             `item:type:${item.type}`,
-            // @ts-expect-error
-            ...item.getRollOptions(),
+            ...item.getRollOptions("item"),
         ];
         const applicableRefinements = [
             ...config.materials

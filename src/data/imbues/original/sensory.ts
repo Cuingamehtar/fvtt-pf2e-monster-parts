@@ -1,5 +1,4 @@
 import { tkey } from "../../../utils";
-import { helpers } from "../../helpers";
 import { MaterialData } from "../../material";
 
 export function createImbueSensory(): MaterialData {
@@ -27,31 +26,68 @@ export function createImbueSensory(): MaterialData {
         header: {
             description: { type: "key", key: lkey("flavor") },
             labels: [
-                ...helpers.leveledLabels(
-                    [6, 12, 16, 18],
-                    [
-                        "level-6-permanent",
-                        "level-12-permanent",
-                        "level-16-permanent",
-                        "level-18-permanent",
-                    ],
-                    (k: Parameters<typeof lkey>[0]) => ({
-                        text: { type: "key", key: lkey(k) },
-                        sort: 1,
-                    }),
-                ),
-                ...helpers.leveledLabels(
-                    [4, 8, 14],
-                    [
-                        "level-4-activation",
-                        "level-8-activation",
-                        "level-14-activation",
-                    ],
-                    (k: Parameters<typeof lkey>[0]) => ({
-                        text: { type: "key", key: lkey(k) },
-                        sort: 2,
-                    }),
-                ),
+                {
+                    levelMin: 6,
+                    levelMax: 11,
+                    text: {
+                        type: "key",
+                        key: lkey("level-6-permanent-low-light"),
+                    },
+                    sort: 1,
+                },
+                {
+                    levelMin: 12,
+                    levelMax: 17,
+                    text: {
+                        type: "key",
+                        key: lkey("level-12-permanent-darkvision"),
+                    },
+                    sort: 1,
+                },
+                {
+                    levelMin: 16,
+                    levelMax: 17,
+                    text: {
+                        type: "key",
+                        key: lkey("level-16-permanent-scent"),
+                    },
+                    sort: 1,
+                },
+                {
+                    levelMin: 18,
+                    text: {
+                        type: "key",
+                        key: lkey("level-18-permanent"),
+                    },
+                    sort: 1,
+                },
+                {
+                    levelMin: 4,
+                    levelMax: 5,
+                    text: {
+                        type: "key",
+                        key: lkey("level-4-activation-low-light"),
+                    },
+                    sort: 2,
+                },
+                {
+                    levelMin: 8,
+                    levelMax: 11,
+                    text: {
+                        type: "key",
+                        key: lkey("level-8-activation-darkvision"),
+                    },
+                    sort: 2,
+                },
+                {
+                    levelMin: 14,
+                    levelMax: 15,
+                    text: {
+                        type: "key",
+                        key: lkey("level-14-activation-scent"),
+                    },
+                    sort: 2,
+                },
                 {
                     levelMin: 20,
                     text: { type: "key", key: lkey("level-20-truesight") },

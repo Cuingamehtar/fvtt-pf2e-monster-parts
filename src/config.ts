@@ -3,6 +3,7 @@ import { createDefaultRefinements } from "./data/refinements";
 import { MODULE_ID } from "./module";
 import { createDefaultImbues } from "./data/imbues";
 import { MaterialData, materialDataSchema } from "./data/material";
+import { loadHomebrewMaterials } from "./homebrew";
 
 export type MonsterPartsConfig = {
     materials: Map<MaterialKey, MaterialData>;
@@ -28,7 +29,7 @@ export type MonsterPartsConfig = {
     baneCreatureTraits: string[];
 };
 
-export function createConfig(): void {
+export async function createConfig(): Promise<void> {
     const valueForMonsterLevelDefaults = {
         light: [
             1.5, 2.25, 3.5, 5, 7, 12, 18, 30, 45, 64, 90, 125, 175, 250, 375,
@@ -86,29 +87,14 @@ export function createConfig(): void {
             huge: 4,
             grg: 8,
         },
-        baneCreatureTraits: [
-            "aberration",
-            "animal",
-            "astral",
-            "beast",
-            "celestial",
-            "construct",
-            "dragon",
-            "dream",
-            "elemental",
-            "ethereal",
-            "fey",
-            "fiend",
-            "giant",
-            "monitor",
-            "ooze",
-            "spirit",
-            "time",
-            "vitality",
-            "void",
-        ],
+        baneCreatureTraits: Array.from(
+            game.settings.get(MODULE_ID, "bane-traits") as Set<
+                keyof typeof CONFIG.PF2E.creatureTraits
+            >,
+        ),
         materials: new Map(),
     };
+
     CONFIG[MODULE_ID] = config;
 
     console.log(`${MODULE_ID} | Config initialized`);
@@ -127,6 +113,20 @@ export function createConfig(): void {
 
     console.log(`${MODULE_ID} | Default materials generated`);
     Hooks.call(`${MODULE_ID}.defaultMaterialsGenerated`);
+
+    // Load homebrew data
+    (await loadHomebrewMaterials()).forEach((m) => {
+        try {
+            const failure = materialDataSchema.validate(m);
+            if (failure)
+                console.warn(`Material ${m.key} failed to validate:${failure}`);
+            config.materials.set(m.key, m);
+        } catch (e) {
+            console.error(`Material ${m.key} failed to validate:`, e);
+        }
+    });
+
+    console.log(`${MODULE_ID} | Homebrew materials generated`);
 }
 
 export function getConfig() {

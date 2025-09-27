@@ -55,6 +55,10 @@ declare global {
             key: "armor-refinements",
         ): "none" | "ask" | "all";
         get(m: typeof MODULE_ID, key: "variant"): "light" | "hybrid" | "full";
+        get(
+            m: typeof MODULE_ID,
+            key: "baneTraits",
+        ): (keyof typeof CONFIG.PF2E.creatureTraits)[];
     }
 
     interface Notifications {
@@ -99,7 +103,6 @@ export type MonsterPartFlags = {
 export type ModuleFlags = {
     ["monster-part"]?: MonsterPartFlags;
     ["refined-item"]?: RefinedItemFlags;
-    text?: string;
 };
 
 export type RollString =
@@ -119,3 +122,7 @@ declare module "foundry-pf2e" {
         ): ModuleFlags["refined-item"];
     }
 }
+
+export type ModuleManifestFlags = {
+    homebrewFiles?: string[];
+};

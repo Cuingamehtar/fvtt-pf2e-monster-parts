@@ -31,23 +31,23 @@ export function createImbueDexterity(): MaterialData {
                 {
                     levelMin: 8,
                     levelMax: 13,
-                    text: lkey("level-8-speed"),
+                    text: { type: "key", key: lkey("level-8-speed") },
                     sort: 1,
                 },
                 {
                     levelMin: 14,
                     levelMax: 19,
-                    text: lkey("level-14-speed"),
+                    text: { type: "key", key: lkey("level-14-speed") },
                     sort: 1,
                 },
                 {
                     levelMin: 20,
-                    text: lkey("level-20-speed"),
+                    text: { type: "key", key: lkey("level-20-speed") },
                     sort: 1,
                 },
                 {
                     levelMin: 17,
-                    text: lkey("level-17-apex"),
+                    text: { type: "key", key: lkey("level-17-apex") },
                     sort: 2,
                 },
             ],

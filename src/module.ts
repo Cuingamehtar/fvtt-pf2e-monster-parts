@@ -13,10 +13,8 @@ export const MODULE_ID = "pf2e-monster-parts";
 
 Hooks.once("init", () => {
     registerSettings();
-    Hooks.once("i18nInit", () => {
-        createConfig();
-    });
-    Hooks.once("ready", () => {
+    Hooks.once("ready", async () => {
+        await createConfig();
         if (
             game.settings.get(MODULE_ID, "refresh-refined-items") &&
             game.user.isActiveGM

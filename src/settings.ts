@@ -66,4 +66,83 @@ export function registerSettings() {
         default: true,
         requiresReload: false,
     });
+
+    const baneTraitsDefault = new Set([
+        "aberration",
+        "animal",
+        "astral",
+        "beast",
+        "celestial",
+        "construct",
+        "dragon",
+        "dream",
+        "elemental",
+        "ethereal",
+        "fey",
+        "fiend",
+        "giant",
+        "monitor",
+        "ooze",
+        "spirit",
+        "time",
+        "vitality",
+        "void",
+    ]);
+    game.settings.register(MODULE_ID, "homebrew-folder", {
+        name: t("settings.homebrew-folder.name") as string,
+        hint: t("settings.homebrew-folder.hint") as string,
+        type: String,
+        scope: "world",
+        config: true,
+        requiresReload: true,
+    });
+    game.settings.register(MODULE_ID, "homebrew-files", {
+        name: "homebrew-files",
+        type: Array,
+        default: [],
+        scope: "world",
+        config: false,
+    });
+
+    game.settings.register(MODULE_ID, "bane-traits", {
+        name: t("settings.bane-traits.name") as string,
+        hint: t("settings.bane-traits.hint") as string,
+        type: new foundry.data.fields.SetField(
+            new foundry.data.fields.StringField({
+                required: true,
+                label: t("settings.bane-traits.name") as string,
+                choices: CONFIG.PF2E.creatureTraits,
+            }),
+            // @ts-expect-error
+            { required: true, initial: baneTraitsDefault },
+        ),
+        config: true,
+        requiresReload: true,
+    });
+
+    Hooks.on("renderSettingsConfig", (_config, form) => {
+        const element = form.querySelector(
+            "multi-select#settings-config-pf2e-monster-parts\\.bane-traits",
+        );
+        if (!element) return;
+        const resetBtn = document.createElement("a");
+        resetBtn.innerHTML = `<i class="fa-solid fa-arrow-rotate-left"></i>`;
+        resetBtn.addEventListener("click", async () => {
+            const reset = await foundry.applications.api.DialogV2.confirm({
+                // @ts-expect-error
+                content: t("settings.bane-traits.confirm-reset"),
+            });
+            if (reset) {
+                await game.settings.set(
+                    MODULE_ID,
+                    "bane-traits",
+                    baneTraitsDefault,
+                );
+                game.socket.emit("reload");
+                // @ts-expect-error
+                await foundry.utils.debouncedReload();
+            }
+        });
+        element.appendChild(resetBtn);
+    });
 }

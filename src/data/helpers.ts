@@ -163,7 +163,7 @@ const damage = {
         type = type ?? "untyped";
         const partialKey =
             (category ?? "") +
-            (category ? type[0].toLowerCase() + type.slice(1) : type);
+            (category ? type[0].toUpperCase() + type.slice(1) : type);
         return {
             text: {
                 type: "key",
@@ -198,7 +198,7 @@ function leveledEffects<T>(
     return levels
         .map((levelMin, i) => ({
             levelMin,
-            levelMax: levels[i + 1],
+            levelMax: levels[i + 1] ? levels[i + 1] - 1 : undefined,
             value: values[i],
         }))
         .filter((e) => e.value)
@@ -217,7 +217,7 @@ function leveledLabels<T>(
     return levels
         .map((levelMin, i) => ({
             levelMin,
-            levelMax: levels[i + 1],
+            levelMax: levels[i + 1] ? levels[i + 1] - 1 : undefined,
             value: values[i],
         }))
         .filter((e) => e.value)

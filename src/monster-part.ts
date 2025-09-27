@@ -62,7 +62,7 @@ export class MonsterPart {
             ...actor.items.map((i) => [
                 ...actorRollOptions,
                 `item:type:${i.type}`,
-                ...i.getRollOptions(),
+                ...i.getRollOptions("item"),
             ]),
         ];
 
