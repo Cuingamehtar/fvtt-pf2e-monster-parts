@@ -5,6 +5,8 @@ The intent is to implement Battlezoo Bestiary monster parts system and provide a
 
 Full Battlezoo Bestiary rules for Monster parts system are available [here](https://pf2easy.com/index.php?id=19415).
 
+This module supports [adding homebrew monster materials](https://github.com/Cuingamehtar/fvtt-pf2e-monster-parts/wiki/Adding-homebrew-content).
+
 Discuss the module [here](https://discord.com/channels/880968862240239708/1406595957390577774).
 
 This project and it's author are not affiliated with Roll For Combat.
