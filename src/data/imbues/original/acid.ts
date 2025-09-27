@@ -149,11 +149,7 @@ export function createImbueAcid(): MaterialData[] {
         key: "imbue:acid:might",
         label: {
             type: "key",
-            key: lkey("magic.label"),
-        },
-        description: {
-            type: "key",
-            key: lkey("magic.description"),
+            key: lkey("might.label"),
         },
         header: {
             description: {
@@ -223,11 +219,7 @@ export function createImbueAcid(): MaterialData[] {
         key: "imbue:acid:tech",
         label: {
             type: "key",
-            key: lkey("magic.label"),
-        },
-        description: {
-            type: "key",
-            key: lkey("magic.description"),
+            key: lkey("tech.label"),
         },
         header: {
             description: {
@@ -242,7 +234,7 @@ export function createImbueAcid(): MaterialData[] {
                 },
                 // persistent damage
                 ...helpers.leveledLabels(
-                    [4, 6, 14, 18],
+                    [4, 8, 14, 18],
                     ["1", "d6", "d8", "d10"],
                     (value: RollString) =>
                         helpers.damage.label({

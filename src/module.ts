@@ -8,6 +8,7 @@ import { createRefinedItemDialog } from "./app/refined-item-create";
 import { MonsterPart } from "./monster-part";
 import { RefinedItem } from "./refined-item";
 import { registerInlineNotes } from "./description";
+import { renderSummaryJournal } from "./summary-journal";
 
 export const MODULE_ID = "pf2e-monster-parts";
 
@@ -33,6 +34,7 @@ Hooks.once("init", () => {
         }
     });
     registerInlineNotes();
+    game.modules.get(MODULE_ID).api = { renderSummaryJournal };
 });
 
 Hooks.on(

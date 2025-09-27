@@ -1,15 +1,15 @@
 import { MODULE_ID } from "./module";
-import { t } from "./utils";
+import { t, tkey } from "./utils";
 
 export function registerSettings() {
     game.settings.register(MODULE_ID, "variant", {
-        name: t("settings.variant.name") as string,
+        name: tkey("settings.variant.name") as string,
         scope: "world",
         type: new foundry.data.fields.StringField({
             choices: {
-                light: t("settings.variant.light") as string,
-                hybrid: t("settings.variant.hybrid") as string,
-                full: t("settings.variant.full") as string,
+                light: tkey("settings.variant.light") as string,
+                hybrid: tkey("settings.variant.hybrid") as string,
+                full: tkey("settings.variant.full") as string,
             },
             nullable: false,
             blank: false,
@@ -32,8 +32,8 @@ export function registerSettings() {
     */
 
     game.settings.register(MODULE_ID, "actor-lootable", {
-        name: t("settings.actor-lootable.name") as string,
-        hint: t("settings.actor-lootable.hint") as string,
+        name: tkey("settings.actor-lootable.name") as string,
+        hint: tkey("settings.actor-lootable.hint") as string,
         scope: "world",
         type: Boolean,
         config: true,
@@ -42,12 +42,12 @@ export function registerSettings() {
     });
 
     game.settings.register(MODULE_ID, "armor-refinements", {
-        name: t("settings.armor-refinements.name") as string,
-        hint: t("settings.armor-refinements.hint") as string,
+        name: tkey("settings.armor-refinements.name") as string,
+        hint: tkey("settings.armor-refinements.hint") as string,
         type: new foundry.data.fields.StringField({
             choices: {
-                none: t("settings.armor-refinements.none") as string,
-                all: t("settings.armor-refinements.all") as string,
+                none: tkey("settings.armor-refinements.none") as string,
+                all: tkey("settings.armor-refinements.all") as string,
             },
             nullable: false,
             blank: false,
@@ -59,8 +59,8 @@ export function registerSettings() {
     });
 
     game.settings.register(MODULE_ID, "refresh-refined-items", {
-        name: t("settings.refresh-refined-items.name") as string,
-        hint: t("settings.refresh-refined-items.hint") as string,
+        name: tkey("settings.refresh-refined-items.name") as string,
+        hint: tkey("settings.refresh-refined-items.hint") as string,
         type: Boolean,
         config: true,
         default: true,
@@ -89,8 +89,8 @@ export function registerSettings() {
         "void",
     ]);
     game.settings.register(MODULE_ID, "homebrew-folder", {
-        name: t("settings.homebrew-folder.name") as string,
-        hint: t("settings.homebrew-folder.hint") as string,
+        name: tkey("settings.homebrew-folder.name") as string,
+        hint: tkey("settings.homebrew-folder.hint") as string,
         type: String,
         scope: "world",
         config: true,
@@ -105,12 +105,12 @@ export function registerSettings() {
     });
 
     game.settings.register(MODULE_ID, "bane-traits", {
-        name: t("settings.bane-traits.name") as string,
-        hint: t("settings.bane-traits.hint") as string,
+        name: tkey("settings.bane-traits.name") as string,
+        hint: tkey("settings.bane-traits.hint") as string,
         type: new foundry.data.fields.SetField(
             new foundry.data.fields.StringField({
                 required: true,
-                label: t("settings.bane-traits.name") as string,
+                label: tkey("settings.bane-traits.name") as string,
                 choices: CONFIG.PF2E.creatureTraits,
             }),
             // @ts-expect-error

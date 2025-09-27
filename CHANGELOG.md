@@ -4,11 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.1] - 2025-09-27
+
+### Fixed
+- Fix some imbuements' data
+
 ## [0.2.0] - 2025-09-27
 
 ### Added
-- Setting to change allowed traits for Bane material
-- Homebrew materials support
+- Add setting to change allowed traits for Bane material
+- Add Homebrew materials support
 
 ### Changed
 - Rearranged material data

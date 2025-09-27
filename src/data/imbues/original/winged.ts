@@ -39,6 +39,7 @@ export function createImbueWinged(): MaterialData {
                 },
                 {
                     levelMin: 14,
+                    levelMax: 15,
                     text: { type: "key", key: lkey("level-14-fly") },
                     sort: 1,
                 },
