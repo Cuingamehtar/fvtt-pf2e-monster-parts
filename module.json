@@ -2,7 +2,7 @@
   "id": "pf2e-monster-parts",
   "title": "PF2e Monster Parts",
   "description": "Implementation of Monster Parts subsystem for PF2e system",
-  "version": "dev",
+  "version": "#{VERSION}#",
   "library": "false",
   "compatibility": {
     "minimum": "13",
