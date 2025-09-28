@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.3] - 2025-09-29
+
+### Fixed
+- Fix Create Refined Item button (unknowingly broken in the previous update)
+
 ## [0.2.2] - 2025-09-28
 
 ### Added
@@ -12,7 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Add a journal entry that lists all current imbuements (currently accessible via Edit Monster Part menu). It will eventually contain the descriptions of all existing imbuements, but at the moment only has the generated debug data.
 
 ### Fixed
-- Fix refined item creation menu not being listed in New Item menu
+- Fix refined item creation menu not being listed in Create Item menu
 - Fix Sturdy imbuement's description having incorrect text
 
 ## [0.2.1] - 2025-09-27

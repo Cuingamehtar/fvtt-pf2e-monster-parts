@@ -98,7 +98,13 @@ Hooks.on(
 Hooks.on(
     "renderDialogV2",
     (dialog: foundry.applications.api.DialogV2, html: HTMLElement) => {
-        if (!dialog.options.classes.includes("item-create")) return;
+        if (
+            !(
+                dialog.options.classes.includes("item-create") ||
+                dialog.options.classes.includes("dialog-item-create")
+            )
+        )
+            return;
         const selector = html.querySelector("select")!;
         const refinedItemOption = createElement("option", {
             attributes: { value: "refined-item" },
