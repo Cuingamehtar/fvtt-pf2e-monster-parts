@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [unreleased]
+
+### Added
+- Add dynamic adjustment of refined items price and level
+- Specific materials levels are now stored in the item flags and can be used as roll data for Rule Elements and dynamic header labels
+
+### Fixed
+- Fix refined item creation menu not being listed in New Item menu
+- Fix Sturdy imbuement's description having incorrect lines
+
 ## [0.2.1] - 2025-09-27
 
 ### Fixed

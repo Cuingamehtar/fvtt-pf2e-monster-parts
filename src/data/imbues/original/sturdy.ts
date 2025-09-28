@@ -52,7 +52,7 @@ export function createImbueSturdy(): MaterialData {
                             parameters: { hardness: 2 },
                         },
                         predicate: [
-                            { lte: ["item:level", l + 1] as [string, number] },
+                            { eq: ["item:level", l + 1] as [string, number] },
                         ],
                     },
                     {
@@ -64,7 +64,7 @@ export function createImbueSturdy(): MaterialData {
                             parameters: { hardness: 1 },
                         },
                         predicate: [
-                            { lte: ["item:level", l + 2] as [string, number] },
+                            { eq: ["item:level", l + 2] as [string, number] },
                         ],
                     },
                     {

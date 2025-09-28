@@ -1,9 +1,10 @@
-import { PhysicalItemPF2e, ItemPF2e } from "foundry-pf2e";
+import { ItemPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
 import { Material } from "./material";
 import { i18nFormat, t } from "./utils";
 import { dialogs } from "./app/dialogs";
+import { RefinedItemFlags } from "./types";
 
 export class RefinedItem {
     item: PhysicalItemPF2e;
@@ -88,13 +89,20 @@ export class RefinedItem {
         const rules = [];
 
         const flag = this.getFlag();
-        const level =
-            Material.fromKey(
-                flag.refinement.key,
-                flag.refinement.value,
-            )?.getLevel(this) ?? 0;
+        let updatedData = {
+            ["flags.pf2e-monster-parts.==values"]: {} as Record<string, any>,
+        };
 
-        let updatedData = {};
+        for (const m of [flag.refinement, ...flag.imbues]) {
+            const mat = Material.fromKey(m.key, m.value);
+            if (!mat) continue;
+            updatedData["flags.pf2e-monster-parts.==values"][
+                Material.getFlagDataName(mat.data.key as string, "level")
+            ] = mat?.getLevel(this);
+        }
+        await this.item.update(updatedData);
+
+        const effectData = {};
         for (const effect of effects.flatMap((e) => e?.effects ?? [])) {
             switch (effect.type) {
                 case "RuleElement":
@@ -102,17 +110,15 @@ export class RefinedItem {
                     break;
             }
         }
-        foundry.utils.mergeObject(updatedData, {
+        foundry.utils.mergeObject(effectData, {
             "system.rules": rules,
-            "system.level.value": level,
         });
         return this.item.update(updatedData);
     }
 
     getRollOptions() {
         const options = [
-            // @ts-expect-error
-            ...this.item.getRollOptions(),
+            ...this.item.getRollOptions("item"),
             `item:type:${this.item.type}`,
         ];
         const flags = this.item.getFlag(MODULE_ID, "refined-item");
@@ -178,4 +184,36 @@ export class RefinedItem {
             })
             .then((t) => foundry.applications.ux.TextEditor.enrichHTML(t));
     }
+}
+
+export function extendDerivedData() {
+    libWrapper.register(
+        MODULE_ID,
+        "CONFIG.PF2E.Item.documentClasses.weapon.__proto__.prototype.prepareDerivedData",
+        function (
+            wrapped: typeof PhysicalItemPF2e.prototype.prepareDerivedData,
+        ) {
+            wrapped();
+            const flag = (this as PhysicalItemPF2e).getFlag(
+                MODULE_ID,
+                "refined-item",
+            ) as RefinedItemFlags;
+            if (flag) {
+                const item = new RefinedItem(this as PhysicalItemPF2e);
+                (this as PhysicalItemPF2e).system.level.value =
+                    Material.fromKey(
+                        flag.refinement.key,
+                        flag.refinement.value,
+                    )?.getLevel(item) ?? 0;
+
+                const price = flag.imbues.reduce(
+                    (acc, e) => acc + e.value,
+                    flag.refinement.value,
+                );
+                (this as PhysicalItemPF2e).system.price.value =
+                    new game.pf2e.Coins({ gp: price });
+            }
+        },
+        "MIXED",
+    );
 }

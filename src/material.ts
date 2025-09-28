@@ -37,7 +37,7 @@ export class Material {
                 this.data.itemPredicate,
             );
         if (rollOptions) return this.#itemPredicate.test(rollOptions);
-        if (item) return this.#itemPredicate.test(item.getRollOptions());
+        if (item) return this.#itemPredicate.test(item.getRollOptions("item"));
         ui.notifications.warn(
             "No item or roll option array was provided for material predicate",
         );
@@ -92,35 +92,46 @@ export class Material {
 
     getFlavor(item: RefinedItem) {
         const level = this.getLevel(item);
+        const rollData = item.item.getRollData();
+        const rollOptions = item.getRollOptions();
         return {
-            label: i18nFormat(this.data.label),
-            flavor: i18nFormat(this.data.header.description),
+            label: i18nFormat(this.data.label, rollData),
+            flavor: i18nFormat(this.data.header.description, rollData),
             parts: this.data.header.labels
                 ?.filter(
                     (e) =>
                         e.levelMin <= level &&
-                        (!e.levelMax || level <= e.levelMax),
+                        (!e.levelMax || level <= e.levelMax) &&
+                        (e.predicate
+                            ? new game.pf2e.Predicate(e.predicate).test(
+                                  rollOptions,
+                              )
+                            : true),
                 )
                 .sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0))
-                .map((e) => i18nFormat(e.text)),
+                .map((e) => i18nFormat(e.text, rollData)),
         };
     }
 
-    static getRollDataPath(materialKey: string, value: string) {
+    static getFlagDataName(materialKey: string, value: string) {
         function convertSlug(s: string) {
-            return s
-                .split("-")
+            const parts = s.split("-");
+            return parts
+                .slice(1)
                 .reduce(
                     (acc, e) => acc + e[0].toUpperCase() + e.slice(1),
-                    s[0],
+                    parts[0],
                 );
         }
+        return convertSlug(
+            `${game.pf2e.system.sluggify(materialKey)}-${game.pf2e.system.sluggify(value)}`,
+        );
+    }
 
+    static getRollDataPath(materialKey: string, value: string) {
         return (
             "@item.flags.pf2e-monster-parts.values." +
-            convertSlug(
-                `${game.pf2e.system.sluggify(materialKey)}-${game.pf2e.system.sluggify(value)}`,
-            )
+            Material.getFlagDataName(materialKey, value)
         );
     }
 }

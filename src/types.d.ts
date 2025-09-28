@@ -28,7 +28,7 @@ declare global {
     };
     type ResolvableParameter = {
         type: "resolve";
-        value: string;
+        value: I18nString | I18nLocalizableKey;
     };
     type I18nEntry =
         | I18nString

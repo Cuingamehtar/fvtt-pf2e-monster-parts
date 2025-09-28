@@ -25,7 +25,7 @@ export function i18nFormat(
             return m.value as I18nString;
         }
         return String(
-            Roll.safeEval(Roll.replaceFormulaData(m.value, data)),
+            Roll.replaceFormulaData(i18nFormat(m.value, data) as string, data),
         ) as I18nString;
     }
     if ("type" in m && m.type == "key") {

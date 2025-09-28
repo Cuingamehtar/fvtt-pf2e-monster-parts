@@ -6,9 +6,10 @@ import { configureRefinedItem } from "./app/refined-item-editor";
 import { createElement, t } from "./utils";
 import { createRefinedItemDialog } from "./app/refined-item-create";
 import { MonsterPart } from "./monster-part";
-import { RefinedItem } from "./refined-item";
+import { extendDerivedData, RefinedItem } from "./refined-item";
 import { registerInlineNotes } from "./description";
 import { renderSummaryJournal } from "./summary-journal";
+import { Material } from "./material";
 
 export const MODULE_ID = "pf2e-monster-parts";
 
@@ -32,9 +33,14 @@ Hooks.once("init", () => {
                 }
             }
         }
+        extendDerivedData();
     });
     registerInlineNotes();
-    game.modules.get(MODULE_ID).api = { renderSummaryJournal };
+    game.modules.get(MODULE_ID).api = {
+        renderSummaryJournal,
+        Material,
+        RefinedItem,
+    };
 });
 
 Hooks.on(
@@ -92,7 +98,7 @@ Hooks.on(
 Hooks.on(
     "renderDialogV2",
     (dialog: foundry.applications.api.DialogV2, html: HTMLElement) => {
-        if (!dialog.options.classes.includes("dialog-item-create")) return;
+        if (!dialog.options.classes.includes("item-create")) return;
         const selector = html.querySelector("select")!;
         const refinedItemOption = createElement("option", {
             attributes: { value: "refined-item" },

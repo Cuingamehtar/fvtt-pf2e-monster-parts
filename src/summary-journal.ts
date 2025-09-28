@@ -39,7 +39,11 @@ function generatePage(m: MaterialData) {
 
     return {
         name,
-        text: { content: description + headerTable + effectTable },
+        text: {
+            content:
+                description +
+                `<details><summary>Debug details</summary>${headerTable}${effectTable}</details>`,
+        },
         title: { level: 2 },
     };
 }

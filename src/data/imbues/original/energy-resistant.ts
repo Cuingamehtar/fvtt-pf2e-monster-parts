@@ -1,5 +1,6 @@
 import { tkey } from "../../../utils";
 import { MaterialData } from "../../material";
+import { Material } from "../../../material";
 
 export function createImbueEnergyResistant(): MaterialData[] {
     const damageTypes: (keyof typeof CONFIG.PF2E.damageTypes)[] = [
@@ -47,28 +48,37 @@ export function createImbueEnergyResistant(): MaterialData[] {
                 header: {
                     description: { type: "key", key: lkey("armor-flavor") },
                     labels: [
-                        ...Array.fromRange(20, 1).map((level) => ({
-                            levelMin: level,
-                            levelMax: level != 20 ? level : undefined,
+                        {
+                            levelMin: 1,
                             text: {
                                 type: "key" as "key",
                                 key: lkey("armor-effect"),
-                                parameters: { level },
+                                parameters: {
+                                    level: {
+                                        type: "resolve",
+                                        value: Material.getRollDataPath(
+                                            `imbue:energy-resistant:armor:${type}`,
+                                            "level",
+                                        ),
+                                    },
+                                },
                             },
-                        })),
+                        },
                     ],
                 },
                 effects: [
-                    ...Array.fromRange(20, 1).map((level) => ({
+                    {
                         type: "RuleElement" as "RuleElement",
-                        levelMin: level,
-                        levelMax: level != 20 ? level : undefined,
+                        levelMin: 1,
                         rule: {
                             key: "Resistance",
                             type: type,
-                            value: level,
+                            value: Material.getRollDataPath(
+                                `imbue:energy-resistant:armor:${type}`,
+                                "level",
+                            ),
                         },
-                    })),
+                    },
                 ],
             },
             {
@@ -93,28 +103,37 @@ export function createImbueEnergyResistant(): MaterialData[] {
                 header: {
                     description: { type: "key", key: lkey("shield-flavor") },
                     labels: [
-                        ...Array.fromRange(20, 1).map((level) => ({
-                            levelMin: level,
-                            levelMax: level != 20 ? level : undefined,
+                        {
+                            levelMin: 1,
                             text: {
                                 type: "key" as "key",
                                 key: lkey("shield-effect"),
-                                parameters: { level },
+                                parameters: {
+                                    level: {
+                                        type: "resolve",
+                                        value: Material.getRollDataPath(
+                                            `imbue:energy-resistant:shield:${type}`,
+                                            "level",
+                                        ),
+                                    },
+                                },
                             },
-                        })),
+                        },
                     ],
                 },
                 effects: [
-                    ...Array.fromRange(20, 1).map((level) => ({
+                    {
                         type: "RuleElement" as "RuleElement",
-                        levelMin: level,
-                        levelMax: level != 20 ? level : undefined,
+                        levelMin: 1,
                         rule: {
                             key: "Resistance",
                             type: type,
-                            value: level,
+                            value: Material.getRollDataPath(
+                                `imbue:energy-resistant:shield:${type}`,
+                                "level",
+                            ),
                         },
-                    })),
+                    },
                 ],
             },
         ];
