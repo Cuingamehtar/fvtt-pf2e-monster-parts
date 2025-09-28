@@ -4,15 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [unreleased]
+## [0.2.2] - 2025-09-28
 
 ### Added
 - Add dynamic adjustment of refined items price and level
 - Specific materials levels are now stored in the item flags and can be used as roll data for Rule Elements and dynamic header labels
+- Add a journal entry that lists all current imbuements (currently accessible via Edit Monster Part menu). It will eventually contain the descriptions of all existing imbuements, but at the moment only has the generated debug data.
 
 ### Fixed
 - Fix refined item creation menu not being listed in New Item menu
-- Fix Sturdy imbuement's description having incorrect lines
+- Fix Sturdy imbuement's description having incorrect text
 
 ## [0.2.1] - 2025-09-27
 

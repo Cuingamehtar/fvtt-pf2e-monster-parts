@@ -145,4 +145,14 @@ export function registerSettings() {
         });
         element.appendChild(resetBtn);
     });
+
+    game.settings.register(MODULE_ID, "show-debug-info", {
+        name: tkey("settings.show-debug-info.name") as string,
+        hint: tkey("settings.show-debug-info.hint") as string,
+        scope: "user",
+        type: Boolean,
+        config: true,
+        default: false,
+        requiresReload: false,
+    });
 }

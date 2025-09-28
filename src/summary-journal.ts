@@ -1,10 +1,11 @@
 import { getConfig } from "./config";
 import { i18nFormat } from "./utils";
 import { HeaderLabel, MaterialData, MaterialEffect } from "./data/material";
+import { MODULE_ID } from "./module";
 
 let journal: JournalEntry | undefined = undefined;
 
-export function renderSummaryJournal() {
+export function renderSummaryJournal(materialKey?: string) {
     if (!journal) {
         const config = getConfig();
         const entries = [...config.materials.values()];
@@ -16,35 +17,48 @@ export function renderSummaryJournal() {
                 .sort((a, b) => a.name.localeCompare(b.name)),
         });
     }
-    journal.sheet.render(true);
+    if (!materialKey) return journal.sheet.render(true);
+    const page = journal.pages.find(
+        (p) => p.flags["pf2e-monster-parts"]?.["material-key"] == materialKey,
+    );
+    if (page) {
+        return journal.sheet.render(true, { pageId: page.id });
+    } else {
+        ui.notifications.warn(
+            `Could not find page for material ${materialKey}`,
+        );
+        return journal.sheet.render(true);
+    }
 }
 
 function generatePage(m: MaterialData) {
     const name = i18nFormat(m.label) as string;
-    const description = i18nFormat(m.description) as string;
+    let description = i18nFormat(m.description) as string;
 
-    // debug
-    const tableHeader = `<tr><th>Entry</th>${Array.fromRange(21)
-        .map((i) => `<th style="width:20px">${i}</th>`)
-        .join("")}</tr>`;
+    if (game.settings.get(MODULE_ID, "show-debug-info")) {
+        // debug
+        const tableHeader = `<tr><th>Entry</th>${Array.fromRange(21)
+            .map((i) => `<th style="width:20px">${i}</th>`)
+            .join("")}</tr>`;
 
-    const tableRows = m.header?.labels
-        ?.sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0))
-        ?.map((l) => debugLine(l))
-        .join("");
-    const headerTable = `<table>${tableHeader}${tableRows}</table>`;
+        const tableRows = m.header?.labels
+            ?.sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0))
+            ?.map((l) => debugLine(l))
+            .join("");
+        const headerTable = `<table>${tableHeader}${tableRows}</table>`;
 
-    const effectRows = m.effects.map((l) => debugLineEffect(l)).join("");
-    const effectTable = `<table>${tableHeader}${effectRows}</table>`;
+        const effectRows = m.effects.map((l) => debugLineEffect(l)).join("");
+        const effectTable = `<table>${tableHeader}${effectRows}</table>`;
 
+        description += `<details><summary>Debug details</summary>${headerTable}${effectTable}</details>`;
+    }
     return {
         name,
         text: {
-            content:
-                description +
-                `<details><summary>Debug details</summary>${headerTable}${effectTable}</details>`,
+            content: description,
         },
         title: { level: 2 },
+        flags: { ["pf2e-monster-parts"]: { ["material-key"]: m.key } },
     };
 }
 

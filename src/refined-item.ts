@@ -86,7 +86,6 @@ export class RefinedItem {
 
     async updateItem() {
         const effects = this.getEffects();
-        const rules = [];
 
         const flag = this.getFlag();
         let updatedData = {
@@ -103,6 +102,7 @@ export class RefinedItem {
         await this.item.update(updatedData);
 
         const effectData = {};
+        const rules = [];
         for (const effect of effects.flatMap((e) => e?.effects ?? [])) {
             switch (effect.type) {
                 case "RuleElement":
@@ -113,7 +113,7 @@ export class RefinedItem {
         foundry.utils.mergeObject(effectData, {
             "system.rules": rules,
         });
-        return this.item.update(updatedData);
+        return this.item.update(effectData);
     }
 
     getRollOptions() {

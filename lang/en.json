@@ -37,23 +37,23 @@
       },
       "monster-part-editor": {
         "refinements": "Refinements",
-        "imbues": "Imbues",
+        "imbuements": "Imbuements",
         "value": "Value",
         "button": "Edit Monster Part"
       },
       "refined-item-editor": {
         "refinement": "Refinement",
-        "imbue": "Imbue",
-        "new-imbue": "New Imbue",
+        "imbuement": "Imbuement",
+        "new-imbuement": "New Imbuement",
         "refinement-type": "Refinement Type",
-        "imbue-type": "Imbue Type",
+        "imbuement-type": "Imbuement Type",
         "value": "Value",
         "button": "Edit Refined Item"
       }
     },
     "material": {
       "refinement": "Refinement",
-      "imbue": "Imbue",
+      "imbuement": "Imbuement",
       "value": "Value",
       "item": {
         "name-owned": "Monster Parts of {actor}",
@@ -119,6 +119,10 @@
       "homebrew-folder": {
         "name": "Homebrew folder",
         "hint": "Path to homebrew content. Instances of \"@world\" in the path will be replaced with the path to current world."
+      },
+      "show-debug-info": {
+        "name": "Show Debug Info",
+        "hint": "Currently shows only info on the applied imbuement effects (accessible via Edit Monster Part editor)"
       }
     },
     "data": {

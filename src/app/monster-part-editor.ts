@@ -39,6 +39,14 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             width: 350,
             height: 600,
             closeOnSubmit: true,
+            controls: [
+                {
+                    icon: "fa-solid fa-book-open",
+                    label: "pf2e-monster-parts.dialog.monster-part-editor.imbuements",
+                    onClick: () =>
+                        game.modules.get(MODULE_ID).api.renderSummaryJournal(),
+                },
+            ],
         },
     };
 

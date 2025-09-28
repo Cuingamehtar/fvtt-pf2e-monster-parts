@@ -14,8 +14,8 @@
 
     {{#each data.imbues as | imbue |}}
         <fieldset class="droppable imbue">
-            <legend>{{localize "pf2e-monster-parts.dialog.refined-item-editor.imbue"}}</legend>
-            <label for="imbue-{{@index}}-type">{{localize "pf2e-monster-parts.dialog.refined-item-editor.imbue-type"}}</label>
+            <legend>{{localize "pf2e-monster-parts.dialog.refined-item-editor.imbuement"}}</legend>
+            <label for="imbue-{{@index}}-type">{{localize "pf2e-monster-parts.dialog.refined-item-editor.imbuement-type"}}</label>
             <select name="imbue-{{@index}}-type" id="imbue-{{@index}}-type" class="imbue-type">
                 <option value=""></option>
                 {{#each ../data.possibleImbues }}
@@ -31,8 +31,8 @@
     {{/each}}
 
     <fieldset class="droppable new-imbue">
-        <legend>{{localize "pf2e-monster-parts.dialog.refined-item-editor.new-imbue"}}</legend>
-        <label for="new-imbue-type">{{localize "pf2e-monster-parts.dialog.refined-item-editor.imbue-type"}}</label>
+        <legend>{{localize "pf2e-monster-parts.dialog.refined-item-editor.new-imbuement"}}</legend>
+        <label for="new-imbue-type">{{localize "pf2e-monster-parts.dialog.refined-item-editor.imbuement-type"}}</label>
         <select name="new-imbue-type" id="new-imbue-type">
             <option value=""></option>
             {{#each data.possibleImbues }}
