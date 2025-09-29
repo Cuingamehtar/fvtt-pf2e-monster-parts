@@ -49,6 +49,11 @@
         "imbuement-type": "Imbuement Type",
         "value": "Value",
         "button": "Edit Refined Item"
+      },
+      "after-combat-dialog": {
+        "title": "Assign Monster Parts",
+        "value": "Value: {value} gp",
+        "total": "Total value: {value} gp"
       }
     },
     "material": {
@@ -93,6 +98,14 @@
       "actor-lootable": {
         "name": "Make actors lootable",
         "hint": "Allows players to loot the actor after creating monster parts."
+      },
+      "monster-parts-after-combat": {
+        "name": "Assign Monster Parts After Combat",
+        "hint": "After-combat dialog to select npcs to assign monster parts. \"Dead\" automatically assigns monster parts to dead NPCs. \"None\" skips the assignment",
+        "none": "None",
+        "dead": "Dead",
+        "dialog": "Dialog"
+
       },
       "variant": {
         "name": "Variant",

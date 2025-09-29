@@ -41,15 +41,20 @@ export class MonsterPart {
         return baseValue * count;
     }
 
+    static valueOfCreature(actor: NPCPF2e) {
+        const config = getConfig();
+
+        return config.valueForMonsterLevel[
+            (actor?.system.details.level.value ?? -1) + 1
+        ];
+    }
+
     static async fromCreature(actor: NPCPF2e) {
         const config = getConfig();
 
         const bulk =
             config.materialBulk[actor?.system.traits.size.value ?? "med"];
-        const materialValue =
-            config.valueForMonsterLevel[
-                (actor?.system.details.level.value ?? -1) + 1
-            ];
+        const materialValue = MonsterPart.valueOfCreature(actor);
         const name = actor
             ? t("material.item.name-owned", {
                   actor: actor.name,

@@ -17,12 +17,15 @@ export function createImbueWisdom(): MaterialData {
         key: "imbue:wisdom",
         type: "imbuement",
         label: { type: "key", key: lkey("label") },
-        monsterPredicate: [{ lte: ["ability:wis:rank", 2] }],
+        monsterPredicate: [{ lte: ["self:ability:wis:rank", 2] }],
         itemPredicate: [
             {
-                or: skills.map((s) => ({
-                    gte: [`refinement:skill:${s}`, 0],
-                })),
+                or: [
+                    ...skills.map((s) => ({
+                        gte: [`refinement:skill:${s}`, 0] as [string, number],
+                    })),
+                    { gte: ["refinement:perception", 0] as [string, number] },
+                ],
             },
         ],
         header: {

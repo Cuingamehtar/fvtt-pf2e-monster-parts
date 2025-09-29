@@ -10,6 +10,8 @@ import { extendDerivedData, RefinedItem } from "./refined-item";
 import { registerInlineNotes } from "./description";
 import { renderSummaryJournal } from "./summary-journal";
 import { Material } from "./material";
+import { getExtendedNPCRollOptions } from "./actor-utils";
+import { registerEndCombatDialog } from "./app/after-combat-dialog";
 
 export const MODULE_ID = "pf2e-monster-parts";
 
@@ -34,12 +36,14 @@ Hooks.once("init", () => {
             }
         }
         extendDerivedData();
+        registerEndCombatDialog();
     });
     registerInlineNotes();
     game.modules.get(MODULE_ID).api = {
         renderSummaryJournal,
         Material,
         RefinedItem,
+        getExtendedNPCRollOptions,
     };
 });
 

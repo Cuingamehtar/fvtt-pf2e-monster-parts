@@ -12,7 +12,9 @@ export function createImbueSensory(): MaterialData {
     ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.sensory.${k}`);
 
     // The actual requirements for sensory imbuement are complex to automate, so currently this material is satisfied by any special sense
-    const senses = Object.keys(CONFIG.PF2E.senses).map((s) => `sense:${s}`);
+    const senses = Object.keys(CONFIG.PF2E.senses).map(
+        (s) => `self:sense:${s}`,
+    );
     return {
         key: "imbue:sensory",
         type: "imbuement",

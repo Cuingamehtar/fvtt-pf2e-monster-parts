@@ -17,7 +17,7 @@ export function createImbueDexterity(): MaterialData {
         key: "imbue:dexterity",
         type: "imbuement",
         label: { type: "key", key: lkey("label") },
-        monsterPredicate: [{ lte: ["ability:dex:rank", 2] }],
+        monsterPredicate: [{ lte: ["self:ability:dex:rank", 2] }],
         itemPredicate: [
             {
                 or: skills.map((s) => ({

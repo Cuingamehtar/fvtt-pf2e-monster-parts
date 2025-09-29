@@ -68,7 +68,7 @@ export function addSkillRefinements(): MaterialData[] {
         (acc, s) => {
             acc[s] = {
                 label: CONFIG.PF2E.skills[s]!.label as I18nKey,
-                predicate: [`skill:${s}:rank:1`],
+                predicate: [`self:skill:${s}:rank:1`],
             };
             return acc;
         },

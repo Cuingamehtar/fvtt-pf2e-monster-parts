@@ -17,7 +17,7 @@ export function createImbueStrength(): MaterialData {
         key: "imbue:strength",
         type: "imbuement",
         label: { type: "key", key: lkey("label") },
-        monsterPredicate: [{ lte: ["ability:str:rank", 2] }],
+        monsterPredicate: [{ lte: ["self:ability:str:rank", 2] }],
         itemPredicate: [
             {
                 or: skills.map((s) => ({

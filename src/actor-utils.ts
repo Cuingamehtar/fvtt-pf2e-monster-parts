@@ -7,12 +7,15 @@ export function getExtendedNPCRollOptions(actor: NPCPF2e): string[] {
         .filter((s) =>
             actor.system.perception.senses.some((sense) => sense.type === s),
         )
-        .map((s) => `sense:${s}`);
+        .map((s) => `self:sense:${s}`);
     const skills = Object.values(actor.system.skills)
         .filter((s) => s.base > 0)
-        .map((s) => `skill:${s.slug}:rank:1`);
+        .map((s) => `self:skill:${s.slug}:rank:1`);
     const resistances = actor.attributes.resistances.map(
         (r) => `self:resistance:${r.type}:${r.value}`,
+    );
+    const weaknesses = actor.attributes.weaknesses.map(
+        (r) => `self:weakness:${r.type}:${r.value}`,
     );
     const immunities = actor.attributes.immunities.map(
         (i) => `self:immunity:${i.type}`,
@@ -26,6 +29,7 @@ export function getExtendedNPCRollOptions(actor: NPCPF2e): string[] {
         ...skills,
         `self:hardness:${actor.hardness}`,
         ...resistances,
+        ...weaknesses,
         ...immunities,
         ...abilityRanks,
     ];
@@ -38,6 +42,6 @@ function getAbilityRanks(actor: NPCPF2e) {
         (a, b) => b - a,
     );
     return Object.entries(abilities).map(
-        ([k, v]) => `ability:${k}:rank:${values.indexOf(v.mod) + 1}`,
+        ([k, v]) => `self:ability:${k}:rank:${values.indexOf(v.mod) + 1}`,
     );
 }

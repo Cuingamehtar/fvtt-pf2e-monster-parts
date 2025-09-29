@@ -17,7 +17,7 @@ export function createImbueConstitution(): MaterialData {
         key: "imbue:constitution",
         type: "imbuement",
         label: { type: "key", key: lkey("label") },
-        monsterPredicate: [{ lte: ["ability:con:rank", 2] }],
+        monsterPredicate: [{ lte: ["self:ability:con:rank", 2] }],
         itemPredicate: [
             {
                 or: skills.map((s) => ({

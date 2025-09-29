@@ -17,7 +17,7 @@ export function createImbueCharisma(): MaterialData {
         key: "imbue:charisma",
         type: "imbuement",
         label: { type: "key", key: lkey("label") },
-        monsterPredicate: [{ lte: ["ability:cha:rank", 2] }],
+        monsterPredicate: [{ lte: ["self:ability:cha:rank", 2] }],
         itemPredicate: [
             {
                 or: skills.map((s) => ({

@@ -40,6 +40,29 @@ export function registerSettings() {
         default: true,
         requiresReload: false,
     });
+    game.settings.register(MODULE_ID, "monster-parts-after-combat", {
+        name: tkey("settings.monster-parts-after-combat.name") as string,
+        hint: tkey("settings.monster-parts-after-combat.hint") as string,
+        scope: "world",
+        type: new foundry.data.fields.StringField({
+            choices: {
+                none: tkey(
+                    "settings.monster-parts-after-combat.none",
+                ) as string,
+                dead: tkey(
+                    "settings.monster-parts-after-combat.dead",
+                ) as string,
+                dialog: tkey(
+                    "settings.monster-parts-after-combat.dialog",
+                ) as string,
+            },
+            nullable: false,
+            blank: false,
+            initial: "dialog",
+            required: true,
+        }),
+        config: true,
+    });
 
     game.settings.register(MODULE_ID, "armor-refinements", {
         name: tkey("settings.armor-refinements.name") as string,

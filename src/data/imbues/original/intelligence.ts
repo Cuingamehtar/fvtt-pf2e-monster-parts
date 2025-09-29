@@ -17,7 +17,7 @@ export function createImbueIntelligence(): MaterialData {
         key: "imbue:intelligence",
         type: "imbuement",
         label: { type: "key", key: lkey("label") },
-        monsterPredicate: [{ lte: ["ability:int:rank", 2] }],
+        monsterPredicate: [{ lte: ["self:ability:int:rank", 2] }],
         itemPredicate: [
             {
                 or: skills.map((s) => ({
