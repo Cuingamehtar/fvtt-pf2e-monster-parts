@@ -4,12 +4,21 @@ import { getConfig } from "./config";
 import { Material } from "./material";
 import { i18nFormat, t } from "./utils";
 import { dialogs } from "./app/dialogs";
-import { RefinedItemFlags } from "./types";
+import { ModuleFlags } from "./types";
+import { AutomaticRefinementProgression } from "./automatic-refinement-progression";
+
+type HasRefinedData<T extends PhysicalItemPF2e> = T & {
+    flags: {
+        ["pf2e-monster-parts"]: {
+            ["refined-item"]: NonNullable<ModuleFlags["refined-item"]>;
+        };
+    };
+};
 
 export class RefinedItem {
     item: PhysicalItemPF2e;
 
-    constructor(item: PhysicalItemPF2e) {
+    constructor(item: HasRefinedData<PhysicalItemPF2e>) {
         if (!item.getFlag(MODULE_ID, "refined-item")) {
             ui.notifications.error(t("refined-item.error-not-refined-item"));
             throw new Error(t("refined-item.error-not-refined-item") as string);
@@ -77,7 +86,13 @@ export class RefinedItem {
         await ChatMessage.create({
             content: `<p>Item <strong>${item.name}</strong> was updated to Refined Item with <strong>${i18nFormat(refinement.label)}</strong> refinement.</p>`,
         });
-        return new RefinedItem(item);
+        return new RefinedItem(item as HasRefinedData<typeof item>);
+    }
+
+    static hasRefinedItemData<T extends PhysicalItemPF2e>(
+        item: T,
+    ): item is HasRefinedData<T> {
+        return !!item.getFlag(MODULE_ID, "refined-item");
     }
 
     getFlag() {
@@ -85,6 +100,9 @@ export class RefinedItem {
     }
 
     async updateItem() {
+        if (AutomaticRefinementProgression.isEnabled) {
+            await AutomaticRefinementProgression.adjustRefinementValue(this);
+        }
         const effects = this.getEffects();
 
         const flag = this.getFlag();
@@ -194,12 +212,12 @@ export function extendDerivedData() {
             wrapped: typeof PhysicalItemPF2e.prototype.prepareDerivedData,
         ) {
             wrapped();
-            const flag = (this as PhysicalItemPF2e).getFlag(
-                MODULE_ID,
-                "refined-item",
-            ) as RefinedItemFlags;
-            if (flag) {
-                const item = new RefinedItem(this as PhysicalItemPF2e);
+
+            if (RefinedItem.hasRefinedItemData(this as PhysicalItemPF2e)) {
+                const item = new RefinedItem(
+                    this as HasRefinedData<PhysicalItemPF2e>,
+                );
+                const flag = item.getFlag();
                 (this as PhysicalItemPF2e).system.level.value =
                     Material.fromKey(
                         flag.refinement.key,

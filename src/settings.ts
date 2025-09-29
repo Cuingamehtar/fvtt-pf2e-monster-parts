@@ -40,6 +40,7 @@ export function registerSettings() {
         default: true,
         requiresReload: false,
     });
+
     game.settings.register(MODULE_ID, "monster-parts-after-combat", {
         name: tkey("settings.monster-parts-after-combat.name") as string,
         hint: tkey("settings.monster-parts-after-combat.hint") as string,
@@ -87,7 +88,16 @@ export function registerSettings() {
         type: Boolean,
         config: true,
         default: true,
-        requiresReload: false,
+        requiresReload: true,
+    });
+
+    game.settings.register(MODULE_ID, "automatic-refinement-progression", {
+        name: tkey("settings.automatic-refinement-progression.name") as string,
+        hint: tkey("settings.automatic-refinement-progression.hint") as string,
+        type: Boolean,
+        config: true,
+        default: false,
+        requiresReload: true,
     });
 
     const baneTraitsDefault = new Set([

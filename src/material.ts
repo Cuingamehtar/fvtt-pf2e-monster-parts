@@ -2,7 +2,7 @@ import { ItemPF2e, NPCPF2e, Predicate } from "foundry-pf2e";
 import { getExtendedNPCRollOptions } from "./actor-utils";
 import { getConfig } from "./config";
 import { RefinedItem } from "./refined-item";
-import { i18nFormat } from "./utils";
+import { clamp, i18nFormat } from "./utils";
 import { MaterialData } from "./data/material";
 
 const materialAliases: Record<string, MaterialKey> = {};
@@ -79,6 +79,22 @@ export class Material {
             const thr = thresholds[type];
             const level = thr.findLastIndex((e) => this.value >= e);
             return level === -1 ? 0 : level + 1;
+        }
+        return 0;
+    }
+    getThresholdForLevel(item: RefinedItem, level: number): number {
+        const config = getConfig();
+        const thresholds = config.thresholds[this.data.type];
+        const itemType = item.item.type;
+        if (Object.keys(thresholds).includes(itemType)) {
+            const type = itemType as
+                | "weapon"
+                | "armor"
+                | "shield"
+                | "equipment";
+            const thr = thresholds[type];
+            const clampedLevel = clamp(level, 0, thr.length);
+            return clampedLevel == 0 ? 0 : thr[clampedLevel - 1];
         }
         return 0;
     }

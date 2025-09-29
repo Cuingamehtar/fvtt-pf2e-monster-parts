@@ -111,3 +111,7 @@ export function slugToCamelCase(s: string) {
         .map((w) => w[0].toUpperCase() + s.slice(1))
         .join("");
 }
+
+export function clamp(num: number, min: number, max: number) {
+    return num <= min ? min : num >= max ? max : num;
+}

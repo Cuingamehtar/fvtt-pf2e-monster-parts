@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.5] - 2025-09-29
+
+### Added
+- Add Automatic Refinement Progression option
+
 ## [0.2.4] - 2025-09-29
 
 ### Added
@@ -11,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Add weakness to the list of extended actor roll options
 
 ### Changed
-- Change all actor roll options to start with self
+- Change all custom actor roll options to start with self
 
 ### Fixed
 - Fix Wisdom imbuement not applying to Perception items

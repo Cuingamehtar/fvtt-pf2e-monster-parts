@@ -12,6 +12,7 @@ import { renderSummaryJournal } from "./summary-journal";
 import { Material } from "./material";
 import { getExtendedNPCRollOptions } from "./actor-utils";
 import { registerEndCombatDialog } from "./app/after-combat-dialog";
+import { AutomaticRefinementProgression } from "./automatic-refinement-progression";
 
 export const MODULE_ID = "pf2e-monster-parts";
 
@@ -37,6 +38,7 @@ Hooks.once("init", () => {
         }
         extendDerivedData();
         registerEndCombatDialog();
+        AutomaticRefinementProgression.registerHooks();
     });
     registerInlineNotes();
     game.modules.get(MODULE_ID).api = {

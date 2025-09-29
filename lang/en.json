@@ -136,6 +136,10 @@
       "show-debug-info": {
         "name": "Show Debug Info",
         "hint": "Currently shows only info on the applied imbuement effects (accessible via Edit Monster Part editor)"
+      },
+      "automatic-refinement-progression": {
+        "name": "Automatic Refinement Progression",
+        "hint": "Sets refinement level equal to the owner's level. PC only. Requires an active GM."
       }
     },
     "data": {

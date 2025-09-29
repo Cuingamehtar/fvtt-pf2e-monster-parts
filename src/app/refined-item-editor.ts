@@ -5,6 +5,7 @@ import { RefinedItem } from "../refined-item";
 import { Material } from "../material";
 import { dialogs } from "./dialogs";
 import { MonsterPart } from "../monster-part";
+import { AutomaticRefinementProgression } from "../automatic-refinement-progression";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -281,6 +282,7 @@ export async function configureRefinedItem(item: RefinedItem) {
         refinement: {
             selected: flag.refinement.key,
             value: flag.refinement.value,
+            isDisabled: AutomaticRefinementProgression.isEnabled,
         },
         imbues: flag.imbues.map((i) => ({
             selected: i.key,
