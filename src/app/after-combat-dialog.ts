@@ -82,6 +82,7 @@ class AfterCombatDialog extends HandlebarsApplicationMixin(ApplicationV2) {
             closeOnSubmit: true,
         },
         window: {
+            contentClasses: ["standard-form"],
             title: "pf2e-monster-parts.dialog.after-combat-dialog.title",
             closeOnSubmit: true,
         },

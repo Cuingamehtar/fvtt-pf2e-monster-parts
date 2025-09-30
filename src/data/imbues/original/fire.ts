@@ -167,6 +167,23 @@ export function createImbueFire(): MaterialData[] {
                             label: lkey("might.label"),
                         }),
                 ),
+                ...helpers.leveledEffects(
+                    [8, 14],
+                    ["1", "2"],
+                    (damage: RollString) => ({
+                        type: "RuleElement",
+                        rule: {
+                            key: "DamageDice",
+                            selector: "{item|_id}-damage",
+                            damageType: "fire",
+                            category: "persistent",
+                            dieSize: "d10",
+                            diceNumber: damage,
+                            label: lkey("might.label"),
+                            critical: true,
+                        },
+                    }),
+                ),
             ],
         },
         {
@@ -247,6 +264,20 @@ export function createImbueFire(): MaterialData[] {
                             label: lkey("tech.label"),
                         }),
                 ),
+                {
+                    levelMin: 8,
+                    type: "RuleElement",
+                    rule: {
+                        key: "DamageDice",
+                        selector: "{item|_id}-damage",
+                        damageType: "fire",
+                        category: "persistent",
+                        dieSize: "d10",
+                        diceNumber: 1,
+                        label: lkey("tech.label"),
+                        critical: true,
+                    },
+                },
             ],
         },
     ];

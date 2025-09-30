@@ -1,19 +1,34 @@
-import { NPCPF2e, PhysicalItemPF2e } from "foundry-pf2e";
+import { EquipmentPF2e, NPCPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
 import { i18nFormat, t } from "./utils";
 import { getExtendedNPCRollOptions } from "./actor-utils";
 import { Material } from "./material";
+import { ModuleFlags } from "./types";
+
+type HasMonsterPartData<T extends PhysicalItemPF2e> = T & {
+    flags: {
+        ["pf2e-monster-parts"]: {
+            ["monster-part"]: NonNullable<ModuleFlags["monster-part"]>;
+        };
+    };
+};
 
 export class MonsterPart {
-    item: PhysicalItemPF2e;
+    item: HasMonsterPartData<PhysicalItemPF2e>;
 
-    constructor(item: PhysicalItemPF2e) {
+    constructor(item: HasMonsterPartData<PhysicalItemPF2e>) {
         if (!item.getFlag(MODULE_ID, "monster-part")) {
             ui.notifications.error(t("monster-part.error-not-monster-part"));
             throw new Error(t("monster-part.error-not-monster-part") as string);
         }
         this.item = item;
+    }
+
+    static hasMonsterPartData<T extends PhysicalItemPF2e>(
+        item: T,
+    ): item is HasMonsterPartData<T> {
+        return !!item.getFlag(MODULE_ID, "monster-part");
     }
 
     getFlag() {
@@ -97,8 +112,10 @@ export class MonsterPart {
             await actor.setFlag("pf2e", "lootable", true);
         }
 
-        const [part] = await actor.createEmbeddedDocuments("Item", [item]);
-        return new MonsterPart(part as unknown as PhysicalItemPF2e);
+        const [part] = (await actor.createEmbeddedDocuments("Item", [
+            item,
+        ])) as unknown as HasMonsterPartData<EquipmentPF2e>[];
+        return new MonsterPart(part);
     }
 
     async descriptionHeader() {

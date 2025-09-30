@@ -6,6 +6,7 @@ import { i18nFormat, t } from "./utils";
 import { dialogs } from "./app/dialogs";
 import { ModuleFlags } from "./types";
 import { AutomaticRefinementProgression } from "./automatic-refinement-progression";
+import { MonsterPart } from "./monster-part";
 
 type HasRefinedData<T extends PhysicalItemPF2e> = T & {
     flags: {
@@ -16,7 +17,7 @@ type HasRefinedData<T extends PhysicalItemPF2e> = T & {
 };
 
 export class RefinedItem {
-    item: PhysicalItemPF2e;
+    item: HasRefinedData<PhysicalItemPF2e>;
 
     constructor(item: HasRefinedData<PhysicalItemPF2e>) {
         if (!item.getFlag(MODULE_ID, "refined-item")) {
@@ -39,7 +40,7 @@ export class RefinedItem {
             );
             return null;
         }
-        if (item.getFlag(MODULE_ID, "refined-item")) {
+        if (RefinedItem.hasRefinedItemData(item)) {
             ui.notifications.warn(
                 t("refined-item.warn-item-already-refined", {
                     item: item.name,
@@ -47,7 +48,7 @@ export class RefinedItem {
             );
             return this.constructor(item);
         }
-        if (item.getFlag(MODULE_ID, "monster-part")) {
+        if (MonsterPart.hasMonsterPartData(item)) {
             ui.notifications.error(
                 t("refined-item.error-item-is-monster-part"),
             );

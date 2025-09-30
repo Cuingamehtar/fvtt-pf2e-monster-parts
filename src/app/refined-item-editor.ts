@@ -45,6 +45,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             closeOnSubmit: true,
         },
         window: {
+            contentClasses: ["standard-form"],
             title: "",
             width: 300,
             height: 600,

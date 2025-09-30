@@ -35,6 +35,7 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             closeOnSubmit: true,
         },
         window: {
+            contentClasses: ["standard-form"],
             title: "",
             width: 350,
             height: 600,
