@@ -4,10 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [unreleased]
+## [0.2.6] - 2025-10-03
 
 ### Added
 - Add additional automation for Fire and Poison imbuements
+- Add French localization (credits to **rectulo** and **RadicalBlue**)
 
 ### Changed
 - Improved styling of dialogs
