@@ -3,6 +3,7 @@
     "monster-parts": "Parties de monstre",
     "monster-part": {
       "label": "Partie de monstre",
+      "create-button-label": "Créer des parties de monstre",
       "description-header": "Partie de monstre (Valeur : {value} po)",
       "error-not-monster-part": "Cet objet n'est pas une partie de monstre.",
       "error-not-physical-item": "Cet objet n'est pas un objet physique."
@@ -143,13 +144,13 @@
     },
     "data": {
       "refinement": {
-        "bludgeoning": "Arme (contondante)",
+        "bludgeoning": "Arme (Contondante)",
         "piercing": "Arme (perforante)",
         "slashing": "Arme (tranchante)",
         "armor-light": "Armure (légère)",
         "armor-medium": "Armure (intermédiaire)",
         "armor-heavy": "Armure (lourde)",
-        "armor-unarmored": "Armure (sans armure)",
+        "armor-unarmored": "Armure (Sans armure)",
         "armor": {
           "+1": "C'est une armure +1. Elle accorde un bonus d'objet de +1 à la CA et peut être imprégnée une fois.",
           "resilient+1": "C'est une armure de résilience +1. Elle accorde un bonus d'objet de +1 à la CA et aux jets de sauvegarde et peut être imprégnée une fois.",
@@ -185,7 +186,7 @@
           "acid": {
             "header-description": "Vous imprégnez l’arme d’<em>acide</em> vitriolique.",
             "magic": {
-              "label": "Acide (magie)",
+              "label": "Acide (Magie)",
               "description": "<p><strong>Type</strong> Arme</p><p><strong>Parties</strong> Le monstre doit avoir le trait acide ou une attaque ou un sort qui inflige des dégâts d'acide.</p><p><strong>Effet</strong> Vous imprégnez l'arme d'acide vitriolique.</p><hr><p><strong>Chemin</strong> Magie ; Choisissez quand vous imprégnez l'arme pour la première fois si les sorts accordés sont arcaniques ou primordiaux</p><ul><li><p><strong>2e</strong> L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt]{Aspersion d'acide} comme tour de magie, intensifié à la moitié du niveau de l'objet arrondi au supérieur</p></li><li><p><strong>4e</strong> L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Explosion d'acide} une fois par jour</p></li><li><p><strong>6e</strong> L'<em>explosion d'acide</em> de l'arme est intensifié au rang 2 et elle peut lancer soit @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0]{Flèche acide} ou <em>explosion acide</em> une fois par jour, mais pas les deux</p></li><li><p><strong>8e</strong> L'<em>explosion d'acide</em> de l'arme passe au rang 3 et elle peut lancer <em>flèche acide</em> et <em>explosion d'acide</em> chacun une fois par jour</p></li><li><p><strong>10e</strong> Les frappes avec l'arme infligent 1 point de dégât d'acide supplémentaire</p></li><li><p><strong>12e</strong> L'<em>flèche acide</em> de l'arme passe au rang 4 et l'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]{Tempête d'acide} une fois par jour</p></li><li><p><strong>14e</strong> Les dégâts d'acide supplémentaires passent à 1d4</p></li><li><p><strong>16e</strong> La <em>flèche acide</em> de l'arme est intensifiée au rang 6 et la <em>tempête d'acide</em> est intensifiée au rang 7</p></li><li><p><strong>18e</strong> Les dégâts d'acide supplémentaires passent à 1d6</p></li><li><p><strong>20e</strong> L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl]{Tempête vengeresse} une fois par jour, mais vous ne pouvez choisir que l'effet pluie acide. Vous pouvez choisir l'effet pluie acide deux fois de suite</p></li></ul>",
               "header": {
                 "level-4-spells": "L'arme peut lancer un sort @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Explosion d'acide} au rang 1 une fois par jour.",
@@ -197,7 +198,7 @@
               }
             },
             "might": {
-              "label": "Acide (puissance)",
+              "label": "Acide (Puissance)",
               "header": {
                 "level-8-armor": "En cas de coup critique, l'armure de la cible (le cas échéant) subit 3d6 dégâts d'acide (avant application de la Solidité). Si la cible a un Levé un bouclier, le bouclier subit ces dégâts à la place.",
                 "level-12-resistance": "Les dégâts d'acide infligés par cette propriété imprégnée ignorent les résistances.",
@@ -314,7 +315,7 @@
           },
           "energy-resistant": {
             "armor-label": "Résistant à l'énergie (Armure, {damage})",
-            "shield-label": "Résistant à l'énergie (Bouclier, {dégâts})",
+            "shield-label": "Résistant à l'énergie (Bouclier, {damage})",
             "armor-flavor": "Vous imprégnez l'armure pour vous protéger d'un type particulier d'énergie.",
             "shield-flavor": "Vous imprégnez le bouclier pour vous protéger d'un type particulier d'énergie.",
             "armor-effect": "Lorsque vous portez l'armure, vous obtenez une résistance {level} au type de dégâts d'énergie choisis. De plus, l'armure elle-même obtient la même résistance.",
