@@ -145,6 +145,11 @@
     "data": {
       "refinement": {
         "bludgeoning": "Arme (Contondante)",
+        "piercing": "Arme (Perforante)",
+        "slashing": "Arme (Tranchante)",
+        "armor-light": "Armure (Légère)",
+        "armor-medium": "Armure (Intermédiaire)",
+        "armor-heavy": "Armure (Lourde)",
         "armor-unarmored": "Armure (Sans armure)",
         "armor": {
           "+1": "C'est une armure +1. Elle accorde un bonus d'objet de +1 à la CA et peut être imprégnée une fois.",
