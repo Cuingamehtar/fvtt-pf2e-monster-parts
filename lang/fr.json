@@ -301,7 +301,8 @@
               "label": "Électricité (Puissance)",
               "level-8-arc": "Sur un coup critique, des arcs électriques se forment pour infliger une quantité égale de dégâts d'électricité à deux autres créatures de votre choix dans un rayon de 3 mètres de la cible.",
               "level-12-resistance": "Les dégâts électriques infligés par cette propriété imprégnée ignorent les résistances.",
-              "level-14-arc": "Sur un coup critique, des arcs électriques se forment et infligent une quantité égale de dégâts d'électricité à deux autres créatures de votre choix dans un rayon de 6 mètres autour de la cible."
+              "level-14-arc": "Sur un coup critique, des arcs électriques se forment et infligent une quantité égale de dégâts d'électricité à deux autres créatures de votre choix dans un rayon de 6 mètres autour de la cible.",
+              "level-20-weakness": "Sur une Frappe réussie avec l'arme, avant d'appliquer des dégâts d'électricité, la cible obtient une faiblesse de 1 contre l'électricité jusqu'au début de votre prochain tour."
             },
             "tech": {
               "label": "Électricité (Technique)",
@@ -334,7 +335,8 @@
               "label": "Feu (Puissance)",
               "level-8-persistent": "Sur un coup critique, les Frappes avec l'arme infligent 1d10 dégâts de feu persistants.",
               "level-12-resistance": "Les dégâts de feu infligés par cette propriété imprégnée (y compris les dégâts de feu persistants) ignorent les résistances.",
-              "level-14-persistent": "Sur un coup critique, les Frappes avec l'arme infligent 2d10 dégâts de feu persistants."
+              "level-14-persistent": "Sur un coup critique, les Frappes avec l'arme infligent 2d10 dégâts de feu persistants.",
+              "level-20-weakness": "Sur une Frappe réussie avec l'arme, avant d'appliquer des dégâts de feu, la cible obtient une faiblesse 1 contre le feu jusqu'au début de votre prochain tour."
             },
             "tech": {
               "label": "Feu (Technique)",
@@ -359,7 +361,8 @@
               "label": "Force (Puissance)",
               "level-10-push": "En cas de coup critique, si vous le souhaitez, vous pouvez forcer la cible à réussir un jet de Vigueur ou à être repoussée à 1,50 mètre de vous.",
               "level-12-resistance": "Les dégâts de force infligés par cette propriété imprégnée ignorent les résistances.",
-              "level-16-push": "En cas de coup critique, si vous le souhaitez, vous pouvez forcer la cible à réussir un jet de Vigueur ou être à repoussée à 3 mètres de vous."
+              "level-16-push": "En cas de coup critique, si vous le souhaitez, vous pouvez forcer la cible à réussir un jet de Vigueur ou être à repoussée à 3 mètres de vous.",
+              "level-20-weakness": "Lors d'une Frappe réussie avec l'arme, avant d'appliquer des dégâts de force, la cible obtient une faiblesse 1 contre la force jusqu'au début de votre prochain tour."
             },
             "tech": {
               "label": "Force (Technique)",
@@ -397,11 +400,17 @@
               "level-20-weird": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.qDjeG6dxT4aEEC6J]{Ennemi subconscient} une fois par jour."
             },
             "might": {
-              "label": "Mental (Puissance)"
+              "label": "Mental (Puissance)",
+              "level-10-stupefied": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupéfiée 1} pendant 1 round.",
+              "level-12-resistance": "Les dégâts mentaux infligés par cette propriété imprégnée ignorent les résistances.",
+              "level-16-stupefied": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupéfiée 2} pendant 1 round.",
+              "level-20-weakness": "Lors d'une Frappe réussie avec l'arme, avant d'appliquer les dégâts mentaux, la cible obtient une faiblesse 1 contre le mental jusqu'au début de votre prochain tour."
             },
             "tech": {
               "label": "Mental (Technique)",
+              "level-8-stupefied": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupéfiée 1} pendant 1 round.",
               "level-12-resistance": "Les dégâts mentaux infligés par cette propriété imprégnée (incluant les dégâts mentaux persistants) ignorent les résistances.",
+              "level-16-stupefied": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupéfiée 2} pendant 1 round.",
               "level-20-weakness": "Tant que l'ennemi subit des dégâts mentaux persistants à cause de la propriété imprégnée, l'état Stupéfié du coup critique dure jusqu'à ce que les dégâts persistants finissent ou pendant 1 round, selon ce qui est le plus long."
             }
           },
@@ -409,16 +418,24 @@
             "flavor": "Vous imprégnez l’arme d’un venin toxique.",
             "magic": {
               "label": "Poison (Magie)",
-              "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Vapeurs nocives} au rang 2, @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Dard de diablotin} au rang 2, @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Morsure d'araignée} une fois par jour chacun."
+              "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Morsure d'araignée} une fois par jour. ",
+              "level-6-spells": "L'arme peut lancer soit @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Vapeurs nocives} au rang 2, soit @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Morsure d'araignée} une fois par jour, mais pas les deux.",
+              "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Vapeurs nocives} au rang 2, @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Dard de diablotin} au rang 2, @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Morsure d'araignée} une fois par jour chacun.",
+              "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Vapeurs nocives} au rang 4, @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Dard de diablotin} au rang 2, @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Morsure d'araignée} au rang 2 et @UUID[Compendium.pf2e.spells-srd.Item.LVwmAH5NGvTuuQSU]{Nuée de dards de guêpes} une fois par jour chacun.",
+              "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Vapeurs nocives} au rang 6, @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Dard de diablotin} au rang 2, @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Morsure d'araignée} au rang 2, @UUID[Compendium.pf2e.spells-srd.Item.LVwmAH5NGvTuuQSU]{Nuée de dards de guêpes} et @UUID[Compendium.pf2e.spells-srd.Item.ayRXv0wQH00TTNZe]{Dard du ver des cavernes} une fois par jour chacun.",
+              "level-20-linnorm-sting": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.ZMY58Yk5hnyfeE3q]{Piqûre de linnorm} une fois par jour."
             },
             "might": {
               "label": "Poison (Puissance)",
               "level-8-persistent": "En cas de coup critique, la cible subit @Damage[1d10[persistent,poison]] dégâts de poison persistants.",
-              "level-12-resistance": "Les dégâts de poison infligés par cette propriété imprégnée ignorent les résistances."
+              "level-12-resistance": "Les dégâts de poison infligés par cette propriété imprégnée ignorent les résistances.",
+              "level-14-persistent": "En cas de coup critique, la cible subit @Damage[2d10[persistent,poison]] dégâts de poison persistants.",
+              "level-20-weakness": "Lors d'une Frappe réussie avec l'arme, avant d'appliquer les dégâts de poison, la cible obtient une faiblesse 1 contre le poison jusqu'au début de votre prochain tour."
             },
             "tech": {
               "label": "Poison (Technique)",
               "level-8-persistent": "En cas de coup critique, la cible subit @Damage[1d10[persistent,poison]] dégâts de poison persistants supplémentaires (Comme à l'ordinaire, les dégâts de poison persistants supplémentaire en cas de coup critique sont cumulatifs avec les dégâts de poisons persistants normaux mais vous ne les ajoutez qu'après avoir doublé les dégâts de poisons persistants normaux).",
+              "level-12-resistance": "Les dégâts de poison infligés par cette propriété imprégnée (incluant les dégâts de poison persistants) ignorent les resistances.",
               "level-16-condition": "À la fin du tour de la créature, si elle n'est pas parvenue à retirer les dégâts de poison persistants infligés par cette propriété imprégnée, choisissez entre @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Maladroit}, @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli}, ou @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupéfié}. La créature subit cet état avec une valeur de 1 ou augmente la valeur de son état de 1 si elle avait déjà cet état, jusqu'à un maximum de 3. Si la créature parvient à retirer les dégâts de poison persistants infligés par cette propriété, ces états se termine immédiatement. Si vous appliquez de nouveau le poison plus tard, la valeur de l'état repart de 0.",
               "level-20-drained": "En cas de coup critique, le poison érode la capacité de votre ennemi à résister davantage à l'empoisonnement. Il est @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drainé 1}."
             }
@@ -431,6 +448,7 @@
             "flavor": "Vous imprégnez l’objet de sens extraordinaires.",
             "level-4-activation-low-light": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentration)<br><strong>Frequence</strong> Une fois par jour<br>Vous obtenez vision nocturne pendant 1 heure.</p>",
             "level-6-permanent-low-light": "Vous obtenez vision nocturne.",
+            "level-8-activation-darkvision": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentration)<br><strong>Frequence</strong> une fois par jour<br>Vous obtenez vision dans le noir pendant 1 heure.</p>",
             "level-12-permanent-darkvision": "Vous obtenez vision dans le noir.",
             "level-14-activation-scent": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentration)<br><strong>Frequence</strong> Une fois par jour<br>Vous obtenez un odorat 9 mètres (imprécis) pendant 1 heure.</p>",
             "level-16-permanent-scent": "Vous obtenez vision dans le noir et odorat 9 mètres (imprécis).",
@@ -438,11 +456,13 @@
             "level-20-truesight": "Vous bénéficiez de manière constante des effets du sort @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]{Vision véritable} au rang 6."
           },
           "sonic": {
+            "flavor": "Vous imprégnez l'arme avec des ondes sonores retentissantes.",
             "might": {
               "label": "Son (Puissance)",
               "level-8-deafened": "En cas de coup critique, la cible doit réussir un jet de Vigueur ou être @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Sourde} pendant 1 minute ou 1 heure en cas d'échec critique.",
               "level-12-resistance": "Les dégâts de son infligés par cette propriété imprégnée ignorent les résistances.",
-              "level-14-deafened": "En cas de coup critique, la cible doit réussir un jet de Vigueur ou être @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Sourde} pendant 1 minute ou de manière permanente en cas d'échec critique."
+              "level-14-deafened": "En cas de coup critique, la cible doit réussir un jet de Vigueur ou être @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Sourde} pendant 1 minute ou de manière permanente en cas d'échec critique.",
+              "level-20-weakness": "Lors d'une Frappe réussie avec l'arme, avant d'appliquer les dégâts de son, la cible obtient une faiblesse 1 contre le son jusqu'au début de votre prochain tour."
             },
             "tech": {
               "label": "Son (Technique)",
@@ -455,11 +475,16 @@
           "strength": {
             "label": "Force",
             "flavor": "Vous imprégnez l'objet d'une <em>force</em> féroce.",
-            "level-17-apex": "Lorsque vous investissez l'objet, votre Force augmente de +1 ou passe à +4, si la valeur est plus élevée. L'objet obtient le trait apogée."
+            "level-8-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Cloué à terre} une fois par jour comme un sort primordial.",
+            "level-14-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Cloué à terre} une fois par heure comme un sort primordial.",
+            "level-17-apex": "Lorsque vous investissez l'objet, votre Force augmente de +1 ou passe à +4, si la valeur est plus élevée. L'objet obtient le trait apogée.",
+            "level-20-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Cloué à terre} une fois par minute comme un sort primordial."
           },
           "sturdy": {
             "label": "Robuste",
-            "effect": "La Solidité de ce bouclier augmente de {hardness}. Ses PV augmentent du double de sa Solidité et son SR de moitié de cette valeur."
+            "flavor": "Vous imprégnez ce bouclier pour le rendre encore plus solide que les autres boucliers.",
+            "effect": "La Solidité de ce bouclier augmente de {hardness}. Ses PV augmentent du double de sa Solidité et son SR de moitié de cette valeur.",
+            "no-effect": "La différence entre le niveau de cette imprégnation et le niveau de l'objet est trop importante. Cette imprégnation a aucun effet."
           },
           "wild": {
             "label": "Sauvage (Puissance)",
@@ -472,6 +497,7 @@
           },
           "winged": {
             "label": "Ailé",
+            "flavor": "Vous imprégnez l'armure avec des ailes, qui sortent du dos de l'armure.",
             "level-6-landing": "L'armure lance @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Atterrissage en douceur} sur vous automatiquement lorsque vous tombez, cet avantage ne peut plus s'activer pendant 1 heure.",
             "level-8-landing": "L'armure lance @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Atterrissage en douceur} sur vous automatiquement lorsque vous tombez, cet avantage ne peut plus s'activer pendant 10 minutes.",
             "level-10-fly": "L'armure peut lancer @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Vol} sur vous une fois par jour.",
@@ -483,7 +509,10 @@
           "wisdom": {
             "label": "Sagesse",
             "flavor": "Vous imprégnez l'objet d'une <em>sagesse</em> sagace.",
-            "level-17-apex": "Lorsque vous investissez l'objet, votre Sagesse augmente de +1 ou passe à +4, si la valeur est plus élevée. L'objet obtient le trait apogée."
+            "level-8-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augure} une fois par jour comme un sort occulte.",
+            "level-14-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augure} une fois par heure comme un sort occulte.",
+            "level-17-apex": "Lorsque vous investissez l'objet, votre Sagesse augmente de +1 ou passe à +4, si la valeur est plus élevée. L'objet obtient le trait apogée.",
+            "level-20-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augure} une fois par minute comme un sort occulte."
           }
         },
         "elemental-storm": {
@@ -491,14 +520,24 @@
             "flavor": "Vous imprégnez l’arme de l’énergie du vide de la mort.",
             "magic": {
               "label": "Mort (Magie)",
-              "level-6-spells": "L'arme peut lancer soit @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Mise à mal} au rang 2, soit @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Dégradation soudaine} une fois par jour, mais pas les deux."
+              "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Mise à mal} un fois par jour.",
+              "level-6-spells": "L'arme peut lancer soit @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Mise à mal} au rang 2, soit @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Dégradation soudaine} une fois par jour, mais pas les deux.",
+              "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Mise à mal} au rang 3 et @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Dégradation soudaine} au rang 3 une fois par jour chacun.",
+              "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Mise à mal} au rang 4, @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Dégradation soudaine} au rang 4 et @UUID[Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt]{Vierge vampirique} une fois par jour chacun.",
+              "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Mise à mal} au rang 6, @UUID[Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt]{Vierge vampirique} au rang 6 et <em>Lever la faux de la Faucheuse</em> (source : Battlezoo Bestiary Elemental Storm) (l'imprégnation négative originale utilisait @UUID[Compendium.pf2e.spells-srd.Item.6lO6uMQxbqmYho0e]{Nécroser}) une fois par jour chacun.",
+              "level-20-wails-of-the-damned": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.FEsuyf203wTNE2et]{Plainte des damnés} une fois par jour."
             },
             "might": {
               "label": "Mort (Puissance)",
-              "level-10-enfeebled": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1} pendant 1 round."
+              "level-10-enfeebled": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1} pendant 1 round.",
+              "level-12-resistance": "Les dégâts du vide infligés par cette propriété imprégnée ignorent les resistances.",
+              "level-16-enfeebled": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 2} pendant 1 round.",
+              "level-20-weakness": "Lors d'une Frappe réussie avec l'arme, avant d'appliquer les dégâts du vide, la cible obtient une faiblesse 1 contre le vide jusqu'au début de votre prochain tour."
             },
             "tech": {
               "label": "Mort (Technique)",
+              "level-8-enfeebled": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 1} pendant 1 round.",
+              "level-12-resistance": "Les dégâts du vide infligés par cette propriété imprégnée (incluant les dégâts du vide persistants) ignorent les resistances.",
               "level-16-enfeebled": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 2} pendant 1 round.",
               "level-20-weakness": "Tant que l'ennemi subit des dégâts du vide persistants à cause de la propriété imprégnée, l'état Affaibli du coup critique dure jusqu'à ce que les dégâts persistants se terminent ou pendant 1 round, selon ce qui est le plus long."
             }
@@ -507,6 +546,7 @@
             "flavor": "Vous imprégnez l'arme avec le pouvoir purifiant de l'énergie vitale afin de blesser les morts-vivants. Comme à l'ordinaire, les dégâts de vitalité ne blesse que les mort-vivants et les autres créatures avec Guérison du vide, tels que les dhampirs.",
             "magic": {
               "label": "Vie (Magie)",
+              "level-4-spells": "L'arme peut lancer  @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} une fois par jour.",
               "level-6-spells": "L'arme peut lancer  @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 2 une fois par jour.",
               "level-8-spells": "L'arme peut lancer  @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 2 et @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 3 une fois par jour chacun.",
               "level-12-spells": "L'arme peut lancer  @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 4, @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 3, et @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Souffle de vie} une fois par jour chacun.",
@@ -515,12 +555,15 @@
             },
             "might": {
               "label": "Vie (Puissance)",
+              "level-6-enfeebled": "En cas de coup critique, le mort-vivant est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 1} jusqu'à la fin de votre prochain tour.",
+              "level-10-resistance": "Les dégâts de vitalité infligés par cette propriété imprégnée ignorent les resistances.",
               "level-14-enfeebled": "Sur un coup critique, le mort-vivant doit effectuer un jet de Vigueur.\nEn cas de succès critique, il est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 1} jusqu'à la fin de votre prochain tour. En cas de succès, il est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 2} pendant la même durée. En cas d'échec, il est  @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 3} pendant la même durée et en cas d'échec critique, il est détruit. Cet effet possède le trait mise hors de combat.",
               "level-20-weakness": "Lors d'une Frappe réussie avec l'arme, avant d'appliquer les dégâts de vitalité, la cible obtient une faiblesse 1 contre la vitalité jusqu'au début de votre prochain tour."
             },
             "tech": {
               "label": "Vie (Technique)",
               "level-6-enfeebled": "Sur un coup critique, le mort-vivant est aussi @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 1} jusqu'à la fin de votre prochain tour.",
+              "level-10-resistance": "Les dégâts de vitalité infligés par cette propriété imprégnée (incluant les dégâts de vitalité persistants) ignorent les resistances.",
               "level-14-enfeebled": "En cas de coup critique, le mort-vivant est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 2} jusqu'à la fin de votre prochain tour. Il doit aussi effectuer un jet de Vigueur. En cas d'échec, il est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 3}  jusqu'à la fin de votre prochain tour au lieu d'être Affaibli 2, et en cas d'échec critique, il est détruit. Cet effet a le trait mise hors de combat.",
               "level-20-counteract": "Les créatures subissant des dégâts de vitalité persistants dus à cette propriété imprégnée ont des difficultés pour guérir à partir de l'énergie du vide en raison de l'énergie vitale scintillante qui émerge à travers elles. Si un effet du vide devrait permettre à la créature de récupérer de Points de Vie, il doit tout d'abord réussir un jet pour contrer la propriété imprégnée de rang 10 avec un DD 43. Même sur un jet réussi pour contrer l'effet, les Points de vie récupérés sont réduits de 1d10. Sur une succès critique, la créature récupère la totalité du montant."
             }
