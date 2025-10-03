@@ -101,7 +101,7 @@
       },
       "monster-parts-after-combat": {
         "name": "Assign Monster Parts After Combat",
-        "hint": "After-combat dialog to select npcs to assign monster parts. \"Dead\" automatically assigns monster parts to dead NPCs. \"None\" skips the assignment",
+        "hint": "After-combat dialog to select NPCs to assign monster parts. \"Dead\" automatically assigns monster parts to dead NPCs. \"None\" skips the assignment",
         "none": "None",
         "dead": "Dead",
         "dialog": "Dialog"
@@ -115,7 +115,7 @@
       },
       "armor-refinements": {
         "name": "Default Armor Refinements",
-        "hint": "BZ armor refinements can't be checked by a predicate. Whether they are suitable is up to GM. This setting sets their default behavior.",
+        "hint": "Battlezoo bestiary armor refinements can't be checked by a predicate. Whether they are suitable is up to GM. This setting sets their default behavior.",
         "none": "None",
         "ask": "Ask",
         "all": "All"
@@ -224,14 +224,14 @@
               "label": "Bane ({creature}, Might)",
               "level-6-enfeebled": "On a critical hit, you sap the strength of a creature of type {creature}, causing it to be @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
               "level-10-resistance": "Against a creature of type {creature}, the weapon's base damage ignores the first 5 points of the target's resistance.",
-              "level-14-enfeebled": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} must attempt a Fortitude save. On a critical success, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn, on a success, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn, on a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn, and on a critical failure, it's destroyed. This effect has the incapacitation trait."
+              "level-14-enfeebled": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of type {creature} must attempt a Fortitude save. On a critical success, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn, on a success, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn, on a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn, and on a critical failure, it's destroyed. This effect has the incapacitation trait."
             },
             "tech": {
               "label": "Bane ({creature}, Technique)",
-              "level-6-enfeebled": "On a critical hit, you sap the strength of a creature of the bane type, causing it to be @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
+              "level-6-enfeebled": "On a critical hit, you sap the strength of a creature of type {creature}, causing it to be @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
               "level-10-resistance": "Against a creature of type {creature}, the weapon's base damage ignores the first 5 points of the target's resistance and the persistent bleed damage from this imbued property ignores the target's resistance.",
-              "level-14-enfeebled": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn. It must also attempt a Fortitude save. On a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn, and on a critical failure, it's destroyed. This effect has the incapacitation trait.",
-              "level-20-enfeebled": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of of type {creature} is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}. It must also attempt a Fortitude save. On a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3}, and on a critical failure, it's destroyed. This effect has the incapacitation trait. The enfeebled condition from a critical hit lasts as long as the persistent bleed damage lasts, or until the end of your next turn, whichever is longer."
+              "level-14-enfeebled": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of type {creature} is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn. It must also attempt a Fortitude save. On a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn, and on a critical failure, it's destroyed. This effect has the incapacitation trait.",
+              "level-20-enfeebled": "The weapon can outright slay creatures of type {creature}. On a critical hit, a creature of type {creature} is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}. It must also attempt a Fortitude save. On a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3}, and on a critical failure, it's destroyed. This effect has the incapacitation trait. The enfeebled condition from a critical hit lasts as long as the persistent bleed damage lasts, or until the end of your next turn, whichever is longer."
             }
           },
           "charisma": {
@@ -429,7 +429,7 @@
             "might": {
               "label": "Poison (Might)",
               "level-8-persistent": "On a critical hit, the target takes @Damage[1d10[persistent,poison]] damage.",
-              "level-12-resistance": "The mental damage dealt by this imbued property ignores resistances.",
+              "level-12-resistance": "The poison damage dealt by this imbued property ignores resistances.",
               "level-14-persistent": "On a critical hit, the target takes @Damage[2d10[persistent,poison]] damage.",
               "level-20-weakness": "On a successful Strike with the weapon, before applying poison damage, the target gains weakness 1 to poison until the beginning of your next turn."
             },
@@ -566,7 +566,7 @@
               "level-6-enfeebled": "On a critical hit, the undead is also @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
               "level-10-resistance": "The vitality damage dealt by this imbued property (including persistent vitality damage) ignores resistances.",
               "level-14-enfeebled": "On a critical hit, the undead is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn. It must also attempt a Fortitude save. On a failure, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn instead of enfeebled 2, and on a critical failure, it’s destroyed. This effect has the incapacitation trait.",
-              "level-20-counteract": "Creatures suffering persistent positive damage from this imbued property have difficulty healing from void energy due to the coruscating vitality energy surging through them. If a void effect would cause the creature to recover Hit Points, it must first succeed at a counteract check against the imbued property’s level of 20 and DC of 43. Even on a successful counteract check, the Hit Points recovered are reduced by 1d10. On a critical success, the creature recovers the full amount."
+              "level-20-counteract": "Creatures suffering persistent vitality damage from this imbued property have difficulty healing from void energy due to the coruscating vitality energy surging through them. If a void effect would cause the creature to recover Hit Points, it must first succeed at a counteract check against the imbued property’s rank of 10 and DC of 43. Even on a successful counteract check, the Hit Points recovered are reduced by 1d10. On a critical success, the creature recovers the full amount."
             }
           }
         }
