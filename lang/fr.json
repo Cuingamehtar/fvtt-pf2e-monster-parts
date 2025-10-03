@@ -53,7 +53,7 @@
       },
       "after-combat-dialog": {
         "title": "Attribuer des parties de monstre",
-        "value": "Valeur : {valeur} po",
+        "value": "Valeur : {value} po",
         "total": "Valeur totale : {value} po"
       }
     },
@@ -145,11 +145,6 @@
     "data": {
       "refinement": {
         "bludgeoning": "Arme (Contondante)",
-        "piercing": "Arme (perforante)",
-        "slashing": "Arme (tranchante)",
-        "armor-light": "Armure (légère)",
-        "armor-medium": "Armure (intermédiaire)",
-        "armor-heavy": "Armure (lourde)",
         "armor-unarmored": "Armure (Sans armure)",
         "armor": {
           "+1": "C'est une armure +1. Elle accorde un bonus d'objet de +1 à la CA et peut être imprégnée une fois.",
