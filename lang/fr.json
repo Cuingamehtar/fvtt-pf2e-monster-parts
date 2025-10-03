@@ -3,6 +3,7 @@
     "monster-parts": "Parties de monstre",
     "monster-part": {
       "label": "Partie de monstre",
+      "create-button-label": "Créer des parties de monstre",
       "description-header": "Partie de monstre (Valeur : {value} po)",
       "error-not-monster-part": "Cet objet n'est pas une partie de monstre.",
       "error-not-physical-item": "Cet objet n'est pas un objet physique."
