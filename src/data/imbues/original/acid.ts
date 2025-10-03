@@ -294,6 +294,7 @@ export function createImbueAcid(): MaterialData[] {
                     return helpers.damage.effect({
                         type: "acid",
                         value: damage,
+                        category: "persistent",
                         label: "pf2e-monster-parts.damage.type.acid",
                     });
                 },

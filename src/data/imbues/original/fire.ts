@@ -170,7 +170,7 @@ export function createImbueFire(): MaterialData[] {
                 ...helpers.leveledEffects(
                     [8, 14],
                     ["1", "2"],
-                    (damage: RollString) => ({
+                    (dice: RollString) => ({
                         type: "RuleElement",
                         rule: {
                             key: "DamageDice",
@@ -178,7 +178,7 @@ export function createImbueFire(): MaterialData[] {
                             damageType: "fire",
                             category: "persistent",
                             dieSize: "d10",
-                            diceNumber: damage,
+                            diceNumber: dice,
                             label: lkey("might.label"),
                             critical: true,
                         },

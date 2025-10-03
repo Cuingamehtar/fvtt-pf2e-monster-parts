@@ -255,8 +255,8 @@ export function createImbueForce(): MaterialData[] {
                     }),
                 },
                 ...helpers.leveledEffects(
-                    [4, 8, 14, 18],
-                    ["1", "d6", "d8", "d10"],
+                    [4, 10],
+                    ["1", "d6"],
                     (damage: RollString) =>
                         helpers.damage.effect({
                             type: "force",

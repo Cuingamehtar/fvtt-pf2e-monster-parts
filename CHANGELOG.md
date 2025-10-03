@@ -4,13 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [0.2.7] - 2025-10-03
+## [0.2.8] - 2025-10-03
+### Fixed
+- Fix acid and force persistent damage
 
+## [0.2.7] - 2025-10-03
 ### Fixed
 - Fix a couple of localization errors
 
 ## [0.2.6] - 2025-10-03
-
 ### Added
 - Add additional automation for Fire and Poison imbuements
 - Add French localization (credits to **rectulo** and **RadicalBlue**)
@@ -19,12 +21,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Improved styling of dialogs
 
 ## [0.2.5] - 2025-09-29
-
 ### Added
 - Add Automatic Refinement Progression option
 
 ## [0.2.4] - 2025-09-29
-
 ### Added
 - Add a simple after-combat dialog to assign monster parts to defeated NPCs
 - Add weakness to the list of extended actor roll options
@@ -36,12 +36,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Fix Wisdom imbuement not applying to Perception items
 
 ## [0.2.3] - 2025-09-29
-
 ### Fixed
 - Fix Create Refined Item button (unknowingly broken in the previous update)
 
 ## [0.2.2] - 2025-09-28
-
 ### Added
 - Add dynamic adjustment of refined items price and level
 - Specific materials levels are now stored in the item flags and can be used as roll data for Rule Elements and dynamic header labels
@@ -52,12 +50,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Fix Sturdy imbuement's description having incorrect text
 
 ## [0.2.1] - 2025-09-27
-
 ### Fixed
 - Fix some imbuements' data
 
 ## [0.2.0] - 2025-09-27
-
 ### Added
 - Add setting to change allowed traits for Bane material
 - Add Homebrew materials support
@@ -67,7 +63,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Remove minimum increment on material value
 
 ## [0.1.3] - 2025-08-22
-
 ### Added
 - Add Winged imbuement automation
 - Add an option to automatically refresh items when GM logs in (on by default)
@@ -82,7 +77,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Fix incorrect shield and equipment level thresholds
 
 ## [0.1.2] - 2025-08-18
-
 ### Added
 - Add this changelog file
 - Add Sturdy imbuement
@@ -92,7 +86,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Fix an error in material level calculation
 
 ## [0.1.1] - 2025-08-17
-
 ### Fixed
 - Fix typo and a broken link in the language file
 - Fix header being unreadable when using dark theme
