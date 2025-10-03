@@ -67,7 +67,7 @@ Hooks.on(
         btn.classList.add("create-monster-parts");
         btn.setAttribute(
             "data-tooltip",
-            "pf2e-monster-parts.create-button-label",
+            "pf2e-monster-parts.monster-part.create-button-label",
         );
         btn.addEventListener("click", () => MonsterPart.fromCreature(actor));
 
