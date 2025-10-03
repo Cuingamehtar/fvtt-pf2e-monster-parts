@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.2.7] - 2025-10-03
 
 ### Fixed
-- Improved styling of dialogs
+- Fix a couple of localization errors
 
 ## [0.2.6] - 2025-10-03
 
