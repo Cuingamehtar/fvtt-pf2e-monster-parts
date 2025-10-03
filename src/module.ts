@@ -27,8 +27,8 @@ Hooks.once("init", () => {
             for (const actor of game.actors) {
                 for (const item of actor.items) {
                     if (
-                        item.getFlag(MODULE_ID, "refined-item") &&
-                        item.isOfType("physical")
+                        item.isOfType("physical") &&
+                        RefinedItem.hasRefinedItemData(item)
                     ) {
                         const refinedItem = new RefinedItem(item);
                         refinedItem.updateItem();
@@ -65,7 +65,10 @@ Hooks.on(
         const btn = document.createElement("a");
         btn.innerHTML = '<i class="fa-solid fa-fw fa-skull"></i>';
         btn.classList.add("create-monster-parts");
-        btn.setAttribute("data-tooltip", "Create Monster Parts");
+        btn.setAttribute(
+            "data-tooltip",
+            "pf2e-monster-parts.create-button-label",
+        );
         btn.addEventListener("click", () => MonsterPart.fromCreature(actor));
 
         elem?.insertBefore(btn, elem.firstChild);
@@ -76,26 +79,20 @@ Hooks.on(
     "getItemSheetPF2eHeaderButtons",
     (sheet: ItemSheetPF2e<PhysicalItemPF2e>, buttons) => {
         const item = sheet.object;
-        if (item.getFlag(MODULE_ID, "monster-part")) {
+        if (MonsterPart.hasMonsterPartData(item)) {
             buttons.unshift({
                 icon: "fas fa-skull",
                 label: t("dialog.monster-part-editor.button"),
                 class: "configure-monster-part",
-                onclick: () =>
-                    configureMonsterPart(
-                        new MonsterPart(item as PhysicalItemPF2e),
-                    ),
+                onclick: () => configureMonsterPart(new MonsterPart(item)),
             });
         }
-        if (item.getFlag(MODULE_ID, "refined-item")) {
+        if (RefinedItem.hasRefinedItemData(item)) {
             buttons.unshift({
                 icon: "fas fa-skull",
                 label: t("dialog.refined-item-editor.button"),
                 class: "configure-refined-item",
-                onclick: () =>
-                    configureRefinedItem(
-                        new RefinedItem(item as PhysicalItemPF2e),
-                    ),
+                onclick: () => configureRefinedItem(new RefinedItem(item)),
             });
         }
     },

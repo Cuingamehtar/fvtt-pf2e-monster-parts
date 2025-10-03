@@ -3,6 +3,7 @@
     "monster-parts": "Monster Parts",
     "monster-part": {
       "label": "Monster Part",
+      "create-button-label": "Create Monster Parts",
       "description-header": "Monster Part (Value: {value} gp)",
       "error-not-monster-part": "This item is not a monster part.",
       "error-not-physical-item": "This item is not a physical item."
