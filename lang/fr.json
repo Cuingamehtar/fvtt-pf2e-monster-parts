@@ -70,7 +70,7 @@
       }
     },
     "damage": {
-      "strikes": "Les frappes avec l'arme infligent  {damage} supplémentaires.",
+      "strikes": "Les frappes avec l'arme infligent {damage} supplémentaires.",
       "type": {
         "acid": "{value} dégât(s) d'acide",
         "cold": "{value} dégât(s) de froid",
@@ -163,11 +163,11 @@
         "shield": {
           "label": "Bouclier",
           "label-buckler": "Bouclier (targe)",
-          "inline-note": "Ce bouclier a une solidité {hardness}, un SR {bt} et {hp} PV.",
+          "inline-note": "Ce bouclier possède une Solidité {hardness}, un SR {bt} et {hp} PV.",
           "imbuing": "Il peut être imprégné une fois."
         },
         "skill": {
-          "item-bonus": "Cet objet accorde +{bonus} bonus d'objet aux tests de/d'{skill}.",
+          "item-bonus": "Cet objet accorde un bonus d'objet de +{bonus}  aux tests de/d'{skill}.",
           "imbuing": "Il peut être imprégné une fois."
         },
         "weapon": {
@@ -180,7 +180,7 @@
         }
       },
       "imbuement": {
-        "add-cantrip": "L'arme peut lancer {sort} comme un tour de magie, intensifié à la moitié du niveau de l'objet arrondi au supérieur.",
+        "add-cantrip": "L'arme peut lancer {spell} comme un tour de magie, intensifié à la moitié du niveau de l'objet arrondi au supérieur.",
         "vulnerability-before-strike": "Avant d'appliquer des dégâts supplémentaires, la cible obtient une faiblesse de 1 contre <em>{damage}</em> jusqu'au début de votre prochain tour.",
         "battlezoo-bestiary": {
           "acid": {
@@ -217,7 +217,7 @@
             }
           },
           "bane": {
-            "damage": "Les Frappes avec l'arme infligent {damage} dégâts supplémentaires du type de dégâts de base de l'arme aux créatures du type {creature}.",
+            "damage": "Les Frappes avec l'arme infligent {damage} dégât(s) supplémentaire(s) du type de dégâts de base de l'arme aux créatures du type {creature}.",
             "persistent": "Les Frappes portées avec l'arme provoquent une hémorragie externe ou interne chez les créatures de type {créature}. Contre ces créatures, les Frappes portées avec l'arme infligent {damage} dégâts de saignement.",
             "flavor": "Vous imprégnez l'arme d'énergies générées par votre précédente défaite des créatures dont les parties se trouvent à l'intérieur ou d'énergies anathèmes contre un certain type de créature, afin de rendre l'arme particulièrement efficace contre un type spécifique de créature.",
             "might": {
@@ -291,7 +291,7 @@
             "flavor": "Vous imprégnez l'arme d'une <em>électricité</em> bouleversante.",
             "magic": {
               "label": "Électricité (Magie)",
-              "level-4-spells": "L'arme peut lancer  @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Décharge électrique} au rang 1 une fois par jour.",
+              "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Décharge électrique} au rang 1 une fois par jour.",
               "level-6-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Décharge électrique} au rang 2 une fois par jour.",
               "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Décharge électrique} au rang 2 et @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2]{Éclair} une fois par jour chacun.",
               "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} au rang 2, @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2]{Éclair} au rang 4 et @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Tempête d'éclairs} une fois par jour chacun.",
@@ -318,7 +318,7 @@
             "shield-label": "Résistant à l'énergie (Bouclier, {damage})",
             "armor-flavor": "Vous imprégnez l'armure pour vous protéger d'un type particulier d'énergie.",
             "shield-flavor": "Vous imprégnez le bouclier pour vous protéger d'un type particulier d'énergie.",
-            "armor-effect": "Lorsque vous portez l'armure, vous obtenez une résistance {level} au type de dégâts d'énergie choisis. De plus, l'armure elle-même obtient la même résistance.",
+            "armor-effect": "Lorsque vous portez l'armure, vous obtenez une résistance {level} contre le type de dégâts d'énergie choisis. De plus, l'armure elle-même obtient la même résistance.",
             "shield-effect": "En utilisant le bouclier, vous obtenez une résistance {level} contre le type de dégâts d'énergie choisi. De plus, le bouclier lui-même obtient la même résistance (appliquée après avoir réduit les dégâts de la Solidité du bouclier). Vous pouvez utiliser Blocage au bouclier à chaque fois que vous devriez subir le type de dégâts choisi, en plus de son déclencheur habituel."
           },
           "fire": {
@@ -329,7 +329,7 @@
               "level-6-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t]{Cracher du feu} au rang 2 une fois par jour.",
               "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Flamme flottante} et @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Boule de feu} une fois par jour chacun.",
               "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Flamme flottante}, au rang 4 @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Boule de feu} et @UUID[Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu]{Mur de feu} une fois par jour chacun.",
-              "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Flamme flottante}, @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Boule de feu} et @UUID[Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu]{Mur de feu}  au rang 6 une fois par jour chacun.",
+              "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Flamme flottante}, @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Boule de feu} et @UUID[Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu]{Mur de feu} au rang 6 une fois par jour chacun.",
               "level-20-falling-stars": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.jrBa9deU2ULFWvSl]{Chute d'étoiles} une fois par jour."
             },
             "might": {
@@ -547,12 +547,12 @@
             "flavor": "Vous imprégnez l'arme avec le pouvoir purifiant de l'énergie vitale afin de blesser les morts-vivants. Comme à l'ordinaire, les dégâts de vitalité ne blesse que les mort-vivants et les autres créatures avec Guérison du vide, tels que les dhampirs.",
             "magic": {
               "label": "Vie (Magie)",
-              "level-4-spells": "L'arme peut lancer  @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} une fois par jour.",
-              "level-6-spells": "L'arme peut lancer  @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 2 une fois par jour.",
-              "level-8-spells": "L'arme peut lancer  @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 2 et @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 3 une fois par jour chacun.",
-              "level-12-spells": "L'arme peut lancer  @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 4, @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 3, et @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Souffle de vie} une fois par jour chacun.",
-              "level-16-spells": "L'arme peut lancer  @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 5, @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 5, @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Souffle de vie} et @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Régénération} une fois par jour chacun.",
-              "level-20-spells": "L'arme peut lancer  @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 8, @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 5, @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Souffle de vie} et @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Régénération} au rang 8 une fois par jour chacun."
+              "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} une fois par jour.",
+              "level-6-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 2 une fois par jour.",
+              "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 2 et @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 3 une fois par jour chacun.",
+              "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 4, @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 3, et @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Souffle de vie} une fois par jour chacun.",
+              "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 5, @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 5, @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Souffle de vie} et @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Régénération} une fois par jour chacun.",
+              "level-20-spells": "L'arme peut lancer@UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 8, @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 5, @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Souffle de vie} et @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Régénération} au rang 8 une fois par jour chacun."
             },
             "might": {
               "label": "Vie (Puissance)",
