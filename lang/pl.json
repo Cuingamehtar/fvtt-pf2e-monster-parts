@@ -1,0 +1,577 @@
+{
+  "pf2e-monster-parts": {
+    "monster-parts": "Części Potworów",
+    "monster-part": {
+      "label": "Część potwora",
+      "create-button-label": "Stwórz części potwora",
+      "description-header": "Część potwora (wartość: {value} sz)",
+      "error-not-monster-part": "Ten przedmiot nie jest częścią potwora.",
+      "error-not-physical-item": "Ten przedmiot nie jest przedmiotem fizycznym."
+    },
+    "refined-item": {
+      "label": "Udoskonalony przedmiot",
+      "warn-item-already-refined": "{item} jest już przedmiotem udoskonalonym.",
+      "error-item-is-monster-part": "Przedmiot zawiera dane części potwora, nie może być użyty jako podstawa do wytworzenia przedmiotu udoskonalonego.",
+      "error-not-refined-item": "Ten przedmiot nie jest przedmiotem udoskonalonym.",
+      "error-no-applicable-refinements": "Ten typ przedmiotu nie ma żadnych odpowiednich udoskonaleń.",
+      "error-not-physical-item": "Ten przedmiot nie jest przedmiotem fizycznym.",
+      "imported-from-compendium": "Udoskonalona wersja tego przedmiotu została stworzona w głównej kolekcji przedmiotów."
+    },
+    "dialog": {
+      "default-title": "Wybierz opcję",
+      "choose-material": {
+        "title": "Wybierz rodzaj materiału",
+        "count": "Liczba części potwora",
+        "error-no-applicable-material": "Ta część potwora nie ma odpowiedniego materiału.",
+        "quantity-title": "Liczba części potwora do spożycia"
+      },
+      "confirm-apply-material": {
+        "title": "Potwierdź zastosowanie materiału",
+        "content": "<p>To doda <strong>{value} sz</strong> fo <strong>{material}</strong> materiału przedmiotu i usunie {quantity} części potwora, jeśli jest ona własnością aktora (usuń przedmiot, jeśli ostateczna ilość wynosi 0).</p>"
+      },
+      "slider": {
+        "value": "Wartość"
+      },
+      "create-refined-item": {
+        "content": "Przeciągnij przedmiot tutaj",
+        "title": "Utwórz udoskonalony przedmiot"
+      },
+      "monster-part-editor": {
+        "refinements": "Udoskonalenia",
+        "imbuements": "Nasycenia",
+        "value": "Wartość",
+        "button": "Edytuj część potwora"
+      },
+      "refined-item-editor": {
+        "refinement": "Udoskonalenie",
+        "imbuement": "Nasycenie",
+        "new-imbuement": "Nowe nasycenie",
+        "refinement-type": "Typ udoskonalenia",
+        "imbuement-type": "Typ nasycenia",
+        "value": "Wartość",
+        "button": "Edytuj udoskonalony przedmiot"
+      },
+      "after-combat-dialog": {
+        "title": "Przypisz części potwora",
+        "value": "Wartość: {value} sz",
+        "total": "Całkowita wartość: {value} sz"
+      }
+    },
+    "material": {
+      "refinement": "Udoskonalenie",
+      "imbuement": "Nasycenie",
+      "value": "Wartość",
+      "item": {
+        "name-owned": "Części potwora {actor}",
+        "name": "Części Potworów"
+      },
+      "editor": {
+        "title": "Edytuj dostarczone materiały"
+      }
+    },
+    "damage": {
+      "strikes": "Ataki tą bronią zadają dodatkowo {damage}.",
+      "type": {
+        "acid": "{value} obrażenia od kwasu",
+        "cold": "{value} obrażenia od zimna",
+        "electricity": "{value} obrażenia od elektryczności",
+        "fire": "{value} obrażenia od ognia",
+        "force": "{value} obrażenia od mocy",
+        "mental": "{value} obrażenia mentalne",
+        "poison": "{value} obrażenia od trucizny",
+        "sonic": "{value} obrażenia od dźwięku",
+        "vitality": "{value} obrażenia od witalności",
+        "void": "{value} obrażenia od pustki",
+        "precision": "{value} obrażenia precyzyjne",
+        "persistentAcid": "{value} trwałe obrażenia od kwasu",
+        "persistentCold": "{value} trwałe obrażenia od zimna",
+        "persistentElectricity": "{value} trwałe obrażenia od elektryczności",
+        "persistentFire": "{value} trwałe obrażenia od ognia",
+        "persistentForce": "{value} trwałe obrażenia od mocy",
+        "persistentMental": "{value} trwałe obrażenia mentalne",
+        "persistentPoison": "{value} trwałe obrażenia od trucizny",
+        "persistentSonic": "{value} trwałe obrażenia od dźwięku",
+        "persistentVitality": "{value} trwałe obrażenia od witalności",
+        "persistentVoid": "{value} trwałe obrażenia od pustki"
+      }
+    },
+    "settings": {
+      "actor-lootable": {
+        "name": "Spraw, by postacie mogły być plądrowane",
+        "hint": "Pozwala graczom na zbieranie łupów po stworzeniu części potworów."
+      },
+      "monster-parts-after-combat": {
+        "name": "Przypisz części potworów po walce",
+        "hint": "Okno dialogowe po walce służące do wyboru postaci niezależnych, którym przypisuje się części potworów. Opcja „Martwi” automatycznie przypisuje części potworów do martwych postaci niezależnych. Opcja „Brak” pomija przypisywanie.",
+        "none": "Brak",
+        "dead": "Martwy",
+        "dialog": "Okno dialogowe"
+
+      },
+      "variant": {
+        "name": "Wariant",
+        "light": "Lekki",
+        "hybrid": "Hybrydowy",
+        "full": "Pełny"
+      },
+      "armor-refinements": {
+        "name": "Domyślne udoskonalenia pancerza",
+        "hint": "Ulepszenia zbroi z bestiariusza Battlezoo nie mogą być sprawdzane za pomocą predykatu. To, czy są one odpowiednie, zależy od MG. To ustawienie określa ich domyślne zachowanie.",
+        "none": "Brak",
+        "ask": "Zapytaj",
+        "all": "Wszystkie"
+      },
+      "refresh-refined-items": {
+        "name": "Odśwież udoskonalone przedmioty",
+        "hint": "Aktualizuj udoskonalone przedmioty dla każdego aktora w zakładce aktorów, gdy MG się zaloguje."
+      },
+      "bane-traits": {
+        "name": "Cechy Zguby",
+        "hint": "Wybrane cechy będą miały swój specyficzny materiał Zguby.",
+        "confirm-reset": "Czy chcesz zresetować wybór do wartości domyślnej? Wymaga ponownego załadowania."
+      },
+      "homebrew-folder": {
+        "name": "Folder zasad domowych",
+        "hint": "Ścieżka do zawartości zasad domowych. Wystąpienia „@world” w ścieżce zostaną zastąpione ścieżką do bieżącego świata."
+      },
+      "show-debug-info": {
+        "name": "Pokaż informacje dotyczące debugowania",
+        "hint": "Obecnie pokazuje tylko informacje o zastosowanych efektach nasycenia (dostępne za pośrednictwem edytora części potwora)."
+      },
+      "automatic-refinement-progression": {
+        "name": "Automatyczny Postęp Udoskonalania",
+        "hint": "Ustawia poziom udoskonalenia równy poziomowi właściciela. Tylko na bohaterze. Wymaga aktywnego MG."
+      }
+    },
+    "data": {
+      "refinement": {
+        "bludgeoning": "Broń (Obuchowe)",
+        "piercing": "Broń (Kłute)",
+        "slashing": "Broń (Cięte)",
+        "armor-light": "Pancerz (Lekki)",
+        "armor-medium": "Pancerz (Średni)",
+        "armor-heavy": "Pancerz (Ciężki)",
+        "armor-unarmored": "Pancerz (Nieopancerzony)",
+        "armor": {
+          "+1": "Jest to zbroja +1. Zapewnia +1 premii do KP i może zostać nasycona 1 raz.",
+          "resilient+1": "Jest to zbroja odporności +1. Zapewnia +1 premii do KP i rzutów obronnych i może zostać nasycona 1 raz.",
+          "resilient+2": "Jest to zbroja odporności +2. Zapewnia +2 premii do KP, +1 premii do rzutów obronnych i może zostać nasycona 2 razy.",
+          "greater-resilient+2": "Jest to zbroja większej odporności +2. Zapewnia premię +2 do KP i rzutów obronnych i może zostać nasycona 2 razy.",
+          "greater-resilient+3": "Jest to zbroja większej odporności +3. Zapewnia premię +3 do KP, premię +2 do rzutów obronnych i może zostać nasycona 3 razy.",
+          "major-resilient+3": "Jest to zbroja potężniejszej odporności +3. Zapewnia +3 do KP i rzutów obronnych oraz może zostać nasycona 3 razy."
+        },
+        "perception": "Percepcja",
+        "shield": {
+          "label": "Tarcza",
+          "label-buckler": "Tarcza (Puklerz)",
+          "inline-note": "Ta tarcza ma twardość {hardness}, PW {hp}, PU {bt}",
+          "imbuing": "Może być nasycony tylko raz."
+        },
+        "skill": {
+          "item-bonus": "Ten przedmiot zapewnia premię +{bonus} do testów {skill}.",
+          "imbuing": "Może być nasycony tylko raz."
+        },
+        "weapon": {
+          "+1": "Jest to broń +1. Zapewnia +1 premii do rzutów ataku i może zostać nasycona 1 raz.",
+          "striking+1": "Jest to broń uderzeń +1. Zapewnia +1 premii do rzutów ataku, zadaje 2 kości obrażeń i może zostać nasycona 1 raz.",
+          "striking+2": "Jest to broń uderzeń +2. Zapewnia +2 premii do rzutów ataku, zadaje 2 kości obrażeń i może zostać nasycona 2 razy.",
+          "greater-striking+2": "Jest to broń większych uderzeń +2. Zapewnia +2 do rzutów ataku, zadaje 3 kości obrażeń i może zostać nasycona 2 razy.",
+          "greater-striking+3": "Jest to broń większych uderzeń +3. Zapewnia +3 premii do rzutów ataku, zadaje 3 kości obrażeń i może zostać nasycona 3 razy.",
+          "major-striking+3": "Jest to broń potężniejszych uderzeń +3. Zapewnia +3 do rzutów ataku, zadaje 4 kości obrażeń i może zostać nasycona 3 razy."
+        }
+      },
+      "imbuement": {
+        "add-cantrip": "Broń może rzucać zaklęcie {spell} jako sztuczka, wzmocnione do połowy poziomu przedmiotu zaokrąglonego w górę.",
+        "vulnerability-before-strike": "Przed zadaniem dodatkowych obrażeń cel otrzymuje podatność 1 do <em>{damage}</em> do początku następnej tury.",
+        "battlezoo-bestiary": {
+          "acid": {
+            "header-description": "Nasycasz broń jadowitą mocą <em>kwasu</em>.",
+            "magic": {
+              "label": "Kwas (Magia)",
+              "description": "<p><strong>Typ</strong> Broń</p><p><strong>Części</strong> Potwór musi posiadać cechę kwasu lub atak lub zaklęcie, które zadaje obrażenia kwasowe.</p><p><strong>Efekt</strong> Napełniasz broń jadowitym kwasem .</p><hr><p><strong>Część</strong> Magia; Wybierz, kiedy po raz pierwszy nasycisz broń, aby przyznane zaklęcia były tajemne lub pierwotne.</p><ul><li><p><strong>2.</strong> Broń może rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt] jako sztuczka, wzmocnione do połowy poziomu przedmiotu, zaokrąglonego w górę.</p></li><li><p><strong>4.</strong> Broń może raz na dzień rzucić zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]</p></li><li><p><strong>6.</strong> <em>Kwasowy wybuch</em> broni osiąga 2. rangę i może rzucać raz na dzień zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] lub <em>kwasowy wybuch</em> raz dziennie ale nie oba jednocześnie</p></li><li><p><strong>8.</strong> <em>Kwasowy wybuch</em> broni osiąga 3. rangę i może rzucać <em>kwasową strzałę</em> i <em>kwasowy wybuch</em> każdy raz na dzień</p></li><li><p><strong>10.</strong> Ataki tą bronią zadają 1 dodatkowe obrażenia kwasowe.</p></li><li><p><strong>12.</strong> <em>Kwasowa strzała</em> broni osiąga 4. rangę, a broń może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]</p></li><li><p><strong>14.</strong> Dodatkowe obrażenia od kwasu wzrastają do 1k4.</p></li><li><p><strong>16.</strong> <em>Kwasowa strzała</em> broni osiąga 6. rangę a <em>kwasowa burza</em> osiąga 7. rangę.</p></li><li><p><strong>18.</strong> Dodatkowe obrażenia od kwasu wzrastają do 1k6.</p></li><li><p><strong>20.</strong> Broń może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl], ale można wybrać tylko efekt kwasowego deszczu. Można wybrać efekt kwasowego deszczu dwa razy z rzędu.</p></li></ul>",
+              "header": {
+                "level-4-spells": "Broń może raz na dzień rzucać zaklęcie 1. rangi @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws].",
+                "level-6-spells": "Broń może rzucać zaklęcie 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] lub 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] raz na dzień, ale nie oba jednocześnie.",
+                "level-8-spells": "Broń może rzucać zaklęcia 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] i 3. rangi @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] raz na dzień.",
+                "level-12-spells": "Broń może rzucać zaklęcia 4. rangi @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0], 3. rangi @UUID[Compendium.pf2e.spells-srd. Item.rnNGALRtsjspFTws] oraz 5. rangi @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3] raz na dzień.",
+                "level-16-spells": "Broń może rzucać zaklęcia 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0], 3. rangi @UUID[Compendium.pf2e.spells-srd. Item.rnNGALRtsjspFTws] oraz 7. rangi @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3] raz na dzień.",
+                "level-20-spell": "Broń może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl], ale można wybrać tylko efekt kwaśnego deszczu. Efekt kwaśnego deszczu można wybrać dwa razy z rzędu."
+              }
+            },
+            "might": {
+              "label": "Kwas (Potęga)",
+              "header": {
+                "level-8-armor": "W przypadku trafienia krytycznego pancerz celu (jeśli posiada) otrzymuje 3k6 obrażeń od kwasu (przed zastosowaniem twardości); jeśli cel ma podniesioną tarczę, to ona otrzymuje te obrażenia.",
+                "level-12-resistance": "Obrażenia od kwasu zadane przez tę właściwość ignorują odporności.",
+                "level-14-armor": "W przypadku trafienia krytycznego pancerz celu (jeśli posiada) otrzymuje 6k6 obrażeń od kwasu (przed zastosowaniem twardości); jeśli cel ma podniesioną tarczę, to ona otrzymuje te obrażenia.",
+                "level-20-weakness": "Po udanym Ataku bronią, przed zadaniem obrażeń kwasem, cel otrzymuje podatność 1 do kwasu do początku Twojej następnej tury."
+              }
+            },
+            "tech": {
+              "label": "Kwas (Technika)",
+              "header": {
+                "level-8-armor": "W przypadku trafienia krytycznego pancerz celu (jeśli posiada) otrzymuje 3k6 obrażeń od kwasu (przed zastosowaniem twardości); jeśli cel ma podniesioną tarczę, to ona otrzymuje te obrażenia.",
+                "level-12-resistance": "Obrażenia od kwasu zadane przez tę właściwość (w tym trwałe obrażenia od kwasu) ignorują odporności.",
+                "level-16-persistent-resistance": "Trwałe obrażenia od kwasu wynikające z nasyconej właściwości osłabiają odporność przeciwnika. Za każdym razem, gdy przeciwnik lub jego zbroja lub tarcza otrzymają obrażenia od trwałego kwasu pod koniec swojej tury, wszelkie odporności i twardość zmniejszają się o 1 na 1 minutę. Efekt ten kumuluje się.",
+                "level-20-drained": "W przypadku trafienia krytycznego kwas trawi wnętrzności przeciwnika, który zostaje @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Wysączony 1}."
+              }
+            }
+          },
+          "bane": {
+            "damage": "Ataki tą bronią zadają dodatkowo {damage} obrażeń typu podstawowego tej broni stworzeniom typu {creature}.",
+            "persistent": "Ataki tą bronią powodują zewnętrzne lub wewnętrzne krwawienie u stworzeń typu {creature}. W przypadku takich stworzeń ataki tą bronią zadają {damage} trwałe obrażenia krwawienia.",
+            "flavor": "Napełniasz broń energią pochodzącą z poprzednich zwycięstw nad stworzeniami, których części znajdują się w niej, lub energią anatematyczną dla określonego rodzaju stworzeń, aby broń była szczególnie skuteczna przeciwko konkretnemu rodzajowi stworzeń.",
+            "might": {
+              "label": "Zguba ({creature}, Potęga)",
+              "level-6-enfeebled": "W przypadku trafienia krytycznego osłabiasz siłę stworzenia typu {creature}, powodując, że do końca twojej następnej tury będzie ono @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabione 1}.",
+              "level-10-resistance": "W przypadku stworzenia typu {creature} podstawowe obrażenia broni ignorują pierwsze 5 punktów odporności celu.",
+              "level-14-enfeebled": "Broń ta może całkowicie zabić stworzenia typu {creature}. W przypadku trafienia krytycznego stworzenie typu {creature} musi wykonać rzut obronny na Wytrwałość. W przypadku krytycznego sukcesu jest to @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabienie 1} do końca następnej tury, w przypadku sukcesu jest to @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabienie 2} do końca następnej tury gracza, w przypadku porażki jest to @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabienie 3} do końca następnej tury gracza, a w przypadku krytycznej porażki zostaje zniszczony. Efekt ten ma cechę obezwładnienia."
+            },
+            "tech": {
+              "label": "Zguba ({creature}, Technika)",
+              "level-6-enfeebled": "W przypadku trafienia krytycznego osłabiasz siłę stworzenia typu {creature}, powodując, że do końca twojej następnej tury będzie ono @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabione 1}.",
+              "level-10-resistance": "W przypadku stworzeń typu {creature} podstawowe obrażenia broni ignorują pierwsze 5 punktów odporności celu, a trwałe obrażenia krwawienia wynikające z tej właściwości ignorują odporność celu.",
+              "level-14-enfeebled": "Broń ta może całkowicie zabić stworzenia typu {creature}. W przypadku krytycznego trafienia stworzenie typu {creature} jest @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabione 2} do końca twojej następnej tury. Musi również wykonać rzut obronny na Wytrwałość. W przypadku porażki jest @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiona 3} do końca twojej następnej tury, a w przypadku krytycznej porażki zostaje zniszczona. Efekt ten ma cechę obezwładnienia.",
+              "level-20-enfeebled": "Broń może całkowicie zabić stworzenia typu {creature}. W przypadku trafienia krytycznego stworzenie typu {creature} otrzymuje @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabienie 2}. Musi również wykonać rzut obronny na Wytrwałość. W przypadku porażki zostaje @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiona 3}, a w przypadku krytycznej porażki zostaje zniszczona. Efekt ten ma cechę obezwładnienia. Stan osłabienia spowodowany trafieniem krytycznym trwa tak długo, jak długo trwa trwałe krwawienie lub do końca następnej tury gracza, w zależności od tego, co trwa dłużej."
+            }
+          },
+          "charisma": {
+            "label": "Charyzma",
+            "flavor": "Nasycasz przedmiot olśniewającą mocą <em>charyzmy</em>.",
+            "level-8-spell": "Przedmiot może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv] jako zaklęcie okultystyczne, ponieważ twoja wewnętrzna charyzma inspiruje ciebie lub sojusznika do wielkości.",
+            "level-14-spell": "Przedmiot może raz na dzień rzucać zaklęcie 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv] jako zaklęcie okultystyczne, ponieważ twoja wewnętrzna charyzma inspiruje ciebie lub sojusznika do wielkości.",
+            "level-17-apex": "Kiedy zainwestujesz w przedmiot, zwiększasz swoją cechę Charyzma o +1 lub zwiększasz ją do +4, w zależności od tego, która wartość jest wyższa. Przedmiot zyskuje cechę arcyprzedmiotu.",
+            "level-20-spell": "Przedmiot może raz na dzień rzucać zaklęcie 9. rangi @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv] jako zaklęcie okultystyczne, ponieważ twoja wewnętrzna charyzma inspiruje ciebie lub sojusznika do wielkości."
+          },
+          "cold": {
+            "flavor": "Nasycasz broń mrożącą krew w żyłach mocą <em>zimna</em>.",
+            "magic": {
+              "label": "Zimno (Magia)",
+              "level-4-spells": "Broń może raz na dzień rzucić zaklęcie 1. rangi @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0].",
+              "level-6-spells": "Broń może raz na dzień rzucić zaklęcie 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0].",
+              "level-10-spells": "Broń może rzucać zaklęcia 2. rangi raz na dzień @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0] i @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx].",
+              "level-12-spells": "Broń może rzucać zaklęcia 3. rangi @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0], @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx] oraz @UUID[Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k] raz na dzień.",
+              "level-16-spells": "Broń może rzucać zaklęcia 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0], 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx] oraz 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k] raz na dzień.",
+              "level-20-polar-ray": "Broń może raz na dzień rzucać zaklęcie 9. rangi @UUID[Compendium.pf2e.spells-srd.Item.BKIet436snMNcnez]."
+            },
+            "might": {
+              "label": "Zimno (Potęga)",
+              "level-8-slowed": "W przypadku trafienia krytycznego cel otrzymuje również efekt @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Spowolniony 1} do końca następnej tury gracza, chyba że uda mu się wykonać rzut obronny na Wytrwałość przeciwko ST broni.",
+              "level-12-resistance": "Obrażenia od zimna zadane przez tę właściwość ignorują odporności.",
+              "level-14-slowed": "W przypadku trafienia krytycznego cel jest również @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Spowolniony 1} do końca następnej tury, chyba że uda mu się wykonać rzut obronny na Wytrwałość przeciwko ST broni, i otrzymuje karę -10 stóp do swojej szybkości na 1 rundę.",
+              "level-20-weakness": "Po udanym Ataku bronią, przed zadaniem obrażeń od zimna, cel otrzymuje podatność 1 na zimno do początku Twojej następnej tury."
+            },
+            "tech": {
+              "label": "Zimno (Technika)",
+              "level-6-slow": "W przypadku udanego Ataku bronią, cel otrzymuje karę -5 stóp do swojej Szybkości na 1 rundę.",
+              "level-8-slow": "W przypadku udanego Ataku bronią, cel otrzymuje karę -10 stóp do swojej Szybkości na 1 rundę. W przypadku trafienia krytycznego, cel otrzymuje również @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Spowolniony 1} do końca następnej tury, chyba że uda mu się wykonać rzut obronny na Wytrwałość przeciwko ST broni.",
+              "level-12-resistance": "Trwałe obrażenia od zimna zadane przez tę właściwość ignorują odporności.",
+              "level-14-thaw": "Stworzenie, którego szybkość została zmniejszona przez właściwość nasycenia, rozmraża się wolniej. Kara trwa tak długo, jak długo utrzymują się trwałe obrażenia od zimna.",
+              "level-16-surface": "Wrogowie znajdujący się w pobliżu powierzchni, którzy nie zdołają zrobić rzutu obronnego przed efektem spowolnienia, przymarzną do tej powierzchni (zwykle ziemi), stając się @UUID[Compendium.pf2e.conditionitems.Item.eIcWbB5o3pP6OIMe], dopóki nie [[/act escape]] przeciwko ST przedmiotu.",
+              "level-20-slow": "W przypadku udanego Ataku bronią, cel otrzymuje karę -15 stóp do swojej Szybkości na 1 rundę. W przypadku trafienia krytycznego, cel otrzymuje również @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Spowolniony 1} do końca następnej tury, chyba że uda mu się wykonać rzut obronny na Wytrwałość przeciwko ST broni."
+            }
+          },
+          "constitution": {
+            "label": "Kondycja",
+            "flavor": "Nasycasz przedmiot odpornością <em>kondycji</em>.",
+            "level-8-spell": "Przedmiot może rzucać zaklęcie 3. rangi @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs], wyłącznie na ciebie, raz na dzień jako zaklęcie boskie.",
+            "level-14-spell": "Przedmiot może rzucać zaklęcie 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs], wyłącznie na ciebie, raz na dzień jako zaklęcie boskie.",
+            "level-17-apex": "Kiedy zainwestujesz ten przedmiot, zwiększasz swoją cechę Kondycja o +1 lub zwiększasz ją do +4, w zależności od tego, która wartość jest wyższa. Przedmiot zyskuje cechę arcyprzedmiotu.",
+            "level-18-spell": "Przedmiot może raz na dzień rzucić na ciebie zaklęcie 7. rangi @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs] jako boskie zaklęcie lub raz na dzień rzucić na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF] raz na dzień.",
+            "level-20-hp": "Jeśli odpoczniesz przez 10 minut, odzyskasz 100 Punktów Wytrzymałości."
+          },
+          "dexterity": {
+            "label": "Zręczność",
+            "flavor": "Nasycasz przedmiot <em>zręcznością</em>.",
+            "level-8-speed": "Raz na dzień możesz użyć pojedynczej akcji aktywacyjnej z cechą manipulacji, aby uzyskać premię statusu +10 stóp do wszystkich swoich szybkości na 10 minut.",
+            "level-14-speed": "Raz na dzień możesz użyć pojedynczej akcji aktywacyjnej z cechą manipulacji, aby uzyskać premię statusu +20 stóp do wszystkich swoich szybkości na 10 minut. Podczas aktywacji zyskujesz efekty @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2].",
+            "level-17-apex": "Kiedy inwestujesz w przedmiot, zwiększasz swoją cechę Zręczność o +1 lub zwiększasz ją do +4, w zależności od tego, która wartość jest wyższa. Przedmiot zyskuje cechę arcyprzedmiotu.",
+            "level-20-speed": "Raz na dzień możesz użyć pojedynczej akcji aktywacyjnej z cechą manipulacji, aby uzyskać premię statusu +30 stóp do wszystkich swoich szybkości na 10 minut. Podczas aktywacji zyskujesz efekty zarówno @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2], jak i @UUID[Compendium.pf2e.spells-srd.Item.b5sGjGlBf58f8jn0]."
+          },
+          "electricity": {
+            "flavor": "Nasycasz broń szokującą mocą <em>elektryczności</em>.",
+            "magic": {
+              "label": "Elektryczność (Magia)",
+              "level-4-spells": "Broń może raz na dzień rzucić zaklęcie 1. rangi @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn].",
+              "level-6-spells": "Broń może raz na dzień rzucać zaklęcie 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn].",
+              "level-8-spells": "Broń może rzucać zaklęcia 2. rangi raz na dzień @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn] i @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2].",
+              "level-12-spells": "Broń może rzucać zaklęcia 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn], 4. rangi @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2] oraz @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV] raz na dzień.",
+              "level-16-spells": "Broń może rzucać zaklęcia 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn], 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV] oraz 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.TDNlDWbYb58Y55Da] raz na dzień.",
+              "level-20-spells": "Broń może rzucać zaklęcia 7. rangi @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn], 7. rangi @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV] oraz 9. rangi @UUID[Compendium.pf2e.spells-srd.Item.TDNlDWbYb58Y55Da] raz na dzień."
+            },
+            "might": {
+              "label": "Elektryczność (Potęga)",
+              "level-8-arc": "W przypadku trafienia krytycznego iskra elektryczna uderza w maksymalnie dwie wybrane przez ciebie istoty w promieniu 10 stóp od celu, zadając im taką samą ilość obrażeń od elektryczności.",
+              "level-12-resistance": "Obrażenia od elektryczności zadane przez tę właściwość ignorują odporności.",
+              "level-14-arc": "W przypadku trafienia krytycznego iskra elektryczna uderza w maksymalnie dwie wybrane przez ciebie istoty w promieniu 20 stóp od celu, zadając im taką samą ilość obrażeń od elektryczności.",
+              "level-20-weakness": "Po udanym Ataku bronią, przed zadaniem obrażeń od elektryczności, cel otrzymuje podatność 1 do elektryczności, która trwa do początku Twojej następnej tury."
+            },
+            "tech": {
+              "label": "Elektryczność (Technika)",
+              "level-8-arc": "W przypadku trafienia krytycznego iskra elektryczna zadaje taką samą ilość obrażeń od elektryczności oraz trwałe obrażenia od elektryczności maksymalnie dwóm innym stworzeniom wybranym przez ciebie w promieniu 10 stóp od celu.",
+              "level-12-resistance": "Obrażenia od elektryczności zadane przez tę właściwość (w tym trwałe obrażenia od elektryczności) ignorują odporności.",
+              "level-16-arc": "W przypadku trafienia krytycznego iskra elektryczna zadaje taką samą ilość obrażeń od elektryczności i trwałe obrażenia od elektryczności maksymalnie czterem wybranym przez ciebie stworzeniom w promieniu 20 stóp od celu.",
+              "level-20-magnetized": "Stworzenia, które odnoszą trwałe obrażenia od elektryczności z powodu tej właściwości, stają się namagnesowane i przyciągają metalową broń. Ataki metalową bronią otrzymują premię +1 do trafienia, dopóki stworzenia te odnoszą trwałe obrażenia od elektryczności."
+            }
+          },
+          "energy-resistant": {
+            "armor-label": "Odporność na energię (Pancerz, {damage})",
+            "shield-label": "Odporność na energię (Tarcza, {damage})",
+            "armor-flavor": "Nasycasz zbroję, aby chronić się przed określonym rodzajem energii.",
+            "shield-flavor": "Nasycasz tarczę, aby chronić się przed określonym rodzajem energii.",
+            "armor-effect": "Nosząc zbroję, zyskujesz odporność {level} na wybrany rodzaj obrażeń od energii. Dodatkowo sama zbroja zyskuje tę samą odporność.",
+            "shield-effect": "Podczas używania tarczy zyskujesz odporność {level} na wybrany rodzaj obrażeń od energii. Dodatkowo sama tarcza zyskuje tę samą odporność (stosowaną po zmniejszeniu obrażeń o twardość tarczy). Możesz użyć Bloku Tarczą w dowolnym momencie, gdy otrzymasz wybrane obrażenia, oprócz zwykłego wyzwalacza."
+          },
+          "fire": {
+            "flavor": "Nasycasz broń palącą mocą <em>ognia</em>.",
+            "magic": {
+              "label": "Ogień (Magia)",
+              "level-4-spells": "Broń może raz dziennie rzucać zaklęcie 1. rangi @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t].",
+              "level-6-spells": "Broń może raz dziennie rzucać zaklęcie 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t].",
+              "level-8-spells": "Broń może raz na dzień rzucać zaklęcia @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG] i @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd].",
+              "level-12-spells": "Broń może rzucać czary 4. rangi @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG], @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd] oraz @UUID[Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu] raz na dzień.",
+              "level-16-spells": "Broń może rzucać zaklęcia 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG], @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd] oraz @UUID[Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu] raz na dzień.",
+              "level-20-falling-stars": "Broń może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.jrBa9deU2ULFWvSl]."
+            },
+            "might": {
+              "label": "Ogień (Potęga)",
+              "level-8-persistent": "W przypadku trafienia krytycznego, ataki bronią zadają 1k10 trwałych obrażeń od ognia.",
+              "level-12-resistance": "Obrażenia od ognia zadane przez tę właściwość (w tym trwałe obrażenia od ognia) ignorują odporności.",
+              "level-14-persistent": "W przypadku trafienia krytycznego, ataki bronią zadają 2k10 trwałych obrażeń od ognia.",
+              "level-20-weakness": "Po udanym Ataku bronią, przed zadaniem obrażeń od ognia, cel otrzymuje podatność 1 do ognia do początku Twojej następnej tury."
+            },
+            "tech": {
+              "label": "Ogień (Technika)",
+              "level-8-persistent": "W przypadku trafienia krytycznego broń zadaje dodatkowe 1k10 trwałych obrażeń od ognia. (Dodatkowe trwałe obrażenia od ognia w przypadku trafienia krytycznego sumują się z normalnymi trwałymi obrażeniami od ognia i jak zwykle dodaje się je dopiero po podwojeniu normalnych trwałych obrażeń od ognia).",
+              "level-12-resistance": "Obrażenia od ognia zadane przez tę właściwość (w tym trwałe obrażenia od ognia) ignorują odporności.",
+              "level-16-off-guard": "Wrogowie dotknięci trwałymi obrażeniami od ognia wynikającymi z właściwości nasyconej są rozproszeni, gdy płoną, co sprawia, że są @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Odsłonięci}.",
+              "level-20-weakness": "Pod koniec tury płonącego przeciwnika, gdy otrzyma on obrażenia od trwałych obrażeń od ognia nadanych przez właściwość, wszyscy przeciwnicy sąsiadujący z nim również zostają podpaleni, otrzymując taką samą ilość trwałych obrażeń od ognia."
+            }
+          },
+          "force": {
+            "flavor": "Napełniasz broń czystą <em>mocą</em>.",
+            "magic": {
+              "label": "Moc (Magia)",
+              "level-4-spells": "Broń może raz na dzień rzucić zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM].",
+              "level-6-spells": "Broń może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM] lub @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw], ale nie oba jednocześnie.",
+              "level-8-spells": "Broń może raz na dzień rzucać zaklęcia trzeciego rzędu @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM] i @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw].",
+              "level-12-spells": "Broń może rzucać zaklęcie 3. rangi @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM], 4. rangi @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw] oraz @UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U] raz na dzień.",
+              "level-16-spells": "Broń może rzucać zaklęcie 5. rangi @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM], 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U] oraz @UUID[Compendium.pf2e.spells-srd.Item.PHVHBbdHeQRfjLmE] raz na dzień.",
+              "level-20-spirit-song": "Broń może raz na dzień rzucać zaklęcie 9. rangi @UUID[Compendium.pf2e.spells-srd.Item.Ht35SDf9PDStJfoC]."
+            },
+            "might": {
+              "label": "Moc (Potęga)",
+              "level-10-push": "W przypadku trafienia krytycznego możesz zmusić cel do wykonania rzutu obronnego na Wytrwałość lub odepchnąć go na odległość 5 stóp od siebie.",
+              "level-12-resistance": "Moc zadaje obrażenia, które ignorują odporności.",
+              "level-16-push": "W przypadku trafienia krytycznego możesz zmusić cel do wykonania rzutu obronnego na Wytrwałość lub odepchnąć go na odległość 10 stóp od siebie.",
+              "level-20-weakness": "Po udanym Ataku bronią, przed zadaniem obrażeń od mocy, cel otrzymuje podatność 1 do mocy do początku Twojej następnej tury."
+            },
+            "tech": {
+              "label": "Moc (Technika)",
+              "level-8-push": "W przypadku trafienia krytycznego możesz zmusić cel do wykonania rzutu obronnego na Wytrwałość lub odepchnąć go na odległość 5 stóp od siebie.",
+              "level-12-resistance": "Obrażenia od mocy zadane przez tę właściwość (w tym trwałe obrażenia od mocy) ignorują odporności.",
+              "level-14-push": "W przypadku trafienia krytycznego możesz zmusić cel do wykonania rzutu obronnego na Wytrwałość lub odepchnąć go na odległość 10 stóp od siebie.",
+              "level-16-off-guard": "Wrogowie, na których obecnie działają trwałe obrażenia od mocy tej właściwości, są odrzucani we wszystkich kierunkach, co sprawia, że stają się @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Odsłonięci}.",
+              "level-18-push": "W przypadku trafienia krytycznego możesz zmusić cel do wykonania rzutu obronnego na Wytrwałość lub odepchnąć go na odległość 20 stóp od siebie.",
+              "level-20-prone": "Pod koniec tury przeciwnika, jeśli nie uda mu się usunąć trwałych obrażeń od mocy tej właściwości, musi wykonać rzut obronny na Wytrwałość lub zostanie @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60]{Przewrócony}."
+            }
+          },
+          "fortification": {
+            "label": "Fortyfikacja",
+            "flavor": "Nasycasz zbroję potężnymi wzmocnieniami, aby odeprzeć śmiertelne ataki.",
+            "penalty": "Wymagania dotyczące Masy i minimalnej Siły do używania pancerza zostały zwiększone o 1.",
+            "flat-check": "Za każdym razem, gdy zostaniesz trafiony krytycznie podczas noszenia wytrawionej zbroi, wykonaj test @Check[flat|dc:{dc}]. Jeśli test się powiedzie, trafienie staje się normalnym trafieniem."
+          },
+          "intelligence": {
+            "label": "Inteligencja",
+            "flavor": "Nasycasz przedmiot genialnymi właściwościami <em>inteligencji</em>.",
+            "level-8-spell": "Przedmiot może raz na dzień rzucać @UUID[Compendium.pf2e.spells-srd.Item.ZYoC630tNGutgbE0] jako zaklęcie okultystyczne.",
+            "level-14-spell": "Przedmiot może raz na godzinę rzucać @UUID[Compendium.pf2e.spells-srd.Item.ZYoC630tNGutgbE0] jako zaklęcie okultystyczne.",
+            "level-17-apex": "Kiedy inwestujesz w przedmiot, zwiększasz swoją cechę Inteligencji o 1 lub zwiększasz ją do +4, w zależności od tego, która wartość jest wyższa. Przedmiot zyskuje cechę arcyprzedmiotu.",
+            "level-20-spell": "Przedmiot może raz na minutę rzucać @UUID[Compendium.pf2e.spells-srd.Item.ZYoC630tNGutgbE0] jako zaklęcie okultystyczne."
+          },
+          "mental": {
+            "flavor": "Nasycasz broń mocą psychiczną.",
+            "magic": {
+              "label": "Mentalny (Magia)",
+              "level-4-spells": "Broń może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD].",
+              "level-6-spells": "Broń może raz na dzień rzucić zaklęcie 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD] lub @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM], ale nie oba jednocześnie.",
+              "level-8-spells": "Broń może rzucać zaklęcia 3. rangi @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD] oraz 3. rangi @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM] raz na dzień.",
+              "level-12-spells": "Broń może rzucać zaklęcia 4. rangi @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD], 4. rangi @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM] oraz @UUID[Compendium.pf2e.spells-srd.Item.tlcrVRqW1MSKJ5IC] raz na dzień.",
+              "level-16-spells": "Broń może rzucać zaklęcia 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD], 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.tlcrVRqW1MSKJ5IC] oraz @UUID[Compendium.pf2e.spells-srd.Item.0XP2XOxT9VSiXFDr] raz na dzień.",
+              "level-20-weird": "Broń może raz na dzień rzucić zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.qDjeG6dxT4aEEC6J]."
+            },
+            "might": {
+              "label": "Mentalny (Potęga)",
+              "level-10-stupefied": "W przypadku trafienia krytycznego cel zostaje @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Ogłupiony 1} na 1 rundę.",
+              "level-12-resistance": "Obrażenia mentalne zadane przez tę właściwość ignorują odporności.",
+              "level-16-stupefied": "W przypadku trafienia krytycznego cel zostaje @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Ogłupiony 2} na 1 rundę.",
+              "level-20-weakness": "Po udanym Ataku bronią, przed zadaniem obrażeń mentalnych, cel otrzymuje podatność 1 do mentalnego do początku Twojej następnej tury."
+            },
+            "tech": {
+              "label": "Mentalny (Technika)",
+              "level-8-stupefied": "W przypadku trafienia krytycznego cel zostaje @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Ogłupiony 1} na 1 rundę.",
+              "level-12-resistance": "Obrażenia mentalne zadane przez tę właściwość (w tym trwałe obrażenia mentalne) ignorują odporności.",
+              "level-16-stupefied": "W przypadku trafienia krytycznego cel zostaje @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Ogłupiony 2} na 1 rundę.",
+              "level-20-weakness": "Podczas gdy przeciwnik odnosi trwałe obrażenia mentalne spowodowane tą właściwością, stan ogłupienia spowodowany trafieniem krytycznym trwa do momentu zakończenia trwałych obrażeń lub przez 1 rundę, w zależności od tego, co trwa dłużej."
+            }
+          },
+          "poison": {
+            "flavor": "Nasycasz broń toksycznym jadem.",
+            "magic": {
+              "label": "Trucizna (Magia)",
+              "level-4-spells": "Broń może raz na dzień rzucić zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw].",
+              "level-6-spells": "Broń może raz na dzień rzucać zaklęcie 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv] lub @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw], ale nie oba jednocześnie.",
+              "level-8-spells": "Broń może rzucać zaklęcia 3. rangi @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv], drugiego rzędu @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw] oraz drugiego rzędu @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw] raz na dzień.",
+              "level-12-spells": "Broń może rzucać zaklęcia 4. rangi @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv], 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw], 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw] oraz @UUID[Compendium.pf2e.spells-srd.Item.LVwmAH5NGvTuuQSU] raz na dzień.",
+              "level-16-spells": "Broń może rzucać zaklęcia 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv], 2. ranga @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw], 2. ranga @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw], @UUID[Compendium.pf2e.spells-srd.Item.LVwmAH5NGvTuuQSU] oraz @UUID[Compendium.pf2e.spells-srd.Item.ayRXv0wQH00TTNZe] raz na dzień.",
+              "level-20-linnorm-sting": "Broń może raz na dzień rzucić zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.ZMY58Yk5hnyfeE3q]."
+            },
+            "might": {
+              "label": "Trucizna (Potęga)",
+              "level-8-persistent": "W przypadku trafienia krytycznego cel otrzymuje obrażenia @Damage[1d10[persistent,poison]].",
+              "level-12-resistance": "Obrażenia od trucizny zadane przez tę właściwość ignorują odporności.",
+              "level-14-persistent": "W przypadku trafienia krytycznego cel otrzymuje obrażenia @Damage[2d10[persistent,poison]].",
+              "level-20-weakness": "Po udanym Ataku bronią, przed zadaniem obrażeń od trucizny, cel otrzymuje podatność 1 na truciznę do początku następnej tury gracza."
+            },
+            "tech": {
+              "label": "Trucizna (Technika)",
+              "level-8-persistent": "W przypadku trafienia krytycznego cel otrzymuje dodatkowe obrażenia @Damage[1d10[persistent,poison]] (jak zwykle, dodatkowe obrażenia od trwałej trucizny w przypadku trafienia krytycznego sumują się z normalnymi obrażeniami od trwałej trucizny i dodaje się je dopiero po podwojeniu normalnych obrażeń od trwałej trucizny).",
+              "level-12-resistance": "Obrażenia od trucizny zadane przez tę właściwość (w tym trwałe obrażenia od trucizny) ignorują odporności.",
+              "level-16-condition": "Na koniec tury stworzenia, jeśli nie udało mu się usunąć trwałych obrażeń od trucizny z tej właściwości, wybierz @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Niezdarny}, @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony} lub @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Ogłupiony}. Stworzenie otrzymuje ten stan z wartością stanu 1 lub zwiększa wartość stanu o 1, jeśli już posiadało ten stan, do maksymalnej wartości 3. Jeśli stworzenie kiedykolwiek usunie trwałe obrażenia od trucizny z tej właściwości, stany te natychmiast się kończą. Jeśli później ponownie zastosujesz truciznę, musisz zacząć od nowa od wartości stanu 0.",
+              "level-20-drained": "W przypadku trafienia krytycznego trucizna osłabia zdolność przeciwnika do przeciwstawienia się dalszemu zatruciu. Przeciwnik otrzymuje efekt @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Wysączony 1}."
+            }
+          },
+          "sensory": {
+            "label": "Zmysłowy",
+            "temporary-low-light-vision": "Nasycenie Zmysłów - tymczasowe widzenie w słabym świetle",
+            "temporary-darkvision": "Nasycenie Zmysłów – tymczasowe widzenie w ciemności",
+            "temporary-scent": "Nasycenie Zmysłów - tymczasowy zmysł węchu",
+            "flavor": "Nasycasz przedmiot niezwykłymi zmysłami.",
+            "level-4-activation-low-light": "<p><strong>Aktywacja</strong> <span class=\"action-glyph\">2</span> (koncentracja)<br><strong>Częstotliwość</strong> raz na dzień<br>Zyskujesz zdolność widzenia w słabym świetle przez 1 godzinę.</p>",
+            "level-6-permanent-low-light": "Zyskujesz zdolność widzenia w słabym świetle.",
+            "level-8-activation-darkvision": "<p><strong>Aktywacja</strong> <span class=\"action-glyph\">2</span> (koncentracja)<br><strong>Częstotliwość</strong> raz na dzień<br>Zyskujesz zdolność widzenia w ciemności przez 1 godzinę.</p>",
+            "level-12-permanent-darkvision": "Zyskujesz zdolność widzenia w ciemności.",
+            "level-14-activation-scent": "<p><strong>Aktywacja</strong> <span class=\"action-glyph\">2</span> (koncentracja)<br><strong>Częstotliwość</strong> raz na dzień<br>Zyskujesz nieprecyzyjny węch o zasięgu 30 stóp na 1 godzinę.</p>",
+            "level-16-permanent-scent": "Zyskujesz widzenie w ciemności i nieprecyzyjny węch o zasięgu 30 stóp.",
+            "level-18-permanent": "Zyskujesz większe widzenie w ciemności i nieprecyzyjny węch o zasięgu 30 stóp.",
+            "level-20-truesight": "Nieustannie zyskujesz efekty zaklęcia 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]."
+          },
+          "sonic": {
+            "flavor": "Napełniasz broń rozbrzmiewającymi falami dźwiękowymi.",
+            "might": {
+              "label": "Dźwięk (Potęga)",
+              "level-8-deafened": "W przypadku trafienia krytycznego cel musi wykonać rzut obronny na Wytrwałość lub zostanie @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Ogłuchły} na 1 minutę lub 1 godzinę w przypadku krytycznej porażki.",
+              "level-12-resistance": "Obrażenia dźwiękowe zadawane przez tę właściwość ignorują odporności.",
+              "level-14-deafened": "W przypadku trafienia krytycznego cel musi wykonać rzut obronny na Wytrwałość lub zostanie @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Ogłuchły} na 1 minutę lub na stałe w przypadku krytycznej porażki.",
+              "level-20-weakness": "Po udanym Ataku bronią, przed zadaniem obrażeń dźwiękowych, cel otrzymuje podatność 1 do dźwięku do początku Twojej następnej tury."
+            },
+            "tech": {
+              "label": "Dźwięk (Technika)",
+              "level-8-deafened": "W przypadku trafienia krytycznego cel musi wykonać rzut obronny na Wytrwałość lub zostanie @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Ogłuchły} na 1 minutę lub 1 godzinę w przypadku krytycznej porażki.",
+              "level-12-resistance": "Obrażenia dźwiękowe zadane przez tę właściwość (w tym trwałe obrażenia dźwiękowe) ignorują odporności.",
+              "level-16-deafened": "W przypadku trafienia krytycznego cel musi wykonać rzut obronny na Wytrwałość lub zostanie @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Ogłuchły} na 1 minutę lub na stałe w przypadku krytycznej porażki. W przypadku porażki i krytycznej porażki cel zostaje @UUID[Compendium.pf2e.conditionitems.Item.dfCMdR4wnpbYNTix]{Ogłuszony 1}.",
+              "level-20-boom": "Obrażenia dźwiękowe i trwałe obrażenia dźwiękowe powodują huk dźwiękowy, który dotyka wszystkie stworzenia znajdujące się w pobliżu celu, których KP jest niższa lub równa twojemu rzutowi ataku. W przypadku trafienia krytycznego wszystkie stworzenia, które otrzymały obrażenia dźwiękowe w ten sposób, muszą wykonać rzut obronny na Wytrwałość, aby uniknąć ogłuszenia i ogłuchnięcia."
+            }
+          },
+          "strength": {
+            "label": "Siła",
+            "flavor": "Nasycasz przedmiot dziką energią <em>siły</em>.",
+            "level-8-spell": "Przedmiot może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H] jako zaklęcie pierwotne.",
+            "level-14-spell": "Przedmiot może raz na godzinę rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H] jako zaklęcie pierwotne.",
+            "level-17-apex": "Kiedy inwestujesz w przedmiot, zwiększasz swoją cechę Siła o 1 lub podnosisz ją do +4, w zależności od tego, która z tych wartości jest wyższa. Przedmiot zyskuje cechę arcyprzedmiotu.",
+            "level-20-spell": "Przedmiot może raz na minutę rzucać @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H] jako zaklęcie pierwotne."
+          },
+          "sturdy": {
+            "label": "Solidny",
+            "flavor": "Nasycasz tarczę, aby była jeszcze bardziej wytrzymała niż inne tarcze.",
+            "effect": "Twardość tej tarczy wzrasta o {hardness}. Jej PW wzrasta o dwukrotność jej twardości, a PU o połowę tej wartości.",
+            "no-effect": "Różnica między poziomem nasycenia a poziomem przedmiotu jest zbyt duża. To nasycenie nie ma żadnego efektu."
+          },
+          "wild": {
+            "label": "Dziki (Potęga)",
+            "flavor": "Czasami po prostu nie można znaleźć wystarczającej liczby części tego samego typu, aby odpowiednio nasycić broń, ale nadal chcesz ją nasycić czymś. Z tej desperacji i przypadkowego nasycania bardzo różnymi częściami rodzi się <em>dzika</em> właściwość nasycenia, niespójna i pozbawiona kilku zalet innych właściwości nasycenia.",
+            "might": {
+              "damage": "Ataki tą bronią zadają dodatkowo {damage} obrażeń. Za każdym razem, gdy zadajesz obrażenia, rzuć kostką 1k6: przy wyniku 1 broń zadaje obrażenia kwasowe. Przy wyniku 2 zadaje obrażenia zimnem. Przy wyniku 3 zadaje obrażenia elektryczne. Przy wyniku 4 zadaje obrażenia ogniem. Przy wyniku 5 zadaje obrażenia pustką. Wreszcie przy wyniku 6 zadaje obrażenia dźwiękiem.",
+              "level-12-resistance": "Obrażenia zadawane przez tę właściwość ignorują odporności.",
+              "level-20-weakness": "Po udanym Ataku bronią, przed zastosowaniem dodatkowych obrażeń, cel otrzymuje podatność 1 dla tego typu obrażeń do początku Twojej następnej tury."
+            }
+          },
+          "winged": {
+            "label": "Uskrzydlenie",
+            "flavor": "Nakładasz na zbroję skrzydła, które wystają z tyłu zbroi.",
+            "level-6-landing": "Zbroja automatycznie rzuca na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH], gdy upadasz. Ta korzyść nie może zostać ponownie aktywowana przez 1 godzinę.",
+            "level-8-landing": "Zbroja automatycznie rzuca na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH], gdy upadasz. Ta korzyść nie może zostać ponownie aktywowana przez 10 minut.",
+            "level-10-fly": "Zbroja może raz na dzień rzucić na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8].",
+            "level-14-fly": "Zbroja może raz na godzinę rzucić na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8].",
+            "level-16-fly-extend": "Zbroja może raz na godzinę rzucić na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]. Możesz zdecydować, aby zbroja rzucała na ciebie zaklęcie 7. rangi @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8] zamiast zaklęcia 4. rangi. Jeśli to zrobisz, nie będziesz mógł używać zaklęcia latania zbroi przez 1 dzień zamiast 1 godziny.",
+            "level-18-speed": "Możesz latać nieprzerwanie, z szybkością równą szybkości poruszania się po ziemi.",
+            "level-20-ally": "Zbroja może raz na godzinę rzucić na sojusznika zaklęcie 4. rangi @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]."
+          },
+          "wisdom": {
+            "label": "Mądrość",
+            "flavor": "Nasycasz przedmiot <em>mądrością</em>.",
+            "level-8-spell": "Przedmiot może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X] jako zaklęcie okultystyczne.",
+            "level-14-spell": "Przedmiot może raz na godzinę rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X] jako zaklęcie okultystyczne.",
+            "level-17-apex": "Kiedy inwestujesz w przedmiot, zwiększasz swoją cechę Mądrości o 1 lub podnosisz ją do +4, w zależności od tego, która z tych wartości jest wyższa. Przedmiot zyskuje cechę arcyprzedmiotu.",
+            "level-20-spell": "Przedmiot może raz na minutę rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X] jako zaklęcie okultystyczne."
+          }
+        },
+        "elemental-storm": {
+          "death": {
+            "flavor": "Napełniasz broń energią pustki i śmierci.",
+            "magic": {
+              "label": "Śmierć (Magia)",
+              "level-4-spells": "Broń może raz na dzień rzucić zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz].",
+              "level-6-spells": "Broń może raz na dzień rzucić zaklęcie 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz] lub @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP], ale nie oba jednocześnie.",
+              "level-8-spells": "Broń może rzucać zaklęcia 3. rangi @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz] i 3. rangi @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP] raz na dzień.",
+              "level-12-spells": "Broń może rzucać zaklęcia 4. rangi @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz], 4. rangi @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP] oraz @UUID[Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt] raz na dzień.",
+              "level-16-spells": "Broń może rzucać zaklęcia 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz], 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt] oraz <em>raise the reaper's scythe</em> (źródło: Battlezoo Bestiary Elemental Storm) (oryginalne negatywne nasycenie użyte @UUID[Compendium.pf2e.spells-srd.Item.6lO6uMQxbqmYho0e]) raz na dzień.",
+              "level-20-wails-of-the-damned": "Broń może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.FEsuyf203wTNE2et]."
+            },
+            "might": {
+              "label": "Śmierć (Potęga)",
+              "level-10-enfeebled": "W przypadku trafienia krytycznego cel zostaje @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony 1} na 1 rundę.",
+              "level-12-resistance": "Obrażenia pustki zadane przez tę właściwość ignorują odporności.",
+              "level-16-enfeebled": "W przypadku trafienia krytycznego cel zostaje @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony 2} na 1 rundę.",
+              "level-20-weakness": "Po udanym Ataku bronią, przed zastosowaniem obrażeń pustki, cel otrzymuje podatność 1 do pustki do początku Twojej następnej tury."
+            },
+            "tech": {
+              "label": "Śmierć (Technika)",
+              "level-8-enfeebled": "W przypadku trafienia krytycznego cel zostaje @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony 1} na 1 rundę.",
+              "level-12-resistance": "Obrażenia pustki zadane przez tę właściwość (w tym trwałe obrażenia pustki) ignorują odporności.",
+              "level-16-enfeebled": "W przypadku trafienia krytycznego cel zostaje @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony 2} na 1 rundę.",
+              "level-20-weakness": "Podczas gdy przeciwnik otrzymuje trwałe obrażenia pustki wynikające z właściwości nasyconej, stan osłabiony spowodowane trafieniem krytycznym trwa do momentu zakończenia trwałych obrażeń lub przez 1 rundę, w zależności od tego, który z tych okresów jest dłuższy."
+            }
+          },
+          "life": {
+            "flavor": "Napełniasz broń oczyszczającą mocą energii życiowej, aby zadawać obrażenia nieumarłym. Jak zwykle, obrażenia witalności zadają szkody tylko nieumarłym i innym stworzeniom posiadającym zdolność leczenia pustką, takim jak dhampiry.",
+            "magic": {
+              "label": "Życie (Magia)",
+              "level-4-spells": "Broń może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs].",
+              "level-6-spells": "Broń może raz na dzień rzucić zaklęcie 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs].",
+              "level-8-spells": "Broń może rzucać zaklęcie 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs] oraz 3. rangi @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3] raz na dzień.",
+              "level-12-spells": "Broń może rzucać czary 4. rangi @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs], 3. rangi @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3] oraz @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm] raz na dzień.",
+              "level-16-spells": "Broń może rzucać zaklęcia 5. rangi @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs], 5. rangi @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3], @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm] oraz @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF] raz na dzień.",
+              "level-20-spells": "Broń może rzucać zaklęcia 8. rangi @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs], 5. rangi @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3], @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm] oraz 8. rangi @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF] raz na dzień."
+            },
+            "might": {
+              "label": "Życie (Potęga)",
+              "level-6-enfeebled": "W przypadku trafienia krytycznego nieumarły jest również @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony 1} do końca twojej następnej tury.",
+              "level-10-resistance": "Obrażenia witalności zadane przez tę właściwość ignorują odporności.",
+              "level-14-enfeebled": "W przypadku trafienia krytycznego nieumarły musi wykonać rzut obronny na Wytrwałość. W przypadku krytycznego sukcesu otrzymuje on @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabienie 1} do czasu zakończenia twojej następnej tury, a w przypadku sukcesu otrzymuje @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7] {Osłabienie 2} do tego momentu, a w przypadku porażki @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabienie 3} do tego momentu, a w przypadku krytycznej porażki zostaje zniszczony. Efekt ten ma cechę obezwładnienia.",
+              "level-20-weakness": "Po udanym Ataku bronią, przed zadaniem obrażeń witalności, cel otrzymuje podatność 1 do witalności, która trwa do początku Twojej następnej tury."
+            },
+            "tech": {
+              "label": "Życie (Technika)",
+              "level-6-enfeebled": "W przypadku trafienia krytycznego nieumarły jest również @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony 1} do końca twojej następnej tury.",
+              "level-10-resistance": "Obrażenia witalności zadane przez tę właściwość (w tym trwałe obrażenia witalności) ignorują odporności.",
+              "level-14-enfeebled": "W przypadku trafienia krytycznego nieumarły jest @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony 2} do końca twojej następnej tury. Musi również wykonać rzut obronny na Wytrwałość. W przypadku porażki jest @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony 3} do końca twojej następnej tury zamiast osłabiony 2, a w przypadku krytycznej porażki zostaje zniszczony. Efekt ten ma cechę obezwładnienia.",
+              "level-20-counteract": "Stworzenia, które odnoszą trwałe obrażenia witalności z powodu tej właściwości, mają trudności z leczeniem się energią pustki z powodu przepływającej przez nie energii witalności. Jeśli efekt pustki spowodowałby odzyskanie Punktu Wytrzymałości przez stworzenie, musi ono najpierw wykonać udaną próbę przeciwdziałania o randze 10 i ST 43. Nawet w przypadku udanej próby przeciwdziałania odzyskane Punkty Wytrzymałości są zmniejszane o 1k10. W przypadku krytycznego sukcesu stworzenie odzyskuje pełną ilość Punktu Wytrzymałości."
+            }
+          }
+        }
+      }
+    }
+  }
+}
