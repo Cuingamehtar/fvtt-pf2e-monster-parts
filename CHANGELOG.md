@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.9] - 2025-10-20
+### Added
+- Add Polish localization (credits to **Lioheart**)
+
+### Fixed
+- Fix potency, striking and resilient RE in refinements not working with PF2e 7.6.*
+- Fix invalid homebrew files stopping the module from working 
+
 ## [0.2.8] - 2025-10-03
 ### Fixed
 - Fix acid and force persistent damage

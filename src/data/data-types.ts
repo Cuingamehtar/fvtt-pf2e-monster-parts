@@ -40,10 +40,10 @@ type ItemAlterationSource = {
         | "rarity"
         | "range-increment"
         | "name"
-        | "potency"
-        | "resilient"
+        | "runes-potency"
+        | "runes-resilient"
+        | "runes-striking"
         | "strength"
-        | "striking"
         | "traits";
     itemId: string;
 };

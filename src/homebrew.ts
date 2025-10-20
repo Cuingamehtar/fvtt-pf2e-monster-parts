@@ -1,5 +1,6 @@
 import { ModuleManifestFlags } from "./types";
 import { MODULE_ID } from "./module";
+import { t } from "./utils";
 
 export async function loadHomebrewMaterials() {
     if (game.user.isActiveGM) await registerHomebrewFiles();
@@ -8,7 +9,15 @@ export async function loadHomebrewMaterials() {
         []) as string[];
     return await Promise.all(
         files.map(async (f) => {
-            const json = await foundry.utils.fetchJsonWithTimeout(f);
+            const json = await foundry.utils
+                .fetchJsonWithTimeout(f)
+                .then((r) => r)
+                .catch((_) => {
+                    ui.notifications.error(
+                        t("material.homebrew-file-invalid", { file: f }),
+                    );
+                    return [];
+                });
             return Array.isArray(json) ? json : [json];
         }),
     ).then((arr) => arr.flatMap((e) => e));

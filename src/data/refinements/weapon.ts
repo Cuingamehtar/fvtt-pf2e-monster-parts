@@ -84,7 +84,7 @@ export function addWeaponRefinements(): MaterialData[] {
                 rule: {
                     key: "ItemAlteration",
                     mode: "upgrade",
-                    property: "potency",
+                    property: "runes-potency",
                     value: value,
                     itemId: "{item|id}",
                 },
@@ -95,7 +95,7 @@ export function addWeaponRefinements(): MaterialData[] {
                 rule: {
                     key: "ItemAlteration",
                     mode: "upgrade",
-                    property: "striking",
+                    property: "runes-striking",
                     value: value,
                     itemId: "{item|id}",
                 },

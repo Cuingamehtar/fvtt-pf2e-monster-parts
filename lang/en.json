@@ -67,7 +67,11 @@
       },
       "editor": {
         "title": "Edit provided materials"
-      }
+      },
+      "duplicate-key": "Material with key {key} already exists. It will be replaced.",
+      "validation-failure-notification": "Material {key} failed to validate. See console (F12) for details",
+      "validation-failure": "Material {key} failed to validate: {error}",
+      "homebrew-file-invalid": "Error parsing file {file}. Skipped."
     },
     "damage": {
       "strikes": "Strikes with the weapon additionally deal {damage}.",

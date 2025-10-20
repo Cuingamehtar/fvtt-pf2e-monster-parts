@@ -101,7 +101,7 @@ export function addArmorRefinements(): MaterialData[] {
                     rule: {
                         key: "ItemAlteration",
                         mode: "upgrade",
-                        property: "potency",
+                        property: "runes-potency",
                         value: value,
                         itemId: "{item|id}",
                     },
@@ -112,7 +112,7 @@ export function addArmorRefinements(): MaterialData[] {
                     rule: {
                         key: "ItemAlteration",
                         mode: "upgrade",
-                        property: "resilient",
+                        property: "runes-resilient",
                         value: value,
                         itemId: "{item|id}",
                     },

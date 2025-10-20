@@ -4,6 +4,7 @@ import { MODULE_ID } from "./module";
 import { createDefaultImbues } from "./data/imbues";
 import { MaterialData, materialDataSchema } from "./data/material";
 import { loadHomebrewMaterials } from "./homebrew";
+import { t } from "./utils";
 
 export type MonsterPartsConfig = {
     materials: Map<MaterialKey, MaterialData>;
@@ -103,11 +104,32 @@ export async function createConfig(): Promise<void> {
     [...createDefaultRefinements(), ...createDefaultImbues()].forEach((m) => {
         try {
             const failure = materialDataSchema.validate(m);
-            if (failure)
-                console.warn(`Material ${m.key} failed to validate:${failure}`);
+            if (failure) {
+                ui.notifications.warn(
+                    t("material.validation-failure-notification", {
+                        key: m.key,
+                    }),
+                );
+                console.warn(
+                    t("material.validation-failure", {
+                        key: m.key,
+                        error: String(failure),
+                    }),
+                );
+            }
             config.materials.set(m.key, m);
         } catch (e) {
-            console.error(`Material ${m.key} failed to validate:`, e);
+            ui.notifications.warn(
+                t("material.validation-failure-notification", {
+                    key: m.key,
+                }),
+            );
+            console.error(
+                t("material.validation-failure", {
+                    key: m.key,
+                    error: String(e),
+                }),
+            );
         }
     });
 
@@ -117,12 +139,38 @@ export async function createConfig(): Promise<void> {
     // Load homebrew data
     (await loadHomebrewMaterials()).forEach((m) => {
         try {
+            if (config.materials.has(m.key)) {
+                ui.notifications.warn(
+                    t("material.duplicate-key", { key: m.key }),
+                );
+            }
             const failure = materialDataSchema.validate(m);
-            if (failure)
-                console.warn(`Material ${m.key} failed to validate:${failure}`);
+            if (failure) {
+                ui.notifications.warn(
+                    t("material.validation-failure-notification", {
+                        key: m.key,
+                    }),
+                );
+                console.warn(
+                    t("material.validation-failure", {
+                        key: m.key,
+                        error: String(failure),
+                    }),
+                );
+            }
             config.materials.set(m.key, m);
         } catch (e) {
-            console.error(`Material ${m.key} failed to validate:`, e);
+            ui.notifications.warn(
+                t("material.validation-failure-notification", {
+                    key: m.key,
+                }),
+            );
+            console.error(
+                t("material.validation-failure", {
+                    key: m.key,
+                    error: String(e),
+                }),
+            );
         }
     });
 
