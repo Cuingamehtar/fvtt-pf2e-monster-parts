@@ -104,8 +104,9 @@ export class MonsterPart {
             img: config.materialItem.image,
             system: {
                 bulk: { value: bulk },
+				price: { value: new game.pf2e.Coins({ gp: this.valueOfCreature(actor) }) }
             },
-            type: "equipment",
+            type: "treasure",
             flags: { [MODULE_ID]: { ["monster-part"]: flags } },
         };
         if (game.settings.get(MODULE_ID, "actor-lootable")) {

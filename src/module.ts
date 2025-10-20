@@ -59,7 +59,7 @@ Hooks.on(
         if (!editable) return;
         const actor = sheet.actor;
         const elem = html[0]
-            ?.querySelector('[data-item-types="equipment"]')
+            ?.querySelector('[data-item-types="treasure"]')
             ?.previousElementSibling?.querySelector("div.item-controls");
 
         const btn = document.createElement("a");
