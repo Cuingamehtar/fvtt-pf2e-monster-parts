@@ -21,7 +21,7 @@ async function addDescriptionNote(
 }
 
 export function registerInlineNotes(): void {
-    const types = ["weapon", "armor", "equipment", "shield"];
+    const types = ["weapon", "armor", "equipment", "shield", "treasure"];
     for (const t of types) {
         libWrapper.register(
             MODULE_ID,

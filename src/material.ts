@@ -75,7 +75,8 @@ export class Material {
                 | "weapon"
                 | "armor"
                 | "shield"
-                | "equipment";
+                | "equipment"
+				| "treasure";
             const thr = thresholds[type];
             const level = thr.findLastIndex((e) => this.value >= e);
             return level === -1 ? 0 : level + 1;
@@ -91,7 +92,8 @@ export class Material {
                 | "weapon"
                 | "armor"
                 | "shield"
-                | "equipment";
+                | "equipment"
+				| "treasure";
             const thr = thresholds[type];
             const clampedLevel = clamp(level, 0, thr.length);
             return clampedLevel == 0 ? 0 : thr[clampedLevel - 1];

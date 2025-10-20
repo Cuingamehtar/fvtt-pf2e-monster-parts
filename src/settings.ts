@@ -188,4 +188,22 @@ export function registerSettings() {
         default: false,
         requiresReload: false,
     });
+
+    game.settings.register(MODULE_ID, "monster-parts-item-type", {
+        name: tkey("settings.monster-parts-item-type.name") as string,
+        hint: tkey("settings.monster-parts-item-type.hint") as string,
+        type: new foundry.data.fields.StringField({
+            choices: {
+                equipment: "Equipment",
+                treasure: "Treasure",
+            },
+            nullable: false,
+            blank: false,
+            initial: "equipment",
+            required: true,
+        }),
+        config: true,
+        requiresReload: true,
+        scope: "world",
+    });
 }
