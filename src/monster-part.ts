@@ -99,6 +99,8 @@ export class MonsterPart {
             materials: materials.map((m) => m.key),
         };
 
+        const _itemType: string = game.settings.get(MODULE_ID, "monster-parts-item-type") as string;
+
         const item = {
             name: name as string,
             img: config.materialItem.image,
@@ -106,7 +108,7 @@ export class MonsterPart {
                 bulk: { value: bulk },
 				price: { value: new game.pf2e.Coins({ gp: this.valueOfCreature(actor) }) }
             },
-            type: "treasure",
+            type: `${_itemType}`,
             flags: { [MODULE_ID]: { ["monster-part"]: flags } },
         };
         if (game.settings.get(MODULE_ID, "actor-lootable")) {

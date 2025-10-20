@@ -58,8 +58,11 @@ Hooks.on(
     ) => {
         if (!editable) return;
         const actor = sheet.actor;
+
+        const _itemType: string = game.settings.get(MODULE_ID, "monster-parts-item-type") as string;
+
         const elem = html[0]
-            ?.querySelector('[data-item-types="treasure"]')
+            ?.querySelector(`[data-item-types="${_itemType}"]`)
             ?.previousElementSibling?.querySelector("div.item-controls");
 
         const btn = document.createElement("a");

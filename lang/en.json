@@ -145,6 +145,10 @@
       "automatic-refinement-progression": {
         "name": "Automatic Refinement Progression",
         "hint": "Sets refinement level equal to the owner's level. PC only. Requires an active GM."
+      },
+      "monster-parts-item-type": {
+        "name": "Monster Parts Item Type",
+        "hint": "Sets the item type of monster parts."
       }
     },
     "data": {
