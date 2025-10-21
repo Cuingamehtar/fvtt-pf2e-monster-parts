@@ -67,7 +67,11 @@
       },
       "editor": {
         "title": "Modifier les matériaux fournis"
-      }
+      },
+      "duplicate-key": "Le matériel portant la clé {key} existe déjà. Il sera remplacé.",
+      "validation-failure-notification": "Échec de la validation du matériel {key}. Voir la console (F12) pour plus de détails.",
+      "validation-failure": "Échec de la validation du matériel {key} : {error}",
+      "homebrew-file-invalid": "Erreur lors de l'analyse du fichier {file}. Ignoré."
     },
     "damage": {
       "strikes": "Les frappes avec l'arme infligent {damage} supplémentaires.",
