@@ -67,7 +67,11 @@
       },
       "editor": {
         "title": "Edytuj dostarczone materiały"
-      }
+      },
+      "duplicate-key": "Materiał o kluczu {key} już istnieje. Zostanie on zastąpiony.",
+      "validation-failure-notification": "Nie udało się zweryfikować materiału {key}. Szczegółowe informacje można znaleźć w konsoli (F12).",
+      "validation-failure": "Nie udało się zweryfikować materiału {key}: {error}",
+      "homebrew-file-invalid": "Błąd podczas analizowania pliku {file}. Pominięto."
     },
     "damage": {
       "strikes": "Ataki tą bronią zadają dodatkowo {damage}.",
