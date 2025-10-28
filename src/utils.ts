@@ -115,3 +115,19 @@ export function slugToCamelCase(s: string) {
 export function clamp(num: number, min: number, max: number) {
     return num <= min ? min : num >= max ? max : num;
 }
+
+export function simplifyCoins(gp: number) {
+    const sp = (gp % 1) * 10;
+    const cp = (sp % 1) * 10;
+    return new game.pf2e.Coins({
+        gp: Math.floor(Number(gp.toFixed(1))),
+        sp: Math.floor(Number(sp.toFixed(1))),
+        cp: Math.floor(Number(cp.toFixed(1))),
+    });
+}
+
+export function hash(s: string) {
+    for (var i = 0, h = 9; i < s.length; )
+        h = Math.imul(h ^ s.charCodeAt(i++), 9 ** 9);
+    return h ^ (h >>> 9);
+}

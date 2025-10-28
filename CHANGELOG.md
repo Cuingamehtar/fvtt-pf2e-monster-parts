@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [unreleased]
+
+### Changed
+- Change Monster Parts type to treasure and add an option to exclude it from Sell All Treasure function
+
 ## [0.2.9] - 2025-10-20
 ### Added
 - Add Polish localization (credits to **Lioheart**)

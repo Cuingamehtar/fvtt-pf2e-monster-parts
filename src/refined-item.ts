@@ -2,7 +2,7 @@ import { ItemPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
 import { Material } from "./material";
-import { i18nFormat, t } from "./utils";
+import { i18nFormat, simplifyCoins, t } from "./utils";
 import { dialogs } from "./app/dialogs";
 import { ModuleFlags } from "./types";
 import { AutomaticRefinementProgression } from "./automatic-refinement-progression";
@@ -100,6 +100,15 @@ export class RefinedItem {
         return this.item.getFlag(MODULE_ID, "refined-item")!;
     }
 
+    get coinValue() {
+        const flag = this.getFlag();
+        const value = flag.imbues.reduce(
+            (acc, imb) => acc + imb.value,
+            flag.refinement.value,
+        );
+        return simplifyCoins(value);
+    }
+
     async updateItem() {
         if (AutomaticRefinementProgression.isEnabled) {
             await AutomaticRefinementProgression.adjustRefinementValue(this);
@@ -179,7 +188,7 @@ export class RefinedItem {
 
             return {
                 label: flavor.label,
-                value: m.value,
+                value: m.coinValue,
                 level: m.getLevel(this),
                 flavor: flavor.flavor,
                 notes: flavor.parts,
@@ -203,36 +212,4 @@ export class RefinedItem {
             })
             .then((t) => foundry.applications.ux.TextEditor.enrichHTML(t));
     }
-}
-
-export function extendDerivedData() {
-    libWrapper.register(
-        MODULE_ID,
-        "CONFIG.PF2E.Item.documentClasses.weapon.__proto__.prototype.prepareDerivedData",
-        function (
-            wrapped: typeof PhysicalItemPF2e.prototype.prepareDerivedData,
-        ) {
-            wrapped();
-
-            if (RefinedItem.hasRefinedItemData(this as PhysicalItemPF2e)) {
-                const item = new RefinedItem(
-                    this as HasRefinedData<PhysicalItemPF2e>,
-                );
-                const flag = item.getFlag();
-                (this as PhysicalItemPF2e).system.level.value =
-                    Material.fromKey(
-                        flag.refinement.key,
-                        flag.refinement.value,
-                    )?.getLevel(item) ?? 0;
-
-                const price = flag.imbues.reduce(
-                    (acc, e) => acc + e.value,
-                    flag.refinement.value,
-                );
-                (this as PhysicalItemPF2e).system.price.value =
-                    new game.pf2e.Coins({ gp: price });
-            }
-        },
-        "MIXED",
-    );
 }

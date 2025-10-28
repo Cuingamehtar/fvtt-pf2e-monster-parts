@@ -98,6 +98,7 @@ export type RefinedItemFlags = {
 export type MonsterPartFlags = {
     value: number;
     materials: MaterialKey[];
+    imageSrc?: string;
 };
 
 export type ModuleFlags = {

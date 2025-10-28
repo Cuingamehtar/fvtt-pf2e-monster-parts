@@ -10,6 +10,7 @@
     },
     "refined-item": {
       "label": "Refined Item",
+      "material-label": "{material} (Level: {level}, Value: {value})",
       "warn-item-already-refined": "{item} is already a refined item.",
       "error-item-is-monster-part": "Item has monster part data, it can't be used as a base for refined item.",
       "error-not-refined-item": "This item is not a refined item.",
@@ -145,6 +146,13 @@
       "automatic-refinement-progression": {
         "name": "Automatic Refinement Progression",
         "hint": "Sets refinement level equal to the owner's level. PC only. Requires an active GM."
+      },
+      "handle-monster-parts-selling": {
+        "name": "Handle Monster Parts Selling",
+        "hint": "As Treasure: will be handled as normal treasure (sell button and included in mass sell), Manual: Can only be sold manually (excluded from mass sell), None: Hide sell buttons",
+        "treasure": "As Treasure",
+        "manual": "Manual",
+        "none": "None"
       }
     },
     "data": {

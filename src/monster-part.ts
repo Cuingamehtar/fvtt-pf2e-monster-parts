@@ -1,7 +1,7 @@
 import { EquipmentPF2e, NPCPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
-import { i18nFormat, t } from "./utils";
+import { i18nFormat, simplifyCoins, t } from "./utils";
 import { getExtendedNPCRollOptions } from "./actor-utils";
 import { Material } from "./material";
 import { ModuleFlags } from "./types";
@@ -38,6 +38,7 @@ export class MonsterPart {
     get quantity() {
         return this.item.quantity;
     }
+
     async setQuantity(value: number) {
         return this.item.update({ "system.quantity": value });
     }
@@ -54,6 +55,11 @@ export class MonsterPart {
         count = count ?? this.quantity;
         const baseValue = this.getFlag().value;
         return baseValue * count;
+    }
+
+    get coinValue() {
+        const value = this.getFlag().value;
+        return simplifyCoins(value);
     }
 
     static valueOfCreature(actor: NPCPF2e) {
@@ -94,9 +100,13 @@ export class MonsterPart {
                 );
             }),
         ];
-        const flags = {
+        const flags: ModuleFlags["monster-part"] = {
             value: materialValue,
             materials: materials.map((m) => m.key),
+            imageSrc:
+                actor.img !== "systems/pf2e/icons/default-icons/npc.svg"
+                    ? actor.img
+                    : undefined,
         };
 
         const item = {
@@ -104,8 +114,9 @@ export class MonsterPart {
             img: config.materialItem.image,
             system: {
                 bulk: { value: bulk },
+                size: "med",
             },
-            type: "equipment",
+            type: "treasure",
             flags: { [MODULE_ID]: { ["monster-part"]: flags } },
         };
         if (game.settings.get(MODULE_ID, "actor-lootable")) {
@@ -143,6 +154,7 @@ export class MonsterPart {
                 value,
                 refinements,
                 imbues,
+                image: flags.imageSrc,
             })
             .then((t) => foundry.applications.ux.TextEditor.enrichHTML(t));
     }

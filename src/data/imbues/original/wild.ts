@@ -1,8 +1,8 @@
-import { MODULE_ID } from "../../../module";
-import { getRandomInt, i18nFormat, tkey } from "../../../utils";
+import { i18nFormat, tkey } from "../../../utils";
 import { helpers } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "../../../types";
+import { Wrappers } from "../../../wrappers";
 
 export function createImbueWild(): MaterialData {
     const damages = ["acid", "cold", "electricity", "fire", "void", "sonic"];
@@ -99,23 +99,7 @@ export function createImbueWild(): MaterialData {
         ],
     };
 
-    libWrapper.register(
-        MODULE_ID,
-        "CONFIG.PF2E.Actor.documentClasses.character.prototype.getRollOptions",
-        // @ts-ignore
-        (wrapped, ...args) => {
-            let res: string[] = wrapped(...args);
-            if (
-                args[0]?.includes("strike-damage") &&
-                res.includes("item:imbue:wild")
-            ) {
-                let r = getRandomInt(6) + 1;
-                res.push(`wild:damage-type:${r}`);
-            }
-            return res;
-        },
-        "MIXED",
-    );
+    Wrappers.registerWildImbuement();
 
     return imbue;
 }

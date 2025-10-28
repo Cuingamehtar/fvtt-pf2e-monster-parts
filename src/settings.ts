@@ -20,17 +20,6 @@ export function registerSettings() {
         requiresReload: false,
     });
 
-    /*
-    game.settings.register(MODULE_ID, "groupSenses", {
-        name: t("settings.groupsenses.name") as string,
-        scope: "world",
-        type: Boolean,
-        config: true,
-        default: false,
-        requiresReload: false,
-    });
-    */
-
     game.settings.register(MODULE_ID, "actor-lootable", {
         name: tkey("settings.actor-lootable.name") as string,
         hint: tkey("settings.actor-lootable.hint") as string,
@@ -63,6 +52,31 @@ export function registerSettings() {
             required: true,
         }),
         config: true,
+    });
+
+    game.settings.register(MODULE_ID, "handle-monster-parts-selling", {
+        name: tkey("settings.handle-monster-parts-selling.name") as string,
+        hint: tkey("settings.handle-monster-parts-selling.hint") as string,
+        scope: "world",
+        type: new foundry.data.fields.StringField({
+            choices: {
+                treasure: tkey(
+                    "settings.handle-monster-parts-selling.treasure",
+                ) as string,
+                manual: tkey(
+                    "settings.handle-monster-parts-selling.manual",
+                ) as string,
+                none: tkey(
+                    "settings.handle-monster-parts-selling.none",
+                ) as string,
+            },
+            nullable: false,
+            blank: false,
+            initial: "none",
+            required: true,
+        }),
+        config: true,
+        requiresReload: true,
     });
 
     game.settings.register(MODULE_ID, "armor-refinements", {
@@ -162,8 +176,7 @@ export function registerSettings() {
         resetBtn.innerHTML = `<i class="fa-solid fa-arrow-rotate-left"></i>`;
         resetBtn.addEventListener("click", async () => {
             const reset = await foundry.applications.api.DialogV2.confirm({
-                // @ts-expect-error
-                content: t("settings.bane-traits.confirm-reset"),
+                content: t("settings.bane-traits.confirm-reset") as string,
             });
             if (reset) {
                 await game.settings.set(

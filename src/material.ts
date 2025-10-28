@@ -2,7 +2,7 @@ import { ItemPF2e, NPCPF2e, Predicate } from "foundry-pf2e";
 import { getExtendedNPCRollOptions } from "./actor-utils";
 import { getConfig } from "./config";
 import { RefinedItem } from "./refined-item";
-import { clamp, i18nFormat } from "./utils";
+import { clamp, i18nFormat, simplifyCoins } from "./utils";
 import { MaterialData } from "./data/material";
 
 const materialAliases: Record<string, MaterialKey> = {};
@@ -69,34 +69,33 @@ export class Material {
     getLevel(item: RefinedItem): number {
         const config = getConfig();
         const thresholds = config.thresholds[this.data.type];
-        const itemType = item.item.type;
-        if (Object.keys(thresholds).includes(itemType)) {
-            const type = itemType as
-                | "weapon"
-                | "armor"
-                | "shield"
-                | "equipment";
-            const thr = thresholds[type];
-            const level = thr.findLastIndex((e) => this.value >= e);
-            return level === -1 ? 0 : level + 1;
-        }
-        return 0;
+        // get level thresholds from config and default to equipment for unknown item type;
+        const itemType = (
+            Object.keys(thresholds).includes(item.item.type)
+                ? item.item.type
+                : "equipment"
+        ) as keyof typeof thresholds;
+        const thr = thresholds[itemType];
+        const level = thr.findLastIndex((e) => this.value >= e);
+        return level === -1 ? 0 : level + 1;
     }
+
+    get coinValue() {
+        return simplifyCoins(this.value);
+    }
+
     getThresholdForLevel(item: RefinedItem, level: number): number {
         const config = getConfig();
         const thresholds = config.thresholds[this.data.type];
-        const itemType = item.item.type;
-        if (Object.keys(thresholds).includes(itemType)) {
-            const type = itemType as
-                | "weapon"
-                | "armor"
-                | "shield"
-                | "equipment";
-            const thr = thresholds[type];
-            const clampedLevel = clamp(level, 0, thr.length);
-            return clampedLevel == 0 ? 0 : thr[clampedLevel - 1];
-        }
-        return 0;
+        // get level thresholds from config and default to equipment for unknown item type;
+        const itemType = (
+            Object.keys(thresholds).includes(item.item.type)
+                ? item.item.type
+                : "equipment"
+        ) as keyof typeof thresholds;
+        const thr = thresholds[itemType];
+        const clampedLevel = clamp(level, 0, thr.length);
+        return clampedLevel == 0 ? 0 : thr[clampedLevel - 1];
     }
 
     getEffects(item: RefinedItem) {
@@ -127,6 +126,10 @@ export class Material {
                 .sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0))
                 .map((e) => i18nFormat(e.text, rollData)),
         };
+    }
+
+    getValueAsCoins() {
+        return new game.pf2e.Coins({ cp: this.value * 100 });
     }
 
     static getFlagDataName(materialKey: string, value: string) {
