@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 - Change Monster Parts type to treasure and add an option to exclude it from Sell All Treasure function
+- Change Monster Parts to apply by value, and not by quantity
 
 ## [0.2.9] - 2025-10-20
 ### Added

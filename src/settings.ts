@@ -96,15 +96,6 @@ export function registerSettings() {
         requiresReload: false,
     });
 
-    game.settings.register(MODULE_ID, "refresh-refined-items", {
-        name: tkey("settings.refresh-refined-items.name") as string,
-        hint: tkey("settings.refresh-refined-items.hint") as string,
-        type: Boolean,
-        config: true,
-        default: true,
-        requiresReload: true,
-    });
-
     game.settings.register(MODULE_ID, "automatic-refinement-progression", {
         name: tkey("settings.automatic-refinement-progression.name") as string,
         hint: tkey("settings.automatic-refinement-progression.hint") as string,

@@ -1,4 +1,4 @@
-import { t } from "../utils";
+import { simplifyCoins, t } from "../utils";
 import { configureMonsterPart } from "./monster-part-editor";
 import { configureRefinedItem } from "./refined-item-editor";
 
@@ -31,27 +31,50 @@ function optionChoiceDialog<T>(
     });
 }
 
-function dialogConfirmCancel(
-    title: I18nString,
-    content: I18nString,
+function confirmApplyMaterial(
+    addedValue: number,
+    material: string,
+    consumedQuantity: number,
+    consumedRemainder: number,
 ): Promise<boolean | undefined> {
+    let content = t("dialog.confirm-apply-material.content", {
+        value: simplifyCoins(addedValue).toString(),
+        material: material,
+    });
+    if (consumedQuantity !== 0)
+        content +=
+            " " +
+            t("dialog.confirm-apply-material.consume", {
+                quantity: consumedQuantity,
+            });
+    if (consumedRemainder > 0)
+        content +=
+            " " +
+            t("dialog.confirm-apply-material.remainder", {
+                remainder: simplifyCoins(consumedRemainder).toString(),
+            });
     return DialogV2.prompt({
         window: {
-            title: title as string,
+            title: t("dialog.confirm-apply-material.title") as string,
         },
-        content: content as string,
+        content: `<p>${content}</p>`,
         modal: true,
     }) as Promise<boolean | undefined>;
 }
 
 function dialogSlider(
     title: I18nString,
-    value: number,
     min: number,
     max: number,
 ): Promise<{ value: number } | null> {
-    const content = `<input type="range" id="value" name="value" value="${value}" min="${min}" max="${max}" />
-<p>${t("dialog.slider.value")}: <output id="display">${value}</output></p>`;
+    const step = max < 5 ? 1 : 0.01;
+    const field = new foundry.data.fields.NumberField({
+        min,
+        max,
+        initial: max,
+        step,
+    });
+    const content = (field.toInput({ name: "value" }) as HTMLElement).outerHTML;
     return foundry.applications.api.DialogV2.input({
         window: { title: title as string },
         content: content,
@@ -59,19 +82,12 @@ function dialogSlider(
             label: "Ok",
             icon: "fa-solid fa-check",
         },
-        render: (renderEvent, dialog) => {
-            const input = dialog.window.content.querySelector("input#value");
-            const v = dialog.window.content.querySelector("output#display");
-            input.addEventListener("input", (event) => {
-                v.innerHTML = event.target.value;
-            });
-        },
     });
 }
 
 export const dialogs = {
     choice: optionChoiceDialog,
-    confirm: dialogConfirmCancel,
+    confirmApplyMaterial,
     slider: dialogSlider,
     monsterPart: configureMonsterPart,
     refinedItem: configureRefinedItem,

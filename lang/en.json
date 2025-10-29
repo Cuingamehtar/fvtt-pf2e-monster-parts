@@ -24,11 +24,13 @@
         "title": "Choose material type",
         "count": "Number of Monster Parts",
         "error-no-applicable-material": "This monster part has no applicable material.",
-        "quantity-title": "Number of monster parts to consume"
+        "quantity-title": "Value of monster parts to consume"
       },
       "confirm-apply-material": {
         "title": "Confirm applying material",
-        "content": "<p>This will add <strong>{value} gp</strong> to <strong>{material}</strong> material of the item and remove {quantity} of the monster part's quantity if it's owned by an actor (remove the item if the final quantity is 0).</p>"
+        "content": "This will add <strong>{value}</strong> to <strong>{material}</strong> material of the item.",
+        "consume": "This will consume {quantity} monster parts.",
+        "remainder": "One of the monster part's value will be reduced by <strong>{remainder}</strong>."
       },
       "slider": {
         "value": "Value"
@@ -125,10 +127,6 @@
         "none": "None",
         "ask": "Ask",
         "all": "All"
-      },
-      "refresh-refined-items": {
-        "name": "Refresh refined items",
-        "hint": "Update refined items on every actor in the actors tab when GM logs in."
       },
       "bane-traits": {
         "name": "Bane Traits",

@@ -6,13 +6,14 @@ import { Material } from "../material";
 import { dialogs } from "./dialogs";
 import { MonsterPart } from "../monster-part";
 import { AutomaticRefinementProgression } from "../automatic-refinement-progression";
+import { ModuleFlags } from "../types";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 interface RefinedItemEditorData {
     possibleRefinements: { key: MaterialKey; label: I18nString | I18nKey }[];
     possibleImbues: { key: MaterialKey; label: I18nString | I18nKey }[];
-    refinement: { selected: MaterialKey; value: number };
+    refinement: { selected: MaterialKey; value: number; isDisabled: boolean };
     imbues: { selected: MaterialKey; value: number }[];
 }
 
@@ -144,8 +145,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                         return;
                     }
 
-                    const flag = item.getFlag(MODULE_ID, "monster-part");
-                    if (!flag) {
+                    if (!MonsterPart.hasMonsterPartData(item)) {
                         ui.notifications.error(
                             t("monster-part.error-not-monster-part"),
                         );
@@ -194,31 +194,27 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                                     return null;
                                 })();
                     if (!selectedMaterial) return;
-                    const itemCount =
-                        monsterPart.quantity == 1
-                            ? 1
-                            : (
-                                  await dialogs.slider(
-                                      t(
-                                          "dialog.choose-material.quantity-title",
-                                      ),
-                                      monsterPart.quantity,
-                                      1,
-                                      monsterPart.quantity,
-                                  )
-                              )?.value;
-                    if (!itemCount) return;
-                    const addedValue = monsterPart.getValue(itemCount);
+                    const addedValue = (
+                        await dialogs.slider(
+                            t("dialog.choose-material.quantity-title"),
+                            0,
+                            monsterPart.getValue(),
+                        )
+                    )?.value;
+                    if (!addedValue) return;
+                    const valueSingle = monsterPart.getValue(1);
+                    const consumedItems = Math.floor(addedValue / valueSingle);
+                    const consumedValue = (
+                        addedValue - monsterPart.getValue(consumedItems)
+                    ).toNearest(0.01);
                     if (
-                        await dialogs.confirm(
-                            t("dialog.confirm-apply-material.title"),
-                            t("dialog.confirm-apply-material.content", {
-                                value: addedValue,
-                                quantity: itemCount,
-                                material: i18nFormat(
-                                    getMaterialLabel(selectedMaterial) ?? "",
-                                ),
-                            }),
+                        await dialogs.confirmApplyMaterial(
+                            addedValue,
+                            i18nFormat(
+                                getMaterialLabel(selectedMaterial) ?? "",
+                            ) as string,
+                            consumedItems,
+                            consumedValue,
                         )
                     ) {
                         if (expectedMaterial === "") {
@@ -239,14 +235,31 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                         }
                         this.render();
                         if (monsterPart.isOwnedByActor) {
-                            await monsterPart.setQuantity(
-                                monsterPart.quantity - itemCount,
-                            );
-                            if (monsterPart.quantity <= 0)
+                            if (consumedValue.toNearest(0.01) > 0) {
+                                const data = monsterPart.item.toObject();
+                                (data.flags["pf2e-monster-parts"][
+                                    "monster-part"
+                                ] as ModuleFlags["monster-part"])!.value =
+                                    valueSingle - consumedValue;
+                                data.system.quantity = 1;
+                                monsterPart.item.actor?.createEmbeddedDocuments(
+                                    "Item",
+                                    [data],
+                                );
+                            }
+                            const remainingQuantity =
+                                monsterPart.quantity -
+                                (consumedItems + consumedValue > 0 ? 1 : 0);
+                            if (remainingQuantity > 0) {
+                                await monsterPart.setQuantity(
+                                    remainingQuantity,
+                                );
+                            } else {
                                 monsterPart.item.actor?.deleteEmbeddedDocuments(
                                     "Item",
                                     [monsterPart.item.id],
                                 );
+                            }
                         }
                     }
                 });

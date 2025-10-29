@@ -5,7 +5,10 @@ import { Material } from "./material";
 
 export class AutomaticRefinementProgression {
     static get isEnabled() {
-        return game.settings.get(MODULE_ID, "automatic-refinement-progression");
+        return game.settings.get(
+            MODULE_ID,
+            "automatic-refinement-progression",
+        ) as boolean;
     }
 
     static registerHooks() {
