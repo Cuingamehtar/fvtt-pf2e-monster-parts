@@ -10,6 +10,7 @@
     },
     "refined-item": {
       "label": "Objet raffiné",
+      "material-label": "{material} (Niveau : {level}, Valeur : {value})",
       "warn-item-already-refined": "L'objet {item} est déjà raffiné.",
       "error-item-is-monster-part": "L'objet contient des données de partie de monstre, il ne peut pas être utilisé en tant que base pour un objet raffiné.",
       "error-not-refined-item": "Cet objet n'est pas un objet raffiné.",
@@ -23,11 +24,13 @@
         "title": "Choisissez le type de matériau",
         "count": "Nombre de parties de monstre",
         "error-no-applicable-material": "Cette partie de monstre n'a aucun matériau applicable.",
-        "quantity-title": "Nombre de parties de monstre à consommer"
+        "quantity-title": "Valeur des parties de monstre à consommer"
       },
       "confirm-apply-material": {
         "title": "Confirmer l'application du matériau",
-        "content": "<p>Cela ajoutera <strong>{value} po</strong> au matériau <strong>{material}</strong> de l'objet et supprimera {quantity} de la quantité de la partie du monstre si elle appartient à un acteur (et supprimera l'objet si la quantité finale est de 0).</p>"
+        "content": "Cela ajoutera <strong>{value}</strong> à <strong>{material}</strong> matériaux de l'objet.",
+        "consume": "Cela consommera {quantity} parties de monstre.",
+        "remainder": "La valeur d'une des parties de monstre sera réduite par <strong>{remainder}</strong>."
       },
       "slider": {
         "value": "Valeur"
@@ -67,7 +70,11 @@
       },
       "editor": {
         "title": "Modifier les matériaux fournis"
-      }
+      },
+      "duplicate-key": "Le matériel portant la clé {key} existe déjà. Il sera remplacé.",
+      "validation-failure-notification": "Échec de la validation du matériel {key}. Voir la console (F12) pour plus de détails.",
+      "validation-failure": "Échec de la validation du matériel {key} : {error}",
+      "homebrew-file-invalid": "Erreur lors de l'analyse du fichier {file}. Ignoré."
     },
     "damage": {
       "strikes": "Les frappes avec l'arme infligent {damage} supplémentaires.",
@@ -120,10 +127,6 @@
         "ask": "Demander",
         "all": "Tous"
       },
-      "refresh-refined-items": {
-        "name": "Rafraîchir les objets raffinés",
-        "hint": "Mise à jour des objets raffinés sur chaque acteur dans l'onglet Acteurs lorsque le MJ se connecte."
-      },
       "bane-traits": {
         "name": "Traits tueur",
         "hint": "Les traits indiqués auront leur matériau tueur spécifique.",
@@ -140,6 +143,13 @@
       "automatic-refinement-progression": {
         "name": "Progression automatique du raffinement",
         "hint": "Définit le niveau de raffinement au niveau du propriétaire. PJ uniquement. Nécessite un MJ actif."
+      },
+      "handle-monster-parts-selling": {
+        "name": "Gérer la vente des parties de monstre",
+        "hint": "Comme un trésor : elle sera traitée comme un trésor normal (bouton de vente et inclus dans la vente groupée). Manuel : ne peut être vendu que manuellement (exclu de la vente groupée). Aucun : cache les boutons de vente.",
+        "treasure": "Comme un trésor",
+        "manual": "Manuel",
+        "none": "Aucun"
       }
     },
     "data": {
