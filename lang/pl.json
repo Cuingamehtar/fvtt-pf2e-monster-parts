@@ -10,6 +10,7 @@
     },
     "refined-item": {
       "label": "Udoskonalony przedmiot",
+      "material-label": "{material} (Poziom: {level}, Wartość: {value})",
       "warn-item-already-refined": "{item} jest już przedmiotem udoskonalonym.",
       "error-item-is-monster-part": "Przedmiot zawiera dane części potwora, nie może być użyty jako podstawa do wytworzenia przedmiotu udoskonalonego.",
       "error-not-refined-item": "Ten przedmiot nie jest przedmiotem udoskonalonym.",
@@ -23,11 +24,13 @@
         "title": "Wybierz rodzaj materiału",
         "count": "Liczba części potwora",
         "error-no-applicable-material": "Ta część potwora nie ma odpowiedniego materiału.",
-        "quantity-title": "Liczba części potwora do spożycia"
+        "quantity-title": "Wartość części potworów do konsumpcji"
       },
       "confirm-apply-material": {
         "title": "Potwierdź zastosowanie materiału",
-        "content": "<p>To doda <strong>{value} sz</strong> fo <strong>{material}</strong> materiału przedmiotu i usunie {quantity} części potwora, jeśli jest ona własnością aktora (usuń przedmiot, jeśli ostateczna ilość wynosi 0).</p>"
+        "content": "Spowoduje to dodanie <strong>{value}</strong> do materiału <strong>{material}</strong> przedmiotu.\n",
+        "consume": "Zużyje to {quantity} części potworów.",
+        "remainder": "Wartość jednej z części potwora zostanie zmniejszona o <strong>{remainder}</strong>."
       },
       "slider": {
         "value": "Wartość"
@@ -67,7 +70,11 @@
       },
       "editor": {
         "title": "Edytuj dostarczone materiały"
-      }
+      },
+      "duplicate-key": "Materiał o kluczu {key} już istnieje. Zostanie on zastąpiony.",
+      "validation-failure-notification": "Nie udało się zweryfikować materiału {key}. Szczegółowe informacje można znaleźć w konsoli (F12)",
+      "validation-failure": "Nie udało się zweryfikować materiału {key}: {error}",
+      "homebrew-file-invalid": "Błąd podczas analizowania pliku {file}. Pominięto."
     },
     "damage": {
       "strikes": "Ataki tą bronią zadają dodatkowo {damage}.",
@@ -106,7 +113,6 @@
         "none": "Brak",
         "dead": "Martwy",
         "dialog": "Okno dialogowe"
-
       },
       "variant": {
         "name": "Wariant",
@@ -120,10 +126,6 @@
         "none": "Brak",
         "ask": "Zapytaj",
         "all": "Wszystkie"
-      },
-      "refresh-refined-items": {
-        "name": "Odśwież udoskonalone przedmioty",
-        "hint": "Aktualizuj udoskonalone przedmioty dla każdego aktora w zakładce aktorów, gdy MG się zaloguje."
       },
       "bane-traits": {
         "name": "Cechy Zguby",
@@ -141,6 +143,13 @@
       "automatic-refinement-progression": {
         "name": "Automatyczny Postęp Udoskonalania",
         "hint": "Ustawia poziom udoskonalenia równy poziomowi właściciela. Tylko na bohaterze. Wymaga aktywnego MG."
+      },
+      "handle-monster-parts-selling": {
+        "name": "Sprzedaż części potworów",
+        "hint": "Jako skarb: będzie traktowany jak zwykły skarb (przycisk sprzedaży i uwzględnienie w sprzedaży masowej), Ręcznie: można sprzedawać tylko ręcznie (wykluczenie ze sprzedaży masowej), Brak: ukrycie przycisków sprzedaży",
+        "treasure": "Jako skarb",
+        "manual": "Ręcznie\n",
+        "none": "Brak\n"
       }
     },
     "data": {
