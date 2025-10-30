@@ -4,7 +4,7 @@
     "monster-part": {
       "label": "Część potwora",
       "create-button-label": "Stwórz części potwora",
-      "description-header": "Część potwora (wartość: {value} sz)",
+      "description-header": "Część potwora (wartość: {value})",
       "error-not-monster-part": "Ten przedmiot nie jest częścią potwora.",
       "error-not-physical-item": "Ten przedmiot nie jest przedmiotem fizycznym."
     },
@@ -56,8 +56,8 @@
       },
       "after-combat-dialog": {
         "title": "Przypisz części potwora",
-        "value": "Wartość: {value} sz",
-        "total": "Całkowita wartość: {value} sz"
+        "value": "Wartość: {value}",
+        "total": "Całkowita wartość: {value}"
       }
     },
     "material": {
@@ -187,6 +187,10 @@
           "greater-striking+2": "Jest to broń większych uderzeń +2. Zapewnia +2 do rzutów ataku, zadaje 3 kości obrażeń i może zostać nasycona 2 razy.",
           "greater-striking+3": "Jest to broń większych uderzeń +3. Zapewnia +3 premii do rzutów ataku, zadaje 3 kości obrażeń i może zostać nasycona 3 razy.",
           "major-striking+3": "Jest to broń potężniejszych uderzeń +3. Zapewnia +3 do rzutów ataku, zadaje 4 kości obrażeń i może zostać nasycona 3 razy."
+        },
+        "handwraps": {
+          "label": "Owijki na dłonie",
+          "flavor": "Efekty udoskonalenia owijek na ręce muszą być stosowane ręcznie."
         }
       },
       "imbuement": {
