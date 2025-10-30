@@ -56,7 +56,7 @@
       },
       "after-combat-dialog": {
         "title": "Przypisz części potwora",
-        "value": "Wartość: {value}\n",
+        "value": "Wartość: {value}",
         "total": "Całkowita wartość: {value}"
       }
     },
