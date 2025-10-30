@@ -4,7 +4,7 @@
     "monster-part": {
       "label": "Część potwora",
       "create-button-label": "Stwórz części potwora",
-      "description-header": "Część potwora (wartość: {value})\n",
+      "description-header": "Część potwora (wartość: {value})",
       "error-not-monster-part": "Ten przedmiot nie jest częścią potwora.",
       "error-not-physical-item": "Ten przedmiot nie jest przedmiotem fizycznym."
     },
