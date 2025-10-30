@@ -4,7 +4,7 @@
     "monster-part": {
       "label": "Monster Part",
       "create-button-label": "Create Monster Parts",
-      "description-header": "Monster Part (Value: {value} gp)",
+      "description-header": "Monster Part (Value: {value})",
       "error-not-monster-part": "This item is not a monster part.",
       "error-not-physical-item": "This item is not a physical item."
     },
@@ -56,8 +56,8 @@
       },
       "after-combat-dialog": {
         "title": "Assign Monster Parts",
-        "value": "Value: {value} gp",
-        "total": "Total value: {value} gp"
+        "value": "Value: {value}",
+        "total": "Total value: {value}"
       }
     },
     "material": {
@@ -188,6 +188,10 @@
           "greater-striking+2": "This is a +2 greater striking weapon. It grants +2 item bonus to attack rolls, deals 3 dice of damage, and can be imbued 2 times.",
           "greater-striking+3": "This is a +3 greater striking weapon. It grants +3 item bonus to attack rolls, deals 3 dice of damage, and can be imbued 3 times.",
           "major-striking+3": "This is a +3 major striking weapon. It grants +3 item bonus to attack rolls, deals 4 dice of damage, and can be imbued 3 times."
+        },
+        "handwraps": {
+          "label": "Handwraps",
+          "flavor": "Handwraps refinement effects have to be applied manually."
         }
       },
       "imbuement": {

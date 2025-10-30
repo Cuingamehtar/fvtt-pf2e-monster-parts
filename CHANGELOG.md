@@ -6,9 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [unreleased]
 
+### Added
+- Add Handwraps refinement as a separate refinement from Bludgeoning as Handwraps don't work correctly with ItemAlteration rule elements
+- Add Alteration effect for simple changes to item properties that aren't supported by ItemAlteration rule element
+
 ### Changed
 - Change Monster Parts type to treasure and add an option to exclude it from Sell All Treasure function
-- Change Monster Parts to apply by value, and not by quantity
+- Change Monster Parts to apply by value, and not by quantity (excess value is split into another item)
+- Roll options for refinements' and imbuements' levels now show on the rules page of the item sheet.
 
 ## [0.2.9] - 2025-10-20
 ### Added

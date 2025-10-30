@@ -21,7 +21,7 @@ export function createImbueIntelligence(): MaterialData {
         itemPredicate: [
             {
                 or: skills.map((s) => ({
-                    gte: [`refinement:skill:${s}`, 0],
+                    gte: [`item:refinement:skill:${s}`, 0],
                 })),
             },
         ],

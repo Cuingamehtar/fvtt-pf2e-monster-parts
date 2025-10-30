@@ -100,8 +100,11 @@ export class Material {
 
     getEffects(item: RefinedItem) {
         const level = this.getLevel(item);
-        return this.data.effects.filter(
-            (e) => e.levelMin <= level && (!e.levelMax || level <= e.levelMax),
+        return (
+            this.data.effects?.filter(
+                (e) =>
+                    e.levelMin <= level && (!e.levelMax || level <= e.levelMax),
+            ) ?? []
         );
     }
 
@@ -126,10 +129,6 @@ export class Material {
                 .sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0))
                 .map((e) => i18nFormat(e.text, rollData)),
         };
-    }
-
-    getValueAsCoins() {
-        return new game.pf2e.Coins({ cp: this.value * 100 });
     }
 
     static getFlagDataName(materialKey: string, value: string) {

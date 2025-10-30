@@ -22,9 +22,17 @@ export function createImbueWisdom(): MaterialData {
             {
                 or: [
                     ...skills.map((s) => ({
-                        gte: [`refinement:skill:${s}`, 0] as [string, number],
+                        gte: [`item:refinement:skill:${s}`, 0] as [
+                            string,
+                            number,
+                        ],
                     })),
-                    { gte: ["refinement:perception", 0] as [string, number] },
+                    {
+                        gte: ["item:refinement:perception", 0] as [
+                            string,
+                            number,
+                        ],
+                    },
                 ],
             },
         ],

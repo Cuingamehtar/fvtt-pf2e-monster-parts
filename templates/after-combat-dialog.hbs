@@ -2,9 +2,9 @@
     {{#each data.actors}}
         <p>
             <input type="checkbox" name="{{this.id}}" id="{{this.id}}" {{checked this.checked}}/>
-            <label for="{{this.id}}">{{localize this.name}} ({{localize "pf2e-monster-parts.dialog.after-combat-dialog.value" value=this.value}})</label>
+            <label for="{{this.id}}">{{localize this.name}} ({{localize "pf2e-monster-parts.dialog.after-combat-dialog.value" value=this.coins}})</label>
         </p>
     {{/each}}
     <hr/>
-    <p>{{localize "pf2e-monster-parts.dialog.after-combat-dialog.total" value=data.totalValue}}</p>
+    <p>{{localize "pf2e-monster-parts.dialog.after-combat-dialog.total" value=data.totalCoins}}</p>
 </div>

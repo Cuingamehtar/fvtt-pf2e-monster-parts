@@ -54,7 +54,7 @@ type RuleElementEffectSource = {
     rule:
         | DamageDiceSource
         | FlatModifierSource
-        | RollNoteSource
+        | (RollNoteSource & { key: "Note" })
         | RollOptionSource
         | ItemAlterationSource
         | SenseSource;

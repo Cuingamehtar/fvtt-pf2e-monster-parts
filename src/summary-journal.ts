@@ -47,7 +47,8 @@ function generatePage(m: MaterialData) {
             .join("");
         const headerTable = `<table>${tableHeader}${tableRows}</table>`;
 
-        const effectRows = m.effects.map((l) => debugLineEffect(l)).join("");
+        const effectRows =
+            m.effects?.map((l) => debugLineEffect(l)).join("") ?? [];
         const effectTable = `<table>${tableHeader}${effectRows}</table>`;
 
         description += `<details><summary>Debug details</summary>${headerTable}${effectTable}</details>`;
@@ -77,17 +78,23 @@ function debugLine(label: HeaderLabel) {
 
 function debugLineEffect(effect: MaterialEffect) {
     let name = "";
-    const { value, damageCategory, damageType, dieSize, category } =
-        effect.rule;
-    switch (effect.rule.key) {
-        case "DamageDice":
-            name = `Damage Dice (${dieSize}${typeof category == "undefined" ? "" : ` ${category}`}${typeof damageType == "undefined" ? "" : ` ${damageType}`})`;
-            break;
-        case "FlatModifier":
-            name = `Flat Modifier (${value}${typeof damageCategory == "undefined" ? "" : ` ${damageCategory}`}${typeof damageType == "undefined" ? "" : ` ${damageType}`})`;
-            break;
-        default:
-            name = effect.rule.key;
+    let tooltip = "";
+    if (effect.type == "Alteration") {
+        name = `Alteration (${effect.property}: ${effect.value})`;
+    } else if (effect.type === "RuleElement") {
+        const { value, damageCategory, damageType, dieSize, category } =
+            effect.rule;
+        tooltip = JSON.stringify(effect.rule, null, 2);
+        switch (effect.rule.key) {
+            case "DamageDice":
+                name = `Damage Dice (${dieSize}${typeof category == "undefined" ? "" : ` ${category}`}${typeof damageType == "undefined" ? "" : ` ${damageType}`})`;
+                break;
+            case "FlatModifier":
+                name = `Flat Modifier (${value}${typeof damageCategory == "undefined" ? "" : ` ${damageCategory}`}${typeof damageType == "undefined" ? "" : ` ${damageType}`})`;
+                break;
+            default:
+                name = effect.rule.key;
+        }
     }
     const cells = Array.fromRange(21)
         .map((i) =>
@@ -97,6 +104,5 @@ function debugLineEffect(effect: MaterialEffect) {
                 : `<td></td>`,
         )
         .join("");
-    const tooltip = JSON.stringify(effect.rule, null, 2);
-    return `<tr><td style="vertical-align: middle;"><div style="vertical-align: middle;overflow-y: auto; height:4em" data-tooltip='${tooltip}'>${name}</div></td>${cells}</tr>`;
+    return `<tr><td style="vertical-align: middle;"><div style="vertical-align: middle;overflow-y: auto; height:4em" ${tooltip ? `data-tooltip='${tooltip}'` : ""}>${name}</div></td>${cells}</tr>`;
 }

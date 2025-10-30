@@ -1,5 +1,7 @@
-import { RuleElementEffectSource } from "./data-types";
 import { PredicateStatement } from "foundry-pf2e";
+import { effectField } from "./effect-handlers";
+import { RuleElementEffect } from "./effect-handlers/rule-element";
+import { AlterationEffect } from "./effect-handlers/alteration";
 
 const f = foundry.data.fields;
 
@@ -49,10 +51,12 @@ class PredicateField extends foundry.data.fields.DataField {
     }
 }
 
-export type MaterialEffect = {
+export type BaseMaterialEffect = {
     levelMin: number;
     levelMax?: number;
-} & { type: "RuleElement"; rule: RuleElementEffectSource["rule"] };
+};
+
+export type MaterialEffect = RuleElementEffect | AlterationEffect;
 
 export type HeaderLabel = {
     text: I18nEntry;
@@ -72,7 +76,7 @@ export type MaterialData = {
         description?: I18nEntry;
         labels?: HeaderLabel[];
     };
-    effects: MaterialEffect[];
+    effects?: MaterialEffect[];
 };
 
 export const materialDataSchema = new f.SchemaField({
@@ -101,17 +105,5 @@ export const materialDataSchema = new f.SchemaField({
             { required: true },
         ),
     }),
-    effects: new f.ArrayField(
-        new f.TypedSchemaField({
-            RuleElement: {
-                type: new f.StringField({
-                    choices: ["RuleElement"],
-                    required: true,
-                }),
-                levelMin: new f.NumberField({ required: true }),
-                levelMax: new f.NumberField({ required: false }),
-                rule: new f.ObjectField({ required: true }),
-            },
-        }),
-    ),
+    effects: new f.ArrayField(effectField, { required: false }),
 });

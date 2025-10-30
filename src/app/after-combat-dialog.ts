@@ -1,54 +1,10 @@
-import { EncounterPF2e, NPCPF2e, TokenDocumentPF2e } from "foundry-pf2e";
-import { MonsterPart } from "../monster-part";
-import { MODULE_ID } from "../module";
+import { NPCPF2e, TokenDocumentPF2e } from "foundry-pf2e";
+import { simplifyCoins } from "../utils";
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
-export function registerEndCombatDialog() {
-    if (
-        !game.user.isActiveGM ||
-        game.settings.get(MODULE_ID, "monster-parts-after-combat") == "none"
-    )
-        return;
-    Hooks.on("deleteCombat", async (combat: EncounterPF2e) => {
-        const combatants = combat.combatants;
-        const npcs = combatants
-            .filter((c) => (c.token && c.actor?.isOfType("npc")) ?? false)
-            .map((e) => ({
-                token: e.token!,
-                actor: e.actor! as NPCPF2e,
-                value: MonsterPart.valueOfCreature(e.actor as NPCPF2e),
-                checked: e.actor!.isDead,
-            }));
-        if (npcs.length == 0) return;
-        const settings = game.settings.get(
-            MODULE_ID,
-            "monster-parts-after-combat",
-        );
-        const dialogResult =
-            settings == "dialog"
-                ? ((await new Promise((resolve) => {
-                      const d = new AfterCombatDialog({
-                          npcs,
-                          form: {
-                              handler: async (
-                                  _event: Event | SubmitEvent,
-                                  _form: HTMLFormElement,
-                                  _formData: foundry.applications.ux.FormDataExtended,
-                              ) => resolve(d.npcs),
-                          },
-                      });
-                      d.render(true);
-                  })) as typeof npcs | undefined)
-                : npcs;
-
-        if (!dialogResult) return;
-        dialogResult
-            .filter((e) => e.checked)
-            .forEach((e) => MonsterPart.fromCreature(e.actor));
-    });
-}
-
-class AfterCombatDialog extends HandlebarsApplicationMixin(ApplicationV2) {
+export class AfterCombatDialog extends HandlebarsApplicationMixin(
+    ApplicationV2,
+) {
     npcs;
 
     constructor(
@@ -102,6 +58,7 @@ class AfterCombatDialog extends HandlebarsApplicationMixin(ApplicationV2) {
                         (npc) => element.id == npc.token.id,
                     );
                     if (!npc) return;
+                    // @ts-expect-error
                     npc.checked = element.checked;
                     this.render();
                 });
@@ -112,7 +69,7 @@ class AfterCombatDialog extends HandlebarsApplicationMixin(ApplicationV2) {
         const actors = this.npcs.map((e) => ({
             name: e.token.name,
             id: e.token.id,
-            value: e.value,
+            coins: simplifyCoins(e.value),
             checked: e.checked,
         }));
 
@@ -126,9 +83,14 @@ class AfterCombatDialog extends HandlebarsApplicationMixin(ApplicationV2) {
         return {
             data: {
                 actors,
-                totalValue: actors
-                    .filter((e) => e.checked)
-                    .reduce((acc, e) => acc + e.value, 0),
+                totalCoins: simplifyCoins(
+                    actors
+                        .filter((e) => e.checked)
+                        .reduce(
+                            (acc, e) => acc.plus(e.coins),
+                            new game.pf2e.Coins(),
+                        ).copperValue / 100,
+                ).toString(),
             },
             buttons,
         };

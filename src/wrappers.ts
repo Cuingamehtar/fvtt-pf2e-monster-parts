@@ -54,14 +54,13 @@ export class Wrappers {
         libWrapper.register(
             MODULE_ID,
             "CONFIG.PF2E.Actor.documentClasses.character.prototype.getRollOptions",
-            // @ts-ignore
             (wrapped, ...args) => {
-                let res: string[] = wrapped(...args);
+                const res: string[] = wrapped(...args);
                 if (
                     args[0]?.includes("strike-damage") &&
                     res.includes("item:imbue:wild")
                 ) {
-                    let r = getRandomInt(6) + 1;
+                    const r = getRandomInt(6) + 1;
                     res.push(`wild:damage-type:${r}`);
                 }
                 return res;
@@ -70,7 +69,7 @@ export class Wrappers {
         );
     }
 
-    static registerInlineNotes(): void {
+    static registerInlineNotes() {
         async function addDescriptionNote(
             item: PhysicalItemPF2e,
             description: { value: string; gm: string },
@@ -104,6 +103,35 @@ export class Wrappers {
         );
     }
 
+    static extendItemRollOptions() {
+        libWrapper.register(
+            MODULE_ID,
+            "CONFIG.PF2E.Item.documentClasses.weapon.__proto__.prototype.getRollOptions",
+            function (
+                this: PhysicalItemPF2e,
+                wrapped: typeof PhysicalItemPF2e.prototype.getRollOptions,
+                ...args
+            ): ReturnType<typeof PhysicalItemPF2e.prototype.getRollOptions> {
+                const res: string[] = wrapped(...args);
+                if (RefinedItem.hasRefinedItemData(this)) {
+                    const [prefix] = args;
+                    const item = new RefinedItem(this);
+                    const flags = item.getFlag();
+                    return [
+                        ...res,
+                        ...[flags.refinement, ...flags.imbues].map(
+                            (v) =>
+                                `${prefix}:${v.key}:${Material.fromKey(v.key, v.value)?.getLevel(item) ?? 0}`,
+                        ),
+                    ];
+                }
+
+                return res;
+            },
+            "MIXED",
+        );
+    }
+
     static extendDerivedData() {
         libWrapper.register(
             MODULE_ID,
@@ -112,8 +140,9 @@ export class Wrappers {
                 this: PhysicalItemPF2e,
                 wrapped: typeof PhysicalItemPF2e.prototype.prepareDerivedData,
             ) {
-                wrapped();
                 if (RefinedItem.hasRefinedItemData(this)) {
+                    new RefinedItem(this).prepareDerivedData();
+                    wrapped();
                     const item = new RefinedItem(this);
                     const flag = item.getFlag();
                     this.system.level.value =
@@ -121,10 +150,9 @@ export class Wrappers {
                             flag.refinement.key,
                             flag.refinement.value,
                         )?.getLevel(item) ?? 0;
-
                     this.system.price.value = item.coinValue;
-                }
-                if (MonsterPart.hasMonsterPartData(this)) {
+                } else if (MonsterPart.hasMonsterPartData(this)) {
+                    wrapped();
                     const item = new MonsterPart(this);
                     this.system.price.value = item.coinValue;
                 }

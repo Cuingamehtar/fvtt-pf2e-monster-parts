@@ -5,12 +5,10 @@ import { RefinedItem } from "./refined-item";
 import { renderSummaryJournal } from "./summary-journal";
 import { Material } from "./material";
 import { getExtendedNPCRollOptions } from "./actor-utils";
-import { registerEndCombatDialog } from "./app/after-combat-dialog";
 import { AutomaticRefinementProgression } from "./automatic-refinement-progression";
 import { Wrappers } from "./wrappers";
 import { ModuleHooks } from "./hooks";
 import { ActorPF2e, TokenPF2e } from "foundry-pf2e";
-import Scene from "foundry-pf2e/foundry/client/documents/scene";
 
 export const MODULE_ID = "pf2e-monster-parts";
 
@@ -19,7 +17,6 @@ Hooks.once("init", () => {
     Hooks.once("ready", async () => {
         await createConfig();
 
-        registerEndCombatDialog();
         AutomaticRefinementProgression.registerHooks();
         if (
             game.settings.get(MODULE_ID, "handle-monster-parts-selling") !==
@@ -28,22 +25,11 @@ Hooks.once("init", () => {
             Wrappers.patchSellAllTreasure();
         Wrappers.registerInlineNotes();
         Wrappers.extendDerivedData();
+        Wrappers.extendItemRollOptions();
         ModuleHooks.registerAllHandlers();
 
-        // update refined item data for actors in the actor list
-        for (const actor of game.actors) {
-            for (const item of actor.items) {
-                if (
-                    item.isOfType("physical") &&
-                    RefinedItem.hasRefinedItemData(item)
-                ) {
-                    const refinedItem = new RefinedItem(item);
-                    refinedItem.updateItem();
-                }
-            }
-        }
-
-        // refresh monster parts value for all actors
+        // refresh item data  for all actors
+        const refreshedItems: string[] = [];
         [
             ...game.actors.values(),
             ...game.scenes
@@ -55,10 +41,12 @@ Hooks.once("init", () => {
             actor.items.forEach((item) => {
                 if (
                     item.isOfType("physical") &&
-                    MonsterPart.hasMonsterPartData(item) &&
-                    item.price.value.copperValue === 0
+                    (MonsterPart.hasMonsterPartData(item) ||
+                        RefinedItem.hasRefinedItemData(item)) &&
+                    !refreshedItems.includes(item.id)
                 ) {
                     item.prepareDerivedData();
+                    refreshedItems.push(item.id);
                 }
             });
         });

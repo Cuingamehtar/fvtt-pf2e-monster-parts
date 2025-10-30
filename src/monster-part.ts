@@ -151,7 +151,7 @@ export class MonsterPart {
             "modules/pf2e-monster-parts/templates/monster-part-header.hbs";
         return await foundry.applications.handlebars
             .renderTemplate(templatePath, {
-                value,
+                coins: simplifyCoins(value),
                 refinements,
                 imbues,
                 image: flags.imageSrc,

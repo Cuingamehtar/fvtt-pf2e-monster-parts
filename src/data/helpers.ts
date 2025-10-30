@@ -1,13 +1,14 @@
 import { Abilities, PredicateStatement, SkillSlug } from "foundry-pf2e";
 import { ItemAlterationSource } from "./data-types";
-import { HeaderLabel, MaterialData, MaterialEffect } from "./material";
+import { HeaderLabel, MaterialEffect } from "./material";
 import { RollString } from "../types";
+import { RuleElementEffect } from "./effect-handlers/rule-element";
 
 export function selfAlteration(
     property: ItemAlterationSource["property"],
     value: ItemAlterationSource["value"],
     mode: ItemAlterationSource["mode"] = "upgrade",
-): Omit<MaterialData["effects"][0], "levelMin" | "levelMax"> {
+): Omit<RuleElementEffect, "levelMin" | "levelMax"> {
     return {
         type: "RuleElement",
         rule: {
@@ -20,20 +21,6 @@ export function selfAlteration(
     };
 }
 
-export function addItemBonus(
-    skill: string,
-    value: number,
-): Omit<MaterialEffect, "levelMin" | "levelMax"> {
-    return {
-        type: "RuleElement",
-        rule: {
-            key: "FlatModifier",
-            selector: skill,
-            type: "item",
-            value: value,
-        },
-    };
-}
 export const shield = {
     label: function (
         hp: number,
@@ -53,7 +40,7 @@ export const shield = {
     },
     effectHP: function (
         hp: number,
-    ): Omit<MaterialEffect, "levelMin" | "levelMax"> {
+    ): Omit<RuleElementEffect, "levelMin" | "levelMax"> {
         return {
             type: "RuleElement",
             rule: {
@@ -67,7 +54,7 @@ export const shield = {
     },
     effectHardness: function (
         hardness: number,
-    ): Omit<MaterialEffect, "levelMin" | "levelMax"> {
+    ): Omit<RuleElementEffect, "levelMin" | "levelMax"> {
         return {
             type: "RuleElement",
             rule: {
@@ -81,9 +68,6 @@ export const shield = {
     },
 };
 
-export function levelRange(from: number, to?: number) {
-    return { levelMin: from, levelMax: to };
-}
 export function predicateAnySense() {
     return {
         or: [
@@ -120,7 +104,7 @@ const damage = {
         value: RollString;
         label: I18nKey | I18nString;
         predicate?: PredicateStatement[];
-    }): Omit<MaterialEffect, "levelMin" | "levelMax"> {
+    }): Omit<RuleElementEffect, "levelMin" | "levelMax"> {
         if (typeof value === "undefined" || typeof value === "number") {
             return {
                 type: "RuleElement",
@@ -201,12 +185,15 @@ function leveledEffects<T>(
             levelMax: levels[i + 1] ? levels[i + 1] - 1 : undefined,
             value: values[i],
         }))
-        .filter((e) => e.value)
-        .map(({ levelMin, levelMax, value }) => ({
-            ...f(value),
-            levelMin,
-            levelMax,
-        }));
+        .filter((e) => typeof e.value !== "undefined")
+        .map(
+            ({ levelMin, levelMax, value }) =>
+                ({
+                    ...f(value),
+                    levelMin,
+                    levelMax,
+                }) as MaterialEffect,
+        );
 }
 
 function leveledLabels<T>(

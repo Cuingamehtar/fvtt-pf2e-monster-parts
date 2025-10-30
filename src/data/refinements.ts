@@ -3,6 +3,7 @@ import { addWeaponRefinements } from "./refinements/weapon";
 import { addShieldRefinements } from "./refinements/shield";
 import { addArmorRefinements } from "./refinements/armor";
 import { addSkillRefinements } from "./refinements/skill";
+import { addHandwrapsRefinement } from "./refinements/handwraps";
 
 export function createDefaultRefinements(): MaterialData[] {
     return [
@@ -10,5 +11,6 @@ export function createDefaultRefinements(): MaterialData[] {
         ...addShieldRefinements(),
         ...addSkillRefinements(),
         ...addArmorRefinements(),
+        addHandwrapsRefinement(),
     ];
 }

@@ -7,6 +7,7 @@ import { dialogs } from "./app/dialogs";
 import { ModuleFlags } from "./types";
 import { AutomaticRefinementProgression } from "./automatic-refinement-progression";
 import { MonsterPart } from "./monster-part";
+import { EffectHandlers } from "./data/effect-handlers";
 
 type HasRefinedData<T extends PhysicalItemPF2e> = T & {
     flags: {
@@ -113,7 +114,6 @@ export class RefinedItem {
         if (AutomaticRefinementProgression.isEnabled) {
             await AutomaticRefinementProgression.adjustRefinementValue(this);
         }
-        const effects = this.getEffects();
 
         const flag = this.getFlag();
         let updatedData = {
@@ -127,60 +127,37 @@ export class RefinedItem {
                 Material.getFlagDataName(mat.data.key as string, "level")
             ] = mat?.getLevel(this);
         }
+
         await this.item.update(updatedData);
 
-        const effectData = {};
-        const rules = [];
-        for (const effect of effects.flatMap((e) => e?.effects ?? [])) {
-            switch (effect.type) {
-                case "RuleElement":
-                    rules.push(effect.rule);
-                    break;
-            }
-        }
-        foundry.utils.mergeObject(effectData, {
-            "system.rules": rules,
-        });
-        return this.item.update(effectData);
+        const effects = this.getEffects();
+
+        const changes = {};
+        effects.forEach((effect) =>
+            EffectHandlers.handleUpdate(this, effect, changes),
+        );
+        await this.item.update(changes);
+    }
+
+    prepareDerivedData() {
+        const effects = this.getEffects();
+        effects?.map((effect) => EffectHandlers.handleSynthetic(this, effect));
     }
 
     getRollOptions() {
-        const options = [
-            ...this.item.getRollOptions("item"),
-            `item:type:${this.item.type}`,
-        ];
-        const flags = this.item.getFlag(MODULE_ID, "refined-item");
-        if (!flags) return options;
-        return [
-            ...options,
-            ...[flags.refinement, ...flags.imbues].map(
-                (v) =>
-                    `${v.key}:${Material.fromKey(v.key, v.value)?.getLevel(this) ?? 0}`,
-            ),
-        ];
+        return this.item.getRollOptions("item");
     }
 
     getEffects() {
-        const flags = this.item.getFlag(MODULE_ID, "refined-item");
-        if (!flags) return [];
+        const flags = this.getFlag();
         return [flags.refinement, ...flags.imbues]
             .map((m) => Material.fromKey(m.key, m.value))
-            .map((m?: Material) => {
-                if (!m) return undefined;
-                const level = m.getLevel(this);
-                const effects = m.getEffects(this);
-                return {
-                    key: m.data.key,
-                    label: m.data.label,
-                    level,
-                    value: m.value,
-                    effects: effects,
-                };
-            });
+            .filter((m): m is Material => !!m)
+            .flatMap((m: Material) => m.getEffects(this));
     }
 
     async descriptionHeader() {
-        const flags = this.item.getFlag(MODULE_ID, "refined-item")!;
+        const flags = this.getFlag();
 
         const prepare = (m?: Material) => {
             if (!m) return undefined;

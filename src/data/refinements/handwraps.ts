@@ -1,26 +1,20 @@
 import { MaterialData } from "../material";
-import { helpers } from "../helpers";
 
-export function addWeaponRefinements(): MaterialData[] {
-    const damageTypes = ["bludgeoning", "piercing", "slashing"] as (
-        | "bludgeoning"
-        | "piercing"
-        | "slashing"
-    )[];
-    return damageTypes.map((damage) => ({
-        key: `refinement:weapon:${damage}`,
+export function addHandwrapsRefinement(): MaterialData {
+    return {
+        key: `refinement:handwraps`,
         type: "refinement",
         label: {
             type: "key",
-            key: `pf2e-monster-parts.data.refinement.${damage}`,
+            key: `pf2e-monster-parts.data.refinement.handwraps.label`,
         },
-        itemPredicate: [
-            "item:type:weapon",
-            `item:damage:type:${damage}`,
-            { not: "item:handwraps-of-mighty-blows" },
-        ],
-        monsterPredicate: ["item:type:melee", `item:damage:type:${damage}`],
+        itemPredicate: ["item:handwraps-of-mighty-blows"],
+        monsterPredicate: ["item:type:melee", `item:damage:type:bludgeoning`],
         header: {
+            description: {
+                type: "key",
+                key: "pf2e-monster-parts.data.refinement.handwraps.flavor",
+            },
             labels: [
                 {
                     levelMin: 2,
@@ -71,40 +65,5 @@ export function addWeaponRefinements(): MaterialData[] {
                 },
             ],
         },
-        effects: [
-            {
-                levelMin: 2,
-                rule: {
-                    key: "ItemAlteration",
-                    mode: "add",
-                    property: "traits",
-                    value: "magical",
-                    itemId: "{item|id}",
-                },
-                type: "RuleElement",
-            },
-            // potency
-            ...helpers.leveledEffects([2, 10, 16], [1, 2, 3], (value) => ({
-                rule: {
-                    key: "ItemAlteration",
-                    mode: "upgrade",
-                    property: "runes-potency",
-                    value: value,
-                    itemId: "{item|id}",
-                },
-                type: "RuleElement",
-            })),
-            // striking
-            ...helpers.leveledEffects([4, 12, 19], [1, 2, 3], (value) => ({
-                rule: {
-                    key: "ItemAlteration",
-                    mode: "upgrade",
-                    property: "runes-striking",
-                    value: value,
-                    itemId: "{item|id}",
-                },
-                type: "RuleElement",
-            })),
-        ],
-    }));
+    };
 }

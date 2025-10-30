@@ -22,7 +22,7 @@ export function createImbueSensory(): MaterialData {
         monsterPredicate: [{ or: senses }],
         itemPredicate: [
             {
-                gte: [`refinement:perception`, 0],
+                gte: [`item:refinement:perception`, 0],
             },
         ],
         header: {
