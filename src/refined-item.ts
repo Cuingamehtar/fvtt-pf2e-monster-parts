@@ -132,7 +132,7 @@ export class RefinedItem {
 
         const effects = this.getEffects();
 
-        const changes = {};
+        const changes = { system: { ["==rules"]: [] } };
         effects.forEach((effect) =>
             EffectHandlers.handleUpdate(this, effect, changes),
         );

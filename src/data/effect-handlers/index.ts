@@ -24,11 +24,13 @@ export const effectField = new f.TypedSchemaField({
         levelMax: new f.NumberField({ required: false }),
         property: new f.StringField({ required: true }),
         value: new f.NumberField({ required: true }),
+        editData: new f.BooleanField({ required: false }),
     },
 });
 
 export class EffectHandlers {
     private static updateHandlers = {
+        Alteration: AlterationEffectHandler.handleUpdate,
         RuleElement: RuleElementEffectHandler.handleUpdate,
     };
 

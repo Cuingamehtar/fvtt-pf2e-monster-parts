@@ -79,40 +79,30 @@ export function createImbueSturdy(): MaterialData {
             ],
         },
         effects: [
-            ...Array.fromRange(20, 1).flatMap((l) => [
-                {
-                    type: "RuleElement" as "RuleElement",
-                    levelMin: l,
-                    levelMax: l == 20 ? undefined : l,
-                    rule: {
-                        key: "ItemAlteration",
-                        property: "hardness",
-                        mode: "add",
-                        value: `${l} -@item.level +3`,
-                        itemId: "{item|id}",
-                        priority: 200,
-                        predicate: [
-                            { lte: ["item:level", l + 2] as [string, number] },
-                        ],
-                    },
+            {
+                type: "RuleElement" as "RuleElement",
+                levelMin: 1,
+                rule: {
+                    key: "ItemAlteration",
+                    property: "hardness",
+                    mode: "add",
+                    value: "clamp(@item.flags.pf2e-monster-parts.values.imbueSturdyLevel -@item.flags.pf2e-monster-parts.values.refinementShieldLevel +3, 0,3)",
+                    itemId: "{item|id}",
+                    priority: 200,
                 },
-                {
-                    type: "RuleElement" as "RuleElement",
-                    levelMin: l,
-                    levelMax: l == 20 ? undefined : l,
-                    rule: {
-                        key: "ItemAlteration",
-                        property: "hp-max",
-                        mode: "add",
-                        value: `@item.hardness *2`,
-                        itemId: "{item|id}",
-                        priority: 300,
-                        predicate: [
-                            { lte: ["item:level", l + 2] as [string, number] },
-                        ],
-                    },
+            },
+            {
+                type: "RuleElement" as "RuleElement",
+                levelMin: 1,
+                rule: {
+                    key: "ItemAlteration",
+                    property: "hp-max",
+                    mode: "upgrade",
+                    value: "@item.hitPoints.max+ ternary(lte(@item.flags.pf2e-monster-parts.values.refinementShieldLevel, @item.flags.pf2e-monster-parts.values.imbueSturdyLevel +2), @item.hardness *2,0)",
+                    itemId: "{item|id}",
+                    priority: 300,
                 },
-            ]),
+            },
         ],
     };
 }

@@ -1,4 +1,5 @@
 import { MaterialData } from "../material";
+import { helpers } from "../helpers";
 
 export function addHandwrapsRefinement(): MaterialData {
     return {
@@ -6,15 +7,11 @@ export function addHandwrapsRefinement(): MaterialData {
         type: "refinement",
         label: {
             type: "key",
-            key: `pf2e-monster-parts.data.refinement.handwraps.label`,
+            key: `pf2e-monster-parts.data.refinement.handwraps`,
         },
         itemPredicate: ["item:handwraps-of-mighty-blows"],
         monsterPredicate: ["item:type:melee", `item:damage:type:bludgeoning`],
         header: {
-            description: {
-                type: "key",
-                key: "pf2e-monster-parts.data.refinement.handwraps.flavor",
-            },
             labels: [
                 {
                     levelMin: 2,
@@ -65,5 +62,22 @@ export function addHandwrapsRefinement(): MaterialData {
                 },
             ],
         },
+
+        effects: [
+            // potency
+            ...helpers.leveledEffects([2, 10, 16], [1, 2, 3], (value) => ({
+                property: "system.runes.potency",
+                value,
+                editData: true,
+                type: "Alteration",
+            })),
+            // striking
+            ...helpers.leveledEffects([4, 12, 19], [1, 2, 3], (value) => ({
+                property: "system.runes.striking",
+                value,
+                editData: true,
+                type: "Alteration",
+            })),
+        ],
     };
 }
