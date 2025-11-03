@@ -4,7 +4,7 @@
     "monster-part": {
       "label": "Partie de monstre",
       "create-button-label": "Créer des parties de monstre",
-      "description-header": "Partie de monstre (Valeur : {value} po)",
+      "description-header": "Partie de monstre (Valeur : {value})",
       "error-not-monster-part": "Cet objet n'est pas une partie de monstre.",
       "error-not-physical-item": "Cet objet n'est pas un objet physique."
     },
@@ -55,9 +55,7 @@
         "button": "Modifier l'élément raffiné"
       },
       "after-combat-dialog": {
-        "title": "Attribuer des parties de monstre",
-        "value": "Valeur : {value} po",
-        "total": "Valeur totale : {value} po"
+        "title": "Attribuer des parties de monstre"
       }
     },
     "material": {
