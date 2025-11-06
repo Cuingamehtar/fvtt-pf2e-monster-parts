@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 - Fix derived data preparation for normal physical items.
-- 
+
 ## [0.3.0] - 2025-11-01
 
 ### Added
