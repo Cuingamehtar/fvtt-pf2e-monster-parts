@@ -65,19 +65,27 @@ export function addHandwrapsRefinement(): MaterialData {
 
         effects: [
             // potency
-            ...helpers.leveledEffects([2, 10, 16], [1, 2, 3], (value) => ({
-                property: "system.runes.potency",
-                value,
-                editData: true,
-                type: "Alteration",
-            })),
+            ...helpers.leveledEffects(
+                [0, 2, 10, 16],
+                [0, 1, 2, 3],
+                (value) => ({
+                    property: "system.runes.potency",
+                    value,
+                    editData: true,
+                    type: "Alteration",
+                }),
+            ),
             // striking
-            ...helpers.leveledEffects([4, 12, 19], [1, 2, 3], (value) => ({
-                property: "system.runes.striking",
-                value,
-                editData: true,
-                type: "Alteration",
-            })),
+            ...helpers.leveledEffects(
+                [0, 4, 12, 19],
+                [0, 1, 2, 3],
+                (value) => ({
+                    property: "system.runes.striking",
+                    value,
+                    editData: true,
+                    type: "Alteration",
+                }),
+            ),
         ],
     };
 }

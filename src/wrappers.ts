@@ -155,6 +155,8 @@ export class Wrappers {
                     wrapped();
                     const item = new MonsterPart(this);
                     this.system.price.value = item.coinValue;
+                } else {
+                    wrapped();
                 }
             },
             "MIXED",
