@@ -10,7 +10,7 @@
     },
     "refined-item": {
       "label": "Refined Item",
-      "material-label": "{material} (Level: {level}, Value: {value})",
+      "material-label-details": "Level: {level}, Value: {value}",
       "warn-item-already-refined": "{item} is already a refined item.",
       "error-item-is-monster-part": "Item has monster part data, it can't be used as a base for refined item.",
       "error-not-refined-item": "This item is not a refined item.",
@@ -49,8 +49,7 @@
         "refinement": "Refinement",
         "imbuement": "Imbuement",
         "new-imbuement": "New Imbuement",
-        "refinement-type": "Refinement Type",
-        "imbuement-type": "Imbuement Type",
+        "type": "Type",
         "value": "Value",
         "button": "Edit Refined Item"
       },
@@ -113,7 +112,6 @@
         "none": "None",
         "dead": "Dead",
         "dialog": "Dialog"
-
       },
       "variant": {
         "name": "Variant",
@@ -199,7 +197,7 @@
             "header-description": "You imbue the weapon with vitriolic <em>acid</em>.",
             "magic": {
               "label": "Acid (Magic)",
-              "description": "<p><strong>Type</strong> Weapon</p><p><strong>Parts</strong> The monster must have the acid trait or an attack or spell that deals acid damage.</p><p><strong>Effect</strong> You imbue the weapon with vitriolic acid.</p><hr><p><strong>Path</strong> Magic; Choose when you first imbue the weapon for the granted spells to be either arcane or primal</p><ul><li><p><strong>2nd</strong> The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt]{Acid Splash} as a cantrip, heightened to half the item’s level rounded up</p></li><li><p><strong>4th</strong> The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Acidic Burst} once per day</p></li><li><p><strong>6th</strong> The weapon’s <em>acidic burst</em> heightens to 2nd rank and it can cast either @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0]{Acid Arrow} or <em>acidic burst</em> once per day, but not both</p></li><li><p><strong>8th</strong> The weapon’s <em>acidic burst</em> heightens to 3rd rank, and it can cast <em>acid arrow</em> and <em>acidic burst</em> each once per day</p></li><li><p><strong>10th</strong> Strikes with the weapon deal 1 additional acid damage</p></li><li><p><strong>12th</strong> The weapon’s <em>acid arrow</em> heightens to 4th rank, and the weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]{Acid Storm} once per day</p></li><li><p><strong>14th</strong> The additional acid damage increases to 1d4</p></li><li><p><strong>16th</strong> The weapon’s <em>acid arrow</em> heightens to 6th rank and <em>acid storm</em> heightens to 7th rank</p></li><li><p><strong>18th</strong> The additional acid damage increases to 1d6</p></li><li><p><strong>20th</strong> The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl]{Storm of Vengeance} once per day but you can only choose the acid rain effect. You can choose the acid rain effect twice in a row</p></li></ul>",
+              "description": "<p><strong>Type</strong> Weapon</p><p><strong>Parts</strong> The monster must have the acid trait or an attack or spell that deals acid damage.</p><p><strong>Effect</strong> You imbue the weapon with vitriolic acid.</p><hr><p><strong>Path</strong> Magic; Choose when you first imbue the weapon for the granted spells to be either arcane or primal</p><ul><li<strong>2nd</strong> The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt]{Acid Splash} as a cantrip, heightened to half the item's level rounded up</li><li><strong>4th</strong> The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Acidic Burst} once per day</li><li><strong>6th</strong> The weapon's <em>acidic burst</em> heightens to 2nd rank and it can cast either @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0]{Acid Arrow} or <em>acidic burst</em> once per day, but not both</li><li><strong>8th</strong> The weapon's <em>acidic burst</em> heightens to 3rd rank, and it can cast <em>acid arrow</em> and <em>acidic burst</em> each once per day</li><li><strong>10th</strong> Strikes with the weapon deal 1 additional acid damage</li><li><strong>12th</strong> The weapon's <em>acid arrow</em> heightens to 4th rank, and the weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]{Acid Storm} once per day</li><li><strong>14th</strong> The additional acid damage increases to 1d4</li><li><strong>16th</strong> The weapon's <em>acid arrow</em> heightens to 6th rank and <em>acid storm</em> heightens to 7th rank</li><li><strong>18th</strong> The additional acid damage increases to 1d6</li><li><strong>20th</strong> The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl]{Storm of Vengeance} once per day but you can only choose the acid rain effect. You can choose the acid rain effect twice in a row</li></ul>",
               "header": {
                 "level-4-spells": "The weapon can cast 1st rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] once per day.",
                 "level-6-spells": "The weapon can cast either 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] or 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] once per day, but not both.",
@@ -211,6 +209,13 @@
             },
             "might": {
               "label": "Acid (Might)",
+              "description": "<p><strong>Type</strong> Weapon</p><p><strong>Parts</strong> The monster must have the acid trait or an attack or spell that deals acid damage.</p><p><strong>Effect</strong> You imbue the weapon with vitriolic acid.</p><hr><p><strong>Path</strong> Might</p><ul><li><strong>4th</strong> Strikes with the weapon deal 1 additional acid damage</li><li><strong>6th</strong> The additional acid damage increases to 1d4</li><li><strong>8th</strong> The additional acid damage increases to 1d6. On a critical hit, the target's armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead</li><li><strong>12th</strong> The acid damage dealt by this imbued property ignores resistances</li><li><strong>14th</strong> The acid damage dealt to armor or shield on a critical hit increases to 6d6</li><li><strong>18th</strong> The additional acid damage increases to 1d8</li><li><strong>20th</strong> On a successful Strike with the weapon, before applying acid damage, the target gains weakness 1 to acid until the beginning of your next turn</li></ul>",
+              "effects": {
+                "level-8-note": "The target's armor (if any) takes @Damage[3d6[acid]] (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
+                "level-12-note": "The acid damage dealt by this imbued property ignores resistances.",
+                "level-14-note": "The target's armor (if any) takes @Damage[6d6[acid]] (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
+                "level-20-note": "Before applying acid damage, the target gains weakness 1 to acid until the beginning of your next turn. @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect: Might Path Damage Weakness}"
+              },
               "header": {
                 "level-8-armor": "On a critical hit, the target's armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
                 "level-12-resistance": "The acid damage dealt by this imbued property ignores resistances.",
@@ -220,6 +225,12 @@
             },
             "tech": {
               "label": "Acid (Technique)",
+              "description": "<p><strong>Type</strong> Weapon</p><p><strong>Parts</strong> The monster must have the acid trait or an attack or spell that deals acid damage.</p><p><strong>Effect</strong> You imbue the weapon with vitriolic acid.</p><hr><p><strong>Path</strong> Technique</p><ul><li><strong>4th</strong> Strikes with the weapon deal 1 persistent acid damage</li><li><strong>6th</strong> Strikes with the weapon deal 1 additional acid damage</li><li><strong>8th</strong> The persistent acid damage increases to 1d6. On a critical hit, the target's armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead</li><li><strong>12th</strong> The acid damage dealt by this imbued property (including the persistent acid damage) ignores resistances</li><li><strong>14th</strong> The persistent acid damage on a hit increases to 1d8</li><li><strong>16th</strong> The persistent acid damage from the imbued property eats away at a foe's resistances. Every time a foe or the foe's armor or shield takes damage from the persistent acid damage at the end of their turn, any resistances and Hardness decrease by 1 for 1 minute. This effect is cumulative (not automated)</li><li><strong>18th</strong> The persistent acid damage on a hit increases to 1d10</li><li><strong>20th</strong> On a critical hit, acid eats away at the foe's innards, and they are drained 1</li></ul>",
+              "effects": {
+                "level-8-note": "The target's armor (if any) takes @Damage[3d6[acid]] (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
+                "level-12-note": "The acid damage dealt by this imbued property (including the persistent acid damage) ignores resistances.",
+                "level-20-note": "The enemy is @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
+              },
               "header": {
                 "level-8-armor": "On a critical hit, the target's armor (if any) takes 3d6 acid damage (before applying Hardness); if the target has a shield raised, the shield takes this damage instead.",
                 "level-12-resistance": "The acid damage dealt by this imbued property (including the persistent acid damage) ignores resistances.",
@@ -356,7 +367,7 @@
               "level-8-persistent": "On a critical hit, the weapon deals 1d10 additional persistent fire damage. (The additional persistent fire damage on a critical hit is cumulative with the regular persistent fire damage, and as normal you add it in only after doubling the regular persistent fire damage).",
               "level-12-resistance": "The fire damage dealt by this imbued property (including persistent fire damage) ignores resistances.",
               "level-16-off-guard": "Foes currently affected by persistent fire damage from the imbued property are distracted as they burn, making them @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Off-Guard}.",
-              "level-20-weakness": "At the end of a burning foe’s turn, when they take damage from the imbued property’s persistent fire damage, all foes adjacent to that foe are set on fire as well, taking the same amount of persistent fire damage."
+              "level-20-weakness": "At the end of a burning foe's turn, when they take damage from the imbued property's persistent fire damage, all foes adjacent to that foe are set on fire as well, taking the same amount of persistent fire damage."
             }
           },
           "force": {
@@ -384,14 +395,14 @@
               "level-14-push": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 10 feet away from you.",
               "level-16-off-guard": "Foes currently affected by persistent force damage from the this imbued property are knocked about in all directions, making them @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Off-Guard}.",
               "level-18-push": "On a critical hit, you can choose to force the target to succeed at Fortitude save or be pushed 20 feet away from you.",
-              "level-20-prone": "At the end of a foe’s turn, if it fails to remove the persistent force damage from the this imbued property, it must succeed at a Fortitude save or be knocked @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60]{Prone}."
+              "level-20-prone": "At the end of a foe's turn, if it fails to remove the persistent force damage from the this imbued property, it must succeed at a Fortitude save or be knocked @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60]{Prone}."
             }
           },
           "fortification": {
             "label": "Fortification",
             "flavor": "You imbue the armor with powerful fortifications to ward off deadly attacks.",
             "penalty": "The armor Bulk and Strength requirement are increased by 1.",
-            "flat-check": "Each time you’re critically hit while wearing the etched armor, attempt a @Check[flat|dc:{dc}]. On a success, it becomes a normal hit."
+            "flat-check": "Each time you're critically hit while wearing the etched armor, attempt a @Check[flat|dc:{dc}]. On a success, it becomes a normal hit."
           },
           "intelligence": {
             "label": "Intelligence",
@@ -449,21 +460,19 @@
               "label": "Poison (Technique)",
               "level-8-persistent": "On a critical hit, the target takes an additional @Damage[1d10[persistent,poison]] damage (As normal, the additional persistent poison damage on a critical hit is cumulative with the regular persistent poison damage, and you add it only after doubling the regular persistent poison damage).",
               "level-12-resistance": "The poison damage dealt by this imbued property (including persistent poison damage) ignores resistances.",
-              "level-16-condition": "At the end of a creature’s turn, if it has failed to remove the persistent poison damage from this imbued property, choose @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Clumsy}, @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled}, or @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied}. The creature gains that condition with a condition value of 1, or increases the condition value by 1 if it already had that condition, to a maximum of 3. If the creature ever removes the persistent poison damage from this property, these conditions immediately end. If you reapply the poison later, you must start again from condition values of 0.",
-              "level-20-drained": "On a critical hit, the poison eats away at your foe’s ability to resist further poisoning. They are @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
+              "level-16-condition": "At the end of a creature's turn, if it has failed to remove the persistent poison damage from this imbued property, choose @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Clumsy}, @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled}, or @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied}. The creature gains that condition with a condition value of 1, or increases the condition value by 1 if it already had that condition, to a maximum of 3. If the creature ever removes the persistent poison damage from this property, these conditions immediately end. If you reapply the poison later, you must start again from condition values of 0.",
+              "level-20-drained": "On a critical hit, the poison eats away at your foe's ability to resist further poisoning. They are @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}."
             }
           },
           "sensory": {
             "label": "Sensory",
-            "temporary-low-light-vision": "Sensory Imbuement - Temporary Low-Light Vision",
-            "temporary-darkvision": "Sensory Imbuement - Temporary Darkvision",
-            "temporary-scent": "Sensory Imbuement - Temporary Scent",
+            "description": "<p><strong>Type</strong> Perception item</p><p><strong>Parts</strong> The creature must have the next sense to be granted by the imbued property (low-light vision from levels 1–6, darkvision (6–12), scent (12-16), greater darkvision (16- 18), and true seeing (18-20)).</p><p><strong>Developer note</strong> The original requirement could not be automated, the following is used instead: <em>The creature must have a special sense</em></p><hr><p><strong>Effect</strong> You imbue the item with extraordinary senses.</p><ul><li><strong>4th</strong> Once per day, you can activate the item as a two-action envision activation to gain low-light vision for 1 hour</li><li><strong>6th</strong> While investing the item, you gain low-light vision</li><li><strong>8th</strong> Once per day, you can activate the item as a two-action envision activation to gain darkvision for 1 hour</li><li><strong>12th</strong> While investing the item, you gain darkvision</li><li><strong>14th</strong> Once per day, you can activate the item as a two-action envision activation to gain 30-foot imprecise scent for 1 hour</li><li><strong>16th</strong> While investing the item, you gain 30-foot imprecise scent</li><li><strong>18th</strong> While investing the item, you gain greater darkvision</li><li><strong>20th</strong> While investing the item, you constantly gain the effects of 6th rank @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]{Truesight}</li></ul>",
             "flavor": "You imbue the item with extraordinary senses.",
-            "level-4-activation-low-light": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br><strong>Frequency</strong> once per day<br>You gain low-light vision for 1 hour.</p>",
+            "level-4-activation-low-light": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br><strong>Frequency</strong> once per day<br>You gain low-light vision for 1 hour.<br>@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}</p>",
             "level-6-permanent-low-light": "You gain low-light vision.",
-            "level-8-activation-darkvision": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br><strong>Frequency</strong> once per day<br>You gain darkvision for 1 hour.</p>",
+            "level-8-activation-darkvision": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br><strong>Frequency</strong> once per day<br>You gain darkvision for 1 hour.<br>@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}</p>",
             "level-12-permanent-darkvision": "You gain darkvision.",
-            "level-14-activation-scent": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br><strong>Frequency</strong> once per day<br>You gain 30-foot imprecise scent for 1 hour.</p>",
+            "level-14-activation-scent": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br><strong>Frequency</strong> once per day<br>You gain 30-foot imprecise scent for 1 hour.<br>@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}</p>",
             "level-16-permanent-scent": "You gain darkvision and 30-foot imprecise scent.",
             "level-18-permanent": "You gain greater darkvision and 30-foot imprecise scent.",
             "level-20-truesight": "You constantly gain the effects of 6th rank @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]{Truesight} spell."
@@ -501,7 +510,7 @@
           },
           "wild": {
             "label": "Wild (Might)",
-            "flavor": "Sometimes you just can’t find enough parts of the same type to properly imbue your weapon, but you still want to imbue it with something. From that desperation and the haphazard imbuing of wildly different parts, a <em>wild</em> imbued property is born, inconsistent and lacking a few of the benefits of other imbued properties.",
+            "flavor": "Sometimes you just can't find enough parts of the same type to properly imbue your weapon, but you still want to imbue it with something. From that desperation and the haphazard imbuing of wildly different parts, a <em>wild</em> imbued property is born, inconsistent and lacking a few of the benefits of other imbued properties.",
             "might": {
               "damage": "Strikes with the weapon additionally deal {damage} damage. Each time you deal damage, roll 1d6: On a 1, the weapon deals acid damage. On a 2, it deals cold damage. On a 3, it deals electricity damage. On a 4, it deals fire damage. On a 5, it deals void damage. Finally, on a 6, it deals sonic damage.",
               "level-12-resistance": "The damage dealt by this imbued property ignores resistances.",
@@ -510,12 +519,13 @@
           },
           "winged": {
             "label": "Winged",
-            "flavor": "You imbue the armor with wings, which protrude from the armor’s back.",
-            "level-6-landing": "The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can’t trigger again for 1 hour.",
-            "level-8-landing": "The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can’t trigger again for 10 minutes.",
+            "description": "<p><strong>Type</strong> Armor</p><p><strong>Parts</strong> The monster must have a fly Speed.</p><hr><p><strong>Effect</strong> You imbue the armor with wings, which protrude from the armor's back. Choose when you first imbue the armor for the granted spells to be either arcane or primal.</p><ul><li><strong>6th</strong> The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can't trigger again for 1 hour</li><li><strong>8th</strong> After <em>gentle landing</em>, the benefit can't trigger for 10 minutes instead of 1 hour</li><li><strong>10th</strong> The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per day</li><li><strong>14th</strong> The armor can cast <em>fly</em> on you once per hour instead of once per day</li><li><strong>16th</strong> You can choose to have armor cast 7th-rank <em>fly</em> on you instead of 4th-rank <em>fly</em>. If you do, you can't use the armor's fly spell again for 1 day, instead of 1 hour</li><li><strong>18th</strong> You can fly constantly, with a Speed equal to your land Speed</li><li><strong>20th</strong> The armor can cast 4th-rank <em>fly</em> on an ally once per hour</li></ul>",
+            "flavor": "You imbue the armor with wings, which protrude from the armor's back.",
+            "level-6-landing": "The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can't trigger again for 1 hour.",
+            "level-8-landing": "The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can't trigger again for 10 minutes.",
             "level-10-fly": "The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per day.",
             "level-14-fly": "The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per hour.",
-            "level-16-fly-extend": "The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per hour. You can choose to have armor cast 7th rank @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you instead of 4th rank <em>fly</em>. If you do, you can’t use the armor’s fly spell again for 1 day, instead of 1 hour.",
+            "level-16-fly-extend": "The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per hour. You can choose to have armor cast 7th rank @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you instead of 4th rank <em>fly</em>. If you do, you can't use the armor's fly spell again for 1 day, instead of 1 hour.",
             "level-18-speed": "You can fly constantly, with a Speed equal to your land Speed.",
             "level-20-ally": "The armor can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on an ally once per hour."
           },
@@ -526,6 +536,13 @@
             "level-14-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per hour as an occult spell.",
             "level-17-apex": "When you invest the item, you either increase your Wisdom attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
             "level-20-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per minute as an occult spell."
+          }
+        },
+        "strange-and-unusual": {
+          "spiked": {
+            "label": "Spiked",
+            "description": "<p><strong>Type</strong> Armor</p><p><strong>Parts</strong> The monster must have a reaction, free action, or passive ability that deals piercing or slashing damage (currently impossible to automate as).</p><hr><p><strong>Effect</strong> You imbue the armor with vicious spikes.</p><ul><li><strong>2nd</strong> The armor gains the following activation:<br><strong>Activate</strong> 2 Interact<br><strong>Frequency</strong> once per day<br><strong>Effect</strong> You cause vicious spikes to protrude from the armor. For 1 minute, adjacent creatures that hit you with a melee attack, as well as creatures that touch you or hit you with an unarmed attack, take 1 piercing damage each time they do. If they Grab or Grapple you, the damage increases to 1d4 piercing damage instead.</li><li><strong>4th</strong> The damage from the activation increases to 1d4, or 2d4 when creatures Grab or Grapple you.</li><li><strong>6th</strong> The damage from the activation increases to 1d6, or 2d6 when creatures Grab or Grapple you.</li><li><strong>8th</strong> The damage from the activation increases to 2d4, or 4d4 when creatures Grab or Grapple you.</li><li><strong>10th</strong> The damage from the activation increases to 2d6, or 4d6 when creatures Grab or Grapple you.</li><li><strong>12th</strong> The armor's activation gains a frequency of once per hour instead of once per day. Even when it isn't activated, adjacent creatures that hit you with a melee attack, as well as creatures that touch you or hit you with an unarmed attack, take 1 piercing damage each time they do. If they Grab or Grapple you, the damage increases to 1d4 piercing damage instead. When activated, the damage from the activation increases this damage; they aren't cumulative.</li><li><strong>14th</strong> The damage from the activation increases to 3d6, or 6d6 when creatures Grab or Grapple you.</li><li><strong>16th</strong> The armor's activation takes only a single action, instead of two actions.</li><li><strong>18th</strong> The damage from the activation increases to 4d6, or 8d6 when creatures Grab or Grapple you. The damage when the armor isn't activated increases to 1d4, or 2d4 when creatures Grab or Grapple you.</li><li><strong>20th</strong> The armor's activation gains a frequency of once per 10 minutes instead of once per hour. Furthermore, in addition to its one action activation, the armor can be activated as a reaction triggered when a creature Grabs or successfully Grapples you. When you activate the armor in this way, the triggering creature takes the increased damage from the armor. This usage is still subject to the armor's frequency of once per 10 minutes.</li></ul>",
+            "flavor": "You imbue the armor with vicious spikes."
           }
         },
         "elemental-storm": {
@@ -570,15 +587,15 @@
               "label": "Life (Might)",
               "level-6-enfeebled": "On a critical hit, the undead is also @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
               "level-10-resistance": "The vitality damage dealt by this imbued property ignores resistances.",
-              "level-14-enfeebled": "On a critical hit, the undead must attempt a Fortitude save. On a critical success, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn, on a success, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until then, on a failure, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until then, and on a critical failure, it’s destroyed. This effect has the incapacitation trait.",
+              "level-14-enfeebled": "On a critical hit, the undead must attempt a Fortitude save. On a critical success, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn, on a success, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until then, on a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until then, and on a critical failure, it's destroyed. This effect has the incapacitation trait.",
               "level-20-weakness": "On a successful Strike with the weapon, before applying vitality damage, the target gains weakness 1 to vitality until the beginning of your next turn."
             },
             "tech": {
               "label": "Life (Technique)",
               "level-6-enfeebled": "On a critical hit, the undead is also @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
               "level-10-resistance": "The vitality damage dealt by this imbued property (including persistent vitality damage) ignores resistances.",
-              "level-14-enfeebled": "On a critical hit, the undead is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn. It must also attempt a Fortitude save. On a failure, it’s @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn instead of enfeebled 2, and on a critical failure, it’s destroyed. This effect has the incapacitation trait.",
-              "level-20-counteract": "Creatures suffering persistent vitality damage from this imbued property have difficulty healing from void energy due to the coruscating vitality energy surging through them. If a void effect would cause the creature to recover Hit Points, it must first succeed at a counteract check against the imbued property’s rank of 10 and DC of 43. Even on a successful counteract check, the Hit Points recovered are reduced by 1d10. On a critical success, the creature recovers the full amount."
+              "level-14-enfeebled": "On a critical hit, the undead is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn. It must also attempt a Fortitude save. On a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn instead of enfeebled 2, and on a critical failure, it's destroyed. This effect has the incapacitation trait.",
+              "level-20-counteract": "Creatures suffering persistent vitality damage from this imbued property have difficulty healing from void energy due to the coruscating vitality energy surging through them. If a void effect would cause the creature to recover Hit Points, it must first succeed at a counteract check against the imbued property's rank of 10 and DC of 43. Even on a successful counteract check, the Hit Points recovered are reduced by 1d10. On a critical success, the creature recovers the full amount."
             }
           }
         }

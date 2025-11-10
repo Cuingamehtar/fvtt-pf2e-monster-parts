@@ -144,8 +144,8 @@ export class MonsterPart {
             .sort((a, b) => a.localeCompare(b));
         const imbues = materials
             .filter((m) => m?.type === "imbuement")
-            .map((m) => i18nFormat(m.label))
-            .sort((a, b) => a.localeCompare(b));
+            .map((m) => ({ key: m.key, label: i18nFormat(m.label) }))
+            .sort((a, b) => a.label.localeCompare(b.label));
 
         const templatePath =
             "modules/pf2e-monster-parts/templates/monster-part-header.hbs";

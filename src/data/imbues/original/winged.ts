@@ -15,6 +15,7 @@ export function createImbueWinged(): MaterialData {
         key: "imbue:winged",
         type: "imbuement",
         label: { type: "key", key: lkey("label") },
+        description: { type: "key", key: lkey("description") },
         itemPredicate: ["item:type:armor"],
         monsterPredicate: ["self:speed:fly"],
         header: {

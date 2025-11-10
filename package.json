@@ -4,7 +4,9 @@
   "description": "Monster parts module for PF2e system",
   "scripts": {
     "build": "esbuild src/module.ts --bundle --keep-names --minify --sourcemap --outdir=scripts",
-    "dev": "esbuild src/module.ts --bundle --keep-names --watch --sourcemap --outdir=scripts"
+    "dev": "esbuild src/module.ts --bundle --keep-names --watch --sourcemap --outdir=scripts",
+    "pack": "node ./build/pack.js",
+    "extract": "node ./build/extract.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +25,6 @@
   },
   "devDependencies": {
     "prettier": "3.5.3"
-  }
+  },
+  "type": "module"
 }

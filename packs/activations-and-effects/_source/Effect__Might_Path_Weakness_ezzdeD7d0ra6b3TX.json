@@ -1,0 +1,210 @@
+{
+  "name": "Effect: Might Path Weakness",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.952,
+      "previous": null
+    },
+    "description": {
+      "value": "",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [
+      {
+        "choices": [
+          {
+            "label": "PF2E.TraitAcid",
+            "value": "acid",
+            "predicate": [
+              {
+                "or": [
+                  {"gte": ["parent:origin:item:imbue:acid:might", 20]},
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "PF2E.TraitCold",
+            "value": "cold",
+            "predicate": [
+              {
+                "or": [
+                  {"gte": ["parent:origin:item:imbue:cold:might", 20]},
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "PF2E.TraitElectricity",
+            "value": "electricity",
+            "predicate": [
+              {
+                "or": [
+                  {"gte": ["parent:origin:item:imbue:electricity:might", 20]},
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "PF2E.TraitFire",
+            "value": "fire",
+            "predicate": [
+              {
+                "or": [
+                  {"gte": ["parent:origin:item:imbue:fire:might", 20]},
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "PF2E.TraitForce",
+            "value": "force",
+            "predicate": [
+              {
+                "or": [
+                  {"gte": ["parent:origin:item:imbue:force:might", 20]},
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "PF2E.TraitPoison",
+            "value": "poison",
+            "predicate": [
+              {
+                "or": [
+                  {"gte": ["parent:origin:item:imbue:poison:might", 20]},
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "PF2E.TraitSonic",
+            "value": "sonic",
+            "predicate": [
+              {
+                "or": [
+                  {"gte": ["parent:origin:item:imbue:sonic:might", 20]},
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "PF2E.TraitVitality",
+            "value": "vitality",
+            "predicate": [
+              {
+                "or": [
+                  {"gte": ["parent:origin:item:imbue:life:might", 20]},
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "PF2E.TraitVoid",
+            "value": "void",
+            "predicate": [
+              {
+                "or": [
+                  {"gte": ["parent:origin:item:imbue:death:might", 20]},
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "flag": "damageType",
+        "key": "ChoiceSet",
+        "prompt": "PF2E.SpecificRule.Prompt.DamageType",
+        "roll-option": [
+          "test"
+        ]
+      },
+      {
+        "key": "Weakness",
+        "value": "1",
+        "type": "{item|flags.pf2e.rulesSelections.damageType}"
+      }
+    ],
+    "slug": "effect-might-path-weakness",
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "level": {
+      "value": 1
+    },
+    "duration": {
+      "value": 1,
+      "unit": "rounds",
+      "expiry": "turn-start",
+      "sustained": false
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "unidentified": false,
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "badge": null,
+    "fromSpell": false,
+    "context": null
+  },
+  "_id": "ezzdeD7d0ra6b3TX",
+  "img": "systems/pf2e/icons/default-icons/effect.svg",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "My4TCMjLEU7yUq2Y": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.350",
+    "systemId": "pf2e",
+    "systemVersion": "7.7.1",
+    "createdTime": 1762703302161,
+    "modifiedTime": 1762727485620,
+    "lastModifiedBy": "My4TCMjLEU7yUq2Y"
+  },
+  "_key": "!items!ezzdeD7d0ra6b3TX"
+}

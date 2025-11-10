@@ -19,6 +19,7 @@ export function createImbueSensory(): MaterialData {
         key: "imbue:sensory",
         type: "imbuement",
         label: { type: "key", key: lkey("label") },
+        description: { type: "key", key: lkey("description") },
         monsterPredicate: [{ or: senses }],
         itemPredicate: [
             {
@@ -132,75 +133,6 @@ export function createImbueSensory(): MaterialData {
                 rule: {
                     key: "Sense",
                     selector: "greater-darkvision",
-                },
-            },
-            // temporary roll options
-            {
-                levelMin: 4,
-                levelMax: 5,
-                type: "RuleElement",
-                rule: {
-                    key: "RollOption",
-                    domain: "all",
-                    label: lkey("temporary-low-light-vision"),
-                    option: "imbue:sensory:temporary-low-light-vision",
-                    toggleable: true,
-                },
-            },
-            {
-                levelMin: 4,
-                levelMax: 5,
-                type: "RuleElement",
-                rule: {
-                    key: "Sense",
-                    selector: "low-light-vision",
-                    predicate: ["imbue:sensory:temporary-low-light-vision"],
-                },
-            },
-            {
-                levelMin: 8,
-                levelMax: 11,
-                type: "RuleElement",
-                rule: {
-                    key: "RollOption",
-                    domain: "all",
-                    label: lkey("temporary-darkvision"),
-                    option: "imbue:sensory:temporary-darkvision",
-                    toggleable: true,
-                },
-            },
-            {
-                levelMin: 8,
-                levelMax: 11,
-                type: "RuleElement",
-                rule: {
-                    key: "Sense",
-                    selector: "darkvision",
-                    predicate: ["imbue:sensory:temporary-darkvision"],
-                },
-            },
-            {
-                levelMin: 14,
-                levelMax: 15,
-                type: "RuleElement",
-                rule: {
-                    key: "RollOption",
-                    domain: "all",
-                    label: lkey("temporary-scent"),
-                    option: "imbue:sensory:temporary-scent",
-                    toggleable: true,
-                },
-            },
-            {
-                levelMin: 14,
-                levelMax: 15,
-                type: "RuleElement",
-                rule: {
-                    acuity: "imprecise",
-                    key: "Sense",
-                    range: 30,
-                    predicate: ["imbue:sensory:temporary-scent"],
-                    selector: "scent",
                 },
             },
         ],

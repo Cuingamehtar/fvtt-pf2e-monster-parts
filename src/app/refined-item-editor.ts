@@ -6,7 +6,7 @@ import { Material } from "../material";
 import { dialogs } from "./dialogs";
 import { MonsterPart } from "../monster-part";
 import { AutomaticRefinementProgression } from "../automatic-refinement-progression";
-import { ModuleFlags } from "../types";
+import { ModuleFlags, RefinedItemFlags } from "../types";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -15,6 +15,7 @@ interface RefinedItemEditorData {
     possibleImbues: { key: MaterialKey; label: I18nString | I18nKey }[];
     refinement: { selected: MaterialKey; value: number; isDisabled: boolean };
     imbues: { selected: MaterialKey; value: number }[];
+    item: RefinedItem;
 }
 
 class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
@@ -29,21 +30,31 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         this.data = options.data;
     }
 
+    flagFromData(): RefinedItemFlags {
+        return {
+            refinement: {
+                key: this.data.refinement.selected,
+                value: this.data.refinement.value,
+            },
+            imbues: this.data.imbues.map((i) => ({
+                key: i.selected,
+                value: i.value,
+            })),
+        };
+    }
+
     static PARTS = {
         form: {
             template:
                 "modules/pf2e-monster-parts/templates/refined-item-editor.hbs",
-        },
-        footer: {
-            template: "templates/generic/form-footer.hbs",
         },
     };
 
     static DEFAULT_OPTIONS = {
         tag: "form",
         form: {
-            submitOnChange: false,
-            closeOnSubmit: true,
+            submitOnChange: true,
+            closeOnSubmit: false,
         },
         window: {
             contentClasses: ["standard-form"],
@@ -55,16 +66,8 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
     };
 
     async _prepareContext() {
-        const buttons = [
-            {
-                type: "submit",
-                icon: "fa-solid fa-save",
-                label: "SETTINGS.Save",
-            },
-        ];
         return {
             data: this.data,
-            buttons,
         };
     }
 
@@ -78,7 +81,11 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                 e.preventDefault();
                 e.stopImmediatePropagation();
                 if ((e.target as any).value) {
-                    this.data.refinement.selected = (e.target as any).value;
+                    const flag = this.data.item.getFlag();
+                    flag.refinement.key = this.data.refinement.selected = (
+                        e.target as any
+                    ).value;
+                    this.data.item.updateItem(flag);
                 }
             });
         this.element
@@ -86,7 +93,11 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             ?.addEventListener("change", (e) => {
                 e.preventDefault();
                 e.stopImmediatePropagation();
-                this.data.refinement.value = Number((e.target as any).value);
+                const flag = this.data.item.getFlag();
+                flag.refinement.value = this.data.refinement.value = Number(
+                    (e.target as any).value,
+                );
+                this.data.item.updateItem(flag);
             });
 
         this.element
@@ -95,12 +106,17 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                 element.addEventListener("change", (e) => {
                     e.preventDefault();
                     e.stopImmediatePropagation();
+                    const flag = this.data.item.getFlag();
                     if ((e.target as any).value) {
-                        this.data.imbues[i].selected = (e.target as any).value;
+                        flag.imbues[i].key = this.data.imbues[i].selected = (
+                            e.target as any
+                        ).value;
                     } else {
                         this.data.imbues.splice(i, 1);
+                        flag.imbues.splice(i, 1);
                         this.render();
                     }
+                    this.data.item.updateItem(flag);
                 });
             });
 
@@ -111,6 +127,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                     e.preventDefault();
                     e.stopImmediatePropagation();
                     this.data.imbues[i].value = Number((e.target as any).value);
+                    this.data.item.updateItem(this.flagFromData());
                 });
             });
 
@@ -126,6 +143,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                     value: 0,
                 });
             }
+            this.data.item.updateItem(this.flagFromData());
             this.render();
         });
 
@@ -222,6 +240,9 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                                 selected: selectedMaterial,
                                 value: addedValue,
                             });
+                            await this.data.item.updateItem(
+                                this.flagFromData(),
+                            );
                         } else {
                             const m =
                                 this.data.refinement.selected ==
@@ -233,6 +254,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                             if (!m) return;
                             m.value += addedValue;
                         }
+                        await this.data.item.updateItem(this.flagFromData());
                         this.render();
                         if (monsterPart.isOwnedByActor) {
                             if (consumedValue.toNearest(0.01) > 0) {
@@ -272,27 +294,22 @@ export async function configureRefinedItem(item: RefinedItem) {
     const rollOptions = item.getRollOptions();
     const flag = item.getFlag();
 
+    const possibleMaterials = [
+        ...config.materials
+            .values()
+            .map((m) => new Material(m))
+            .filter((m) => m.testItem({ rollOptions })),
+    ];
+
     const data: RefinedItemEditorData = {
-        possibleRefinements: [
-            ...config.materials
-                .values()
-                .filter(
-                    (m) =>
-                        m.type === "refinement" &&
-                        new Material(m).testItem({ rollOptions }),
-                )
-                .map((m) => ({ key: m.key, label: i18nFormat(m.label) })),
-        ].sort((a, b) => a.label.localeCompare(b.label)),
-        possibleImbues: [
-            ...config.materials
-                .values()
-                .filter(
-                    (m) =>
-                        m.type === "imbuement" &&
-                        new Material(m).testItem({ rollOptions }),
-                )
-                .map((m) => ({ key: m.key, label: i18nFormat(m.label) })),
-        ].sort((a, b) => a.label.localeCompare(b.label)),
+        possibleRefinements: possibleMaterials
+            .filter((m) => m.type == "refinement")
+            .map((m) => ({ key: m.key, label: i18nFormat(m.label) }))
+            .sort((a, b) => a.label.localeCompare(b.label)),
+        possibleImbues: possibleMaterials
+            .filter((m) => m.type == "imbuement")
+            .map((m) => ({ key: m.key, label: i18nFormat(m.label) }))
+            .sort((a, b) => a.label.localeCompare(b.label)),
         refinement: {
             selected: flag.refinement.key,
             value: flag.refinement.value,
@@ -302,6 +319,7 @@ export async function configureRefinedItem(item: RefinedItem) {
             selected: i.key,
             value: i.value,
         })),
+        item,
     };
 
     const promise = new Promise<void>((resolve) => {

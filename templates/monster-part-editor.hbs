@@ -1,6 +1,8 @@
 <div>
-    <label for="material-value">{{localize "pf2e-monster-parts.dialog.monster-part-editor.value"}}</label>
-    <input type="number" name="material-value" id="material-value" value="{{settings.value}}" step="0.01" />
+    <div class="form-group">
+        <label for="material-value">{{localize "pf2e-monster-parts.dialog.monster-part-editor.value"}}</label>
+        <input type="number" name="material-value" id="material-value" value="{{settings.value}}" step="0.01" />
+    </div>
     <table>
         <tr>
             <td>
@@ -20,10 +22,11 @@
                     <legend>{{localize "pf2e-monster-parts.dialog.monster-part-editor.imbuements"}}</legend>
                     <div style="overflow-y:scroll;height:400px;">
                         {{#each settings.imbues}}
-                            <p>
-                                <input type="checkbox" name="{{this.key}}" id="{{this.key}}" {{checked this.checked}}/>
-                                <label for="{{this.key}}">{{localize this.label}}</label>
-                            </p>
+                            <div class="form-group">
+                                <input type="checkbox" name="{{this.key}}" id="{{this.key}}" {{checked
+                                    this.checked}}/>
+                                <a onclick="game.modules.get('pf2e-monster-parts').api.renderSummaryJournal('{{this.key}}')">{{localize
+                                    this.label}}</a></div>
                         {{/each}}
                     </div>
                 </fieldset>

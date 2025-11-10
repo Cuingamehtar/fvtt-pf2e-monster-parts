@@ -25,6 +25,16 @@ export class Material {
         return new Material(m, value);
     }
 
+    get key() {
+        return this.data.key;
+    }
+    get type() {
+        return this.data.type;
+    }
+    get label() {
+        return this.data.label;
+    }
+
     testItem({
         rollOptions,
         item,

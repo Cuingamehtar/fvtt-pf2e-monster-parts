@@ -4,7 +4,7 @@ import { getConfig } from "./config";
 import { Material } from "./material";
 import { i18nFormat, simplifyCoins, t } from "./utils";
 import { dialogs } from "./app/dialogs";
-import { ModuleFlags } from "./types";
+import { ModuleFlags, RefinedItemFlags } from "./types";
 import { AutomaticRefinementProgression } from "./automatic-refinement-progression";
 import { MonsterPart } from "./monster-part";
 import { EffectHandlers } from "./data/effect-handlers";
@@ -110,7 +110,9 @@ export class RefinedItem {
         return simplifyCoins(value);
     }
 
-    async updateItem() {
+    async updateItem(flagData?: RefinedItemFlags) {
+        if (flagData)
+            await this.item.setFlag(MODULE_ID, "refined-item", flagData);
         if (AutomaticRefinementProgression.isEnabled) {
             await AutomaticRefinementProgression.adjustRefinementValue(this);
         }
@@ -164,6 +166,7 @@ export class RefinedItem {
             const flavor = m.getFlavor(this);
 
             return {
+                key: m.data.key,
                 label: flavor.label,
                 value: m.coinValue,
                 level: m.getLevel(this),

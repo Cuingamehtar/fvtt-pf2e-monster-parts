@@ -3,14 +3,14 @@
   "title": "PF2e Monster Parts",
   "description": "<p>Implementation of Monster Parts subsystem for PF2e system</p>",
   "version": "#{VERSION}#",
-  "library": "false",
   "compatibility": {
     "minimum": "13",
     "verified": "13.350"
   },
   "authors": [
     {
-      "name": "kromko"
+      "name": "kromko",
+      "flags": {}
     }
   ],
   "relationships": {
@@ -46,17 +46,20 @@
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "lang/en.json",
+      "flags": {}
     },
     {
       "lang": "fr",
       "name": "Français",
-      "path": "lang/fr.json"
+      "path": "lang/fr.json",
+      "flags": {}
     },
     {
       "lang": "pl",
       "name": "Polski",
-      "path": "lang/pl.json"
+      "path": "lang/pl.json",
+      "flags": {}
     }
   ],
   "url": "#{URL}#",
@@ -67,7 +70,23 @@
   "media": [
     {
       "type": "icon",
-      "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4"
+      "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4",
+      "loop": false,
+      "flags": {}
     }
-  ]
+  ],
+  "packs": [
+    {
+      "name": "activations-and-effects",
+      "label": "Activations & Effects",
+      "path": "packs/activations-and-effects",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "pf2e"
+    }
+  ],
+  "flags": {}
 }

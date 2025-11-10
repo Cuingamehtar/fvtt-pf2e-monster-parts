@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [unreleased]
+
+### Added
+- Imbuement labels now link to a journal with their full descriptions
+
+### Changes
+- Finish automation and added descriptions of acid, sensory and winged imbuements
+- Changes made in refined item and monster part editors automatically update the item
+
 ## [0.3.1] - 2025-11-06
 
 ### Fixed

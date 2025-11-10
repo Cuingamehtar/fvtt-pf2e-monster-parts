@@ -16,7 +16,9 @@
             <td>{{#if (gt imbues.length 0)}}
                 <ul>
                     {{#each imbues}}
-                        <li>{{this}}</li>
+                        <li><a
+                            onclick="game.modules.get('pf2e-monster-parts').api.renderSummaryJournal('{{this.key}}')">{{this.label}}</a>
+                        </li>
                     {{/each}}
                 </ul>
             {{/if}}</td>

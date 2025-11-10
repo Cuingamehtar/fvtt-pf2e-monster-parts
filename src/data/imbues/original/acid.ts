@@ -151,6 +151,10 @@ export function createImbueAcid(): MaterialData[] {
             type: "key",
             key: lkey("might.label"),
         },
+        description: {
+            type: "key",
+            key: lkey("might.description"),
+        },
         header: {
             description: {
                 type: "key",
@@ -211,6 +215,56 @@ export function createImbueAcid(): MaterialData[] {
                     });
                 },
             ),
+
+            {
+                levelMin: 8,
+                levelMax: 13,
+                type: "RuleElement",
+                rule: {
+                    key: "Note",
+                    outcome: ["criticalSuccess"],
+                    text: lkey("might.effects.level-8-note"),
+                    title: lkey("might.label"),
+                    selector: ["{item|id}-attack"],
+                },
+            },
+            {
+                levelMin: 14,
+                type: "RuleElement",
+                rule: {
+                    key: "Note",
+                    outcome: ["criticalSuccess"],
+                    text: lkey("might.effects.level-14-note"),
+                    title: lkey("might.label"),
+                    selector: ["{item|id}-attack"],
+                },
+            },
+            {
+                levelMin: 12,
+                type: "RuleElement",
+                rule: {
+                    key: "Note",
+                    text: lkey("might.effects.level-12-note"),
+                    title: lkey("might.label"),
+                    selector: ["{item|id}-damage"],
+                },
+            },
+            {
+                levelMin: 20,
+                type: "RuleElement",
+                rule: { key: "RollOption", option: "might-path-weakness:acid" },
+            },
+            {
+                levelMin: 20,
+                type: "RuleElement",
+                rule: {
+                    key: "Note",
+                    outcome: ["criticalSuccess"],
+                    text: lkey("might.effects.level-20-note"),
+                    title: lkey("might.label"),
+                    selector: ["{item|id}-attack"],
+                },
+            },
         ],
     };
 
@@ -220,6 +274,10 @@ export function createImbueAcid(): MaterialData[] {
         label: {
             type: "key",
             key: lkey("tech.label"),
+        },
+        description: {
+            type: "key",
+            key: lkey("tech.description"),
         },
         header: {
             description: {
@@ -299,6 +357,38 @@ export function createImbueAcid(): MaterialData[] {
                     });
                 },
             ),
+            {
+                levelMin: 8,
+                type: "RuleElement",
+                rule: {
+                    key: "Note",
+                    outcome: ["criticalSuccess"],
+                    text: lkey("tech.effects.level-8-note"),
+                    title: lkey("tech.label"),
+                    selector: ["{item|id}-attack"],
+                },
+            },
+            {
+                levelMin: 12,
+                type: "RuleElement",
+                rule: {
+                    key: "Note",
+                    text: lkey("tech.effects.level-12-note"),
+                    title: lkey("tech.label"),
+                    selector: ["{item|id}-damage"],
+                },
+            },
+            {
+                levelMin: 20,
+                type: "RuleElement",
+                rule: {
+                    key: "Note",
+                    outcome: ["criticalSuccess"],
+                    text: lkey("tech.effects.level-20-note"),
+                    title: lkey("tech.label"),
+                    selector: ["{item|id}-attack"],
+                },
+            },
         ],
     };
     return [magic, might, tech];
