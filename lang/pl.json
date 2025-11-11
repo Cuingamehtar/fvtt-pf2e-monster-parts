@@ -10,7 +10,7 @@
     },
     "refined-item": {
       "label": "Udoskonalony przedmiot",
-      "material-label": "{material} (Poziom: {level}, Wartość: {value})",
+      "material-label-details": "Poziom: {level}, Wartość: {value}",
       "warn-item-already-refined": "{item} jest już przedmiotem udoskonalonym.",
       "error-item-is-monster-part": "Przedmiot zawiera dane części potwora, nie może być użyty jako podstawa do wytworzenia przedmiotu udoskonalonego.",
       "error-not-refined-item": "Ten przedmiot nie jest przedmiotem udoskonalonym.",
@@ -49,8 +49,7 @@
         "refinement": "Udoskonalenie",
         "imbuement": "Nasycenie",
         "new-imbuement": "Nowe nasycenie",
-        "refinement-type": "Typ udoskonalenia",
-        "imbuement-type": "Typ nasycenia",
+        "type": "Typ",
         "value": "Wartość",
         "button": "Edytuj udoskonalony przedmiot"
       },
@@ -198,7 +197,7 @@
             "header-description": "Nasycasz broń jadowitą mocą <em>kwasu</em>.",
             "magic": {
               "label": "Kwas (Magia)",
-              "description": "<p><strong>Typ</strong> Broń</p><p><strong>Części</strong> Potwór musi posiadać cechę kwasu lub atak lub zaklęcie, które zadaje obrażenia kwasowe.</p><p><strong>Efekt</strong> Napełniasz broń jadowitym kwasem .</p><hr><p><strong>Część</strong> Magia; Wybierz, kiedy po raz pierwszy nasycisz broń, aby przyznane zaklęcia były tajemne lub pierwotne.</p><ul><li><p><strong>2.</strong> Broń może rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt] jako sztuczka, wzmocnione do połowy poziomu przedmiotu, zaokrąglonego w górę.</p></li><li><p><strong>4.</strong> Broń może raz na dzień rzucić zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]</p></li><li><p><strong>6.</strong> <em>Kwasowy wybuch</em> broni osiąga 2. rangę i może rzucać raz na dzień zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] lub <em>kwasowy wybuch</em> raz dziennie ale nie oba jednocześnie</p></li><li><p><strong>8.</strong> <em>Kwasowy wybuch</em> broni osiąga 3. rangę i może rzucać <em>kwasową strzałę</em> i <em>kwasowy wybuch</em> każdy raz na dzień</p></li><li><p><strong>10.</strong> Ataki tą bronią zadają 1 dodatkowe obrażenia kwasowe.</p></li><li><p><strong>12.</strong> <em>Kwasowa strzała</em> broni osiąga 4. rangę, a broń może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]</p></li><li><p><strong>14.</strong> Dodatkowe obrażenia od kwasu wzrastają do 1k4.</p></li><li><p><strong>16.</strong> <em>Kwasowa strzała</em> broni osiąga 6. rangę a <em>kwasowa burza</em> osiąga 7. rangę.</p></li><li><p><strong>18.</strong> Dodatkowe obrażenia od kwasu wzrastają do 1k6.</p></li><li><p><strong>20.</strong> Broń może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl], ale można wybrać tylko efekt kwasowego deszczu. Można wybrać efekt kwasowego deszczu dwa razy z rzędu.</p></li></ul>",
+              "description": "<p><strong>Typ</strong> Broń</p><p><strong>Części</strong> Potwór musi posiadać cechę kwasu lub atak lub zaklęcie, które zadaje obrażenia kwasowe.</p><p><strong>Efekt</strong> Napełniasz broń jadowitym kwasem.</p><hr><p><strong>Ścieżka</strong> Magia; Wybierz, kiedy po raz pierwszy nasycisz broń, aby przyznane zaklęcia były tajemne lub pierwotne.</p><ul><li><strong>2.</strong> Broń może rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt] jako sztuczka, wzmocnione do połowy poziomu przedmiotu, zaokrąglonego w górę.</li><li><strong>4.</strong> Broń może raz na dzień rzucić zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws].</li><li><strong>6.</strong> <em>Kwasowy wybuch</em> broni osiąga 2. rangę i może rzucać raz na dzień zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] lub <em>kwasowy wybuch</em> raz dziennie ale nie oba jednocześnie</li><li><strong>8.</strong> <em>Kwasowy wybuch</em> broni osiąga 3. rangę i może rzucać <em>kwasową strzałę</em> i <em>kwasowy wybuch</em> każdy raz na dzień</li><li><strong>10.</strong> Ataki tą bronią zadają 1 dodatkowe obrażenia kwasowe.</li><li><strong>12.</strong> <em>Kwasowa strzała</em> broni osiąga 4. rangę, a broń może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]</li><li><strong>14.</strong> Dodatkowe obrażenia od kwasu wzrastają do 1k4</li><li><strong>16.</strong> <em>Kwasowa strzała</em> broni osiąga 6. rangę a <em>kwasowa burza</em> osiąga 7. rangę.</li><li><strong>18.</strong> Dodatkowe obrażenia od kwasu wzrastają do 1k6.</li><li><strong>20.</strong> Broń może raz na dzień rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl], ale można wybrać tylko efekt kwasowego deszczu. Można wybrać efekt kwasowego deszczu dwa razy z rzędu.</li></ul>",
               "header": {
                 "level-4-spells": "Broń może raz na dzień rzucać zaklęcie 1. rangi @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws].",
                 "level-6-spells": "Broń może rzucać zaklęcie 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] lub 2. rangi @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] raz na dzień, ale nie oba jednocześnie.",
@@ -210,6 +209,13 @@
             },
             "might": {
               "label": "Kwas (Potęga)",
+              "description": "<p><strong>Typ</strong> Broń</p><p><strong>Części</strong> Potwór musi posiadać cechę kwasową lub atak lub zaklęcie, które zadaje obrażenia kwasowe.</p><p><strong>Efekt</strong> Nakładasz na broń żrący kwas.</p><hr><p><strong>Ścieżka</strong> Moc</p><ul><li><strong>4.</strong> Ataki tą bronią zadają 1 dodatkowe obrażenia kwasowe.</li><li><strong>6.</strong> Dodatkowe obrażenia od kwasu wzrastają do 1k4.</li><li><strong>8.</strong> Dodatkowe obrażenia od kwasu wzrastają do 1k6. W przypadku trafienia krytycznego zbroja celu (jeśli posiada) otrzymuje 3k6 obrażeń od kwasu (przed zastosowaniem twardości); jeśli cel ma podniesioną tarczę, to ona otrzymuje te obrażenia.</li><li><strong>12.</strong> Obrażenia od kwasu zadane przez tę właściwość ignorują odporności.</li><li><strong>14.</strong> Obrażenia od kwasu zadane pancerzowi lub tarczy przy trafieniu krytycznym wzrastają do 6k6.</li><li><strong>18.</strong> Dodatkowe obrażenia od kwasu wzrastają do 1k8.</li><li><strong>20.</strong> Po udanym Ataku bronią, przed zadaniem obrażeń kwasem, cel otrzymuje podatność 1 wobec kwasu do początku Twojej następnej tury.</li></ul>\n",
+              "effects": {
+                "level-8-note": "Pancerz celu (jeśli posiada) otrzymuje @Damage[3d6[acid]] (przed zastosowaniem Twardości); jeśli cel ma podniesioną tarczę, to ona otrzymuje te obrażenia.",
+                "level-12-note": "Obrażenia od kwasu zadane przez tę właściwość ignorują odporności.",
+                "level-14-note": "Pancerz celu (jeśli posiada) otrzymuje @Damage[6d6[acid]] (przed zastosowaniem Twardości); jeśli cel ma podniesioną tarczę, to ona otrzymuje te obrażenia.\n",
+                "level-20-note": "Przed zadaniem obrażeń od kwasu cel otrzymuje podatność 1 do kwasu, która trwa do początku twojej następnej tury. @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]"
+              },
               "header": {
                 "level-8-armor": "W przypadku trafienia krytycznego pancerz celu (jeśli posiada) otrzymuje 3k6 obrażeń od kwasu (przed zastosowaniem twardości); jeśli cel ma podniesioną tarczę, to ona otrzymuje te obrażenia.",
                 "level-12-resistance": "Obrażenia od kwasu zadane przez tę właściwość ignorują odporności.",
@@ -219,6 +225,12 @@
             },
             "tech": {
               "label": "Kwas (Technika)",
+              "description": "<p><strong>Typ</strong> Broń</p><p><strong>Części</strong> Potwór musi posiadać cechę kwasową lub atak lub zaklęcie, które zadaje obrażenia kwasowe.</p><p><strong>Efekt</strong> Nakładasz na broń żrący kwas.</p><hr><p><strong>Ścieżka</strong> Technika</p><ul><li><strong>4.</strong> Ataki tą bronią zadają 1 punkt trwałych obrażeń od kwasu.</li><li><strong>6.</strong> Ataki tą bronią zadają 1 dodatkowe obrażenia kwasowe.</li><li><strong>8.</strong> Trwałe obrażenia od kwasu wzrastają do 1k6. W przypadku trafienia krytycznego zbroja celu (jeśli posiada) otrzymuje 3k6 obrażeń od kwasu (przed zastosowaniem twardości); jeśli cel ma podniesioną tarczę, to ona otrzymuje te obrażenia.</li><li><strong>12.</strong> Obrażenia od kwasu zadane przez tę właściwość (w tym trwałe obrażenia od kwasu) ignorują odporności.</li><li><strong>14.</strong> Trwałe obrażenia od kwasu przy trafieniu wzrastają do 1k8.</li><li><strong>16.</strong> Trwałe obrażenia od kwasu wynikające z właściwości nasyconej niszczą odporność przeciwnika. Za każdym razem, gdy przeciwnik lub jego zbroja lub tarcza otrzymują obrażenia od trwałych obrażeń od kwasu pod koniec swojej tury, wszelkie odporności i twardość zmniejszają się o 1 na 1 minutę. Efekt ten jest kumulatywny (nie automatyczny).</li><li><strong>18.</strong> Trwałe obrażenia od kwasu przy trafieniu wzrastają do 1k10.</li><li><strong>20.</strong> W przypadku trafienia krytycznego kwas trawi wnętrzności przeciwnika, który zostaje wysączony 1</li></ul>\n",
+              "effects": {
+                "level-8-note": "Pancerz celu (jeśli posiada) otrzymuje @Damage[3d6[acid]] (przed zastosowaniem Twardości); jeśli cel ma podniesioną tarczę, to ona otrzymuje te obrażenia.\n",
+                "level-12-note": "Obrażenia od kwasu zadane przez tę właściwość (w tym trwałe obrażenia od kwasu) ignorują odporności.\n",
+                "level-20-note": "Przeciwnik jest @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Wysączony 1}.\n"
+              },
               "header": {
                 "level-8-armor": "W przypadku trafienia krytycznego pancerz celu (jeśli posiada) otrzymuje 3k6 obrażeń od kwasu (przed zastosowaniem twardości); jeśli cel ma podniesioną tarczę, to ona otrzymuje te obrażenia.",
                 "level-12-resistance": "Obrażenia od kwasu zadane przez tę właściwość (w tym trwałe obrażenia od kwasu) ignorują odporności.",
@@ -355,7 +367,7 @@
               "level-8-persistent": "W przypadku trafienia krytycznego broń zadaje dodatkowe 1k10 trwałych obrażeń od ognia. (Dodatkowe trwałe obrażenia od ognia w przypadku trafienia krytycznego sumują się z normalnymi trwałymi obrażeniami od ognia i jak zwykle dodaje się je dopiero po podwojeniu normalnych trwałych obrażeń od ognia).",
               "level-12-resistance": "Obrażenia od ognia zadane przez tę właściwość (w tym trwałe obrażenia od ognia) ignorują odporności.",
               "level-16-off-guard": "Wrogowie dotknięci trwałymi obrażeniami od ognia wynikającymi z właściwości nasyconej są rozproszeni, gdy płoną, co sprawia, że są @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Odsłonięci}.",
-              "level-20-weakness": "Pod koniec tury płonącego przeciwnika, gdy otrzyma on obrażenia od trwałych obrażeń od ognia nadanych przez właściwość, wszyscy przeciwnicy sąsiadujący z nim również zostają podpaleni, otrzymując taką samą ilość trwałych obrażeń od ognia."
+              "level-20-weakness": "Pod koniec tury płonącego przeciwnika, gdy otrzyma on obrażenia od trwałych obrażeń od ognia nadanych przez właściwość, wszyscy przeciwnicy sąsiadujący z nim również zostają podpaleni, otrzymując taką samą ilość trwałych obrażeń od ognia.\n"
             }
           },
           "force": {
@@ -383,14 +395,14 @@
               "level-14-push": "W przypadku trafienia krytycznego możesz zmusić cel do wykonania rzutu obronnego na Wytrwałość lub odepchnąć go na odległość 10 stóp od siebie.",
               "level-16-off-guard": "Wrogowie, na których obecnie działają trwałe obrażenia od mocy tej właściwości, są odrzucani we wszystkich kierunkach, co sprawia, że stają się @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Odsłonięci}.",
               "level-18-push": "W przypadku trafienia krytycznego możesz zmusić cel do wykonania rzutu obronnego na Wytrwałość lub odepchnąć go na odległość 20 stóp od siebie.",
-              "level-20-prone": "Pod koniec tury przeciwnika, jeśli nie uda mu się usunąć trwałych obrażeń od mocy tej właściwości, musi wykonać rzut obronny na Wytrwałość lub zostanie @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60]{Przewrócony}."
+              "level-20-prone": "Pod koniec tury przeciwnika, jeśli nie uda mu się usunąć trwałych obrażeń od mocy tej właściwości, musi wykonać rzut obronny na Wytrwałość lub zostanie @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60]{Przewrócony}.\n"
             }
           },
           "fortification": {
             "label": "Fortyfikacja",
             "flavor": "Nasycasz zbroję potężnymi wzmocnieniami, aby odeprzeć śmiertelne ataki.",
             "penalty": "Wymagania dotyczące Masy i minimalnej Siły do używania pancerza zostały zwiększone o 1.",
-            "flat-check": "Za każdym razem, gdy zostaniesz trafiony krytycznie podczas noszenia wytrawionej zbroi, wykonaj test @Check[flat|dc:{dc}]. Jeśli test się powiedzie, trafienie staje się normalnym trafieniem."
+            "flat-check": "Za każdym razem, gdy zostaniesz trafiony krytycznie podczas noszenia wytrawionej zbroi, wykonaj test @Check[flat|dc:{dc}]. Jeśli test się powiedzie, trafienie staje się normalnym trafieniem.\n"
           },
           "intelligence": {
             "label": "Inteligencja",
@@ -448,21 +460,19 @@
               "label": "Trucizna (Technika)",
               "level-8-persistent": "W przypadku trafienia krytycznego cel otrzymuje dodatkowe obrażenia @Damage[1d10[persistent,poison]] (jak zwykle, dodatkowe obrażenia od trwałej trucizny w przypadku trafienia krytycznego sumują się z normalnymi obrażeniami od trwałej trucizny i dodaje się je dopiero po podwojeniu normalnych obrażeń od trwałej trucizny).",
               "level-12-resistance": "Obrażenia od trucizny zadane przez tę właściwość (w tym trwałe obrażenia od trucizny) ignorują odporności.",
-              "level-16-condition": "Na koniec tury stworzenia, jeśli nie udało mu się usunąć trwałych obrażeń od trucizny z tej właściwości, wybierz @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Niezdarny}, @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony} lub @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Ogłupiony}. Stworzenie otrzymuje ten stan z wartością stanu 1 lub zwiększa wartość stanu o 1, jeśli już posiadało ten stan, do maksymalnej wartości 3. Jeśli stworzenie kiedykolwiek usunie trwałe obrażenia od trucizny z tej właściwości, stany te natychmiast się kończą. Jeśli później ponownie zastosujesz truciznę, musisz zacząć od nowa od wartości stanu 0.",
-              "level-20-drained": "W przypadku trafienia krytycznego trucizna osłabia zdolność przeciwnika do przeciwstawienia się dalszemu zatruciu. Przeciwnik otrzymuje efekt @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Wysączony 1}."
+              "level-16-condition": "Na koniec tury stworzenia, jeśli nie udało mu się usunąć trwałych obrażeń od trucizny z tej właściwości, wybierz @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Niezdarny}, @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony} lub @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Ogłupiony}. Stworzenie otrzymuje ten stan z wartością stanu 1 lub zwiększa wartość stanu o 1, jeśli już posiadało ten stan, do maksymalnej wartości 3. Jeśli stworzenie kiedykolwiek usunie trwałe obrażenia od trucizny z tej właściwości, stany te natychmiast się kończą. Jeśli później ponownie zastosujesz truciznę, musisz zacząć od nowa od wartości stanu 0.\n",
+              "level-20-drained": "W przypadku trafienia krytycznego trucizna osłabia zdolność przeciwnika do przeciwstawienia się dalszemu zatruciu. Przeciwnik otrzymuje efekt @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Wysączony 1}.\n"
             }
           },
           "sensory": {
             "label": "Zmysłowy",
-            "temporary-low-light-vision": "Nasycenie Zmysłów - tymczasowe widzenie w słabym świetle",
-            "temporary-darkvision": "Nasycenie Zmysłów – tymczasowe widzenie w ciemności",
-            "temporary-scent": "Nasycenie Zmysłów - tymczasowy zmysł węchu",
+            "description": "<p><strong>Typ</strong> Przedmiot Percepcji</p><p><strong>Części</strong> Stworzenie musi posiadać następujący zmysł, aby uzyskać tę właściwość (widzenie w słabym świetle od poziomów 1–6, widzenie w ciemności (6–12), węch (12–16), większe widzenie w ciemności (16–18) i prawdziwe widzenie (18–20)).</p><p><strong>Uwaga dewelopera</strong> Pierwotnego wymogu nie można było zautomatyzować, zamiast tego stosuje się następujące rozwiązanie: <em>Stworzenie musi posiadać specjalny zmysł.</em></p><hr><p><strong>Efekt</strong> Nasycasz przedmiot niezwykłymi zmysłami.</p><ul><li><strong>4.</strong> Raz na dzień możesz aktywować ten przedmiot za pomocą dwóch akcji aktywując zmysł, aby uzyskać widzenie w słabym świetle na 1 godzinę.</li><li><strong>6.</strong> Dostrajając się w ten przedmiot, zyskujesz zdolność widzenia w słabym świetle.</li><li><strong>8.</strong> Raz na dzień możesz aktywować ten przedmiot za pomocą dwóch akcji aktywując zmysł, aby uzyskać widzenie w ciemności na 1 godzinę.</li><li><strong>12.</strong> Dostrajając się w ten przedmiot, zyskujesz zdolność widzenia w ciemności.</li><li><strong>14.</strong> Raz na dzień możesz aktywować ten przedmiot za pomocą dwóch akcji aktywując zmysł, aby uzyskać nieprecyzyjny zapach o zasięgu 30 stóp na 1 godzinę.</li><li><strong>16.</strong> Dostrajając się w ten przedmiot, zyskujesz nieprecyzyjny węch o zasięgu 30 stóp.</li><li><strong>18.</strong> Dostrajając się w ten przedmiot, zyskujesz większe widzenie w ciemności</li><li><strong>20.</strong> Podczas dostrajania się w przedmiot na stałe uzyskujesz efekty 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]</li></ul>\n",
             "flavor": "Nasycasz przedmiot niezwykłymi zmysłami.",
-            "level-4-activation-low-light": "<p><strong>Aktywacja</strong> <span class=\"action-glyph\">2</span> (koncentracja)<br><strong>Częstotliwość</strong> raz na dzień<br>Zyskujesz zdolność widzenia w słabym świetle przez 1 godzinę.</p>",
+            "level-4-activation-low-light": "<p><strong>Aktywacja</strong> <span class=\"action-glyph\">2</span> (koncentracja)<br><strong>Częstotliwość</strong> raz na dzień<br>Zyskujesz zdolność widzenia w słabym świetle przez 1 godzinę.<br>@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]</p>\n",
             "level-6-permanent-low-light": "Zyskujesz zdolność widzenia w słabym świetle.",
-            "level-8-activation-darkvision": "<p><strong>Aktywacja</strong> <span class=\"action-glyph\">2</span> (koncentracja)<br><strong>Częstotliwość</strong> raz na dzień<br>Zyskujesz zdolność widzenia w ciemności przez 1 godzinę.</p>",
+            "level-8-activation-darkvision": "<p><strong>Aktywacja</strong> <span class=\"action-glyph\">2</span> (koncentracja)<br><strong>Częstotliwość</strong> raz na dzień<br>Zyskujesz zdolność widzenia w ciemności na 1 godzinę.<br>@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]</p>\n",
             "level-12-permanent-darkvision": "Zyskujesz zdolność widzenia w ciemności.",
-            "level-14-activation-scent": "<p><strong>Aktywacja</strong> <span class=\"action-glyph\">2</span> (koncentracja)<br><strong>Częstotliwość</strong> raz na dzień<br>Zyskujesz nieprecyzyjny węch o zasięgu 30 stóp na 1 godzinę.</p>",
+            "level-14-activation-scent": "<p><strong>Aktywacja</strong> <span class=\"action-glyph\">2</span> (koncentracja)<br><strong>Częstotliwość</strong> raz na dzień<br>Zyskujesz nieprecyzyjny węch w promieniu 30 stóp na 1 godzinę.<br>@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]</p>\n",
             "level-16-permanent-scent": "Zyskujesz widzenie w ciemności i nieprecyzyjny węch o zasięgu 30 stóp.",
             "level-18-permanent": "Zyskujesz większe widzenie w ciemności i nieprecyzyjny węch o zasięgu 30 stóp.",
             "level-20-truesight": "Nieustannie zyskujesz efekty zaklęcia 6. rangi @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]."
@@ -500,7 +510,7 @@
           },
           "wild": {
             "label": "Dziki (Potęga)",
-            "flavor": "Czasami po prostu nie można znaleźć wystarczającej liczby części tego samego typu, aby odpowiednio nasycić broń, ale nadal chcesz ją nasycić czymś. Z tej desperacji i przypadkowego nasycania bardzo różnymi częściami rodzi się <em>dzika</em> właściwość nasycenia, niespójna i pozbawiona kilku zalet innych właściwości nasycenia.",
+            "flavor": "Czasami po prostu nie można znaleźć wystarczającej liczby części tego samego typu, aby odpowiednio nasycić broń, ale nadal chcesz ją nasycić czymś. Z tej desperacji i przypadkowego nasycania bardzo różnymi częściami rodzi się <em>dzika</em> właściwość nasycenia, niespójna i pozbawiona kilku zalet innych właściwości nasycenia.\n",
             "might": {
               "damage": "Ataki tą bronią zadają dodatkowo {damage} obrażeń. Za każdym razem, gdy zadajesz obrażenia, rzuć kostką 1k6: przy wyniku 1 broń zadaje obrażenia kwasowe. Przy wyniku 2 zadaje obrażenia zimnem. Przy wyniku 3 zadaje obrażenia elektryczne. Przy wyniku 4 zadaje obrażenia ogniem. Przy wyniku 5 zadaje obrażenia pustką. Wreszcie przy wyniku 6 zadaje obrażenia dźwiękiem.",
               "level-12-resistance": "Obrażenia zadawane przez tę właściwość ignorują odporności.",
@@ -509,12 +519,13 @@
           },
           "winged": {
             "label": "Uskrzydlenie",
+            "description": "<p><strong>Typ</strong> Pancerz</p><p><strong>Części</strong> Potwór musi mieć szybkość lotu.</p><hr><p><strong>Efekt</strong> Nasycasz pancerz skrzydłami, które wystają z jego tylnej części. Wybierz, czy zaklęcia przyznane podczas pierwszego nasycenia pancerza będą zaklęciami tajemnymi, lub pierwotnymi.</p><ul><li><strong>6.</strong> Zbroja automatycznie rzuca na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH], gdy upadasz. Ta korzyść nie może zostać ponownie aktywowana przez 1 godzinę.</li><li><strong>8.</strong> Po użyciu<em>Miękkiego Lądowania</em>, korzyść ta nie może zostać aktywowana przez 10 minut zamiast 1 godziny</li><li><strong>10.</strong> Pancerz może raz na dzień rzucić na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]</li><li><strong>14.</strong> Pancerz może rzucać <em>Lot</em> raz na godzinę zamiast raz na dzień</li><li><strong>16.</strong> Możesz wybrać, aby pancerz miał 7. rangę <em>Lotu</em> na tobie zamiast 4. rangi <em>Lotu</em>. Jeśli to zrobisz, nie będziesz mógł ponownie użyć zaklęcia Lotu pancerza przez 1 dzień, zamiast 1 godziny.</li><li><strong>18.</strong> Możesz latać nieprzerwanie, z szybkością równą szybkości poruszania się po lądzie.</li><li><strong>20.</strong> Pancerz może rzucać zaklęcie 4. rangi <em>Lotu</em> na sojusznika raz na godzinę</li></ul>\n",
             "flavor": "Nakładasz na zbroję skrzydła, które wystają z tyłu zbroi.",
-            "level-6-landing": "Zbroja automatycznie rzuca na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH], gdy upadasz. Ta korzyść nie może zostać ponownie aktywowana przez 1 godzinę.",
-            "level-8-landing": "Zbroja automatycznie rzuca na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH], gdy upadasz. Ta korzyść nie może zostać ponownie aktywowana przez 10 minut.",
+            "level-6-landing": "Zbroja automatycznie rzuca na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH], gdy upadasz. Ta korzyść nie może zostać ponownie aktywowana przez 1 godzinę.\n",
+            "level-8-landing": "Zbroja automatycznie rzuca na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH], gdy upadasz. Ta korzyść nie może zostać ponownie aktywowana przez 10 minut.\n",
             "level-10-fly": "Zbroja może raz na dzień rzucić na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8].",
             "level-14-fly": "Zbroja może raz na godzinę rzucić na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8].",
-            "level-16-fly-extend": "Zbroja może raz na godzinę rzucić na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]. Możesz zdecydować, aby zbroja rzucała na ciebie zaklęcie 7. rangi @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8] zamiast zaklęcia 4. rangi. Jeśli to zrobisz, nie będziesz mógł używać zaklęcia latania zbroi przez 1 dzień zamiast 1 godziny.",
+            "level-16-fly-extend": "Zbroja może raz na godzinę rzucić na ciebie zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]. Możesz zdecydować, aby zbroja rzucała na ciebie zaklęcie 7. rangi @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8] zamiast zaklęcia 4. rangi <em>lotu</em>. Jeśli to zrobisz, nie będziesz mógł używać zaklęcia latania zbroi przez 1 dzień zamiast 1 godziny.\n",
             "level-18-speed": "Możesz latać nieprzerwanie, z szybkością równą szybkości poruszania się po ziemi.",
             "level-20-ally": "Zbroja może raz na godzinę rzucić na sojusznika zaklęcie 4. rangi @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]."
           },
@@ -525,6 +536,13 @@
             "level-14-spell": "Przedmiot może raz na godzinę rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X] jako zaklęcie okultystyczne.",
             "level-17-apex": "Kiedy inwestujesz w przedmiot, zwiększasz swoją cechę Mądrości o 1 lub podnosisz ją do +4, w zależności od tego, która z tych wartości jest wyższa. Przedmiot zyskuje cechę arcyprzedmiotu.",
             "level-20-spell": "Przedmiot może raz na minutę rzucać zaklęcie @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X] jako zaklęcie okultystyczne."
+          }
+        },
+        "strange-and-unusual": {
+          "spiked": {
+            "label": "Szpikulec\n",
+            "description": "<p><strong>Typ</strong> Pancerz</p><p><strong>Części</strong> Potwór musi posiadać reakcję, darmową akcję lub pasywną zdolność, która zadaje obrażenia kłute lub tnące (obecnie niemożliwe do zautomatyzowania).</p><hr><p><strong>Efekt</strong> Nasycasz zbroję ostrymi kolcami.</p><ul><li><strong>2.</strong> Pancerz zyskuje następującą aktywację:<br><strong>Aktywacja</strong> 2 Interakcja<br><strong>Częstotliwość</strong> raz na dzień<br><strong>Efekt</strong> Sprawiasz, że z pancerza wystają ostre kolce. Przez 1 minutę sąsiednie stworzenia, które uderzą cię atakiem wręcz, a także stworzenia, które dotkną cię lub uderzą cię atakiem bez broni, otrzymują 1 punkt obrażeń kłutych za każdym razem, gdy to zrobią. Jeśli cię chwycą lub złapią, obrażenia wzrosną do 1k4 punktów obrażeń kłutych.</li><li><strong>4.</strong> Obrażenia spowodowane aktywacją wzrastają do 1k4 lub 2k4, gdy stworzenia cię Chwycą lub Złapią.</li><li><strong>6.</strong> Obrażenia spowodowane aktywacją wzrastają do 1k6 lub 2k6, gdy stworzenia Chwycą cię lub Złapią w uścisk.</li><li><strong>8.</strong> Obrażenia spowodowane aktywacją wzrastają do 2k4 lub 4k4, gdy stworzenia Chwycą cię lub Złapią w uścisk.</li><li><strong>10.</strong> Obrażenia spowodowane aktywacją wzrastają do 2k6 lub 4k6, gdy stworzenia Chwycą cię lub Złapią w uścisk.</li><li><strong>12.</strong> Aktywacja pancerza następuje raz na godzinę zamiast raz na dzień. Nawet gdy nie jest aktywowana, sąsiednie stworzenia, które uderzą cię atakiem wręcz, a także stworzenia, które dotkną cię lub uderzą cię atakiem bez broni, otrzymują 1 punkt obrażeń kłutych za każdym razem, gdy to zrobią. Jeśli cię chwycą lub złapią, obrażenia wzrosną do 1k4 punktów obrażeń kłutych. Po aktywacji obrażenia z aktywacji zwiększają te obrażenia; nie są one kumulatywne.</li><li><strong>14.</strong> Obrażenia spowodowane aktywacją wzrastają do 3k6 lub 6k6, gdy stworzenia Chwycą cię lub Złapią w uścisk.</li><li><strong>16.</strong> Aktywacja pancerza wymaga tylko jednej akcji zamiast dwóch.</li><li><strong>18.</strong> Obrażenia spowodowane aktywacją wzrastają do 4k6 lub 8k6, gdy stworzenia Chwycą cię lub Złapią w uścisk. Obrażenia, gdy zbroja nie jest aktywowana, wzrastają do 1k4 lub 2k4, gdy stworzenia Chwycą cię lub Złapią w uścisk.</li><li><strong>20.</strong> Aktywacja pancerza następuje raz na 10 minut zamiast raz na godzinę. Ponadto, oprócz aktywacji za pomocą jednej akcji, pancerz można aktywować jako reakcję wyzwalaną, gdy stworzenie Chwyta cię lub skutecznie cię obezwładnia. Gdy aktywujesz pancerz w ten sposób, wyzwalające stworzenie otrzymuje zwiększone obrażenia od pancerza. Takie użycie nadal podlega częstotliwości aktywacji pancerza wynoszącej raz na 10 minut.</li></ul>\n",
+            "flavor": "Nasycasz pancerz ostrymi kolcami."
           }
         },
         "elemental-storm": {
@@ -569,15 +587,15 @@
               "label": "Życie (Potęga)",
               "level-6-enfeebled": "W przypadku trafienia krytycznego nieumarły jest również @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony 1} do końca twojej następnej tury.",
               "level-10-resistance": "Obrażenia witalności zadane przez tę właściwość ignorują odporności.",
-              "level-14-enfeebled": "W przypadku trafienia krytycznego nieumarły musi wykonać rzut obronny na Wytrwałość. W przypadku krytycznego sukcesu otrzymuje on @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabienie 1} do czasu zakończenia twojej następnej tury, a w przypadku sukcesu otrzymuje @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7] {Osłabienie 2} do tego momentu, a w przypadku porażki @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabienie 3} do tego momentu, a w przypadku krytycznej porażki zostaje zniszczony. Efekt ten ma cechę obezwładnienia.",
+              "level-14-enfeebled": "W przypadku trafienia krytycznego nieumarły musi wykonać rzut obronny na Wytrwałość. W przypadku krytycznego sukcesu otrzymuje on @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabienie 1} do czasu zakończenia twojej następnej tury, a w przypadku sukcesu otrzymuje @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7] {Osłabienie 2} do tego momentu, a w przypadku porażki @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabienie 3} do tego momentu, a w przypadku krytycznej porażki zostaje zniszczony. Efekt ten ma cechę obezwładnienia.\n",
               "level-20-weakness": "Po udanym Ataku bronią, przed zadaniem obrażeń witalności, cel otrzymuje podatność 1 do witalności, która trwa do początku Twojej następnej tury."
             },
             "tech": {
               "label": "Życie (Technika)",
               "level-6-enfeebled": "W przypadku trafienia krytycznego nieumarły jest również @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony 1} do końca twojej następnej tury.",
               "level-10-resistance": "Obrażenia witalności zadane przez tę właściwość (w tym trwałe obrażenia witalności) ignorują odporności.",
-              "level-14-enfeebled": "W przypadku trafienia krytycznego nieumarły jest @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony 2} do końca twojej następnej tury. Musi również wykonać rzut obronny na Wytrwałość. W przypadku porażki jest @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony 3} do końca twojej następnej tury zamiast osłabiony 2, a w przypadku krytycznej porażki zostaje zniszczony. Efekt ten ma cechę obezwładnienia.",
-              "level-20-counteract": "Stworzenia, które odnoszą trwałe obrażenia witalności z powodu tej właściwości, mają trudności z leczeniem się energią pustki z powodu przepływającej przez nie energii witalności. Jeśli efekt pustki spowodowałby odzyskanie Punktu Wytrzymałości przez stworzenie, musi ono najpierw wykonać udaną próbę przeciwdziałania o randze 10 i ST 43. Nawet w przypadku udanej próby przeciwdziałania odzyskane Punkty Wytrzymałości są zmniejszane o 1k10. W przypadku krytycznego sukcesu stworzenie odzyskuje pełną ilość Punktu Wytrzymałości."
+              "level-14-enfeebled": "W przypadku trafienia krytycznego nieumarły jest @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony 2} do końca twojej następnej tury. Musi również wykonać rzut obronny na Wytrwałość. W przypadku porażki jest @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Osłabiony 3} do końca twojej następnej tury zamiast osłabiony 2, a w przypadku krytycznej porażki zostaje zniszczony. Efekt ten ma cechę obezwładnienia.\n",
+              "level-20-counteract": "Stworzenia, które odnoszą trwałe obrażenia witalności z powodu tej właściwości, mają trudności z leczeniem się energią pustki z powodu przepływającej przez nie energii witalności. Jeśli efekt pustki spowodowałby odzyskanie Punktu Wytrzymałości przez stworzenie, musi ono najpierw wykonać udaną próbę przeciwdziałania o randze 10 i ST 43. Nawet w przypadku udanej próby przeciwdziałania odzyskane Punkty Wytrzymałości są zmniejszane o 1k10. W przypadku krytycznego sukcesu stworzenie odzyskuje pełną ilość Punktu Wytrzymałości.\n"
             }
           }
         }
