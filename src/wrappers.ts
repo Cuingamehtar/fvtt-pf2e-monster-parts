@@ -122,7 +122,7 @@ export class Wrappers {
                             .filter((m): m is Material => !!m)
                             .map(
                                 (m) =>
-                                    `${prefix}:${m.key}:${m.getLevel(item) ?? 0}`,
+                                    `${prefix}:${m.key}:${m.getLevel(item).level ?? 0}`,
                             ),
                     ];
                 }

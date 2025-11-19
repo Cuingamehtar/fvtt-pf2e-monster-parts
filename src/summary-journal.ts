@@ -95,6 +95,8 @@ function debugLineEffect(effect: MaterialEffect) {
             default:
                 name = effect.rule.key;
         }
+    } else if (effect.type === "Apex") {
+        name = `Apex ${effect.attribute ? `(${effect.attribute})` : "(unset)"}`;
     }
     const cells = Array.fromRange(21)
         .map((i) =>

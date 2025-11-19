@@ -100,4 +100,4 @@ function combineLocalizationsInner() {
     );
 }
 
-export const combineLocalizations = debounce(combineLocalizationsInner, 1000);
+export const combineLocalizations = debounce(combineLocalizationsInner, 2000);

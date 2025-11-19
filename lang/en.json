@@ -242,6 +242,7 @@
           },
           "charisma": {
             "label": "Charisma",
+            "description": "<p><strong>Type</strong> Skill Item (Charisma-based skill)</p>\n<p><strong>Parts</strong> The creature must have Charisma as its highest or second highest ability modifier.</p>\n<hr />\n<p><strong>Effect</strong> You imbue the item with dazzling <em>charisma</em>.</p>\n<ul>\n<li><strong>8th</strong> The item can cast heroism once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness</li>\n<li><strong>14th</strong> The item’s heroism spell heightens to 6th rank</li>\n<li><strong>17th</strong> When you invest the item, you either increase your Charisma attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait</li>\n<li><strong>20th</strong> The item’s heroism spell heightens to 9th rank</li>\n</ul>",
             "flavor": "You imbue the item with dazzling <em>charisma</em>.",
             "level-8-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Heroism} once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness.",
             "level-14-spell": "The item can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Heroism} once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness.",

@@ -17,6 +17,7 @@ export function createImbueCharisma(): MaterialData {
         key: "imbue:charisma",
         type: "imbuement",
         label: { type: "key", key: lkey("label") },
+        description: { type: "key", key: lkey("description") },
         monsterPredicate: [{ lte: ["self:ability:cha:rank", 2] }],
         itemPredicate: [
             {
@@ -52,6 +53,13 @@ export function createImbueCharisma(): MaterialData {
                 },
             ],
         },
-        effects: [],
+        effects: [
+            { levelMin: 0, levelMax: 16, type: "Apex", attribute: null },
+            {
+                levelMin: 17,
+                type: "Apex",
+                attribute: "cha",
+            },
+        ],
     };
 }

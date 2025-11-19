@@ -2,6 +2,7 @@ import { PredicateStatement } from "foundry-pf2e";
 import { effectField } from "./effect-handlers";
 import { RuleElementEffect } from "./effect-handlers/rule-element";
 import { AlterationEffect } from "./effect-handlers/alteration";
+import { ApexEffect } from "./effect-handlers/apex";
 
 const f = foundry.data.fields;
 
@@ -56,7 +57,7 @@ export type BaseMaterialEffect = {
     levelMax?: number;
 };
 
-export type MaterialEffect = RuleElementEffect | AlterationEffect;
+export type MaterialEffect = RuleElementEffect | AlterationEffect | ApexEffect;
 
 export type HeaderLabel = {
     text: I18nEntry;
