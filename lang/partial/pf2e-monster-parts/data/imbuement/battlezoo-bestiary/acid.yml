@@ -1,0 +1,219 @@
+header-description: You imbue the weapon with vitriolic _acid_.
+magic:
+  label: Acid (Magic)
+  description: >
+    **Type** Weapon
+
+
+    **Parts** The monster must have the acid trait or an attack or spell that
+    deals acid damage.
+
+
+    **Effect** You imbue the weapon with vitriolic acid.
+
+
+    - - -
+
+
+    **Path** Magic; Choose when you first imbue the weapon for the granted
+    spells to be either arcane or primal
+
+
+    -   **2nd** The weapon can cast
+    @UUID\[Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt\]{Acid Splash} as a
+    cantrip, heightened to half the item's level rounded up
+
+    -   **4th** The weapon can cast
+    @UUID\[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws\]{Acidic Burst} once
+    per day
+
+    -   **6th** The weapon's _acidic burst_ heightens to 2nd rank and it can
+    cast either @UUID\[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0\]{Acid
+    Arrow} or _acidic burst_ once per day, but not both
+
+    -   **8th** The weapon's _acidic burst_ heightens to 3rd rank, and it can
+    cast _acid arrow_ and _acidic burst_ each once per day
+
+    -   **10th** Strikes with the weapon deal 1 additional acid damage
+
+    -   **12th** The weapon's _acid arrow_ heightens to 4th rank, and the weapon
+    can cast @UUID\[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3\]{Acid
+    Storm} once per day
+
+    -   **14th** The additional acid damage increases to 1d4
+
+    -   **16th** The weapon's _acid arrow_ heightens to 6th rank and _acid
+    storm_ heightens to 7th rank
+
+    -   **18th** The additional acid damage increases to 1d6
+
+    -   **20th** The weapon can cast
+    @UUID\[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl\]{Storm of
+    Vengeance} once per day but you can only choose the acid rain effect. You
+    can choose the acid rain effect twice in a row
+  header:
+    level-4-spells: >-
+      The weapon can cast 1st rank
+      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] once per day.
+    level-6-spells: >-
+      The weapon can cast either 2nd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] or 2nd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] once per day, but
+      not both.
+    level-8-spells: >-
+      The weapon can cast 2nd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] and 3rd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] each once per day.
+    level-12-spells: >-
+      The weapon can cast 4th rank
+      @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0], 3rd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws], and 5th rank
+      @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]{Acid Storm} each
+      once per day.
+    level-16-spells: >-
+      The weapon can cast 6th rank
+      @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0], 3rd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws], and 7th rank
+      @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]{Acid Storm} each
+      once per day.
+    level-20-spell: >-
+      The weapon can cast
+      @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl] once per day but
+      you can only choose the acid rain effect. You can choose the acid rain
+      effect twice in a row.
+might:
+  label: Acid (Might)
+  description: >
+    **Type** Weapon
+
+
+    **Parts** The monster must have the acid trait or an attack or spell that
+    deals acid damage.
+
+
+    **Effect** You imbue the weapon with vitriolic acid.
+
+
+    - - -
+
+
+    **Path** Might
+
+
+    - **4th** Strikes with the weapon deal 1 additional acid damage
+
+    - **6th** The additional acid damage increases to 1d4
+
+    - **8th** The additional acid damage increases to 1d6. On a critical hit,
+    the target's armor (if any) takes 3d6 acid damage (before applying
+    Hardness); if the target has a shield raised, the shield takes this damage
+    instead
+
+    - **12th** The acid damage dealt by this imbued property ignores resistances
+
+    - **14th** The acid damage dealt to armor or shield on a critical hit
+    increases to 6d6
+
+    - **18th** The additional acid damage increases to 1d8
+
+    - **20th** On a successful Strike with the weapon, before applying acid
+    damage, the target gains weakness 1 to acid until the beginning of your next
+    turn
+  effects:
+    level-8-note: >-
+      The target's armor (if any) takes @Damage[3d6[acid]] (before applying
+      Hardness); if the target has a shield raised, the shield takes this damage
+      instead.
+    level-12-note: The acid damage dealt by this imbued property ignores resistances.
+    level-14-note: >-
+      The target's armor (if any) takes @Damage[6d6[acid]] (before applying
+      Hardness); if the target has a shield raised, the shield takes this damage
+      instead.
+    level-20-note: >-
+      Before applying acid damage, the target gains weakness 1 to acid until the
+      beginning of your next turn.
+      @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
+      Might Path Damage Weakness}
+  header:
+    level-8-armor: >-
+      On a critical hit, the target's armor (if any) takes 3d6 acid damage
+      (before applying Hardness); if the target has a shield raised, the shield
+      takes this damage instead.
+    level-12-resistance: The acid damage dealt by this imbued property ignores resistances.
+    level-14-armor: >-
+      On a critical hit, the target's armor (if any) takes 6d6 acid damage
+      (before applying Hardness); if the target has a shield raised, the shield
+      takes this damage instead.
+    level-20-weakness: >-
+      On a successful Strike with the weapon, before applying acid damage, the
+      target gains weakness 1 to acid until the beginning of your next turn.
+tech:
+  label: Acid (Technique)
+  description: >
+    **Type** Weapon
+
+
+    **Parts** The monster must have the acid trait or an attack or spell that
+    deals acid damage.
+
+
+    **Effect** You imbue the weapon with vitriolic acid.
+
+
+    - - -
+
+
+    **Path** Technique
+
+
+    -   **4th** Strikes with the weapon deal 1 persistent acid damage
+
+    -   **6th** Strikes with the weapon deal 1 additional acid damage
+
+    -   **8th** The persistent acid damage increases to 1d6. On a critical hit,
+    the target's armor (if any) takes 3d6 acid damage (before applying
+    Hardness); if the target has a shield raised, the shield takes this damage
+    instead
+
+    -   **12th** The acid damage dealt by this imbued property (including the
+    persistent acid damage) ignores resistances
+
+    -   **14th** The persistent acid damage on a hit increases to 1d8
+
+    -   **16th** The persistent acid damage from the imbued property eats away
+    at a foe's resistances. Every time a foe or the foe's armor or shield takes
+    damage from the persistent acid damage at the end of their turn, any
+    resistances and Hardness decrease by 1 for 1 minute. This effect is
+    cumulative (not automated)
+
+    -   **18th** The persistent acid damage on a hit increases to 1d10
+
+    -   **20th** On a critical hit, acid eats away at the foe's innards, and
+    they are drained 1
+  effects:
+    level-8-note: >-
+      The target's armor (if any) takes @Damage[3d6[acid]] (before applying
+      Hardness); if the target has a shield raised, the shield takes this damage
+      instead.
+    level-12-note: >-
+      The acid damage dealt by this imbued property (including the persistent
+      acid damage) ignores resistances.
+    level-20-note: >-
+      The enemy is
+      @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}.
+  header:
+    level-8-armor: >-
+      On a critical hit, the target's armor (if any) takes 3d6 acid damage
+      (before applying Hardness); if the target has a shield raised, the shield
+      takes this damage instead.
+    level-12-resistance: >-
+      The acid damage dealt by this imbued property (including the persistent
+      acid damage) ignores resistances.
+    level-16-persistent-resistance: >-
+      The persistent acid damage from the imbued property eats away at a foe's
+      resistances. Every time a foe or the foe's armor or shield takes damage
+      from the persistent acid damage at the end of their turn, any resistances
+      and Hardness decrease by 1 for 1 minute. This effect is cumulative.
+    level-20-drained: >-
+      On a critical hit, acid eats away at the foe's innards, and they are
+      @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drained 1}.

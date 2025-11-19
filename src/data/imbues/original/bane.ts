@@ -43,6 +43,11 @@ function baneImbue(creature: string): MaterialData[] {
             key: `imbue:bane:${creature}:might`,
             type: "imbuement",
             label: labelMight,
+            description: {
+                type: "key",
+                key: lkey("might.description"),
+                parameters: { creature: creatureLabel },
+            },
             monsterPredicate: [`self:trait:${creature}`],
             itemPredicate: ["item:type:weapon"],
             header: {
@@ -104,12 +109,50 @@ function baneImbue(creature: string): MaterialData[] {
                             predicate: predicate,
                         }),
                 ),
+                {
+                    levelMin: 6,
+                    levelMax: 13,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("effects.level-6-note"),
+                        title: labelMight as string,
+                        selector: ["{item|id}-attack"],
+                    },
+                },
+                {
+                    levelMin: 14,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("effects.level-14-note"),
+                        title: labelMight as string,
+                        selector: ["{item|id}-attack"],
+                    },
+                },
+                {
+                    levelMin: 10,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("might.effects.level-10-note"),
+                        title: labelMight as string,
+                        selector: ["{item|id}-damage"],
+                    },
+                },
             ],
         },
         {
             key: `imbue:bane:${creature}:tech`,
             type: "imbuement",
             label: labelTech,
+            description: {
+                type: "key",
+                key: lkey("tech.description"),
+                parameters: { creature: creatureLabel },
+            },
             monsterPredicate: [`self:trait:${creature}`],
             itemPredicate: ["item:type:weapon"],
             header: {
@@ -199,6 +242,51 @@ function baneImbue(creature: string): MaterialData[] {
                             predicate: predicate,
                         }),
                 ),
+                {
+                    levelMin: 6,
+                    levelMax: 13,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("effects.level-6-note"),
+                        title: labelMight as string,
+                        selector: ["{item|id}-attack"],
+                    },
+                },
+                {
+                    levelMin: 14,
+                    levelMax: 19,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("effects.level-14-note"),
+                        title: labelMight as string,
+                        selector: ["{item|id}-attack"],
+                    },
+                },
+                {
+                    levelMin: 20,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("tech.effects.level-20-note"),
+                        title: labelMight as string,
+                        selector: ["{item|id}-attack"],
+                    },
+                },
+                {
+                    levelMin: 10,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("tech.effects.level-10-note"),
+                        title: labelMight as string,
+                        selector: ["{item|id}-damage"],
+                    },
+                },
             ],
         },
     ];
