@@ -1,0 +1,9 @@
+{
+  "label": "Wild (Might)",
+  "flavor": "Sometimes you just can't find enough parts of the same type to properly imbue your weapon, but you still want to imbue it with something. From that desperation and the haphazard imbuing of wildly different parts, a <em>wild</em> imbued property is born, inconsistent and lacking a few of the benefits of other imbued properties.",
+  "might": {
+    "damage": "Strikes with the weapon additionally deal {damage} damage. Each time you deal damage, roll 1d6: On a 1, the weapon deals acid damage. On a 2, it deals cold damage. On a 3, it deals electricity damage. On a 4, it deals fire damage. On a 5, it deals void damage. Finally, on a 6, it deals sonic damage.",
+    "level-12-resistance": "The damage dealt by this imbued property ignores resistances.",
+    "level-20-weakness": "On a successful Strike with the weapon, before applying the additional damage, the target gains weakness 1 to that damage type until the beginning of your next turn."
+  }
+}

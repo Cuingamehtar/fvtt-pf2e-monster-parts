@@ -1,0 +1,6 @@
+{
+  "label": "Fortification",
+  "flavor": "You imbue the armor with powerful fortifications to ward off deadly attacks.",
+  "penalty": "The armor Bulk and Strength requirement are increased by 1.",
+  "flat-check": "Each time you're critically hit while wearing the etched armor, attempt a @Check[flat|dc:{dc}]. On a success, it becomes a normal hit."
+}

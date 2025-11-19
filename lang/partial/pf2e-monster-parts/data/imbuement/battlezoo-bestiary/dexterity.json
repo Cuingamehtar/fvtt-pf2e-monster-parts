@@ -1,0 +1,8 @@
+{
+  "label": "Dexterity",
+  "flavor": "You imbue the item with deft <em>dexterity</em>.",
+  "level-8-speed": "Once per day, you can use a single action activation with manipulate trait to gain a +10-foot status bonus to all your Speeds for 10 minutes.",
+  "level-14-speed": "Once per day, you can use a single action activation with manipulate trait to gain a +20-foot status bonus to all your Speeds for 10 minutes. While activated, you gain the effects of @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Water Walk}.",
+  "level-17-apex": "When you invest the item, you either increase your Dexterity attribute by +1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
+  "level-20-speed": "Once per day, you can use a single action activation with manipulate trait to gain a +30-foot status bonus to all your Speeds for 10 minutes. While activated, you gain the effects of both @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Water Walk} and @UUID[Compendium.pf2e.spells-srd.Item.b5sGjGlBf58f8jn0]{Air Walk}."
+}

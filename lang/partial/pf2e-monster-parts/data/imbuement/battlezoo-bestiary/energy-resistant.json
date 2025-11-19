@@ -1,0 +1,8 @@
+{
+  "armor-label": "Energy Resistant (Armor, {damage})",
+  "shield-label": "Energy Resistant (Shield, {damage})",
+  "armor-flavor": "You imbue the armor to protect yourself from a particular type of energy.",
+  "shield-flavor": "You imbue the shield to protect yourself from a particular type of energy.",
+  "armor-effect": "While wearing the armor, you gain resistance {level} to the chosen energy damage type. Additionally, the armor itself gains the same resistance.",
+  "shield-effect": "While wielding the shield, you gain resistance {level} to the chosen energy damage type. Additionally, the shield itself gains the same resistance (applied after you reduce the damage by the shield's Hardness). You can use Shield Block any time you would take the chosen damage type, in addition to its usual trigger."
+}

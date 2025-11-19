@@ -1,0 +1,8 @@
+{
+  "label": "Strength",
+  "flavor": "You imbue the item with ferocious <em>strength</em>.",
+  "level-8-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per day as a primal spell.",
+  "level-14-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per hour as a primal spell.",
+  "level-17-apex": "When you invest the item, you either increase your Strength attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
+  "level-20-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per minute as a primal spell."
+}

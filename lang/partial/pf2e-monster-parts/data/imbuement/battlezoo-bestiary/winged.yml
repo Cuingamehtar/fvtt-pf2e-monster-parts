@@ -1,0 +1,35 @@
+label: Winged
+description: |
+  **Type** Armor
+  
+  **Parts** The monster must have a fly Speed.
+
+  - - -
+  
+  **Effect** You imbue the armor with wings, which protrude from the armor's back. Choose when you first imbue the armor for the granted spells to be either arcane or primal.
+  
+  -   **6th** The armor casts @UUID\[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH\]{Gentle Landing} on you automatically when you fall, this benefit can't trigger again for 1 hour
+  -   **8th** After _gentle landing_, the benefit can't trigger for 10 minutes instead of 1 hour
+  -   **10th** The armor can cast @UUID\[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8\]{Fly} on you once per day
+  -   **14th** The armor can cast _fly_ on you once per hour instead of once per day
+  -   **16th** You can choose to have armor cast 7th-rank _fly_ on you instead of 4th-rank _fly_. If you do, you can't use the armor's fly spell again for 1 day, instead of 1 hour
+  -   **18th** You can fly constantly, with a Speed equal to your land Speed
+  -   **20th** The armor can cast 4th-rank _fly_ on an ally once per hour
+flavor: You imbue the armor with wings, which protrude from the armor's back.
+level-6-landing: The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle
+  Landing} on you automatically when you fall, this benefit can't trigger again for
+  1 hour.
+level-8-landing: The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle
+  Landing} on you automatically when you fall, this benefit can't trigger again for
+  10 minutes.
+level-10-fly: The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly}
+  on you once per day.
+level-14-fly: The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly}
+  on you once per hour.
+level-16-fly-extend: The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly}
+  on you once per hour. You can choose to have armor cast 7th rank @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly}
+  on you instead of 4th rank _fly_. If you do, you can't use the armor's fly
+  spell again for 1 day, instead of 1 hour.
+level-18-speed: You can fly constantly, with a Speed equal to your land Speed.
+level-20-ally: The armor can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly}
+  on an ally once per hour.

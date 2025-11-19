@@ -1,0 +1,80 @@
+{
+  "monster-parts": "Monster Parts",
+  "monster-part": {
+    "label": "Monster Part",
+    "create-button-label": "Create Monster Parts",
+    "description-header": "Monster Part (Value: {value})",
+    "error-not-monster-part": "This item is not a monster part.",
+    "error-not-physical-item": "This item is not a physical item."
+  },
+  "refined-item": {
+    "label": "Refined Item",
+    "level": "Level",
+    "value": "Value",
+    "level-capped-refinement": "Capped by actor's level",
+    "level-capped-imbuement": "Capped by refinement's level",
+    "warn-item-already-refined": "{item} is already a refined item.",
+    "error-item-is-monster-part": "Item has monster part data, it can't be used as a base for refined item.",
+    "error-not-refined-item": "This item is not a refined item.",
+    "error-no-applicable-refinements": "This item type has no applicable refinements.",
+    "error-not-physical-item": "This item is not a physical item.",
+    "imported-from-compendium": "The refined version of this item was created in the main item collection."
+  },
+  "dialog": {
+    "default-title": "Choose an option",
+    "choose-material": {
+      "title": "Choose material type",
+      "count": "Number of Monster Parts",
+      "error-no-applicable-material": "This monster part has no applicable material.",
+      "quantity-title": "Value of monster parts to consume"
+    },
+    "confirm-apply-material": {
+      "title": "Confirm applying material",
+      "content": "This will add <strong>{value}</strong> to <strong>{material}</strong> material of the item.",
+      "consume": "This will consume {quantity} monster parts.",
+      "remainder": "One of the monster part's value will be reduced by <strong>{remainder}</strong>."
+    },
+    "slider": {
+      "value": "Value"
+    },
+    "create-refined-item": {
+      "content": "Drag an Item here",
+      "title": "Create Refined Item"
+    },
+    "monster-part-editor": {
+      "refinements": "Refinements",
+      "imbuements": "Imbuements",
+      "value": "Value",
+      "button": "Edit Monster Part"
+    },
+    "refined-item-editor": {
+      "refinement": "Refinement",
+      "imbuement": "Imbuement",
+      "new-imbuement": "New Imbuement",
+      "type": "Type",
+      "value": "Value",
+      "button": "Edit Refined Item"
+    },
+    "after-combat-dialog": {
+      "title": "Assign Monster Parts",
+      "value": "Value: {value}",
+      "total": "Total value: {value}"
+    }
+  },
+  "material": {
+    "refinement": "Refinement",
+    "imbuement": "Imbuement",
+    "value": "Value",
+    "item": {
+      "name-owned": "Monster Parts of {actor}",
+      "name": "Monster Parts"
+    },
+    "editor": {
+      "title": "Edit provided materials"
+    },
+    "duplicate-key": "Material with key {key} already exists. It will be replaced.",
+    "validation-failure-notification": "Material {key} failed to validate. See console (F12) for details",
+    "validation-failure": "Material {key} failed to validate: {error}",
+    "homebrew-file-invalid": "Error parsing file {file}. Skipped."
+  }
+}

@@ -159,43 +159,6 @@
       }
     },
     "data": {
-      "refinement": {
-        "bludgeoning": "Weapon (Bludgeoning)",
-        "piercing": "Weapon (Piercing)",
-        "slashing": "Weapon (Slashing)",
-        "handwraps": "Handwraps",
-        "armor-light": "Armor (Light)",
-        "armor-medium": "Armor (Medium)",
-        "armor-heavy": "Armor (Heavy)",
-        "armor-unarmored": "Armor (Unarmored)",
-        "armor": {
-          "+1": "This is a +1 armor. It grants +1 item bonus to AC and can be imbued 1 time.",
-          "resilient+1": "This is a +1 resilient armor. It grants +1 item bonus to AC and saving throws, and can be imbued 1 time.",
-          "resilient+2": "This is a +2 resilient armor. It grants +2 item bonus to AC, +1 item bonus to saving throws, and can be imbued 2 times.",
-          "greater-resilient+2": "This is a +2 greater resilient armor. It grants +2 item bonus to AC and saving throws, and can be imbued 2 times.",
-          "greater-resilient+3": "This is a +3 greater resilient armor. It grants +3 item bonus to AC, +2 item bonus to saving throws, and can be imbued 3 times.",
-          "major-resilient+3": "This is a +3 major resilient armor. It grants +3 item bonus to AC and saving throws, and can be imbued 3 times."
-        },
-        "perception": "Perception",
-        "shield": {
-          "label": "Shield",
-          "label-buckler": "Shield (Buckler)",
-          "inline-note": "This shield has Hardness {hardness}, HP {hp}, BT {bt}",
-          "imbuing": "It can be imbued once."
-        },
-        "skill": {
-          "item-bonus": "This item grants +{bonus} item bonus to {skill} checks.",
-          "imbuing": "It can be imbued once."
-        },
-        "weapon": {
-          "+1": "This is a +1 weapon. It grants +1 item bonus to attack rolls and can be imbued 1 time.",
-          "striking+1": "This is a +1 striking weapon. It grants +1 item bonus to attack rolls, deals 2 dice of damage, and can be imbued 1 time.",
-          "striking+2": "This is a +2 striking weapon. It grants +2 item bonus to attack rolls, deals 2 dice of damage, and can be imbued 2 times.",
-          "greater-striking+2": "This is a +2 greater striking weapon. It grants +2 item bonus to attack rolls, deals 3 dice of damage, and can be imbued 2 times.",
-          "greater-striking+3": "This is a +3 greater striking weapon. It grants +3 item bonus to attack rolls, deals 3 dice of damage, and can be imbued 3 times.",
-          "major-striking+3": "This is a +3 major striking weapon. It grants +3 item bonus to attack rolls, deals 4 dice of damage, and can be imbued 3 times."
-        }
-      },
       "imbuement": {
         "add-cantrip": "The weapon can cast {spell} as a cantrip, heightened to half the item's level rounded up.",
         "vulnerability-before-strike": "Before applying additional damage, the target gains weakness 1 to <em>{damage}</em> until the beginning of your next turn.",
@@ -475,11 +438,11 @@
             "label": "Sensory",
             "description": "<p><strong>Type</strong> Perception item</p>\n<p><strong>Parts</strong> The creature must have the next sense to be granted by the imbued property (low-light vision from levels 1–6, darkvision (6–12), scent (12-16), greater darkvision (16- 18), and true seeing (18-20)).</p>\n<p><strong>Developer note</strong> The original requirement could not be automated, the following is used instead: <em>The creature must have a special sense</em></p>\n<hr />\n<p><strong>Effect</strong> You imbue the item with extraordinary senses.</p>\n<ul>\n<li><strong>4th</strong> Once per day, you can activate the item as a two-action envision activation to gain low-light vision for 1 hour</li>\n<li><strong>6th</strong> While investing the item, you gain low-light vision</li>\n<li><strong>8th</strong> Once per day, you can activate the item as a two-action envision activation to gain darkvision for 1 hour</li>\n<li><strong>12th</strong> While investing the item, you gain darkvision</li>\n<li><strong>14th</strong> Once per day, you can activate the item as a two-action envision activation to gain 30-foot imprecise scent for 1 hour</li>\n<li><strong>16th</strong> While investing the item, you gain 30-foot imprecise scent</li>\n<li><strong>18th</strong> While investing the item, you gain greater darkvision</li>\n<li><strong>20th</strong> While investing the item, you constantly gain the effects of 6th rank @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]{Truesight}</li>\n</ul>",
             "flavor": "You imbue the item with extraordinary senses.",
-            "level-4-activation-low-light": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br />\n<strong>Frequency</strong> once per day\nYou gain low-light vision for 1 hour.\n@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}</p>",
+            "level-4-activation-low-light": "<strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br />\n<strong>Frequency</strong> once per day\nYou gain low-light vision for 1 hour.\n@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}",
             "level-6-permanent-low-light": "You gain low-light vision.",
-            "level-8-activation-darkvision": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br />\n<strong>Frequency</strong> once per day\nYou gain darkvision for 1 hour.\n@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}</p>",
+            "level-8-activation-darkvision": "<strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br />\n<strong>Frequency</strong> once per day\nYou gain darkvision for 1 hour.\n@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}",
             "level-12-permanent-darkvision": "You gain darkvision.",
-            "level-14-activation-scent": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br />\n<strong>Frequency</strong> once per day<br />\nYou gain 30-foot imprecise scent for 1 hour.<br />\n@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}</p>",
+            "level-14-activation-scent": "<strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br />\n<strong>Frequency</strong> once per day<br />\nYou gain 30-foot imprecise scent for 1 hour.<br />\n@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}",
             "level-16-permanent-scent": "You gain darkvision and 30-foot imprecise scent.",
             "level-18-permanent": "You gain greater darkvision and 30-foot imprecise scent.",
             "level-20-truesight": "You constantly gain the effects of 6th rank @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]{Truesight} spell."
@@ -526,7 +489,7 @@
           },
           "winged": {
             "label": "Winged",
-            "description": "<p><strong>Type</strong> Armor</p><p><strong>Parts</strong> The monster must have a fly Speed.</p><hr><p><strong>Effect</strong> You imbue the armor with wings, which protrude from the armor's back. Choose when you first imbue the armor for the granted spells to be either arcane or primal.</p><ul><li><strong>6th</strong> The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can't trigger again for 1 hour</li><li><strong>8th</strong> After <em>gentle landing</em>, the benefit can't trigger for 10 minutes instead of 1 hour</li><li><strong>10th</strong> The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per day</li><li><strong>14th</strong> The armor can cast <em>fly</em> on you once per hour instead of once per day</li><li><strong>16th</strong> You can choose to have armor cast 7th-rank <em>fly</em> on you instead of 4th-rank <em>fly</em>. If you do, you can't use the armor's fly spell again for 1 day, instead of 1 hour</li><li><strong>18th</strong> You can fly constantly, with a Speed equal to your land Speed</li><li><strong>20th</strong> The armor can cast 4th-rank <em>fly</em> on an ally once per hour</li></ul>",
+            "description": "<p><strong>Type</strong> Armor</p>\n<p><strong>Parts</strong> The monster must have a fly Speed.</p>\n<hr />\n<p><strong>Effect</strong> You imbue the armor with wings, which protrude from the armor's back. Choose when you first imbue the armor for the granted spells to be either arcane or primal.</p>\n<ul>\n<li><strong>6th</strong> The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can't trigger again for 1 hour</li>\n<li><strong>8th</strong> After <em>gentle landing</em>, the benefit can't trigger for 10 minutes instead of 1 hour</li>\n<li><strong>10th</strong> The armor can cast @UUID[Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8]{Fly} on you once per day</li>\n<li><strong>14th</strong> The armor can cast <em>fly</em> on you once per hour instead of once per day</li>\n<li><strong>16th</strong> You can choose to have armor cast 7th-rank <em>fly</em> on you instead of 4th-rank <em>fly</em>. If you do, you can't use the armor's fly spell again for 1 day, instead of 1 hour</li>\n<li><strong>18th</strong> You can fly constantly, with a Speed equal to your land Speed</li>\n<li><strong>20th</strong> The armor can cast 4th-rank <em>fly</em> on an ally once per hour</li>\n</ul>",
             "flavor": "You imbue the armor with wings, which protrude from the armor's back.",
             "level-6-landing": "The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can't trigger again for 1 hour.",
             "level-8-landing": "The armor casts @UUID[Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH]{Gentle Landing} on you automatically when you fall, this benefit can't trigger again for 10 minutes.",
@@ -543,13 +506,6 @@
             "level-14-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per hour as an occult spell.",
             "level-17-apex": "When you invest the item, you either increase your Wisdom attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
             "level-20-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per minute as an occult spell."
-          }
-        },
-        "strange-and-unusual": {
-          "spiked": {
-            "label": "Spiked",
-            "description": "<p><strong>Type</strong> Armor</p><p><strong>Parts</strong> The monster must have a reaction, free action, or passive ability that deals piercing or slashing damage (currently impossible to automate as).</p><hr><p><strong>Effect</strong> You imbue the armor with vicious spikes.</p><ul><li><strong>2nd</strong> The armor gains the following activation:<br><strong>Activate</strong> 2 Interact<br><strong>Frequency</strong> once per day<br><strong>Effect</strong> You cause vicious spikes to protrude from the armor. For 1 minute, adjacent creatures that hit you with a melee attack, as well as creatures that touch you or hit you with an unarmed attack, take 1 piercing damage each time they do. If they Grab or Grapple you, the damage increases to 1d4 piercing damage instead.</li><li><strong>4th</strong> The damage from the activation increases to 1d4, or 2d4 when creatures Grab or Grapple you.</li><li><strong>6th</strong> The damage from the activation increases to 1d6, or 2d6 when creatures Grab or Grapple you.</li><li><strong>8th</strong> The damage from the activation increases to 2d4, or 4d4 when creatures Grab or Grapple you.</li><li><strong>10th</strong> The damage from the activation increases to 2d6, or 4d6 when creatures Grab or Grapple you.</li><li><strong>12th</strong> The armor's activation gains a frequency of once per hour instead of once per day. Even when it isn't activated, adjacent creatures that hit you with a melee attack, as well as creatures that touch you or hit you with an unarmed attack, take 1 piercing damage each time they do. If they Grab or Grapple you, the damage increases to 1d4 piercing damage instead. When activated, the damage from the activation increases this damage; they aren't cumulative.</li><li><strong>14th</strong> The damage from the activation increases to 3d6, or 6d6 when creatures Grab or Grapple you.</li><li><strong>16th</strong> The armor's activation takes only a single action, instead of two actions.</li><li><strong>18th</strong> The damage from the activation increases to 4d6, or 8d6 when creatures Grab or Grapple you. The damage when the armor isn't activated increases to 1d4, or 2d4 when creatures Grab or Grapple you.</li><li><strong>20th</strong> The armor's activation gains a frequency of once per 10 minutes instead of once per hour. Furthermore, in addition to its one action activation, the armor can be activated as a reaction triggered when a creature Grabs or successfully Grapples you. When you activate the armor in this way, the triggering creature takes the increased damage from the armor. This usage is still subject to the armor's frequency of once per 10 minutes.</li></ul>",
-            "flavor": "You imbue the armor with vicious spikes."
           }
         },
         "elemental-storm": {
@@ -605,6 +561,50 @@
               "level-20-counteract": "Creatures suffering persistent vitality damage from this imbued property have difficulty healing from void energy due to the coruscating vitality energy surging through them. If a void effect would cause the creature to recover Hit Points, it must first succeed at a counteract check against the imbued property's rank of 10 and DC of 43. Even on a successful counteract check, the Hit Points recovered are reduced by 1d10. On a critical success, the creature recovers the full amount."
             }
           }
+        },
+        "strange-and-unusual": {
+          "spiked": {
+            "description": "<p><strong>Type</strong> Armor</p><p><strong>Parts</strong> The monster must have a reaction, free action, or passive ability that deals piercing or slashing damage (currently impossible to automate as).</p><hr><p><strong>Effect</strong> You imbue the armor with vicious spikes.</p><ul><li><strong>2nd</strong> The armor gains the following activation:<br><strong>Activate</strong> 2 Interact<br><strong>Frequency</strong> once per day<br><strong>Effect</strong> You cause vicious spikes to protrude from the armor. For 1 minute, adjacent creatures that hit you with a melee attack, as well as creatures that touch you or hit you with an unarmed attack, take 1 piercing damage each time they do. If they Grab or Grapple you, the damage increases to 1d4 piercing damage instead.</li><li><strong>4th</strong> The damage from the activation increases to 1d4, or 2d4 when creatures Grab or Grapple you.</li><li><strong>6th</strong> The damage from the activation increases to 1d6, or 2d6 when creatures Grab or Grapple you.</li><li><strong>8th</strong> The damage from the activation increases to 2d4, or 4d4 when creatures Grab or Grapple you.</li><li><strong>10th</strong> The damage from the activation increases to 2d6, or 4d6 when creatures Grab or Grapple you.</li><li><strong>12th</strong> The armor's activation gains a frequency of once per hour instead of once per day. Even when it isn't activated, adjacent creatures that hit you with a melee attack, as well as creatures that touch you or hit you with an unarmed attack, take 1 piercing damage each time they do. If they Grab or Grapple you, the damage increases to 1d4 piercing damage instead. When activated, the damage from the activation increases this damage; they aren't cumulative.</li><li><strong>14th</strong> The damage from the activation increases to 3d6, or 6d6 when creatures Grab or Grapple you.</li><li><strong>16th</strong> The armor's activation takes only a single action, instead of two actions.</li><li><strong>18th</strong> The damage from the activation increases to 4d6, or 8d6 when creatures Grab or Grapple you. The damage when the armor isn't activated increases to 1d4, or 2d4 when creatures Grab or Grapple you.</li><li><strong>20th</strong> The armor's activation gains a frequency of once per 10 minutes instead of once per hour. Furthermore, in addition to its one action activation, the armor can be activated as a reaction triggered when a creature Grabs or successfully Grapples you. When you activate the armor in this way, the triggering creature takes the increased damage from the armor. This usage is still subject to the armor's frequency of once per 10 minutes.</li></ul>",
+            "flavor": "You imbue the armor with vicious spikes.",
+            "label": "Spiked"
+          }
+        }
+      },
+      "refinement": {
+        "bludgeoning": "Weapon (Bludgeoning)",
+        "piercing": "Weapon (Piercing)",
+        "slashing": "Weapon (Slashing)",
+        "handwraps": "Handwraps",
+        "armor-light": "Armor (Light)",
+        "armor-medium": "Armor (Medium)",
+        "armor-heavy": "Armor (Heavy)",
+        "armor-unarmored": "Armor (Unarmored)",
+        "armor": {
+          "+1": "This is a +1 armor. It grants +1 item bonus to AC and can be imbued 1 time.",
+          "resilient+1": "This is a +1 resilient armor. It grants +1 item bonus to AC and saving throws, and can be imbued 1 time.",
+          "resilient+2": "This is a +2 resilient armor. It grants +2 item bonus to AC, +1 item bonus to saving throws, and can be imbued 2 times.",
+          "greater-resilient+2": "This is a +2 greater resilient armor. It grants +2 item bonus to AC and saving throws, and can be imbued 2 times.",
+          "greater-resilient+3": "This is a +3 greater resilient armor. It grants +3 item bonus to AC, +2 item bonus to saving throws, and can be imbued 3 times.",
+          "major-resilient+3": "This is a +3 major resilient armor. It grants +3 item bonus to AC and saving throws, and can be imbued 3 times."
+        },
+        "perception": "Perception",
+        "shield": {
+          "label": "Shield",
+          "label-buckler": "Shield (Buckler)",
+          "inline-note": "This shield has Hardness {hardness}, HP {hp}, BT {bt}",
+          "imbuing": "It can be imbued once."
+        },
+        "skill": {
+          "item-bonus": "This item grants +{bonus} item bonus to {skill} checks.",
+          "imbuing": "It can be imbued once."
+        },
+        "weapon": {
+          "+1": "This is a +1 weapon. It grants +1 item bonus to attack rolls and can be imbued 1 time.",
+          "striking+1": "This is a +1 striking weapon. It grants +1 item bonus to attack rolls, deals 2 dice of damage, and can be imbued 1 time.",
+          "striking+2": "This is a +2 striking weapon. It grants +2 item bonus to attack rolls, deals 2 dice of damage, and can be imbued 2 times.",
+          "greater-striking+2": "This is a +2 greater striking weapon. It grants +2 item bonus to attack rolls, deals 3 dice of damage, and can be imbued 2 times.",
+          "greater-striking+3": "This is a +3 greater striking weapon. It grants +3 item bonus to attack rolls, deals 3 dice of damage, and can be imbued 3 times.",
+          "major-striking+3": "This is a +3 major striking weapon. It grants +3 item bonus to attack rolls, deals 4 dice of damage, and can be imbued 3 times."
         }
       }
     }

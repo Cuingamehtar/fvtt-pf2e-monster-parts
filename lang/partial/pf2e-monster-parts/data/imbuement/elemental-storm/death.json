@@ -1,0 +1,26 @@
+{
+  "flavor": "You imbue the weapon with the void energy of death.",
+  "magic": {
+    "label": "Death (Magic)",
+    "level-4-spells": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} once per day.",
+    "level-6-spells": "The weapon can cast either 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} or @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Sudden Blight} once per day, but not both.",
+    "level-8-spells": "The weapon can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} and 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Sudden Blight} once per day each.",
+    "level-12-spells": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm}, 4th rank @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Sudden Blight} and @UUID[Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt]{Vampiric Maiden} once per day each.",
+    "level-16-spells": "The weapon can cast 6th rank @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm}, 6th rank @UUID[Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt]{Vampiric Maiden} and <em>raise the reaper's scythe</em> (source: Battlezoo Bestiary Elemental Storm) (original negative imbuement used @UUID[Compendium.pf2e.spells-srd.Item.6lO6uMQxbqmYho0e]{Necrotize}) once per day each.",
+    "level-20-wails-of-the-damned": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.FEsuyf203wTNE2et]{Wails of the Damned} once per day."
+  },
+  "might": {
+    "label": "Death (Might)",
+    "level-10-enfeebled": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} for 1 round.",
+    "level-12-resistance": "The void damage dealt by this imbued property ignores resistances.",
+    "level-16-enfeebled": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} for 1 round.",
+    "level-20-weakness": "On a successful Strike with the weapon, before applying void damage, the target gains weakness 1 to void until the beginning of your next turn."
+  },
+  "tech": {
+    "label": "Death (Technique)",
+    "level-8-enfeebled": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} for 1 round.",
+    "level-12-resistance": "The void damage dealt by this imbued property (including persistent void damage) ignores resistances.",
+    "level-16-enfeebled": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} for 1 round.",
+    "level-20-weakness": "While the foe has persistent void damage from the imbued property, the enfeebled condition from a critical hit lasts until the persistent damage ends or for 1 round, whichever is longer."
+  }
+}

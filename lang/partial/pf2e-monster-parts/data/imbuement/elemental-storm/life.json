@@ -1,0 +1,26 @@
+{
+  "flavor": "You imbue the weapon with the cleansing power of life energy in order to damage undead. As normal, vitality damage only harms undead and other creatures with void healing, such as dhampirs.",
+  "magic": {
+    "label": "Life (Magic)",
+    "level-4-spells": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal} once per day.",
+    "level-6-spells": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal} once per day.",
+    "level-8-spells": "The weapon can cast 2nd rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal} and 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality} once per day each.",
+    "level-12-spells": "The weapon can cast 4th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality} and @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Breath of Life} once per day each.",
+    "level-16-spells": "The weapon can cast 5th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, 5th rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality}, @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Breath of Life} and @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Regenerate} once per day each.",
+    "level-20-spells": "The weapon can cast 8th rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, 5th rank @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infuse Vitality}, @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Breath of Life} and 8th rank @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Regenerate} once per day each."
+  },
+  "might": {
+    "label": "Life (Might)",
+    "level-6-enfeebled": "On a critical hit, the undead is also @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
+    "level-10-resistance": "The vitality damage dealt by this imbued property ignores resistances.",
+    "level-14-enfeebled": "On a critical hit, the undead must attempt a Fortitude save. On a critical success, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn, on a success, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until then, on a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until then, and on a critical failure, it's destroyed. This effect has the incapacitation trait.",
+    "level-20-weakness": "On a successful Strike with the weapon, before applying vitality damage, the target gains weakness 1 to vitality until the beginning of your next turn."
+  },
+  "tech": {
+    "label": "Life (Technique)",
+    "level-6-enfeebled": "On a critical hit, the undead is also @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} until the end of your next turn.",
+    "level-10-resistance": "The vitality damage dealt by this imbued property (including persistent vitality damage) ignores resistances.",
+    "level-14-enfeebled": "On a critical hit, the undead is @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} until the end of your next turn. It must also attempt a Fortitude save. On a failure, it's @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3} until the end of your next turn instead of enfeebled 2, and on a critical failure, it's destroyed. This effect has the incapacitation trait.",
+    "level-20-counteract": "Creatures suffering persistent vitality damage from this imbued property have difficulty healing from void energy due to the coruscating vitality energy surging through them. If a void effect would cause the creature to recover Hit Points, it must first succeed at a counteract check against the imbued property's rank of 10 and DC of 43. Even on a successful counteract check, the Hit Points recovered are reduced by 1d10. On a critical success, the creature recovers the full amount."
+  }
+}

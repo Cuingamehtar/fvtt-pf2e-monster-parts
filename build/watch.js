@@ -30,12 +30,9 @@ async function startWatch() {
     console.log("watching...");
 }
 
-const watcher = fs.watch(
-    "./lang/partial",
-    { recursive: true },
-    (event, filename) => {
-        combineLocalizations();
-    },
-);
+combineLocalizations();
+fs.watch("./lang/partial", { recursive: true }, (_event, _filename) => {
+    combineLocalizations();
+});
 
 startWatch();

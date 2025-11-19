@@ -1,0 +1,2 @@
+add-cantrip: The weapon can cast {spell} as a cantrip, heightened to half the item's level rounded up.
+vulnerability-before-strike: Before applying additional damage, the target gains weakness 1 to _{damage}_ until the beginning of your next turn.

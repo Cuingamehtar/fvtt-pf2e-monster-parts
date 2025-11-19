@@ -14,11 +14,6 @@ export function isObject(item) {
     return item && typeof item === "object" && !Array.isArray(item);
 }
 
-/**
- * Deep merge two objects.
- * @param target
- * @param ...sources
- */
 export function mergeDeep(target, ...sources) {
     if (!sources.length) return target;
     const source = sources.shift();
@@ -39,14 +34,23 @@ export function mergeDeep(target, ...sources) {
 
 function parseFile(path) {
     const content = fs.readFileSync(path, "utf-8");
-    const res = !path.endsWith(".yml")
-        ? JSON.parse(content)
-        : yaml.parse(content, (_k, v) => {
-              return typeof v === "string" && v.includes("\n")
-                  ? mdConverter.makeHtml(v)
-                  : v;
-          });
-    return res;
+    if (content === "") return undefined;
+    try {
+        return !path.endsWith(".yml")
+            ? JSON.parse(content)
+            : yaml.parse(content, (_k, v) => {
+                  if (typeof v === "string") {
+                      const html = mdConverter.makeHtml(v);
+                      const noP = html.replace(/<\/?p>/g, "");
+                      return `<p>${noP}</p>` === html ? noP : html;
+                  } else {
+                      return v;
+                  }
+              });
+    } catch (e) {
+        console.error(`Error when converting file ${path}`, e.message);
+        return undefined;
+    }
 }
 
 function parsePartialLocalizations(dir) {
@@ -56,17 +60,19 @@ function parsePartialLocalizations(dir) {
             const d = a.isDirectory() - b.isDirectory();
             return d !== 0 ? d : a.name.localeCompare(b.name);
         });
-    const result = entries.reduce((acc, cur) => {
+    return entries.reduce((acc, cur) => {
         const p = path.join(cur.path, cur.name);
         if (cur.isDirectory()) {
             const data = parsePartialLocalizations(p);
-            if (Object.keys(data).length > 0) acc[cur.name] = data;
+            if (Object.keys(data).length > 0)
+                return mergeDeep(acc, { [cur.name]: data });
         } else {
-            acc[cur.name.split(".").slice(0, -1).join(".")] = parseFile(p);
+            return mergeDeep(acc, {
+                [cur.name.split(".").slice(0, -1).join(".")]: parseFile(p),
+            });
         }
         return acc;
     }, {});
-    return result;
 }
 
 function debounce(func, delay) {
@@ -85,12 +91,13 @@ function debounce(func, delay) {
 
 function combineLocalizationsInner() {
     const partial = parsePartialLocalizations("./lang/partial");
-    const lang = JSON.parse(fs.readFileSync("./lang/en.json", "utf-8"));
     fs.writeFileSync(
         "./lang/en.json",
-        JSON.stringify(mergeDeep(lang, partial), null, 2),
+        JSON.stringify(mergeDeep({}, partial), null, 2),
     );
-    console.log("Localizations combined");
+    console.log(
+        `(${new Date(Date.now()).toLocaleTimeString()}) Localizations combined`,
+    );
 }
 
 export const combineLocalizations = debounce(combineLocalizationsInner, 1000);
