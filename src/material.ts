@@ -4,6 +4,7 @@ import { getConfig } from "./config";
 import { RefinedItem } from "./refined-item";
 import { clamp, i18nFormat, simplifyCoins } from "./utils";
 import { MaterialData } from "./data/material";
+import { MODULE_ID } from "./module";
 
 const materialAliases: Record<string, MaterialKey> = {};
 
@@ -76,7 +77,11 @@ export class Material {
         return false;
     }
 
-    getLevel(item: RefinedItem): number {
+    getLevel(item: RefinedItem): { level: number; capped: boolean } {
+        const isLevelCapped = game.settings.get(
+            MODULE_ID,
+            "level-capped",
+        ) as boolean;
         const config = getConfig();
         const thresholds = config.thresholds[this.data.type];
         // get level thresholds from config and default to equipment for unknown item type;
@@ -86,8 +91,23 @@ export class Material {
                 : "equipment"
         ) as keyof typeof thresholds;
         const thr = thresholds[itemType];
-        const level = thr.findLastIndex((e) => this.value >= e);
-        return level === -1 ? 0 : level + 1;
+        let level = thr.findLastIndex((e) => this.value >= e);
+        level = level === -1 ? 0 : level + 1;
+        if (!isLevelCapped) return { level, capped: false };
+        if (this.type === "refinement") {
+            return item.item.parent?.level !== undefined
+                ? {
+                      level: Math.min(level, item.item.parent.level),
+                      capped: item.item.parent.level < level,
+                  }
+                : { level, capped: false };
+        } else {
+            const refinementLevel = item.refinement?.getLevel(item).level ?? 0;
+            return {
+                level: Math.min(level, refinementLevel),
+                capped: refinementLevel < level,
+            };
+        }
     }
 
     get coinValue() {
@@ -109,7 +129,7 @@ export class Material {
     }
 
     getEffects(item: RefinedItem) {
-        const level = this.getLevel(item);
+        const level = this.getLevel(item).level;
         return (
             this.data.effects?.filter(
                 (e) =>
@@ -119,7 +139,7 @@ export class Material {
     }
 
     getFlavor(item: RefinedItem) {
-        const level = this.getLevel(item);
+        const level = this.getLevel(item).level;
         const rollData = item.item.getRollData();
         const rollOptions = item.getRollOptions();
         return {

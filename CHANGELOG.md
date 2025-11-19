@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 - Imbuement labels now link to a journal with their full descriptions
+- Add option to cap material level on items
 
 ### Changes
 - Finish automation and added descriptions of acid, sensory and winged imbuements

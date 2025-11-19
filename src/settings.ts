@@ -105,6 +105,32 @@ export function registerSettings() {
         requiresReload: true,
     });
 
+    game.settings.register(MODULE_ID, "level-capped", {
+        name: tkey("settings.level-capped.name") as string,
+        hint: tkey("settings.level-capped.hint") as string,
+        scope: "world",
+        type: Boolean,
+        config: true,
+        default: false,
+        requiresReload: true,
+    });
+
+    game.settings.register(MODULE_ID, "homebrew-folder", {
+        name: tkey("settings.homebrew-folder.name") as string,
+        hint: tkey("settings.homebrew-folder.hint") as string,
+        type: String,
+        scope: "world",
+        config: true,
+        requiresReload: true,
+    });
+    game.settings.register(MODULE_ID, "homebrew-files", {
+        name: "homebrew-files",
+        type: Array,
+        default: [],
+        scope: "world",
+        config: false,
+    });
+
     const baneTraitsDefault = new Set([
         "aberration",
         "animal",
@@ -126,22 +152,6 @@ export function registerSettings() {
         "vitality",
         "void",
     ]);
-    game.settings.register(MODULE_ID, "homebrew-folder", {
-        name: tkey("settings.homebrew-folder.name") as string,
-        hint: tkey("settings.homebrew-folder.hint") as string,
-        type: String,
-        scope: "world",
-        config: true,
-        requiresReload: true,
-    });
-    game.settings.register(MODULE_ID, "homebrew-files", {
-        name: "homebrew-files",
-        type: Array,
-        default: [],
-        scope: "world",
-        config: false,
-    });
-
     game.settings.register(MODULE_ID, "bane-traits", {
         name: tkey("settings.bane-traits.name") as string,
         hint: tkey("settings.bane-traits.hint") as string,

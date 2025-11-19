@@ -1,0 +1,50 @@
+actor-lootable:
+  name: Make actors lootable
+  hint: Allows players to loot the actor after creating monster parts.
+monster-parts-after-combat:
+  name: Assign Monster Parts After Combat
+  hint: After-combat dialog to select NPCs to assign monster parts. "Dead" automatically
+    assigns monster parts to dead NPCs. "None" skips the assignment
+  none: None
+  dead: Dead
+  dialog: Dialog
+variant:
+  name: Variant
+  light: Light
+  hybrid: Hybrid
+  full: Full
+armor-refinements:
+  name: Default Armor Refinements
+  hint: Battlezoo bestiary armor refinements can't be checked by a predicate. Whether
+    they are suitable is up to GM. This setting sets their default behavior.
+  none: None
+  ask: Ask
+  all: All
+bane-traits:
+  name: Bane Traits
+  hint: Selected traits will have their specific Bane material.
+  confirm-reset: Do you want to reset the selection to the default value? Requires
+    reload.
+homebrew-folder:
+  name: Homebrew folder
+  hint: Path to homebrew content. Instances of "@world" in the path will be replaced
+    with the path to current world.
+show-debug-info:
+  name: Show Debug Info
+  hint: Currently shows only info on the applied imbuement effects (accessible via
+    Edit Monster Part editor)
+automatic-refinement-progression:
+  name: Automatic Refinement Progression
+  hint: Sets refinement level equal to the owner's level. PC only. Requires an active
+    GM.
+handle-monster-parts-selling:
+  name: Handle Monster Parts Selling
+  hint: 'As Treasure: will be handled as normal treasure (sell button and included
+    in mass sell), Manual: Can only be sold manually (excluded from mass sell), None:
+    Hide sell buttons'
+  treasure: As Treasure
+  manual: Manual
+  none: None
+level-capped:
+  name: Cap material levels
+  hint: Refinements will be capped by the actor's level, imbuements will be capped by the item's refinement level

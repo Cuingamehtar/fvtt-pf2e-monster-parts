@@ -5,7 +5,7 @@
   "version": "#{VERSION}#",
   "compatibility": {
     "minimum": "13",
-    "verified": "13.350"
+    "verified": "13.351"
   },
   "authors": [
     {
@@ -21,7 +21,7 @@
         "manifest": "https://raw.githubusercontent.com/foundryvtt/pf2e/master/system.json",
         "compatibility": {
           "minimum": "7.6",
-          "verified": "7.6.3"
+          "verified": "7.7.3"
         }
       }
     ],
@@ -88,5 +88,6 @@
       "system": "pf2e"
     }
   ],
-  "flags": {}
+  "flags": {},
+  "changelog": "https://github.com/Cuingamehtar/fvtt-pf2e-monster-parts/blob/main/CHANGELOG.md"
 }

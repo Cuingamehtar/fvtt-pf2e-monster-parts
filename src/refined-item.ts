@@ -97,6 +97,15 @@ export class RefinedItem {
         return !!item.getFlag(MODULE_ID, "refined-item");
     }
 
+    get refinement() {
+        const { refinement } = this.getFlag();
+        return Material.fromKey(refinement.key, refinement.value);
+    }
+    get imbuements() {
+        const { imbues } = this.getFlag();
+        return imbues.map((i) => Material.fromKey(i.key, i.value));
+    }
+
     getFlag() {
         return this.item.getFlag(MODULE_ID, "refined-item")!;
     }
@@ -151,37 +160,32 @@ export class RefinedItem {
     }
 
     getEffects() {
-        const flags = this.getFlag();
-        return [flags.refinement, ...flags.imbues]
-            .map((m) => Material.fromKey(m.key, m.value))
+        return [this.refinement, ...this.imbuements]
             .filter((m): m is Material => !!m)
             .flatMap((m: Material) => m.getEffects(this));
     }
 
     async descriptionHeader() {
-        const flags = this.getFlag();
-
         const prepare = (m?: Material) => {
             if (!m) return undefined;
             const flavor = m.getFlavor(this);
+            const level = m.getLevel(this);
 
             return {
                 key: m.data.key,
                 label: flavor.label,
                 value: m.coinValue,
-                level: m.getLevel(this),
+                level: level,
                 flavor: flavor.flavor,
                 notes: flavor.parts,
             };
         };
 
-        const refinement = prepare(
-            Material.fromKey(flags.refinement.key, flags.refinement.value),
-        );
+        const refinement = prepare(this.refinement);
 
-        const imbues = flags.imbues.map((i) =>
-            prepare(Material.fromKey(i.key, i.value)),
-        );
+        const imbues = this.imbuements
+            .filter((m): m is Material => !!m)
+            .map((m) => prepare(m));
 
         const templatePath =
             "modules/pf2e-monster-parts/templates/refined-item-header.hbs";

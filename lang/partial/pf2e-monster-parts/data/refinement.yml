@@ -1,0 +1,53 @@
+bludgeoning: Weapon (Bludgeoning)
+piercing: Weapon (Piercing)
+slashing: Weapon (Slashing)
+handwraps: Handwraps
+armor-light: Armor (Light)
+armor-medium: Armor (Medium)
+armor-heavy: Armor (Heavy)
+armor-unarmored: Armor (Unarmored)
+armor:
+  '+1': This is a +1 armor. It grants +1 item bonus to AC and can be imbued 1 time.
+  resilient+1: >-
+    This is a +1 resilient armor. It grants +1 item bonus to AC and saving
+    throws, and can be imbued 1 time.
+  resilient+2: >-
+    This is a +2 resilient armor. It grants +2 item bonus to AC, +1 item bonus
+    to saving throws, and can be imbued 2 times.
+  greater-resilient+2: >-
+    This is a +2 greater resilient armor. It grants +2 item bonus to AC and
+    saving throws, and can be imbued 2 times.
+  greater-resilient+3: >-
+    This is a +3 greater resilient armor. It grants +3 item bonus to AC, +2 item
+    bonus to saving throws, and can be imbued 3 times.
+  major-resilient+3: >-
+    This is a +3 major resilient armor. It grants +3 item bonus to AC and saving
+    throws, and can be imbued 3 times.
+perception: Perception
+shield:
+  label: Shield
+  label-buckler: Shield (Buckler)
+  inline-note: 'This shield has Hardness {hardness}, HP {hp}, BT {bt}'
+  imbuing: It can be imbued once.
+skill:
+  item-bonus: 'This item grants +{bonus} item bonus to {skill} checks.'
+  imbuing: It can be imbued once.
+weapon:
+  '+1': >-
+    This is a +1 weapon. It grants +1 item bonus to attack rolls and can be
+    imbued 1 time.
+  striking+1: >-
+    This is a +1 striking weapon. It grants +1 item bonus to attack rolls, deals
+    2 dice of damage, and can be imbued 1 time.
+  striking+2: >-
+    This is a +2 striking weapon. It grants +2 item bonus to attack rolls, deals
+    2 dice of damage, and can be imbued 2 times.
+  greater-striking+2: >-
+    This is a +2 greater striking weapon. It grants +2 item bonus to attack
+    rolls, deals 3 dice of damage, and can be imbued 2 times.
+  greater-striking+3: >-
+    This is a +3 greater striking weapon. It grants +3 item bonus to attack
+    rolls, deals 3 dice of damage, and can be imbued 3 times.
+  major-striking+3: >-
+    This is a +3 major striking weapon. It grants +3 item bonus to attack rolls,
+    deals 4 dice of damage, and can be imbued 3 times.

@@ -116,13 +116,14 @@ export class Wrappers {
                 if (RefinedItem.hasRefinedItemData(this)) {
                     const [prefix] = args;
                     const item = new RefinedItem(this);
-                    const flags = item.getFlag();
                     return [
                         ...res,
-                        ...[flags.refinement, ...flags.imbues].map(
-                            (v) =>
-                                `${prefix}:${v.key}:${Material.fromKey(v.key, v.value)?.getLevel(item) ?? 0}`,
-                        ),
+                        ...[item.refinement, ...item.imbuements]
+                            .filter((m): m is Material => !!m)
+                            .map(
+                                (m) =>
+                                    `${prefix}:${m.key}:${m.getLevel(item) ?? 0}`,
+                            ),
                     ];
                 }
 
@@ -144,12 +145,8 @@ export class Wrappers {
                     new RefinedItem(this).prepareDerivedData();
                     wrapped();
                     const item = new RefinedItem(this);
-                    const flag = item.getFlag();
                     this.system.level.value =
-                        Material.fromKey(
-                            flag.refinement.key,
-                            flag.refinement.value,
-                        )?.getLevel(item) ?? 0;
+                        item.refinement?.getLevel(item).level ?? 0;
                     this.system.price.value = item.coinValue;
                 } else if (MonsterPart.hasMonsterPartData(this)) {
                     wrapped();

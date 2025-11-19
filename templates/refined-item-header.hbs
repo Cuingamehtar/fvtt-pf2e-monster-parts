@@ -1,7 +1,12 @@
 <div class="refined-item-header addendum">
     <h3>{{localize "pf2e-monster-parts.refined-item.label"}}</h3>
-    <p><strong>{{refinement.label}} ({{localize "pf2e-monster-parts.refined-item.material-label-details"
-                                                level=refinement.level value=refinement.value}})</strong>{{#if
+    <p><strong>{{refinement.label}} (<span{{#if
+        refinement.level.capped}}
+    style="color: var(--color-pf-text-adjusted-lower);"
+    data-tooltip="pf2e-monster-parts.refined-item.level-capped-refinement" data-tooltip-class="pf2e"{{/if}}>{{localize
+        "pf2e-monster-parts.refined-item.level"}}
+        : {{refinement.level.level}}</span>, {{localize
+        "pf2e-monster-parts.refined-item.value"}} {{refinement.value}})</strong>{{#if
         refinement.flavor}} {{{refinement.flavor}}}{{/if}}</p>
     {{#if (gt refinement.notes.length 0)}}
         <ul>
@@ -15,7 +20,12 @@
     {{#each imbues as |imbue|}}
         <p><strong><a
             onclick="game.modules.get('pf2e-monster-parts').api.renderSummaryJournal('{{imbue.key}}')">{{imbue.label}}</a>
-            ({{localize "pf2e-monster-parts.refined-item.material-label-details" level=imbue.level value=imbue.value}})</strong>{{#if
+            (<span{{#if imbue.level.capped}}
+            style="color: var(--color-pf-text-adjusted-lower);"
+            data-tooltip="pf2e-monster-parts.refined-item.level-capped-imbuement"
+            data-tooltip-class="pf2e"{{/if}}>{{localize
+                "pf2e-monster-parts.refined-item.level"}}: {{imbue.level.level}}</span>, {{localize
+                "pf2e-monster-parts.refined-item.value"}} {{imbue.value}})</strong>{{#if
             imbue.flavor}} {{{imbue.flavor}}}{{/if}}</p>
         {{#if (gt imbue.notes.length 0)}}
             <ul>

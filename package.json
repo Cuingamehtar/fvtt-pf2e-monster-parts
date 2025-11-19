@@ -4,7 +4,7 @@
   "description": "Monster parts module for PF2e system",
   "scripts": {
     "build": "esbuild src/module.ts --bundle --keep-names --minify --sourcemap --outdir=scripts",
-    "dev": "esbuild src/module.ts --bundle --keep-names --watch --sourcemap --outdir=scripts",
+    "dev": "node ./build/watch.js",
     "pack": "node ./build/pack.js",
     "extract": "node ./build/extract.js"
   },
@@ -19,9 +19,11 @@
   },
   "homepage": "https://github.com/Cuingamehtar/fvtt-pf2e-monster-parts#readme",
   "dependencies": {
-    "esbuild": "^0.25.3",
+    "esbuild": "^0.25.12",
     "foundry-pf2e": "github:7H3LaughingMan/foundry-pf2e",
-    "typescript": "^5.8.3"
+    "showdown": "^2.1.0",
+    "typescript": "^5.8.3",
+    "yaml": "^2.8.1"
   },
   "devDependencies": {
     "prettier": "3.5.3"

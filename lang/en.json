@@ -10,7 +10,10 @@
     },
     "refined-item": {
       "label": "Refined Item",
-      "material-label-details": "Level: {level}, Value: {value}",
+      "level": "Level",
+      "value": "Value",
+      "level-capped-refinement": "Capped by actor's level",
+      "level-capped-imbuement": "Capped by refinement's level",
       "warn-item-already-refined": "{item} is already a refined item.",
       "error-item-is-monster-part": "Item has monster part data, it can't be used as a base for refined item.",
       "error-not-refined-item": "This item is not a refined item.",
@@ -149,6 +152,10 @@
         "treasure": "As Treasure",
         "manual": "Manual",
         "none": "None"
+      },
+      "level-capped": {
+        "name": "Cap material levels",
+        "hint": "Refinements will be capped by the actor's level, imbuements will be capped by the item's refinement level"
       }
     },
     "data": {
@@ -466,13 +473,13 @@
           },
           "sensory": {
             "label": "Sensory",
-            "description": "<p><strong>Type</strong> Perception item</p><p><strong>Parts</strong> The creature must have the next sense to be granted by the imbued property (low-light vision from levels 1–6, darkvision (6–12), scent (12-16), greater darkvision (16- 18), and true seeing (18-20)).</p><p><strong>Developer note</strong> The original requirement could not be automated, the following is used instead: <em>The creature must have a special sense</em></p><hr><p><strong>Effect</strong> You imbue the item with extraordinary senses.</p><ul><li><strong>4th</strong> Once per day, you can activate the item as a two-action envision activation to gain low-light vision for 1 hour</li><li><strong>6th</strong> While investing the item, you gain low-light vision</li><li><strong>8th</strong> Once per day, you can activate the item as a two-action envision activation to gain darkvision for 1 hour</li><li><strong>12th</strong> While investing the item, you gain darkvision</li><li><strong>14th</strong> Once per day, you can activate the item as a two-action envision activation to gain 30-foot imprecise scent for 1 hour</li><li><strong>16th</strong> While investing the item, you gain 30-foot imprecise scent</li><li><strong>18th</strong> While investing the item, you gain greater darkvision</li><li><strong>20th</strong> While investing the item, you constantly gain the effects of 6th rank @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]{Truesight}</li></ul>",
+            "description": "<p><strong>Type</strong> Perception item</p>\n<p><strong>Parts</strong> The creature must have the next sense to be granted by the imbued property (low-light vision from levels 1–6, darkvision (6–12), scent (12-16), greater darkvision (16- 18), and true seeing (18-20)).</p>\n<p><strong>Developer note</strong> The original requirement could not be automated, the following is used instead: <em>The creature must have a special sense</em></p>\n<hr />\n<p><strong>Effect</strong> You imbue the item with extraordinary senses.</p>\n<ul>\n<li><strong>4th</strong> Once per day, you can activate the item as a two-action envision activation to gain low-light vision for 1 hour</li>\n<li><strong>6th</strong> While investing the item, you gain low-light vision</li>\n<li><strong>8th</strong> Once per day, you can activate the item as a two-action envision activation to gain darkvision for 1 hour</li>\n<li><strong>12th</strong> While investing the item, you gain darkvision</li>\n<li><strong>14th</strong> Once per day, you can activate the item as a two-action envision activation to gain 30-foot imprecise scent for 1 hour</li>\n<li><strong>16th</strong> While investing the item, you gain 30-foot imprecise scent</li>\n<li><strong>18th</strong> While investing the item, you gain greater darkvision</li>\n<li><strong>20th</strong> While investing the item, you constantly gain the effects of 6th rank @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]{Truesight}</li>\n</ul>",
             "flavor": "You imbue the item with extraordinary senses.",
-            "level-4-activation-low-light": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br><strong>Frequency</strong> once per day<br>You gain low-light vision for 1 hour.<br>@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}</p>",
+            "level-4-activation-low-light": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br />\n<strong>Frequency</strong> once per day\nYou gain low-light vision for 1 hour.\n@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}</p>",
             "level-6-permanent-low-light": "You gain low-light vision.",
-            "level-8-activation-darkvision": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br><strong>Frequency</strong> once per day<br>You gain darkvision for 1 hour.<br>@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}</p>",
+            "level-8-activation-darkvision": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br />\n<strong>Frequency</strong> once per day\nYou gain darkvision for 1 hour.\n@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}</p>",
             "level-12-permanent-darkvision": "You gain darkvision.",
-            "level-14-activation-scent": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br><strong>Frequency</strong> once per day<br>You gain 30-foot imprecise scent for 1 hour.<br>@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}</p>",
+            "level-14-activation-scent": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentrate)<br />\n<strong>Frequency</strong> once per day<br />\nYou gain 30-foot imprecise scent for 1 hour.<br />\n@UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect: Sensory Imbuement}</p>",
             "level-16-permanent-scent": "You gain darkvision and 30-foot imprecise scent.",
             "level-18-permanent": "You gain greater darkvision and 30-foot imprecise scent.",
             "level-20-truesight": "You constantly gain the effects of 6th rank @UUID[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki]{Truesight} spell."
