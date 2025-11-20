@@ -15,6 +15,7 @@ export function createImbueSturdy(): MaterialData {
         key: "imbue:sturdy",
         type: "imbuement",
         label: { type: "key", key: lkey("label") },
+        description: { type: "key", key: lkey("description") },
         itemPredicate: ["item:type:shield"],
         monsterPredicate: [
             {

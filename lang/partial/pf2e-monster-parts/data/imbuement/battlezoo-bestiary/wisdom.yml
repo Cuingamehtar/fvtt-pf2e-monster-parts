@@ -1,0 +1,43 @@
+label: Wisdom
+description: >-
+  **Type** Perception Item or Skill Item (Wisdom-based skill)
+
+  **Parts** The creature must have Wisdom as its highest or second-highest
+  ability modifier.
+
+  - - -
+
+  **Effect** You imbue the item with sagacious _wisdom_.
+
+  - **8th** The item can cast _augury_ once per day as a divine spell, as you
+  wisely deduce the future through your own instincts rather than an external
+  source
+
+  - **14th** The item's _augury_ only takes you a single action activation to
+  cast
+
+  - **17th** When you invest the item, you either increase your Wisdom score by
+  1 or increase it to +4, whichever would give you a higher value. The item
+  gains the apex trait
+
+  - **20th** You can choose to have the item cast _foresight_ once per day instead
+  of _augury_
+flavor: You imbue the item with sagacious _wisdom_.
+level-8-spell: >-
+  The item can cast
+  @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per day
+  as a divine spell.
+level-14-spell: >-
+  The item can cast
+  @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per day
+  as a divine spell as a single action activation.
+level-17-apex: >-
+  When you invest the item, you either increase your Wisdom attribute by 1 or
+  increase it to +4, whichever would give you a higher value. The item gains the
+  apex trait.
+level-20-spell: >-
+  The item can either cast
+  @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} as a single
+  action activation or
+  @UUID[Compendium.pf2e.spells-srd.Item.qsNeG9KZpODSACMq]{Foresight} once per
+  day as a divine spell.

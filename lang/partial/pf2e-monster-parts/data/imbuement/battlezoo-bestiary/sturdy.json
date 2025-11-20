@@ -1,6 +1,0 @@
-{
-  "label": "Sturdy",
-  "flavor": "You imbue the shield to make it even hardier than other shields.",
-  "effect": "This shield's Hardness is increased by {hardness}. It's HP is increased by double it's Hardness and BT by half that value.",
-  "no-effect": "The difference between this imbuement level and the item level is too great. This imbuement has no effect."
-}

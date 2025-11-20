@@ -1,0 +1,45 @@
+armor-label: 'Energy Resistant (Armor, {damage})'
+shield-label: 'Energy Resistant (Shield, {damage})'
+armor-description: >-
+  **Type** Armor
+  
+
+  **Parts** The monster must have resistance or immunity to {damage} damage.
+
+  - - -
+  
+  **Effect** You imbue the armor to protect yourself from a particular
+  type of energy. While wearing the armor, you gain resistance to {damage} damage equal to this imbued
+  property's imbuing level. Additionally, the armor itself gains the
+  same resistance. You can imbue a suit of armor with this property multiple times,
+  though each time you do, you must choose a different type of energy damage,
+  and each one counts separately against the armor's imbuing limit.
+shield-description: >-
+  **Type** Shield
+  
+
+  **Parts** The monster must have resistance or immunity to {damage} damage.
+
+  - - -
+  
+  **Effect** You imbue the shield to protect yourself from a particular
+  type of energy. While wielding the shield, you gain resistance to {damage} damage 
+  equal to this imbued property's imbuing level. Additionally, the shield itself 
+  gains the same resistance. You can use Shield Block any time you would take 
+  the chosen damage type, in addition to its usual trigger. For example, suppose
+  you had a 12th level shield with 11 Hardness, granting you 12 fire resistance.
+  If you took 40 damage from a fireball, you'd reduce the damage to 28 from 
+  the fire resistance. If you then used Shield Bock, you would take 17 fire 
+  damage, and your shield, which had 12 fire resistance of its own, would take
+  only 5 fire damage.
+armor-flavor: You imbue the armor to protect yourself from a particular type of energy.
+shield-flavor: You imbue the shield to protect yourself from a particular type of energy.
+armor-effect: >-
+  While wearing the armor, you gain resistance {level} to the chosen energy
+  damage type. Additionally, the armor itself gains the same resistance.
+shield-effect: >-
+  While wielding the shield, you gain resistance {level} to the chosen energy
+  damage type. Additionally, the shield itself gains the same resistance
+  (applied after you reduce the damage by the shield's Hardness). You can use
+  Shield Block any time you would take the chosen damage type, in addition to
+  its usual trigger.

@@ -36,6 +36,13 @@ export function createImbueEnergyResistant(): MaterialData[] {
                         damage: { type: "key", key: damageLabel },
                     },
                 },
+                description: {
+                    type: "key",
+                    key: lkey("armor-description"),
+                    parameters: {
+                        damage: { type: "key", key: damageLabel },
+                    },
+                },
                 itemPredicate: ["item:type:armor"],
                 monsterPredicate: [
                     {
@@ -87,6 +94,13 @@ export function createImbueEnergyResistant(): MaterialData[] {
                 label: {
                     type: "key",
                     key: lkey("shield-label"),
+                    parameters: {
+                        damage: { type: "key", key: damageLabel },
+                    },
+                },
+                description: {
+                    type: "key",
+                    key: lkey("shield-description"),
                     parameters: {
                         damage: { type: "key", key: damageLabel },
                     },

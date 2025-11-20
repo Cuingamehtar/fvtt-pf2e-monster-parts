@@ -2,7 +2,6 @@ import { RuleElementEffectHandler } from "./rule-element";
 import { AlterationEffectHandler } from "./alteration";
 import { RefinedItem } from "../../refined-item";
 import { MaterialEffect } from "../material";
-import { PhysicalItemPF2e } from "foundry-pf2e";
 import { ApexEffectHandler } from "./apex";
 
 const f = foundry.data.fields;

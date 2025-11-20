@@ -17,6 +17,7 @@ export function createImbueWisdom(): MaterialData {
         key: "imbue:wisdom",
         type: "imbuement",
         label: { type: "key", key: lkey("label") },
+        description: { type: "key", key: lkey("description") },
         monsterPredicate: [{ lte: ["self:ability:wis:rank", 2] }],
         itemPredicate: [
             {
@@ -63,6 +64,13 @@ export function createImbueWisdom(): MaterialData {
                 },
             ],
         },
-        effects: [],
+        effects: [
+            { levelMin: 0, levelMax: 16, type: "Apex", attribute: null },
+            {
+                levelMin: 17,
+                type: "Apex",
+                attribute: "wis",
+            },
+        ],
     };
 }

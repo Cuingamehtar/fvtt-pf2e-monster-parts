@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Cuingamehtar/fvtt-pf2e-monster-parts#readme",
   "dependencies": {
+    "@foundryvtt/foundryvtt-cli": "^3.0.2",
     "esbuild": "^0.25.12",
     "foundry-pf2e": "github:7H3LaughingMan/foundry-pf2e",
     "showdown": "^2.1.0",

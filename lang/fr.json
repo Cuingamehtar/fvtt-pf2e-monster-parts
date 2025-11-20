@@ -192,7 +192,7 @@
         "vulnerability-before-strike": "Avant d'appliquer des dégâts supplémentaires, la cible obtient une faiblesse de 1 contre <em>{damage}</em> jusqu'au début de votre prochain tour.",
         "battlezoo-bestiary": {
           "acid": {
-            "header-description": "Vous imprégnez l’arme d’<em>acide</em> vitriolique.",
+            "header-description": "Vous imprégnez l'arme d'<em>acide</em> vitriolique.",
             "magic": {
               "label": "Acide (Magie)",
               "description": "<p><strong>Type</strong> Arme</p><p><strong>Parties</strong> Le monstre doit avoir le trait acide ou une attaque ou un sort qui inflige des dégâts d'acide.</p><p><strong>Effet</strong> Vous imprégnez l'arme d'acide vitriolique.</p><hr><p><strong>Chemin</strong> Magie ; Choisissez quand vous imprégnez l'arme pour la première fois si les sorts accordés sont arcaniques ou primordiaux</p><ul><li><p><strong>2e</strong> L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt]{Aspersion d'acide} comme tour de magie, intensifié à la moitié du niveau de l'objet arrondi au supérieur</p></li><li><p><strong>4e</strong> L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Explosion d'acide} une fois par jour</p></li><li><p><strong>6e</strong> L'<em>explosion d'acide</em> de l'arme est intensifié au rang 2 et elle peut lancer soit @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0]{Flèche acide} ou <em>explosion acide</em> une fois par jour, mais pas les deux</p></li><li><p><strong>8e</strong> L'<em>explosion d'acide</em> de l'arme passe au rang 3 et elle peut lancer <em>flèche acide</em> et <em>explosion d'acide</em> chacun une fois par jour</p></li><li><p><strong>10e</strong> Les frappes avec l'arme infligent 1 point de dégât d'acide supplémentaire</p></li><li><p><strong>12e</strong> L'<em>flèche acide</em> de l'arme passe au rang 4 et l'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]{Tempête d'acide} une fois par jour</p></li><li><p><strong>14e</strong> Les dégâts d'acide supplémentaires passent à 1d4</p></li><li><p><strong>16e</strong> La <em>flèche acide</em> de l'arme est intensifiée au rang 6 et la <em>tempête d'acide</em> est intensifiée au rang 7</p></li><li><p><strong>18e</strong> Les dégâts d'acide supplémentaires passent à 1d6</p></li><li><p><strong>20e</strong> L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl]{Tempête vengeresse} une fois par jour, mais vous ne pouvez choisir que l'effet pluie acide. Vous pouvez choisir l'effet pluie acide deux fois de suite</p></li></ul>",
@@ -244,7 +244,7 @@
           },
           "charisma": {
             "label": "Charisme",
-            "flavor": "Vous imprégnez l’objet d’un <em>charisme</em> éblouissant.",
+            "flavor": "Vous imprégnez l'objet d'un <em>charisme</em> éblouissant.",
             "level-8-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Héroïsme} une fois par jour en tant que sort occulte car votre charisme intérieur vous inspire ou inspire un allié vers la grandeur.",
             "level-14-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Héroïsme} comme un sort occulte de rang 6 une fois par jour car votre charisme intérieur vous inspire ou inspire un allié vers la grandeur.",
             "level-17-apex": "Lorsque vous investissez l'objet, votre Charisme augmente de +1 ou passe à +4, si la valeur est la plus élevée. L'objet obtient le trait apogée.",
@@ -398,7 +398,7 @@
             "level-20-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.ZYoC630tNGutgbE0]{Hypercognition} une fois par minute comme un sort occulte."
           },
           "mental": {
-            "flavor": "Vous imprégnez l’arme d’un pouvoir psychique.",
+            "flavor": "Vous imprégnez l'arme d'un pouvoir psychique.",
             "magic": {
               "label": "Mental (Magie)",
               "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Douleur fantôme} une fois par jour.",
@@ -424,7 +424,7 @@
             }
           },
           "poison": {
-            "flavor": "Vous imprégnez l’arme d’un venin toxique.",
+            "flavor": "Vous imprégnez l'arme d'un venin toxique.",
             "magic": {
               "label": "Poison (Magie)",
               "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Morsure d'araignée} une fois par jour. ",
@@ -454,7 +454,7 @@
             "temporary-low-light-vision": "Imprégnation sensorielle - Vision dans la lumière faible temporaire",
             "temporary-darkvision": "Imprégnation sensorielle - Vision dans le noir temporaire",
             "temporary-scent": "Imprégnation sensorielle - Odorat temporaire",
-            "flavor": "Vous imprégnez l’objet de sens extraordinaires.",
+            "flavor": "Vous imprégnez l'objet de sens extraordinaires.",
             "level-4-activation-low-light": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentration)<br><strong>Frequence</strong> Une fois par jour<br>Vous obtenez vision nocturne pendant 1 heure.</p>",
             "level-6-permanent-low-light": "Vous obtenez vision nocturne.",
             "level-8-activation-darkvision": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentration)<br><strong>Frequence</strong> une fois par jour<br>Vous obtenez vision dans le noir pendant 1 heure.</p>",
@@ -526,7 +526,7 @@
         },
         "elemental-storm": {
           "death": {
-            "flavor": "Vous imprégnez l’arme de l’énergie du vide de la mort.",
+            "flavor": "Vous imprégnez l'arme de l'énergie du vide de la mort.",
             "magic": {
               "label": "Mort (Magie)",
               "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Mise à mal} un fois par jour.",

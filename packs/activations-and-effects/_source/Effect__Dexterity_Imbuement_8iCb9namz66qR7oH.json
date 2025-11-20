@@ -1,0 +1,159 @@
+{
+  "name": "Effect: Dexterity Imbuement",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.953,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>Granted by Dexterity Imbuement.</p><p>You gain +10-foot status bonus to all your Speeds (+20-foot bonus on level 14, +30-foot bonus on level 20).</p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [
+      {
+        "choices": [
+          {
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "and": [
+                      {
+                        "gte": [
+                          "parent:origin:item:imbue:dexterity",
+                          8
+                        ]
+                      },
+                      {
+                        "lte": [
+                          "parent:origin:item:imbue:dexterity",
+                          13
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ],
+            "value": 10,
+            "label": "+10-foot"
+          },
+          {
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "and": [
+                      {
+                        "gte": [
+                          "parent:origin:item:imbue:dexterity",
+                          14
+                        ]
+                      },
+                      {
+                        "lte": [
+                          "parent:origin:item:imbue:dexterity",
+                          19
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ],
+            "value": 20,
+            "label": "+20-foot"
+          },
+          {
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:dexterity",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ],
+            "value": 30,
+            "label": "+30-foot"
+          }
+        ],
+        "key": "ChoiceSet",
+        "prompt": "Select speed bonus.",
+        "flag": "speedBonus"
+      },
+      {
+        "key": "FlatModifier",
+        "selector": "land-speed",
+        "type": "status",
+        "value": "@item.flags.pf2e.rulesSelections.speedBonus"
+      }
+    ],
+    "slug": null,
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "level": {
+      "value": 1
+    },
+    "duration": {
+      "value": 10,
+      "unit": "minutes",
+      "expiry": "turn-start",
+      "sustained": false
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "unidentified": false,
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "badge": null,
+    "fromSpell": false,
+    "context": null
+  },
+  "_id": "8iCb9namz66qR7oH",
+  "img": "systems/pf2e/icons/default-icons/effect.svg",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "My4TCMjLEU7yUq2Y": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "pf2e",
+    "systemVersion": "7.7.4",
+    "createdTime": 1763624580981,
+    "modifiedTime": 1763626003780,
+    "lastModifiedBy": "My4TCMjLEU7yUq2Y"
+  },
+  "_key": "!items!8iCb9namz66qR7oH"
+}

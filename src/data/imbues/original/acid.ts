@@ -259,7 +259,7 @@ export function createImbueAcid(): MaterialData[] {
                 type: "RuleElement",
                 rule: {
                     key: "Note",
-                    outcome: ["criticalSuccess"],
+                    outcome: ["success", "criticalSuccess"],
                     text: lkey("might.effects.level-20-note"),
                     title: lkey("might.label"),
                     selector: ["{item|id}-attack"],

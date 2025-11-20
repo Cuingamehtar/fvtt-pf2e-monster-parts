@@ -1,0 +1,37 @@
+label: Dexterity
+description: >-
+  **Type** Skill Item (Dexterity-based skill)
+
+
+  **Parts** The creature must have Dexterity as its highest or second highest ability modifier.
+
+  - - -
+
+  **Effect** You imbue the item with deft dexterity.
+
+  - **8th** Once per day, you can use a single action Interact activation to gain a +10-foot status bonus to all your Speeds for 10 minutes
+
+  - **14th** The item bonus to your Speeds from the activation increases to +20 feet and while activated, you gain the effects of water walk
+
+  - **17th** When you invest the item, you either increase your Dexterity score by 2 or increase it to 18, whichever would give you a higher score. The item gains the apex trait
+
+  - **20th** The item bonus to your Speeds from the activation increases to +30 feet, and while activated, you gain the effects of both air walk and water walk
+flavor: You imbue the item with deft _dexterity_.
+level-8-speed: |
+  **Activation** <span class="action-glyph">1</span> (manipulate)  
+  **Frequency** once per day  
+  You gain +10-foot status bonus to all your Speeds for 10 minutes.  
+  @UUID\[Compendium.pf2e-monster-parts.activations-and-effects.Item.8iCb9namz66qR7oH\]{Effect: Dexterity Imbuement}
+level-14-speed: |
+  **Activation** <span class="action-glyph">1</span> (manipulate)  
+  **Frequency** once per day  
+  You gain +20-foot status bonus to all your Speeds for 10 minutes. While activated, you gain the effects of @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Water Walk}.  
+  @UUID\[Compendium.pf2e-monster-parts.activations-and-effects.Item.8iCb9namz66qR7oH\]{Effect: Dexterity Imbuement}
+level-17-apex: When you invest the item, you either increase your Dexterity attribute
+  by +1 or increase it to +4, whichever would give you a higher value. The item gains
+  the apex trait.
+level-20-speed: |
+  **Activation** <span class="action-glyph">1</span> (manipulate)  
+  **Frequency** once per day  
+  You gain +30-foot status bonus to all your Speeds for 10 minutes. While activated, you gain the effects of both @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Water Walk} and @UUID[Compendium.pf2e.spells-srd.Item.b5sGjGlBf58f8jn0]{Air Walk}.  
+  @UUID\[Compendium.pf2e-monster-parts.activations-and-effects.Item.8iCb9namz66qR7oH\]{Effect: Dexterity Imbuement}

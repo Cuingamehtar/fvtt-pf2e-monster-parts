@@ -19,6 +19,7 @@ export function createImbueWild(): MaterialData {
         key: "imbue:wild:might",
         type: "imbuement",
         label: { type: "key", key: lkey("label") },
+        description: { type: "key", key: lkey("description") },
         itemPredicate: ["item:type:weapon"],
         monsterPredicate: [],
         header: {
@@ -96,6 +97,17 @@ export function createImbueWild(): MaterialData {
                     predicate: [`wild:damage-type:${i + 1}`],
                 },
             })),
+            {
+                levelMin: 20,
+                type: "RuleElement",
+                rule: {
+                    key: "Note",
+                    outcome: ["success", "criticalSuccess"],
+                    text: lkey("might.effects.level-20-note"),
+                    title: lkey("label"),
+                    selector: ["{item|id}-damage"],
+                },
+            },
         ],
     };
 

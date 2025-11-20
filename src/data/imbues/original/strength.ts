@@ -17,6 +17,7 @@ export function createImbueStrength(): MaterialData {
         key: "imbue:strength",
         type: "imbuement",
         label: { type: "key", key: lkey("label") },
+        description: { type: "key", key: lkey("description") },
         monsterPredicate: [{ lte: ["self:ability:str:rank", 2] }],
         itemPredicate: [
             {
@@ -52,6 +53,13 @@ export function createImbueStrength(): MaterialData {
                 },
             ],
         },
-        effects: [],
+        effects: [
+            { levelMin: 0, levelMax: 16, type: "Apex", attribute: null },
+            {
+                levelMin: 17,
+                type: "Apex",
+                attribute: "str",
+            },
+        ],
     };
 }

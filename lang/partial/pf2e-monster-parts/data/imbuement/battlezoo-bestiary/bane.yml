@@ -116,25 +116,25 @@ tech:
     creatures of type {creature}. Against such creatures, Strikes with the
     weapon deal 1 persistent bleed damage
 
-    - **4th** Strikes with the weapon deal 1 additional damage of the weapon’s
+    - **4th** Strikes with the weapon deal 1 additional damage of the weapon's
     base damage type to creatures of type {creature}
 
     - **6th** The persistent bleed damage increases to 1d6. On a critical hit,
     you sap the strength of a creature of type {creature}, causing it to be
     enfeebled 1 until the end of your next turn
 
-    - **10th** Against a creature of type {creature}, the weapon’s base damage
-    ignores the first 5 points of the target’s resistance and the persistent
-    bleed damage from this property ignores the target’s resistance
+    - **10th** Against a creature of type {creature}, the weapon's base damage
+    ignores the first 5 points of the target's resistance and the persistent
+    bleed damage from this property ignores the target's resistance
 
     - **12th** The persistent bleed damage on a hit against a creature of type
     {creature} increases to 1d8
 
     - **14th** The weapon can outright slay creatures of type {creature}. On a
     critical hit, a creature of type {creature} is enfeebled 2 until the end of
-    your next turn. It must also attempt a Fortitude save. On a failure, it’s
+    your next turn. It must also attempt a Fortitude save. On a failure, it's
     enfeebled 3 until the end of your next turn instead of enfeebled 2, and on a
-    critical failure, it’s destroyed. This effect has the incapacitation trait
+    critical failure, it's destroyed. This effect has the incapacitation trait
 
     - **16th** The persistent bleed damage on a hit against a creature of type
     {creature} increases to 1d10

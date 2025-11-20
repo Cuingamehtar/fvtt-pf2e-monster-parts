@@ -1,0 +1,29 @@
+label: Sturdy
+description: >-
+  **Type** Shield
+  
+
+  **Parts** The monster must have Hardness, resistance to physical damage, or
+  resistance to one of the three physical damage types (bludgeoning, piercing,
+  or slashing damage). In some cases, you and the GM might decide together that
+  a monster with resistance to physical damage because it is amorphous or
+  gaseous doesn't provide appropriate parts.
+
+  - - -
+
+  **Effect** You imbue the shield to make it even hardier than other shields. A
+  shield with a _sturdy_ imbued property is hardier than other shields. As long as
+  this imbued property's level is equal to the item level of the shield it
+  imbues, increase the shield's Hardness by 3; for each level the imbued
+  property is below the shield's item level, reduce this increased Hardness by
+  1, to a minimum of 0 if the imbued property is 3 or more levels lower than the
+  shield's item level. If this increases the shield's Hardness by at least 1,
+  additionally increase the shield's Hit Points by 2 per Hardness, and the
+  shield's Broken Threshold by 1 per Hardness.
+flavor: You imbue the shield to make it even hardier than other shields.
+effect: >-
+  This shield's Hardness is increased by {hardness}. It's HP is increased by
+  double it's Hardness and BT by half that value.
+no-effect: >-
+  The difference between this imbuement level and the item level is too great.
+  This imbuement has no effect.

@@ -17,6 +17,7 @@ export function createImbueDexterity(): MaterialData {
         key: "imbue:dexterity",
         type: "imbuement",
         label: { type: "key", key: lkey("label") },
+        description: { type: "key", key: lkey("description") },
         monsterPredicate: [{ lte: ["self:ability:dex:rank", 2] }],
         itemPredicate: [
             {
@@ -52,6 +53,13 @@ export function createImbueDexterity(): MaterialData {
                 },
             ],
         },
-        effects: [],
+        effects: [
+            { levelMin: 0, levelMax: 16, type: "Apex", attribute: null },
+            {
+                levelMin: 17,
+                type: "Apex",
+                attribute: "dex",
+            },
+        ],
     };
 }

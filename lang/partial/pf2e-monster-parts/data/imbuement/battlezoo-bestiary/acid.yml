@@ -11,13 +11,10 @@ magic:
 
     **Effect** You imbue the weapon with vitriolic acid.
 
-
     - - -
-
 
     **Path** Magic; Choose when you first imbue the weapon for the granted
     spells to be either arcane or primal
-
 
     -   **2nd** The weapon can cast
     @UUID\[Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt\]{Acid Splash} as a
@@ -93,12 +90,9 @@ might:
 
     **Effect** You imbue the weapon with vitriolic acid.
 
-
     - - -
 
-
     **Path** Might
-
 
     - **4th** Strikes with the weapon deal 1 additional acid damage
 
@@ -121,14 +115,14 @@ might:
     turn
   effects:
     level-8-note: >-
-      The target's armor (if any) takes @Damage[3d6[acid]] (before applying
-      Hardness); if the target has a shield raised, the shield takes this damage
-      instead.
+      The target's armor (if any) takes @Damage[3d6[acid]] damage (before
+      applying Hardness); if the target has a shield raised, the shield takes
+      this damage instead.
     level-12-note: The acid damage dealt by this imbued property ignores resistances.
     level-14-note: >-
-      The target's armor (if any) takes @Damage[6d6[acid]] (before applying
-      Hardness); if the target has a shield raised, the shield takes this damage
-      instead.
+      The target's armor (if any) takes @Damage[6d6[acid]] damage (before
+      applying Hardness); if the target has a shield raised, the shield takes
+      this damage instead.
     level-20-note: >-
       Before applying acid damage, the target gains weakness 1 to acid until the
       beginning of your next turn.
@@ -159,12 +153,9 @@ tech:
 
     **Effect** You imbue the weapon with vitriolic acid.
 
-
     - - -
 
-
     **Path** Technique
-
 
     -   **4th** Strikes with the weapon deal 1 persistent acid damage
 
@@ -192,9 +183,9 @@ tech:
     they are drained 1
   effects:
     level-8-note: >-
-      The target's armor (if any) takes @Damage[3d6[acid]] (before applying
-      Hardness); if the target has a shield raised, the shield takes this damage
-      instead.
+      The target's armor (if any) takes @Damage[3d6[acid]] damage (before
+      applying Hardness); if the target has a shield raised, the shield takes
+      this damage instead.
     level-12-note: >-
       The acid damage dealt by this imbued property (including the persistent
       acid damage) ignores resistances.

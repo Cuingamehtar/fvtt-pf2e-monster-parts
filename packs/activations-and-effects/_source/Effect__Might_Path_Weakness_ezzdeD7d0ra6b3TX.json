@@ -26,7 +26,18 @@
             "predicate": [
               {
                 "or": [
-                  {"gte": ["parent:origin:item:imbue:acid:might", 20]},
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:acid:might",
+                      20
+                    ]
+                  },
+                  {
+                    "gte": [
+                      "item:origin:item:imbue:wild:might",
+                      20
+                    ]
+                  },
                   {
                     "not": "parent:origin:item"
                   }
@@ -40,7 +51,18 @@
             "predicate": [
               {
                 "or": [
-                  {"gte": ["parent:origin:item:imbue:cold:might", 20]},
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:cold:might",
+                      20
+                    ]
+                  },
+                  {
+                    "gte": [
+                      "item:origin:item:imbue:wild:might",
+                      20
+                    ]
+                  },
                   {
                     "not": "parent:origin:item"
                   }
@@ -54,7 +76,18 @@
             "predicate": [
               {
                 "or": [
-                  {"gte": ["parent:origin:item:imbue:electricity:might", 20]},
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:electricity:might",
+                      20
+                    ]
+                  },
+                  {
+                    "gte": [
+                      "item:origin:item:imbue:wild:might",
+                      20
+                    ]
+                  },
                   {
                     "not": "parent:origin:item"
                   }
@@ -68,7 +101,18 @@
             "predicate": [
               {
                 "or": [
-                  {"gte": ["parent:origin:item:imbue:fire:might", 20]},
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:fire:might",
+                      20
+                    ]
+                  },
+                  {
+                    "gte": [
+                      "item:origin:item:imbue:wild:might",
+                      20
+                    ]
+                  },
                   {
                     "not": "parent:origin:item"
                   }
@@ -82,7 +126,12 @@
             "predicate": [
               {
                 "or": [
-                  {"gte": ["parent:origin:item:imbue:force:might", 20]},
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:force:might",
+                      20
+                    ]
+                  },
                   {
                     "not": "parent:origin:item"
                   }
@@ -96,7 +145,12 @@
             "predicate": [
               {
                 "or": [
-                  {"gte": ["parent:origin:item:imbue:poison:might", 20]},
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:poison:might",
+                      20
+                    ]
+                  },
                   {
                     "not": "parent:origin:item"
                   }
@@ -110,7 +164,18 @@
             "predicate": [
               {
                 "or": [
-                  {"gte": ["parent:origin:item:imbue:sonic:might", 20]},
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:sonic:might",
+                      20
+                    ]
+                  },
+                  {
+                    "gte": [
+                      "item:origin:item:imbue:wild:might",
+                      20
+                    ]
+                  },
                   {
                     "not": "parent:origin:item"
                   }
@@ -124,7 +189,12 @@
             "predicate": [
               {
                 "or": [
-                  {"gte": ["parent:origin:item:imbue:life:might", 20]},
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:life:might",
+                      20
+                    ]
+                  },
                   {
                     "not": "parent:origin:item"
                   }
@@ -138,7 +208,18 @@
             "predicate": [
               {
                 "or": [
-                  {"gte": ["parent:origin:item:imbue:death:might", 20]},
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:death:might",
+                      20
+                    ]
+                  },
+                  {
+                    "gte": [
+                      "item:origin:item:imbue:wild:might",
+                      20
+                    ]
+                  },
                   {
                     "not": "parent:origin:item"
                   }
@@ -149,10 +230,7 @@
         ],
         "flag": "damageType",
         "key": "ChoiceSet",
-        "prompt": "PF2E.SpecificRule.Prompt.DamageType",
-        "roll-option": [
-          "test"
-        ]
+        "prompt": "PF2E.SpecificRule.Prompt.DamageType"
       },
       {
         "key": "Weakness",

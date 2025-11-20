@@ -1,0 +1,46 @@
+label: Constitution
+description: >-
+  **Type** Skill Item
+
+
+  **Parts** The creature must have Constitution as its highest or second highest
+  ability modifier.
+
+  - - -
+
+  **Effect** You imbue the item with resilient _constitution_.
+
+  - **8th** The item can cast 3rd rank _heal_, on you only, once per day as a
+  divine spell
+
+  - **14th** The item's _heal_ spell heightens to 6th rank
+
+  - **17th** When you invest the item, you either increase your Constitution
+  score by 1 or increase it to +4, whichever would give you a higher value. The
+  item gains the apex trait
+
+  - **18th** The item's _heal_ spell heightens to 7th rank and each day you can
+  choose to instead have the item cast _regenerate_ on you once per day, instead
+  of _heal_
+
+  - **20th** If you rest for 10 minutes, you recover 100 Hit Points
+flavor: You imbue the item with resilient _constitution_.
+level-8-spell: >-
+  The item can cast 3rd rank
+  @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only,
+  once per day as a divine spell.
+level-14-spell: >-
+  The item can cast 6th rank
+  @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only,
+  once per day as a divine spell.
+level-17-apex: >-
+  When you invest the item, you either increase your Constitution attribute by
+  +1 or increase it to +4, whichever would give you a higher value. The item
+  gains the apex trait.
+level-18-spell: >-
+  The item can either cast 7th rank
+  @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only,
+  once per day as a divine spell, or cast
+  @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Regenerate} on you
+  once per day.
+level-20-hp: 'If you rest for 10 minutes, you recover 100 Hit Points.'
