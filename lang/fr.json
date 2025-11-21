@@ -10,7 +10,10 @@
     },
     "refined-item": {
       "label": "Objet raffiné",
-      "material-label": "{material} (Niveau : {level}, Valeur : {value})",
+      "level": "Niveau",
+      "value": "Valeur",
+      "level-capped-refinement": "Plafonné par le niveau de l'acteur",
+      "level-capped-imbuement": "Plafonné par le niveau de raffinement",
       "warn-item-already-refined": "L'objet {item} est déjà raffiné.",
       "error-item-is-monster-part": "L'objet contient des données de partie de monstre, il ne peut pas être utilisé en tant que base pour un objet raffiné.",
       "error-not-refined-item": "Cet objet n'est pas un objet raffiné.",
@@ -49,13 +52,14 @@
         "refinement": "Raffinement",
         "imbuement": "Imprégnation",
         "new-imbuement": "Nouvelle imprégnation",
-        "refinement-type": "Type de raffinement",
-        "imbuement-type": "Type d'imprégnation",
+        "type": "Type",
         "value": "Valeur",
         "button": "Modifier l'élément raffiné"
       },
       "after-combat-dialog": {
-        "title": "Attribuer des parties de monstre"
+        "title": "Attribuer des parties de monstre",
+        "value": "Valeur : {value}",
+        "total": "Valeur totale : {value}"
       }
     },
     "material": {
@@ -148,45 +152,13 @@
         "treasure": "Comme un trésor",
         "manual": "Manuel",
         "none": "Aucun"
+      },
+      "level-capped": {
+        "name": "Plafonner par les niveaux de matériau",
+        "hint": "Les raffinements seront plafonnés par le niveau de l'acteur, les imprégnations seront limitées par le niveau de raffinement de l'objet."
       }
     },
     "data": {
-      "refinement": {
-        "bludgeoning": "Arme (Contondante)",
-        "piercing": "Arme (Perforante)",
-        "slashing": "Arme (Tranchante)",
-        "armor-light": "Armure (Légère)",
-        "armor-medium": "Armure (Intermédiaire)",
-        "armor-heavy": "Armure (Lourde)",
-        "armor-unarmored": "Armure (Sans armure)",
-        "armor": {
-          "+1": "C'est une armure +1. Elle accorde un bonus d'objet de +1 à la CA et peut être imprégnée une fois.",
-          "resilient+1": "C'est une armure de résilience +1. Elle accorde un bonus d'objet de +1 à la CA et aux jets de sauvegarde et peut être imprégnée une fois.",
-          "resilient+2": "C'est une armure de résilience +2. Elle accorde un bonus d'objet de +2 à la CA, un bonus d'objet de +1 aux jets de sauvegarde et peut être imprégnée deux fois.",
-          "greater-resilient+2": "C'est une armure de résilience supérieure +2. Elle accorde un bonus d'objet de +2 à la CA et aux jets de sauvegarde, et peut être imprégnée deux fois.",
-          "greater-resilient+3": "C'est une armure de résilience supérieure +3. Elle accorde un bonus d'objet de +3 à la CA, un bonus d'objet de +2 aux jets de sauvegarde et peut être imprégnée 3 fois.",
-          "major-resilient+3": "C'est une armure de résilience majeure +3. Elle accorde un bonus d'objet de +3 à la CA et aux jets de sauvegarde, et peut être imprégnée 3 fois."
-        },
-        "perception": "Perception",
-        "shield": {
-          "label": "Bouclier",
-          "label-buckler": "Bouclier (targe)",
-          "inline-note": "Ce bouclier possède une Solidité {hardness}, un SR {bt} et {hp} PV.",
-          "imbuing": "Il peut être imprégné une fois."
-        },
-        "skill": {
-          "item-bonus": "Cet objet accorde un bonus d'objet de +{bonus}  aux tests de/d'{skill}.",
-          "imbuing": "Il peut être imprégné une fois."
-        },
-        "weapon": {
-          "+1": "C'est une arme +1. Elle accorde un bonus d'objet de +1 aux jets d'attaque et peut être imprégnée une fois.",
-          "striking+1": "C'est une arme de frappe +1. Elle accorde un bonus d'objet de +1 aux jets d'attaque, inflige 2 dés de dégâts et peut être imprégnée une fois.",
-          "striking+2": "C'est une arme de frappe +2. Elle accorde un bonus d'objet de +2 aux jets d'attaque, inflige 2 dés de dégâts et peut être imprégnée 2 fois.",
-          "greater-striking+2": "C'est une arme de frappe supérieure +2. Elle accorde un bonus d'objet de +2 aux jets d'attaque, inflige 3 dés de dégâts et peut être imprégnée deux fois.",
-          "greater-striking+3": "C'est une arme de frappe supérieure +3. Elle accorde un bonus d'objet de +3 aux jets d'attaque, inflige 3 dés de dégâts et peut être imprégnée 3 fois.",
-          "major-striking+3": "C'est une arme de frappe majeure +3. Elle confère un bonus d'objet de +3 aux jets d'attaque, inflige 4 dés de dégâts et peut être imprégnée 3 fois."
-        }
-      },
       "imbuement": {
         "add-cantrip": "L'arme peut lancer {spell} comme un tour de magie, intensifié à la moitié du niveau de l'objet arrondi au supérieur.",
         "vulnerability-before-strike": "Avant d'appliquer des dégâts supplémentaires, la cible obtient une faiblesse de 1 contre <em>{damage}</em> jusqu'au début de votre prochain tour.",
@@ -207,6 +179,13 @@
             },
             "might": {
               "label": "Acide (Puissance)",
+              "description": "<p><strong>Type</strong> Arme</p>\n<p><strong>Parties</strong> Le monstre doit avoir le trait acide ou une attaque ou un sort qui inflige des dégâts d'acide.</p>\n<p><strong>Effet</strong> Vous imprégnez l'arme d'acide vitriolique.</p>\n<hr />\n<p><strong>Voie</strong> Puissance</p>\n<ul>\n<li><strong>4e</strong> Les Frappes avec l'arme infligent 1 dégât d'acide supplémentaire</li>\n<li><strong>6e</strong> Les dégâts d'acide supplémentaires passent à 1d4</li>\n<li><strong>8e</strong> Les dégâts d'acide supplémentaires passent à 1d6. Sur un coup critique, l'armure de la cible (si elle en a une) subit 3d6 dégâts d'acide (avant d'appliquer la Solidité). Si la cible a un bouclier levé, c'est le bouclier qui subit ces dégâts</li>\n<li><strong>12e</strong> Les dégâts infligés par cette propriété imprégnée ignorent les résistances</li>\n<li><strong>14e</strong> Les dégâts d'acide infligés à l'armure ou au bouclier sur un coup critique passent à 6d6</li>\n<li><strong>18e</strong> Les dégâts d'acide suppléemntaires passent à 1d8</li>\n<li><strong>20e</strong> Sur une Frappe réussie avec l'arme, avant d'appliquer les dégâts d'acide, la cible obtient une faiblesse 1 contre l'acide jusqu'au début de votre prochain tour.</li>\n</ul>",
+              "effects": {
+                "level-8-note": "L'armure de la cible (le cas échéant) subit @Damage[3d6[acid]]{3d6 dégâts d'acide} (avant application de la Solidité). si la cible a un bouclier levé, c'est le bouclier qui subit ces dégâts.",
+                "level-12-note": "Les dégâts d'acide infligés par cette propriété imprégnée ignorent les résistances.",
+                "level-14-note": "L'armure de la cible (le cas échéant) subit @Damage[6d6[acid]]{6d6 dégâts d'acide} (avant application de la Solidité). si la cible a un bouclier levé, c'est le bouclier qui subit ces dégâts.",
+                "level-20-note": "Avant d'infliger des dégâts d'acide, la cible subit une faiblesse 1 contre l'acide jusqu'au début de votre prochain tour. @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effet : Faiblesse aux dégâts - Voie de la Puissance}"
+              },
               "header": {
                 "level-8-armor": "En cas de coup critique, l'armure de la cible (le cas échéant) subit 3d6 dégâts d'acide (avant application de la Solidité). Si la cible a un Levé un bouclier, le bouclier subit ces dégâts à la place.",
                 "level-12-resistance": "Les dégâts d'acide infligés par cette propriété imprégnée ignorent les résistances.",
@@ -216,6 +195,11 @@
             },
             "tech": {
               "label": "Acide (Technique)",
+              "description": "<p><strong>Type</strong> Arme</p>\n<p><strong>Parties</strong> Le monstre doit avoir le trait acide ou une attaque ou un sort qui inflige des dégâts d'acide.</p>\n<p><strong>Effet</strong> Vous imprégnez l'arme avec de l'acide vitriolique.</p>\n<hr />\n<p><strong>Voie</strong> Technique</p>\n<ul>\n<li><strong>4e</strong> Les Frappes avec l'arme infligent 1 dégât d'acide persistant</li>\n<li><strong>6e</strong> Le Frappes avec l'arme infligent 1 dégât d'acide supplémentaire</li>\n<li><strong>8e</strong> Les dégâts d'acide persistants passent à 1d6. Sur un coup critique, l'armure de la cible (si elle en a une) subit 3d6 dégâts d'acide (avant d'appliquer la Solidité). Si la cible a un bouclier levé, c'est le bouclier qui subit ces dégâts</li>\n<li><strong>12e</strong> Les dégâts d'acide infligés par cette propriété imprégnée (y compris les dégâts d'acide persistants) ignorent les résistances</li>\n<li><strong>14e</strong> Les dégâts d'acide persistants passent à 1d8 si elle touche</li>\n<li><strong>16e</strong> Les dégâts d'acide persistants de la propriété imprégnée ronge les résistances d'un ennemi. Chaque fois qu'un ennemi, son bouclier ou son armure subit des dégâts provoqués par les dégâts d'acide persistants à la fin de son tour, toutes les résistances et la Solidité décroissent de 1 pendant 1 minute. Cet effet est cumulable (pas automatisé)</li>\n<li><strong>18e</strong> Les dégâts d'acide persistants passent à 1d10 si elle touche</li>\n<li><strong>20e</strong> Sur un coup critique, l'acide ronge les entrailles de l'ennemi qui est Drainé 1</li>\n</ul>",
+              "effects": {
+                "level-8-note": "L'armure de la cible (le cas échéant) subit @Damage[3d6[acid]]{3d6 dégâts d'acide} (avant application de la dureté). Si la cible a un bouclier levé, c'est le bouclier qui subit ces dégâts.",
+                "level-20-note": "L'ennemi est @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drainé 1}."
+              },
               "header": {
                 "level-8-armor": "En cas de coup critique, l'armure de la cible (le cas échéant) subit 3d6 dégâts d'acide (avant application de la Solidité). Si la cible a Levé un bouclier, le bouclier subit ces dégâts à la place.",
                 "level-12-resistance": "Les dégâts d'acide infligés par cette propriété imprégnée (y compris les dégâts d'acide persistants) ignorent les résistances.",
@@ -228,22 +212,36 @@
             "damage": "Les Frappes avec l'arme infligent {damage} dégât(s) supplémentaire(s) du type de dégâts de base de l'arme aux créatures du type {creature}.",
             "persistent": "Les Frappes portées avec l'arme provoquent une hémorragie externe ou interne chez les créatures de type {créature}. Contre ces créatures, les Frappes portées avec l'arme infligent {damage} dégâts de saignement.",
             "flavor": "Vous imprégnez l'arme d'énergies générées par votre précédente défaite des créatures dont les parties se trouvent à l'intérieur ou d'énergies anathèmes contre un certain type de créature, afin de rendre l'arme particulièrement efficace contre un type spécifique de créature.",
+            "effects": {
+              "level-6-note": "La cible est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1} jusqu'à la fin de votre prochain tour.",
+              "level-14-note": "La cible doit tenter un jet de @Check[fortitude]. En cas de succès critique, elle est@UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1}jusqu'à la fin de votre prochain tour. En cas de succès, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 2} jusqu'à la fin de votre prochain tour. En cas d'échec, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 3} jusqu'à la fin de votre prochain tour et en cas d'échec critique elle est détruite. Cet effet possède le trait mise hors de combat."
+            },
             "might": {
               "label": "Tueur ({creature}, Puissance)",
+              "description": "<p><strong>Type</strong> Arme</p>\n<p><strong>Parties</strong> Le monstre doit être de type {creature}.</p>\n<hr />\n<p><strong>Effet</strong> Vous imprégnez l'arme avec les énergies produites par la défaite précédente des créatures dont les parties se trouvent à l'intérieur ou des énergies qui sont anathèmes à un certain type de créature, en vue de rendre l'arme particulièrement effective contre un type spécifique de créature.</p>\n<hr />\n<p><strong>Voie</strong> Puissance</p>\n<ul>\n<li><strong>2e</strong> Les Frappes avec l'arme infligent 1 dégâts supplémentaire du type de dégât de base de l'arme aux créatures de type {creature}</li>\n<li><strong>4e</strong> Les dégâts supplémentaires contre les créatures de type {creature} passent à 1d4</li>\n<li><strong>6e</strong> Les dégâts supplémentaires contre les créatures de type {creature} passent à 1d6. En cas de coup critique, vous sapez les forces d'une créature de type {creature}, qui devient Affaiblie 1 jusqu'à la fin de votre prochain tour</li>\n<li><strong>10e</strong> Contre une créature de type {creature}, les dégâts de base de l'arme ignorent les 5 premiers points de résistance de la cible</li>\n<li><strong>14e</strong> L'arme peut directement tuer les créature de type {creature}. En cas de coup critique, au lieu d'être Affaiblie 1 jusqu'à la fin de votre prochain tour, une créature detype {creature} doit tenter un jet de Vigueur. Sur un succès critique, elle est Affaiblie 1 jusqu'à la fin de votre prochain tour. En cas de succès, elle est Affaiblie 2 jusqu'à la fin de votre prochain tour. En cas d'échec, elle est Affaiblie 3 jusqu'à la fin de votre prochain tour et en cas d'échec critique, elle est détruite. Cet effet possède le trait mise hors de combat</li>\n<li><strong>16e</strong> Les dégâts supplémentaires contre les créatures de type {creature} passent à 1d8</li>\n<li><strong>20e</strong> Les dégâts supplémentaires contre les créatures de type {creature} passent à 1d10</li>\n</ul>",
               "level-6-enfeebled": "Lors d'un coup critique, vous sapez la force d'une créature de type {creature}, la rendant @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1} jusqu'à la fin de votre prochain tour.",
               "level-10-resistance": "Contre une créature de type {creature}, les dégâts de base de l'arme ignorent les 5 premiers points de résistance de la cible.",
-              "level-14-enfeebled": "L'arme peut tuer directement les créatures de type {creature}. Sur un coup critique, une créature de type {creature} doit effectuer un jet de Vigueur. En cas de succès critique, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1} jusqu'à la fin de votre prochain tour. En cas de succès, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 2} jusqu'à la fin de votre prochain tour. En cas d'échec, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 3} jusqu'à la fin de votre prochain tour. En cas d'échec critique, elle est détruite. Cet effet possède le trait mise hors de combat."
+              "level-14-enfeebled": "L'arme peut tuer directement les créatures de type {creature}. Sur un coup critique, une créature de type {creature} doit effectuer un jet de Vigueur. En cas de succès critique, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1} jusqu'à la fin de votre prochain tour. En cas de succès, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 2} jusqu'à la fin de votre prochain tour. En cas d'échec, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 3} jusqu'à la fin de votre prochain tour. En cas d'échec critique, elle est détruite. Cet effet possède le trait mise hors de combat.",
+              "effects": {
+                "level-10-note": "Les dégâts de base de l'arme ignorent les 5 premiers points de résistance de la cible."
+              }
             },
             "tech": {
               "label": "Tueur ({creature}, Technique)",
+              "description": "<p><strong>Type</strong> Arme</p>\n<p><strong>Parties</strong> Le monstre doit être de type {creature}.</p>\n<hr />\n<p><strong>Effet</strong> Vous imprégnez l'arme avec les énergies produites par la défaite précédente des créatures dont les parties se trouvent à l'intérieur ou des énergies qui sont anathèmes à un certain type de créature, en vue de rendre l'arme particulièrement effective contre un type spécifique de créature.</p>\n<hr />\n<p><strong>Voie</strong> Technique</p>\n<ul>\n<li><strong>2e</strong> Les Frappes avec l'arme provoque une hémorragie interne ou externe contre les créatures de type {creature}. Contre de telles créatures, les Frappes avec l'arme infligent 1 dégât de saignement</li>\n<li><strong>4e</strong> Les Frappes avec l'arme infligent 1 dégât supplémentaire du type de dégâts de base de l'arme aux créatures de type {creature}</li>\n<li><strong>6e</strong> Les dégâts de saignement passent 1d6. Sur un coup critique, vous sapez les forces d'une créature de type {creature}, qui devient Affaiblie 1 jusqu'à la fin de votre prochain tour</li>\n<li><strong>10e</strong> Contre une créature de type {creature}, les dégâts de base de l'arme ignorent les 5 premiers points de la résistance de la cible et les dégâts de saignement de cette propriété ignorent la résistance de la cible</li>\n<li><strong>12e</strong> Les dégâts de saignement si elle touche une créature de type {creature} passent à 1d8</li>\n<li><strong>14e</strong> L'arme peut carrément tuer des créatures de type {creature}. En cas de coup critique, une créature de type {creature} est Affaiblie 2 jusqu'à la fin de votre prochain tour. Elle doit également tenter un jet de Vigueur. En cas d'échec, elle est Affaiblie 3 jusqu'à la fin de votre prochain tour au lieu d'être Affaiblie 2 et sur un échec critique, elle est détruite. Cet effet possède le trait mise hors de combat</li>\n<li><strong>16e</strong> Les dégâts de saignement si elle touche une créature de type {creature} passent à 1d10</li>\n<li><strong>20e</strong> La perte de sang continue à saper les forces des créatures de type {creature}. L'état Affaibli d'un coup critique durent tant que dure l'état de saignement ou jusqu'à la fin de votre prochain tour, selon ce qui se produit en dernier</li>\n</ul>",
               "level-6-enfeebled": "En cas de coup critique, vous sapez la force d'une créature de type {créature}, la rendant @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1} jusqu'à la fin de votre prochain tour.",
               "level-10-resistance": "Contre une créature du type {creature}, les dégâts de base de l'arme ignorent les 5 premiers points de résistance de la cible et les dégâts de saignement de cette propriété imprégnée ignorent la résistance de la cible.",
               "level-14-enfeebled": "L'arme peut tuer directement les créatures de type {creature}. En cas de coup critique, une créature de type {creature} est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 2} jusqu'à la fin de votre prochain tour. Elle doit également effectuer un jet de Vigueur. En cas d'échec, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 3} jusqu'à la fin de votre prochain tour et en cas d'échec critique, elle est détruite. Cet effet possède le trait mise hors de combat.",
-              "level-20-enfeebled": "L'arme peut tuer directement les créatures de type {creature}. Sur un coup critique, une créature de type {creature} est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 2}. Elle doit également tenter un jet de Vigueur. En cas d'échec, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 3} et en cas d'échec critique, elle est détruite. Cet effet possède le trait mise hors de combat. L'état Affaibli dû à un coup critique dure aussi longtemps que les dégâts de saignement ou jusqu'à la fin de votre prochain tour, selon la durée la plus longue."
+              "level-20-enfeebled": "L'arme peut tuer directement les créatures de type {creature}. Sur un coup critique, une créature de type {creature} est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 2}. Elle doit également tenter un jet de Vigueur. En cas d'échec, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 3} et en cas d'échec critique, elle est détruite. Cet effet possède le trait mise hors de combat. L'état Affaibli dû à un coup critique dure aussi longtemps que les dégâts de saignement ou jusqu'à la fin de votre prochain tour, selon la durée la plus longue.",
+              "effects": {
+                "level-10-note": "Les dégâts de base de l'arme ignorent les 5 premiers points de résistance de la cible et les dégâts de saignement de cette propriété imprégnée ignorent la résistance de la cible.",
+                "level-20-note": "La cible doit tenter un jet de @Check[fortitude]. En cas de succès critique, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1}. En cas de succès, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 2}. En cas d'échec, elles t @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 3} et en cas d'échec critique, elle est détruite. Cet effet possède le trait mise hors de combat. L'état Affaibli d'un coup critique persiste tant que les dégâts de saignement persistent ou jusqu'à la fin de votre prochain tour, selon ce qui se produit en dernier."
+              }
             }
           },
           "charisma": {
             "label": "Charisme",
+            "description": "<p><strong>Type</strong> Objet de compétence (compétence basée sur le Charisme)</p>\n<p><strong>Parties</strong> Le Charisme doit être le modificateur d'attribut le plus élevé de la créature ou le second</p>\n<hr />\n<p><strong>Effet</strong> Vous imprégnez l'objet d'un  <em>charisme</em> impressionnant.</p>\n<ul>\n<li><strong>8e</strong> L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Héroïsme} une fois par jour comme un sort occulte, car votre charisme intérieur vous inspire ou un allié à accomplir des exploits</li>\n<li><strong>14e</strong> Le sort <em>Héroïsme</em> est intensifié au rang 6</li>\n<li><strong>17e</strong> Lorsque vous investissez l'objet, soit vous augmentez de +1 votre modificateur de Charisme, soit vous le passez à +4, selon ce qui vous procure le modificateur le plus élevé. L'objet obtient le trait apogée</li>\n<li><strong>20e</strong> Le sort <em>Héroïsme</em> est intensifié au rang 9</li>\n</ul>",
             "flavor": "Vous imprégnez l'objet d'un <em>charisme</em> éblouissant.",
             "level-8-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Héroïsme} une fois par jour en tant que sort occulte car votre charisme intérieur vous inspire ou inspire un allié vers la grandeur.",
             "level-14-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Héroïsme} comme un sort occulte de rang 6 une fois par jour car votre charisme intérieur vous inspire ou inspire un allié vers la grandeur.",
@@ -280,6 +278,7 @@
           },
           "constitution": {
             "label": "Constitution",
+            "description": "<p><strong>Type</strong> Objet de compétence (compétence basée sur le Constitution)</p>\n<p><strong>Parties</strong> La Constitution doit être le modificateur d'attribut le plus élevé de la créature ou le second.</p>\n<hr /><p><strong>Effet</strong> Vous imprégnez l'objet d'une <em>constitution</em> résiliente.</p>\n<ul>\n<li><strong>8e</strong> L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 3, sur vous uniquement, une fois par jour en tant que sort divin</li>\n<li><strong>14e</strong> Le sort de <em>Guérison</em> de l'objet est intensifié au rang 6</li>\n<li><strong>17e</strong> Lorsque vous investissez l'objet, soit vous augmentez votre score de Constitution de 1 soit vous le passez à +4, selon ce qui vous accorde le modificateur le plus élevé. L'objet obtient le trait apogée</li>\n<li><strong>18e</strong> Le sort <em>Guérison</em> de l'objet est intensifié au rang 7et chaque jour, vous can choisir que l'objet lance @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Régénération} sur vous une fois par jour à la place de <em>Guérison</em></li>\n<li><strong>20e</strong> Si vous vous reposez pendant 10 minutes, vous récupérez 100 Points de vie</li>\n</ul>",
             "flavor": "Vous imprégnez l'objet d'une <em>constitution</em> résiliente.",
             "level-8-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 3, sur vous uniquement, une fois par jour en tant que sort divin.",
             "level-14-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 6, sur vous uniquement, une fois par jour comme un sort divin.",
@@ -289,6 +288,7 @@
           },
           "dexterity": {
             "label": "Dextérité",
+            "description": "<p><strong>Type</strong> Objet de compétence (compétence basée sur le Dextérité)</p>\n<p><strong>Parties</strong> La Dextérité doit être le modificateur d'attribut le plus élevé de la créature ou le second.</p>\n<hr /><p>\n<p><strong>Effet</strong> Vous imprégnez l'objet d'une dextérité adroite.</p>\n<ul>\n<li><strong>8e</strong> Une fois par jour, vous pouvez utiliser une unique action Interagir à l'activer pour obtenir un bonus de staut de +3 mètres à toutes vos Vitesses pendant 10 minutes</li>\n<li><strong>14e</strong> Le bonus d'objet à vos Vitesses venant de l'activation passe à +6 mètres et tant qu'elle est activée, vous obtenez les effets de @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Marche sur l'eau}</li>\n<li><strong>17e</strong> Lorsque vous investissez l'objet, soit vous augmentez votre modificateur de Dextérité de +1, soit vous le passez à +4 selon ce qui vous procure le modificateur le plus élevé. L'objet obtient le trait apogée</li>\n<li><strong>20e</strong> Le bonus d'objet à vos Vitesses lié à l'activation passe à +9 mètres et tant qu'elle est activée, vous obtenez les effets à la fois de <em>Marche sur l'eau</em> et @UUID[Compendium.pf2e.spells-srd.Item.b5sGjGlBf58f8jn0]{MArche dans les airs}</li>\n</ul>",
             "flavor": "Vous imprégnez l'objet d'une <em>Dextérité</em> adroite.",
             "level-8-speed": "Une fois par jour, vous pouvez utiliser une unique action d'activation avec le trait manipulation pour obtenir un bonus de statut de +3 mètres à toutes vos vitesses pendant 10 minutes.",
             "level-14-speed": "Une fois par jour, vous pouvez utiliser une unique action d'activation avec le trait manipulation pour obtenir un bonus de statut de +6 mètres à toutes vos Vitesses pendant 10 minutes. Pendant l'activation, vous bénéficiez des effets de @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Marche sur l'eau}.",
@@ -451,9 +451,6 @@
           },
           "sensory": {
             "label": "Sensoriel",
-            "temporary-low-light-vision": "Imprégnation sensorielle - Vision dans la lumière faible temporaire",
-            "temporary-darkvision": "Imprégnation sensorielle - Vision dans le noir temporaire",
-            "temporary-scent": "Imprégnation sensorielle - Odorat temporaire",
             "flavor": "Vous imprégnez l'objet de sens extraordinaires.",
             "level-4-activation-low-light": "<p><strong>Activation</strong> <span class=\"action-glyph\">2</span> (concentration)<br><strong>Frequence</strong> Une fois par jour<br>Vous obtenez vision nocturne pendant 1 heure.</p>",
             "level-6-permanent-low-light": "Vous obtenez vision nocturne.",
@@ -501,7 +498,10 @@
             "might": {
               "damage": "Les frappes portées avec cette arme infligent {damage} de dégâts. À chaque fois que vous ingligez des dégâts, lancer [[/r 1d6]]{1d6} : 1. Elle inflige des dégâts d'acide. 2. Elle inflige des dégâts de froid. 3. Elle inflige des dégâts d'électricité. 4. Elle inflige des dégâts de feu. 5. Elle inflige des dégâts du vide. 6. Elle inflige des dégâts de son.",
               "level-12-resistance": "Les dégâts infligés par cette propriété imprégnée ignorent les résistances.",
-              "level-20-weakness": "En cas de Frappe réussie avec l'arme, avant d'appliquer les dégâts supplémentaires, la cible obtient une faiblesse 1 contre ce type de dégâts jusqu'au début de votre prochain tour."
+              "level-20-weakness": "En cas de Frappe réussie avec l'arme, avant d'appliquer les dégâts supplémentaires, la cible obtient une faiblesse 1 contre ce type de dégâts jusqu'au début de votre prochain tour.",
+              "effects": {
+                "level-20-note": "Avant d'appliquer les dégâts supplémentaires, la cible subit une faiblesse 1 contre ce type de dégâts jusqu'au début de votre prochain tour. @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effet : Faiblesse aux dégâts - Voie de la Puissance}"
+              }
             }
           },
           "winged": {
@@ -577,6 +577,49 @@
               "level-20-counteract": "Les créatures subissant des dégâts de vitalité persistants dus à cette propriété imprégnée ont des difficultés pour guérir à partir de l'énergie du vide en raison de l'énergie vitale scintillante qui émerge à travers elles. Si un effet du vide devrait permettre à la créature de récupérer de Points de Vie, il doit tout d'abord réussir un jet pour contrer la propriété imprégnée de rang 10 avec un DD 43. Même sur un jet réussi pour contrer l'effet, les Points de vie récupérés sont réduits de 1d10. Sur une succès critique, la créature récupère la totalité du montant."
             }
           }
+        },
+        "strange-and-unusual": {
+          "spiked": {
+            "flavor": "Vous ornez l'armure de pointes acérées.",
+            "label": "Pointu"
+          }
+        }
+      },
+      "refinement": {
+        "bludgeoning": "Arme (Contondante)",
+        "piercing": "Arme (Perforante)",
+        "slashing": "Arme (Tranchante)",
+        "handwraps": "bandelettes",
+        "armor-light": "Armure (Légère)",
+        "armor-medium": "Armure (Intermédiaire)",
+        "armor-heavy": "Armure (Lourde)",
+        "armor-unarmored": "Armure (Sans armure)",
+        "armor": {
+          "+1": "C'est une armure +1. Elle accorde un bonus d'objet de +1 à la CA et peut être imprégnée une fois.",
+          "resilient+1": "C'est une armure de résilience +1. Elle accorde un bonus d'objet de +1 à la CA et aux jets de sauvegarde et peut être imprégnée une fois.",
+          "resilient+2": "C'est une armure de résilience +2. Elle accorde un bonus d'objet de +2 à la CA, un bonus d'objet de +1 aux jets de sauvegarde et peut être imprégnée deux fois.",
+          "greater-resilient+2": "C'est une armure de résilience supérieure +2. Elle accorde un bonus d'objet de +2 à la CA et aux jets de sauvegarde, et peut être imprégnée deux fois.",
+          "greater-resilient+3": "C'est une armure de résilience supérieure +3. Elle accorde un bonus d'objet de +3 à la CA, un bonus d'objet de +2 aux jets de sauvegarde et peut être imprégnée 3 fois.",
+          "major-resilient+3": "C'est une armure de résilience majeure +3. Elle accorde un bonus d'objet de +3 à la CA et aux jets de sauvegarde, et peut être imprégnée 3 fois."
+        },
+        "perception": "Perception",
+        "shield": {
+          "label": "Bouclier",
+          "label-buckler": "Bouclier (targe)",
+          "inline-note": "Ce bouclier possède une Solidité {hardness}, un SR {bt} et {hp} PV.",
+          "imbuing": "Il peut être imprégné une fois."
+        },
+        "skill": {
+          "item-bonus": "Cet objet accorde un bonus d'objet de +{bonus}  aux tests de/d'{skill}.",
+          "imbuing": "Il peut être imprégné une fois."
+        },
+        "weapon": {
+          "+1": "C'est une arme +1. Elle accorde un bonus d'objet de +1 aux jets d'attaque et peut être imprégnée une fois.",
+          "striking+1": "C'est une arme de frappe +1. Elle accorde un bonus d'objet de +1 aux jets d'attaque, inflige 2 dés de dégâts et peut être imprégnée une fois.",
+          "striking+2": "C'est une arme de frappe +2. Elle accorde un bonus d'objet de +2 aux jets d'attaque, inflige 2 dés de dégâts et peut être imprégnée 2 fois.",
+          "greater-striking+2": "C'est une arme de frappe supérieure +2. Elle accorde un bonus d'objet de +2 aux jets d'attaque, inflige 3 dés de dégâts et peut être imprégnée deux fois.",
+          "greater-striking+3": "C'est une arme de frappe supérieure +3. Elle accorde un bonus d'objet de +3 aux jets d'attaque, inflige 3 dés de dégâts et peut être imprégnée 3 fois.",
+          "major-striking+3": "C'est une arme de frappe majeure +3. Elle confère un bonus d'objet de +3 aux jets d'attaque, inflige 4 dés de dégâts et peut être imprégnée 3 fois."
         }
       }
     }
