@@ -46,6 +46,10 @@ export function createImbueCold(): MaterialData[] {
             ...base,
             key: "imbue:cold:magic",
             label: { type: "key", key: lkey("magic.label") },
+            description: {
+                type: "key",
+                key: lkey("magic.description"),
+            },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -72,11 +76,11 @@ export function createImbueCold(): MaterialData[] {
                     ...helpers.leveledLabels(
                         [4, 6, 10, 12, 16],
                         [
-                            "magic.level-4-spells",
-                            "magic.level-6-spells",
-                            "magic.level-10-spells",
-                            "magic.level-12-spells",
-                            "magic.level-16-spells",
+                            "magic.header.level-4-spells",
+                            "magic.header.level-6-spells",
+                            "magic.header.level-10-spells",
+                            "magic.header.level-12-spells",
+                            "magic.header.level-16-spells",
                         ],
                         (key: Parameters<typeof lkey>[0]) => ({
                             text: { type: "key", key: lkey(key) },
@@ -87,7 +91,7 @@ export function createImbueCold(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("magic.level-20-polar-ray"),
+                            key: lkey("magic.header.level-20-polar-ray"),
                         },
                         sort: 3,
                     },
@@ -110,6 +114,10 @@ export function createImbueCold(): MaterialData[] {
             ...base,
             key: "imbue:cold:might",
             label: { type: "key", key: lkey("might.label") },
+            description: {
+                type: "key",
+                key: lkey("might.description"),
+            },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -127,7 +135,7 @@ export function createImbueCold(): MaterialData[] {
                         levelMax: 13,
                         text: {
                             type: "key",
-                            key: lkey("might.level-8-slowed"),
+                            key: lkey("might.header.level-8-slow"),
                         },
                         sort: 1,
                     },
@@ -135,7 +143,7 @@ export function createImbueCold(): MaterialData[] {
                         levelMin: 12,
                         text: {
                             type: "key",
-                            key: lkey("might.level-12-resistance"),
+                            key: lkey("might.header.level-12-resistance"),
                         },
                         sort: 2,
                     },
@@ -143,7 +151,7 @@ export function createImbueCold(): MaterialData[] {
                         levelMin: 14,
                         text: {
                             type: "key",
-                            key: lkey("might.level-14-slowed"),
+                            key: lkey("might.header.level-14-slow"),
                         },
                         sort: 1,
                     },
@@ -151,7 +159,7 @@ export function createImbueCold(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("might.level-20-weakness"),
+                            key: lkey("might.header.level-20-weakness"),
                         },
                         sort: 3,
                     },
@@ -168,12 +176,60 @@ export function createImbueCold(): MaterialData[] {
                             label: lkey("might.label"),
                         }),
                 ),
+                {
+                    levelMin: 8,
+                    levelMax: 13,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("might.effects.level-8-note"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-attack"],
+                    },
+                },
+                {
+                    levelMin: 14,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("might.effects.level-14-note"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-attack"],
+                    },
+                },
+                {
+                    levelMin: 12,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("might.effects.level-12-note"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 20,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("might.effects.level-20-note"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-attack"],
+                    },
+                },
             ],
         },
         {
             ...base,
             key: "imbue:cold:tech",
             label: { type: "key", key: lkey("tech.label") },
+            description: {
+                type: "key",
+                key: lkey("tech.description"),
+            },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -188,11 +244,12 @@ export function createImbueCold(): MaterialData[] {
                             }),
                     ),
                     ...helpers.leveledLabels(
-                        [6, 8, 20],
+                        [6, 8, 14, 20],
                         [
-                            "tech.level-6-slow",
-                            "tech.level-8-slow",
-                            "tech.level-20-slow",
+                            "tech.header.level-6-slow",
+                            "tech.header.level-8-slow",
+                            "tech.header.level-14-slow",
+                            "tech.header.level-20-slow",
                         ],
                         (key: Parameters<typeof lkey>[0]) => ({
                             text: { type: "key", key: lkey(key) },
@@ -203,23 +260,15 @@ export function createImbueCold(): MaterialData[] {
                         levelMin: 12,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-12-resistance"),
+                            key: lkey("tech.header.level-12-resistance"),
                         },
                         sort: 2,
-                    },
-                    {
-                        levelMin: 14,
-                        text: {
-                            type: "key",
-                            key: lkey("tech.level-14-thaw"),
-                        },
-                        sort: 1,
                     },
                     {
                         levelMin: 16,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-16-surface"),
+                            key: lkey("tech.header.level-16-surface"),
                         },
                         sort: 3,
                     },
@@ -237,6 +286,46 @@ export function createImbueCold(): MaterialData[] {
                             label: lkey("tech.label"),
                         }),
                 ),
+                ...helpers.leveledEffects(
+                    [6, 8, 14, 20],
+                    [
+                        "tech.effects.level-6-note",
+                        "tech.effects.level-8-note",
+                        "tech.effects.level-14-note",
+                        "tech.effects.level-20-note",
+                    ],
+                    (key: Parameters<typeof lkey>[0]) => ({
+                        type: "RuleElement",
+                        rule: {
+                            key: "Note",
+                            outcome: ["success", "criticalSuccess"],
+                            text: lkey(key),
+                            title: lkey("tech.label"),
+                            selector: ["{item|id}-attack"],
+                        },
+                    }),
+                ),
+                {
+                    levelMin: 12,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("tech.effects.level-12-note"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 16,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("tech.effects.level-16-note"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-attack"],
+                    },
+                },
             ],
         },
     ];

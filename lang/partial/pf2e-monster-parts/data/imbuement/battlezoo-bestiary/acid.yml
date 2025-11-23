@@ -8,10 +8,10 @@ magic:
     **Parts** The monster must have the acid trait or an attack or spell that
     deals acid damage.
 
+    - - -
 
     **Effect** You imbue the weapon with vitriolic acid.
-
-    - - -
+    
 
     **Path** Magic; Choose when you first imbue the weapon for the granted
     spells to be either arcane or primal
@@ -87,10 +87,10 @@ might:
     **Parts** The monster must have the acid trait or an attack or spell that
     deals acid damage.
 
+    - - -
 
     **Effect** You imbue the weapon with vitriolic acid.
-
-    - - -
+    
 
     **Path** Might
 
@@ -150,10 +150,10 @@ tech:
     **Parts** The monster must have the acid trait or an attack or spell that
     deals acid damage.
 
+    - - -
 
     **Effect** You imbue the weapon with vitriolic acid.
-
-    - - -
+    
 
     **Path** Technique
 

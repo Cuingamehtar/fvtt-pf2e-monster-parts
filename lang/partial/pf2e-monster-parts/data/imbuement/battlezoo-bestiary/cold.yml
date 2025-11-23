@@ -1,0 +1,238 @@
+flavor: You imbue the weapon with chilling _cold_.
+magic:
+  label: Cold (Magic)
+  description: >-
+    **Type** Weapon
+
+
+    **Parts** The monster must have the cold trait or an attack or spell that
+    deals cold damage.
+
+    - - -
+
+    **Effect** You imbue the weapon with chilling _cold_.
+    
+
+    **Path** Magic; Choose when you first imbue the weapon for the granted
+    spells to be either arcane or primal
+
+    - **2nd** The weapon can cast _ray of frost_ as a cantrip, heightened to
+    half the item’s level rounded up
+
+    - **4th** The weapon can cast _chilling spray_ once per day
+
+    - **6th** The weapon's _chilling spray_ heightens to 2nd rank
+
+    - **8th** Strikes with the weapon deal 1 additional cold damage
+
+    - **10th** The weapon can cast _ice storm_ once per day
+
+    - **12th** The weapon's _chilling spray_ heightens to 3rd rank, and the
+    weapon can cast _cone of cold_ once per day
+
+    - **14th** The additional cold damage increases to 1d4
+
+    - **16th** The weapon's _chilling spray_, _cone of cold_, and _ice storm_
+    heighten to 6th rank
+
+    - **18th** The additional cold damage increases to 1d6
+
+    - **20th** The weapon can cast 9th rank _polar ray_ once per day
+  header:
+    level-4-spells: >-
+      The weapon can cast 1st rank
+      @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Chilling Spray}
+      once per day.
+    level-6-spells: >-
+      The weapon can cast 2nd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Chilling Spray}
+      once per day.
+    level-10-spells: >-
+      The weapon can cast 2nd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Chilling Spray}
+      and @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx]{Ice Storm}
+      once per day each.
+    level-12-spells: >-
+      The weapon can cast 3rd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Chilling Spray},
+      @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx]{Ice Storm} and
+      @UUID[Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k]{Cone of Cold} once
+      per day each.
+    level-16-spells: >-
+      The weapon can cast 6th rank
+      @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Chilling Spray},
+      6th rank @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx]{Ice
+      Storm}, and 6th rank
+      @UUID[Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k]{Cone of Cold} once
+      per day each.
+    level-20-polar-ray: >-
+      The weapon can cast 9th rank
+      @UUID[Compendium.pf2e.spells-srd.Item.BKIet436snMNcnez]{Polar Ray} once
+      per day.
+might:
+  label: Cold (Might)
+  description: >-
+    **Type** Weapon
+
+
+    **Parts** The monster must have the cold trait or an attack or spell that
+    deals cold damage.
+
+    - - -
+
+    **Effect** You imbue the weapon with chilling _cold_.
+    
+
+    **Path** Might
+
+    - **4th** Strikes with the weapon deal 1 additional cold damage
+
+    - **6th** The additional cold damage increases to 1d4
+
+    - **8th** The additional cold damage increases to 1d6. On a critical hit,
+    the target is also slowed 1 until the end of your next turn unless it
+    succeeds at a Fortitude save against the weapon’s DC
+
+    - **12th** The cold damage dealt by this imbued property ignores resistances
+
+    - **14th** On a critical hit with the weapon, the target also takes a
+    –10-foot status penalty to its Speeds for 1 round
+
+    - **18th** The additional cold damage increases to 1d8
+
+    - **20th** On a successful Strike with the weapon, before applying cold
+    damage, the target gains weakness 1 to cold until the beginning of your next
+    turn
+  effects:
+    level-8-note: >-
+      The target is also
+      @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1}
+      until the end of your next turn unless it succeeds at a Fortitude save
+      against the weapon's DC.
+    level-12-note: The cold damage dealt by this imbued property ignores resistances.
+    level-14-note: >-
+      The target is also
+      @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1}
+      until the end of your next turn unless it succeeds at a Fortitude save
+      against the weapon's DC, and takes –10-foot status penalty to its Speeds
+      for 1 round.
+    level-20-note: >-
+      Before applying cold damage, the target gains weakness 1 to cold until the
+      beginning of your next turn.
+      @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
+      Might Path Damage Weakness}
+  header:
+    level-8-slow: >-
+      On a critical hit, the target is also
+      @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1}
+      until the end of your next turn unless it succeeds at a Fortitude save
+      against the weapon's DC.
+    level-12-resistance: The cold damage dealt by this imbued property ignores resistances.
+    level-14-slow: >-
+      On a critical hit, the target is also
+      @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1}
+      until the end of your next turn unless it succeeds at a Fortitude save
+      against the weapon's DC, and takes –10-foot status penalty to its Speeds
+      for 1 round.
+    level-20-weakness: >-
+      On a successful Strike with the weapon, before applying cold damage, the
+      target gains weakness 1 to cold until the beginning of your next turn.
+tech:
+  label: Cold (Technique)
+  description: >-
+    **Type** Weapon
+
+
+    **Parts** The monster must have the cold trait or an attack or spell that
+    deals cold damage.
+
+    - - -
+
+    **Effect** You imbue the weapon with chilling _cold_.
+    
+
+    **Path** Technique
+
+    - **4th** Strikes with the weapon deal 1 persistent cold damage
+
+    - **6th** On a successful Strike with the weapon, the target takes a –5-foot
+    status penalty to its Speeds for 1 round
+
+    - **8th** On a critical hit, the target is also slowed 1 until the end of
+    your next turn unless it succeeds at a Fortitude save against the weapon’s
+    DC. The status penalty to a target’s Speeds increases to –10
+
+    - **12th** The persistent cold damage dealt by this imbued property ignores
+    resistances
+
+    - **14th** A creature with their Speeds decreased by the imbued property
+    thaws more slowly. The penalty lasts as long as the persistent cold damage
+    does
+
+    - **16th** Foes adjacent to a surface who critically fail the save against
+    the slow effect freeze to that surface (usually the ground), becoming
+    immobilized until they Escape against the item’s DC
+
+    - **18th** The persistent cold damage on a hit increases to 1d4
+
+    - **20th** The status penalty to a target’s Speeds increases to –15
+  effects:
+    level-6-note: The target takes a –5-foot status penalty to its Speeds for 1 round.
+    level-8-note: >-
+      The target takes a –10-foot status penalty to its Speeds for 1 round. On a
+      critical hit, the target is also
+      @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1}
+      until the end of your next turn unless it succeeds at a Fortitude save
+      against the weapon's DC.
+    level-12-note: >-
+      The persistent cold damage dealt by this imbued property ignores
+      resistances.
+    level-14-note: >-
+      The target takes a –10-foot status penalty to its Speeds as long as it
+      receives persistent cold damage. On a critical hit, the target is also
+      @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1}
+      until the end of your next turn unless it succeeds at a Fortitude save
+      against the weapon's DC.
+    level-16-note: >-
+      Foes adjacent to a surface who critically fail the save against the slow
+      effect freeze to that surface (usually the ground), becoming
+      @UUID[Compendium.pf2e.conditionitems.Item.eIcWbB5o3pP6OIMe]{Immobilized} until they
+      [[/act escape]] against the item's DC.
+    level-20-note: >-
+      The target takes a –15-foot status penalty to its Speeds as long as it
+      receives persistent cold damage. On a critical hit, the target is also
+      @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1}
+      until the end of your next turn unless it succeeds at a Fortitude save
+      against the weapon's DC.
+  header:
+    level-6-slow: >-
+      On a successful Strike with the weapon, the target takes a –5-foot status
+      penalty to its Speeds for 1 round.
+    level-8-slow: >-
+      On a successful Strike with the weapon, the target takes a –10-foot status
+      penalty to its Speeds for 1 round. On a critical hit, the target is also
+      @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1}
+      until the end of your next turn unless it succeeds at a Fortitude save
+      against the weapon's DC.
+    level-12-resistance: >-
+      The persistent cold damage dealt by this imbued property ignores
+      resistances.
+    level-14-slow: >-
+      On a successful Strike with the weapon, the target takes a –10-foot status
+      penalty to its Speeds as long as it receives persistent cold damage. On a
+      critical hit, the target is also
+      @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1}
+      until the end of your next turn unless it succeeds at a Fortitude save
+      against the weapon's DC.
+    level-16-surface: >-
+      Foes adjacent to a surface who critically fail the save against the slow
+      effect freeze to that surface (usually the ground), becoming
+      @UUID[Compendium.pf2e.conditionitems.Item.eIcWbB5o3pP6OIMe]{Immobilized} until they
+      [[/act escape]] against the item's DC.
+    level-20-slow: >-
+      On a successful Strike with the weapon, the target takes a –15-foot status
+      penalty to its Speeds as long as it receives persistent cold damage. On a
+      critical hit, the target is also
+      @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1}
+      until the end of your next turn unless it succeeds at a Fortitude save
+      against the weapon's DC.

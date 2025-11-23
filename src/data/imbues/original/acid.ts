@@ -215,7 +215,6 @@ export function createImbueAcid(): MaterialData[] {
                     });
                 },
             ),
-
             {
                 levelMin: 8,
                 levelMax: 13,
@@ -248,11 +247,6 @@ export function createImbueAcid(): MaterialData[] {
                     title: lkey("might.label"),
                     selector: ["{item|id}-damage"],
                 },
-            },
-            {
-                levelMin: 20,
-                type: "RuleElement",
-                rule: { key: "RollOption", option: "might-path-weakness:acid" },
             },
             {
                 levelMin: 20,
