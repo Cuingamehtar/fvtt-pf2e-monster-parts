@@ -3,18 +3,21 @@ magic:
   label: Electricity (Magic)
   description: >-
     **Type** Weapon
-    
 
-    **Parts** The monster must have the electricity trait or an attack or spell that deals electricity damage.
+
+    **Parts** The monster must have the electricity trait or an attack or spell
+    that deals electricity damage.
 
     - - -
-    
+
     **Effect** You imbue the weapon with shocking _electricity_.
-    
 
-    **Path** Magic; Choose when you first imbue the weapon for the granted spells to be either arcane or primal
 
-    - **2nd** The weapon can cast electric arc as a cantrip, heightened to half the item’s level rounded up
+    **Path** Magic; Choose when you first imbue the weapon for the granted
+    spells to be either arcane or primal
+
+    - **2nd** The weapon can cast electric arc as a cantrip, heightened to half
+    the item’s level rounded up
 
     - **4th** The weapon can cast shocking grasp once per day
 
@@ -24,46 +27,51 @@ magic:
 
     - **10th** Strikes with the weapon deal 1 additional electricity damage
 
-    - **12th** The weapon’s lightning bolt heightens to 4th rank, and the weapon can cast lightning storm once per day
+    - **12th** The weapon’s lightning bolt heightens to 4th rank, and the weapon
+    can cast lightning storm once per day
 
     - **14th** The additional electricity damage increases to 1d4
 
-    - **16th** The weapon can cast chain lightning but can no longer cast lightning bolt. The weapon’s shocking grasp and lightning storm heighten to 6th rank
+    - **16th** The weapon can cast chain lightning but can no longer cast
+    lightning bolt. The weapon’s shocking grasp and lightning storm heighten to
+    6th rank
 
     - **18th** The additional electricity damage increases to 1d6
 
-    - **20th** The weapon’s chain lightning heightens to 9th rank, and lightning storm and shocking grasp heighten to 7th rank
+    - **20th** The weapon’s chain lightning heightens to 9th rank, and lightning
+    storm and shocking grasp heighten to 7th rank
   header:
     level-4-spells: >-
       The weapon can cast 1st rank
-      @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} once
-      per day.
+      @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp}
+      once per day.
     level-6-spells: >-
       The weapon can cast 2nd rank
-      @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} once
-      per day.
+      @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp}
+      once per day.
     level-8-spells: >-
       The weapon can cast 2nd rank
-      @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} and
-      @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2]{Lightning Bolt} once
-      per day each.
+      @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp}
+      and @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2]{Lightning
+      Bolt} once per day each.
     level-12-spells: >-
       The weapon can cast 2nd rank
-      @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp}, 4th
-      rank @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2]{Lightning Bolt}
-      and @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Lightning Storm}
+      @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp},
+      4th rank @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2]{Lightning
+      Bolt} and
+      @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Lightning Storm}
       once per day each.
     level-16-spells: >-
       The weapon can cast 6th rank
-      @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp}, 6th
-      rank @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Lightning
+      @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp},
+      6th rank @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Lightning
       Storm}, and 6th rank
       @UUID[Compendium.pf2e.spells-srd.Item.TDNlDWbYb58Y55Da]{Chain Lightning}
       once per day each.
     level-20-spells: >-
       The weapon can cast 7th rank
-      @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp}, 7th
-      rank @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Lightning
+      @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp},
+      7th rank @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Lightning
       Storm} and 9th rank
       @UUID[Compendium.pf2e.spells-srd.Item.TDNlDWbYb58Y55Da]{Chain Lightning}
       once per day each.
@@ -71,14 +79,15 @@ might:
   label: Electricity (Might)
   description: >-
     **Type** Weapon
-    
 
-    **Parts** The monster must have the electricity trait or an attack or spell that deals electricity damage.
+
+    **Parts** The monster must have the electricity trait or an attack or spell
+    that deals electricity damage.
 
     - - -
-    
+
     **Effect** You imbue the weapon with shocking _electricity_.
-    
+
 
     **Path** Might
 
@@ -86,29 +95,33 @@ might:
 
     - **6th** The additional electricity damage increases to 1d4
 
-    - **8th** The additional electricity damage increases to 1d6. On a critical hit, electricity arcs out to deal an equal amount of electricity damage to up to two other creatures of your choice within 10 feet of the target
+    - **8th** The additional electricity damage increases to 1d6. On a critical
+    hit, electricity arcs out to deal an equal amount of electricity damage to
+    up to two other creatures of your choice within 10 feet of the target
 
-    - **12th** The electricity damage dealt by this imbued property ignores resistances
+    - **12th** The electricity damage dealt by this imbued property ignores
+    resistances
 
-    - **14th** The two additional creatures that take electricity damage on a critical hit can be up to 20 feet away from the target
+    - **14th** The two additional creatures that take electricity damage on a
+    critical hit can be up to 20 feet away from the target
 
     - **18th** The additional electricity damage increases to 1d8
 
-    - **20th** On a successful Strike with the weapon, before applying electricity damage, the target gains weakness 1 to electricity until the beginning of your next turn
+    - **20th** On a successful Strike with the weapon, before applying
+    electricity damage, the target gains weakness 1 to electricity until the
+    beginning of your next turn
   effects:
     level-8-arc: >-
-      Electricity arcs out to deal an equal amount of
-      electricity damage to up to two other creatures of your choice within 10
-      feet of the target.
+      Electricity arcs out to deal an equal amount of electricity damage to up
+      to two other creatures of your choice within 10 feet of the target.
     level-12-resistance: The electricity damage dealt by this imbued property ignores resistances.
     level-14-arc: >-
-      Electricity arcs out to deal an equal amount of
-      electricity damage to up to two other creatures of your choice within 20
-      feet of the target.
+      Electricity arcs out to deal an equal amount of electricity damage to up
+      to two other creatures of your choice within 20 feet of the target.
     level-20-weakness: >-
-      Before applying electricity damage,
-      the target gains weakness 1 to electricity until the beginning of your next
-      turn. @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
+      Before applying electricity damage, the target gains weakness 1 to
+      electricity until the beginning of your next turn.
+      @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
       Might Path Damage Weakness}
   header:
     level-8-arc: >-
@@ -121,56 +134,67 @@ might:
       electricity damage to up to two other creatures of your choice within 20
       feet of the target.
     level-20-weakness: >-
-      On a successful Strike with the weapon, before applying electricity damage,
-      the target gains weakness 1 to electricity until the beginning of your next
-      turn.
+      On a successful Strike with the weapon, before applying electricity
+      damage, the target gains weakness 1 to electricity until the beginning of
+      your next turn.
 tech:
   label: Electricity (Technique)
   description: >-
     **Type** Weapon
-    
-    
-    **Parts** The monster must have the electricity trait or an attack or spell that deals electricity damage.
+
+
+    **Parts** The monster must have the electricity trait or an attack or spell
+    that deals electricity damage.
 
     - - -
-    
+
     **Effect** You imbue the weapon with shocking _electricity_.
-    
-    
+
+
     **Path** Technique
 
     - **4th** Strikes with the weapon deal 1 persistent electricity damage
 
     - **6th** Strikes with the weapon deal 1 additional electricity damage
 
-    - **8th** The persistent electricity damage increases to 1d6. On a critical hit, electricity arcs out to deal an equal amount of electricity damage and persistent electricity damage to up to two other creatures of your choice within 10 feet of the target
+    - **8th** The persistent electricity damage increases to 1d6. On a critical
+    hit, electricity arcs out to deal an equal amount of electricity damage and
+    persistent electricity damage to up to two other creatures of your choice
+    within 10 feet of the target
 
-    - **12th** The electricity damage dealt by this imbued property (including persistent electricity damage) ignores resistances
+    - **12th** The electricity damage dealt by this imbued property (including
+    persistent electricity damage) ignores resistances
 
     - **14th** The persistent electricity damage on a hit increases to 1d8
 
-    - **16th** On a critical hit, the electricity arcs out to up to four other creatures of your choice within 20 feet of the target
+    - **16th** On a critical hit, the electricity arcs out to up to four other
+    creatures of your choice within 20 feet of the target
 
     - **18th** The persistent electricity damage on a hit increases to 1d10
 
-    - **20th** Creatures suffering persistent electricity damage from this imbued property become magnetized, attracting metal weapons. Strikes with metal weapons gain a +1 circumstance bonus to hit them as long as they have the persistent electricity damage
+    - **20th** Creatures suffering persistent electricity damage from this
+    imbued property become magnetized, attracting metal weapons. Strikes with
+    metal weapons gain a +1 circumstance bonus to hit them as long as they have
+    the persistent electricity damage
   effects:
     level-8-arc: >-
-      Electricity arcs out to deal an equal amount of
-      electricity damage and persistent electricity damage to up to two other
-      creatures of your choice within 10 feet of the target.
+      Electricity arcs out to deal an equal amount of electricity damage and
+      persistent electricity damage to up to two other creatures of your choice
+      within 10 feet of the target.
     level-12-resistance: >-
       The electricity damage dealt by this imbued property (including persistent
       electricity damage) ignores resistances.
     level-16-arc: >-
-      Electricity arcs out to deal an equal amount of
-      electricity damage and persistent electricity damage to up to four other
-      creatures of your choice within 20 feet of the target.
+      Electricity arcs out to deal an equal amount of electricity damage and
+      persistent electricity damage to up to four other creatures of your choice
+      within 20 feet of the target.
     level-20-magnetized: >-
-      Creatures suffering persistent electricity damage from this imbued property
-      become magnetized, attracting metal weapons. Strikes with metal weapons gain
-      a +1 circumstance bonus to hit them as long as they have the persistent
-      electricity damage. @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.0tK7GgiqVUu9Jf5q]{Effect: Electricity Imbuement (Magnetized)}
+      Creatures suffering persistent electricity damage from this imbued
+      property become magnetized, attracting metal weapons. Strikes with metal
+      weapons gain a +1 circumstance bonus to hit them as long as they have the
+      persistent electricity damage.
+      @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.0tK7GgiqVUu9Jf5q]{Effect:
+      Electricity Imbuement (Magnetized)}
     strike-with-metal-weapon: Strike With a Metal Weapon
   header:
     level-8-arc: >-
@@ -185,7 +209,7 @@ tech:
       electricity damage and persistent electricity damage to up to four other
       creatures of your choice within 20 feet of the target.
     level-20-magnetized: >-
-      Creatures suffering persistent electricity damage from this imbued property
-      become magnetized, attracting metal weapons. Strikes with metal weapons gain
-      a +1 circumstance bonus to hit them as long as they have the persistent
-      electricity damage.
+      Creatures suffering persistent electricity damage from this imbued
+      property become magnetized, attracting metal weapons. Strikes with metal
+      weapons gain a +1 circumstance bonus to hit them as long as they have the
+      persistent electricity damage.
