@@ -1,0 +1,77 @@
+{
+  "name": "Effect: Electricity Imbuement (Magnetized)",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.953,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>Granted by Technique path of Electricity Imbuement.</p><p>Strikes made against you with metal weapons gain +1 circumstance bonus to attack rolls.</p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [
+      {
+        "key": "EphemeralEffect",
+        "uuid": "Compendium.pf2e-monster-parts.activations-and-effects.Item.E7SVbmdbmSImDv8Z",
+        "selectors": [
+          "strike-attack-roll"
+        ],
+        "affects": "origin"
+      }
+    ],
+    "slug": null,
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "level": {
+      "value": 1
+    },
+    "duration": {
+      "value": -1,
+      "unit": "unlimited",
+      "expiry": null,
+      "sustained": false
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "unidentified": false,
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "badge": null,
+    "fromSpell": false,
+    "context": null
+  },
+  "_id": "0tK7GgiqVUu9Jf5q",
+  "img": "systems/pf2e/icons/default-icons/effect.svg",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "My4TCMjLEU7yUq2Y": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "pf2e",
+    "systemVersion": "7.7.4",
+    "createdTime": 1763969892729,
+    "modifiedTime": 1763970913804,
+    "lastModifiedBy": "My4TCMjLEU7yUq2Y"
+  },
+  "_key": "!items!0tK7GgiqVUu9Jf5q"
+}

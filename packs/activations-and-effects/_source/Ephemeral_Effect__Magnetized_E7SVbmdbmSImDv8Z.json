@@ -1,0 +1,81 @@
+{
+  "name": "Ephemeral Effect: Magnetized",
+  "type": "effect",
+  "effects": [],
+  "system": {
+    "_migration": {
+      "version": 0.953,
+      "previous": null
+    },
+    "description": {
+      "value": "<p>Ephemeral Effect.</p><p>You gain +1 circumstance bonus to attack rolls made with metal weapons (to automatically check the bonus, grant the attacker \"metal-weapon\" roll option).</p>",
+      "gm": ""
+    },
+    "publication": {
+      "title": "",
+      "authors": "",
+      "license": "OGL",
+      "remaster": false
+    },
+    "rules": [
+      {
+        "key": "FlatModifier",
+        "label": "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.electricity.tech.effects.strike-with-metal-weapon",
+        "value": 1,
+        "selector": [
+          "weapon-attack-roll"
+        ],
+        "type": "circumstance",
+        "predicate": [
+          "metal-weapon"
+        ]
+      }
+    ],
+    "slug": null,
+    "traits": {
+      "otherTags": [],
+      "value": []
+    },
+    "level": {
+      "value": 1
+    },
+    "duration": {
+      "value": -1,
+      "unit": "unlimited",
+      "expiry": null,
+      "sustained": false
+    },
+    "tokenIcon": {
+      "show": true
+    },
+    "unidentified": false,
+    "start": {
+      "value": 0,
+      "initiative": null
+    },
+    "badge": null,
+    "fromSpell": false,
+    "context": null
+  },
+  "_id": "E7SVbmdbmSImDv8Z",
+  "img": "systems/pf2e/icons/default-icons/effect.svg",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "My4TCMjLEU7yUq2Y": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "exportSource": null,
+    "coreVersion": "13.351",
+    "systemId": "pf2e",
+    "systemVersion": "7.7.4",
+    "createdTime": 1763969912184,
+    "modifiedTime": 1763970791604,
+    "lastModifiedBy": "My4TCMjLEU7yUq2Y"
+  },
+  "_key": "!items!E7SVbmdbmSImDv8Z"
+}

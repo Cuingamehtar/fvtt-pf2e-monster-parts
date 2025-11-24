@@ -45,6 +45,10 @@ export function createImbueElectricity(): MaterialData[] {
             ...base,
             key: "imbue:electricity:magic",
             label: { type: "key", key: lkey("magic.label") },
+            description: {
+                type: "key",
+                key: lkey("magic.description"),
+            },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -71,12 +75,12 @@ export function createImbueElectricity(): MaterialData[] {
                     ...helpers.leveledLabels(
                         [4, 6, 8, 12, 16, 20],
                         [
-                            "magic.level-4-spells",
-                            "magic.level-6-spells",
-                            "magic.level-8-spells",
-                            "magic.level-12-spells",
-                            "magic.level-16-spells",
-                            "magic.level-20-spells",
+                            "magic.header.level-4-spells",
+                            "magic.header.level-6-spells",
+                            "magic.header.level-8-spells",
+                            "magic.header.level-12-spells",
+                            "magic.header.level-16-spells",
+                            "magic.header.level-20-spells",
                         ],
                         (key: Parameters<typeof lkey>[0]) => ({
                             text: { type: "key", key: lkey(key) },
@@ -102,6 +106,10 @@ export function createImbueElectricity(): MaterialData[] {
             ...base,
             key: "imbue:electricity:might",
             label: { type: "key", key: lkey("might.label") },
+            description: {
+                type: "key",
+                key: lkey("might.description"),
+            },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -119,7 +127,7 @@ export function createImbueElectricity(): MaterialData[] {
                         levelMax: 13,
                         text: {
                             type: "key",
-                            key: lkey("might.level-8-arc"),
+                            key: lkey("might.header.level-8-arc"),
                         },
                         sort: 1,
                     },
@@ -127,7 +135,7 @@ export function createImbueElectricity(): MaterialData[] {
                         levelMin: 14,
                         text: {
                             type: "key",
-                            key: lkey("might.level-14-arc"),
+                            key: lkey("might.header.level-14-arc"),
                         },
                         sort: 1,
                     },
@@ -135,7 +143,7 @@ export function createImbueElectricity(): MaterialData[] {
                         levelMin: 12,
                         text: {
                             type: "key",
-                            key: lkey("might.level-12-resistance"),
+                            key: lkey("might.header.level-12-resistance"),
                         },
                         sort: 2,
                     },
@@ -143,7 +151,7 @@ export function createImbueElectricity(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("might.level-20-weakness"),
+                            key: lkey("might.header.level-20-weakness"),
                         },
                         sort: 3,
                     },
@@ -160,12 +168,60 @@ export function createImbueElectricity(): MaterialData[] {
                             label: lkey("might.label"),
                         }),
                 ),
+                {
+                    levelMin: 8,
+                    levelMax: 13,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("might.effects.level-8-arc"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 14,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("might.effects.level-14-arc"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 12,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("might.effects.level-12-resistance"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 20,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("might.effects.level-20-weakness"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-attack"],
+                    },
+                },
             ],
         },
         {
             ...base,
             key: "imbue:electricity:tech",
             label: { type: "key", key: lkey("tech.label") },
+            description: {
+                type: "key",
+                key: lkey("tech.description"),
+            },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -191,7 +247,7 @@ export function createImbueElectricity(): MaterialData[] {
                         levelMax: 15,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-8-arc"),
+                            key: lkey("tech.header.level-8-arc"),
                         },
                         sort: 1,
                     },
@@ -199,7 +255,7 @@ export function createImbueElectricity(): MaterialData[] {
                         levelMin: 16,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-16-arc"),
+                            key: lkey("tech.header.level-16-arc"),
                         },
                         sort: 1,
                     },
@@ -207,7 +263,7 @@ export function createImbueElectricity(): MaterialData[] {
                         levelMin: 12,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-12-resistance"),
+                            key: lkey("tech.header.level-12-resistance"),
                         },
                         sort: 2,
                     },
@@ -215,7 +271,7 @@ export function createImbueElectricity(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-20-magnetized"),
+                            key: lkey("tech.header.level-20-magnetized"),
                         },
                         sort: 3,
                     },
@@ -241,6 +297,50 @@ export function createImbueElectricity(): MaterialData[] {
                             label: lkey("tech.label"),
                         }),
                 ),
+                {
+                    levelMin: 8,
+                    levelMax: 13,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("might.effects.level-8-arc"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 14,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("might.effects.level-14-arc"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 12,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("tech.effects.level-12-resistance"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 20,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("tech.effects.level-20-magnetized"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
             ],
         },
     ];

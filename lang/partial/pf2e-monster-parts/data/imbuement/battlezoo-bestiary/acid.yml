@@ -125,8 +125,7 @@ might:
       this damage instead.
     level-20-note: >-
       Before applying acid damage, the target gains weakness 1 to acid until the
-      beginning of your next turn.
-      @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
+      beginning of your next turn. @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
       Might Path Damage Weakness}
   header:
     level-8-armor: >-

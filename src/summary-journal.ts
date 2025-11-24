@@ -8,13 +8,20 @@ let journal: JournalEntry | undefined = undefined;
 export function renderSummaryJournal(materialKey?: string) {
     if (!journal) {
         const config = getConfig();
-        const entries = [...config.materials.values()];
+        const materials = [...config.materials.values()];
+        /* const _refinementPages = materials
+            .filter((e) => e.type === "refinement")
+            .map((m) => generatePage(m))
+            .sort((a, b) => a.name.localeCompare(b.name)); */
+
+        const imbuementPages = materials
+            .filter((e) => e.type === "imbuement")
+            .map((m) => generatePage(m))
+            .sort((a, b) => a.name.localeCompare(b.name));
+
         journal = new CONFIG.JournalEntry.documentClass({
-            name: "Imbuements",
-            pages: entries
-                .filter((e) => e.type === "imbuement")
-                .map((m) => generatePage(m))
-                .sort((a, b) => a.name.localeCompare(b.name)),
+            name: "Materials",
+            pages: imbuementPages,
         });
     }
     if (!materialKey) return journal.sheet.render(true);
