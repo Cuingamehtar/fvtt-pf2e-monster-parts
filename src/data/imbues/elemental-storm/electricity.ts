@@ -8,10 +8,10 @@ export function createImbueElectricity(): MaterialData[] {
         k: keyof Flatten<
             Nested<
                 I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.electricity"
+                "pf2e-monster-parts.data.imbuement.elemental-storm.electricity"
             >
         >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.electricity.${k}`);
+    ): I18nKey => tkey(`data.imbuement.elemental-storm.electricity.${k}`);
 
     const base = {
         type: "imbuement" as "imbuement",

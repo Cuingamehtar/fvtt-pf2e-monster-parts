@@ -17,7 +17,7 @@ magic:
     spells to be either arcane or primal
 
     - **2nd** The weapon can cast _ray of frost_ as a cantrip, heightened to
-    half the item’s level rounded up
+    half the item's level rounded up
 
     - **4th** The weapon can cast _chilling spray_ once per day
 
@@ -91,7 +91,7 @@ might:
 
     - **8th** The additional cold damage increases to 1d6. On a critical hit,
     the target is also slowed 1 until the end of your next turn unless it
-    succeeds at a Fortitude save against the weapon’s DC
+    succeeds at a Fortitude save against the weapon's DC
 
     - **12th** The cold damage dealt by this imbued property ignores resistances
 
@@ -158,8 +158,8 @@ tech:
     status penalty to its Speeds for 1 round
 
     - **8th** On a critical hit, the target is also slowed 1 until the end of
-    your next turn unless it succeeds at a Fortitude save against the weapon’s
-    DC. The status penalty to a target’s Speeds increases to –10
+    your next turn unless it succeeds at a Fortitude save against the weapon's
+    DC. The status penalty to a target's Speeds increases to –10
 
     - **12th** The persistent cold damage dealt by this imbued property ignores
     resistances
@@ -170,11 +170,11 @@ tech:
 
     - **16th** Foes adjacent to a surface who critically fail the save against
     the slow effect freeze to that surface (usually the ground), becoming
-    immobilized until they Escape against the item’s DC
+    immobilized until they Escape against the item's DC
 
     - **18th** The persistent cold damage on a hit increases to 1d4
 
-    - **20th** The status penalty to a target’s Speeds increases to –15
+    - **20th** The status penalty to a target's Speeds increases to –15
   effects:
     level-6-slow: The target takes a –5-foot status penalty to its Speeds for 1 round.
     level-8-slow: >-

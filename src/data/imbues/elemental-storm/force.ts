@@ -8,10 +8,10 @@ export function createImbueForce(): MaterialData[] {
         k: keyof Flatten<
             Nested<
                 I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.force"
+                "pf2e-monster-parts.data.imbuement.elemental-storm.force"
             >
         >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.force.${k}`);
+    ): I18nKey => tkey(`data.imbuement.elemental-storm.force.${k}`);
 
     const base = {
         type: "imbuement" as "imbuement",
@@ -45,6 +45,7 @@ export function createImbueForce(): MaterialData[] {
             ...base,
             key: "imbue:force:magic",
             label: { type: "key", key: lkey("magic.label") },
+            description: { type: "key", key: lkey("magic.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -71,11 +72,11 @@ export function createImbueForce(): MaterialData[] {
                     ...helpers.leveledLabels(
                         [4, 6, 8, 12, 16],
                         [
-                            "magic.level-4-spells",
-                            "magic.level-6-spells",
-                            "magic.level-8-spells",
-                            "magic.level-12-spells",
-                            "magic.level-16-spells",
+                            "magic.header.level-4-spells",
+                            "magic.header.level-6-spells",
+                            "magic.header.level-8-spells",
+                            "magic.header.level-12-spells",
+                            "magic.header.level-16-spells",
                         ],
                         (key: Parameters<typeof lkey>[0]) => ({
                             text: { type: "key", key: lkey(key) },
@@ -86,7 +87,9 @@ export function createImbueForce(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("magic.level-20-spirit-song"),
+                            key: lkey(
+                                "magic.header.level-20-telekinetic-storm",
+                            ),
                         },
                         sort: 3,
                     },
@@ -109,6 +112,7 @@ export function createImbueForce(): MaterialData[] {
             ...base,
             key: "imbue:force:might",
             label: { type: "key", key: lkey("might.label") },
+            description: { type: "key", key: lkey("might.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -126,7 +130,7 @@ export function createImbueForce(): MaterialData[] {
                         levelMax: 15,
                         text: {
                             type: "key",
-                            key: lkey("might.level-10-push"),
+                            key: lkey("might.header.level-10-push"),
                         },
                         sort: 1,
                     },
@@ -134,7 +138,7 @@ export function createImbueForce(): MaterialData[] {
                         levelMin: 16,
                         text: {
                             type: "key",
-                            key: lkey("might.level-16-push"),
+                            key: lkey("might.header.level-16-push"),
                         },
                         sort: 1,
                     },
@@ -142,7 +146,7 @@ export function createImbueForce(): MaterialData[] {
                         levelMin: 12,
                         text: {
                             type: "key",
-                            key: lkey("might.level-12-resistance"),
+                            key: lkey("might.header.level-12-resistance"),
                         },
                         sort: 2,
                     },
@@ -150,7 +154,7 @@ export function createImbueForce(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("might.level-20-weakness"),
+                            key: lkey("might.header.level-20-weakness"),
                         },
                         sort: 3,
                     },
@@ -167,12 +171,57 @@ export function createImbueForce(): MaterialData[] {
                             label: lkey("might.label"),
                         }),
                 ),
+                {
+                    levelMin: 10,
+                    levelMax: 15,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("might.effects.level-10-push"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 16,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("might.effects.level-16-push"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 12,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("might.effects.level-12-resistance"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 20,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("might.effects.level-20-weakness"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-attack"],
+                    },
+                },
             ],
         },
         {
             ...base,
             key: "imbue:force:tech",
             label: { type: "key", key: lkey("tech.label") },
+            description: { type: "key", key: lkey("tech.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -198,7 +247,7 @@ export function createImbueForce(): MaterialData[] {
                         levelMax: 13,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-8-push"),
+                            key: lkey("tech.header.level-8-push"),
                         },
                         sort: 1,
                     },
@@ -207,7 +256,7 @@ export function createImbueForce(): MaterialData[] {
                         levelMax: 17,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-14-push"),
+                            key: lkey("tech.header.level-14-push"),
                         },
                         sort: 1,
                     },
@@ -215,7 +264,7 @@ export function createImbueForce(): MaterialData[] {
                         levelMin: 18,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-18-push"),
+                            key: lkey("tech.header.level-18-push"),
                         },
                         sort: 1,
                     },
@@ -223,7 +272,7 @@ export function createImbueForce(): MaterialData[] {
                         levelMin: 16,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-16-off-guard"),
+                            key: lkey("tech.header.level-16-off-guard"),
                         },
                         sort: 2,
                     },
@@ -231,7 +280,7 @@ export function createImbueForce(): MaterialData[] {
                         levelMin: 12,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-12-resistance"),
+                            key: lkey("tech.header.level-12-resistance"),
                         },
                         sort: 3,
                     },
@@ -239,7 +288,7 @@ export function createImbueForce(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-20-prone"),
+                            key: lkey("tech.header.level-20-prone"),
                         },
                         sort: 4,
                     },
@@ -265,6 +314,45 @@ export function createImbueForce(): MaterialData[] {
                             label: lkey("tech.label"),
                         }),
                 ),
+                ...helpers.leveledEffects(
+                    [8, 14, 18],
+                    [
+                        "tech.effects.level-8-push",
+                        "tech.effects.level-14-push",
+                        "tech.effects.level-18-push",
+                    ],
+                    (k: Parameters<typeof lkey>[0]) => ({
+                        type: "RuleElement",
+                        rule: {
+                            key: "Note",
+                            outcome: ["criticalSuccess"],
+                            text: lkey(k),
+                            title: lkey("tech.label"),
+                            selector: ["{item|id}-damage"],
+                        },
+                    }),
+                ),
+                {
+                    levelMin: 16,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("tech.effects.level-16-off-guard"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 12,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("tech.effects.level-12-resistance"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
             ],
         },
     ];

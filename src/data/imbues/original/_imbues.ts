@@ -4,8 +4,6 @@ import { createImbueCharisma } from "./charisma";
 import { createImbueCold } from "./cold";
 import { createImbueConstitution } from "./constitution";
 import { createImbueDexterity } from "./dexterity";
-import { createImbueElectricity } from "./electricity";
-import { createImbueForce } from "./force";
 import { createImbueFortification } from "./fortification";
 import { createImbueIntelligence } from "./intelligence";
 import { createImbueMental } from "./mental";
@@ -27,10 +25,10 @@ export function createOriginalImbues() {
         ...createImbueCold(),
         createImbueConstitution(),
         createImbueDexterity(),
-        ...createImbueElectricity(),
+        // ...createImbueElectricity(),
         ...createImbueEnergyResistant(),
         // ...createImbueFire(),
-        ...createImbueForce(),
+        //...createImbueForce(),
         createImbueFortification(),
         createImbueIntelligence(),
         ...createImbueMental(),

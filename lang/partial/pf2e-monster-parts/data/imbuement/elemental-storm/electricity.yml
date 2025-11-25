@@ -17,28 +17,28 @@ magic:
     spells to be either arcane or primal
 
     - **2nd** The weapon can cast electric arc as a cantrip, heightened to half
-    the item’s level rounded up
+    the item's level rounded up
 
     - **4th** The weapon can cast shocking grasp once per day
 
-    - **6th** The weapon’s shocking grasp heightens to 2nd rank
+    - **6th** The weapon's shocking grasp heightens to 2nd rank
 
     - **8th** The weapon can cast lightning bolt once per day
 
     - **10th** Strikes with the weapon deal 1 additional electricity damage
 
-    - **12th** The weapon’s lightning bolt heightens to 4th rank, and the weapon
+    - **12th** The weapon's lightning bolt heightens to 4th rank, and the weapon
     can cast lightning storm once per day
 
     - **14th** The additional electricity damage increases to 1d4
 
     - **16th** The weapon can cast chain lightning but can no longer cast
-    lightning bolt. The weapon’s shocking grasp and lightning storm heighten to
+    lightning bolt. The weapon's shocking grasp and lightning storm heighten to
     6th rank
 
     - **18th** The additional electricity damage increases to 1d6
 
-    - **20th** The weapon’s chain lightning heightens to 9th rank, and lightning
+    - **20th** The weapon's chain lightning heightens to 9th rank, and lightning
     storm and shocking grasp heighten to 7th rank
   header:
     level-4-spells: >-
