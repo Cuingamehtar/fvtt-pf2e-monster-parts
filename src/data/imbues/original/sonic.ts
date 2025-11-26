@@ -45,6 +45,7 @@ export function createImbueSonic(): MaterialData[] {
             ...base,
             key: "imbue:sonic:might",
             label: { type: "key", key: lkey("might.label") },
+            description: { type: "key", key: lkey("might.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -62,7 +63,7 @@ export function createImbueSonic(): MaterialData[] {
                         levelMax: 13,
                         text: {
                             type: "key",
-                            key: lkey("might.level-8-deafened"),
+                            key: lkey("might.header.level-8-deafened"),
                         },
                         sort: 1,
                     },
@@ -70,7 +71,7 @@ export function createImbueSonic(): MaterialData[] {
                         levelMin: 14,
                         text: {
                             type: "key",
-                            key: lkey("might.level-14-deafened"),
+                            key: lkey("might.header.level-14-deafened"),
                         },
                         sort: 1,
                     },
@@ -78,7 +79,7 @@ export function createImbueSonic(): MaterialData[] {
                         levelMin: 12,
                         text: {
                             type: "key",
-                            key: lkey("might.level-12-resistance"),
+                            key: lkey("might.header.level-12-resistance"),
                         },
                         sort: 2,
                     },
@@ -86,7 +87,7 @@ export function createImbueSonic(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("might.level-20-weakness"),
+                            key: lkey("might.header.level-20-weakness"),
                         },
                         sort: 3,
                     },
@@ -103,12 +104,57 @@ export function createImbueSonic(): MaterialData[] {
                             label: lkey("might.label"),
                         }),
                 ),
+                {
+                    levelMin: 8,
+                    levelMax: 13,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("might.effects.level-8-deafened"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 14,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("might.effects.level-14-deafened"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 12,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("might.effects.level-12-resistance"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 20,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("might.effects.level-20-weakness"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-attack"],
+                    },
+                },
             ],
         },
         {
             ...base,
             key: "imbue:sonic:tech",
             label: { type: "key", key: lkey("tech.label") },
+            description: { type: "key", key: lkey("might.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -134,7 +180,7 @@ export function createImbueSonic(): MaterialData[] {
                         levelMax: 15,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-8-deafened"),
+                            key: lkey("tech.header.level-8-deafened"),
                         },
                         sort: 1,
                     },
@@ -142,7 +188,7 @@ export function createImbueSonic(): MaterialData[] {
                         levelMin: 16,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-16-deafened"),
+                            key: lkey("tech.header.level-16-deafened"),
                         },
                         sort: 2,
                     },
@@ -150,7 +196,7 @@ export function createImbueSonic(): MaterialData[] {
                         levelMin: 12,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-12-resistance"),
+                            key: lkey("tech.header.level-12-resistance"),
                         },
                         sort: 2,
                     },
@@ -158,7 +204,7 @@ export function createImbueSonic(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-20-boom"),
+                            key: lkey("tech.header.level-20-boom"),
                         },
                         sort: 3,
                     },
@@ -184,6 +230,50 @@ export function createImbueSonic(): MaterialData[] {
                             label: lkey("tech.label"),
                         }),
                 ),
+                {
+                    levelMin: 8,
+                    levelMax: 15,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("tech.effects.level-8-deafened"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 16,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("tech.effects.level-16-deafened"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 12,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("tech.effects.level-12-resistance"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 20,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("tech.effects.level-20-boom"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-attack"],
+                    },
+                },
             ],
         },
     ];

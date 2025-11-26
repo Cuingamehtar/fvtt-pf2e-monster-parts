@@ -32,23 +32,23 @@ export function createImbueStrength(): MaterialData {
                 {
                     levelMin: 8,
                     levelMax: 13,
-                    text: { type: "key", key: lkey("level-8-spell") },
+                    text: { type: "key", key: lkey("header.level-8-spell") },
                     sort: 1,
                 },
                 {
                     levelMin: 14,
                     levelMax: 19,
-                    text: { type: "key", key: lkey("level-14-spell") },
+                    text: { type: "key", key: lkey("header.level-14-spell") },
                     sort: 1,
                 },
                 {
                     levelMin: 20,
-                    text: { type: "key", key: lkey("level-20-spell") },
+                    text: { type: "key", key: lkey("header.level-20-spell") },
                     sort: 1,
                 },
                 {
                     levelMin: 17,
-                    text: { type: "key", key: lkey("level-17-apex") },
+                    text: { type: "key", key: lkey("header.level-17-apex") },
                     sort: 2,
                 },
             ],

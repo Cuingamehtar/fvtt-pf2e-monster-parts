@@ -414,27 +414,47 @@
             "flavor": "You imbue the weapon with reverberating sound waves.",
             "might": {
               "label": "Sonic (Might)",
-              "level-8-deafened": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or 1 hour on a critical failure.",
-              "level-12-resistance": "The sonic damage dealt by this imbued property ignores resistances.",
-              "level-14-deafened": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or permanently on a critical failure.",
-              "level-20-weakness": "On a successful Strike with the weapon, before applying sonic damage, the target gains weakness 1 to sonic until the beginning of your next turn."
+              "description": "<p><strong>Type</strong> Weapon</p>\n<p><strong>Parts</strong> The monster must have the sonic trait or an attack or spell that deals sonic damage.</p>\n<hr />\n<p><strong>Effect</strong> You imbue the weapon with reverberating sound waves.</p>\n<p><strong>Path</strong> Might</p>\n<ul>\n<li><strong>4th</strong> Strikes with the weapon deal 1 additional sonic damage</li>\n<li><strong>6th</strong> The additional sonic damage increases to 1d4</li>\n<li><strong>8th</strong> The additional sonic damage increases to 1d6. On a critical hit, the target must succeed at a Fortitude save or be deafened for 1 minute, or 1 hour on a critical failure</li>\n<li><strong>12th</strong> The sonic damage dealt by this imbued property ignores resistances</li>\n<li><strong>14th</strong> The deafness is permanent on a failure or critical failure</li>\n<li><strong>18th</strong> The additional sonic damage increases to 1d8</li>\n<li><strong>20th</strong> On a successful Strike with the weapon, before applying sonic damage, the target gains weakness 1 to sonic until the beginning of your next turn</li>\n</ul>",
+              "effects": {
+                "level-8-deafened": "The target must succeed at a @Check[fortitude|dc:resolve(14 +@item.level +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0))] save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or 1 hour on a critical failure.",
+                "level-12-resistance": "The sonic damage dealt by this imbued property ignores resistances.",
+                "level-14-deafened": "The target must succeed at a @Check[fortitude|dc:resolve(14 +@item.level +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0))] save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or permanently on a critical failure.",
+                "level-20-weakness": "Before applying sonic damage, the target gains weakness 1 to sonic until the beginning of your next turn. @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect: Might Path Damage Weakness}"
+              },
+              "header": {
+                "level-8-deafened": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or 1 hour on a critical failure.",
+                "level-12-resistance": "The sonic damage dealt by this imbued property ignores resistances.",
+                "level-14-deafened": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or permanently on a critical failure.",
+                "level-20-weakness": "On a successful Strike with the weapon, before applying sonic damage, the target gains weakness 1 to sonic until the beginning of your next turn."
+              }
             },
             "tech": {
               "label": "Sonic (Technique)",
-              "level-8-deafened": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or 1 hour on a critical failure.",
-              "level-12-resistance": "The sonic damage dealt by this imbued property (including persistent sonic damage) ignores resistances.",
-              "level-16-deafened": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or permanently on a critical failure. On failure and critical failure the target is @UUID[Compendium.pf2e.conditionitems.Item.dfCMdR4wnpbYNTix]{Stunned 1}.",
-              "level-20-boom": "The sonic damage and persistent sonic damage create a sonic boom, affecting all creatures adjacent to the target with an AC lower than or equal to your attack roll. On a critical hit, all creatures that take sonic damage in this way must attempt the Fortitude save to avoid being deafened and stunned."
+              "description": "<p><strong>Type</strong> Weapon</p>\n<p><strong>Parts</strong> The monster must have the sonic trait or an attack or spell that deals sonic damage.</p>\n<hr />\n<p><strong>Effect</strong> You imbue the weapon with reverberating sound waves.</p>\n<p><strong>Path</strong> Technique</p>\n<ul>\n<li><strong>4th</strong> Strikes with the weapon deal 1 persistent sonic damage</li>\n<li><strong>6th</strong> Strikes with the weapon deal 1 additional sonic damage</li>\n<li><strong>8th</strong> The persistent sonic damage increases to 1d6. On a critical hit, the target must succeed at a Fortitude save or be deafened for 1 minute, or 1 hour on a critical failure</li>\n<li><strong>12th</strong> The sonic damage dealt by this imbued property (including persistent sonic damage) ignores resistances</li>\n<li><strong>14th</strong> The persistent sonic damage on a hit increases to 1d8</li>\n<li><strong>16th</strong> The deafness is permanent and the target is also stunned 1 on a failure or critical failure</li>\n<li><strong>18th</strong> The persistent sonic damage on a hit increases to 1d10</li>\n<li><strong>20th</strong> The sonic damage and persistent sonic damage create a sonic boom, affecting all creatures adjacent to the target with an AC lower than or equal to your attack roll. On a critical hit, all creatures that take sonic damage in this way must attempt the Fortitude save to avoid being deafened and stunned</li>\n</ul>",
+              "effects": {
+                "level-8-deafened": "The target must succeed at a @Check[fortitude|dc:resolve(14 +@item.level +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0))] save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or 1 hour on a critical failure.",
+                "level-12-resistance": "The sonic damage dealt by this imbued property (including persistent sonic damage) ignores resistances.",
+                "level-16-deafened": "The target must succeed at a @Check[fortitude|dc:resolve(14 +@item.level +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0))] save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or permanently on a critical failure. On failure and critical failure the target is @UUID[Compendium.pf2e.conditionitems.Item.dfCMdR4wnpbYNTix]{Stunned 1}.",
+                "level-20-boom": "The sonic damage and persistent sonic damage create a sonic boom, affecting all creatures adjacent to the target with an AC lower than or equal to your attack roll. All creatures that take sonic damage in this way must attempt the @Check[fortitude|dc:resolve(14 +@item.level +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0))] save to avoid being deafened and stunned."
+              },
+              "header": {
+                "level-8-deafened": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or 1 hour on a critical failure.",
+                "level-12-resistance": "The sonic damage dealt by this imbued property (including persistent sonic damage) ignores resistances.",
+                "level-16-deafened": "On a critical hit, the target must succeed at a Fortitude save or be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for 1 minute, or permanently on a critical failure. On failure and critical failure the target is @UUID[Compendium.pf2e.conditionitems.Item.dfCMdR4wnpbYNTix]{Stunned 1}.",
+                "level-20-boom": "The sonic damage and persistent sonic damage create a sonic boom, affecting all creatures adjacent to the target with an AC lower than or equal to your attack roll. On a critical hit, all creatures that take sonic damage in this way must attempt the Fortitude save to avoid being deafened and stunned."
+              }
             }
           },
           "strength": {
             "label": "Strength",
             "description": "<p><strong>Type</strong> Skill Item (Athletics)</p>\n<p><strong>Parts</strong> The creature must have Strength as its highest or second highest attribute modifier.</p>\n<hr />\n<p><strong>Effect</strong> You imbue the item with ferocious <em>strength</em>.</p>\n<ul>\n<li><strong>8th</strong> The item can cast <em>earthbind</em> once per day as a primal spell, as you drag a foe down to the ground</li>\n<li><strong>14th</strong> The item can cast <em>earthbind</em> once per hour instead of once per day</li>\n<li><strong>17th</strong> When you invest the item, you either increase your Strength score by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait</li>\n<li><strong>20th</strong> The item can cast <em>earthbind</em> once per minute instead of once per hour</li>\n</ul>",
             "flavor": "You imbue the item with ferocious <em>strength</em>.",
-            "level-8-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per day as a primal spell.",
-            "level-14-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per hour as a primal spell.",
-            "level-17-apex": "When you invest the item, you either increase your Strength attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
-            "level-20-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per minute as a primal spell."
+            "header": {
+              "level-8-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per day as a primal spell.",
+              "level-14-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per hour as a primal spell.",
+              "level-17-apex": "When you invest the item, you either increase your Strength attribute by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait.",
+              "level-20-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per minute as a primal spell."
+            }
           },
           "sturdy": {
             "label": "Sturdy",

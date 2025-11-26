@@ -1,0 +1,151 @@
+flavor: You imbue the weapon with reverberating sound waves.
+might:
+  label: Sonic (Might)
+  description: >-
+    **Type** Weapon
+
+
+    **Parts** The monster must have the sonic trait or an attack or spell that
+    deals sonic damage.
+
+    - - -
+
+    **Effect** You imbue the weapon with reverberating sound waves.
+
+
+    **Path** Might
+
+
+    - **4th** Strikes with the weapon deal 1 additional sonic damage
+
+    - **6th** The additional sonic damage increases to 1d4
+
+    - **8th** The additional sonic damage increases to 1d6. On a critical hit,
+    the target must succeed at a Fortitude save or be deafened for 1 minute, or
+    1 hour on a critical failure
+
+    - **12th** The sonic damage dealt by this imbued property ignores
+    resistances
+
+    - **14th** The deafness is permanent on a failure or critical failure
+
+    - **18th** The additional sonic damage increases to 1d8
+
+    - **20th** On a successful Strike with the weapon, before applying sonic
+    damage, the target gains weakness 1 to sonic until the beginning of your
+    next turn
+  effects:
+    level-8-deafened: >-
+      The target must succeed at a @Check[fortitude|dc:resolve(14 +@item.level
+      +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0))]
+      save or be
+      @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for
+      1 minute, or 1 hour on a critical failure.
+    level-12-resistance: The sonic damage dealt by this imbued property ignores resistances.
+    level-14-deafened: >-
+      The target must succeed at a @Check[fortitude|dc:resolve(14 +@item.level
+      +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0))]
+      save or be
+      @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for
+      1 minute, or permanently on a critical failure.
+    level-20-weakness: >-
+      Before applying sonic damage, the target gains weakness 1 to sonic until
+      the beginning of your next turn. @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
+      Might Path Damage Weakness}
+  header:
+    level-8-deafened: >-
+      On a critical hit, the target must succeed at a Fortitude save or be
+      @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for
+      1 minute, or 1 hour on a critical failure.
+    level-12-resistance: The sonic damage dealt by this imbued property ignores resistances.
+    level-14-deafened: >-
+      On a critical hit, the target must succeed at a Fortitude save or be
+      @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for
+      1 minute, or permanently on a critical failure.
+    level-20-weakness: >-
+      On a successful Strike with the weapon, before applying sonic damage, the
+      target gains weakness 1 to sonic until the beginning of your next turn.
+tech:
+  label: Sonic (Technique)
+  description: >-
+    **Type** Weapon
+
+
+    **Parts** The monster must have the sonic trait or an attack or spell that
+    deals sonic damage.
+
+    - - -
+
+    **Effect** You imbue the weapon with reverberating sound waves.
+
+
+    **Path** Technique
+
+    - **4th** Strikes with the weapon deal 1 persistent sonic damage
+
+    - **6th** Strikes with the weapon deal 1 additional sonic damage
+
+    - **8th** The persistent sonic damage increases to 1d6. On a critical hit,
+    the target must succeed at a Fortitude save or be deafened for 1 minute, or
+    1 hour on a critical failure
+
+    - **12th** The sonic damage dealt by this imbued property (including
+    persistent sonic damage) ignores resistances
+
+    - **14th** The persistent sonic damage on a hit increases to 1d8
+
+    - **16th** The deafness is permanent and the target is also stunned 1 on a
+    failure or critical failure
+
+    - **18th** The persistent sonic damage on a hit increases to 1d10
+
+    - **20th** The sonic damage and persistent sonic damage create a sonic boom,
+    affecting all creatures adjacent to the target with an AC lower than or
+    equal to your attack roll. On a critical hit, all creatures that take sonic
+    damage in this way must attempt the Fortitude save to avoid being deafened
+    and stunned
+  effects:
+    level-8-deafened: >-
+      The target must succeed at a @Check[fortitude|dc:resolve(14 +@item.level
+      +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0))]
+      save or be
+      @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for
+      1 minute, or 1 hour on a critical failure.
+    level-12-resistance: >-
+      The sonic damage dealt by this imbued property (including persistent sonic
+      damage) ignores resistances.
+    level-16-deafened: >-
+      The target must succeed at a @Check[fortitude|dc:resolve(14 +@item.level
+      +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0))]
+      save or be
+      @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for
+      1 minute, or permanently on a critical failure. On failure and critical
+      failure the target is
+      @UUID[Compendium.pf2e.conditionitems.Item.dfCMdR4wnpbYNTix]{Stunned 1}.
+    level-20-boom: >-
+      The sonic damage and persistent sonic damage create a sonic boom,
+      affecting all creatures adjacent to the target with an AC lower than or
+      equal to your attack roll. All creatures that take
+      sonic damage in this way must attempt the @Check[fortitude|dc:resolve(14
+      +@item.level +floor(@item.level /3) +max(@item.level -21,0)
+      -max(@item.level -23, 0))] save to avoid being deafened and stunned.
+  header:
+    level-8-deafened: >-
+      On a critical hit, the target must succeed at a Fortitude save or be
+      @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for
+      1 minute, or 1 hour on a critical failure.
+    level-12-resistance: >-
+      The sonic damage dealt by this imbued property (including persistent sonic
+      damage) ignores resistances.
+    level-16-deafened: >-
+      On a critical hit, the target must succeed at a Fortitude save or be
+      @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for
+      1 minute, or permanently on a critical failure. On failure and critical
+      failure the target is
+      @UUID[Compendium.pf2e.conditionitems.Item.dfCMdR4wnpbYNTix]{Stunned 1}.
+    level-20-boom: >-
+      The sonic damage and persistent sonic damage create a sonic boom,
+      affecting all creatures adjacent to the target with an AC lower than or
+      equal to your attack roll. On a critical hit, all creatures that take
+      sonic damage in this way must attempt the Fortitude save to avoid being
+      deafened and stunned.
