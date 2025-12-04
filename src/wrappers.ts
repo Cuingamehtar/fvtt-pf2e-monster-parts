@@ -15,7 +15,7 @@ export class Wrappers {
         globalThis.__tempActor = actor;
 
         // literally copy the system function and add a custom check
-        const systemFunctionHash = 595497346;
+        const systemFunctionHash = -893590035;
         if (
             hash(actor.inventory.sellAllTreasure.toString()) !==
             systemFunctionHash
@@ -31,7 +31,7 @@ export class Wrappers {
             async function (this: ActorInventory<CharacterPF2e>) {
                 const treasures = this.actor.itemTypes.treasure.filter(
                     (item) =>
-                        !item.isCoinage &&
+                        !item.isCurrency &&
                         !MonsterPart.hasMonsterPartData(item),
                 );
                 const treasureIds = treasures.map((item) => item.id);
@@ -42,7 +42,7 @@ export class Wrappers {
                         new game.pf2e.Coins(),
                     );
                 await this.actor.deleteEmbeddedDocuments("Item", treasureIds);
-                await this.actor.inventory.addCoins(coins);
+                await this.actor.inventory.addCurrency(coins);
             },
             "OVERRIDE",
         );

@@ -8,7 +8,7 @@
       "previous": null
     },
     "description": {
-      "value": "<p>You get -5-foot status penalty to your Speed ()</p>",
+      "value": "<p>You get -5-foot status penalty to your Speed (-10 on imbuement level 8, and -15 on imbuement level 20).</p><p>The duration of this effect has to be tracked manually as at higher levels it stays while you are taking persistent cold damage from this imbued property.</p>",
       "gm": ""
     },
     "publication": {
@@ -17,7 +17,98 @@
       "license": "OGL",
       "remaster": false
     },
-    "rules": [],
+    "rules": [
+      {
+        "choices": [
+          {
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "and": [
+                      {
+                        "gte": [
+                          "parent:origin:item:imbue:cold:tech",
+                          6
+                        ]
+                      },
+                      {
+                        "lte": [
+                          "parent:origin:item:imbue:cold:tech",
+                          7
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ],
+            "value": -5,
+            "label": "-5-foot"
+          },
+          {
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "and": [
+                      {
+                        "gte": [
+                          "parent:origin:item:imbue:cold:tech",
+                          8
+                        ]
+                      },
+                      {
+                        "lte": [
+                          "parent:origin:item:imbue:cold:tech",
+                          19
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ],
+            "value": -10,
+            "label": "-10-foot"
+          },
+          {
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:cold:tech",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ],
+            "value": -15,
+            "label": "-15-foot"
+          }
+        ],
+        "key": "ChoiceSet",
+        "prompt": "Select speed penalty.",
+        "flag": "speedPenalty"
+      },
+      {
+        "key": "FlatModifier",
+        "selector": "land-speed",
+        "type": "status",
+        "value": "@item.flags.pf2e.rulesSelections.speedPenalty"
+      }
+    ],
     "slug": null,
     "traits": {
       "otherTags": [],
@@ -45,7 +136,7 @@
     "context": null
   },
   "_id": "OfyxKC0efo6hzlkH",
-  "img": "systems/pf2e/icons/default-icons/effect.svg",
+  "img": "systems/pf2e/icons/spells/clinging-ice.webp",
   "folder": null,
   "sort": 0,
   "ownership": {
@@ -59,9 +150,9 @@
     "exportSource": null,
     "coreVersion": "13.351",
     "systemId": "pf2e",
-    "systemVersion": "7.7.4",
+    "systemVersion": "7.8.0",
     "createdTime": 1763675196132,
-    "modifiedTime": 1763675519088,
+    "modifiedTime": 1764882968785,
     "lastModifiedBy": "My4TCMjLEU7yUq2Y"
   },
   "_key": "!items!OfyxKC0efo6hzlkH"

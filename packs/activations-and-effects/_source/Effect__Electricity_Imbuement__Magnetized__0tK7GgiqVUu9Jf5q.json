@@ -54,7 +54,7 @@
     "context": null
   },
   "_id": "0tK7GgiqVUu9Jf5q",
-  "img": "systems/pf2e/icons/default-icons/effect.svg",
+  "img": "systems/pf2e/icons/spells/magnetic-attraction.webp",
   "folder": null,
   "sort": 0,
   "ownership": {
@@ -70,7 +70,7 @@
     "systemId": "pf2e",
     "systemVersion": "7.7.4",
     "createdTime": 1763969892729,
-    "modifiedTime": 1763970913804,
+    "modifiedTime": 1764881989218,
     "lastModifiedBy": "My4TCMjLEU7yUq2Y"
   },
   "_key": "!items!0tK7GgiqVUu9Jf5q"
