@@ -4,10 +4,10 @@ import { getConfig } from "./config";
 import { Material } from "./material";
 import { i18nFormat, simplifyCoins, t } from "./utils";
 import { dialogs } from "./app/dialogs";
-import { ModuleFlags, RefinedItemFlags } from "./types";
+import { ModuleFlags, RefinedItemFlags } from "../types/global";
 import { AutomaticRefinementProgression } from "./automatic-refinement-progression";
 import { MonsterPart } from "./monster-part";
-import { EffectHandlers } from "./data/effect-handlers";
+import { EffectHandlers } from "@data/effect-handlers";
 
 type HasRefinedData<T extends PhysicalItemPF2e> = T & {
     flags: {

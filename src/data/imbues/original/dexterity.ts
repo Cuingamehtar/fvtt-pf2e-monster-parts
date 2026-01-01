@@ -1,4 +1,4 @@
-import { tkey } from "../../../utils";
+import { tkey } from "@src/utils";
 import { skillsOfAttribute } from "../../helpers";
 import { MaterialData } from "../../material";
 

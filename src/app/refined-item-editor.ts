@@ -6,7 +6,7 @@ import { Material } from "../material";
 import { dialogs } from "./dialogs";
 import { MonsterPart } from "../monster-part";
 import { AutomaticRefinementProgression } from "../automatic-refinement-progression";
-import { ModuleFlags, RefinedItemFlags } from "../types";
+import { ModuleFlags, RefinedItemFlags } from "../../types/global";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 

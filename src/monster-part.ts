@@ -4,7 +4,7 @@ import { getConfig } from "./config";
 import { i18nFormat, simplifyCoins, t } from "./utils";
 import { getExtendedNPCRollOptions } from "./actor-utils";
 import { Material } from "./material";
-import { ModuleFlags } from "./types";
+import { ModuleFlags } from "../types/global";
 
 type HasMonsterPartData<T extends PhysicalItemPF2e> = T & {
     flags: {

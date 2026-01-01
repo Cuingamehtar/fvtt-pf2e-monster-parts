@@ -1,9 +1,9 @@
-import { getConfig } from "../../../config";
-import { i18nFormat, tkey } from "../../../utils";
-import { helpers } from "../../helpers";
-import { MaterialData } from "../../material";
+import { getConfig } from "@src/config";
+import { i18nFormat, tkey } from "@src/utils";
+import { helpers } from "@data/helpers";
+import { MaterialData } from "@data/material";
 import { PredicateStatement } from "foundry-pf2e";
-import { RollString } from "../../../types";
+import { RollString } from "@localTypes/global";
 
 export function createImbueBane(): MaterialData[] {
     return getConfig().baneCreatureTraits.flatMap(baneImbue);

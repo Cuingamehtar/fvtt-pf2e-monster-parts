@@ -1,5 +1,5 @@
-import { tkey } from "../../../utils";
-import { RollString } from "../../../types";
+import { tkey } from "@src/utils";
+import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
 

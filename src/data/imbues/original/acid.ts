@@ -1,7 +1,7 @@
-import { tkey } from "../../../utils";
+import { tkey } from "@src/utils";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
-import { RollString } from "../../../types";
+import { RollString } from "@localTypes/global";
 
 export function createImbueAcid(): MaterialData[] {
     const lkey = (

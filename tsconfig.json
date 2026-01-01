@@ -23,10 +23,14 @@
         "types": [
             "foundry-pf2e/foundry",
             "foundry-pf2e/pf2e",
-            "foundry-pf2e/lib-wrapper"
+            "foundry-pf2e/lib-wrapper",
+            "./types"
         ],
         "paths": {
-            "@lang": ["./lang/en.json"]
+            "@lang": ["./lang/en.json"],
+            "@localTypes/*": ["./types/*"],
+            "@src/*": ["./src/*"],
+            "@data/*": ["./src/data/*"]
         }
     },
 }

@@ -122,7 +122,7 @@ export class Wrappers {
                             .filter((m): m is Material => !!m)
                             .map(
                                 (m) =>
-                                    `${prefix}:${m.key}:${m.getLevel(item).level ?? 0}`,
+                                    `${prefix}:${m.key}:${m.getLevel(item).value ?? 0}`,
                             ),
                     ];
                 }
@@ -146,7 +146,7 @@ export class Wrappers {
                     wrapped();
                     const item = new RefinedItem(this);
                     this.system.level.value =
-                        item.refinement?.getLevel(item).level ?? 0;
+                        item.refinement?.getLevel(item).value ?? 0;
                     this.system.price.value = item.coinValue;
                 } else if (MonsterPart.hasMonsterPartData(this)) {
                     wrapped();

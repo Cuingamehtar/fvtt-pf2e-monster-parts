@@ -1,4 +1,4 @@
-import { ModuleManifestFlags } from "./types";
+import { ModuleManifestFlags } from "../types/global";
 import { MODULE_ID } from "./module";
 import { t } from "./utils";
 
@@ -45,8 +45,7 @@ async function registerHomebrewFiles() {
 
     // world files
     {
-        // @ts-expect-error
-        const files = (game.world.flags[MODULE_ID] as ModuleManifestFlags)
+        const files = (game.world.flags?.[MODULE_ID] as ModuleManifestFlags)
             ?.homebrewFiles;
         if (files) {
             for (const f of files) {
@@ -55,9 +54,7 @@ async function registerHomebrewFiles() {
         }
     }
 
-    const settingsPath = game.settings.get(MODULE_ID, "homebrew-folder") as
-        | string
-        | undefined;
+    const settingsPath = game.settings.get(MODULE_ID, "homebrew-folder");
     if (settingsPath) {
         const files = (
             await foundry.applications.apps.FilePicker.implementation.browse(

@@ -105,7 +105,9 @@ export class ModuleHooks {
                     )
                 )
                     return;
-                const selector = html.querySelector("select")!;
+                const selector = html.querySelector(
+                    "select",
+                )! as HTMLSelectElement;
                 const refinedItemOption = createElement("option", {
                     attributes: { value: "refined-item" },
                     innerHTML: t("refined-item.label"),

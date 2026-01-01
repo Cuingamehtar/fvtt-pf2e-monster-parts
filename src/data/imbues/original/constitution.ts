@@ -1,5 +1,5 @@
 import { SkillSlug } from "foundry-pf2e";
-import { tkey } from "../../../utils";
+import { tkey } from "@src/utils";
 import { MaterialData } from "../../material";
 
 export function createImbueConstitution(): MaterialData {

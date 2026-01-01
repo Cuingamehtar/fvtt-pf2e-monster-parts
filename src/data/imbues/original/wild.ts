@@ -1,8 +1,8 @@
-import { i18nFormat, tkey } from "../../../utils";
-import { helpers } from "../../helpers";
-import { MaterialData } from "../../material";
-import { RollString } from "../../../types";
-import { Wrappers } from "../../../wrappers";
+import { i18nFormat, tkey } from "@src/utils";
+import { helpers } from "@src/data/helpers";
+import { MaterialData } from "@src/data/material";
+import { RollString } from "@localTypes/global";
+import { Wrappers } from "@src/wrappers";
 
 export function createImbueWild(): MaterialData {
     const damages = ["acid", "cold", "electricity", "fire", "void", "sonic"];

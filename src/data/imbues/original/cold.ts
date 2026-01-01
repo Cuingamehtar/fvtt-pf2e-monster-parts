@@ -1,7 +1,7 @@
-import { tkey } from "../../../utils";
+import { tkey } from "@src/utils";
 import { helpers } from "../../helpers";
 import { MaterialData } from "../../material";
-import { RollString } from "../../../types";
+import { RollString } from "@localTypes/global";
 
 export function createImbueCold(): MaterialData[] {
     const lkey = (

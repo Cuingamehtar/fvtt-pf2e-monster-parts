@@ -5,7 +5,7 @@
     style="color: var(--color-pf-text-adjusted-lower);"
     data-tooltip="pf2e-monster-parts.refined-item.level-capped-refinement" data-tooltip-class="pf2e"{{/if}}>{{localize
         "pf2e-monster-parts.refined-item.level"}}
-        : {{refinement.level.level}}</span>, {{localize
+        : {{refinement.level.value}}</span>, {{localize
         "pf2e-monster-parts.refined-item.value"}} {{refinement.value}})</strong>{{#if
         refinement.flavor}} {{{refinement.flavor}}}{{/if}}</p>
     {{#if (gt refinement.notes.length 0)}}
@@ -24,7 +24,7 @@
             style="color: var(--color-pf-text-adjusted-lower);"
             data-tooltip="pf2e-monster-parts.refined-item.level-capped-imbuement"
             data-tooltip-class="pf2e"{{/if}}>{{localize
-                "pf2e-monster-parts.refined-item.level"}}: {{imbue.level.level}}</span>, {{localize
+                "pf2e-monster-parts.refined-item.level"}}: {{imbue.level.value}}</span>, {{localize
                 "pf2e-monster-parts.refined-item.value"}} {{imbue.value}})</strong>{{#if
             imbue.flavor}} {{{imbue.flavor}}}{{/if}}</p>
         {{#if (gt imbue.notes.length 0)}}

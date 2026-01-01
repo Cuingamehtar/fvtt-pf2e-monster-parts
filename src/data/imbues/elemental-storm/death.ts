@@ -1,6 +1,6 @@
-import { tkey } from "../../../utils";
+import { tkey } from "@src/utils";
 import { helpers } from "../../helpers";
-import { RollString } from "../../../types";
+import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
 
 export function createImbueDeath(): MaterialData[] {

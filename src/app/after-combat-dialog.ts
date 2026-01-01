@@ -48,21 +48,20 @@ export class AfterCombatDialog extends HandlebarsApplicationMixin(
         _context: object,
         _options: foundry.applications.ApplicationRenderOptions,
     ) {
-        this.element
-            .querySelectorAll("input[type=checkbox]")
-            .forEach((element) => {
-                element.addEventListener("change", (e) => {
-                    e.preventDefault();
-                    e.stopImmediatePropagation();
-                    const npc = this.npcs.find(
-                        (npc) => element.id == npc.token.id,
-                    );
-                    if (!npc) return;
-                    // @ts-expect-error
-                    npc.checked = element.checked;
-                    this.render();
-                });
+        (
+            this.element.querySelectorAll(
+                "input[type=checkbox]",
+            ) as NodeListOf<HTMLInputElement>
+        ).forEach((element) => {
+            element.addEventListener("change", (e) => {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                const npc = this.npcs.find((npc) => element.id == npc.token.id);
+                if (!npc) return;
+                npc.checked = element.checked;
+                this.render();
             });
+        });
     }
 
     override async _prepareContext() {

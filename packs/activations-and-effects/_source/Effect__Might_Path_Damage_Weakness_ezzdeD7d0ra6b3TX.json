@@ -1,5 +1,5 @@
 {
-  "name": "Effect: Might Path Weakness",
+  "name": "Effect: Might Path Damage Weakness",
   "type": "effect",
   "effects": [],
   "system": {
@@ -238,7 +238,7 @@
         "type": "{item|flags.pf2e.rulesSelections.damageType}"
       }
     ],
-    "slug": "effect-might-path-weakness",
+    "slug": "effect-might-path-damage-weakness",
     "traits": {
       "otherTags": [],
       "value": []
@@ -281,7 +281,7 @@
     "systemId": "pf2e",
     "systemVersion": "7.8.0",
     "createdTime": 1762703302161,
-    "modifiedTime": 1764882654088,
+    "modifiedTime": 1767255066767,
     "lastModifiedBy": "My4TCMjLEU7yUq2Y"
   },
   "_key": "!items!ezzdeD7d0ra6b3TX"

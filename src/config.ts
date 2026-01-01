@@ -1,8 +1,8 @@
 import { Size } from "foundry-pf2e";
-import { createDefaultRefinements } from "./data/refinements";
+import { createDefaultRefinements } from "@data/refinements";
 import { MODULE_ID } from "./module";
-import { createDefaultImbues } from "./data/imbues";
-import { MaterialData, materialDataSchema } from "./data/material";
+import { createDefaultImbues } from "@data/imbues";
+import { MaterialData, materialDataSchema } from "@data/material";
 import { loadHomebrewMaterials } from "./homebrew";
 import { t } from "./utils";
 
@@ -96,7 +96,8 @@ export async function createConfig(): Promise<void> {
         materials: new Map(),
     };
 
-    CONFIG[MODULE_ID] = config;
+    (CONFIG as ConfigPF2e & { [MODULE_ID]: MonsterPartsConfig })[MODULE_ID] =
+        config;
 
     console.log(`${MODULE_ID} | Config initialized`);
     Hooks.call(`${MODULE_ID}.configInit`);
@@ -178,10 +179,12 @@ export async function createConfig(): Promise<void> {
 }
 
 export function getConfig() {
-    return CONFIG[MODULE_ID];
+    return (CONFIG as ConfigPF2e & { [MODULE_ID]: MonsterPartsConfig })[
+        MODULE_ID
+    ];
 }
 
 export function getMaterialLabel(material: string) {
-    const config = CONFIG[MODULE_ID];
+    const config = getConfig();
     return config.materials.get(material)?.label;
 }

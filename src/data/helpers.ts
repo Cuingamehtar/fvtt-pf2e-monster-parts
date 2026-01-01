@@ -1,7 +1,7 @@
 import { Abilities, PredicateStatement, SkillSlug } from "foundry-pf2e";
 import { ItemAlterationSource } from "./data-types";
 import { HeaderLabel, MaterialEffect } from "./material";
-import { RollString } from "../types";
+import { RollString } from "../../types/global";
 import { RuleElementEffect } from "./effect-handlers/rule-element";
 
 export function selfAlteration(
@@ -105,7 +105,11 @@ const damage = {
         label: I18nKey | I18nString;
         predicate?: PredicateStatement[];
     }): Omit<RuleElementEffect, "levelMin" | "levelMax"> {
-        if (typeof value === "undefined" || typeof value === "number") {
+        if (
+            typeof value === "undefined" ||
+            typeof value === "number" ||
+            !isNaN(Number(value))
+        ) {
             return {
                 type: "RuleElement",
                 rule: {
