@@ -23,6 +23,15 @@
           "minimum": "7.8",
           "verified": "7.8.0"
         }
+      },
+      {
+        "id": "sf2e",
+        "type": "system",
+        "manifest": "https://raw.githubusercontent.com/foundryvtt/pf2e/master/system.json",
+        "compatibility": {
+          "minimum": "0.0.1",
+          "verified": "0.0.1"
+        }
       }
     ],
     "requires": [
@@ -86,6 +95,17 @@
         "ASSISTANT": "OWNER"
       },
       "system": "pf2e"
+    },
+    {
+      "name": "activations-and-effects-sf2e",
+      "label": "Activations & Effects",
+      "path": "packs/activations-and-effects-sf2e",
+      "type": "Item",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "sf2e"
     }
   ],
   "flags": {},
