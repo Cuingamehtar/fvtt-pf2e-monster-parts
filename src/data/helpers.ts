@@ -219,9 +219,18 @@ function leveledLabels<T>(
         }));
 }
 
+function sequentialData(arr: Record<string, any>[]) {
+    return arr.reduce((acc: Record<string, any>[], d) => {
+        const e = { ...(acc[acc.length - 1] ?? {}), ...d };
+        acc.push(e);
+        return acc;
+    }, []);
+}
+
 export const helpers = {
     damage,
     shield,
     leveledEffects,
     leveledLabels,
+    sequentialData,
 };

@@ -1,5 +1,5 @@
 {
-  "name": "Ephemeral Effect: Magnetized",
+  "name": "Effect: Spiked Imbuement",
   "type": "effect",
   "effects": [],
   "system": {
@@ -8,7 +8,7 @@
       "previous": null
     },
     "description": {
-      "value": "<p>Ephemeral Effect.</p><p>You gain +1 circumstance bonus to attack rolls made with metal weapons (to automatically check the bonus, grant the attacker \"metal-weapon\" roll option).</p>",
+      "value": "<p>Granted by Spiked imbuement.</p><p>Tracks the duration of imbuement activation.</p>",
       "gm": ""
     },
     "publication": {
@@ -19,19 +19,11 @@
     },
     "rules": [
       {
-        "key": "FlatModifier",
-        "label": "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.electricity.tech.effects.strike-with-metal-weapon",
-        "value": 1,
-        "selector": [
-          "weapon-attack-roll"
-        ],
-        "type": "circumstance",
-        "predicate": [
-          "metal-weapon"
-        ]
+        "key": "RollOption",
+        "option": "spiked-imbuement-activation"
       }
     ],
-    "slug": null,
+    "slug": "effect-spiked-imbuement",
     "traits": {
       "otherTags": [],
       "value": []
@@ -40,9 +32,9 @@
       "value": 1
     },
     "duration": {
-      "value": -1,
-      "unit": "unlimited",
-      "expiry": null,
+      "value": 1,
+      "unit": "minutes",
+      "expiry": "turn-start",
       "sustained": false
     },
     "tokenIcon": {
@@ -57,10 +49,10 @@
     "fromSpell": false,
     "context": null
   },
-  "_id": "E7SVbmdbmSImDv8Z",
-  "img": "systems/pf2e/icons/spells/magnetic-attraction.webp",
+  "_id": "CIkNgSsMQ9AWqsVp",
+  "img": "systems/pf2e/icons/equipment/cursed-items/barbed-vest.webp",
   "folder": null,
-  "sort": 500000,
+  "sort": 200000,
   "ownership": {
     "default": 0,
     "My4TCMjLEU7yUq2Y": 3
@@ -72,10 +64,10 @@
     "exportSource": null,
     "coreVersion": "13.351",
     "systemId": "pf2e",
-    "systemVersion": "7.7.4",
-    "createdTime": 1763969912184,
-    "modifiedTime": 1767971320550,
+    "systemVersion": "7.8.0",
+    "createdTime": 1767966980786,
+    "modifiedTime": 1767972317802,
     "lastModifiedBy": "My4TCMjLEU7yUq2Y"
   },
-  "_key": "!items!E7SVbmdbmSImDv8Z"
+  "_key": "!items!CIkNgSsMQ9AWqsVp"
 }

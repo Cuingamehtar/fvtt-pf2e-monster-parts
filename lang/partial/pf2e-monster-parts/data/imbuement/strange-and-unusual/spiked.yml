@@ -2,12 +2,13 @@ label: Spiked
 description: >-
   **Type** Armor
 
+
   **Parts** The monster must have a reaction, free action, or passive ability
   that deals piercing or slashing damage.
 
 
-  **Developer's note** This material's conditions can't be automated, and it has
-  to be checked manually
+  **Developer's note** This material's parts can't be automated, and have
+  to be checked manually. Current automation is limited to an effect that tracks the activation.
 
   - - -
 
@@ -59,13 +60,15 @@ header:
   activation: >-
     **Activate** <span class="action-glyph">{cost}</span> Interact  
 
-    **Frequency** once per day  
+    **Frequency** {frequency}  
 
     **Effect** You cause vicious spikes to protrude from the armor. For 1
     minute, adjacent creatures that hit you with a melee attack, as well as
     creatures that touch you or hit you with an unarmed attack, take
     {damageTouch} piercing damage each time they do. If they Grab or Grapple
-    you, the damage increases to {damageGrapple} piercing damage instead.
+    you, the damage increases to {damageGrapple} piercing damage instead.  
+    
+    @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.CIkNgSsMQ9AWqsVp]{Effect: Spiked Imbuement}
   passive: >-
     Even when it isn't activated, adjacent creatures that hit you with a melee
     attack, as well as creatures that touch you or hit you with an unarmed
@@ -73,8 +76,14 @@ header:
     or Grapple you, the damage increases to {damageGrapple} piercing damage
     instead. This damage isn't cumulative with the damage from activation.
   reaction: >-
-    in addition to its one action activation, the armor can be activated as a
+    In addition to its one action activation, the armor can be activated as a
     reaction triggered when a creature Grabs or successfully Grapples you. When
     you activate the armor in this way, the triggering creature takes the
     increased damage from the armor. This usage is still subject to the armor's
     frequency of once per 10 minutes.
+  frequency:
+    per-day: once per day
+    per-hour: once per hour
+    per-10-minutes: once per 10 minutes
+effects:
+  note: Creature takes {damage} piercing damage from Spiked imbuement.

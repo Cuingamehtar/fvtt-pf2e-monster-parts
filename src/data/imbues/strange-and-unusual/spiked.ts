@@ -1,5 +1,4 @@
-import { tkey } from "@src/utils";
-import { RollString } from "@localTypes/global";
+import { i18nFormat, tkey } from "@src/utils";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
 
@@ -14,252 +13,86 @@ export function createImbueSpiked(): MaterialData {
     ): I18nKey => tkey(`data.imbuement.strange-and-unusual.spiked.${k}`);
 
     return {
-        type: "imbuement" as "imbuement",
+        type: "imbuement",
         key: "imbue:spiked",
+        label: {
+            type: "key",
+            key: lkey("label"),
+        },
+        description: { type: "key", key: lkey("description") },
         itemPredicate: ["item:type:armor"],
-        monsterPredicate: [
+        monsterPredicate: ["never"],
+        /*monsterPredicate: [
             { or: ["item:damage:type:piercing", "item:damage:type:slashing"] },
             "item:type:melee",
-        ],
-    };
-    return [
-        {
-            ...base,
-            label: { type: "key", key: lkey("magic.label") },
-            header: {
-                description: { type: "key", key: lkey("flavor") },
-                labels: [
-                    ...helpers.leveledLabels(
-                        [10, 14, 18],
-                        ["1", "d4", "d6"],
-                        (damage: RollString) =>
-                            helpers.damage.label({
-                                type: "fire",
-                                value: damage,
-                            }),
-                    ),
-                    {
-                        levelMin: 2,
+        ],*/
+        header: {
+            description: {
+                type: "key",
+                key: lkey("header.flavor"),
+            },
+            labels: [
+                ...helpers.leveledLabels(
+                    [2, 4, 6, 8, 10, 12, 14, 16, 18, 20],
+                    helpers.sequentialData([
+                        {
+                            cost: "2",
+                            frequency: lkey("header.frequency.per-day"),
+                            damageTouch: "1",
+                            damageGrapple: "1d4",
+                        },
+                        { damageTouch: "1d4", damageGrapple: "2d4" },
+                        { damageTouch: "1d6", damageGrapple: "2d6" },
+                        { damageTouch: "2d4", damageGrapple: "4d4" },
+                        { damageTouch: "2d6", damageGrapple: "4d6" },
+                        { frequency: lkey("header.frequency.per-hour") },
+                        { damageTouch: "3d6", damageGrapple: "6d6" },
+                        { cost: "1" },
+                        { damageTouch: "4d6", damageGrapple: "8d6" },
+                        { frequency: lkey("header.frequency.per-10-minutes") },
+                    ]),
+                    ({ cost, frequency, damageTouch, damageGrapple }) => ({
                         text: {
                             type: "key",
-                            key: "pf2e-monster-parts.data.imbuement.add-cantrip",
+                            key: lkey("header.activation"),
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq]",
+                                cost,
+                                frequency: i18nFormat({
+                                    type: "key",
+                                    key: frequency,
+                                }),
+                                damageGrapple,
+                                damageTouch,
                             },
                         },
                         sort: 1,
-                    },
-                    ...helpers.leveledLabels(
-                        [4, 6, 8, 12, 16],
-                        [
-                            "magic.level-4-spells",
-                            "magic.level-6-spells",
-                            "magic.level-8-spells",
-                            "magic.level-12-spells",
-                            "magic.level-16-spells",
-                        ],
-                        (key: Parameters<typeof lkey>[0]) => ({
-                            text: { type: "key", key: lkey(key) },
-                            sort: 2,
-                        }),
-                    ),
-                    {
-                        levelMin: 20,
+                    }),
+                ),
+                {
+                    levelMin: 20,
+                    text: { type: "key", key: lkey("header.reaction") },
+                    sort: 2,
+                },
+                ...helpers.leveledLabels(
+                    [12, 18],
+                    [
+                        { damageTouch: "1d4", damageGrapple: "2d4" },
+                        { damageTouch: "1d6", damageGrapple: "2d6" },
+                    ],
+                    ({ damageTouch, damageGrapple }) => ({
                         text: {
                             type: "key",
-                            key: lkey("magic.level-20-falling-stars"),
+                            key: lkey("header.passive"),
+                            parameters: {
+                                damageGrapple,
+                                damageTouch,
+                            },
                         },
                         sort: 3,
-                    },
-                ],
-            },
-            effects: [
-                ...helpers.leveledEffects(
-                    [10, 14, 18],
-                    ["1", "d4", "d6"],
-                    (damage: RollString) =>
-                        helpers.damage.effect({
-                            type: "fire",
-                            value: damage,
-                            label: lkey("magic.label"),
-                        }),
-                ),
-            ],
-        },
-        {
-            ...base,
-            key: "imbue:fire:might",
-            label: { type: "key", key: lkey("might.label") },
-            header: {
-                description: { type: "key", key: lkey("flavor") },
-                labels: [
-                    ...helpers.leveledLabels(
-                        [4, 6, 8, 18],
-                        ["1", "d4", "d6", "d8"],
-                        (damage: RollString) =>
-                            helpers.damage.label({
-                                type: "fire",
-                                value: damage,
-                            }),
-                    ),
-                    {
-                        levelMin: 8,
-                        levelMax: 13,
-                        text: {
-                            type: "key",
-                            key: lkey("might.level-8-persistent"),
-                        },
-                        sort: 1,
-                    },
-                    {
-                        levelMin: 14,
-                        text: {
-                            type: "key",
-                            key: lkey("might.level-14-persistent"),
-                        },
-                        sort: 1,
-                    },
-                    {
-                        levelMin: 12,
-                        text: {
-                            type: "key",
-                            key: lkey("might.level-12-resistance"),
-                        },
-                        sort: 2,
-                    },
-                    {
-                        levelMin: 20,
-                        text: {
-                            type: "key",
-                            key: lkey("might.level-20-weakness"),
-                        },
-                        sort: 3,
-                    },
-                ],
-            },
-            effects: [
-                ...helpers.leveledEffects(
-                    [4, 6, 8, 18],
-                    ["1", "d4", "d6", "d8"],
-                    (damage: RollString) =>
-                        helpers.damage.effect({
-                            type: "fire",
-                            value: damage,
-                            label: lkey("might.label"),
-                        }),
-                ),
-                ...helpers.leveledEffects(
-                    [8, 14],
-                    ["1", "2"],
-                    (dice: RollString) => ({
-                        type: "RuleElement",
-                        rule: {
-                            key: "DamageDice",
-                            selector: "{item|_id}-damage",
-                            damageType: "fire",
-                            category: "persistent",
-                            dieSize: "d10",
-                            diceNumber: dice,
-                            label: lkey("might.label"),
-                            critical: true,
-                        },
                     }),
                 ),
             ],
         },
-        {
-            ...base,
-            key: "imbue:fire:tech",
-            label: { type: "key", key: lkey("tech.label") },
-            header: {
-                description: { type: "key", key: lkey("flavor") },
-                labels: [
-                    {
-                        levelMin: 6,
-                        ...helpers.damage.label({
-                            type: "fire",
-                            value: 1,
-                        }),
-                    },
-                    ...helpers.leveledLabels(
-                        [4, 8, 14, 18],
-                        ["1", "d6", "d8", "d10"],
-                        (damage: RollString) =>
-                            helpers.damage.label({
-                                type: "fire",
-                                category: "persistent",
-                                value: damage,
-                            }),
-                    ),
-                    {
-                        levelMin: 8,
-                        text: {
-                            type: "key",
-                            key: lkey("tech.level-8-persistent"),
-                        },
-                        sort: 1,
-                    },
-                    {
-                        levelMin: 16,
-                        text: {
-                            type: "key",
-                            key: lkey("tech.level-16-off-guard"),
-                        },
-                        sort: 2,
-                    },
-                    {
-                        levelMin: 12,
-                        text: {
-                            type: "key",
-                            key: lkey("tech.level-12-resistance"),
-                        },
-                        sort: 3,
-                    },
-                    {
-                        levelMin: 20,
-                        text: {
-                            type: "key",
-                            key: lkey("tech.level-20-weakness"),
-                        },
-                        sort: 4,
-                    },
-                ],
-            },
-            effects: [
-                {
-                    levelMin: 6,
-                    ...helpers.damage.effect({
-                        type: "fire",
-                        value: 1,
-                        label: lkey("tech.label"),
-                    }),
-                },
-                ...helpers.leveledEffects(
-                    [4, 8, 14, 18],
-                    ["1", "d6", "d8", "d10"],
-                    (damage: RollString) =>
-                        helpers.damage.effect({
-                            type: "fire",
-                            category: "persistent",
-                            value: damage,
-                            label: lkey("tech.label"),
-                        }),
-                ),
-                {
-                    levelMin: 8,
-                    type: "RuleElement",
-                    rule: {
-                        key: "DamageDice",
-                        selector: "{item|_id}-damage",
-                        damageType: "fire",
-                        category: "persistent",
-                        dieSize: "d10",
-                        diceNumber: 1,
-                        label: lkey("tech.label"),
-                        critical: true,
-                    },
-                },
-            ],
-        },
-    ];
+        effects: [],
+    };
 }

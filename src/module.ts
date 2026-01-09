@@ -8,7 +8,8 @@ import { getExtendedNPCRollOptions } from "./actor-utils";
 import { AutomaticRefinementProgression } from "./automatic-refinement-progression";
 import { Wrappers } from "./wrappers";
 import { ModuleHooks } from "./hooks";
-import { ActorPF2e, TokenPF2e } from "foundry-pf2e";
+import { ActorPF2e } from "foundry-pf2e";
+import { registerSF2eUuidRedirects } from "@src/uuid-redirect";
 
 export const MODULE_ID = "pf2e-monster-parts";
 
@@ -32,13 +33,13 @@ Hooks.once("init", () => {
         const refreshedItems: string[] = [];
         [
             ...game.actors.values(),
-            ...game.scenes
-                .values()
-                .flatMap((sc: Scene) =>
-                    sc.tokens.values().map((t: TokenPF2e) => t.actor),
-                ),
-        ].forEach((actor: ActorPF2e) => {
-            actor.items.forEach((item) => {
+            ...game.scenes.values().flatMap((sc: Scene) => {
+                return sc.tokens
+                    .values()
+                    .map((t) => t.actor as ActorPF2e | undefined);
+            }),
+        ].forEach((actor) => {
+            actor?.items.forEach((item) => {
                 if (
                     item.isOfType("physical") &&
                     (MonsterPart.hasMonsterPartData(item) ||
@@ -51,6 +52,9 @@ Hooks.once("init", () => {
             });
         });
     });
+    if (game.system.id === "sf2e") {
+        Hooks.once("ready", registerSF2eUuidRedirects);
+    }
 
     game.modules.get(MODULE_ID).api = {
         renderSummaryJournal,

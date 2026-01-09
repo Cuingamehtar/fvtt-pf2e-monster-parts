@@ -50,5 +50,6 @@ declare module "foundry-pf2e" {
             name: string;
             flags?: { [MODULE_ID]: ModuleManifestFlags };
         };
+        compendiumUUIDRedirects: StringTree<string[]>;
     }
 }

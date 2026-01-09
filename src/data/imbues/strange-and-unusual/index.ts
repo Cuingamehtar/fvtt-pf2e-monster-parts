@@ -1,7 +1,9 @@
+import { createImbueSpiked } from "@data/imbues/strange-and-unusual/spiked";
+
 export function createStrangeAndUnusualImbues() {
     return [
         // armor
-        // createImbueSpiked(),
+        createImbueSpiked(),
         // shield
         // createImbueMirrored(),
         // weapon

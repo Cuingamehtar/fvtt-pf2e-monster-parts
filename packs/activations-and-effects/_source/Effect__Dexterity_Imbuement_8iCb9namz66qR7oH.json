@@ -138,7 +138,7 @@
   "_id": "8iCb9namz66qR7oH",
   "img": "systems/pf2e/icons/spells/longstrider.webp",
   "folder": null,
-  "sort": 0,
+  "sort": 400000,
   "ownership": {
     "default": 0,
     "My4TCMjLEU7yUq2Y": 3
@@ -152,7 +152,7 @@
     "systemId": "pf2e",
     "systemVersion": "7.7.4",
     "createdTime": 1763624580981,
-    "modifiedTime": 1764882010689,
+    "modifiedTime": 1767971320550,
     "lastModifiedBy": "My4TCMjLEU7yUq2Y"
   },
   "_key": "!items!8iCb9namz66qR7oH"

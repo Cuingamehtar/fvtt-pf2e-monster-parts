@@ -64,6 +64,13 @@ declare global {
     interface AttributeBasedTraceData {
         base: number;
     }
+
+    interface IterableIterator<T> {
+        map<R>(f: (v: T) => R): IterableIterator<R>;
+        flatMap<R>(f: (v: T) => R[]): IterableIterator<R>;
+        flatMap<R>(f: (v: T) => IterableIterator<R>): IterableIterator<R>;
+        filter(f: (v: T) => boolean): IterableIterator<T>;
+    }
 }
 
 type MaterialValue = {
