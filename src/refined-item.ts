@@ -4,7 +4,11 @@ import { getConfig } from "./config";
 import { Material } from "./material";
 import { i18nFormat, simplifyCoins, t } from "./utils";
 import { dialogs } from "./app/dialogs";
-import { ModuleFlags, RefinedItemFlags } from "../types/global";
+import {
+    ModuleFlags,
+    NormalizedValue,
+    RefinedItemFlags,
+} from "../types/global";
 import { AutomaticRefinementProgression } from "./automatic-refinement-progression";
 import { MonsterPart } from "./monster-part";
 import { EffectHandlers } from "@data/effect-handlers";
@@ -113,9 +117,9 @@ export class RefinedItem {
     get coinValue() {
         const flag = this.getFlag();
         const value = flag.imbues.reduce(
-            (acc, imb) => acc + imb.value,
-            flag.refinement.value,
-        );
+            (acc, imb) => acc + (imb.value as number),
+            flag.refinement.value as number,
+        ) as NormalizedValue;
         return simplifyCoins(value);
     }
 

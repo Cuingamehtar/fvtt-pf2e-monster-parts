@@ -5,21 +5,22 @@ import { RefinedItem } from "./refined-item";
 import { clamp, i18nFormat, simplifyCoins } from "./utils";
 import { MaterialData } from "@data/material";
 import { MODULE_ID } from "./module";
+import { NormalizedValue } from "@localTypes/global";
 
 const materialAliases: Record<string, MaterialKey> = {};
 
 export class Material {
     data: MaterialData;
-    value: number;
+    value: NormalizedValue;
     #itemPredicate?: Predicate;
     #creaturePredicate?: Predicate;
 
-    constructor(data: MaterialData, value = 0) {
+    constructor(data: MaterialData, value: NormalizedValue = 0) {
         this.data = data;
         this.value = value;
     }
 
-    static fromKey(key: MaterialKey, value = 0) {
+    static fromKey(key: MaterialKey, value: NormalizedValue = 0) {
         const config = getConfig();
         const m = config.materials.get(materialAliases[key as string] ?? key);
         if (!m) return undefined;
@@ -111,10 +112,10 @@ export class Material {
     }
 
     get coinValue() {
-        return simplifyCoins(this.value);
+        return simplifyCoins(this.value as number);
     }
 
-    getThresholdForLevel(item: RefinedItem, level: number): number {
+    getThresholdForLevel(item: RefinedItem, level: number): NormalizedValue {
         const config = getConfig();
         const thresholds = config.thresholds[this.data.type];
         // get level thresholds from config and default to equipment for unknown item type;

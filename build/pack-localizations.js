@@ -32,11 +32,15 @@ export function mergeDeep(target, ...sources) {
     return mergeDeep(target, ...sources);
 }
 
-function parseFile(path) {
-    const content = fs.readFileSync(path, "utf-8");
+const substitutions = {
+    "’": "'",
+};
+
+function parseFile(filePath) {
+    const content = fs.readFileSync(filePath, "utf-8");
     if (content === "") return undefined;
     try {
-        return !path.endsWith(".yml")
+        return !filePath.endsWith(".yml")
             ? JSON.parse(content)
             : yaml.parse(content, (_k, v) => {
                   if (typeof v === "string") {
@@ -48,7 +52,7 @@ function parseFile(path) {
                   }
               });
     } catch (e) {
-        console.error(`Error when converting file ${path}`, e.message);
+        console.error(`Error when converting file ${filePath}`, e.message);
         return undefined;
     }
 }
@@ -60,19 +64,28 @@ function parsePartialLocalizations(dir) {
             const d = a.isDirectory() - b.isDirectory();
             return d !== 0 ? d : a.name.localeCompare(b.name);
         });
-    return entries.reduce((acc, cur) => {
-        const p = path.join(cur.path, cur.name);
-        if (cur.isDirectory()) {
-            const data = parsePartialLocalizations(p);
-            if (Object.keys(data).length > 0)
-                return mergeDeep(acc, { [cur.name]: data });
-        } else {
-            return mergeDeep(acc, {
-                [cur.name.split(".").slice(0, -1).join(".")]: parseFile(p),
-            });
-        }
-        return acc;
-    }, {});
+    try {
+        return entries.reduce((acc, cur) => {
+            const p = path.join(cur.parentPath, cur.name);
+            if (cur.isDirectory()) {
+                const data = parsePartialLocalizations(p);
+                if (Object.keys(data).length > 0)
+                    return mergeDeep(acc, { [cur.name]: data });
+            } else {
+                return mergeDeep(acc, {
+                    [cur.name.split(".").slice(0, -1).join(".")]: parseFile(p),
+                });
+            }
+            return acc;
+        }, {});
+    } catch (e) {
+        console.error(
+            `Error when converting directory ${dir}`,
+            e.message,
+            e.stack,
+        );
+        return {};
+    }
 }
 
 function debounce(func, delay) {
@@ -93,7 +106,7 @@ function combineLocalizationsInner() {
     const partial = parsePartialLocalizations("./lang/partial");
     fs.writeFileSync(
         "./lang/en.json",
-        JSON.stringify(mergeDeep({}, partial), null, 2),
+        JSON.stringify(mergeDeep({}, partial), null, 2).replaceAll("’", "'"),
     );
     console.log(
         `(${new Date(Date.now()).toLocaleTimeString()}) Localizations combined`,

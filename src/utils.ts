@@ -1,5 +1,6 @@
 import { MODULE_ID } from "./module";
 import { ActorPF2e, ItemPF2e } from "foundry-pf2e";
+import { NormalizedValue } from "@localTypes/global";
 
 export function t(
     m: keyof Flatten<I18nKeyType["pf2e-monster-parts"]>,
@@ -12,31 +13,44 @@ export function t(
     });
 }
 
+function sf2eUuidRemap(s: string) {
+    return s
+        .replaceAll(
+            "Compendium.pf2e.conditionitems.",
+            "Compendium.sf2e.conditions.",
+        )
+        .replaceAll("Compendium.pf2e.spells-srd.", "Compendium.sf2e.spells.")
+        .replaceAll("Compendium.pf2e.", "Compendium.sf2e.");
+}
+
 export function i18nFormat(
     m?: I18nEntry,
     data?: Record<string, unknown>,
 ): I18nString {
     if (typeof m === "undefined") return "" as I18nString;
     if (typeof m === "number") return String(m) as I18nString;
-    if (typeof (m as string) == "string") return m as I18nString;
+    if (typeof (m as string) == "string")
+        return (isSF2e() ? sf2eUuidRemap(m as string) : m) as I18nString;
     if ("type" in m && m.type === "resolve") {
         if (typeof data === "undefined") {
             console.warn(`Couldn't evaluate string ${m.value}: no data`);
             return m.value as I18nString;
         }
-        return String(
+        const s = String(
             Roll.replaceFormulaData(i18nFormat(m.value, data) as string, data),
-        ) as I18nString;
+        );
+        return (isSF2e() ? sf2eUuidRemap(s) : s) as I18nString;
     }
     if ("type" in m && m.type == "key") {
         let s = game.i18n.localize(m.key as string);
-        if (!m.parameters) return s as I18nString;
+        if (!m.parameters)
+            return (isSF2e() ? sf2eUuidRemap(s) : s) as I18nString;
         for (const k in m.parameters) {
             const f = `{${k}}`;
             const v = i18nFormat(m.parameters[k], data) as string;
             s = s.replaceAll(f, v);
         }
-        return s as I18nString;
+        return (isSF2e() ? sf2eUuidRemap(s) : s) as I18nString;
     }
     return "" as I18nString;
 }
@@ -116,11 +130,11 @@ export function clamp(num: number, min: number, max: number) {
     return num <= min ? min : num >= max ? max : num;
 }
 
-export function simplifyCoins(gp: number) {
-    const sp = (gp % 1) * 10;
+export function simplifyCoins(gp: NormalizedValue) {
+    const sp = ((gp as number) % 1) * 10;
     const cp = (sp % 1) * 10;
     return new game.pf2e.Coins({
-        gp: Math.floor(Number(gp.toFixed(1))),
+        gp: Math.floor(Number((gp as number).toFixed(1))),
         sp: Math.floor(Number(sp.toFixed(1))),
         cp: Math.floor(Number(cp.toFixed(1))),
     });
@@ -130,4 +144,17 @@ export function hash(s: string) {
     for (var i = 0, h = 9; i < s.length; )
         h = Math.imul(h ^ s.charCodeAt(i++), 9 ** 9);
     return h ^ (h >>> 9);
+}
+
+export class CurrencyConverter {
+    static ToValue(currency: number): NormalizedValue {
+        return isSF2e() ? currency / 10 : currency;
+    }
+    static ToSystemCurrency(value: NormalizedValue) {
+        return (value as number) * (isSF2e() ? 10 : 1);
+    }
+}
+
+export function isSF2e() {
+    return game.system.id === "sf2e";
 }

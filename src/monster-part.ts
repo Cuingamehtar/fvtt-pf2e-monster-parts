@@ -4,7 +4,7 @@ import { getConfig } from "./config";
 import { i18nFormat, simplifyCoins, t } from "./utils";
 import { getExtendedNPCRollOptions } from "./actor-utils";
 import { Material } from "./material";
-import { ModuleFlags } from "../types/global";
+import { ModuleFlags, NormalizedValue } from "../types/global";
 
 type HasMonsterPartData<T extends PhysicalItemPF2e> = T & {
     flags: {
@@ -51,15 +51,15 @@ export class MonsterPart {
         return !!this.item.actor;
     }
 
-    getValue(count?: number) {
+    getValue(count?: number): NormalizedValue {
         count = count ?? this.quantity;
         const baseValue = this.getFlag().value;
-        return baseValue * count;
+        return ((baseValue as number) * count) as NormalizedValue;
     }
 
     get coinValue() {
         const value = this.getFlag().value;
-        return simplifyCoins(value);
+        return simplifyCoins(value as number);
     }
 
     static valueOfCreature(actor: NPCPF2e) {
@@ -120,7 +120,7 @@ export class MonsterPart {
             flags: { [MODULE_ID]: { ["monster-part"]: flags } },
         };
         if (game.settings.get(MODULE_ID, "actor-lootable")) {
-            await actor.setFlag("pf2e", "lootable", true);
+            await actor.setFlag(game.system.id, "lootable", true);
         }
 
         const [part] = (await actor.createEmbeddedDocuments("Item", [

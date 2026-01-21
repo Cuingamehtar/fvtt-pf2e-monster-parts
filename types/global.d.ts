@@ -73,9 +73,11 @@ declare global {
     }
 }
 
+export class NormalizedValue {}
+
 type MaterialValue = {
     key: MaterialKey;
-    value: number;
+    value: NormalizedValue;
 };
 
 export type RefinedItemFlags = {
@@ -84,7 +86,7 @@ export type RefinedItemFlags = {
 };
 
 export type MonsterPartFlags = {
-    value: number;
+    value: NormalizedValue;
     materials: MaterialKey[];
     imageSrc?: string;
 };

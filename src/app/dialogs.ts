@@ -1,6 +1,7 @@
 import { simplifyCoins, t } from "../utils";
 import { configureMonsterPart } from "./monster-part-editor";
 import { configureRefinedItem } from "./refined-item-editor";
+import { NormalizedValue } from "@localTypes/global";
 
 const { DialogV2 } = foundry.applications.api;
 
@@ -32,10 +33,10 @@ function optionChoiceDialog<T>(
 }
 
 function confirmApplyMaterial(
-    addedValue: number,
+    addedValue: NormalizedValue,
     material: string,
     consumedQuantity: number,
-    consumedRemainder: number,
+    consumedRemainder: NormalizedValue,
 ): Promise<boolean | undefined> {
     let content = t("dialog.confirm-apply-material.content", {
         value: simplifyCoins(addedValue).toString(),
@@ -47,7 +48,7 @@ function confirmApplyMaterial(
             t("dialog.confirm-apply-material.consume", {
                 quantity: consumedQuantity,
             });
-    if (consumedRemainder > 0)
+    if ((consumedRemainder as number) > 0)
         content +=
             " " +
             t("dialog.confirm-apply-material.remainder", {

@@ -1,5 +1,6 @@
 import { NPCPF2e, TokenDocumentPF2e } from "foundry-pf2e";
 import { simplifyCoins } from "../utils";
+import { NormalizedValue } from "@localTypes/global";
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 export class AfterCombatDialog extends HandlebarsApplicationMixin(
@@ -12,7 +13,7 @@ export class AfterCombatDialog extends HandlebarsApplicationMixin(
             npcs: {
                 token: TokenDocumentPF2e;
                 actor: NPCPF2e;
-                value: number;
+                value: NormalizedValue;
                 checked: boolean;
             }[];
         },

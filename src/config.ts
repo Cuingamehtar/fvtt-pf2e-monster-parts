@@ -5,21 +5,22 @@ import { createDefaultImbues } from "@data/imbues";
 import { MaterialData, materialDataSchema } from "@data/material";
 import { loadHomebrewMaterials } from "./homebrew";
 import { t } from "./utils";
+import { NormalizedValue } from "@localTypes/global";
 
 export type MonsterPartsConfig = {
     materials: Map<MaterialKey, MaterialData>;
     thresholds: {
         refinement: {
-            weapon: number[];
-            armor: number[];
-            shield: number[];
-            equipment: number[];
+            weapon: NormalizedValue[];
+            armor: NormalizedValue[];
+            shield: NormalizedValue[];
+            equipment: NormalizedValue[];
         };
         imbuement: {
-            weapon: number[];
-            armor: number[];
-            shield: number[];
-            equipment: number[];
+            weapon: NormalizedValue[];
+            armor: NormalizedValue[];
+            shield: NormalizedValue[];
+            equipment: NormalizedValue[];
         };
     };
     valueForMonsterLevel: number[];

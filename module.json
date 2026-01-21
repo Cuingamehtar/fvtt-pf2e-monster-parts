@@ -1,6 +1,6 @@
 {
   "id": "pf2e-monster-parts",
-  "title": "PF2e Monster Parts",
+  "title": "PF2e/SF2e Monster Parts",
   "description": "<p>Implementation of Monster Parts subsystem for PF2e system</p>",
   "version": "#{VERSION}#",
   "compatibility": {

@@ -85,5 +85,3 @@ header:
     per-day: once per day
     per-hour: once per hour
     per-10-minutes: once per 10 minutes
-effects:
-  note: Creature takes {damage} piercing damage from Spiked imbuement.

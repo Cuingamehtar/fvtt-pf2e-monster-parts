@@ -1,4 +1,4 @@
-# PF2e Monster Parts
+# PF2e/SF2e Monster Parts
 
 This module seeks to implement the management and automation of magical items created from defeated enemies.
 The intent is to implement Battlezoo Bestiary monster parts system and provide a framework for the creation of custom materials within PF2e system of FoundryVTT.

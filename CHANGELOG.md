@@ -4,9 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [unreleased]
+## [0.5.0] - 2026-01-21
 
 ### Added
+- Add support for SF2e system
 - Add Spiked imbuement (no automation)
 
 ## [0.4.1] - 2026-01-01

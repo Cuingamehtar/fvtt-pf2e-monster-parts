@@ -1,5 +1,5 @@
 import { getConfig } from "../config";
-import { i18nFormat, t } from "../utils";
+import { CurrencyConverter, i18nFormat, t } from "../utils";
 import { MODULE_ID } from "../module";
 import { MonsterPart } from "../monster-part";
 
@@ -65,7 +65,7 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
 
         return {
             settings: {
-                value: flags.value,
+                value: CurrencyConverter.ToSystemCurrency(flags.value),
                 refinements,
                 imbues,
             },
@@ -80,7 +80,9 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             const data = formData.object;
             const config = getConfig();
             const flags = {
-                value: data["material-value"] as number,
+                value: CurrencyConverter.ToValue(
+                    data["material-value"] as number,
+                ),
                 materials: [...config.materials.values()]
                     .filter((m) => data[m.key as keyof typeof data])
                     .map((m) => m.key),
