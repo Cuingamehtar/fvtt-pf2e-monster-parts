@@ -88,6 +88,7 @@
         "force": "{value} force damage",
         "mental": "{value} mental damage",
         "poison": "{value} poison damage",
+        "slashing": "{value} slashing damage",
         "sonic": "{value} sonic damage",
         "vitality": "{value} vitality damage",
         "void": "{value} void damage",
@@ -99,6 +100,7 @@
         "persistentForce": "{value} persistent force damage",
         "persistentMental": "{value} persistent mental damage",
         "persistentPoison": "{value} persistent poison damage",
+        "persistentSlashing": "{value} persistent slashing damage",
         "persistentSonic": "{value} persistent sonic damage",
         "persistentVitality": "{value} persistent vitality damage",
         "persistentVoid": "{value} persistent void damage"

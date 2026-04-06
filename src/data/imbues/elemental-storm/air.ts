@@ -50,7 +50,7 @@ export function createImbueAir(): MaterialData[] {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
                     ...helpers.leveledLabels(
-                        [10, 14, 18],
+                        [6, 14, 18],
                         ["1", "d4", "d6"],
                         (damage: RollString) =>
                             helpers.damage.label({
@@ -59,12 +59,20 @@ export function createImbueAir(): MaterialData[] {
                             }),
                     ),
                     {
+                        levelMin: 6,
+                        text: {
+                            type: "key",
+                            key: lkey("air-trait"),
+                        },
+                        sort: 1,
+                    },
+                    {
                         levelMin: 2,
                         text: {
                             type: "key",
                             key: lkey("magic.header.level-2-cantrip"),
                         },
-                        sort: 1,
+                        sort: 2,
                     },
                     ...helpers.leveledLabels(
                         [4, 8, 10, 12, 16],
@@ -77,7 +85,7 @@ export function createImbueAir(): MaterialData[] {
                         ],
                         (key: Parameters<typeof lkey>[0]) => ({
                             text: { type: "key", key: lkey(key) },
-                            sort: 2,
+                            sort: 3,
                         }),
                     ),
                     {
@@ -86,17 +94,17 @@ export function createImbueAir(): MaterialData[] {
                             type: "key",
                             key: lkey("magic.header.level-20-wrathful-storm"),
                         },
-                        sort: 3,
+                        sort: 4,
                     },
                 ],
             },
             effects: [
                 ...helpers.leveledEffects(
-                    [10, 14, 18],
+                    [6, 14, 18],
                     ["1", "d4", "d6"],
                     (damage: RollString) =>
                         helpers.damage.effect({
-                            type: "air",
+                            type: "slashing",
                             value: damage,
                             label: lkey("magic.label"),
                         }),
@@ -116,20 +124,18 @@ export function createImbueAir(): MaterialData[] {
                         ["1", "d4", "d6", "d8"],
                         (damage: RollString) =>
                             helpers.damage.label({
-                                type: "air",
-                                value: damage,
-                            }),
-                    ),
-                    ...helpers.leveledLabels(
-                        [8, 14],
-                        ["1", "d6", "d8", "d10"],
-                        (damage: RollString) =>
-                            helpers.damage.label({
                                 type: "slashing",
-                                category: "persistent",
                                 value: damage,
                             }),
                     ),
+                    {
+                        levelMin: 4,
+                        text: {
+                            type: "key",
+                            key: lkey("air-trait"),
+                        },
+                        sort: 1,
+                    },
                     ...helpers.leveledLabels(
                         [8, 14],
                         [
@@ -138,7 +144,7 @@ export function createImbueAir(): MaterialData[] {
                         ],
                         (key: Parameters<typeof lkey>[0]) => ({
                             text: { type: "key", key: lkey(key) },
-                            sort: 1,
+                            sort: 2,
                         }),
                     ),
                     {
@@ -147,7 +153,7 @@ export function createImbueAir(): MaterialData[] {
                             type: "key",
                             key: lkey("might.header.level-12-resistance"),
                         },
-                        sort: 2,
+                        sort: 3,
                     },
                     {
                         levelMin: 20,
@@ -155,7 +161,7 @@ export function createImbueAir(): MaterialData[] {
                             type: "key",
                             key: lkey("might.header.level-20-weakness"),
                         },
-                        sort: 3,
+                        sort: 4,
                     },
                 ],
             },
@@ -221,7 +227,7 @@ export function createImbueAir(): MaterialData[] {
                     {
                         levelMin: 6,
                         ...helpers.damage.label({
-                            type: "air",
+                            type: "slashing",
                             value: 1,
                         }),
                     },
@@ -235,6 +241,14 @@ export function createImbueAir(): MaterialData[] {
                                 value: damage,
                             }),
                     ),
+                    {
+                        levelMin: 4,
+                        text: {
+                            type: "key",
+                            key: lkey("air-trait"),
+                        },
+                        sort: 1,
+                    },
                     ...helpers.leveledLabels(
                         [8, 16, 20],
                         [
@@ -244,7 +258,7 @@ export function createImbueAir(): MaterialData[] {
                         ],
                         (key: Parameters<typeof lkey>[0]) => ({
                             text: { type: "key", key: lkey(key) },
-                            sort: 1,
+                            sort: 2,
                         }),
                     ),
                     {
@@ -253,7 +267,7 @@ export function createImbueAir(): MaterialData[] {
                             type: "key",
                             key: lkey("tech.header.level-12-resistance"),
                         },
-                        sort: 2,
+                        sort: 3,
                     },
                     {
                         levelMin: 16,
@@ -261,7 +275,7 @@ export function createImbueAir(): MaterialData[] {
                             type: "key",
                             key: lkey("tech.header.level-16-hazardous"),
                         },
-                        sort: 3,
+                        sort: 4,
                     },
                 ],
             },
@@ -269,7 +283,7 @@ export function createImbueAir(): MaterialData[] {
                 {
                     levelMin: 6,
                     ...helpers.damage.effect({
-                        type: "air",
+                        type: "slashing",
                         value: 1,
                         label: lkey("tech.label"),
                     }),
@@ -279,26 +293,12 @@ export function createImbueAir(): MaterialData[] {
                     ["1", "d6", "d8", "d10"],
                     (damage: RollString) =>
                         helpers.damage.effect({
-                            type: "air",
+                            type: "slashing",
                             category: "persistent",
                             value: damage,
                             label: lkey("tech.label"),
                         }),
                 ),
-                {
-                    levelMin: 8,
-                    type: "RuleElement",
-                    rule: {
-                        key: "DamageDice",
-                        selector: "{item|_id}-damage",
-                        damageType: "air",
-                        category: "persistent",
-                        dieSize: "d10",
-                        diceNumber: 1,
-                        label: lkey("tech.label"),
-                        critical: true,
-                    },
-                },
                 ...helpers.leveledEffects(
                     [8, 16, 20],
                     [

@@ -45,18 +45,21 @@ function generatePage(m: MaterialData) {
     if (game.settings.get(MODULE_ID, "show-debug-info")) {
         // debug
         const tableHeader = `<tr><th>Entry</th>${Array.fromRange(21)
-            .map((i) => `<th style="width:20px">${i}</th>`)
+            .map(
+                (i) =>
+                    `<th style="width:20px;writing-mode: vertical-lr;padding: 0">${i}</th>`,
+            )
             .join("")}</tr>`;
 
         const tableRows = m.header?.labels
             ?.sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0))
             ?.map((l) => debugLine(l))
             .join("");
-        const headerTable = `<table>${tableHeader}${tableRows}</table>`;
+        const headerTable = `<table style="table-layout: fixed;">${tableHeader}${tableRows}</table>`;
 
         const effectRows =
             m.effects?.map((l) => debugLineEffect(l)).join("") ?? [];
-        const effectTable = `<table>${tableHeader}${effectRows}</table>`;
+        const effectTable = `<table style="table-layout: fixed;">${tableHeader}${effectRows}</table>`;
 
         description += `<details><summary>Debug details</summary>${headerTable}${effectTable}</details>`;
     }
@@ -76,7 +79,7 @@ function debugLine(label: HeaderLabel) {
         .map((i) =>
             i >= label.levelMin &&
             (typeof label.levelMax == "undefined" || i <= label.levelMax)
-                ? `<td style="vertical-align: middle;"><div style="background-color: black; height:2em"></div></td>`
+                ? `<td style="vertical-align: middle;padding: 0;width:20px;"><div style="background-color: var(--color-text-primary); height:2em"></div></td>`
                 : `<td></td>`,
         )
         .join("");
@@ -109,7 +112,7 @@ function debugLineEffect(effect: MaterialEffect) {
         .map((i) =>
             i >= effect.levelMin &&
             (typeof effect.levelMax == "undefined" || i <= effect.levelMax)
-                ? `<td style="vertical-align: middle;"><div style="background-color: black; height:2em;"></div></td>`
+                ? `<td style="vertical-align: middle;padding: 0;width:20px;"><div style="background-color: var(--color-text-primary); height:2em;"></div></td>`
                 : `<td></td>`,
         )
         .join("");
