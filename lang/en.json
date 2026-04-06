@@ -499,6 +499,57 @@
           }
         },
         "elemental-storm": {
+          "air": {
+            "flavor": "You imbue the weapon with slicing blades of wind.",
+            "air-trait": "Additional slashing damage from this weapon has the air trait.",
+            "magic": {
+              "label": "Air (Magic)",
+              "description": "<p><strong>Type</strong> Weapon</p>\n<p><strong>Parts</strong> The monster must have the air trait or an ability or spell with the air trait.</p>\n<hr />\n<p><strong>Effect</strong> You imbue the weapon with slicing blades of wind.</p>\n<p><strong>Path</strong> Magic; Choose when you first imbue the weapon for the granted spells to be either arcane or primal.</p>\n<ul>\n<li><strong>2nd</strong> The weapon can cast <em>rushing gust</em><sup>ES</sup> as a cantrip, heightened to half the item's level rounded up.</li>\n<li><strong>4th</strong> The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.g8QqHpv2CWDwmIm1]{Gust of Wind} once per day.</li>\n<li><strong>6th</strong> Strikes with the weapon deal 1 additional slashing damage from blades of wind; this additional damage has the air trait.</li>\n<li><strong>8th</strong> The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.it4ZsAi6XgvGcodc]{Wall of Wind} once per day.</li>\n<li><strong>10th</strong> The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.V8wXOsoejQhe6CyG]{Vapor Form} once per day.</li>\n<li><strong>12th</strong> The weapon can cast <em>launching vortex</em><sup>ES</sup> once per day.</li>\n<li><strong>14th</strong> The additional slashing damage increases to 1d4.</li>\n<li><strong>16th</strong> The weapon's <em>launching vortex</em> heightens to 6th rank.</li>\n<li><strong>18th</strong> The additional slashing damage increases to 1d6.</li>\n<li><strong>20th</strong> The weapon can cast 9th-rank @UUID[Compendium.pf2e.spells-srd.Item.yLJROsQtyrPIKcDx]{Wrathful Storm} once per day, but the only effect you create is a tornado, and the storm can create this effect multiple times in a row.</li>\n</ul>",
+              "header": {
+                "level-2-cantrip": "The weapon can cast <em>rushing gust</em><sup>ES</sup> as a cantrip, heightened to half the item's level rounded up.",
+                "level-4-spells": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.g8QqHpv2CWDwmIm1]{Gust of Wind} once per day.",
+                "level-8-spells": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.g8QqHpv2CWDwmIm1]{Gust of Wind} and @UUID[Compendium.pf2e.spells-srd.Item.it4ZsAi6XgvGcodc]{Wall of Wind} once per day each.",
+                "level-10-spells": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.g8QqHpv2CWDwmIm1]{Gust of Wind}, @UUID[Compendium.pf2e.spells-srd.Item.it4ZsAi6XgvGcodc]{Wall of Wind} and @UUID[Compendium.pf2e.spells-srd.Item.V8wXOsoejQhe6CyG]{Vapor Form} once per day each.",
+                "level-12-spells": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.g8QqHpv2CWDwmIm1]{Gust of Wind}, @UUID[Compendium.pf2e.spells-srd.Item.it4ZsAi6XgvGcodc]{Wall of Wind}, @UUID[Compendium.pf2e.spells-srd.Item.V8wXOsoejQhe6CyG]{Vapor Form} and <em>launching vortex</em><sup>ES</sup> once per day each.",
+                "level-16-spells": "The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.g8QqHpv2CWDwmIm1]{Gust of Wind}, @UUID[Compendium.pf2e.spells-srd.Item.it4ZsAi6XgvGcodc]{Wall of Wind}, @UUID[Compendium.pf2e.spells-srd.Item.V8wXOsoejQhe6CyG]{Vapor Form} and 6th rank <em>launching vortex</em><sup>ES</sup> once per day each.",
+                "level-20-wrathful-storm": "The weapon can cast 9th-rank @UUID[Compendium.pf2e.spells-srd.Item.yLJROsQtyrPIKcDx]{Wrathful Storm} once per day, but the only effect you create is a tornado, and the storm can create this effect multiple times in a row."
+              }
+            },
+            "might": {
+              "label": "Air (Might)",
+              "description": "<p><strong>Type</strong> Weapon</p>\n<p><strong>Parts</strong> The monster must have the air trait or an ability or spell with the air trait.</p>\n<hr />\n<p><strong>Effect</strong> You imbue the weapon with slicing blades of wind.</p>\n<p><strong>Path</strong> Might</p>\n<ul>\n<li><strong>4th</strong> Strikes with the weapon deal 1 additional slashing damage from blades of wind; this additional damage has the air trait.</li>\n<li><strong>6th</strong> The additional slashing damage increases to 1d4.</li>\n<li><strong>8th</strong> The additional slashing damage increases to 1d6. On a critical hit, you can push the target up to 5 feet away from you.</li>\n<li><strong>12th</strong> The additional slashing damage dealt by this imbued property ignores resistances. Even if the main weapon deals slashing damage, this benefit only applies to the additional damage.</li>\n<li><strong>14th</strong> On a critical hit with the weapon, you can push the target up to 10 feet away from you.</li>\n<li><strong>18th</strong> The additional slashing damage increases to 1d8.</li>\n<li><strong>20th</strong> On a successful Strike with the weapon, before applying the additional slashing damage, the target gains weakness 1 to air until the beginning of your next turn.</li>\n</ul>",
+              "effects": {
+                "level-12-resistance": "The additional slashing damage dealt by this imbued property ignores resistances. Even if the main weapon deals slashing damage, this benefit only applies to the additional damage.",
+                "level-8-push": "You can push the target 5 feet away from you.",
+                "level-14-push": "You can push the target up to 10 feet away from you.",
+                "level-20-weakness": "On a successful Strike with the weapon, before applying the additional slashing damage, the target gains weakness 1 to air until the beginning of your next turn. @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect: Might Path Damage Weakness}"
+              },
+              "header": {
+                "level-12-resistance": "The additional slashing damage dealt by this imbued property ignores resistances. Even if the main weapon deals slashing damage, this benefit only applies to the additional damage.",
+                "level-8-push": "On a critical hit with the weapon, you can push the target 5 feet away from you.",
+                "level-14-push": "On a critical hit with the weapon, you can push the target up to 10 feet away from you.",
+                "level-20-weakness": "On a successful Strike with the weapon, before applying the additional slashing damage, the target gains weakness 1 to air until the beginning of your next turn."
+              }
+            },
+            "tech": {
+              "label": "Air (Technique)",
+              "description": "<p><strong>Type</strong> Weapon</p>\n<p><strong>Parts</strong> The monster must have the air trait or an ability or spell with the air trait.</p>\n<hr />\n<p><strong>Effect</strong> You imbue the weapon with slicing blades of wind.</p>\n<p><strong>Path</strong> Technique</p>\n<ul>\n<li><strong>4th</strong> Strikes with the weapon deal 1 persistent slashing damage as blades of wind surround and slash them; this additional damage has the air trait.</li>\n<li><strong>6th</strong> Strikes with the weapon deal 1 additional slashing damage from blades of wind; this additional damage has the air trait.</li>\n<li><strong>8th</strong> The persistent slashing damage on a hit increases to 1d6. On a critical hit, you can push the target up to 5 feet away from you.</li>\n<li><strong>12th</strong> The additional damage and persistent slashing damage dealt by this imbued property ignores resistances (as does the damage from hazardous terrain caused by this imbued property's 16th level effect). Even if the main weapon deals slashing damage, this benefit only applies to the slashing damage from this imbued property.</li>\n<li><strong>14th</strong> The persistent slashing damage on a hit increases to 1d8.</li>\n<li><strong>16th</strong> While suffering from the persistent slashing damage, the surrounding blades of air damage the creature the more it moves, slashing at them each time they do. All terrain is hazardous terrain for them, dealing 2 slashing damage for each square through which they move (this includes the movement from being pushed by a critical hit). On a critical hit, you can push the target up to 10 feet away.</li>\n<li><strong>18th</strong> The persistent slashing damage on a hit increases to 1d10.</li>\n<li><strong>20th</strong> On a critical hit, you can push the target up to 20 feet away.</li>\n</ul>",
+              "effects": {
+                "level-8-push": "You can push the target 5 feet away from you.",
+                "level-16-push": "You can push the target up to 10 feet away from you.",
+                "level-20-push": "You can push the target up to 20 feet away from you.",
+                "level-12-resistance": "The additional damage and persistent slashing damage dealt by this imbued property ignores resistances (as does the damage from hazardous terrain caused by this imbued property's 16th level effect). Even if the main weapon deals slashing damage, this benefit only applies to the slashing damage from this imbued property.",
+                "level-16-hazardous": "While suffering from the persistent slashing damage, the surrounding blades of air damage the creature the more it moves, slashing at them each time they do. All terrain is hazardous terrain for them, dealing 2 slashing damage for each square through which they move (this includes the movement from being pushed by a critical hit)."
+              },
+              "header": {
+                "level-8-push": "On a critical hit with the weapon, you can push the target 5 feet away from you.",
+                "level-16-push": "On a critical hit with the weapon, you can push the target up to 10 feet away from you.",
+                "level-20-push": "On a critical hit with the weapon, you can push the target up to 20 feet away from you.",
+                "level-12-resistance": "The additional damage and persistent slashing damage dealt by this imbued property ignores resistances (as does the damage from hazardous terrain caused by this imbued property's 16th level effect). Even if the main weapon deals slashing damage, this benefit only applies to the slashing damage from this imbued property.",
+                "level-16-hazardous": "While suffering from the persistent slashing damage, the surrounding blades of air damage the creature the more it moves, slashing at them each time they do. All terrain is hazardous terrain for them, dealing 2 slashing damage for each square through which they move (this includes the movement from being pushed by a critical hit)."
+              }
+            }
+          },
           "death": {
             "flavor": "You imbue the weapon with the void energy of death.",
             "magic": {

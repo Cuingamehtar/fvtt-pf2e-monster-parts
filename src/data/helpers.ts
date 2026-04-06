@@ -1,4 +1,9 @@
-import { Abilities, PredicateStatement, SkillSlug } from "foundry-pf2e";
+import {
+    Abilities,
+    DAMAGE_TYPES,
+    PredicateStatement,
+    SkillSlug,
+} from "foundry-pf2e";
 import { ItemAlterationSource } from "./data-types";
 import { HeaderLabel, MaterialEffect } from "./material";
 import { RollString } from "../../types/global";
@@ -99,7 +104,7 @@ const damage = {
         label,
         predicate,
     }: {
-        type?: string;
+        type?: ValueOf<typeof DAMAGE_TYPES>;
         category?: "persistent" | "splash";
         value: RollString;
         label: I18nKey | I18nString;

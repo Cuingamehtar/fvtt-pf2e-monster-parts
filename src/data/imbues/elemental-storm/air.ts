@@ -3,15 +3,15 @@ import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
 
-export function createImbueFire(): MaterialData[] {
+export function createImbueAir(): MaterialData[] {
     const lkey = (
         k: keyof Flatten<
             Nested<
                 I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.elemental-storm.fire"
+                "pf2e-monster-parts.data.imbuement.elemental-storm.air"
             >
         >,
-    ): I18nKey => tkey(`data.imbuement.elemental-storm.fire.${k}`);
+    ): I18nKey => tkey(`data.imbuement.elemental-storm.air.${k}`);
 
     const base = {
         type: "imbuement" as "imbuement",
@@ -19,19 +19,19 @@ export function createImbueFire(): MaterialData[] {
         monsterPredicate: [
             {
                 or: [
-                    "self:trait:fire",
+                    "self:trait:air",
                     {
                         or: [
                             {
                                 and: [
                                     "item:type:melee",
-                                    "item:damage:type:fire",
+                                    "item:damage:type:air",
                                 ],
                             },
                             {
                                 and: [
                                     "item:type:spell",
-                                    "item:damage:type:fire",
+                                    "item:damage:type:air",
                                 ],
                             },
                         ],
@@ -43,7 +43,7 @@ export function createImbueFire(): MaterialData[] {
     return [
         {
             ...base,
-            key: "imbue:fire:magic",
+            key: "imbue:air:magic",
             label: { type: "key", key: lkey("magic.label") },
             description: { type: "key", key: lkey("magic.description") },
             header: {
@@ -54,7 +54,7 @@ export function createImbueFire(): MaterialData[] {
                         ["1", "d4", "d6"],
                         (damage: RollString) =>
                             helpers.damage.label({
-                                type: "fire",
+                                type: "slashing",
                                 value: damage,
                             }),
                     ),
@@ -62,19 +62,16 @@ export function createImbueFire(): MaterialData[] {
                         levelMin: 2,
                         text: {
                             type: "key",
-                            key: "pf2e-monster-parts.data.imbuement.add-cantrip",
-                            parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq]",
-                            },
+                            key: lkey("magic.header.level-2-cantrip"),
                         },
                         sort: 1,
                     },
                     ...helpers.leveledLabels(
-                        [4, 6, 8, 12, 16],
+                        [4, 8, 10, 12, 16],
                         [
                             "magic.header.level-4-spells",
-                            "magic.header.level-6-spells",
                             "magic.header.level-8-spells",
+                            "magic.header.level-10-spells",
                             "magic.header.level-12-spells",
                             "magic.header.level-16-spells",
                         ],
@@ -87,7 +84,7 @@ export function createImbueFire(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("magic.header.level-20-falling-stars"),
+                            key: lkey("magic.header.level-20-wrathful-storm"),
                         },
                         sort: 3,
                     },
@@ -99,7 +96,7 @@ export function createImbueFire(): MaterialData[] {
                     ["1", "d4", "d6"],
                     (damage: RollString) =>
                         helpers.damage.effect({
-                            type: "fire",
+                            type: "air",
                             value: damage,
                             label: lkey("magic.label"),
                         }),
@@ -108,7 +105,7 @@ export function createImbueFire(): MaterialData[] {
         },
         {
             ...base,
-            key: "imbue:fire:might",
+            key: "imbue:air:might",
             label: { type: "key", key: lkey("might.label") },
             description: { type: "key", key: lkey("might.description") },
             header: {
@@ -119,27 +116,31 @@ export function createImbueFire(): MaterialData[] {
                         ["1", "d4", "d6", "d8"],
                         (damage: RollString) =>
                             helpers.damage.label({
-                                type: "fire",
+                                type: "air",
                                 value: damage,
                             }),
                     ),
-                    {
-                        levelMin: 8,
-                        levelMax: 13,
-                        text: {
-                            type: "key",
-                            key: lkey("might.header.level-8-persistent"),
-                        },
-                        sort: 1,
-                    },
-                    {
-                        levelMin: 14,
-                        text: {
-                            type: "key",
-                            key: lkey("might.header.level-14-persistent"),
-                        },
-                        sort: 1,
-                    },
+                    ...helpers.leveledLabels(
+                        [8, 14],
+                        ["1", "d6", "d8", "d10"],
+                        (damage: RollString) =>
+                            helpers.damage.label({
+                                type: "slashing",
+                                category: "persistent",
+                                value: damage,
+                            }),
+                    ),
+                    ...helpers.leveledLabels(
+                        [8, 14],
+                        [
+                            "might.header.level-8-push",
+                            "might.header.level-14-push",
+                        ],
+                        (key: Parameters<typeof lkey>[0]) => ({
+                            text: { type: "key", key: lkey(key) },
+                            sort: 1,
+                        }),
+                    ),
                     {
                         levelMin: 12,
                         text: {
@@ -164,25 +165,25 @@ export function createImbueFire(): MaterialData[] {
                     ["1", "d4", "d6", "d8"],
                     (damage: RollString) =>
                         helpers.damage.effect({
-                            type: "fire",
+                            type: "slashing",
                             value: damage,
                             label: lkey("might.label"),
                         }),
                 ),
                 ...helpers.leveledEffects(
                     [8, 14],
-                    ["1", "2"],
-                    (dice: RollString) => ({
+                    [
+                        "might.effects.level-8-push",
+                        "might.effects.level-14-push",
+                    ],
+                    (l: Parameters<typeof lkey>[0]) => ({
                         type: "RuleElement",
                         rule: {
-                            key: "DamageDice",
-                            selector: "{item|_id}-damage",
-                            damageType: "fire",
-                            category: "persistent",
-                            dieSize: "d10",
-                            diceNumber: dice,
-                            label: lkey("might.label"),
-                            critical: true,
+                            key: "Note",
+                            outcome: ["criticalSuccess"],
+                            text: lkey(l),
+                            title: lkey("might.label"),
+                            selector: ["{item|id}-damage"],
                         },
                     }),
                 ),
@@ -211,7 +212,7 @@ export function createImbueFire(): MaterialData[] {
         },
         {
             ...base,
-            key: "imbue:fire:tech",
+            key: "imbue:air:tech",
             label: { type: "key", key: lkey("tech.label") },
             description: { type: "key", key: lkey("tech.description") },
             header: {
@@ -220,7 +221,7 @@ export function createImbueFire(): MaterialData[] {
                     {
                         levelMin: 6,
                         ...helpers.damage.label({
-                            type: "fire",
+                            type: "air",
                             value: 1,
                         }),
                     },
@@ -229,42 +230,38 @@ export function createImbueFire(): MaterialData[] {
                         ["1", "d6", "d8", "d10"],
                         (damage: RollString) =>
                             helpers.damage.label({
-                                type: "fire",
+                                type: "slashing",
                                 category: "persistent",
                                 value: damage,
                             }),
                     ),
-                    {
-                        levelMin: 8,
-                        text: {
-                            type: "key",
-                            key: lkey("tech.header.level-8-persistent"),
-                        },
-                        sort: 1,
-                    },
-                    {
-                        levelMin: 16,
-                        text: {
-                            type: "key",
-                            key: lkey("tech.header.level-16-off-guard"),
-                        },
-                        sort: 2,
-                    },
+                    ...helpers.leveledLabels(
+                        [8, 16, 20],
+                        [
+                            "tech.header.level-8-push",
+                            "tech.header.level-16-push",
+                            "tech.header.level-20-push",
+                        ],
+                        (key: Parameters<typeof lkey>[0]) => ({
+                            text: { type: "key", key: lkey(key) },
+                            sort: 1,
+                        }),
+                    ),
                     {
                         levelMin: 12,
                         text: {
                             type: "key",
                             key: lkey("tech.header.level-12-resistance"),
                         },
-                        sort: 3,
+                        sort: 2,
                     },
                     {
-                        levelMin: 20,
+                        levelMin: 16,
                         text: {
                             type: "key",
-                            key: lkey("tech.header.level-20-weakness"),
+                            key: lkey("tech.header.level-16-hazardous"),
                         },
-                        sort: 4,
+                        sort: 3,
                     },
                 ],
             },
@@ -272,7 +269,7 @@ export function createImbueFire(): MaterialData[] {
                 {
                     levelMin: 6,
                     ...helpers.damage.effect({
-                        type: "fire",
+                        type: "air",
                         value: 1,
                         label: lkey("tech.label"),
                     }),
@@ -282,7 +279,7 @@ export function createImbueFire(): MaterialData[] {
                     ["1", "d6", "d8", "d10"],
                     (damage: RollString) =>
                         helpers.damage.effect({
-                            type: "fire",
+                            type: "air",
                             category: "persistent",
                             value: damage,
                             label: lkey("tech.label"),
@@ -294,7 +291,7 @@ export function createImbueFire(): MaterialData[] {
                     rule: {
                         key: "DamageDice",
                         selector: "{item|_id}-damage",
-                        damageType: "fire",
+                        damageType: "air",
                         category: "persistent",
                         dieSize: "d10",
                         diceNumber: 1,
@@ -302,6 +299,24 @@ export function createImbueFire(): MaterialData[] {
                         critical: true,
                     },
                 },
+                ...helpers.leveledEffects(
+                    [8, 16, 20],
+                    [
+                        "tech.effects.level-8-push",
+                        "tech.effects.level-16-push",
+                        "tech.effects.level-20-push",
+                    ],
+                    (l: Parameters<typeof lkey>[0]) => ({
+                        type: "RuleElement",
+                        rule: {
+                            key: "Note",
+                            outcome: ["criticalSuccess"],
+                            text: lkey(l),
+                            title: lkey("tech.label"),
+                            selector: ["{item|id}-damage"],
+                        },
+                    }),
+                ),
                 {
                     levelMin: 12,
                     type: "RuleElement",
@@ -317,8 +332,7 @@ export function createImbueFire(): MaterialData[] {
                     type: "RuleElement",
                     rule: {
                         key: "Note",
-                        outcome: ["criticalSuccess"],
-                        text: lkey("tech.effects.level-16-off-guard"),
+                        text: lkey("tech.effects.level-16-hazardous"),
                         title: lkey("tech.label"),
                         selector: ["{item|id}-damage"],
                     },
