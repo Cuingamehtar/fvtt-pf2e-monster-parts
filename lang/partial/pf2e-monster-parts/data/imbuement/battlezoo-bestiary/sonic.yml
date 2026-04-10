@@ -37,20 +37,21 @@ might:
   effects:
     level-8-deafened: >-
       The target must succeed at a @Check[fortitude|dc:resolve(14 +@item.level
-      +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0))]
-      save or be
+      +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0)
+      +max(@item.level -24, 0))|options:inflicts-deafened] save or be
       @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for
       1 minute, or 1 hour on a critical failure.
     level-12-resistance: The sonic damage dealt by this imbued property ignores resistances.
     level-14-deafened: >-
       The target must succeed at a @Check[fortitude|dc:resolve(14 +@item.level
-      +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0))]
-      save or be
+      +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0)
+      +max(@item.level -24, 0))|options:inflicts:deafened] save or be
       @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for
       1 minute, or permanently on a critical failure.
     level-20-weakness: >-
       Before applying sonic damage, the target gains weakness 1 to sonic until
-      the beginning of your next turn. @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
+      the beginning of your next turn.
+      @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
       Might Path Damage Weakness}
   header:
     level-8-deafened: >-
@@ -107,8 +108,8 @@ tech:
   effects:
     level-8-deafened: >-
       The target must succeed at a @Check[fortitude|dc:resolve(14 +@item.level
-      +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0))]
-      save or be
+      +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0)
+      +max(@item.level -24, 0))|options:inflicts:deafened] save or be
       @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for
       1 minute, or 1 hour on a critical failure.
     level-12-resistance: >-
@@ -116,8 +117,9 @@ tech:
       damage) ignores resistances.
     level-16-deafened: >-
       The target must succeed at a @Check[fortitude|dc:resolve(14 +@item.level
-      +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0))]
-      save or be
+      +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0)
+      +max(@item.level -24, 0))|options:inflicts:deafened,inflicts:stunned] save
+      or be
       @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Deafened} for
       1 minute, or permanently on a critical failure. On failure and critical
       failure the target is
@@ -125,10 +127,11 @@ tech:
     level-20-boom: >-
       The sonic damage and persistent sonic damage create a sonic boom,
       affecting all creatures adjacent to the target with an AC lower than or
-      equal to your attack roll. All creatures that take
-      sonic damage in this way must attempt the @Check[fortitude|dc:resolve(14
-      +@item.level +floor(@item.level /3) +max(@item.level -21,0)
-      -max(@item.level -23, 0))] save to avoid being deafened and stunned.
+      equal to your attack roll. All creatures that take sonic damage in this
+      way must attempt the @Check[fortitude|dc:resolve(14 +@item.level
+      +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0)
+      +max(@item.level -24, 0))|options:inflicts:deafened,inflicts:stunned] save
+      to avoid being deafened and stunned.
   header:
     level-8-deafened: >-
       On a critical hit, the target must succeed at a Fortitude save or be
