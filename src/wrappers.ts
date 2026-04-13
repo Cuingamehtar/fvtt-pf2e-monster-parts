@@ -15,13 +15,11 @@ export class Wrappers {
         globalThis.__tempActor = actor;
 
         // literally copy the system function and add a custom check
-        const systemFunctionHash = -893590035;
-        if (
-            hash(actor.inventory.sellAllTreasure.toString()) !==
-            systemFunctionHash
-        ) {
+        const systemFunctionHash = -1192268445;
+        const h = hash(actor.inventory.sellAllTreasure.toString());
+        if (h !== systemFunctionHash) {
             ui.notifications.warn(
-                "Sell all treasure function text mismatch. Patching might result in the unexpected behavior.",
+                `Sell all treasure function text mismatch (expected ${systemFunctionHash}, found ${h}). Patching might result in the unexpected behavior.`,
             );
         }
 

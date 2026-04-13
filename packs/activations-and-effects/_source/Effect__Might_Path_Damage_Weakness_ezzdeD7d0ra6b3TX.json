@@ -21,6 +21,44 @@
       {
         "choices": [
           {
+            "label": "PF2E.TraitMorph",
+            "value": "morph",
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:body:might",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "PF2E.TraitAir",
+            "value": "air",
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:air:might",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "label": "PF2E.TraitAcid",
             "value": "acid",
             "predicate": [

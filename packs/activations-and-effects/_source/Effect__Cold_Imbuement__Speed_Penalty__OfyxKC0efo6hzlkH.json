@@ -1,5 +1,5 @@
 {
-  "name": "Effect: Cold Imbuement Speed Penalty",
+  "name": "Effect: Cold Imbuement (Speed Penalty)",
   "type": "effect",
   "effects": [],
   "system": {
@@ -152,7 +152,7 @@
     "systemId": "pf2e",
     "systemVersion": "7.8.0",
     "createdTime": 1763675196132,
-    "modifiedTime": 1767971320550,
+    "modifiedTime": 1776100697846,
     "lastModifiedBy": "My4TCMjLEU7yUq2Y"
   },
   "_key": "!items!OfyxKC0efo6hzlkH"

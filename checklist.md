@@ -3,7 +3,7 @@
 | Acid             | BB     | ✔      |
 | Air              | SU/ES  | ✔      |
 | Bane             | BB     | ✔      |
-| Body             | ES     | ❌      |
+| Body             | ES     | ✔      |
 | Burning Barbs    | ES     | ❌      |
 | Chaotic*         | BB     | 🚫     |
 | Charisma         | BB     | ✔      |

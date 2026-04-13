@@ -103,12 +103,14 @@ const damage = {
         value,
         label,
         predicate,
+        selector,
     }: {
         type?: ValueOf<typeof DAMAGE_TYPES>;
         category?: "persistent" | "splash";
         value: RollString;
         label: I18nKey | I18nString;
         predicate?: PredicateStatement[];
+        selector?: string;
     }): Omit<RuleElementEffect, "levelMin" | "levelMax"> {
         if (
             typeof value === "undefined" ||
@@ -119,7 +121,7 @@ const damage = {
                 type: "RuleElement",
                 rule: {
                     key: "FlatModifier",
-                    selector: "{item|_id}-damage",
+                    selector: selector ?? "{item|_id}-damage",
                     damageType: type,
                     damageCategory: category,
                     value: value ?? 1,
@@ -133,7 +135,7 @@ const damage = {
                 type: "RuleElement",
                 rule: {
                     key: "DamageDice",
-                    selector: "{item|_id}-damage",
+                    selector: selector ?? "{item|_id}-damage",
                     damageType: type,
                     category: category,
                     dieSize: m?.[2] ?? "d4",
@@ -148,10 +150,12 @@ const damage = {
         type,
         category,
         value,
+        key,
     }: {
         type?: string;
         category?: "persistent" | "splash";
         value: RollString;
+        key?: I18nKey;
     }): Omit<HeaderLabel, "levelMin" | "levelMax"> {
         type = type ?? "untyped";
         const partialKey =
@@ -160,7 +164,7 @@ const damage = {
         return {
             text: {
                 type: "key",
-                key: "pf2e-monster-parts.damage.strikes",
+                key: key ?? "pf2e-monster-parts.damage.strikes",
                 parameters: {
                     damage: {
                         type: "key",

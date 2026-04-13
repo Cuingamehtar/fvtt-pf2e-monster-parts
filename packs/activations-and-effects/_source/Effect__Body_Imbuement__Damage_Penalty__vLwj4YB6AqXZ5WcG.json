@@ -1,14 +1,14 @@
 {
-  "name": "Ephemeral Effect: Magnetized",
+  "name": "Effect: Body Imbuement (Damage Penalty)",
   "type": "effect",
   "effects": [],
   "system": {
     "_migration": {
-      "version": 0.953,
+      "version": 0.955,
       "previous": null
     },
     "description": {
-      "value": "<p>Ephemeral Effect.</p><p>You gain +1 circumstance bonus to attack rolls made with metal weapons (to automatically check the bonus, grant the attacker \"metal-weapon\" roll option).</p>",
+      "value": "<p>Granted by Body imbuement.</p><p>You take penalty to damage rolls equal to effect value.</p>",
       "gm": ""
     },
     "publication": {
@@ -20,14 +20,24 @@
     "rules": [
       {
         "key": "FlatModifier",
-        "label": "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.electricity.tech.effects.strike-with-metal-weapon",
-        "value": 1,
+        "value": "-@item.badge.value",
         "selector": [
-          "weapon-attack-roll"
+          "damage"
         ],
-        "type": "circumstance",
+        "type": "status"
+      },
+      {
+        "key": "Note",
+        "selector": [
+          "pd-recovery-check"
+        ],
+        "outcome": [
+          "criticalFailure",
+          "failure"
+        ],
+        "text": "pf2e-monster-parts.data.imbuement.elemental-storm.body.damage-penalty-note",
         "predicate": [
-          "metal-weapon"
+          "damage:type:bludgeoning"
         ]
       }
     ],
@@ -53,12 +63,24 @@
       "value": 0,
       "initiative": null
     },
-    "badge": null,
+    "badge": {
+      "type": "counter",
+      "value": 1,
+      "labels": [
+        "−1",
+        "−2",
+        "−3",
+        "−4"
+      ],
+      "loop": false,
+      "min": null,
+      "max": null
+    },
     "fromSpell": false,
     "context": null
   },
-  "_id": "E7SVbmdbmSImDv8Z",
-  "img": "systems/pf2e/icons/spells/magnetic-attraction.webp",
+  "_id": "vLwj4YB6AqXZ5WcG",
+  "img": "systems/pf2e/icons/spells/glimpse-weakness.webp",
   "folder": null,
   "sort": 0,
   "ownership": {
@@ -71,11 +93,11 @@
     "duplicateSource": null,
     "exportSource": null,
     "coreVersion": "13.351",
-    "systemId": "sf2e",
-    "systemVersion": "7.7.4",
-    "createdTime": 1763969912184,
-    "modifiedTime": 1764881856895,
+    "systemId": "pf2e",
+    "systemVersion": "7.12.2",
+    "createdTime": 1776066750207,
+    "modifiedTime": 1776101385891,
     "lastModifiedBy": "My4TCMjLEU7yUq2Y"
   },
-  "_key": "!items!E7SVbmdbmSImDv8Z"
+  "_key": "!items!vLwj4YB6AqXZ5WcG"
 }

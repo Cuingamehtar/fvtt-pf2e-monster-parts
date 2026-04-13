@@ -1,6 +1,6 @@
 import { getConfig } from "./config";
 import { i18nFormat } from "./utils";
-import { HeaderLabel, MaterialData, MaterialEffect } from "./data/material";
+import { HeaderLabel, MaterialData, MaterialEffect } from "@data/material";
 import { MODULE_ID } from "./module";
 
 let journal: JournalEntry | undefined = undefined;
@@ -22,6 +22,7 @@ export function renderSummaryJournal(materialKey?: string) {
         journal = new CONFIG.JournalEntry.documentClass({
             name: "Materials",
             pages: imbuementPages,
+            ownership: { default: 2 },
         });
     }
     if (!materialKey) return journal.sheet.render(true);

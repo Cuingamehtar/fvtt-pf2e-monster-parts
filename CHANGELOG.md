@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.5.1] - 2026-04-13
+
+### Added
+- Add Air and Body imbuements
+
+### Fixed
+- Fix permission issue that prevented players from seeing imbuement journal
+
 ## [0.5.0] - 2026-01-21
 
 ### Added

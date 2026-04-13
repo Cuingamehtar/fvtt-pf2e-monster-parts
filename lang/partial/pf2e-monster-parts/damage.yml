@@ -1,6 +1,8 @@
 strikes: 'Strikes with the weapon additionally deal {damage}.'
+unarmed-strikes: 'Strikes with your unarmed attacks additionally deal {damage}.'
 type:
   acid: '{value} acid damage'
+  bludgeoning: '{value} bludgeoning damage'
   cold: '{value} cold damage'
   electricity: '{value} electricity damage'
   fire: '{value} fire damage'
@@ -13,6 +15,7 @@ type:
   void: '{value} void damage'
   precision: '{value} precision damage'
   persistentAcid: '{value} persistent acid damage'
+  persistentBludgeoning: '{value} persistent bludgeoning damage'
   persistentCold: '{value} persistent cold damage'
   persistentElectricity: '{value} persistent electricity damage'
   persistentFire: '{value} persistent fire damage'
