@@ -55,7 +55,7 @@ magic:
 
     - **18th** The additional poison damage increases to 1d6.
 
-    - **20th** The weapon can cast 9th-rank *toxify blood*<sup>ES</sup> once per
+    - **20th** The weapon can cast 9th-rank @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.FVwXmCx6xPQwAQYc]{Toxify Blood} once per
     day.
   header:
     level-4-spells: >-
@@ -89,7 +89,7 @@ magic:
       @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Spider Sting} and
       6th rank @UUID[Compendium.pf2e.spells-srd.Item.MlpbeZ61Euhl0d60]{Toxic
       Cloud} once per day each.
-    level-20-toxify-blood: he weapon can cast 9th-rank *toxify blood*<sup>ES</sup> once per day.
+    level-20-toxify-blood: he weapon can cast 9th-rank @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.FVwXmCx6xPQwAQYc]{Toxify Blood} once per day.
 might:
   label: Poison (Might)
   description: >-

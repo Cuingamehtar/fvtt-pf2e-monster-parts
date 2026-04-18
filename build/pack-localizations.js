@@ -34,6 +34,8 @@ export function mergeDeep(target, ...sources) {
 
 const substitutions = {
     "’": "'",
+    "dc:resolve(item-level-dc)":
+        "dc:resolve(14 +@item.level +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0) +max(@item.level -24, 0))",
 };
 
 function replaceSub(text) {

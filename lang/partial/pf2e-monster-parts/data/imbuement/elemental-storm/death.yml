@@ -42,7 +42,7 @@ magic:
     - **14th** The additional void damage increases to 1d4.
 
     - **16th** The weapon’s *harm* and *vampiric maiden* heighten to 6th rank,
-    and the weapon can cast 6th-rank *raise the reaper’s scythe*<sup>ES</sup>
+    and the weapon can cast 6th-rank @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.hJpXtpxUoKwQmJTr]{Raise the Reaper's Scythe}
     once per day, but it can no longer cast *sudden blight*.
 
     - **18th** The additional void damage increases to 1d6.
@@ -75,7 +75,7 @@ magic:
       The weapon can cast 6th rank
       @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm}, 6th rank
       @UUID[Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt]{Vampiric Maiden}
-      and *raise the reaper's scythe*<sup>ES</sup> once per day each.
+      and @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.hJpXtpxUoKwQmJTr]{Raise the Reaper's Scythe} once per day each.
     level-20-wails-of-the-damned: >-
       The weapon can cast
       @UUID[Compendium.pf2e.spells-srd.Item.FEsuyf203wTNE2et]{Wails of the

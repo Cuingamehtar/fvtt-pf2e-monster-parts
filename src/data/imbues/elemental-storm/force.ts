@@ -139,16 +139,14 @@ export function createImbueForce(): MaterialData[] {
                         rank: 6,
                     }),
                 },
-                /*
                 {
                     levelMin: 20,
                     ...helpers.spellActivation({
-                        uuid: "telekinetic storm",
+                        uuid: "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.ty07K2w88LGu9FC7", // Telekinetic Storm
                         max: 1,
                         rank: 9,
                     }),
                 },
-                */
             ],
         },
         {

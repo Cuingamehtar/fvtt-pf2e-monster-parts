@@ -135,14 +135,14 @@ export function createImbueDeath(): MaterialData[] {
                         rank,
                     }),
                 ),
-                /*
-                ...helpers.leveledEffects([16, 20], [7, 8], (rank) =>
-                    helpers.spellActivation({
-                        uuid: "raise the reaper's scythe",
+                {
+                    levelMin: 16,
+                    ...helpers.spellActivation({
+                        uuid: "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.hJpXtpxUoKwQmJTr", // Raise the Reaper's Scythe
                         max: 1,
-                        rank,
+                        rank: 5,
                     }),
-                ),*/
+                },
                 {
                     levelMin: 20,
                     ...helpers.spellActivation({

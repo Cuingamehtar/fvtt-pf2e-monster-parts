@@ -3,15 +3,15 @@ import { helpers } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
 
-export function createImbueMental(): MaterialData[] {
+export function createImbueMind(): MaterialData[] {
     const lkey = (
         k: keyof Flatten<
             Nested<
                 I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.mental"
+                "pf2e-monster-parts.data.imbuement.elemental-storm.mind"
             >
         >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.mental.${k}`);
+    ): I18nKey => tkey(`data.imbuement.elemental-storm.mind.${k}`);
 
     const base = {
         type: "imbuement" as "imbuement",
@@ -19,20 +19,15 @@ export function createImbueMental(): MaterialData[] {
         monsterPredicate: [
             {
                 or: [
+                    "self:trait:astral",
                     "self:trait:mental",
                     {
-                        or: [
+                        and: [
                             {
-                                and: [
-                                    "item:type:melee",
-                                    "item:damage:type:mental",
-                                ],
+                                or: ["item:trait:astral", "item:trait:mental"],
                             },
                             {
-                                and: [
-                                    "item:type:spell",
-                                    "item:damage:type:mental",
-                                ],
+                                or: ["item:type:spell", "item:type:melee"],
                             },
                         ],
                     },
@@ -43,8 +38,9 @@ export function createImbueMental(): MaterialData[] {
     return [
         {
             ...base,
-            key: "imbue:mental:magic",
+            key: "imbue:mind:magic",
             label: { type: "key", key: lkey("magic.label") },
+            description: { type: "key", key: lkey("magic.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -71,11 +67,11 @@ export function createImbueMental(): MaterialData[] {
                     ...helpers.leveledLabels(
                         [4, 6, 8, 12, 16],
                         [
-                            "magic.level-4-spells",
-                            "magic.level-6-spells",
-                            "magic.level-8-spells",
-                            "magic.level-12-spells",
-                            "magic.level-16-spells",
+                            "magic.header.level-4-spells",
+                            "magic.header.level-6-spells",
+                            "magic.header.level-8-spells",
+                            "magic.header.level-12-spells",
+                            "magic.header.level-16-spells",
                         ],
                         (key: Parameters<typeof lkey>[0]) => ({
                             text: { type: "key", key: lkey(key) },
@@ -86,7 +82,7 @@ export function createImbueMental(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("magic.level-20-weird"),
+                            key: lkey("magic.header.level-20-phantasmagoria"),
                         },
                         sort: 3,
                     },
@@ -103,12 +99,56 @@ export function createImbueMental(): MaterialData[] {
                             label: lkey("magic.label"),
                         }),
                 ),
+                ...helpers.cantripActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.4gBIw4IDrSfFHik4", // Daze
+                }),
+                ...helpers.leveledEffects(
+                    [4, 6, 8, 12, 16],
+                    [1, 2, 3, 4],
+                    (rank) =>
+                        helpers.spellActivation({
+                            uuid: "Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD", // Phantom Pain
+                            max: 1,
+                            rank,
+                        }),
+                ),
+                ...helpers.leveledEffects([6, 16], [2, 6], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.Mkbq9xlAUxHUHyR2", // Paranoia
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                ...helpers.leveledEffects([12, 16], [4, 6], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.Jmxru8zMdYMRuO5n", // Vision of Death
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                {
+                    levelMin: 16,
+                    ...helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.0XP2XOxT9VSiXFDr", // Phantasmal Calamity
+                        max: 1,
+                        rank: 6,
+                    }),
+                },
+                {
+                    levelMin: 20,
+                    ...helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.MJx7DmjsWYzDZ3a4", // Phantasmagoria
+                        max: 1,
+                        rank: 9,
+                    }),
+                },
             ],
         },
         {
             ...base,
-            key: "imbue:mental:might",
+            key: "imbue:mind:might",
             label: { type: "key", key: lkey("might.label") },
+            description: { type: "key", key: lkey("might.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -126,7 +166,7 @@ export function createImbueMental(): MaterialData[] {
                         levelMax: 15,
                         text: {
                             type: "key",
-                            key: lkey("might.level-10-stupefied"),
+                            key: lkey("might.header.level-10-stupefied"),
                         },
                         sort: 1,
                     },
@@ -134,7 +174,7 @@ export function createImbueMental(): MaterialData[] {
                         levelMin: 16,
                         text: {
                             type: "key",
-                            key: lkey("might.level-16-stupefied"),
+                            key: lkey("might.header.level-16-stupefied"),
                         },
                         sort: 1,
                     },
@@ -142,7 +182,7 @@ export function createImbueMental(): MaterialData[] {
                         levelMin: 12,
                         text: {
                             type: "key",
-                            key: lkey("might.level-12-resistance"),
+                            key: lkey("might.header.level-12-resistance"),
                         },
                         sort: 2,
                     },
@@ -150,7 +190,7 @@ export function createImbueMental(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("might.level-20-weakness"),
+                            key: lkey("might.header.level-20-weakness"),
                         },
                         sort: 3,
                     },
@@ -167,12 +207,59 @@ export function createImbueMental(): MaterialData[] {
                             label: lkey("might.label"),
                         }),
                 ),
+                {
+                    levelMin: 10,
+                    levelMax: 15,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("might.effects.level-10-stupefied"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-attack"],
+                        type: "key",
+                    },
+                },
+                {
+                    levelMin: 16,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("might.effects.level-16-stupefied"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-attack"],
+                        type: "key",
+                    },
+                },
+                {
+                    levelMin: 12,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("might.effects.level-12-resistance"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 20,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("might.effects.level-20-weakness"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-attack"],
+                    },
+                },
             ],
         },
         {
             ...base,
-            key: "imbue:mental:tech",
+            key: "imbue:mind:tech",
             label: { type: "key", key: lkey("tech.label") },
+            description: { type: "key", key: lkey("tech.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -198,7 +285,7 @@ export function createImbueMental(): MaterialData[] {
                         levelMax: 15,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-8-stupefied"),
+                            key: lkey("tech.header.level-8-stupefied"),
                         },
                         sort: 1,
                     },
@@ -206,7 +293,7 @@ export function createImbueMental(): MaterialData[] {
                         levelMin: 16,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-16-stupefied"),
+                            key: lkey("tech.header.level-16-stupefied"),
                         },
                         sort: 1,
                     },
@@ -214,7 +301,7 @@ export function createImbueMental(): MaterialData[] {
                         levelMin: 12,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-12-resistance"),
+                            key: lkey("tech.header.level-12-resistance"),
                         },
                         sort: 2,
                     },
@@ -222,7 +309,9 @@ export function createImbueMental(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-20-weakness"),
+                            key: lkey(
+                                "tech.header.level-20-stupefied-duration",
+                            ),
                         },
                         sort: 3,
                     },
@@ -248,6 +337,52 @@ export function createImbueMental(): MaterialData[] {
                             label: lkey("tech.label"),
                         }),
                 ),
+                {
+                    levelMin: 8,
+                    levelMax: 15,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("tech.effects.level-8-stupefied"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-attack"],
+                        type: "key",
+                    },
+                },
+                {
+                    levelMin: 16,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("tech.effects.level-16-stupefied"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-attack"],
+                        type: "key",
+                    },
+                },
+                {
+                    levelMin: 12,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("might.effects.level-12-resistance"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 20,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("tech.effects.level-20-stupefied-duration"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
             ],
         },
     ];

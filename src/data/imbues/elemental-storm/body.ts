@@ -129,14 +129,13 @@ export function createImbueBody(): MaterialData[] {
                         rank,
                     }),
                 ),
-                /*
-                ...helpers.leveledEffects([8, 16, 20], [4, 5, 7], (rank) =>
+                ...helpers.leveledEffects([8, 16, 20], [3, 5, 7], (rank) =>
                     helpers.spellActivation({
-                        uuid: "pummeling shockwave",
+                        uuid: "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.Xt8LGrPSYf7TPXqX", // Pummeling Shockwave
                         max: 1,
                         rank,
                     }),
-                ),*/
+                ),
                 ...helpers.leveledEffects([12, 20], [4, 9], (rank) =>
                     helpers.spellActivation({
                         uuid: "Compendium.pf2e.spells-srd.Item.8M03UxGXjYyDFAoy", // Weapon Storm

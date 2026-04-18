@@ -5,7 +5,8 @@ import { createImbueFire } from "./fire";
 import { createImbueElectricity } from "./electricity";
 import { createImbueForce } from "./force";
 import { createImbueBody } from "./body";
-import { createImbuePoison } from "@data/imbues/elemental-storm/poison";
+import { createImbuePoison } from "./poison";
+import { createImbueMind } from "./mind";
 
 export function createElementalStormImbues() {
     return [
@@ -16,6 +17,7 @@ export function createElementalStormImbues() {
         ...createImbueFire(),
         ...createImbueForce(),
         ...createImbueLife(),
+        ...createImbueMind(),
         ...createImbuePoison(),
     ];
 }

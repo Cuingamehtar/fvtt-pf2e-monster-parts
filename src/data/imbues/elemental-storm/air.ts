@@ -138,15 +138,13 @@ export function createImbueAir(): MaterialData[] {
                         rank: 4,
                     }),
                 },
-                /*
-                ...helpers.leveledEffects([12, 16], [5, 6], (rank) =>
+                ...helpers.leveledEffects([12, 16], [4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "launching vortex",
+                        uuid: "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.W86Tb9T5YUsIHqPO", // Launching Vortex
                         max: 1,
                         rank,
                     }),
                 ),
-                 */
                 {
                     levelMin: 20,
                     ...helpers.spellActivation({

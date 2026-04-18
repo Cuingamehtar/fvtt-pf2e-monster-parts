@@ -44,7 +44,7 @@ magic:
 
     - **18th** The additional force damage increases to 1d6.
 
-    - **20th** The weapon can cast 9th-rank _telekinetic storm_<sup>ES</sup>
+    - **20th** The weapon can cast 9th-rank @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.ty07K2w88LGu9FC7]{Telekinetic Storm}
     once per day.
   header:
     level-4-spells: >-
@@ -77,7 +77,7 @@ magic:
       @UUID[Compendium.pf2e.spells-srd.Item.7Iela4GgVeO3LfAo]{Wall of Force}
       once per day each.
     level-20-telekinetic-storm: >-
-      The weapon can cast 9th rank _telekinetic storm_<sup>ES</sup> once per
+      The weapon can cast 9th rank @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.ty07K2w88LGu9FC7]{Telekinetic Storm} once per
       day.
 might:
   label: Force (Might)
@@ -118,14 +118,12 @@ might:
   effects:
     level-10-push: >-
       You can choose to force the target to succeed at
-      @Check[fortitude|dc:resolve(14 +@item.level +floor(@item.level /3)
-      +max(@item.level -21,0) -max(@item.level -23, 0))] save or be pushed 5
+      @Check[fortitude|dc:resolve(item-level-dc)] save or be pushed 5
       feet away from you.
     level-12-resistance: The force damage dealt by this imbued property ignores resistances.
     level-16-push: >-
       You can choose to force the target to succeed at
-      @Check[fortitude|dc:resolve(14 +@item.level +floor(@item.level /3)
-      +max(@item.level -21,0) -max(@item.level -23, 0))] save or be pushed 10
+      @Check[fortitude|dc:resolve(item-level-dc)] save or be pushed 10
       feet away from you.
     level-20-weakness: >-
       Before applying force damage, the target gains weakness 1 to force until
@@ -186,14 +184,12 @@ tech:
   effects:
     level-8-push: >-
       You can choose to force the target to succeed at
-      @Check[fortitude|dc:resolve(14 +@item.level +floor(@item.level /3)
-      +max(@item.level -21,0) -max(@item.level -23, 0))] save or be pushed 5
+      @Check[fortitude|dc:resolve(item-level-dc)] save or be pushed 5
       feet away from you.
     level-12-resistance: The force damage dealt by this imbued property ignores resistances.
     level-14-push: >-
       You can choose to force the target to succeed at
-      @Check[fortitude|dc:resolve(14 +@item.level +floor(@item.level /3)
-      +max(@item.level -21,0) -max(@item.level -23, 0))] save or be pushed 10
+      @Check[fortitude|dc:resolve(item-level-dc)] save or be pushed 10
       feet away from you.
     level-16-off-guard: >-
       Foes currently affected by persistent force damage from the this imbued
@@ -201,8 +197,7 @@ tech:
       @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Off-Guard}.
     level-18-push: >-
       You can choose to force the target to succeed at
-      @Check[fortitude|dc:resolve(14 +@item.level +floor(@item.level /3)
-      +max(@item.level -21,0) -max(@item.level -23, 0))] save or be pushed 20
+      @Check[fortitude|dc:resolve(item-level-dc)] save or be pushed 20
       feet away from you.
   header:
     level-8-push: >-
@@ -224,6 +219,5 @@ tech:
     level-20-prone: >-
       At the end of a foe's turn, if it fails to remove the persistent force
       damage from the this imbued property, it must succeed at a
-      @Check[fortitude|dc:resolve(14 +@item.level +floor(@item.level /3)
-      +max(@item.level -21,0) -max(@item.level -23, 0))] save or be knocked
+      @Check[fortitude|dc:resolve(item-level-dc)] save or be knocked
       @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60]{Prone}.

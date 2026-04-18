@@ -16,9 +16,7 @@ effects:
     @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
     until the end of your next turn.
   level-14-note: >-
-    The target must attempt a @Check[fortitude|dc:resolve(14 +@item.level
-    +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0)
-    +max(@item.level -24, 0))|options:inflicts:enfeebled] save. On a critical
+    The target must attempt a @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:enfeebled] save. On a critical
     success, it's
     @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
     until the end of your next turn, on a success, it's
@@ -178,9 +176,7 @@ tech:
       resistance and the persistent bleed damage from this imbued property
       ignores the target's resistance.
     level-20-note: >-
-      The target must attempt a @Check[fortitude|dc:resolve(14 +@item.level
-      +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0)
-      +max(@item.level -24, 0))|options:inflicts:enfeebled] save. On a critical
+      The target must attempt a @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:enfeebled] save. On a critical
       success, it's
       @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1},
       on a success, it's

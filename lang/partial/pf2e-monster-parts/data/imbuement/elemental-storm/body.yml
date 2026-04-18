@@ -35,7 +35,7 @@ magic:
     @UUID[Compendium.pf2e.spells-srd.Item.wzctak6BxOW8xvFV]{Enlarge} once per
     day.
 
-    - **8th** The weapon can cast *pummeling shockwave*<sup>ES</sup> once per
+    - **8th** The weapon can cast @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.Xt8LGrPSYf7TPXqX]{Pummeling Shockwave} once per
     day.
 
     - **10th** Strikes with your unarmed attacks deal 1 additional bludgeoning
@@ -73,12 +73,12 @@ magic:
       The weapon can cast
       @UUID[Compendium.pf2e.spells-srd.Item.aEM2cttJ2eYcLssW]{Fleet Step},
       @UUID[Compendium.pf2e.spells-srd.Item.wzctak6BxOW8xvFV]{Enlarge} and
-      *pummeling shockwave*<sup>ES</sup> once per day each.
+      @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.Xt8LGrPSYf7TPXqX]{Pummeling Shockwave} once per day each.
     level-12-spells: >-
       The weapon can cast
       @UUID[Compendium.pf2e.spells-srd.Item.aEM2cttJ2eYcLssW]{Fleet Step}, 4th
       rank @UUID[Compendium.pf2e.spells-srd.Item.wzctak6BxOW8xvFV]{Enlarge},
-      *pummeling shockwave*<sup>ES</sup> and
+      @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.Xt8LGrPSYf7TPXqX]{Pummeling Shockwave} and
       @UUID[Compendium.pf2e.spells-srd.Item.8M03UxGXjYyDFAoy]{Weapon Storm} once
       per day each.
     level-12-weapon-storm: >-
@@ -89,7 +89,7 @@ magic:
       The weapon can cast
       @UUID[Compendium.pf2e.spells-srd.Item.aEM2cttJ2eYcLssW]{Fleet Step}, 6th
       rank @UUID[Compendium.pf2e.spells-srd.Item.wzctak6BxOW8xvFV]{Enlarge}, 5th
-      rank *pummeling shockwave*<sup>ES</sup>,
+      rank @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.Xt8LGrPSYf7TPXqX]{Pummeling Shockwave},
       @UUID[Compendium.pf2e.spells-srd.Item.8M03UxGXjYyDFAoy]{Weapon Storm} and
       @UUID[Compendium.pf2e.spells-srd.Item.ZLLY6ThJXCCrO0rL]{Wall of Flesh}
       once per day each.
@@ -97,7 +97,7 @@ magic:
       The weapon can cast
       @UUID[Compendium.pf2e.spells-srd.Item.aEM2cttJ2eYcLssW]{Fleet Step}, 6th
       rank @UUID[Compendium.pf2e.spells-srd.Item.wzctak6BxOW8xvFV]{Enlarge}, 7th
-      rank *pummeling shockwave*<sup>ES</sup>, 9th rank
+      rank @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.Xt8LGrPSYf7TPXqX]{Pummeling Shockwave}, 9th rank
       @UUID[Compendium.pf2e.spells-srd.Item.8M03UxGXjYyDFAoy]{Weapon Storm} and
       7th rank @UUID[Compendium.pf2e.spells-srd.Item.ZLLY6ThJXCCrO0rL]{Wall of
       Flesh} once per day each.

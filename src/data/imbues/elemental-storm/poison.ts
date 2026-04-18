@@ -141,16 +141,14 @@ export function createImbuePoison(): MaterialData[] {
                         rank,
                     }),
                 ),
-                /*
                 {
                     levelMin: 20,
                     ...helpers.spellActivation({
-                        uuid: "toxify blood",
+                        uuid: "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.FVwXmCx6xPQwAQYc", // Toxify Blood
                         max: 1,
                         rank: 9,
                     }),
                 },
-                */
             ],
         },
         {
