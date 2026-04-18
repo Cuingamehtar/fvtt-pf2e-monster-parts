@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.6.0] - 2026-04-18
+
+### Added
+- Add support for PF2e Toolbelt Item Spell Casting feature - default imbued properties now grant spell activations if PF2e Toolbelt module is active and the setting is enabled (requires updating the imbued property value to refresh granted effects).
+
+### Other
+- Verified compatibility with Foundry V14 and PF2e v8.0.2 and SF2e v1.0.2
+
 ## [0.5.1] - 2026-04-13
 
 ### Added
