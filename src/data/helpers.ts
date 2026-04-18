@@ -187,6 +187,44 @@ export function addTraits(traits: string | string[]) {
     );
 }
 
+function spellActivation({
+    uuid,
+    rank,
+    dc,
+    max,
+}: {
+    uuid: `Compendium.${string}.Item.${string}`;
+    rank?: number;
+    dc?: number;
+    max?: number;
+    tradition?: "arcane" | "divine" | "occult" | "primal";
+}) {
+    return {
+        type: "RuleElement",
+        rule: {
+            key: "ItemCast",
+            uuid,
+            max,
+            dc,
+            rank,
+        },
+    } as Omit<RuleElementEffect, "levelMin" | "levelMax">;
+}
+
+function cantripActivation({
+    uuid,
+}: {
+    uuid: Parameters<typeof spellActivation>[0]["uuid"];
+    tradition?: "arcane" | "divine" | "occult" | "primal";
+}) {
+    const ranks = Array.fromRange(9, 1);
+    const levels = ranks.map((r) => r * 2 - 1);
+    levels[0] = 2;
+    return helpers.leveledEffects(levels, ranks, (rank) =>
+        spellActivation({ uuid, rank }),
+    );
+}
+
 function leveledEffects<T>(
     levels: number[],
     values: T[],
@@ -242,4 +280,6 @@ export const helpers = {
     leveledEffects,
     leveledLabels,
     sequentialData,
+    spellActivation,
+    cantripActivation,
 };

@@ -10,11 +10,15 @@ export type ApexEffect = BaseMaterialEffect & {
 };
 
 export class ApexEffectHandler {
-    static handleUpdate(
-        item: RefinedItem,
-        effect: ApexEffect,
-        changes: Record<string, unknown>,
-    ) {
+    static async handleUpdate({
+        item,
+        effect,
+        changes,
+    }: {
+        item: RefinedItem;
+        effect: ApexEffect;
+        changes: Record<string, unknown>;
+    }) {
         const traits = item.item._source.system.traits.value;
         let traitChanges = (foundry.utils.getProperty(
             changes,

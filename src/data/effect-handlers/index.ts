@@ -53,14 +53,15 @@ export class EffectHandlers {
         Alteration: AlterationEffectHandler.handleSyntheticData,
     };
 
-    static handleUpdate(
-        item: RefinedItem,
-        effect: MaterialEffect,
-        changes: Record<string, unknown>,
-    ) {
-        const handler = this.updateHandlers[effect.type];
+    static async handleUpdate(params: {
+        item: RefinedItem;
+        effect: MaterialEffect;
+        changes: Record<string, unknown>;
+        materialLevel: number;
+    }) {
+        const handler = this.updateHandlers[params.effect.type];
         if (!handler) return;
-        handler(item, effect, changes);
+        await handler(params);
     }
 
     static handleSynthetic(item: RefinedItem, effect: MaterialEffect) {

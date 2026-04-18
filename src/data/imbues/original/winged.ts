@@ -1,5 +1,6 @@
 import { tkey } from "@src/utils";
 import { MaterialData } from "../../material";
+import { helpers } from "@data/helpers";
 
 export function createImbueWinged(): MaterialData {
     const lkey = (
@@ -62,6 +63,20 @@ export function createImbueWinged(): MaterialData {
             ],
         },
         effects: [
+            {
+                levelMin: 6,
+                ...helpers.spellActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH",
+                    rank: 1,
+                }),
+            },
+            ...helpers.leveledEffects([10, 14], [1, undefined], (max) =>
+                helpers.spellActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8",
+                    rank: 4,
+                    max,
+                }),
+            ),
             {
                 levelMin: 18,
                 type: "RuleElement",

@@ -109,6 +109,52 @@ export function createImbueAir(): MaterialData[] {
                             label: lkey("magic.label"),
                         }),
                 ),
+                /*
+                ...helpers.cantripActivation({
+                    uuid: "rushing gust",
+                }),
+                */
+                {
+                    levelMin: 4,
+                    ...helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.g8QqHpv2CWDwmIm1", // Gust of Wind
+                        max: 1,
+                        rank: 1,
+                    }),
+                },
+                {
+                    levelMin: 8,
+                    ...helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.it4ZsAi6XgvGcodc", // Wall of Wind
+                        max: 1,
+                        rank: 3,
+                    }),
+                },
+                {
+                    levelMin: 10,
+                    ...helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.V8wXOsoejQhe6CyG", // Vapor Form
+                        max: 1,
+                        rank: 4,
+                    }),
+                },
+                /*
+                ...helpers.leveledEffects([12, 16], [5, 6], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "launching vortex",
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                 */
+                {
+                    levelMin: 20,
+                    ...helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.yLJROsQtyrPIKcDx", // Wrathful Storm
+                        max: 1,
+                        rank: 9,
+                    }),
+                },
             ],
         },
         {

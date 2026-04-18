@@ -16,29 +16,36 @@ magic:
     **Path** Magic; Choose when you first imbue the weapon for the granted
     spells to be either arcane, divine, or occult.
 
-    - **2nd** The weapon can cast _shield_ as a cantrip, heightened to half the
-    item's level rounded up.
+    - **2nd** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.TVKNbcgTee19PXZR]{Shield} as a
+    cantrip, heightened to half the item's level rounded up.
 
-    - **4th** The weapon can cast _force barrage_ once per day.
+    - **4th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Force Barrage} once
+    per day.
 
-    - **6th** The weapon can cast either _force barrage_ or _telekinetic
-    maneuver_ once per day, but not both.
+    - **6th** The weapon can cast either _force barrage_ or
+    @UUID[Compendium.pf2e.spells-srd.Item.mrDi3v933gsmnw25]{Telekinetic
+    Maneuver} once per day, but not both.
 
     - **8th** The weapon's _force barrage_ heightens to 3rd rank and it can cast
     both force barrage and _telekinetic maneuver_ once per day.
 
     - **10th** Strikes with the weapon deal 1 additional force damage.
 
-    - **12th** The weapon can cast _containment_ once per day.
+    - **12th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.qJQADktwD0x8kLAy]{Containment} once
+    per day.
 
     - **14th** The additional force damage increases to 1d4.
 
     - **16th** The weapon's _force barrage_ heightens to 5th rank, _containment_
-    heightens to 6th rank, and the weapon can cast _wall of force_ once per day.
+    heightens to 6th rank, and the weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.7Iela4GgVeO3LfAo]{Wall of Force} once per day.
 
     - **18th** The additional force damage increases to 1d6.
 
-    - **20th** The weapon can cast 9th-rank _telekinetic storm_ once per day.
+    - **20th** The weapon can cast 9th-rank _telekinetic storm_<sup>ES</sup>
+    once per day.
   header:
     level-4-spells: >-
       The weapon can cast
@@ -70,8 +77,8 @@ magic:
       @UUID[Compendium.pf2e.spells-srd.Item.7Iela4GgVeO3LfAo]{Wall of Force}
       once per day each.
     level-20-telekinetic-storm: >-
-      The weapon can cast 9th rank _telekinetic storm_ (source: Battlezoo
-      Bestiary Elemental Storm) once per day.
+      The weapon can cast 9th rank _telekinetic storm_<sup>ES</sup> once per
+      day.
 might:
   label: Force (Might)
   description: >-

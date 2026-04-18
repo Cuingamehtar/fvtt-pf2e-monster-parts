@@ -41,6 +41,16 @@
         "type": "module",
         "compatibility": {}
       }
+    ],
+    "recommends": [
+      {
+        "id": "pf2e-toolbelt",
+        "manifest": "https://raw.githubusercontent.com/reonZ/pf2e-toolbelt/refs/heads/master/module.json",
+        "type": "module",
+        "compatibility": {
+          "minimum": "3.41.0"
+        }
+      }
     ]
   },
   "scripts": [

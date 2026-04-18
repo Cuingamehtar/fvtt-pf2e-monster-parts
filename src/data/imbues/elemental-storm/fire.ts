@@ -104,6 +104,45 @@ export function createImbueFire(): MaterialData[] {
                             label: lkey("magic.label"),
                         }),
                 ),
+                ...helpers.cantripActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq", // Ignition
+                }),
+                ...helpers.leveledEffects([4, 8], [1], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t", // Breathe Fire
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                ...helpers.leveledEffects([8, 12, 16], [2, 4, 6], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG", // Floating Flame
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                ...helpers.leveledEffects([8, 12, 16], [3, 4, 6], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd", // Fireball
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                ...helpers.leveledEffects([12, 16], [4, 6], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu", // Wall of Fire
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                {
+                    levelMin: 20,
+                    ...helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.jrBa9deU2ULFWvSl", // Falling Stars
+                        max: 1,
+                        rank: 9,
+                    }),
+                },
             ],
         },
         {

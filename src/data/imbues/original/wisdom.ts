@@ -1,5 +1,5 @@
 import { tkey } from "@src/utils";
-import { skillsOfAttribute } from "../../helpers";
+import { helpers, skillsOfAttribute } from "../../helpers";
 import { MaterialData } from "../../material";
 
 export function createImbueWisdom(): MaterialData {
@@ -65,6 +65,22 @@ export function createImbueWisdom(): MaterialData {
             ],
         },
         effects: [
+            {
+                levelMin: 8,
+                ...helpers.spellActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X",
+                    rank: 2,
+                    tradition: "divine",
+                }),
+            },
+            {
+                levelMin: 20,
+                ...helpers.spellActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.qsNeG9KZpODSACMq",
+                    rank: 9,
+                    tradition: "divine",
+                }),
+            },
             { levelMin: 0, levelMax: 16, type: "Apex", attribute: null },
             {
                 levelMin: 17,

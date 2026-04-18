@@ -111,6 +111,46 @@ export function createImbueBody(): MaterialData[] {
                             selector: "unarmed-damage",
                         }),
                 ),
+                ...helpers.cantripActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.MPxbKoR54gkYkqLO", // Gouging Claw
+                }),
+                {
+                    levelMin: 4,
+                    ...helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.aEM2cttJ2eYcLssW", // Fleet Step
+                        max: 1,
+                        rank: 1,
+                    }),
+                },
+                ...helpers.leveledEffects([6, 12, 16], [2, 4, 6], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.wzctak6BxOW8xvFV", // Enlarge
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                /*
+                ...helpers.leveledEffects([8, 16, 20], [4, 5, 7], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "pummeling shockwave",
+                        max: 1,
+                        rank,
+                    }),
+                ),*/
+                ...helpers.leveledEffects([12, 20], [4, 9], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.8M03UxGXjYyDFAoy", // Weapon Storm
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                ...helpers.leveledEffects([16, 16], [5, 7], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.ZLLY6ThJXCCrO0rL", // Wall of Flesh
+                        max: 1,
+                        rank,
+                    }),
+                ),
             ],
         },
         {

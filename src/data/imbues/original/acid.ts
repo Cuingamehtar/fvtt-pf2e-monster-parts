@@ -141,6 +141,38 @@ export function createImbueAcid(): MaterialData[] {
                         label: lkey("magic.label"),
                     }),
             ),
+            ...helpers.cantripActivation({
+                uuid: "Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt",
+            }),
+            ...helpers.leveledEffects([4, 6, 8], [1, 2, 3], (rank) =>
+                helpers.spellActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws",
+                    max: 1,
+                    rank,
+                }),
+            ),
+            ...helpers.leveledEffects([6, 12, 16], [2, 4, 6], (rank) =>
+                helpers.spellActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0",
+                    max: 1,
+                    rank,
+                }),
+            ),
+            ...helpers.leveledEffects([12, 16], [5, 7], (rank) =>
+                helpers.spellActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3",
+                    max: 1,
+                    rank,
+                }),
+            ),
+            {
+                levelMin: 20,
+                ...helpers.spellActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl",
+                    max: 1,
+                    rank: 9,
+                }),
+            },
         ],
     };
 

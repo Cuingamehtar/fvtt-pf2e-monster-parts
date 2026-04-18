@@ -9,11 +9,15 @@ export type AlterationEffect = BaseMaterialEffect & {
 };
 
 export class AlterationEffectHandler {
-    static handleUpdate(
-        item: RefinedItem,
-        effect: AlterationEffect,
-        changes: Record<string, unknown>,
-    ) {
+    static async handleUpdate({
+        item,
+        effect,
+        changes,
+    }: {
+        item: RefinedItem;
+        effect: AlterationEffect;
+        changes: Record<string, unknown>;
+    }) {
         if (effect.editData) return;
         if (
             typeof foundry.utils.getProperty(item.item, effect.property) !==

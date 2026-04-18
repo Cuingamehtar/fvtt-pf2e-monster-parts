@@ -7,6 +7,9 @@ async function startWatch() {
         entryPoints: ["src/module.ts"],
         outfile: "scripts/module.js",
         bundle: true,
+        define: {
+            DEBUG: "true",
+        },
         keepNames: true,
         sourcemap: true,
         plugins: [

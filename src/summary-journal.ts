@@ -103,6 +103,9 @@ function debugLineEffect(effect: MaterialEffect) {
             case "FlatModifier":
                 name = `Flat Modifier (${value}${typeof damageCategory == "undefined" ? "" : ` ${damageCategory}`}${typeof damageType == "undefined" ? "" : ` ${damageType}`})`;
                 break;
+            case "ItemCast":
+                name = `${foundry.utils.fromUuidSync(effect.rule.uuid)?.name} (Rank ${effect.rule.rank})`;
+                break;
             default:
                 name = effect.rule.key;
         }

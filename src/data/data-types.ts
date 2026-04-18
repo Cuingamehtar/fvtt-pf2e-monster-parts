@@ -48,6 +48,15 @@ type ItemAlterationSource = {
     itemId: string;
 };
 
+// PF2e Toolbelt ItemCast
+export type ItemCastSource = {
+    key: "ItemCast";
+    uuid: "string";
+    rank?: number;
+    dc?: number;
+    max?: number;
+};
+
 // Refinement Effect
 type RuleElementEffectSource = {
     key: "RuleElement";
@@ -57,7 +66,8 @@ type RuleElementEffectSource = {
         | (RollNoteSource & { key: "Note" })
         | RollOptionSource
         | ItemAlterationSource
-        | SenseSource;
+        | SenseSource
+        | ItemCastSource;
 };
 
 type SenseSource = Omit<RuleElementSource, "key"> & {

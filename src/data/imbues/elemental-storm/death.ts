@@ -47,6 +47,7 @@ export function createImbueDeath(): MaterialData[] {
             ...base,
             key: "imbue:death:magic",
             label: { type: "key", key: lkey("magic.label") },
+            description: { type: "key", key: lkey("magic.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -73,11 +74,11 @@ export function createImbueDeath(): MaterialData[] {
                     ...helpers.leveledLabels(
                         [4, 6, 8, 12, 16],
                         [
-                            "magic.level-4-spells",
-                            "magic.level-6-spells",
-                            "magic.level-8-spells",
-                            "magic.level-12-spells",
-                            "magic.level-16-spells",
+                            "magic.header.level-4-spells",
+                            "magic.header.level-6-spells",
+                            "magic.header.level-8-spells",
+                            "magic.header.level-12-spells",
+                            "magic.header.level-16-spells",
                         ],
                         (key: Parameters<typeof lkey>[0]) => ({
                             text: { type: "key", key: lkey(key) },
@@ -88,7 +89,9 @@ export function createImbueDeath(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("magic.level-20-wails-of-the-damned"),
+                            key: lkey(
+                                "magic.header.level-20-wails-of-the-damned",
+                            ),
                         },
                         sort: 3,
                     },
@@ -105,12 +108,56 @@ export function createImbueDeath(): MaterialData[] {
                             label: lkey("magic.label"),
                         }),
                 ),
+                ...helpers.cantripActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN", // Void Warp
+                }),
+                ...helpers.leveledEffects(
+                    [4, 6, 8, 12, 16],
+                    [1, 2, 3, 4, 6],
+                    (rank) =>
+                        helpers.spellActivation({
+                            uuid: "Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz", // Harm
+                            max: 1,
+                            rank,
+                        }),
+                ),
+                ...helpers.leveledEffects([6, 8, 12, 16], [2, 3, 4], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP", // Sudden Blight
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                ...helpers.leveledEffects([12, 16], [4, 6], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt", // Vampiric Maiden
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                /*
+                ...helpers.leveledEffects([16, 20], [7, 8], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "raise the reaper's scythe",
+                        max: 1,
+                        rank,
+                    }),
+                ),*/
+                {
+                    levelMin: 20,
+                    ...helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.FEsuyf203wTNE2et", // Wails of the Damned
+                        max: 1,
+                        rank: 9,
+                    }),
+                },
             ],
         },
         {
             ...base,
             key: "imbue:death:might",
             label: { type: "key", key: lkey("might.label") },
+            description: { type: "key", key: lkey("might.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -128,7 +175,7 @@ export function createImbueDeath(): MaterialData[] {
                         levelMax: 15,
                         text: {
                             type: "key",
-                            key: lkey("might.level-10-enfeebled"),
+                            key: lkey("might.header.level-10-enfeebled"),
                         },
                         sort: 1,
                     },
@@ -136,7 +183,7 @@ export function createImbueDeath(): MaterialData[] {
                         levelMin: 12,
                         text: {
                             type: "key",
-                            key: lkey("might.level-12-resistance"),
+                            key: lkey("might.header.level-12-resistance"),
                         },
                         sort: 2,
                     },
@@ -144,7 +191,7 @@ export function createImbueDeath(): MaterialData[] {
                         levelMin: 16,
                         text: {
                             type: "key",
-                            key: lkey("might.level-16-enfeebled"),
+                            key: lkey("might.header.level-16-enfeebled"),
                         },
                         sort: 1,
                     },
@@ -152,7 +199,7 @@ export function createImbueDeath(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("might.level-20-weakness"),
+                            key: lkey("might.header.level-20-weakness"),
                         },
                         sort: 3,
                     },
@@ -169,12 +216,51 @@ export function createImbueDeath(): MaterialData[] {
                             label: lkey("might.label"),
                         }),
                 ),
+                ...helpers.leveledEffects(
+                    [10, 16],
+                    [
+                        "might.effects.level-10-enfeebled",
+                        "might.effects.level-16-enfeebled",
+                    ],
+                    (k: Parameters<typeof lkey>[0]) => ({
+                        type: "RuleElement",
+                        rule: {
+                            key: "Note",
+                            outcome: ["criticalSuccess"],
+                            text: lkey(k),
+                            title: lkey("might.label"),
+                            selector: ["{item|id}-attack"],
+                        },
+                    }),
+                ),
+                {
+                    levelMin: 12,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("might.effects.level-12-resistance"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 20,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("might.effects.level-20-weakness"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-attack"],
+                    },
+                },
             ],
         },
         {
             ...base,
             key: "imbue:death:tech",
             label: { type: "key", key: lkey("tech.label") },
+            description: { type: "key", key: lkey("tech.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -200,7 +286,7 @@ export function createImbueDeath(): MaterialData[] {
                         levelMax: 15,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-8-enfeebled"),
+                            key: lkey("tech.header.level-8-enfeebled"),
                         },
                         sort: 1,
                     },
@@ -208,7 +294,7 @@ export function createImbueDeath(): MaterialData[] {
                         levelMin: 12,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-12-resistance"),
+                            key: lkey("tech.header.level-12-resistance"),
                         },
                         sort: 2,
                     },
@@ -216,7 +302,7 @@ export function createImbueDeath(): MaterialData[] {
                         levelMin: 16,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-16-enfeebled"),
+                            key: lkey("tech.header.level-16-enfeebled"),
                         },
                         sort: 1,
                     },
@@ -224,7 +310,9 @@ export function createImbueDeath(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-20-weakness"),
+                            key: lkey(
+                                "tech.header.level-20-enfeebled-duration",
+                            ),
                         },
                         sort: 3,
                     },
@@ -250,6 +338,44 @@ export function createImbueDeath(): MaterialData[] {
                             label: lkey("tech.label"),
                         }),
                 ),
+                ...helpers.leveledEffects(
+                    [8, 16],
+                    [
+                        "tech.effects.level-8-enfeebled",
+                        "tech.effects.level-16-enfeebled",
+                    ],
+                    (k: Parameters<typeof lkey>[0]) => ({
+                        type: "RuleElement",
+                        rule: {
+                            key: "Note",
+                            outcome: ["criticalSuccess"],
+                            text: lkey(k),
+                            title: lkey("tech.label"),
+                            selector: ["{item|id}-attack"],
+                        },
+                    }),
+                ),
+                {
+                    levelMin: 12,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("tech.effects.level-12-resistance"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 20,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("tech.effects.level-20-enfeebled-duration"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-attack"],
+                    },
+                },
             ],
         },
     ];

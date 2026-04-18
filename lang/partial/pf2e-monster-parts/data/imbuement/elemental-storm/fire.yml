@@ -16,29 +16,41 @@ magic:
     **Path** Magic; Choose when you first imbue the weapon for the granted
     spells to be either arcane or primal.
 
-    - **2nd** The weapon can cast ignition as a cantrip, heightened to half
+    - **2nd** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq]{Ignition} as a
+    cantrip, heightened to half
      the item's level rounded up.
 
-    - **4th** The weapon can cast breathe fire once per day. 
+    - **4th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t]{Breathe Fire} once
+    per day. 
 
-    - **6th** The weapon's breathe fire heightens to 2nd rank. 
+    - **6th** The weapon's *breathe fire* heightens to 2nd rank. 
 
-    - **8th** The weapon can cast floating flame and fireball each once per
-     day, but no longer can cast breathe fire.
+    - **8th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Floating Flame} and
+    @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Fireball} each once
+    per
+     day, but no longer can cast *breathe fire*.
 
     - **10th** Strikes with the weapon deal 1 additional fire damage. 
 
-    - **12th** The weapon's fireball and floating flame heighten to 4th rank,
-    and the weapon can cast wall of fire once per day. 
+    - **12th** The weapon's *fireball* and *floating flame* heighten to 4th
+    rank, and the weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu]{Wall of Fire} once
+    per day. 
 
     - **14th** The additional fire damage increases to 1d4. 
 
-    - **16th** The weapon's fireball, floating flame, and wall of fire heighten
+    - **16th** The weapon's *fireball*, *floating flame*, and *wall of fire*
+    heighten
      to 6th rank.
 
     - **18th** The additional fire damage increases to 1d6. 
 
-    - **20th** The weapon can cast falling stars (for fire damage only) once
+    - **20th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.jrBa9deU2ULFWvSl]{Falling Stars} (for
+    fire damage only) once
      per day.
   header:
     level-4-spells: >-
@@ -108,9 +120,9 @@ might:
       The fire damage dealt by this imbued property (including persistent fire
       damage) ignores resistances.
     level-20-weakness: >-
-      Before applying fire damage,
-      the target gains weakness 1 to fire until the beginning of your next
-      turn. @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
+      Before applying fire damage, the target gains weakness 1 to fire until the
+      beginning of your next turn.
+      @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
       Might Path Damage Weakness}
   header:
     level-8-persistent: >-
@@ -142,30 +154,28 @@ tech:
     **Path** Technique
 
     - **4th** Strikes with the weapon deal 1 persistent fire damage.
-    
+
     - **6th** Strikes with the weapon deal 1 additional fire damage.
-    
+
     - **8th** The persistent fire damage on a hit increases to 1d6. On a
-    critical hit, the weapon deals 1d10 additional persistent fire
-    damage. (The additional persistent fire damage on a critical hit
-    is cumulative with the regular persistent fire damage, and as
-    normal you add it in only after doubling the regular persistent fire
-    damage).
-    
+    critical hit, the weapon deals 1d10 additional persistent fire damage. (The
+    additional persistent fire damage on a critical hit is cumulative with the
+    regular persistent fire damage, and as normal you add it in only after
+    doubling the regular persistent fire damage).
+
     - **12th** The fire damage dealt by this imbued property (including
     persistent fire damage) ignores resistances.
-    
+
     - **14th** The persistent fire damage on a hit increases to 1d8.
-    
-    - **16th** Foes currently affected by persistent fire damage from the
-    imbued property are distracted as they burn, making them off-guard.
-    
+
+    - **16th** Foes currently affected by persistent fire damage from the imbued
+    property are distracted as they burn, making them off-guard.
+
     - **18th** The persistent fire damage on a hit increases to 1d10.
-    
+
     - **20th** At the end of a burning foe's turn, when they take damage from
-    the imbued property's persistent fire damage, all foes adjacent
-    to that foe are set on fire as well, taking the same amount of
-    persistent fire damage.
+    the imbued property's persistent fire damage, all foes adjacent to that foe
+    are set on fire as well, taking the same amount of persistent fire damage.
   effects:
     level-12-resistance: >-
       The fire damage dealt by this imbued property (including persistent fire

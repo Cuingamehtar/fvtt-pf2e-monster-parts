@@ -1,5 +1,5 @@
 import { tkey } from "@src/utils";
-import { skillsOfAttribute } from "../../helpers";
+import { helpers, skillsOfAttribute } from "../../helpers";
 import { MaterialData } from "../../material";
 
 export function createImbueIntelligence(): MaterialData {
@@ -54,6 +54,14 @@ export function createImbueIntelligence(): MaterialData {
             ],
         },
         effects: [
+            ...helpers.leveledEffects([8, 14], [1, undefined], (max) =>
+                helpers.spellActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.ZYoC630tNGutgbE0",
+                    rank: 3,
+                    max,
+                    tradition: "occult",
+                }),
+            ),
             { levelMin: 0, levelMax: 16, type: "Apex", attribute: null },
             {
                 levelMin: 17,

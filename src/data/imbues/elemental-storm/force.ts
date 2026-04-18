@@ -106,6 +106,49 @@ export function createImbueForce(): MaterialData[] {
                             label: lkey("magic.label"),
                         }),
                 ),
+                ...helpers.cantripActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.TVKNbcgTee19PXZR", // Shield
+                }),
+                ...helpers.leveledEffects([4, 8, 16], [1, 3, 5], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM", // Force Barrage
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                {
+                    levelMin: 6,
+                    ...helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.mrDi3v933gsmnw25", // Telekinetic Maneuver
+                        max: 1,
+                        rank: 2,
+                    }),
+                },
+                ...helpers.leveledEffects([12, 16], [4, 6], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.qJQADktwD0x8kLAy", // Containment
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                {
+                    levelMin: 6,
+                    ...helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.7Iela4GgVeO3LfAo", // Wall of Force
+                        max: 1,
+                        rank: 6,
+                    }),
+                },
+                /*
+                {
+                    levelMin: 20,
+                    ...helpers.spellActivation({
+                        uuid: "telekinetic storm",
+                        max: 1,
+                        rank: 9,
+                    }),
+                },
+                */
             ],
         },
         {

@@ -1,6 +1,11 @@
 import i18nKeys from "../lang/en.json";
+import { CharacterPF2e } from "foundry-pf2e";
 
 declare global {
+    // Helper fields
+    const DEBUG: boolean;
+    var __tempActor: CharacterPF2e | undefined;
+
     type Flatten<T> = {
         [K in keyof T as T[K] extends object
             ? K extends string

@@ -11,13 +11,12 @@ export class Wrappers {
             name: "test",
             type: "character",
         });
-        //@ts-expect-error
         globalThis.__tempActor = actor;
 
         // literally copy the system function and add a custom check
         const systemFunctionHash = -1192268445;
         const h = hash(actor.inventory.sellAllTreasure.toString());
-        if (h !== systemFunctionHash) {
+        if (DEBUG && h !== systemFunctionHash) {
             ui.notifications.warn(
                 `Sell all treasure function text mismatch (expected ${systemFunctionHash}, found ${h}). Patching might result in the unexpected behavior.`,
             );
@@ -44,7 +43,6 @@ export class Wrappers {
             },
             "OVERRIDE",
         );
-        //@ts-expect-error
         delete globalThis.__tempActor;
     }
 
