@@ -133,7 +133,8 @@ might:
       for 1 round.
     level-20-weakness: >-
       On a successful Strike with the weapon, before applying mental damage, the
-      target gains weakness 1 to mental until the beginning of your next turn.
+      target gains weakness 1 to mental until the beginning of your next turn. @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
+      Might Path Damage Weakness}
   header:
     level-10-stupefied: >-
       On a critical hit, the target is

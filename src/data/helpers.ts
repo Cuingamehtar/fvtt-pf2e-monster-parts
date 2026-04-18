@@ -230,13 +230,12 @@ function leveledEffects<T>(
     values: T[],
     f: (v: T) => Omit<MaterialEffect, "levelMin" | "levelMax">,
 ): MaterialEffect[] {
-    return levels
-        .map((levelMin, i) => ({
-            levelMin,
+    return Array.fromRange(values.length)
+        .map((i) => ({
+            levelMin: levels[i],
             levelMax: levels[i + 1] ? levels[i + 1] - 1 : undefined,
             value: values[i],
         }))
-        .filter((e) => typeof e.value !== "undefined")
         .map(
             ({ levelMin, levelMax, value }) =>
                 ({
@@ -252,9 +251,9 @@ function leveledLabels<T>(
     values: T[],
     f: (v: T) => Omit<HeaderLabel, "levelMin" | "levelMax">,
 ): HeaderLabel[] {
-    return levels
-        .map((levelMin, i) => ({
-            levelMin,
+    return Array.fromRange(values.length)
+        .map((i) => ({
+            levelMin: levels[i],
             levelMax: levels[i + 1] ? levels[i + 1] - 1 : undefined,
             value: values[i],
         }))

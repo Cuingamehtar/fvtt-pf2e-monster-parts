@@ -400,7 +400,7 @@
           },
           "strength": {
             "label": "Strength",
-            "description": "<p><strong>Type</strong> Skill Item (Athletics)</p>\n<p><strong>Parts</strong> The creature must have Strength as its highest or second highest attribute modifier.</p>\n<hr />\n<p><strong>Effect</strong> You imbue the item with ferocious <em>strength</em>.</p>\n<ul>\n<li><strong>8th</strong> The item can cast <em>earthbind</em> once per day as a primal spell, as you drag a foe down to the ground</li>\n<li><strong>14th</strong> The item can cast <em>earthbind</em> once per hour instead of once per day</li>\n<li><strong>17th</strong> When you invest the item, you either increase your Strength score by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait</li>\n<li><strong>20th</strong> The item can cast <em>earthbind</em> once per minute instead of once per hour</li>\n</ul>",
+            "description": "<p><strong>Type</strong> Skill Item (Athletics)</p>\n<p><strong>Parts</strong> The creature must have Strength as its highest or second highest attribute modifier.</p>\n<hr />\n<p><strong>Effect</strong> You imbue the item with ferocious <em>strength</em>.</p>\n<ul>\n<li><strong>8th</strong> The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per day as a primal spell, as you drag a foe down to the ground</li>\n<li><strong>14th</strong> The item can cast <em>earthbind</em> once per hour instead of once per day</li>\n<li><strong>17th</strong> When you invest the item, you either increase your Strength score by 1 or increase it to +4, whichever would give you a higher value. The item gains the apex trait</li>\n<li><strong>20th</strong> The item can cast <em>earthbind</em> once per minute instead of once per hour</li>\n</ul>",
             "flavor": "You imbue the item with ferocious <em>strength</em>.",
             "header": {
               "level-8-spell": "The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per day as a primal spell.",
@@ -809,7 +809,7 @@
                 "level-10-stupefied": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 1} for 1 round.",
                 "level-12-resistance": "The mental damage dealt by this imbued property ignores resistances.",
                 "level-16-stupefied": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 2} for 1 round.",
-                "level-20-weakness": "On a successful Strike with the weapon, before applying mental damage, the target gains weakness 1 to mental until the beginning of your next turn."
+                "level-20-weakness": "On a successful Strike with the weapon, before applying mental damage, the target gains weakness 1 to mental until the beginning of your next turn. @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect: Might Path Damage Weakness}"
               },
               "header": {
                 "level-10-stupefied": "On a critical hit, the target is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 1} for 1 round.",
