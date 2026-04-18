@@ -1,6 +1,6 @@
 import { RuleElementEffectHandler } from "./rule-element";
 import { AlterationEffectHandler } from "./alteration";
-import { RefinedItem } from "../../refined-item";
+import { RefinedItem } from "@src/refined-item";
 import { MaterialEffect } from "../material";
 import { ApexEffectHandler } from "./apex";
 

@@ -1,4 +1,4 @@
-import { RefinedItem } from "../../refined-item";
+import { RefinedItem } from "@src/refined-item";
 import { BaseMaterialEffect } from "../material";
 import { ItemCastSource, RuleElementEffectSource } from "../data-types";
 import { dcByLevel, getSettingSafe } from "@src/utils";

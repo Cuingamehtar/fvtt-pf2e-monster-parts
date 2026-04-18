@@ -8,10 +8,10 @@ export function createImbuePoison(): MaterialData[] {
         k: keyof Flatten<
             Nested<
                 I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.poison"
+                "pf2e-monster-parts.data.imbuement.elemental-storm.poison"
             >
         >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.poison.${k}`);
+    ): I18nKey => tkey(`data.imbuement.elemental-storm.poison.${k}`);
 
     const base = {
         type: "imbuement" as "imbuement",
@@ -19,20 +19,18 @@ export function createImbuePoison(): MaterialData[] {
         monsterPredicate: [
             {
                 or: [
+                    "self:trait:acid",
                     "self:trait:poison",
                     {
-                        or: [
+                        and: [
                             {
-                                and: [
-                                    "item:type:melee",
+                                or: [
+                                    "item:damage:type:acid",
                                     "item:damage:type:poison",
                                 ],
                             },
                             {
-                                and: [
-                                    "item:type:spell",
-                                    "item:damage:type:poison",
-                                ],
+                                or: ["item:type:melee", "item:type:spell"],
                             },
                         ],
                     },
@@ -45,6 +43,7 @@ export function createImbuePoison(): MaterialData[] {
             ...base,
             key: "imbue:poison:magic",
             label: { type: "key", key: lkey("magic.label") },
+            description: { type: "key", key: lkey("magic.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -71,11 +70,11 @@ export function createImbuePoison(): MaterialData[] {
                     ...helpers.leveledLabels(
                         [4, 6, 8, 12, 16],
                         [
-                            "magic.level-4-spells",
-                            "magic.level-6-spells",
-                            "magic.level-8-spells",
-                            "magic.level-12-spells",
-                            "magic.level-16-spells",
+                            "magic.header.level-4-spells",
+                            "magic.header.level-6-spells",
+                            "magic.header.level-8-spells",
+                            "magic.header.level-12-spells",
+                            "magic.header.level-16-spells",
                         ],
                         (key: Parameters<typeof lkey>[0]) => ({
                             text: { type: "key", key: lkey(key) },
@@ -86,7 +85,7 @@ export function createImbuePoison(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("magic.level-20-linnorm-sting"),
+                            key: lkey("magic.header.level-20-toxify-blood"),
                         },
                         sort: 3,
                     },
@@ -103,12 +102,62 @@ export function createImbuePoison(): MaterialData[] {
                             label: lkey("magic.label"),
                         }),
                 ),
+                {
+                    levelMin: 10,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("acid-damage"),
+                        title: lkey("magic.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                ...helpers.cantripActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.D7ZEhTNIDWDLC2J4", // Puff of Poison
+                }),
+                {
+                    levelMin: 4,
+                    ...helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw", // Spider Sting
+                        max: 1,
+                        rank: 1,
+                    }),
+                },
+                ...helpers.leveledEffects(
+                    [6, 8, 12, 16],
+                    [2, 3, 4, 6],
+                    (rank) =>
+                        helpers.spellActivation({
+                            uuid: "Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv", // Noxious Vapors
+                            max: 1,
+                            rank,
+                        }),
+                ),
+                ...helpers.leveledEffects([8, 12, 16], [2, 4, 6], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.3VxVbZqIRvpKkg3O", // Fungal Infestation
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                /*
+                {
+                    levelMin: 20,
+                    ...helpers.spellActivation({
+                        uuid: "toxify blood",
+                        max: 1,
+                        rank: 9,
+                    }),
+                },
+                */
             ],
         },
         {
             ...base,
             key: "imbue:poison:might",
             label: { type: "key", key: lkey("might.label") },
+            description: { type: "key", key: lkey("might.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -126,7 +175,7 @@ export function createImbuePoison(): MaterialData[] {
                         levelMax: 13,
                         text: {
                             type: "key",
-                            key: lkey("might.level-8-persistent"),
+                            key: lkey("might.header.level-8-persistent"),
                         },
                         sort: 1,
                     },
@@ -134,7 +183,7 @@ export function createImbuePoison(): MaterialData[] {
                         levelMin: 14,
                         text: {
                             type: "key",
-                            key: lkey("might.level-14-persistent"),
+                            key: lkey("might.header.level-14-persistent"),
                         },
                         sort: 1,
                     },
@@ -142,7 +191,7 @@ export function createImbuePoison(): MaterialData[] {
                         levelMin: 12,
                         text: {
                             type: "key",
-                            key: lkey("might.level-12-resistance"),
+                            key: lkey("might.header.level-12-resistance"),
                         },
                         sort: 2,
                     },
@@ -150,7 +199,7 @@ export function createImbuePoison(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("might.level-20-weakness"),
+                            key: lkey("might.header.level-20-weakness"),
                         },
                         sort: 3,
                     },
@@ -170,7 +219,7 @@ export function createImbuePoison(): MaterialData[] {
                 ...helpers.leveledEffects(
                     [8, 14],
                     ["1", "2"],
-                    (damage: RollString) => ({
+                    (diceNumber: RollString) => ({
                         type: "RuleElement",
                         rule: {
                             key: "DamageDice",
@@ -178,18 +227,51 @@ export function createImbuePoison(): MaterialData[] {
                             damageType: "poison",
                             category: "persistent",
                             dieSize: "d10",
-                            diceNumber: damage,
+                            diceNumber,
                             label: lkey("might.label"),
                             critical: true,
                         },
                     }),
                 ),
+                {
+                    levelMin: 4,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("acid-damage"),
+                        title: lkey("magic.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 12,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("might.effects.level-12-resistance"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 20,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("might.effects.level-20-weakness"),
+                        title: lkey("might.label"),
+                        selector: ["{item|id}-attack"],
+                    },
+                },
             ],
         },
         {
             ...base,
             key: "imbue:poison:tech",
             label: { type: "key", key: lkey("tech.label") },
+            description: { type: "key", key: lkey("tech.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
                 labels: [
@@ -214,7 +296,7 @@ export function createImbuePoison(): MaterialData[] {
                         levelMin: 8,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-8-persistent"),
+                            key: lkey("tech.header.level-8-persistent"),
                         },
                         sort: 1,
                     },
@@ -222,7 +304,7 @@ export function createImbuePoison(): MaterialData[] {
                         levelMin: 12,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-12-resistance"),
+                            key: lkey("tech.header.level-12-resistance"),
                         },
                         sort: 2,
                     },
@@ -230,7 +312,7 @@ export function createImbuePoison(): MaterialData[] {
                         levelMin: 16,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-16-condition"),
+                            key: lkey("tech.header.level-16-condition"),
                         },
                         sort: 3,
                     },
@@ -238,7 +320,7 @@ export function createImbuePoison(): MaterialData[] {
                         levelMin: 20,
                         text: {
                             type: "key",
-                            key: lkey("tech.level-20-drained"),
+                            key: lkey("tech.header.level-20-drained"),
                         },
                         sort: 4,
                     },
@@ -276,6 +358,48 @@ export function createImbuePoison(): MaterialData[] {
                         diceNumber: 1,
                         label: lkey("tech.label"),
                         critical: true,
+                    },
+                },
+                {
+                    levelMin: 4,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["success", "criticalSuccess"],
+                        text: lkey("acid-damage"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 12,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("tech.effects.level-12-resistance"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 16,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        text: lkey("tech.effects.level-16-condition"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-damage"],
+                    },
+                },
+                {
+                    levelMin: 20,
+                    type: "RuleElement",
+                    rule: {
+                        key: "Note",
+                        outcome: ["criticalSuccess"],
+                        text: lkey("tech.effects.level-20-drained"),
+                        title: lkey("tech.label"),
+                        selector: ["{item|id}-attack"],
                     },
                 },
             ],

@@ -1,5 +1,5 @@
 import { BaseMaterialEffect } from "../material";
-import { RefinedItem } from "../../refined-item";
+import { RefinedItem } from "@src/refined-item";
 
 export type AlterationEffect = BaseMaterialEffect & {
     type: "Alteration";

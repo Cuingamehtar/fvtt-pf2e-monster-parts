@@ -1,5 +1,5 @@
 import { BaseMaterialEffect } from "../material";
-import { RefinedItem } from "../../refined-item";
+import { RefinedItem } from "@src/refined-item";
 import { PhysicalItemPF2e } from "foundry-pf2e";
 
 export type ApexEffect = BaseMaterialEffect & {
