@@ -1,20 +1,13 @@
-import { tkey } from "@src/utils";
+import { lkeygen } from "@src/utils";
 import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
 
 export function createImbueAir(): MaterialData[] {
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.elemental-storm.air"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.elemental-storm.air.${k}`);
+    const lkey = lkeygen("data.imbuement.elemental-storm.air" as const);
 
     const base = {
-        type: "imbuement" as "imbuement",
+        type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
         monsterPredicate: [
             {
@@ -104,11 +97,9 @@ export function createImbueAir(): MaterialData[] {
                             label: lkey("magic.label"),
                         }),
                 ),
-                /*
                 ...helpers.cantripActivation({
-                    uuid: "rushing gust",
+                    uuid: "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.oWtpcZ8aq5qQdKri", // Rushing Gust
                 }),
-                */
                 {
                     levelMin: 4,
                     ...helpers.spellActivation({

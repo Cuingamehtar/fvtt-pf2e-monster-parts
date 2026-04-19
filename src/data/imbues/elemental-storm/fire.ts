@@ -1,17 +1,10 @@
-import { tkey } from "@src/utils";
+import { lkeygen } from "@src/utils";
 import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
 
 export function createImbueFire(): MaterialData[] {
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.elemental-storm.fire"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.elemental-storm.fire.${k}`);
+    const lkey = lkeygen("data.imbuement.elemental-storm.fire" as const);
 
     const base = {
         type: "imbuement" as "imbuement",

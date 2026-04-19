@@ -1,16 +1,9 @@
-import { tkey } from "@src/utils";
+import { lkeygen } from "@src/utils";
 import { MaterialData } from "../../material";
 import { helpers } from "@data/helpers";
 
 export function createImbueWinged(): MaterialData {
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.winged"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.winged.${k}`);
+    const lkey = lkeygen("data.imbuement.battlezoo-bestiary.winged" as const);
 
     return {
         key: "imbue:winged",

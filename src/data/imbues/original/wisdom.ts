@@ -1,17 +1,10 @@
-import { tkey } from "@src/utils";
+import { lkeygen } from "@src/utils";
 import { helpers, skillsOfAttribute } from "../../helpers";
 import { MaterialData } from "../../material";
 
 export function createImbueWisdom(): MaterialData {
     const skills = skillsOfAttribute("wis");
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.wisdom"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.wisdom.${k}`);
+    const lkey = lkeygen("data.imbuement.battlezoo-bestiary.wisdom" as const);
 
     return {
         key: "imbue:wisdom",

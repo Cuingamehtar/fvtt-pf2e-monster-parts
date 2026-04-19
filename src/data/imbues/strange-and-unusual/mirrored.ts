@@ -1,16 +1,11 @@
-import { i18nFormat, tkey } from "@src/utils";
+import { i18nFormat, lkeygen } from "@src/utils";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
 
 export function createImbueMirrored(): MaterialData {
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.strange-and-unusual.mirrored"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.strange-and-unusual.mirrored.${k}`);
+    const lkey = lkeygen(
+        "data.imbuement.strange-and-unusual.mirrored" as const,
+    );
 
     return {
         type: "imbuement",

@@ -1,17 +1,10 @@
-import { tkey } from "@src/utils";
+import { lkeygen } from "@src/utils";
 import { helpers, skillsOfAttribute } from "../../helpers";
 import { MaterialData } from "../../material";
 
 export function createImbueStrength(): MaterialData {
     const skills = skillsOfAttribute("str");
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.strength"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.strength.${k}`);
+    const lkey = lkeygen("data.imbuement.battlezoo-bestiary.strength" as const);
 
     return {
         key: "imbue:strength",

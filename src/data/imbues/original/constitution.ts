@@ -1,18 +1,13 @@
 import { SkillSlug } from "foundry-pf2e";
-import { tkey } from "@src/utils";
+import { lkeygen } from "@src/utils";
 import { MaterialData } from "../../material";
 import { helpers } from "@data/helpers";
 
 export function createImbueConstitution(): MaterialData {
     const skills = Object.keys(CONFIG.PF2E.skills) as SkillSlug[];
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.constitution"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.constitution.${k}`);
+    const lkey = lkeygen(
+        "data.imbuement.battlezoo-bestiary.constitution" as const,
+    );
 
     return {
         key: "imbue:constitution",

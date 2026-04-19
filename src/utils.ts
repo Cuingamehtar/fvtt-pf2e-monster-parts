@@ -177,3 +177,11 @@ export function getSettingSafe(module: string, setting: string) {
     if (!game.settings.settings.get(`${module}.${setting}`)) return undefined;
     return game.settings.get(module, setting);
 }
+
+export function lkeygen<
+    T extends keyof FlattenPartial<I18nKeyType[typeof MODULE_ID]>,
+>(t: T) {
+    return (
+        k: keyof Flatten<Nested<I18nKeyType, Join<typeof MODULE_ID, T>>>,
+    ): I18nKey => `${MODULE_ID}.${t}.${String(k)}` as I18nKey;
+}

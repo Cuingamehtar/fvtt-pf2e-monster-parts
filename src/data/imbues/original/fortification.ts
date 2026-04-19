@@ -1,16 +1,11 @@
-import { tkey } from "@src/utils";
+import { lkeygen } from "@src/utils";
 import { helpers } from "../../helpers";
 import { MaterialData } from "../../material";
 
 export function createImbueFortification(): MaterialData {
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.fortification"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.fortification.${k}`);
+    const lkey = lkeygen(
+        "data.imbuement.battlezoo-bestiary.fortification" as const,
+    );
 
     return {
         key: "imbue:fortification",

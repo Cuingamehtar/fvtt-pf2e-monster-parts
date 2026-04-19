@@ -1,5 +1,5 @@
 import { MaterialData } from "../material";
-import { MODULE_ID } from "../../module";
+import { MODULE_ID } from "@src/module";
 import { ArmorCategory } from "foundry-pf2e";
 import { helpers } from "../helpers";
 

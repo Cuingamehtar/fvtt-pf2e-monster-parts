@@ -1,18 +1,11 @@
-import { tkey } from "@src/utils";
+import { lkeygen } from "@src/utils";
 import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
 import { PredicateStatement } from "foundry-pf2e";
 
 export function createImbueBody(): MaterialData[] {
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.elemental-storm.body"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.elemental-storm.body.${k}`);
+    const lkey = lkeygen("data.imbuement.elemental-storm.body" as const);
 
     const base = {
         type: "imbuement" as "imbuement",

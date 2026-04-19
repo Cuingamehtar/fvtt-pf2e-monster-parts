@@ -1,4 +1,4 @@
-import { tkey } from "@src/utils";
+import { lkeygen } from "@src/utils";
 import { MaterialData } from "../../material";
 import { Material } from "@src/material";
 
@@ -13,15 +13,9 @@ export function createImbueEnergyResistant(): MaterialData[] {
         "vitality",
         "void",
     ];
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.energy-resistant"
-            >
-        >,
-    ): I18nKey =>
-        tkey(`data.imbuement.battlezoo-bestiary.energy-resistant.${k}`);
+    const lkey = lkeygen(
+        "data.imbuement.battlezoo-bestiary.energy-resistant" as const,
+    );
 
     return damageTypes.flatMap((type) => {
         const damageLabel = CONFIG.PF2E.damageTypes[type] as I18nKey;

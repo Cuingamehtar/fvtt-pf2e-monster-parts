@@ -1,17 +1,10 @@
-import { tkey } from "@src/utils";
+import { lkeygen } from "@src/utils";
 import { helpers } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
 
 export function createImbueCold(): MaterialData[] {
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.cold"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.cold.${k}`);
+    const lkey = lkeygen("data.imbuement.battlezoo-bestiary.cold" as const);
 
     const base = {
         type: "imbuement" as "imbuement",

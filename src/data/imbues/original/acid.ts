@@ -1,17 +1,10 @@
-import { tkey } from "@src/utils";
+import { lkeygen } from "@src/utils";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
 import { RollString } from "@localTypes/global";
 
 export function createImbueAcid(): MaterialData[] {
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.acid"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.acid.${k}`);
+    const lkey = lkeygen("data.imbuement.battlezoo-bestiary.acid" as const);
 
     const base = {
         type: "imbuement" as "imbuement",

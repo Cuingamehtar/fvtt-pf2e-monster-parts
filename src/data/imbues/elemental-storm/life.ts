@@ -1,17 +1,11 @@
-import { tkey } from "@src/utils";
+import { lkeygen } from "@src/utils";
 import { helpers } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
 
 export function createImbueLife(): MaterialData[] {
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.elemental-storm.life"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.elemental-storm.life.${k}`);
+    const lkey = lkeygen("data.imbuement.elemental-storm.life" as const);
+
     const base = {
         type: "imbuement" as "imbuement",
         itemPredicate: ["item:type:weapon"],

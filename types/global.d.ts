@@ -15,6 +15,17 @@ declare global {
             ? Flatten<T[K]>[keyof Flatten<T[K]>]
             : T[K];
     };
+
+    type FlattenPartial<T> = {
+        [K in keyof T as T[K] extends object
+            ? K extends string
+                ? `${K}.${keyof FlattenPartial<T[K]>}` | K
+                : never
+            : K]: T[K] extends object
+            ? Flatten<T[K]>[keyof FlattenPartial<T[K]>]
+            : T[K];
+    };
+
     type Nested<T, K> = K extends `${infer Pre}.${infer Post}`
         ? Pre extends keyof T
             ? Nested<T[Pre], Post>

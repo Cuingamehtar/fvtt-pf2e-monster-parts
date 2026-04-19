@@ -8,18 +8,17 @@ magic:
     **Type** Weapon
 
 
-    *Parts* The monster must have the vitality trait or an ability or spell that
+    **Parts** The monster must have the vitality trait or an ability or spell that
     deals vitality damage.
 
     - - -
 
-    *Effect* You imbue the weapon with the cleansing power of life energy in
+    **Effect** You imbue the weapon with the cleansing power of life energy in
     order to damage undead. As normal, vitality damage only harms undead and
     other creatures with void healing, such as dhampirs.
 
-    - - -
 
-    *Path* Magic; Choose when you first imbue the weapon for the granted spells
+    **Path** Magic; Choose when you first imbue the weapon for the granted spells
     to be either divine or primal.
 
     - **2nd** The weapon can cast
@@ -91,18 +90,17 @@ might:
     **Type** Weapon
 
 
-    *Parts* The monster must have the vitality trait or an ability or spell that
+    **Parts** The monster must have the vitality trait or an ability or spell that
     deals vitality damage.
 
     - - -
 
-    *Effect* You imbue the weapon with the cleansing power of life energy in
+    **Effect** You imbue the weapon with the cleansing power of life energy in
     order to damage undead. As normal, vitality damage only harms undead and
     other creatures with void healing, such as dhampirs.
 
-    - - -
 
-    *Path* Might
+    **Path** Might
 
     - **2nd** Strikes with the weapon deal 1 additional vitality damage.
 
@@ -176,18 +174,17 @@ tech:
     **Type** Weapon
 
 
-    *Parts* The monster must have the vitality trait or an ability or spell that
+    **Parts** The monster must have the vitality trait or an ability or spell that
     deals vitality damage.
 
     - - -
 
-    *Effect* You imbue the weapon with the cleansing power of life energy in
+    **Effect** You imbue the weapon with the cleansing power of life energy in
     order to damage undead. As normal, vitality damage only harms undead and
     other creatures with void healing, such as dhampirs.
 
-    - - -
 
-    *Path* Technique
+    **Path** Technique
 
     - **2nd** Strikes with the weapon deal 1 persistent vitality damage.
 

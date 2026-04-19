@@ -5,16 +5,15 @@ magic:
     **Type** Weapon
 
 
-    *Parts* The monster must have the psychopomp, undead, or void trait or an
+    **Parts** The monster must have the psychopomp, undead, or void trait or an
     ability or spell that deals void damage.
 
     - - -
 
-    *Effect* You imbue the weapon with the void energy of death.
+    **Effect** You imbue the weapon with the void energy of death.
 
-    - - -
 
-    *Path* Magic; Choose when you first imbue the weapon for the granted spells
+    **Path** Magic; Choose when you first imbue the weapon for the granted spells
     to be either divine or primal.
 
     - **2nd** The weapon can cast
@@ -86,16 +85,15 @@ might:
     **Type** Weapon
 
 
-    *Parts* The monster must have the psychopomp, undead, or void trait or an
+    **Parts** The monster must have the psychopomp, undead, or void trait or an
     ability or spell that deals void damage.
 
     - - -
 
-    *Effect* You imbue the weapon with the void energy of death.
+    **Effect** You imbue the weapon with the void energy of death.
 
-    - - -
 
-    *Path* Might
+    **Path** Might
 
     - **4th** Strikes with the weapon deal 1 additional void damage.
 
@@ -153,16 +151,15 @@ tech:
     **Type** Weapon
 
 
-    *Parts* The monster must have the psychopomp, undead, or void trait or an
+    **Parts** The monster must have the psychopomp, undead, or void trait or an
     ability or spell that deals void damage.
 
     - - -
 
-    *Effect* You imbue the weapon with the void energy of death.
+    **Effect** You imbue the weapon with the void energy of death.
 
-    - - -
 
-    *Path* Technique
+    **Path** Technique
 
     - **4th** Strikes with the weapon deal 1 persistent void damage.
 
@@ -183,7 +180,7 @@ tech:
     @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} for
     1 round.
 
-    - **184th** The persistent void damage on a hit increases to 1d10.
+    - **18th** The persistent void damage on a hit increases to 1d10.
 
     - **20th** While the foe has persistent void damage from the imbued
     property, the enfeebled condition from a critical hit lasts until the

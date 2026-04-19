@@ -1,4 +1,4 @@
-import { i18nFormat, tkey } from "@src/utils";
+import { i18nFormat, lkeygen, tkey } from "@src/utils";
 import { helpers } from "@src/data/helpers";
 import { MaterialData } from "@src/data/material";
 import { RollString } from "@localTypes/global";
@@ -6,14 +6,7 @@ import { Wrappers } from "@src/wrappers";
 
 export function createImbueWild(): MaterialData {
     const damages = ["acid", "cold", "electricity", "fire", "void", "sonic"];
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.wild"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.wild.${k}`);
+    const lkey = lkeygen("data.imbuement.battlezoo-bestiary.wild" as const);
 
     const imbue: MaterialData = {
         key: "imbue:wild:might",

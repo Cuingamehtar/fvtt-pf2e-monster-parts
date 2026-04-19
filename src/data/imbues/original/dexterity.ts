@@ -1,17 +1,12 @@
-import { tkey } from "@src/utils";
+import { lkeygen } from "@src/utils";
 import { skillsOfAttribute } from "../../helpers";
 import { MaterialData } from "../../material";
 
 export function createImbueDexterity(): MaterialData {
     const skills = skillsOfAttribute("dex");
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.dexterity"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.dexterity.${k}`);
+    const lkey = lkeygen(
+        "data.imbuement.battlezoo-bestiary.dexterity" as const,
+    );
 
     return {
         key: "imbue:dexterity",

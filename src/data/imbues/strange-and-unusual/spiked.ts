@@ -1,16 +1,9 @@
-import { i18nFormat, tkey } from "@src/utils";
+import { i18nFormat, lkeygen } from "@src/utils";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
 
 export function createImbueSpiked(): MaterialData {
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.strange-and-unusual.spiked"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.strange-and-unusual.spiked.${k}`);
+    const lkey = lkeygen("data.imbuement.strange-and-unusual.spiked" as const);
 
     return {
         type: "imbuement",

@@ -1,15 +1,8 @@
-import { tkey } from "@src/utils";
+import { lkeygen } from "@src/utils";
 import { MaterialData } from "../../material";
 
 export function createImbueSensory(): MaterialData {
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.sensory"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.sensory.${k}`);
+    const lkey = lkeygen("data.imbuement.battlezoo-bestiary.sensory" as const);
 
     // The actual requirements for sensory imbuement are complex to automate, so currently this material is satisfied by any special sense
     const senses = Object.keys(CONFIG.PF2E.senses).map(

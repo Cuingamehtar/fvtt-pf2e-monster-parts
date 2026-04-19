@@ -1,5 +1,5 @@
 import { getConfig } from "@src/config";
-import { i18nFormat, tkey } from "@src/utils";
+import { i18nFormat, lkeygen } from "@src/utils";
 import { helpers } from "@data/helpers";
 import { MaterialData } from "@data/material";
 import { PredicateStatement } from "foundry-pf2e";
@@ -10,14 +10,7 @@ export function createImbueBane(): MaterialData[] {
 }
 
 function baneImbue(creature: string): MaterialData[] {
-    const lkey = (
-        k: keyof Flatten<
-            Nested<
-                I18nKeyType,
-                "pf2e-monster-parts.data.imbuement.battlezoo-bestiary.bane"
-            >
-        >,
-    ): I18nKey => tkey(`data.imbuement.battlezoo-bestiary.bane.${k}`);
+    const lkey = lkeygen("data.imbuement.battlezoo-bestiary.bane" as const);
 
     const creatureLabel = i18nFormat({
         type: "key",
