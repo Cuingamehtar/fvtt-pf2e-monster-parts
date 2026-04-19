@@ -1,73 +1,90 @@
-dark-armor:
-  label: Dark Armor
+earth-armor:
+  label: Earth Armor
   description: >-
     **Type** Armor
 
-    **Parts** The monster must have the darkness or shadow trait
-    or an ability or spell with the darkness or shadow trait.
+    **Parts** The monster must have the earth trait or an
+    ability or spell with the earth trait.
 
     - - -
 
-    **Effect** You imbue your armor with the shrouded blackness
-    of the night.
+    **Effect** You imbue your armor with the immovable sturdiness of earth.
 
-    - **6th** Once per day, you can Activate the armor
-      to cast _darkness_.
+    - **6th** Your armor makes you as stalwart as a rock. The
+      armor's item bonus to saving throws increases by 1 (minimum
+      +1 if the armor didn't have an item bonus to
+      saving throws, maximum +4 if the armor had a +3
+      item bonus to saving throws) against any effect that attempts
+      to Reposition, Shove, or Trip you or otherwise attempt to
+      force you to move or knock you prone.
 
-    - **8th** You can use the _darkness_ activation once per hour.
+    - **8th** Whenever an effect would move you 10 feet or more,
+      your armor reduces the movement by 5 feet.
 
-    - **10th** You can use the _darkness_ activation once per 10 minutes
+    - **10th** Whenever an effect would move you 20 feet or more,
+      your armor reduces the movement by 10 feet, instead of
+      5 feet.
 
-    - **12th** You can Activate the armor once per day for
-      two actions to gain darkvision for 1 hour; this
-      activation has the concentrate and manipulate traits.
+    - **12th** The armor's item bonus to saving throws increases by a
+      total of 2, instead of 1, against effects that attempt
+      to force you to move or knock you prone, to
+      a maximum of +5.
 
-    - **14th** Your armor constantly gives you darkvision.
+    - **14th** Your armor makes you as obstructive as a boulder. When
+      you wish to do so, you provide standard cover instead
+      of lesser cover.
 
-    - **16th** When you use the _darkness_ activation, you can
-      choose to have the armor cast 4th-rank _darkness_ if you prefer.
+    - **16th** It's harder to move around the rocky protrusions of your
+      armor. The increased item bonus to saves from this imbued
+      property also applies to your Reflex DC when determining the
+      DC for a creature to Tumble Through your space, and
+      your space is still treated as greater difficult terrain even
+      on a success.
 
-    - **18th** Your armor constantly gives you greater darkvision.
+    - **18th** Your armor reduces all forced movement of 10 feet or
+      more by half (this replaces the 8th and 10th level
+      reductions to forced movement).
 
-    - **20th** Your armor constantly shrouds you in darkness and shadow,
-      causing you to be in dim light if you are
-      otherwise surrounded by bright light, darkness if you are
-      otherwise surrounded by dim light, or supernatural darkness as
-      from 4th-rank _darkness_ if you are otherwise surrounded by
-      darkness. Only you are affected by the altered light
-      level, not the rest of the environment. You can Activate
-      the armor for one action to end or reapply this
-      benefit; this activation has the concentrate trait.
-      
+    - **20th** When you would be forced to move and are standing
+      on the ground, you can negate the forced movement by
+      melding your body into the earth and taking damage as
+      your body breaks instead of moving. As a free action,
+      you can choose to lose Hit Points equal to four
+      times the distance the forced movement would have moved you
+      (after reducing the forced movement by half from the 18th
+      level benefit). If you do, you don't move.
+
   header:
-    flavor: You imbue your armor with the shrouded blackness of the night.
-    level-6-spell: >-
-      You can Activate the armor to cast @UUID[Compendium.pf2e.spells-srd.Item.4GE2ZdODgIQtg51c]{Darkness}.
-    level-12-activation: >-
-      **Activate** <span class="action-glyph">2</span> (concentrate, manipulate)
-
-      **Frequency** {frequency}
-      
-      **Effect** You gain darkvision for 1 hour.
-    level-14-passive: >-
-      Your armor constantly gives you darkvision.
-    level-16-spell: >-
-      When you use the _darkness_ activation, you can choose to
-      have the armor cast 4th-rank @UUID[Compendium.pf2e.spells-srd.Item.4GE2ZdODgIQtg51c]{Darkness} if you prefer.
-    level-18-passive: >-
-      Your armor constantly gives you greater darkvision.
-    level-20-passive: >-
-      Your armor constantly shrouds you in darkness and shadow, causing
-      you to be in dim light if you are otherwise
-      surrounded by bright light, darkness if you are otherwise surrounded
-      by dim light, or supernatural darkness as from 4th-rank
-      @UUID[Compendium.pf2e.spells-srd.Item.4GE2ZdODgIQtg51c]{Darkness} if you are otherwise surrounded by darkness. Only you
-      are affected by the altered light level, not the rest
-      of the environment.
+    flavor: You imbue your armor with the immovable sturdiness of earth.
+    level-6-bonus: >-
+      The armor's item bonus to saving throws increases by 1
+      against any effect that attempts to Reposition, Shove, or Trip
+      you or otherwise attempt to force you to move or knock you prone.
+    level-8-reduction: >-
+      Whenever an effect would move you 10 feet or more,
+      your armor reduces the movement by 5 feet.
+    level-10-reduction: >-
+      Whenever an effect would move you 20 feet or more,
+      your armor reduces the movement by 10 feet, instead of 5 feet.
+    level-12-bonus: >-
+      The armor's item bonus to saving throws increases by a
+      total of 2 against effects that attempt to force you
+      to move or knock you prone.
+    level-14-cover: >-
+      When you wish to do so, you provide standard cover
+      instead of lesser cover.
+    level-16-reflex: >-
+      The increased item bonus to saves from this imbued property
+      also applies to your Reflex DC when determining the DC
+      for a creature to Tumble Through your space, and your
+      space is still treated as greater difficult terrain even on a success.
+    level-18-reduction: >-
+      Your armor reduces all forced movement of 10 feet or
+      more by half.
     level-20-activation: >-
-      You can Activate the armor for one action to end or reapply this
-      benefit; this activation has the concentrate trait.
-    frequency:
-      per-day: once per day
-      per-hour: once per hour
-      per-10-minutes: once per 10 minutes
+      **Activate** <span class="action-glyph">F</span> (Free Action)
+
+      **Effect** When you would be forced to move and are standing
+      on the ground, you can negate the forced movement by
+      losing Hit Points equal to four times the distance the
+      forced movement would have moved you. If you do, you don't move.
