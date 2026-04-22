@@ -27,7 +27,7 @@
                     "pf2e-monster-parts.dialog.refined-item-editor.type"}}</label>
                 <select name="imbue-{{@index}}-type" id="imbue-{{@index}}-type" class="imbue-type">
                     <option value=""></option>
-                    {{#each ../data.possibleImbues }}
+                    {{#each imbue.allowed }}
                         <option value="{{this.key}}"
                                 {{#if (eq this.key ../this.selected)}}selected{{/if}}>{{this.label}}</option>
                     {{/each}}
@@ -42,6 +42,7 @@
         </fieldset>
     {{/each}}
 
+    {{#if (gt data.newImbues.length 0)}}
     <fieldset class="droppable new-imbue">
         <legend>{{localize "pf2e-monster-parts.dialog.refined-item-editor.new-imbuement"}}</legend>
         <div class="form-group">
@@ -49,9 +50,10 @@
                 "pf2e-monster-parts.dialog.refined-item-editor.type"}}</label>
             <select name="new-imbue-type" id="new-imbue-type">
                 <option value=""></option>
-                {{#each data.possibleImbues }}
+                {{#each data.newImbues }}
                     <option value="{{this.key}}">{{this.label}}</option>
                 {{/each}}
             </select></div>
     </fieldset>
+    {{/if}}
 </div>

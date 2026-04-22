@@ -2,7 +2,7 @@ import { ItemPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
 import { Material } from "./material";
-import { i18nFormat, simplifyCoins, t } from "./utils";
+import { i18nFormat, CurrencyConverter, t } from "./utils";
 import { dialogs } from "./app/dialogs";
 import {
     ModuleFlags,
@@ -90,7 +90,10 @@ export class RefinedItem {
         await item.setFlag(MODULE_ID, "refined-item", flags);
         const refinement = config.materials.get(flags.refinement.key)!;
         await ChatMessage.create({
-            content: `<p>Item <strong>${item.name}</strong> was updated to Refined Item with <strong>${i18nFormat(refinement.label)}</strong> refinement.</p>`,
+            content: t("refined-item.create-chat-message", {
+                item: item.name,
+                refinement: i18nFormat(refinement.label),
+            }) as string,
         });
         return new RefinedItem(item as HasRefinedData<typeof item>);
     }
@@ -121,7 +124,7 @@ export class RefinedItem {
             (acc, imb) => acc + (imb.value as number),
             flag.refinement.value as number,
         ) as NormalizedValue;
-        return simplifyCoins(value);
+        return CurrencyConverter.simplifyCoins(value);
     }
 
     async updateItem(flagData?: RefinedItemFlags) {

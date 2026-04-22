@@ -18,7 +18,8 @@
     "error-not-refined-item": "This item is not a refined item.",
     "error-no-applicable-refinements": "This item type has no applicable refinements.",
     "error-not-physical-item": "This item is not a physical item.",
-    "imported-from-compendium": "The refined version of this item was created in the main item collection."
+    "imported-from-compendium": "The refined version of this item was created in the main item collection.",
+    "create-chat-message": "<p>Item <strong>${item}</strong> was updated to Refined Item with <strong>{refinement}</strong> refinement.</p>"
   },
   "dialog": {
     "default-title": "Choose an option",
@@ -31,8 +32,8 @@
     "confirm-apply-material": {
       "title": "Confirm applying material",
       "content": "This will add <strong>{value}</strong> to <strong>{material}</strong> material of the item.",
-      "consume": "This will consume {quantity} monster parts.",
-      "remainder": "One of the monster part's value will be reduced by <strong>{remainder}</strong>."
+      "consume": "This will fully consume <strong>{quantity}</strong> monster parts.",
+      "remainder": "One of the parts will be split into another item with <strong>{remainder}</strong> of value."
     },
     "slider": {
       "value": "Value"
@@ -67,6 +68,8 @@
     "value": "Value",
     "item": {
       "name-owned": "Monster Parts of {actor}",
+      "name-partial": "{name} (Partial)",
+      "name-pure": "Pure Parts ({material})",
       "name": "Monster Parts"
     },
     "editor": {

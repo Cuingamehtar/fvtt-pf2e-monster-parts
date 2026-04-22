@@ -2,7 +2,7 @@ import { ItemPF2e, NPCPF2e, Predicate } from "foundry-pf2e";
 import { getExtendedNPCRollOptions } from "./actor-utils";
 import { getConfig } from "./config";
 import { RefinedItem } from "./refined-item";
-import { clamp, i18nFormat, simplifyCoins } from "./utils";
+import { i18nFormat, CurrencyConverter } from "./utils";
 import { MaterialData } from "@data/material";
 import { MODULE_ID } from "./module";
 import { NormalizedValue } from "@localTypes/global";
@@ -116,7 +116,7 @@ export class Material {
     }
 
     get coinValue() {
-        return simplifyCoins(this.value as number);
+        return CurrencyConverter.simplifyCoins(this.value as number);
     }
 
     getThresholdForLevel(item: RefinedItem, level: number): NormalizedValue {
@@ -129,7 +129,7 @@ export class Material {
                 : "equipment"
         ) as keyof typeof thresholds;
         const thr = thresholds[itemType];
-        const clampedLevel = clamp(level, 0, thr.length);
+        const clampedLevel = Math.clamp(level, 0, thr.length);
         return clampedLevel == 0 ? 0 : thr[clampedLevel - 1];
     }
 

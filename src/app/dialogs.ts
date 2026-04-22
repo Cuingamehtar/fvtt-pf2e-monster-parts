@@ -1,4 +1,4 @@
-import { simplifyCoins, t } from "../utils";
+import { CurrencyConverter, t } from "../utils";
 import { configureMonsterPart } from "./monster-part-editor";
 import { configureRefinedItem } from "./refined-item-editor";
 import { NormalizedValue } from "@localTypes/global";
@@ -39,7 +39,7 @@ function confirmApplyMaterial(
     consumedRemainder: NormalizedValue,
 ): Promise<boolean | undefined> {
     let content = t("dialog.confirm-apply-material.content", {
-        value: simplifyCoins(addedValue).toString(),
+        value: CurrencyConverter.simplifyCoins(addedValue).toString(),
         material: material,
     });
     if (consumedQuantity !== 0)
@@ -52,7 +52,10 @@ function confirmApplyMaterial(
         content +=
             " " +
             t("dialog.confirm-apply-material.remainder", {
-                remainder: simplifyCoins(consumedRemainder).toString(),
+                remainder:
+                    CurrencyConverter.simplifyCoins(
+                        consumedRemainder,
+                    ).toString(),
             });
     return DialogV2.prompt({
         window: {

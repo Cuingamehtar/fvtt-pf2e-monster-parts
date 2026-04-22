@@ -1,5 +1,5 @@
 import { NPCPF2e, TokenDocumentPF2e } from "foundry-pf2e";
-import { simplifyCoins } from "../utils";
+import { CurrencyConverter } from "../utils";
 import { NormalizedValue } from "@localTypes/global";
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -69,7 +69,7 @@ export class AfterCombatDialog extends HandlebarsApplicationMixin(
         const actors = this.npcs.map((e) => ({
             name: e.token.name,
             id: e.token.id,
-            coins: simplifyCoins(e.value),
+            coins: CurrencyConverter.simplifyCoins(e.value),
             checked: e.checked,
         }));
 
@@ -83,7 +83,7 @@ export class AfterCombatDialog extends HandlebarsApplicationMixin(
         return {
             data: {
                 actors,
-                totalCoins: simplifyCoins(
+                totalCoins: CurrencyConverter.simplifyCoins(
                     actors
                         .filter((e) => e.checked)
                         .reduce(

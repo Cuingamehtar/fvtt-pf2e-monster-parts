@@ -82,6 +82,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
     };
 
     async _prepareContext() {
+        const usedImbues = this.data.imbues.map((e) => e.selected);
         return {
             data: {
                 possibleRefinements: this.data.possibleRefinements,
@@ -95,7 +96,14 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                 imbues: this.data.imbues.map((i) => ({
                     selected: i.selected,
                     value: CurrencyConverter.ToSystemCurrency(i.value),
+                    allowed: this.data.possibleImbues.filter(
+                        (e) =>
+                            !usedImbues.includes(e.key) || i.selected == e.key,
+                    ),
                 })),
+                newImbues: this.data.possibleImbues.filter(
+                    (e) => !usedImbues.includes(e.key),
+                ),
             },
         };
     }
@@ -104,6 +112,30 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         _context: object,
         _options: foundry.applications.ApplicationRenderOptions,
     ) {
+        const usedImbues = this.data.imbues.map((e) => e.selected);
+        foundry.utils.mergeObject(
+            _context,
+            {
+                refinement: {
+                    selected: this.data.refinement.selected,
+                    value: CurrencyConverter.ToSystemCurrency(
+                        this.data.refinement.value,
+                    ),
+                },
+                imbues: this.data.imbues.map((i) => ({
+                    selected: i.selected,
+                    value: CurrencyConverter.ToSystemCurrency(i.value),
+                    allowed: this.data.possibleImbues.filter(
+                        (e) =>
+                            !usedImbues.includes(e.key) || i.selected == e.key,
+                    ),
+                })),
+                newImbues: this.data.possibleImbues.filter(
+                    (e) => !usedImbues.includes(e.key),
+                ),
+            },
+            { inplace: true },
+        );
         this.element
             .querySelector("select.refinement-type")
             ?.addEventListener("change", (e) => {
@@ -113,6 +145,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                     this.data.refinement.selected = (e.target as any).value;
                     this.updateItem();
                 }
+                this.render();
             });
         this.element
             .querySelector("input#refinement-value")
@@ -123,6 +156,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                     Number((e.target as any).value),
                 );
                 this.updateItem();
+                this.render();
             });
 
         this.element
@@ -138,6 +172,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                         this.render();
                     }
                     this.updateItem();
+                    this.render();
                 });
             });
 
@@ -151,6 +186,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                         Number((e.target as any).value),
                     );
                     this.updateItem();
+                    this.render();
                 });
             });
 
@@ -244,25 +280,24 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                                     monsterPart.getValue(),
                                 ),
                             )
-                        )?.value ?? 0,
+                        )?.value.toNearest(0.01) ?? 0,
                     );
                     if (!addedValue) return;
                     const valueSingle = monsterPart.getValue(1);
-                    const consumedItems = Math.floor(
-                        (addedValue as number) / (valueSingle as number),
-                    );
-                    const consumedValue = (
-                        (addedValue as number) -
-                        (monsterPart.getValue(consumedItems) as number)
-                    ).toNearest(0.01) as NormalizedValue;
+                    const { consumedItems, valueRemaining } =
+                        calculateConsumedItems({
+                            valueSingle,
+                            valueConsumed: addedValue,
+                            nItems: monsterPart.quantity,
+                        });
                     if (
                         await dialogs.confirmApplyMaterial(
                             addedValue,
                             i18nFormat(
                                 getMaterialLabel(selectedMaterial) ?? "",
                             ) as string,
-                            consumedItems,
-                            consumedValue,
+                            consumedItems - 1,
+                            valueRemaining,
                         )
                     ) {
                         if (expectedMaterial === "") {
@@ -286,13 +321,17 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                         await this.updateItem();
                         this.render();
                         if (monsterPart.isOwnedByActor) {
-                            if ((consumedValue as number).toNearest(0.01) > 0) {
+                            if (
+                                (valueRemaining as number).toNearest(0.01) > 0
+                            ) {
                                 const data = monsterPart.item.toObject();
+                                data.name = t("material.item.name-partial", {
+                                    name: data.name,
+                                }) as string;
                                 (data.flags["pf2e-monster-parts"][
                                     "monster-part"
                                 ] as ModuleFlags["monster-part"])!.value =
-                                    ((valueSingle as number) -
-                                        (consumedValue as number)) as NormalizedValue;
+                                    valueRemaining;
                                 data.system.quantity = 1;
                                 monsterPart.item.actor?.createEmbeddedDocuments(
                                     "Item",
@@ -300,10 +339,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                                 );
                             }
                             const remainingQuantity =
-                                monsterPart.quantity -
-                                (consumedItems + (consumedValue as number) > 0
-                                    ? 1
-                                    : 0);
+                                monsterPart.quantity - consumedItems;
                             if (remainingQuantity > 0) {
                                 await monsterPart.setQuantity(
                                     remainingQuantity,
@@ -330,18 +366,19 @@ export async function configureRefinedItem(item: RefinedItem) {
         ...config.materials
             .values()
             .map((m) => new Material(m))
-            .filter((m) => m.testItem({ rollOptions })),
-    ];
+            .filter((m) => m.testItem({ rollOptions }))
+            .map((m) => ({
+                type: m.type,
+                key: m.key,
+                label: i18nFormat(m.label),
+            })),
+    ].sort((a, b) => a.label.localeCompare(b.label));
 
     const data: RefinedItemEditorData = {
-        possibleRefinements: possibleMaterials
-            .filter((m) => m.type == "refinement")
-            .map((m) => ({ key: m.key, label: i18nFormat(m.label) }))
-            .sort((a, b) => a.label.localeCompare(b.label)),
-        possibleImbues: possibleMaterials
-            .filter((m) => m.type == "imbuement")
-            .map((m) => ({ key: m.key, label: i18nFormat(m.label) }))
-            .sort((a, b) => a.label.localeCompare(b.label)),
+        possibleRefinements: possibleMaterials.filter(
+            (m) => m.type == "refinement",
+        ),
+        possibleImbues: possibleMaterials.filter((m) => m.type == "imbuement"),
         refinement: {
             selected:
                 Material.fromKey(flag.refinement.key)?.key ??
@@ -378,4 +415,25 @@ export async function configureRefinedItem(item: RefinedItem) {
     };
     await item.item.setFlag(MODULE_ID, "refined-item", newFlag);
     return item.updateItem();*/
+}
+
+function calculateConsumedItems({
+    valueSingle,
+    nItems,
+    valueConsumed,
+}: {
+    valueSingle: NormalizedValue;
+    nItems: number;
+    valueConsumed: NormalizedValue;
+}) {
+    const totalValue = (valueSingle as number) * nItems;
+    const consumed = Math.clamp(valueConsumed as number, 0, totalValue);
+    const consumedItems = Math.ceil(consumed / (valueSingle as number));
+    return {
+        consumedItems,
+        valueRemaining: (
+            consumedItems * (valueSingle as number) -
+            consumed
+        ).toNearest(0.01) as NormalizedValue,
+    };
 }

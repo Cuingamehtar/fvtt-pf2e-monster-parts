@@ -1,7 +1,7 @@
 import { EquipmentPF2e, NPCPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
-import { i18nFormat, simplifyCoins, t } from "./utils";
+import { i18nFormat, CurrencyConverter, t } from "./utils";
 import { getExtendedNPCRollOptions } from "./actor-utils";
 import { Material } from "./material";
 import { ModuleFlags, NormalizedValue } from "../types/global";
@@ -59,7 +59,7 @@ export class MonsterPart {
 
     get coinValue() {
         const value = this.getFlag().value;
-        return simplifyCoins(value as number);
+        return CurrencyConverter.simplifyCoins(value as number);
     }
 
     static valueOfCreature(actor: NPCPF2e) {
@@ -137,21 +137,21 @@ export class MonsterPart {
             ...config.materials
                 .values()
                 .filter((m) => flags.materials.includes(m.key)),
-        ];
-        const refinements = materials
-            .filter((m) => m?.type === "refinement")
-            .map((m) => i18nFormat(m.label))
-            .sort((a, b) => a.localeCompare(b));
-        const imbues = materials
-            .filter((m) => m?.type === "imbuement")
-            .map((m) => ({ key: m.key, label: i18nFormat(m.label) }))
+        ]
+            .map((m) => ({
+                type: m.type,
+                key: m.key,
+                label: i18nFormat(m.label),
+            }))
             .sort((a, b) => a.label.localeCompare(b.label));
+        const refinements = materials.filter((m) => m.type === "refinement");
+        const imbues = materials.filter((m) => m.type === "imbuement");
 
         const templatePath =
             "modules/pf2e-monster-parts/templates/monster-part-header.hbs";
         return await foundry.applications.handlebars
             .renderTemplate(templatePath, {
-                coins: simplifyCoins(value),
+                coins: CurrencyConverter.simplifyCoins(value),
                 refinements,
                 imbues,
                 image: flags.imageSrc,

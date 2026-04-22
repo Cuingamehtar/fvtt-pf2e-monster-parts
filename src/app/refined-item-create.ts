@@ -6,7 +6,6 @@ export function createRefinedItemDialog() {
 
     return foundry.applications.api.DialogV2.wait({
         content: content,
-        // @ts-expect-error
         window: { title: t("dialog.create-refined-item.title") as string },
         buttons: [
             {
