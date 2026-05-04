@@ -20,20 +20,16 @@ export function createImbueLife(): MaterialData[] {
                 or: [
                     "self:trait:vitality",
                     {
-                        or: [
-                            {
-                                and: [
-                                    "item:type:melee",
-                                    "item:damage:type:vitality",
-                                ],
-                            },
-                            {
-                                and: [
-                                    "item:type:spell",
-                                    "item:damage:type:vitality",
-                                ],
-                            },
-                        ],
+						and: [
+							{
+								or: [
+									"item:type:action",
+									"item:type:melee",
+									"item:type:spell",
+								],
+							},
+							"item:damage:type:vitality"
+						],
                     },
                 ],
             },

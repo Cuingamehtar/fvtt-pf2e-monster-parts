@@ -21,20 +21,21 @@ export function createImbueFire(): MaterialData[] {
                 or: [
                     "self:trait:fire",
                     {
-                        or: [
-                            {
-                                and: [
-                                    "item:type:melee",
-                                    "item:damage:type:fire",
-                                ],
-                            },
-                            {
-                                and: [
-                                    "item:type:spell",
-                                    "item:damage:type:fire",
-                                ],
-                            },
-                        ],
+						and: [
+							{
+								or: [
+									"item:type:action",
+									"item:type:melee",
+									"item:type:spell",
+								],
+							},
+							{
+								or: [
+									"item:damage:type:fire",
+									"item:trait:fire"
+								],
+							},
+						],
                     },
                 ],
             },

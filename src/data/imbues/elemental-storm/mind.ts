@@ -19,17 +19,24 @@ export function createImbueMind(): MaterialData[] {
         monsterPredicate: [
             {
                 or: [
-                    "self:trait:astral",
                     "self:trait:mental",
+					"self:trait:astral"
                     {
-                        and: [
-                            {
-                                or: ["item:trait:astral", "item:trait:mental"],
-                            },
-                            {
-                                or: ["item:type:spell", "item:type:melee"],
-                            },
-                        ],
+						and: [
+							{
+								or: [
+									"item:type:action",
+									"item:type:melee",
+									"item:type:spell",
+								],
+							},
+							{
+								or: [
+									"item:trait:mental",
+									"item:trait:astral"
+								],
+							},
+						],
                     },
                 ],
             },

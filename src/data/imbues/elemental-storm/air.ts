@@ -21,17 +21,12 @@ export function createImbueAir(): MaterialData[] {
                 or: [
                     "self:trait:air",
                     {
-                        or: [
-                            {
-                                and: [
-                                    "item:type:melee",
-                                    "item:damage:type:air",
-                                ],
-                            },
-                            {
-                                and: [
+						and: [
+							{ "item:trait:air", 
+                                or: [
                                     "item:type:spell",
-                                    "item:damage:type:air",
+                                    "item:type:melee",
+									"item:type:action"
                                 ],
                             },
                         ],

@@ -20,19 +20,23 @@ export function createImbuePoison(): MaterialData[] {
             {
                 or: [
                     "self:trait:acid",
-                    "self:trait:poison",
+					"self:trait:poison",
                     {
-                        and: [
-                            {
-                                or: [
-                                    "item:damage:type:acid",
-                                    "item:damage:type:poison",
-                                ],
-                            },
-                            {
-                                or: ["item:type:melee", "item:type:spell"],
-                            },
-                        ],
+						and: [
+							{
+								or: [
+									"item:type:action",
+									"item:type:melee",
+									"item:type:spell",
+								],
+							},
+							{
+								or: [
+									"item:damage:type:acid",
+									"item:damage:type:poison"
+								],
+							},
+						],
                     },
                 ],
             },
