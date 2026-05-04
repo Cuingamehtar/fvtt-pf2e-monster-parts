@@ -21,20 +21,16 @@ export function createImbueForce(): MaterialData[] {
                 or: [
                     "self:trait:force",
                     {
-                        or: [
-                            {
-                                and: [
-                                    "item:type:melee",
-                                    "item:damage:type:force",
-                                ],
-                            },
-                            {
-                                and: [
-                                    "item:type:spell",
-                                    "item:damage:type:force",
-                                ],
-                            },
-                        ],
+						and: [
+							{
+								or: [
+									"item:type:action",
+									"item:type:melee",
+									"item:type:spell",
+								],
+							},
+							"item:damage:type:force"
+						],
                     },
                 ],
             },

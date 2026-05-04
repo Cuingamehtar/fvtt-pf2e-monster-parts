@@ -21,20 +21,16 @@ export function createImbueElectricity(): MaterialData[] {
                 or: [
                     "self:trait:electricity",
                     {
-                        or: [
-                            {
-                                and: [
-                                    "item:type:melee",
-                                    "item:damage:type:electricity",
-                                ],
-                            },
-                            {
-                                and: [
-                                    "item:type:spell",
-                                    "item:damage:type:electricity",
-                                ],
-                            },
-                        ],
+						and: [
+							{
+								or: [
+									"item:type:action",
+									"item:type:melee",
+									"item:type:spell",
+								],
+							},
+							"item:damage:type:electricity"
+						],
                     },
                 ],
             },
