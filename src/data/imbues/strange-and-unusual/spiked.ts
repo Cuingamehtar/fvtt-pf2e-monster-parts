@@ -21,11 +21,34 @@ export function createImbueSpiked(): MaterialData {
         },
         description: { type: "key", key: lkey("description") },
         itemPredicate: ["item:type:armor"],
-        monsterPredicate: ["never"],
-        /*monsterPredicate: [
-            { or: ["item:damage:type:piercing", "item:damage:type:slashing"] },
-            "item:type:melee",
-        ],*/
+		monsterPredicate: [
+			{
+				"and": [
+					"item:type:action",
+					{
+						"or": [
+							"item:action:type:reaction",
+							"item:action:type:free",
+							{
+								"not": {
+									"or": [
+										"item:action:cost:1",
+										"item:action:cost:2",
+										"item:action:cost:3"
+									]
+								}
+							}
+						]
+					},
+					{
+						"or": [
+							"item:damage:type:slashing",
+							"item:damage:type:piercing"
+						]
+					}
+				]
+			}
+		],
         header: {
             description: {
                 type: "key",
