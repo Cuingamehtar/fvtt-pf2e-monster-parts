@@ -343,12 +343,14 @@ export async function configureRefinedItem(item: RefinedItem) {
             .map((m) => ({ key: m.key, label: i18nFormat(m.label) }))
             .sort((a, b) => a.label.localeCompare(b.label)),
         refinement: {
-            selected: flag.refinement.key,
+            selected:
+                Material.fromKey(flag.refinement.key)?.key ??
+                flag.refinement.key,
             value: flag.refinement.value,
             isDisabled: AutomaticRefinementProgression.isEnabled,
         },
         imbues: flag.imbues.map((i) => ({
-            selected: i.key,
+            selected: Material.fromKey(i.key)?.key ?? i.key,
             value: i.value,
         })),
         item,

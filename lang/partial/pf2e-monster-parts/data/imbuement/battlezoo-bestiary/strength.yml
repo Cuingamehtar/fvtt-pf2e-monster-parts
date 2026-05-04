@@ -10,7 +10,7 @@ description: >-
 
   **Effect** You imbue the item with ferocious _strength_.
 
-  - **8th** The item can cast _earthbind_ once per day as a primal spell, as you
+  - **8th** The item can cast @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Earthbind} once per day as a primal spell, as you
   drag a foe down to the ground
 
   - **14th** The item can cast _earthbind_ once per hour instead of once per day

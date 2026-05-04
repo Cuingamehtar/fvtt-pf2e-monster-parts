@@ -1,6 +1,6 @@
 import { RuleElementEffectHandler } from "./rule-element";
 import { AlterationEffectHandler } from "./alteration";
-import { RefinedItem } from "../../refined-item";
+import { RefinedItem } from "@src/refined-item";
 import { MaterialEffect } from "../material";
 import { ApexEffectHandler } from "./apex";
 
@@ -53,14 +53,15 @@ export class EffectHandlers {
         Alteration: AlterationEffectHandler.handleSyntheticData,
     };
 
-    static handleUpdate(
-        item: RefinedItem,
-        effect: MaterialEffect,
-        changes: Record<string, unknown>,
-    ) {
-        const handler = this.updateHandlers[effect.type];
+    static async handleUpdate(params: {
+        item: RefinedItem;
+        effect: MaterialEffect;
+        changes: Record<string, unknown>;
+        materialLevel: number;
+    }) {
+        const handler = this.updateHandlers[params.effect.type];
         if (!handler) return;
-        handler(item, effect, changes);
+        await handler(params);
     }
 
     static handleSynthetic(item: RefinedItem, effect: MaterialEffect) {

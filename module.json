@@ -5,7 +5,7 @@
   "version": "#{VERSION}#",
   "compatibility": {
     "minimum": "13",
-    "verified": "13.351"
+    "verified": "14.360"
   },
   "authors": [
     {
@@ -21,7 +21,7 @@
         "manifest": "https://raw.githubusercontent.com/foundryvtt/pf2e/master/system.json",
         "compatibility": {
           "minimum": "7.8",
-          "verified": "7.8.0"
+          "verified": "8.0.2"
         }
       },
       {
@@ -30,7 +30,7 @@
         "manifest": "https://raw.githubusercontent.com/foundryvtt/pf2e/master/system.json",
         "compatibility": {
           "minimum": "0.0.1",
-          "verified": "0.0.1"
+          "verified": "1.0.2"
         }
       }
     ],
@@ -40,6 +40,16 @@
         "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json",
         "type": "module",
         "compatibility": {}
+      }
+    ],
+    "recommends": [
+      {
+        "id": "pf2e-toolbelt",
+        "manifest": "https://raw.githubusercontent.com/reonZ/pf2e-toolbelt/refs/heads/master/module.json",
+        "type": "module",
+        "compatibility": {
+          "minimum": "3.41.0"
+        }
       }
     ]
   },

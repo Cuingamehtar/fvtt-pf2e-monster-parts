@@ -10,7 +10,7 @@ description: >-
 
   **Effect** You imbue the item with resilient _constitution_.
 
-  - **8th** The item can cast 3rd rank _heal_, on you only, once per day as a
+  - **8th** The item can cast 3rd rank @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Heal}, on you only, once per day as a
   divine spell
 
   - **14th** The item's _heal_ spell heightens to 6th rank

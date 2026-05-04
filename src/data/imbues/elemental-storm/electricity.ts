@@ -100,6 +100,40 @@ export function createImbueElectricity(): MaterialData[] {
                             label: lkey("magic.label"),
                         }),
                 ),
+                ...helpers.cantripActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf", // Electric Arc
+                }),
+                ...helpers.leveledEffects(
+                    [4, 6, 16, 20],
+                    [1, 2, 6, 7],
+                    (rank) =>
+                        helpers.spellActivation({
+                            uuid: "Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn", // Shocking Grasp
+                            max: 1,
+                            rank,
+                        }),
+                ),
+                ...helpers.leveledEffects([8, 12, 16], [3, 4], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2", // Lightning Bolt
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                ...helpers.leveledEffects([12, 16, 20], [5, 6, 7], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV", // Lightning Storm
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                ...helpers.leveledEffects([16, 20], [6, 9], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.TDNlDWbYb58Y55Da", // Chain Lightning
+                        max: 1,
+                        rank,
+                    }),
+                ),
             ],
         },
         {

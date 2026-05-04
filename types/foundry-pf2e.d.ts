@@ -2,6 +2,7 @@ import { ModuleFlags, ModuleManifestFlags } from "./global";
 import * as FoundryPF2e from "foundry-pf2e";
 import { MODULE_ID } from "@src/module";
 import { MonsterPartsConfig } from "@src/config";
+import StringTree from "foundry-pf2e/foundry/common/utils/string-tree";
 
 type Currency = FoundryPF2e.CoinDenomination | "credits" | "upb";
 
@@ -15,9 +16,6 @@ declare module "foundry-pf2e" {
             scope: "pf2e-monster-parts",
             key: "refined-item",
         ): ModuleFlags["refined-item"];
-    }
-    export interface TreasurePF2e {
-        get isCurrency(): boolean;
     }
     export interface ActorInventory<TActor extends FoundryPF2e.ActorPF2e> {
         addCurrency(

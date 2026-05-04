@@ -108,6 +108,41 @@ export function createImbueCold(): MaterialData[] {
                             label: lkey("magic.label"),
                         }),
                 ),
+                ...helpers.cantripActivation({
+                    uuid: "Compendium.pf2e.spells-srd.Item.gYjPm7YwGtEa1oxh", // Ray of Frost
+                }),
+                ...helpers.leveledEffects(
+                    [4, 6, 12, 16],
+                    [1, 2, 3, 6],
+                    (rank) =>
+                        helpers.spellActivation({
+                            uuid: "Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0", // Chilling Spray
+                            max: 1,
+                            rank,
+                        }),
+                ),
+                ...helpers.leveledEffects([10, 16], [4, 6], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx", // Ice Storm
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                ...helpers.leveledEffects([12, 16], [5, 6], (rank) =>
+                    helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k", // Cone of Cold
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                {
+                    levelMin: 20,
+                    ...helpers.spellActivation({
+                        uuid: "Compendium.pf2e.spells-srd.Item.BKIet436snMNcnez",
+                        max: 1,
+                        rank: 9,
+                    }),
+                },
             ],
         },
         {

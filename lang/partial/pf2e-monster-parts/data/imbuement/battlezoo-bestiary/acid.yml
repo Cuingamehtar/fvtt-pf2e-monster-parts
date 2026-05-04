@@ -1,7 +1,7 @@
 header-description: You imbue the weapon with vitriolic _acid_.
 magic:
   label: Acid (Magic)
-  description: >
+  description: >-
     **Type** Weapon
 
 
@@ -17,15 +17,15 @@ magic:
     spells to be either arcane or primal
 
     -   **2nd** The weapon can cast
-    @UUID\[Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt\]{Acid Splash} as a
+    @UUID[Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt]{Acid Splash} as a
     cantrip, heightened to half the item's level rounded up
 
     -   **4th** The weapon can cast
-    @UUID\[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws\]{Acidic Burst} once
+    @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Acidic Burst} once
     per day
 
     -   **6th** The weapon's _acidic burst_ heightens to 2nd rank and it can
-    cast either @UUID\[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0\]{Acid
+    cast either @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0]{Acid
     Arrow} or _acidic burst_ once per day, but not both
 
     -   **8th** The weapon's _acidic burst_ heightens to 3rd rank, and it can
@@ -34,7 +34,7 @@ magic:
     -   **10th** Strikes with the weapon deal 1 additional acid damage
 
     -   **12th** The weapon's _acid arrow_ heightens to 4th rank, and the weapon
-    can cast @UUID\[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3\]{Acid
+    can cast @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]{Acid
     Storm} once per day
 
     -   **14th** The additional acid damage increases to 1d4
@@ -45,42 +45,42 @@ magic:
     -   **18th** The additional acid damage increases to 1d6
 
     -   **20th** The weapon can cast
-    @UUID\[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl\]{Storm of
+    @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl]{Storm of
     Vengeance} once per day but you can only choose the acid rain effect. You
     can choose the acid rain effect twice in a row
   header:
     level-4-spells: >-
       The weapon can cast 1st rank
-      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] once per day.
+      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Acidic Burst} once per day.
     level-6-spells: >-
       The weapon can cast either 2nd rank
-      @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] or 2nd rank
-      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] once per day, but
+      @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0]{Acid Arrow} or 2nd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Acidic Burst} once per day, but
       not both.
     level-8-spells: >-
       The weapon can cast 2nd rank
-      @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] and 3rd rank
-      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] each once per day.
+      @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0]{Acid Arrow} and 3rd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Acidic Burst} each once per day.
     level-12-spells: >-
       The weapon can cast 4th rank
-      @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0], 3rd rank
-      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws], and 5th rank
+      @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0]{Acid Arrow}, 3rd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Acidic Burst}, and 5th rank
       @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]{Acid Storm} each
       once per day.
     level-16-spells: >-
       The weapon can cast 6th rank
-      @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0], 3rd rank
-      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws], and 7th rank
+      @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0]{Acid Arrow}, 3rd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Acidic Burst}, and 7th rank
       @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]{Acid Storm} each
       once per day.
     level-20-spell: >-
       The weapon can cast
-      @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl] once per day but
+      @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl]{Storm of Vengeance} once per day but
       you can only choose the acid rain effect. You can choose the acid rain
       effect twice in a row.
 might:
   label: Acid (Might)
-  description: >
+  description: >-
     **Type** Weapon
 
 
@@ -142,7 +142,7 @@ might:
       target gains weakness 1 to acid until the beginning of your next turn.
 tech:
   label: Acid (Technique)
-  description: >
+  description: >-
     **Type** Weapon
 
 

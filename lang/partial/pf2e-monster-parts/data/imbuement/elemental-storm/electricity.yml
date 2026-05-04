@@ -16,30 +16,38 @@ magic:
     **Path** Magic; Choose when you first imbue the weapon for the granted
     spells to be either arcane or primal
 
-    - **2nd** The weapon can cast electric arc as a cantrip, heightened to half
-    the item's level rounded up
+    - **2nd** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf]{Electric Arc} as a
+    cantrip, heightened to half the item's level rounded up
 
-    - **4th** The weapon can cast shocking grasp once per day
+    - **4th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} once
+    per day
 
-    - **6th** The weapon's shocking grasp heightens to 2nd rank
+    - **6th** The weapon's *shocking grasp* heightens to 2nd rank
 
-    - **8th** The weapon can cast lightning bolt once per day
+    - **8th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2]{Lightning Bolt} once
+    per day
 
     - **10th** Strikes with the weapon deal 1 additional electricity damage
 
-    - **12th** The weapon's lightning bolt heightens to 4th rank, and the weapon
-    can cast lightning storm once per day
+    - **12th** The weapon's *lightning bolt* heightens to 4th rank, and the
+    weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Lightning Storm}
+    once per day
 
     - **14th** The additional electricity damage increases to 1d4
 
-    - **16th** The weapon can cast chain lightning but can no longer cast
-    lightning bolt. The weapon's shocking grasp and lightning storm heighten to
-    6th rank
+    - **16th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.TDNlDWbYb58Y55Da]{Chain Lightning} but
+    can no longer cast *lightning bolt*. The weapon's *shocking grasp* and
+    *lightning storm* heighten to 6th rank
 
     - **18th** The additional electricity damage increases to 1d6
 
-    - **20th** The weapon's chain lightning heightens to 9th rank, and lightning
-    storm and shocking grasp heighten to 7th rank
+    - **20th** The weapon's *chain lightning* heightens to 9th rank, and
+    *lightning storm* and *shocking grasp* heighten to 7th rank
   header:
     level-4-spells: >-
       The weapon can cast 1st rank

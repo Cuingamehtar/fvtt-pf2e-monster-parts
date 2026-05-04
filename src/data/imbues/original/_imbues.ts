@@ -6,12 +6,10 @@ import { createImbueConstitution } from "./constitution";
 import { createImbueDexterity } from "./dexterity";
 import { createImbueFortification } from "./fortification";
 import { createImbueIntelligence } from "./intelligence";
-import { createImbueMental } from "./mental";
 import { createImbueStrength } from "./strength";
 import { createImbueWild } from "./wild";
 import { createImbueWinged } from "./winged";
 import { createImbueWisdom } from "./wisdom";
-import { createImbuePoison } from "./poison";
 import { createImbueEnergyResistant } from "./energy-resistant";
 import { createImbueSensory } from "./sensory";
 import { createImbueSonic } from "./sonic";
@@ -25,20 +23,13 @@ export function createOriginalImbues() {
         ...createImbueCold(),
         createImbueConstitution(),
         createImbueDexterity(),
-        // ...createImbueElectricity(),
         ...createImbueEnergyResistant(),
-        // ...createImbueFire(),
-        //...createImbueForce(),
         createImbueFortification(),
         createImbueIntelligence(),
-        ...createImbueMental(),
-        ...createImbuePoison(),
         createImbueSensory(),
         ...createImbueSonic(),
         createImbueSturdy(),
         createImbueStrength(),
-        //...createImbueVitality(),
-        //...createImbueVoid(),
         createImbueWild(),
         createImbueWinged(),
         createImbueWisdom(),

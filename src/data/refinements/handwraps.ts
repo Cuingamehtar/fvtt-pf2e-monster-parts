@@ -9,7 +9,7 @@ export function addHandwrapsRefinement(): MaterialData {
             type: "key",
             key: `pf2e-monster-parts.data.refinement.handwraps`,
         },
-        itemPredicate: ["item:handwraps-of-mighty-blows"],
+        itemPredicate: ["item:tag:handwraps-of-mighty-blows"],
         monsterPredicate: ["item:type:melee", `item:damage:type:bludgeoning`],
         header: {
             labels: [

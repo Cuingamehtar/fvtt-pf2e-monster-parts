@@ -34,23 +34,38 @@ export function mergeDeep(target, ...sources) {
 
 const substitutions = {
     "’": "'",
+    "dc:resolve(item-level-dc)":
+        "dc:resolve(14 +@item.level +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0) +max(@item.level -24, 0))",
 };
+
+function replaceSub(text) {
+    return Object.entries(substitutions).reduce(
+        (res, [from, to]) => res.replace(from, to),
+        text,
+    );
+}
 
 function parseFile(filePath) {
     const content = fs.readFileSync(filePath, "utf-8");
     if (content === "") return undefined;
     try {
-        return !filePath.endsWith(".yml")
-            ? JSON.parse(content)
-            : yaml.parse(content, (_k, v) => {
-                  if (typeof v === "string") {
-                      const html = mdConverter.makeHtml(v);
-                      const noP = html.replace(/<\/?p>/g, "");
-                      return `<p>${noP}</p>` === html ? noP : html;
-                  } else {
-                      return v;
-                  }
-              });
+        const ext = path.extname(filePath);
+        switch (ext) {
+            case ".json":
+                return JSON.parse(replaceSub(content));
+            case ".yml":
+                return yaml.parse(content, (_k, v) => {
+                    if (typeof v === "string") {
+                        const html = mdConverter.makeHtml(replaceSub(v));
+                        const noP = html.replace(/<\/?p>/g, "");
+                        return `<p>${noP}</p>` === html ? noP : html;
+                    } else {
+                        return v;
+                    }
+                });
+            default:
+                throw new Error(`Unknown file extension: ${ext}`);
+        }
     } catch (e) {
         console.error(`Error when converting file ${filePath}`, e.message);
         return undefined;

@@ -105,6 +105,7 @@ export class RefinedItem {
         const { refinement } = this.getFlag();
         return Material.fromKey(refinement.key, refinement.value);
     }
+
     get imbuements() {
         const { imbues } = this.getFlag();
         return imbues.map((i) => Material.fromKey(i.key, i.value));
@@ -148,15 +149,22 @@ export class RefinedItem {
         const effects = this.getEffects();
 
         const changes = { system: { ["==rules"]: [] } };
-        effects.forEach((effect) =>
-            EffectHandlers.handleUpdate(this, effect, changes),
-        );
+        for (const { effect, materialLevel } of effects) {
+            await EffectHandlers.handleUpdate({
+                item: this,
+                effect,
+                changes,
+                materialLevel,
+            });
+        }
         await this.item.update(changes);
     }
 
     prepareDerivedData() {
         const effects = this.getEffects();
-        effects?.map((effect) => EffectHandlers.handleSynthetic(this, effect));
+        effects?.map((effect) =>
+            EffectHandlers.handleSynthetic(this, effect.effect),
+        );
     }
 
     getRollOptions() {
@@ -166,7 +174,12 @@ export class RefinedItem {
     getEffects() {
         return [this.refinement, ...this.imbuements]
             .filter((m): m is Material => !!m)
-            .flatMap((m: Material) => m.getEffects(this));
+            .flatMap((m: Material) =>
+                m.getEffects(this).map((effect) => ({
+                    materialLevel: m.getLevel(this).value,
+                    effect,
+                })),
+            );
     }
 
     async descriptionHeader() {

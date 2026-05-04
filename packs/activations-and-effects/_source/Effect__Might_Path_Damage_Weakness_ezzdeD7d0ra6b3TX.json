@@ -21,6 +21,25 @@
       {
         "choices": [
           {
+            "label": "PF2E.TraitAir",
+            "value": "air",
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:air:might",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "label": "PF2E.TraitAcid",
             "value": "acid",
             "predicate": [
@@ -129,6 +148,44 @@
                   {
                     "gte": [
                       "parent:origin:item:imbue:force:might",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "PF2E.TraitMental",
+            "value": "mental",
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:mind:might",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "PF2E.TraitMorph",
+            "value": "morph",
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:body:might",
                       20
                     ]
                   },

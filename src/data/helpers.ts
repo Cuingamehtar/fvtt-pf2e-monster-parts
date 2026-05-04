@@ -1,4 +1,9 @@
-import { Abilities, PredicateStatement, SkillSlug } from "foundry-pf2e";
+import {
+    Abilities,
+    DAMAGE_TYPES,
+    PredicateStatement,
+    SkillSlug,
+} from "foundry-pf2e";
 import { ItemAlterationSource } from "./data-types";
 import { HeaderLabel, MaterialEffect } from "./material";
 import { RollString } from "../../types/global";
@@ -98,12 +103,14 @@ const damage = {
         value,
         label,
         predicate,
+        selector,
     }: {
-        type?: string;
+        type?: ValueOf<typeof DAMAGE_TYPES>;
         category?: "persistent" | "splash";
         value: RollString;
         label: I18nKey | I18nString;
         predicate?: PredicateStatement[];
+        selector?: string;
     }): Omit<RuleElementEffect, "levelMin" | "levelMax"> {
         if (
             typeof value === "undefined" ||
@@ -114,7 +121,7 @@ const damage = {
                 type: "RuleElement",
                 rule: {
                     key: "FlatModifier",
-                    selector: "{item|_id}-damage",
+                    selector: selector ?? "{item|_id}-damage",
                     damageType: type,
                     damageCategory: category,
                     value: value ?? 1,
@@ -128,7 +135,7 @@ const damage = {
                 type: "RuleElement",
                 rule: {
                     key: "DamageDice",
-                    selector: "{item|_id}-damage",
+                    selector: selector ?? "{item|_id}-damage",
                     damageType: type,
                     category: category,
                     dieSize: m?.[2] ?? "d4",
@@ -143,10 +150,12 @@ const damage = {
         type,
         category,
         value,
+        key,
     }: {
         type?: string;
         category?: "persistent" | "splash";
         value: RollString;
+        key?: I18nKey;
     }): Omit<HeaderLabel, "levelMin" | "levelMax"> {
         type = type ?? "untyped";
         const partialKey =
@@ -155,7 +164,7 @@ const damage = {
         return {
             text: {
                 type: "key",
-                key: "pf2e-monster-parts.damage.strikes",
+                key: key ?? "pf2e-monster-parts.damage.strikes",
                 parameters: {
                     damage: {
                         type: "key",
@@ -178,18 +187,55 @@ export function addTraits(traits: string | string[]) {
     );
 }
 
+function spellActivation({
+    uuid,
+    rank,
+    dc,
+    max,
+}: {
+    uuid: `Compendium.${string}.Item.${string}`;
+    rank?: number;
+    dc?: number;
+    max?: number;
+    tradition?: "arcane" | "divine" | "occult" | "primal";
+}) {
+    return {
+        type: "RuleElement",
+        rule: {
+            key: "ItemCast",
+            uuid,
+            max,
+            dc,
+            rank,
+        },
+    } as Omit<RuleElementEffect, "levelMin" | "levelMax">;
+}
+
+function cantripActivation({
+    uuid,
+}: {
+    uuid: Parameters<typeof spellActivation>[0]["uuid"];
+    tradition?: "arcane" | "divine" | "occult" | "primal";
+}) {
+    const ranks = Array.fromRange(9, 1);
+    const levels = ranks.map((r) => r * 2 - 1);
+    levels[0] = 2;
+    return helpers.leveledEffects(levels, ranks, (rank) =>
+        spellActivation({ uuid, rank }),
+    );
+}
+
 function leveledEffects<T>(
     levels: number[],
     values: T[],
     f: (v: T) => Omit<MaterialEffect, "levelMin" | "levelMax">,
 ): MaterialEffect[] {
-    return levels
-        .map((levelMin, i) => ({
-            levelMin,
+    return Array.fromRange(values.length)
+        .map((i) => ({
+            levelMin: levels[i],
             levelMax: levels[i + 1] ? levels[i + 1] - 1 : undefined,
             value: values[i],
         }))
-        .filter((e) => typeof e.value !== "undefined")
         .map(
             ({ levelMin, levelMax, value }) =>
                 ({
@@ -205,9 +251,9 @@ function leveledLabels<T>(
     values: T[],
     f: (v: T) => Omit<HeaderLabel, "levelMin" | "levelMax">,
 ): HeaderLabel[] {
-    return levels
-        .map((levelMin, i) => ({
-            levelMin,
+    return Array.fromRange(values.length)
+        .map((i) => ({
+            levelMin: levels[i],
             levelMax: levels[i + 1] ? levels[i + 1] - 1 : undefined,
             value: values[i],
         }))
@@ -233,4 +279,6 @@ export const helpers = {
     leveledEffects,
     leveledLabels,
     sequentialData,
+    spellActivation,
+    cantripActivation,
 };

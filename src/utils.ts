@@ -158,3 +158,22 @@ export class CurrencyConverter {
 export function isSF2e() {
     return game.system.id === "sf2e";
 }
+
+export function dcByLevel(level: number) {
+    const l = clamp(level, 0, 25);
+    return (
+        14 +
+        l +
+        Math.floor(l / 3) +
+        Math.max(l - 21, 0) -
+        Math.max(l - 23, 0) +
+        Math.max(l - 24, 0)
+    );
+}
+
+export function getSettingSafe(module: string, setting: string) {
+    if (!(module == game.system.id || game.modules.get(module)?.active))
+        return undefined;
+    if (!game.settings.settings.get(`${module}.${setting}`)) return undefined;
+    return game.settings.get(module, setting);
+}
