@@ -6,7 +6,8 @@
     "build": "esbuild src/module.ts --bundle --keep-names --minify --sourcemap --outdir=scripts --define:DEBUG=false",
     "dev": "node ./build/watch.js",
     "pack": "node ./build/pack.js",
-    "extract": "node ./build/extract.js"
+    "extract": "node ./build/extract.js",
+    "mightWeakness": "node ./build/weakness-rules.js"
   },
   "repository": {
     "type": "git",

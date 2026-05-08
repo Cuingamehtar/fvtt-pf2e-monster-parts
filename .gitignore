@@ -4,3 +4,5 @@ scripts/
 
 packs/*/*
 !packs/*/_source/
+
+*.lock

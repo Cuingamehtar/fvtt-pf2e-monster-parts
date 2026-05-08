@@ -18,8 +18,7 @@ magic:
 
     - **2nd** The weapon can cast
     @UUID[Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq]{Ignition} as a
-    cantrip, heightened to half
-     the item's level rounded up.
+    cantrip, heightened to half the item's level rounded up.
 
     - **4th** The weapon can cast
     @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t]{Breathe Fire} once
@@ -30,8 +29,7 @@ magic:
     - **8th** The weapon can cast
     @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Floating Flame} and
     @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Fireball} each once
-    per
-     day, but no longer can cast *breathe fire*.
+    per day, but no longer can cast *breathe fire*.
 
     - **10th** Strikes with the weapon deal 1 additional fire damage. 
 
@@ -43,8 +41,7 @@ magic:
     - **14th** The additional fire damage increases to 1d4. 
 
     - **16th** The weapon's *fireball*, *floating flame*, and *wall of fire*
-    heighten
-     to 6th rank.
+    heighten to 6th rank.
 
     - **18th** The additional fire damage increases to 1d6. 
 
@@ -103,7 +100,7 @@ might:
     - **6th** The additional fire damage increases to 1d4.
 
     - **8th** The additional fire damage increases to 1d6. On a critical hit,
-     Strikes with the weapon deal 1d10 persistent fire damage.
+    Strikes with the weapon deal 1d10 persistent fire damage.
 
     - **12th** The fire damage dealt by this imbued property (including
     persistent fire damage) ignores resistances.

@@ -26,6 +26,8 @@ export class Wrappers {
             "pf2e-monster-parts",
             "__tempActor.inventory.__proto__.sellAllTreasure",
             async function (this: ActorInventory<CharacterPF2e>) {
+                if (DEBUG)
+                    console.debug(`Run Wrapper Inventory.sellAllTreasure`);
                 const treasures = this.actor.itemTypes.treasure.filter(
                     (item) =>
                         !item.isCurrency &&
@@ -44,25 +46,6 @@ export class Wrappers {
             "OVERRIDE",
         );
         delete globalThis.__tempActor;
-    }
-
-    static registerWildImbuement() {
-        libWrapper.register(
-            MODULE_ID,
-            "CONFIG.PF2E.Actor.documentClasses.character.prototype.getRollOptions",
-            (wrapped, ...args) => {
-                const res: string[] = wrapped(...args);
-                if (
-                    args[0]?.includes("strike-damage") &&
-                    res.includes("item:imbue:wild")
-                ) {
-                    const r = getRandomInt(6) + 1;
-                    res.push(`wild:damage-type:${r}`);
-                }
-                return res;
-            },
-            "MIXED",
-        );
     }
 
     static registerInlineNotes() {
@@ -94,6 +77,8 @@ export class Wrappers {
                 }>,
                 args: any,
             ) {
+                if (DEBUG)
+                    console.debug(`Run Wrapper PhysicalItem.getDescription`);
                 return addDescriptionNote(this, await wrapped(args));
             },
         );
@@ -108,11 +93,13 @@ export class Wrappers {
                 wrapped: typeof PhysicalItemPF2e.prototype.getRollOptions,
                 ...args
             ): ReturnType<typeof PhysicalItemPF2e.prototype.getRollOptions> {
+                if (DEBUG)
+                    console.debug(`Run Wrapper PhysicalItem.getRollOptions`);
                 const res: string[] = wrapped(...args);
                 if (RefinedItem.hasRefinedItemData(this)) {
                     const [prefix] = args;
                     const item = new RefinedItem(this);
-                    return [
+                    const options = [
                         ...res,
                         ...[item.refinement, ...item.imbuements]
                             .filter((m): m is Material => !!m)
@@ -121,6 +108,11 @@ export class Wrappers {
                                     `${prefix}:${m.key}:${m.getLevel(item).value ?? 0}`,
                             ),
                     ];
+                    if (options.some((o) => o.startsWith("item:imbue:wild"))) {
+                        const r = getRandomInt(6) + 1;
+                        options.push(`wild:damage-type:${r}`);
+                    }
+                    return options;
                 }
 
                 return res;
@@ -137,6 +129,10 @@ export class Wrappers {
                 this: PhysicalItemPF2e,
                 wrapped: typeof PhysicalItemPF2e.prototype.prepareDerivedData,
             ) {
+                if (DEBUG)
+                    console.debug(
+                        `Run Wrapper PhysicalItem.prepareDerivedData`,
+                    );
                 if (RefinedItem.hasRefinedItemData(this)) {
                     new RefinedItem(this).prepareDerivedData();
                     wrapped();

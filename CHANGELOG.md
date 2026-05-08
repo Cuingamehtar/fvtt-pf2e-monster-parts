@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [unreleased]
+
+### Added
+- Add Darkness imbuement (thanks **Adam**)
+
+### Fixed
+- Fix Fortification imbuement's item predicate
+- Fix Body (Magic) imbuement's spell levels
+- Fix Darkness, ... imbuement's monster predicates (thanks **Z3DT**)
+
 ## [0.6.0] - 2026-04-18
 
 ### Added

@@ -14,7 +14,7 @@ export function createImbueFortification(): MaterialData {
         description: { type: "key", key: lkey("description") },
         itemPredicate: [
             "item:type:armor",
-            { or: ["armor:category:medium", "armor:category:heavy"] },
+            { or: ["item:category:medium", "item:category:heavy"] },
         ],
         monsterPredicate: [
             {

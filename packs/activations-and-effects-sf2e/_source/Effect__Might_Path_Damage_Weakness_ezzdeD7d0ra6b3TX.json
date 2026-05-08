@@ -53,7 +53,7 @@
                   },
                   {
                     "gte": [
-                      "item:origin:item:imbue:wild:might",
+                      "parent:origin:item:imbue:wild:might",
                       20
                     ]
                   },
@@ -78,7 +78,13 @@
                   },
                   {
                     "gte": [
-                      "item:origin:item:imbue:wild:might",
+                      "parent:origin:item:imbue:ice:might",
+                      20
+                    ]
+                  },
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:wild:might",
                       20
                     ]
                   },
@@ -103,7 +109,26 @@
                   },
                   {
                     "gte": [
-                      "item:origin:item:imbue:wild:might",
+                      "parent:origin:item:imbue:wild:might",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "PF2E.TraitDarkess",
+            "value": "darkness",
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:darkness:might",
                       20
                     ]
                   },
@@ -128,7 +153,7 @@
                   },
                   {
                     "gte": [
-                      "item:origin:item:imbue:wild:might",
+                      "parent:origin:item:imbue:wild:might",
                       20
                     ]
                   },
@@ -229,7 +254,7 @@
                   },
                   {
                     "gte": [
-                      "item:origin:item:imbue:wild:might",
+                      "parent:origin:item:imbue:wild:might",
                       20
                     ]
                   },
@@ -273,7 +298,7 @@
                   },
                   {
                     "gte": [
-                      "item:origin:item:imbue:wild:might",
+                      "parent:origin:item:imbue:wild:might",
                       20
                     ]
                   },
@@ -285,14 +310,67 @@
             ]
           }
         ],
+        "rollOption": "might-path-weakness",
         "flag": "damageType",
         "key": "ChoiceSet",
         "prompt": "PF2E.SpecificRule.Prompt.DamageType"
       },
       {
         "key": "Weakness",
-        "value": "1",
-        "type": "{item|flags.pf2e.rulesSelections.damageType}"
+        "value": 1,
+        "type": "{item|flags.pf2e.rulesSelections.damageType}",
+        "predicate": [
+          {
+            "or": [
+              "might-path-weakness:acid",
+              "might-path-weakness:cold",
+              "might-path-weakness:electricity",
+              "might-path-weakness:fire",
+              "might-path-weakness:force",
+              "might-path-weakness:mental",
+              "might-path-weakness:poison",
+              "might-path-weakness:sonic",
+              "might-path-weakness:vitality",
+              "might-path-weakness:void"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "Weakness",
+        "label": "PF2E.TraitAir",
+        "value": 1,
+        "type": "custom",
+        "definition": [
+          "item:trait:air"
+        ],
+        "predicate": [
+          "might-path-weakness:air"
+        ]
+      },
+      {
+        "key": "Weakness",
+        "label": "PF2E.TraitDarkess",
+        "value": 1,
+        "type": "custom",
+        "definition": [
+          "item:trait:darkness"
+        ],
+        "predicate": [
+          "might-path-weakness:darkness"
+        ]
+      },
+      {
+        "key": "Weakness",
+        "label": "PF2E.TraitMorph",
+        "value": 1,
+        "type": "custom",
+        "definition": [
+          "item:trait:morph"
+        ],
+        "predicate": [
+          "might-path-weakness:morph"
+        ]
       }
     ],
     "slug": "effect-might-path-weakness",

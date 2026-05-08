@@ -136,7 +136,7 @@ export function createImbueBody(): MaterialData[] {
                         rank,
                     }),
                 ),
-                ...helpers.leveledEffects([16, 16], [5, 7], (rank) =>
+                ...helpers.leveledEffects([16, 20], [5, 7], (rank) =>
                     helpers.spellActivation({
                         uuid: "Compendium.pf2e.spells-srd.Item.ZLLY6ThJXCCrO0rL", // Wall of Flesh
                         max: 1,

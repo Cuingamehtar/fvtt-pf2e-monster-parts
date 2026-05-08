@@ -7,9 +7,6 @@ export function createStrangeAndUnusualImbues() {
         // shield
         // createImbueMirrored(),
         // weapon
-        // ...createImbueAir(),
-        // ...createImbueDarkness(),
-        // ...createImbueEarth(),
         // createImbueElongating(),
         // ...createImbueLight(),
         // createImbueThrowing(),

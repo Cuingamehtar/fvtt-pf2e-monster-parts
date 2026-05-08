@@ -36,34 +36,34 @@ description: >
   *   **20th** While investing the item, you constantly gain the effects of 6th
   rank @UUID\[Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki\]{Truesight}
 flavor: You imbue the item with extraordinary senses.
-level-4-activation-low-light: >
+level-4-activation-low-light: >-
   **Activation** <span class="action-glyph">2</span> (concentrate)  
 
   **Frequency** once per day  
 
   You gain low-light vision for 1 hour.  
 
-  @UUID\[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl\]{Effect:
+  @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect:
   Sensory Imbuement}
 level-6-permanent-low-light: You gain low-light vision.
-level-8-activation-darkvision: >
+level-8-activation-darkvision: >-
   **Activation** <span class="action-glyph">2</span> (concentrate)  
 
   **Frequency** once per day  
 
   You gain darkvision for 1 hour.  
 
-  @UUID\[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl\]{Effect:
+  @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect:
   Sensory Imbuement}
 level-12-permanent-darkvision: You gain darkvision.
-level-14-activation-scent: >
+level-14-activation-scent: >-
   **Activation** <span class="action-glyph">2</span> (concentrate)  
 
   **Frequency** once per day  
 
   You gain 30-foot imprecise scent for 1 hour.  
 
-  @UUID\[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl\]{Effect:
+  @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.1lUHqV3uBeRsuSpl]{Effect:
   Sensory Imbuement}
 level-16-permanent-scent: You gain darkvision and 30-foot imprecise scent.
 level-18-permanent: You gain greater darkvision and 30-foot imprecise scent.
