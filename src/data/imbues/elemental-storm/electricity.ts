@@ -9,21 +9,19 @@ export function createImbueElectricity(): MaterialData[] {
     const base = {
         type: "imbuement" as "imbuement",
         itemPredicate: ["item:type:weapon"],
+        // The monster must have the electricity trait or an attack or spell
+        // that deals electricity damage.
         monsterPredicate: [
             {
                 or: [
                     "self:trait:electricity",
                     {
-						and: [
-							{
-								or: [
-									"item:type:action",
-									"item:type:melee",
-									"item:type:spell",
-								],
-							},
-							"item:damage:type:electricity"
-						],
+                        and: [
+                            {
+                                or: ["item:type:melee", "item:type:spell"],
+                            },
+                            "item:damage:type:electricity",
+                        ],
                     },
                 ],
             },

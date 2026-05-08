@@ -9,27 +9,29 @@ export function createImbuePoison(): MaterialData[] {
     const base = {
         type: "imbuement" as "imbuement",
         itemPredicate: ["item:type:weapon"],
+        // The monster must have the acid or poison trait or an ability or
+        // spell that deals acid or poison damage.
         monsterPredicate: [
             {
                 or: [
                     "self:trait:acid",
-					"self:trait:poison",
+                    "self:trait:poison",
                     {
-						and: [
-							{
-								or: [
-									"item:type:action",
-									"item:type:melee",
-									"item:type:spell",
-								],
-							},
-							{
-								or: [
-									"item:damage:type:acid",
-									"item:damage:type:poison"
-								],
-							},
-						],
+                        and: [
+                            {
+                                or: [
+                                    "item:type:action",
+                                    "item:type:melee",
+                                    "item:type:spell",
+                                ],
+                            },
+                            {
+                                or: [
+                                    "item:damage:type:acid",
+                                    "item:damage:type:poison",
+                                ],
+                            },
+                        ],
                     },
                 ],
             },

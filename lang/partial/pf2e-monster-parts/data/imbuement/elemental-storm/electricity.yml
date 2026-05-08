@@ -5,7 +5,7 @@ magic:
     **Type** Weapon
 
 
-    **Parts** The monster must have the electricity trait or an attack or spell
+    **Parts** The monster must have the electricity trait or an ability or spell
     that deals electricity damage.
 
     - - -
@@ -89,7 +89,7 @@ might:
     **Type** Weapon
 
 
-    **Parts** The monster must have the electricity trait or an attack or spell
+    **Parts** The monster must have the electricity trait or an ability or spell
     that deals electricity damage.
 
     - - -
@@ -151,7 +151,7 @@ tech:
     **Type** Weapon
 
 
-    **Parts** The monster must have the electricity trait or an attack or spell
+    **Parts** The monster must have the electricity trait or an ability or spell
     that deals electricity damage.
 
     - - -

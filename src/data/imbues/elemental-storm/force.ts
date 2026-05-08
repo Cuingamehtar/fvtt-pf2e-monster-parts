@@ -9,21 +9,23 @@ export function createImbueForce(): MaterialData[] {
     const base = {
         type: "imbuement" as "imbuement",
         itemPredicate: ["item:type:weapon"],
+        // The monster must have the force trait or an ability or spell that
+        // deals force damage.
         monsterPredicate: [
             {
                 or: [
                     "self:trait:force",
                     {
-						and: [
-							{
-								or: [
-									"item:type:action",
-									"item:type:melee",
-									"item:type:spell",
-								],
-							},
-							"item:damage:type:force"
-						],
+                        and: [
+                            {
+                                or: [
+                                    "item:type:action",
+                                    "item:type:melee",
+                                    "item:type:spell",
+                                ],
+                            },
+                            "item:damage:type:force",
+                        ],
                     },
                 ],
             },

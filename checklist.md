@@ -10,7 +10,7 @@
 | Cold*            | BB     | ✔      |
 | Constitution     | BB     | ✔      |
 | Dark Armor       | ES     | ❌      |
-| Darkness         | SU/ES  | ❌      |
+| Darkness         | SU/ES  | ✔      |
 | Dexterity        | BB     | ✔      |
 | Death            | ES     | ✔      |
 | Earth            | SU/ES  | ❌      |

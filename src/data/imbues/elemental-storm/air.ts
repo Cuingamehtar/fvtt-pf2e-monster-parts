@@ -9,18 +9,17 @@ export function createImbueAir(): MaterialData[] {
     const base = {
         type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
+        // The monster must have the air trait or an ability or spell with
+        // the air trait.
         monsterPredicate: [
             {
                 or: [
                     "self:trait:air",
                     {
-						and: [
-							{ "item:trait:air", 
-                                or: [
-                                    "item:type:spell",
-                                    "item:type:melee",
-									"item:type:action"
-                                ],
+                        and: [
+                            "item:trait:air",
+                            {
+                                or: ["item:type:spell", "item:type:action"],
                             },
                         ],
                     },

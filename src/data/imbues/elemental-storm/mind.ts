@@ -9,6 +9,8 @@ export function createImbueMind(): MaterialData[] {
     const base = {
         type: "imbuement" as "imbuement",
         itemPredicate: ["item:type:weapon"],
+        // The monster must have the astral or mental trait or an attack,
+        // spell, or ability with the astral or mental traits.
         monsterPredicate: [
             {
                 or: [
@@ -19,8 +21,8 @@ export function createImbueMind(): MaterialData[] {
                             {
                                 or: [
                                     "item:type:action",
-                                    "item:type:spell",
                                     "item:type:melee",
+                                    "item:type:spell",
                                 ],
                             },
                             {

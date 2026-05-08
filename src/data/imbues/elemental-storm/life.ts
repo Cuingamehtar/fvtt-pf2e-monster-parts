@@ -9,21 +9,23 @@ export function createImbueLife(): MaterialData[] {
     const base = {
         type: "imbuement" as "imbuement",
         itemPredicate: ["item:type:weapon"],
+        // The monster must have the vitality trait or an ability or spell that
+        // deals vitality damage.
         monsterPredicate: [
             {
                 or: [
                     "self:trait:vitality",
                     {
-						and: [
-							{
-								or: [
-									"item:type:action",
-									"item:type:melee",
-									"item:type:spell",
-								],
-							},
-							"item:damage:type:vitality"
-						],
+                        and: [
+                            {
+                                or: [
+                                    "item:type:action",
+                                    "item:type:melee",
+                                    "item:type:spell",
+                                ],
+                            },
+                            "item:damage:type:vitality",
+                        ],
                     },
                 ],
             },

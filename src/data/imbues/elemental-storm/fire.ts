@@ -9,26 +9,28 @@ export function createImbueFire(): MaterialData[] {
     const base = {
         type: "imbuement" as "imbuement",
         itemPredicate: ["item:type:weapon"],
+        // The creature must have the fire trait or have an ability or spell
+        // with the fire trait or that deals fire damage.
         monsterPredicate: [
             {
                 or: [
                     "self:trait:fire",
                     {
-						and: [
-							{
-								or: [
-									"item:type:action",
-									"item:type:melee",
-									"item:type:spell",
-								],
-							},
-							{
-								or: [
-									"item:damage:type:fire",
-									"item:trait:fire"
-								],
-							},
-						],
+                        and: [
+                            {
+                                or: [
+                                    "item:type:action",
+                                    "item:type:melee",
+                                    "item:type:spell",
+                                ],
+                            },
+                            {
+                                or: [
+                                    "item:damage:type:fire",
+                                    "item:trait:fire",
+                                ],
+                            },
+                        ],
                     },
                 ],
             },
