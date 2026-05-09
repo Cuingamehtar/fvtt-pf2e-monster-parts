@@ -5,7 +5,7 @@
   "version": "#{VERSION}#",
   "compatibility": {
     "minimum": "13",
-    "verified": "14.360"
+    "verified": "14.361"
   },
   "authors": [
     {
@@ -21,7 +21,7 @@
         "manifest": "https://raw.githubusercontent.com/foundryvtt/pf2e/master/system.json",
         "compatibility": {
           "minimum": "7.8",
-          "verified": "8.0.2"
+          "verified": "8.1.2"
         }
       },
       {
@@ -30,7 +30,7 @@
         "manifest": "https://raw.githubusercontent.com/foundryvtt/pf2e/master/system.json",
         "compatibility": {
           "minimum": "0.0.1",
-          "verified": "1.0.2"
+          "verified": "1.1.2"
         }
       }
     ],

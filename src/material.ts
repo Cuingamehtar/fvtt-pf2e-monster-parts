@@ -220,16 +220,10 @@ export class MaterialValue {
     }
 
     add(rhs: MaterialValue) {
-        if (DEBUG && !(rhs instanceof MaterialValue)) {
-            ui.notifications.error("Rhs is not MaterialValue");
-        }
         return new MaterialValue(this.gp + rhs.gp);
     }
 
     sub(rhs: MaterialValue) {
-        if (DEBUG && !(rhs instanceof MaterialValue)) {
-            ui.notifications.error("Rhs is not MaterialValue");
-        }
         return new MaterialValue(this.gp - rhs.gp);
     }
 
