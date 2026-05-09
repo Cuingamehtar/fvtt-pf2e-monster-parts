@@ -1,17 +1,14 @@
 import { ItemPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
-import { Material } from "./material";
-import { i18nFormat, CurrencyConverter, t } from "./utils";
+import { Material, MaterialValue } from "./material";
+import { i18nFormat, t } from "./utils";
 import { dialogs } from "./app/dialogs";
-import {
-    ModuleFlags,
-    NormalizedValue,
-    RefinedItemFlags,
-} from "../types/global";
+import { ModuleFlags, RefinedItemFlags } from "../types/global";
 import { AutomaticRefinementProgression } from "./automatic-refinement-progression";
 import { MonsterPart } from "./monster-part";
 import { EffectHandlers } from "@data/effect-handlers";
+import { configureRefinedItem } from "@src/app/refined-item-editor";
 
 type HasRefinedData<T extends PhysicalItemPF2e> = T & {
     flags: {
@@ -32,7 +29,7 @@ export class RefinedItem {
         this.item = item;
     }
 
-    static async fromItem(item: ItemPF2e) {
+    static async fromItem(item: ItemPF2e): Promise<RefinedItem | null> {
         // @ts-expect-error
         if (item.collection?.metadata && item.isOfType("physical")) {
             // item is in a compendium
@@ -57,7 +54,7 @@ export class RefinedItem {
             ui.notifications.error(
                 t("refined-item.error-item-is-monster-part"),
             );
-            return;
+            return null;
         }
         const config = getConfig();
 
@@ -79,7 +76,7 @@ export class RefinedItem {
             return null;
         }
         const choice = await dialogs.choice(applicableRefinements);
-        if (!choice) return;
+        if (!choice) return null;
         const flags = {
             refinement: {
                 key: choice.selected,
@@ -115,16 +112,18 @@ export class RefinedItem {
     }
 
     getFlag() {
-        return this.item.getFlag(MODULE_ID, "refined-item")!;
+        return foundry.utils.deepClone(
+            this.item.getFlag(MODULE_ID, "refined-item")!,
+        );
     }
 
     get coinValue() {
         const flag = this.getFlag();
         const value = flag.imbues.reduce(
-            (acc, imb) => acc + (imb.value as number),
-            flag.refinement.value as number,
-        ) as NormalizedValue;
-        return CurrencyConverter.simplifyCoins(value);
+            (acc, imb) => acc.add(new MaterialValue(imb.value)),
+            new MaterialValue(flag.refinement.value),
+        );
+        return value.toCoins();
     }
 
     async updateItem(flagData?: RefinedItemFlags) {
@@ -215,5 +214,9 @@ export class RefinedItem {
                 imbues,
             })
             .then((t) => foundry.applications.ux.TextEditor.enrichHTML(t));
+    }
+
+    configure() {
+        return configureRefinedItem(this);
     }
 }

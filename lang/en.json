@@ -20,7 +20,7 @@
       "error-no-applicable-refinements": "This item type has no applicable refinements.",
       "error-not-physical-item": "This item is not a physical item.",
       "imported-from-compendium": "The refined version of this item was created in the main item collection.",
-      "create-chat-message": "<p>Item <strong>${item}</strong> was updated to Refined Item with <strong>{refinement}</strong> refinement.</p>"
+      "create-chat-message": "<p>Item <strong>{item}</strong> was updated to Refined Item with <strong>{refinement}</strong> refinement.</p>"
     },
     "dialog": {
       "default-title": "Choose an option",
@@ -61,6 +61,17 @@
         "title": "Assign Monster Parts",
         "value": "Value: {value}",
         "total": "Total value: {value}"
+      },
+      "assign-material-dialog": {
+        "title": "Assign Material",
+        "add-value": "This will add {value} to the material's value",
+        "increase-level": ", increasing it's level",
+        "remove-full-stack": "This will remove the entire stack of monster parts.",
+        "remove-n": "This will remove {n} items from the stack.",
+        "value-remaining": "The remaining value ({value}) will be split into another stack.",
+        "contents": "Choose how much material you want to assign to the Refined Item",
+        "next-level": "Next Level",
+        "next-whole": "Next Whole"
       }
     },
     "material": {

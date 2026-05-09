@@ -1,7 +1,8 @@
 import { getConfig } from "../config";
-import { CurrencyConverter, i18nFormat, t } from "../utils";
+import { i18nFormat, t } from "../utils";
 import { MODULE_ID } from "../module";
 import { MonsterPart } from "../monster-part";
+import { MaterialValue } from "@src/material";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -39,6 +40,7 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         },
     };
 
+    // @ts-expect-error
     override async _prepareContext() {
         const config = getConfig();
         const flags = this.item.getFlag() ?? {
@@ -65,7 +67,7 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
 
         return {
             settings: {
-                value: CurrencyConverter.ToSystemCurrency(flags.value),
+                value: new MaterialValue(flags.value).toSystemCurrency(),
                 refinements,
                 imbues,
             },
@@ -80,9 +82,9 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             const data = formData.object;
             const config = getConfig();
             const flags = {
-                value: CurrencyConverter.ToValue(
+                value: MaterialValue.fromSystemCurrency(
                     data["material-value"] as number,
-                ),
+                ).gp,
                 materials: [...config.materials.values()]
                     .filter((m) => data[m.key as keyof typeof data])
                     .map((m) => m.key),

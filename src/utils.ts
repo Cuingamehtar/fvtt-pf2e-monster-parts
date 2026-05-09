@@ -1,6 +1,5 @@
 import { MODULE_ID } from "./module";
 import { ActorPF2e, ItemPF2e } from "foundry-pf2e";
-import { NormalizedValue } from "@localTypes/global";
 
 export function t(
     m: keyof Flatten<I18nKeyType["pf2e-monster-parts"]>,
@@ -130,24 +129,6 @@ export function hash(s: string) {
     for (var i = 0, h = 9; i < s.length; )
         h = Math.imul(h ^ s.charCodeAt(i++), 9 ** 9);
     return h ^ (h >>> 9);
-}
-
-export class CurrencyConverter {
-    static ToValue(currency: number): NormalizedValue {
-        return isSF2e() ? currency / 10 : currency;
-    }
-    static ToSystemCurrency(value: NormalizedValue) {
-        return (value as number) * (isSF2e() ? 10 : 1);
-    }
-    static simplifyCoins(gp: NormalizedValue) {
-        const sp = ((gp as number) % 1) * 10;
-        const cp = (sp % 1) * 10;
-        return new game.pf2e.Coins({
-            gp: Math.floor(Number((gp as number).toFixed(1))),
-            sp: Math.floor(Number(sp.toFixed(1))),
-            cp: Math.floor(Number(cp.toFixed(1))),
-        });
-    }
 }
 
 export function isSF2e() {

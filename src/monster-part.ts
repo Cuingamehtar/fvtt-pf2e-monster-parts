@@ -1,10 +1,11 @@
 import { EquipmentPF2e, NPCPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
-import { i18nFormat, CurrencyConverter, t } from "./utils";
+import { i18nFormat, t } from "./utils";
 import { getExtendedNPCRollOptions } from "./actor-utils";
-import { Material } from "./material";
-import { ModuleFlags, NormalizedValue } from "../types/global";
+import { Material, MaterialValue } from "./material";
+import { ModuleFlags } from "../types/global";
+import { configureMonsterPart } from "@src/app/monster-part-editor";
 
 type HasMonsterPartData<T extends PhysicalItemPF2e> = T & {
     flags: {
@@ -51,23 +52,25 @@ export class MonsterPart {
         return !!this.item.actor;
     }
 
-    getValue(count?: number): NormalizedValue {
+    getValue(count?: number): MaterialValue {
         count = count ?? this.quantity;
-        const baseValue = this.getFlag().value;
-        return ((baseValue as number) * count) as NormalizedValue;
+        const baseValue = new MaterialValue(this.getFlag().value);
+        return baseValue.mul(count);
     }
 
     get coinValue() {
-        const value = this.getFlag().value;
-        return CurrencyConverter.simplifyCoins(value as number);
+        const value = new MaterialValue(this.getFlag().value);
+        return value.toCoins();
     }
 
     static valueOfCreature(actor: NPCPF2e) {
         const config = getConfig();
 
-        return config.valueForMonsterLevel[
-            (actor?.system.details.level.value ?? -1) + 1
-        ];
+        return new MaterialValue(
+            config.valueForMonsterLevel[
+                (actor?.system.details.level.value ?? -1) + 1
+            ] ?? 0,
+        );
     }
 
     static async fromCreature(actor: NPCPF2e) {
@@ -101,7 +104,7 @@ export class MonsterPart {
             }),
         ];
         const flags: ModuleFlags["monster-part"] = {
-            value: materialValue,
+            value: materialValue.gp,
             materials: materials.map((m) => m.key),
             imageSrc:
                 actor.img !== "systems/pf2e/icons/default-icons/npc.svg"
@@ -132,7 +135,7 @@ export class MonsterPart {
     async descriptionHeader() {
         const config = getConfig();
         const flags = this.item.getFlag(MODULE_ID, "monster-part")!;
-        const value = flags.value;
+        const value = new MaterialValue(flags.value);
         const materials = [
             ...config.materials
                 .values()
@@ -151,11 +154,15 @@ export class MonsterPart {
             "modules/pf2e-monster-parts/templates/monster-part-header.hbs";
         return await foundry.applications.handlebars
             .renderTemplate(templatePath, {
-                coins: CurrencyConverter.simplifyCoins(value),
+                coins: value.toCoins(),
                 refinements,
                 imbues,
                 image: flags.imageSrc,
             })
             .then((t) => foundry.applications.ux.TextEditor.enrichHTML(t));
+    }
+
+    configure() {
+        return configureMonsterPart(this);
     }
 }

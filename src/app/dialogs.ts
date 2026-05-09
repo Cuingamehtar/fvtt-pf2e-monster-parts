@@ -1,7 +1,7 @@
-import { CurrencyConverter, t } from "../utils";
+import { t } from "../utils";
 import { configureMonsterPart } from "./monster-part-editor";
 import { configureRefinedItem } from "./refined-item-editor";
-import { NormalizedValue } from "@localTypes/global";
+import { MaterialValue } from "@src/material";
 
 const { DialogV2 } = foundry.applications.api;
 
@@ -33,13 +33,13 @@ function optionChoiceDialog<T>(
 }
 
 function confirmApplyMaterial(
-    addedValue: NormalizedValue,
+    addedValue: MaterialValue,
     material: string,
     consumedQuantity: number,
-    consumedRemainder: NormalizedValue,
+    consumedRemainder: MaterialValue,
 ): Promise<boolean | undefined> {
     let content = t("dialog.confirm-apply-material.content", {
-        value: CurrencyConverter.simplifyCoins(addedValue).toString(),
+        value: addedValue.toCoins().toString(),
         material: material,
     });
     if (consumedQuantity !== 0)
@@ -48,14 +48,11 @@ function confirmApplyMaterial(
             t("dialog.confirm-apply-material.consume", {
                 quantity: consumedQuantity,
             });
-    if ((consumedRemainder as number) > 0)
+    if (consumedRemainder.gp > 0)
         content +=
             " " +
             t("dialog.confirm-apply-material.remainder", {
-                remainder:
-                    CurrencyConverter.simplifyCoins(
-                        consumedRemainder,
-                    ).toString(),
+                remainder: consumedRemainder.toCoins().toString(),
             });
     return DialogV2.prompt({
         window: {

@@ -19,7 +19,7 @@
     "error-no-applicable-refinements": "This item type has no applicable refinements.",
     "error-not-physical-item": "This item is not a physical item.",
     "imported-from-compendium": "The refined version of this item was created in the main item collection.",
-    "create-chat-message": "<p>Item <strong>${item}</strong> was updated to Refined Item with <strong>{refinement}</strong> refinement.</p>"
+    "create-chat-message": "<p>Item <strong>{item}</strong> was updated to Refined Item with <strong>{refinement}</strong> refinement.</p>"
   },
   "dialog": {
     "default-title": "Choose an option",

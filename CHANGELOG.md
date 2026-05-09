@@ -9,10 +9,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 - Add Darkness imbuement (thanks **Adam**)
 
+### Changed
+- Change dialog when choosing how much value to apply from monster part to a refined item - with buttons to round up to the integral number of monster parts in stack or up to a level threshold.
+- Shift-clicking a skull button to add monster parts to a creature also opens its config menu
+- Creating new refined item also opens its config menu - no additional button press needed.
+
 ### Fixed
 - Fix Fortification imbuement's item predicate
 - Fix Body (Magic) imbuement's spell levels
-- Fix Darkness, ... imbuement's monster predicates (thanks **Z3DT**)
+- Fix multiple imbuements' monster predicates (thanks **Z3DT**)
 
 ## [0.6.0] - 2026-04-18
 

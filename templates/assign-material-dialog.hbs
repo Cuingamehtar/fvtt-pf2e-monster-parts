@@ -1,0 +1,10 @@
+<div style="width:400px;">
+    <p>{{localize "pf2e-monster-parts.dialog.assign-material-dialog.contents"}}</p>
+    <range-picker value="{{maxValue}}" min="0" max="{{maxValue}}" step="{{step}}" name="value"></range-picker>
+    <div class="form-group">
+    <button type="button" data-action="nextLevel" {{#unless canReachNextLevel}}disabled{{/unless}}>{{localize "pf2e-monster-parts.dialog.assign-material-dialog.next-level"}}</button>
+    <button type="button" data-action="nextWhole">{{localize "pf2e-monster-parts.dialog.assign-material-dialog.next-whole"}}</button>
+    </div>
+    <div id="hint-strings">{{{hintText}}}
+    </div>
+</div>

@@ -1,6 +1,5 @@
 import { NPCPF2e, TokenDocumentPF2e } from "foundry-pf2e";
-import { CurrencyConverter } from "../utils";
-import { NormalizedValue } from "@localTypes/global";
+import { MaterialValue } from "@src/material";
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 export class AfterCombatDialog extends HandlebarsApplicationMixin(
@@ -13,7 +12,7 @@ export class AfterCombatDialog extends HandlebarsApplicationMixin(
             npcs: {
                 token: TokenDocumentPF2e;
                 actor: NPCPF2e;
-                value: NormalizedValue;
+                value: MaterialValue;
                 checked: boolean;
             }[];
         },
@@ -65,11 +64,12 @@ export class AfterCombatDialog extends HandlebarsApplicationMixin(
         });
     }
 
+    // @ts-expect-error
     override async _prepareContext() {
         const actors = this.npcs.map((e) => ({
             name: e.token.name,
             id: e.token.id,
-            coins: CurrencyConverter.simplifyCoins(e.value),
+            coins: e.value.toCoins(),
             checked: e.checked,
         }));
 
@@ -83,14 +83,13 @@ export class AfterCombatDialog extends HandlebarsApplicationMixin(
         return {
             data: {
                 actors,
-                totalCoins: CurrencyConverter.simplifyCoins(
-                    actors
-                        .filter((e) => e.checked)
-                        .reduce(
-                            (acc, e) => acc.plus(e.coins),
-                            new game.pf2e.Coins(),
-                        ).copperValue / 100,
-                ).toString(),
+                totalCoins: actors
+                    .filter((e) => e.checked)
+                    .reduce(
+                        (acc, e) => acc.plus(e.coins),
+                        new game.pf2e.Coins(),
+                    )
+                    .toString(),
             },
             buttons,
         };

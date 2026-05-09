@@ -1,15 +1,12 @@
-import { getConfig, getMaterialLabel } from "../config";
-import { CurrencyConverter, getDroppedItem, i18nFormat, t } from "../utils";
+import { getConfig } from "../config";
+import { getDroppedItem, i18nFormat, t } from "../utils";
 import { RefinedItem } from "../refined-item";
-import { Material } from "../material";
+import { Material, MaterialValue } from "../material";
 import { dialogs } from "./dialogs";
 import { MonsterPart } from "../monster-part";
 import { AutomaticRefinementProgression } from "../automatic-refinement-progression";
-import {
-    ModuleFlags,
-    NormalizedValue,
-    RefinedItemFlags,
-} from "../../types/global";
+import { ModuleFlags, RefinedItemFlags } from "../../types/global";
+import { AssignMaterialDialog } from "@src/app/assign-material-dialog";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -18,10 +15,10 @@ interface RefinedItemEditorData {
     possibleImbues: { key: MaterialKey; label: I18nString | I18nKey }[];
     refinement: {
         selected: MaterialKey;
-        value: NormalizedValue;
+        value: MaterialValue;
         isDisabled: boolean;
     };
-    imbues: { selected: MaterialKey; value: NormalizedValue }[];
+    imbues: { selected: MaterialKey; value: MaterialValue }[];
     item: RefinedItem;
 }
 
@@ -50,11 +47,11 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         return {
             refinement: {
                 key: this.data.refinement.selected,
-                value: this.data.refinement.value,
+                value: this.data.refinement.value.gp,
             },
             imbues: this.data.imbues.map((i) => ({
                 key: i.selected,
-                value: i.value,
+                value: i.value.gp,
             })),
         };
     }
@@ -81,6 +78,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         },
     };
 
+    // @ts-expect-error
     async _prepareContext() {
         const usedImbues = this.data.imbues.map((e) => e.selected);
         return {
@@ -89,13 +87,11 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                 possibleImbues: this.data.possibleImbues,
                 refinement: {
                     selected: this.data.refinement.selected,
-                    value: CurrencyConverter.ToSystemCurrency(
-                        this.data.refinement.value,
-                    ),
+                    value: this.data.refinement.value.toSystemCurrency(),
                 },
                 imbues: this.data.imbues.map((i) => ({
                     selected: i.selected,
-                    value: CurrencyConverter.ToSystemCurrency(i.value),
+                    value: i.value.toSystemCurrency(),
                     allowed: this.data.possibleImbues.filter(
                         (e) =>
                             !usedImbues.includes(e.key) || i.selected == e.key,
@@ -118,13 +114,11 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             {
                 refinement: {
                     selected: this.data.refinement.selected,
-                    value: CurrencyConverter.ToSystemCurrency(
-                        this.data.refinement.value,
-                    ),
+                    value: this.data.refinement.value.toSystemCurrency(),
                 },
                 imbues: this.data.imbues.map((i) => ({
                     selected: i.selected,
-                    value: CurrencyConverter.ToSystemCurrency(i.value),
+                    value: i.value.toSystemCurrency(),
                     allowed: this.data.possibleImbues.filter(
                         (e) =>
                             !usedImbues.includes(e.key) || i.selected == e.key,
@@ -152,7 +146,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             ?.addEventListener("change", (e) => {
                 e.preventDefault();
                 e.stopImmediatePropagation();
-                this.data.refinement.value = CurrencyConverter.ToValue(
+                this.data.refinement.value = MaterialValue.fromSystemCurrency(
                     Number((e.target as any).value),
                 );
                 this.updateItem();
@@ -182,9 +176,10 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                 element.addEventListener("change", (e) => {
                     e.preventDefault();
                     e.stopImmediatePropagation();
-                    this.data.imbues[i].value = CurrencyConverter.ToValue(
-                        Number((e.target as any).value),
-                    );
+                    this.data.imbues[i].value =
+                        MaterialValue.fromSystemCurrency(
+                            Number((e.target as any).value),
+                        );
                     this.updateItem();
                     this.render();
                 });
@@ -199,7 +194,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
             if ((e.target as any).value) {
                 this.data.imbues.push({
                     selected: (e.target as any).value,
-                    value: 0,
+                    value: new MaterialValue(0),
                 });
             }
             this.updateItem();
@@ -271,85 +266,72 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                                     return null;
                                 })();
                     if (!selectedMaterial) return;
-                    const addedValue = CurrencyConverter.ToValue(
-                        (
-                            await dialogs.slider(
-                                t("dialog.choose-material.quantity-title"),
-                                0,
-                                CurrencyConverter.ToSystemCurrency(
-                                    monsterPart.getValue(),
-                                ),
-                            )
-                        )?.value.toNearest(0.01) ?? 0,
-                    );
-                    if (!addedValue) return;
-                    const valueSingle = monsterPart.getValue(1);
-                    const { consumedItems, valueRemaining } =
-                        calculateConsumedItems({
-                            valueSingle,
-                            valueConsumed: addedValue,
-                            nItems: monsterPart.quantity,
-                        });
-                    if (
-                        await dialogs.confirmApplyMaterial(
-                            addedValue,
-                            i18nFormat(
-                                getMaterialLabel(selectedMaterial) ?? "",
-                            ) as string,
-                            consumedItems - 1,
-                            valueRemaining,
+                    const existingMaterial =
+                        [
+                            this.data.item.refinement,
+                            ...this.data.item.imbuements,
+                        ]
+                            .filter((m): m is Material => Boolean(m))
+                            .find((m) => m.key == selectedMaterial) ??
+                        Material.fromKey(selectedMaterial);
+                    if (!existingMaterial) return;
+                    const nextLevelValue = existingMaterial
+                        .getThresholdForLevel(
+                            this.data.item,
+                            existingMaterial.getLevel(this.data.item).value + 1,
                         )
-                    ) {
-                        if (expectedMaterial === "") {
-                            this.data.imbues.push({
-                                selected: selectedMaterial,
-                                value: addedValue,
-                            });
-                            await this.updateItem();
-                        } else {
-                            const m =
-                                this.data.refinement.selected ==
-                                selectedMaterial
-                                    ? this.data.refinement
-                                    : this.data.imbues.find(
-                                          (i) => i.selected == selectedMaterial,
-                                      );
-                            if (!m) return;
-                            m.value = ((m.value as number) +
-                                (addedValue as number)) as NormalizedValue;
+                        .sub(existingMaterial.value);
+                    const { value, remainder, goneFromStack } =
+                        await AssignMaterialDialog.create({
+                            monsterPart,
+                            nextLevelValue:
+                                nextLevelValue.gp <= 0
+                                    ? undefined
+                                    : nextLevelValue,
+                        });
+                    if (!value || value.gp == 0) return;
+                    if (expectedMaterial === "") {
+                        this.data.imbues.push({
+                            selected: selectedMaterial,
+                            value: value,
+                        });
+                    } else {
+                        const m =
+                            this.data.refinement.selected == selectedMaterial
+                                ? this.data.refinement
+                                : this.data.imbues.find(
+                                      (i) => i.selected == selectedMaterial,
+                                  );
+                        if (!m) return;
+                        m.value = m.value.add(value);
+                    }
+                    await this.updateItem();
+                    this.render();
+                    if (monsterPart.isOwnedByActor) {
+                        if (remainder.gp > 0) {
+                            const data = monsterPart.item.toObject();
+                            data.name = t("material.item.name-partial", {
+                                name: data.name,
+                            }) as string;
+                            (data.flags["pf2e-monster-parts"][
+                                "monster-part"
+                            ] as ModuleFlags["monster-part"])!.value =
+                                remainder.round().gp;
+                            data.system.quantity = 1;
+                            monsterPart.item.actor?.createEmbeddedDocuments(
+                                "Item",
+                                [data],
+                            );
                         }
-                        await this.updateItem();
-                        this.render();
-                        if (monsterPart.isOwnedByActor) {
-                            if (
-                                (valueRemaining as number).toNearest(0.01) > 0
-                            ) {
-                                const data = monsterPart.item.toObject();
-                                data.name = t("material.item.name-partial", {
-                                    name: data.name,
-                                }) as string;
-                                (data.flags["pf2e-monster-parts"][
-                                    "monster-part"
-                                ] as ModuleFlags["monster-part"])!.value =
-                                    valueRemaining;
-                                data.system.quantity = 1;
-                                monsterPart.item.actor?.createEmbeddedDocuments(
-                                    "Item",
-                                    [data],
-                                );
-                            }
-                            const remainingQuantity =
-                                monsterPart.quantity - consumedItems;
-                            if (remainingQuantity > 0) {
-                                await monsterPart.setQuantity(
-                                    remainingQuantity,
-                                );
-                            } else {
-                                monsterPart.item.actor?.deleteEmbeddedDocuments(
-                                    "Item",
-                                    [monsterPart.item.id],
-                                );
-                            }
+                        const remainingQuantity =
+                            monsterPart.quantity - goneFromStack;
+                        if (remainingQuantity > 0) {
+                            await monsterPart.setQuantity(remainingQuantity);
+                        } else {
+                            monsterPart.item.actor?.deleteEmbeddedDocuments(
+                                "Item",
+                                [monsterPart.item.id],
+                            );
                         }
                     }
                 });
@@ -383,12 +365,12 @@ export async function configureRefinedItem(item: RefinedItem) {
             selected:
                 Material.fromKey(flag.refinement.key)?.key ??
                 flag.refinement.key,
-            value: flag.refinement.value,
+            value: new MaterialValue(flag.refinement.value),
             isDisabled: AutomaticRefinementProgression.isEnabled,
         },
         imbues: flag.imbues.map((i) => ({
             selected: Material.fromKey(i.key)?.key ?? i.key,
-            value: i.value,
+            value: new MaterialValue(i.value),
         })),
         item,
     };
@@ -415,25 +397,4 @@ export async function configureRefinedItem(item: RefinedItem) {
     };
     await item.item.setFlag(MODULE_ID, "refined-item", newFlag);
     return item.updateItem();*/
-}
-
-function calculateConsumedItems({
-    valueSingle,
-    nItems,
-    valueConsumed,
-}: {
-    valueSingle: NormalizedValue;
-    nItems: number;
-    valueConsumed: NormalizedValue;
-}) {
-    const totalValue = (valueSingle as number) * nItems;
-    const consumed = Math.clamp(valueConsumed as number, 0, totalValue);
-    const consumedItems = Math.ceil(consumed / (valueSingle as number));
-    return {
-        consumedItems,
-        valueRemaining: (
-            consumedItems * (valueSingle as number) -
-            consumed
-        ).toNearest(0.01) as NormalizedValue,
-    };
 }

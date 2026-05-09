@@ -1,0 +1,10 @@
+title: Assign Material
+add-value: This will add {value} to the material's value
+increase-level: >-
+  , increasing it's level
+remove-full-stack: This will remove the entire stack of monster parts.
+remove-n: This will remove {n} items from the stack.
+value-remaining: The remaining value ({value}) will be split into another stack.
+contents: Choose how much material you want to assign to the Refined Item
+next-level: Next Level
+next-whole: Next Whole

@@ -9,9 +9,7 @@ import {
 } from "foundry-pf2e";
 import { MonsterPart } from "./monster-part";
 import { createElement, t } from "./utils";
-import { configureMonsterPart } from "./app/monster-part-editor";
 import { RefinedItem } from "./refined-item";
-import { configureRefinedItem } from "./app/refined-item-editor";
 import { createRefinedItemDialog } from "./app/refined-item-create";
 import { MODULE_ID } from "./module";
 import { AfterCombatDialog } from "./app/after-combat-dialog";
@@ -58,9 +56,11 @@ export class ModuleHooks {
                     "data-tooltip",
                     "pf2e-monster-parts.monster-part.create-button-label",
                 );
-                btn.addEventListener("click", () =>
-                    MonsterPart.fromCreature(actor),
-                );
+                btn.addEventListener("click", async (event: PointerEvent) => {
+                    const mp = await MonsterPart.fromCreature(actor);
+                    if (event.shiftKey) await mp.configure();
+                    return mp;
+                });
 
                 elem?.insertBefore(btn, elem.firstChild);
             },
@@ -77,8 +77,7 @@ export class ModuleHooks {
                         icon: "fas fa-skull",
                         label: t("dialog.monster-part-editor.button"),
                         class: "configure-monster-part",
-                        onclick: () =>
-                            configureMonsterPart(new MonsterPart(item)),
+                        onclick: () => new MonsterPart(item).configure(),
                     });
                 }
                 if (RefinedItem.hasRefinedItemData(item)) {
@@ -86,8 +85,7 @@ export class ModuleHooks {
                         icon: "fas fa-skull",
                         label: t("dialog.refined-item-editor.button"),
                         class: "configure-refined-item",
-                        onclick: () =>
-                            configureRefinedItem(new RefinedItem(item)),
+                        onclick: () => new RefinedItem(item).configure(),
                     });
                 }
             },

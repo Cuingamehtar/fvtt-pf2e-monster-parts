@@ -2,10 +2,9 @@ import { ItemPF2e, NPCPF2e, Predicate } from "foundry-pf2e";
 import { getExtendedNPCRollOptions } from "./actor-utils";
 import { getConfig } from "./config";
 import { RefinedItem } from "./refined-item";
-import { i18nFormat, CurrencyConverter } from "./utils";
+import { i18nFormat, isSF2e } from "./utils";
 import { MaterialData } from "@data/material";
 import { MODULE_ID } from "./module";
-import { NormalizedValue } from "@localTypes/global";
 
 const materialAliases: Record<string, MaterialKey> = {
     "imbue:mental:magic": "imbue:mind:magic",
@@ -15,16 +14,16 @@ const materialAliases: Record<string, MaterialKey> = {
 
 export class Material {
     data: MaterialData;
-    value: NormalizedValue;
+    value: MaterialValue;
     #itemPredicate?: Predicate;
     #creaturePredicate?: Predicate;
 
-    constructor(data: MaterialData, value: NormalizedValue = 0) {
+    constructor(data: MaterialData, value: number = 0) {
         this.data = data;
-        this.value = value;
+        this.value = new MaterialValue(value ?? 0);
     }
 
-    static fromKey(key: MaterialKey, value: NormalizedValue = 0) {
+    static fromKey(key: MaterialKey, value: number = 0) {
         const config = getConfig();
         const m = config.materials.get(materialAliases[key as string] ?? key);
         if (!m) return undefined;
@@ -96,7 +95,7 @@ export class Material {
                 : "equipment"
         ) as keyof typeof thresholds;
         const thr = thresholds[itemType];
-        let level = thr.findLastIndex((e) => this.value >= e);
+        let level = thr.findLastIndex((e) => this.value.gp >= e);
         level = level === -1 ? 0 : level + 1;
         if (!isLevelCapped) return { value: level, capped: false };
         if (this.type === "refinement") {
@@ -116,10 +115,10 @@ export class Material {
     }
 
     get coinValue() {
-        return CurrencyConverter.simplifyCoins(this.value as number);
+        return this.value.toCoins();
     }
 
-    getThresholdForLevel(item: RefinedItem, level: number): NormalizedValue {
+    getThresholdForLevel(item: RefinedItem, level: number): MaterialValue {
         const config = getConfig();
         const thresholds = config.thresholds[this.data.type];
         // get level thresholds from config and default to equipment for unknown item type;
@@ -130,7 +129,7 @@ export class Material {
         ) as keyof typeof thresholds;
         const thr = thresholds[itemType];
         const clampedLevel = Math.clamp(level, 0, thr.length);
-        return clampedLevel == 0 ? 0 : thr[clampedLevel - 1];
+        return new MaterialValue(clampedLevel == 0 ? 0 : thr[clampedLevel - 1]);
     }
 
     getEffects(item: RefinedItem) {
@@ -186,5 +185,63 @@ export class Material {
             "@item.flags.pf2e-monster-parts.values." +
             Material.getFlagDataName(materialKey, value)
         );
+    }
+}
+
+export class MaterialValue {
+    gp: number;
+    constructor(gp?: number) {
+        gp = Number(gp);
+        if (DEBUG && isNaN(gp)) {
+            gp = 0;
+            ui.notifications.warn("Material value is invalid. Reset to 0");
+        }
+        this.gp = gp ?? 0;
+    }
+
+    static fromSystemCurrency(value: number) {
+        const norm = isSF2e() ? value / 10 : value;
+        return new MaterialValue(norm);
+    }
+
+    toCoins() {
+        if (this.gp <= 0) return new game.pf2e.Coins();
+        const sp = (this.gp % 1) * 10;
+        const cp = (sp % 1) * 10;
+        return new game.pf2e.Coins({
+            gp: Math.floor(Number(this.gp.toFixed(1))),
+            sp: Math.floor(Number(sp.toFixed(1))),
+            cp: Math.floor(Number(cp.toFixed(1))),
+        });
+    }
+
+    toSystemCurrency() {
+        return this.gp * (isSF2e() ? 10 : 1);
+    }
+
+    add(rhs: MaterialValue) {
+        if (DEBUG && !(rhs instanceof MaterialValue)) {
+            ui.notifications.error("Rhs is not MaterialValue");
+        }
+        return new MaterialValue(this.gp + rhs.gp);
+    }
+
+    sub(rhs: MaterialValue) {
+        if (DEBUG && !(rhs instanceof MaterialValue)) {
+            ui.notifications.error("Rhs is not MaterialValue");
+        }
+        return new MaterialValue(this.gp - rhs.gp);
+    }
+
+    mul(scale: number) {
+        return new MaterialValue(this.gp * scale);
+    }
+
+    map(f: (gp: number) => number) {
+        return new MaterialValue(f(this.gp));
+    }
+
+    round(precision: number = 0.01) {
+        return new MaterialValue(this.gp.toNearest(precision));
     }
 }

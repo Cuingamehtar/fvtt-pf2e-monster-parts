@@ -56,6 +56,7 @@ Hooks.once("init", () => {
         Hooks.once("ready", registerSF2eUuidRedirects);
     }
 
+    // @ts-expect-error
     game.modules.get(MODULE_ID).api = {
         renderSummaryJournal,
         Material,
