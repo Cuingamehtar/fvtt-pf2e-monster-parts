@@ -9,6 +9,7 @@ import { AutomaticRefinementProgression } from "./automatic-refinement-progressi
 import { MonsterPart } from "./monster-part";
 import { EffectHandlers } from "@data/effect-handlers";
 import { configureRefinedItem } from "@src/app/refined-item-editor";
+import * as R from "remeda";
 
 type HasRefinedData<T extends PhysicalItemPF2e> = T & {
     flags: {
@@ -115,6 +116,19 @@ export class RefinedItem {
         return foundry.utils.deepClone(
             this.item.getFlag(MODULE_ID, "refined-item")!,
         );
+    }
+
+    getMaterialLevel(key: string) {
+        const { refinement, imbues } = this.getFlag();
+        const m =
+            refinement.key === key
+                ? Material.fromKey(refinement.key, refinement.value)
+                : R.pipe(
+                      imbues,
+                      R.find((imb) => imb.key === key),
+                      (m) => m && Material.fromKey(m.key, m.value),
+                  );
+        return m?.getLevel(this);
     }
 
     get coinValue() {

@@ -1,0 +1,6 @@
+title: Transfer Material
+contents: Choose how much material you want to extract from the Refined Item
+extract-note: The extracted pure material will have value **{value}**.
+subtract-note: This will subtract **{value}** from the material's value.
+level-decrease-note: The material's level will lower by **{difference}**.
+previous-level: Down to Level Threshold

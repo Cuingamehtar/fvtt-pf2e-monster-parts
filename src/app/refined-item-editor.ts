@@ -7,6 +7,7 @@ import { MonsterPart } from "../monster-part";
 import { AutomaticRefinementProgression } from "../automatic-refinement-progression";
 import { ModuleFlags, RefinedItemFlags } from "../../types/global";
 import { AssignMaterialDialog } from "@src/app/assign-material-dialog";
+import { ExtractMaterialDialog } from "@src/app/extract-material-dialog";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -56,6 +57,13 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         };
     }
 
+    getMaterial(key?: string) {
+        if (!key) return undefined;
+        return this.data.refinement.selected === key
+            ? this.data.refinement
+            : this.data.imbues.find((imb) => imb.selected === key);
+    }
+
     static PARTS = {
         form: {
             template:
@@ -65,6 +73,9 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
 
     static DEFAULT_OPTIONS = {
         tag: "form",
+        actions: {
+            extractMaterial: RefinedItemEditor.#extractMaterial,
+        },
         form: {
             submitOnChange: true,
             closeOnSubmit: false,
@@ -72,7 +83,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         window: {
             contentClasses: ["standard-form"],
             title: "",
-            width: 300,
+            width: 400,
             height: 600,
             closeOnSubmit: true,
         },
@@ -102,6 +113,32 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                 ),
             },
         };
+    }
+
+    static async #extractMaterial(
+        this: RefinedItemEditor,
+        event: PointerEvent,
+    ) {
+        const button = (event.target as HTMLElement)?.closest("button");
+        if (!button) return;
+        const material = this.getMaterial(button.dataset.materialKey);
+        if (!material) return;
+
+        const { subtracted, extracted } = await ExtractMaterialDialog.create({
+            material: Material.fromKey(material.selected, material.value.gp),
+            refinedItem: this.data.item,
+        });
+
+        if (subtracted.gp == 0) return;
+        material.value = material.value.sub(subtracted);
+        await this.updateItem();
+        await this.render();
+
+        const owner = this.data.item.item.parent;
+        const m = Material.fromKey(material.selected, extracted.gp);
+        if (owner && m) {
+            await MonsterPart.fromPureMaterial(owner, m);
+        }
     }
 
     override async _onRender(
@@ -306,7 +343,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                         m.value = m.value.add(value);
                     }
                     await this.updateItem();
-                    this.render();
+                    await this.render();
                     if (monsterPart.isOwnedByActor) {
                         if (remainder.gp > 0) {
                             const data = monsterPart.item.toObject();

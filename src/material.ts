@@ -23,14 +23,16 @@ export class Material {
         this.value = new MaterialValue(value ?? 0);
     }
 
-    static fromKey(key: MaterialKey, value: number = 0) {
+    static fromKey(key: MaterialKey, value?: number): Material;
+    static fromKey(key: string, value?: number): Material | undefined;
+    static fromKey(key: string | MaterialKey, value: number = 0) {
         const config = getConfig();
         const m = config.materials.get(materialAliases[key as string] ?? key);
         if (!m) return undefined;
         return new Material(m, value);
     }
 
-    get key() {
+    get key(): MaterialKey {
         return this.data.key;
     }
     get type() {
@@ -199,7 +201,9 @@ export class MaterialValue {
         this.gp = gp ?? 0;
     }
 
-    static fromSystemCurrency(value: number) {
+    static fromSystemCurrency(value: number | string) {
+        value = Number(value);
+        if (isNaN(value)) throw new Error("Material value is not a number");
         const norm = isSF2e() ? value / 10 : value;
         return new MaterialValue(norm);
     }

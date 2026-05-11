@@ -55,7 +55,8 @@
         "new-imbuement": "New Imbuement",
         "type": "Type",
         "value": "Value",
-        "button": "Edit Refined Item"
+        "button": "Edit Refined Item",
+        "extract-button-tooltip": "Extract material"
       },
       "after-combat-dialog": {
         "title": "Assign Monster Parts",
@@ -72,6 +73,14 @@
         "contents": "Choose how much material you want to assign to the Refined Item",
         "next-level": "Next Level",
         "next-whole": "Next Whole"
+      },
+      "extract-material-dialog": {
+        "title": "Transfer Material",
+        "contents": "Choose how much material you want to extract from the Refined Item",
+        "extract-note": "The extracted pure material will have value <strong>{value}</strong>.",
+        "subtract-note": "This will subtract <strong>{value}</strong> from the material's value.",
+        "level-decrease-note": "The material's level will lower by <strong>{difference}</strong>.",
+        "previous-level": "Down to Level Threshold"
       }
     },
     "material": {
@@ -175,6 +184,13 @@
       "level-capped": {
         "name": "Cap material levels",
         "hint": "Refinements will be capped by the actor's level, imbuements will be capped by the item's refinement level"
+      },
+      "transfer-tax": {
+        "name": "Transfer Tax",
+        "hint": "How much value is lost when extracting material from a refined item.",
+        "none": "None",
+        "default": "10% (default)",
+        "half": "50%"
       }
     },
     "data": {

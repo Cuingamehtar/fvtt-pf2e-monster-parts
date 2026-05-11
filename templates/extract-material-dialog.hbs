@@ -1,0 +1,13 @@
+<div style="width:400px;">
+    <p>{{localize "pf2e-monster-parts.dialog.extract-material-dialog.contents"}}</p>
+    <div class="form-group">
+        <range-picker value="0" min="0" max="{{maxValue}}" step="{{step}}"
+                      name="subtracted-value"></range-picker>
+    </div>
+    <div class="form-group">
+        <button type="button" data-action="previousLevel">{{localize
+            "pf2e-monster-parts.dialog.extract-material-dialog.previous-level"}}</button>
+    </div>
+    <div id="hint-strings">{{{hintText}}}
+    </div>
+</div>

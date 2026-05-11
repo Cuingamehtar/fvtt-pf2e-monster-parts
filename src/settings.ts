@@ -20,6 +20,25 @@ export function registerSettings() {
         requiresReload: false,
     });
 
+    game.settings.register(MODULE_ID, "transfer-tax", {
+        name: tkey("settings.transfer-tax.name") as string,
+        hint: tkey("settings.transfer-tax.hint") as string,
+        scope: "world",
+        type: new foundry.data.fields.StringField({
+            choices: {
+                half: tkey("settings.transfer-tax.half") as string,
+                default: tkey("settings.transfer-tax.default") as string,
+                none: tkey("settings.transfer-tax.none") as string,
+            },
+            nullable: false,
+            blank: false,
+            initial: "default",
+            required: true,
+        }),
+        config: true,
+        requiresReload: false,
+    });
+
     game.settings.register(MODULE_ID, "actor-lootable", {
         name: tkey("settings.actor-lootable.name") as string,
         hint: tkey("settings.actor-lootable.hint") as string,
@@ -192,8 +211,7 @@ export function registerSettings() {
                     baneTraitsDefault,
                 );
                 game.socket.emit("reload");
-                // @ts-expect-error
-                await foundry.utils.debouncedReload();
+                foundry.utils.debouncedReload();
             }
         });
         element.appendChild(resetBtn);

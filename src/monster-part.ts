@@ -1,4 +1,9 @@
-import { EquipmentPF2e, NPCPF2e, PhysicalItemPF2e } from "foundry-pf2e";
+import {
+    ActorPF2e,
+    EquipmentPF2e,
+    NPCPF2e,
+    PhysicalItemPF2e,
+} from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
 import { i18nFormat, t } from "./utils";
@@ -6,6 +11,7 @@ import { getExtendedNPCRollOptions } from "./actor-utils";
 import { Material, MaterialValue } from "./material";
 import { ModuleFlags } from "../types/global";
 import { configureMonsterPart } from "@src/app/monster-part-editor";
+import * as R from "remeda";
 
 type HasMonsterPartData<T extends PhysicalItemPF2e> = T & {
     flags: {
@@ -132,23 +138,45 @@ export class MonsterPart {
         return new MonsterPart(part);
     }
 
+    static async fromPureMaterial(actor: ActorPF2e, material: Material) {
+        const config = getConfig();
+        const flags: ModuleFlags["monster-part"] = {
+            value: material.value.gp,
+            materials: [material.key],
+        };
+
+        const item = {
+            name: t("material.item.name-pure", {
+                material: i18nFormat(material.label),
+            }) as string,
+            img: config.materialItem.image,
+            system: {
+                size: "med",
+            },
+            type: "treasure",
+            flags: { [MODULE_ID]: { ["monster-part"]: flags } },
+        };
+        const [part] = (await actor.createEmbeddedDocuments("Item", [
+            item,
+        ])) as unknown as HasMonsterPartData<EquipmentPF2e>[];
+        return new MonsterPart(part);
+    }
+
     async descriptionHeader() {
         const config = getConfig();
         const flags = this.item.getFlag(MODULE_ID, "monster-part")!;
         const value = new MaterialValue(flags.value);
-        const materials = [
-            ...config.materials
-                .values()
-                .filter((m) => flags.materials.includes(m.key)),
-        ]
-            .map((m) => ({
+        const [refinements, imbues] = R.pipe(
+            [...config.materials.values()],
+            R.filter((m) => flags.materials.includes(m.key)),
+            R.map((m) => ({
                 type: m.type,
                 key: m.key,
                 label: i18nFormat(m.label),
-            }))
-            .sort((a, b) => a.label.localeCompare(b.label));
-        const refinements = materials.filter((m) => m.type === "refinement");
-        const imbues = materials.filter((m) => m.type === "imbuement");
+            })),
+            R.sort((a, b) => a.label.localeCompare(b.label)),
+            R.partition((m) => m.type === "refinement"),
+        );
 
         const templatePath =
             "modules/pf2e-monster-parts/templates/monster-part-header.hbs";

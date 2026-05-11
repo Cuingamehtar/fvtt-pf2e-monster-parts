@@ -54,7 +54,8 @@
       "new-imbuement": "New Imbuement",
       "type": "Type",
       "value": "Value",
-      "button": "Edit Refined Item"
+      "button": "Edit Refined Item",
+      "extract-button-tooltip": "Extract material"
     },
     "after-combat-dialog": {
       "title": "Assign Monster Parts",
