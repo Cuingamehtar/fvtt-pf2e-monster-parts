@@ -59,7 +59,7 @@ burning-barbs:
       can choose to deal @Damage[(floor(@item.level / 2))[persistent,fire]]{persistent fire damage} equal to half
       the item's level on any critically successful @UUID[Compendium.pf2e.actionspf2e.Item.2u915NdUyQan6uKF]{Demoralize}.
     level-14-damage: >-
-      The @Damage[(floor(@item.level * 1.5))[persistent,fire]]{persistent fire damage} from Burning Barbs increases to 1-1/2
+      The @Damage[(floor(@item.level * 1.5))[persistent,fire]]{persistent fire damage} from Burning Barbs increases to 1.5x
       times the item's level on a successful @UUID[Compendium.pf2e.actionspf2e.Item.2u915NdUyQan6uKF]{Demoralize}
       (@Damage[21[persistent,fire]]{21 persistent fire damage} at level 14) and 3 times
       the item's level on a critical success.
