@@ -33,14 +33,6 @@ https://github.com/user-attachments/assets/58827568-ca12-4056-8df4-a7ef23320f65
 
 https://github.com/user-attachments/assets/fd3ff1c9-3438-48ab-9c9f-5c89fe398bba
 
-## Current status
+## Current completion status
 
-All Battlezoo Bestiary refinements should be automated
-
-### Imbuements
-
-**Full automation with rule elements:** Energy Resistant, Sensory, Sturdy, Winged
-
-**Damage only:** Acid, Bane, Cold, Electricity, Fire, Force, Mental, Poison, Sonic, Vitality, Void, Wild
-
-**Text only:** Charisma, Dexterity, Fortification, Intelligence, Strength, Wisdom
+Please see the [checklist](https://github.com/Cuingamehtar/fvtt-pf2e-monster-parts/blob/master/checklist.md)

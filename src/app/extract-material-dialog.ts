@@ -1,7 +1,10 @@
-import { t } from "@src/utils";
+import { t, Utils } from "@src/utils";
 import { Material, MaterialValue } from "@src/material";
 import { RefinedItem } from "@src/refined-item";
 import { MODULE_ID } from "@src/module";
+import { SkipSliderButtons } from "@src/app/elements";
+import { HTMLRangePickerElement } from "foundry-pf2e/foundry/client/applications/elements/_module";
+import { ApplicationRenderContext } from "foundry-pf2e/foundry/client/applications/_types";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -25,9 +28,6 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
     static override DEFAULT_OPTIONS: DeepPartial<foundry.applications.ApplicationConfiguration> =
         {
             tag: "form",
-            actions: {
-                previousLevel: ExtractMaterialDialog.#onClickPreviousLevel,
-            },
             form: {
                 submitOnChange: false,
                 closeOnSubmit: true,
@@ -54,6 +54,7 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
     refinedItem: RefinedItem;
     material: Material;
     maxValue: MaterialValue;
+    skipButtonsLevel: SkipSliderButtons;
     transferScale: number;
 
     resolve: ExtractMaterialDialogOptions["resolve"];
@@ -63,7 +64,39 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
             ExtractMaterialDialogOptions,
     ) {
         options.uniqueId = `extract-material-dialog-${options.refinedItem.item.id}`;
-        super(options);
+        const { material, refinedItem } = options;
+
+        const currentLevel = material.getLevel(refinedItem).value;
+
+        const skipButtonsLevel = new SkipSliderButtons(
+            "level",
+            "Skip to Level",
+            Array.fromRange(currentLevel + 1)
+                .map((l) =>
+                    material.value
+                        .sub(material.getThresholdForLevel(refinedItem, l))
+                        .toSystemCurrency(),
+                )
+                .reverse(),
+        );
+
+        super(
+            foundry.utils.mergeObject(
+                {
+                    actions: {
+                        levelSkip: function (
+                            this: ExtractMaterialDialog,
+                            event: PointerEvent,
+                        ) {
+                            skipButtonsLevel.onButtonClick(this.element, event);
+                        },
+                    },
+                },
+                options,
+                { inplace: false },
+            ),
+        );
+        this.skipButtonsLevel = skipButtonsLevel;
         this.refinedItem = options.refinedItem;
         this.material = options.material;
         this.maxValue = this.material.value;
@@ -81,7 +114,6 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
         this.resolve = options.resolve;
     }
 
-    // @ts-expect-error
     protected override async _prepareContext(): Promise<ExtractMaterialContext> {
         const buttons = [
             {
@@ -92,7 +124,8 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
         ];
         return {
             maxValue: this.maxValue.toSystemCurrency(),
-            step: this.maxValue.toSystemCurrency() < 5 ? 0.01 : 1,
+            step: Utils.isSF ? 0.01 : 0.1,
+            skipButtonsLevel: await this.skipButtonsLevel.getTemplate(0),
             buttons,
             hintText: "",
         };
@@ -118,8 +151,7 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
         hintDiv.innerHTML = this.#prepareHintStrings();
     }
 
-    // @ts-expect-error
-    protected override _onSubmitForm(
+    protected override async _onSubmitForm(
         formConfig: fa.ApplicationFormConfiguration,
         event: Event,
     ) {
@@ -133,47 +165,15 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
         );
         const extracted = subtracted.mul(this.transferScale).round();
 
-        this.close().then((_) => {
+        this.close().then(() => {
             this.resolve({ subtracted, extracted });
         });
     }
 
     #getSlider() {
-        return this.element.querySelector(
-            `[name="subtracted-value"]`,
-        ) as HTMLInputElement;
-    }
-
-    static #onClickPreviousLevel(
-        this: ExtractMaterialDialog,
-        _event: PointerEvent,
-    ) {
-        const subtractedSlider = this.#getSlider();
-        const subtracted = MaterialValue.fromSystemCurrency(
-            subtractedSlider.value,
+        return this.element.querySelector<HTMLRangePickerElement>(
+            `[name="value"]`,
         );
-        const current = Material.fromKey(
-            this.material.key,
-            this.material.value.sub(subtracted).gp,
-        );
-        const currentLevel = current.getLevel(this.refinedItem).value;
-        const currentLevelThreshold = current.getThresholdForLevel(
-            this.refinedItem,
-            currentLevel,
-        );
-        if (currentLevelThreshold.gp < current.value.gp) {
-            subtractedSlider.value = String(
-                this.maxValue.sub(currentLevelThreshold).toSystemCurrency(),
-            );
-        } else {
-            const levelThreshold = this.material.getThresholdForLevel(
-                this.refinedItem,
-                currentLevel - 1,
-            );
-            subtractedSlider.value = String(
-                this.maxValue.sub(levelThreshold).toSystemCurrency(),
-            );
-        }
     }
 
     #prepareHintStrings(this: ExtractMaterialDialog) {
@@ -219,9 +219,10 @@ interface ExtractMaterialDialogOptions {
     }) => void;
 }
 
-interface ExtractMaterialContext {
+interface ExtractMaterialContext extends ApplicationRenderContext {
     maxValue: number;
     step: number;
+    skipButtonsLevel: string;
     hintText: string;
     buttons: {
         type: string;

@@ -27,7 +27,7 @@ export function createImbueSpiked(): MaterialData {
             labels: [
                 ...helpers.leveledLabels(
                     [2, 4, 6, 8, 10, 12, 14, 16, 18, 20],
-                    helpers.sequentialData([
+                    helpers.sequentialData(
                         {
                             cost: "2",
                             frequency: lkey("header.frequency.per-day"),
@@ -43,7 +43,7 @@ export function createImbueSpiked(): MaterialData {
                         { cost: "1" },
                         { damageTouch: "4d6", damageGrapple: "8d6" },
                         { frequency: lkey("header.frequency.per-10-minutes") },
-                    ]),
+                    ),
                     ({ cost, frequency, damageTouch, damageGrapple }) => ({
                         text: {
                             type: "key",

@@ -372,7 +372,7 @@ export function createImbueAcid(): MaterialData[] {
                         type: "acid",
                         value: damage,
                         category: "persistent",
-                        label: "pf2e-monster-parts.damage.type.acid",
+                        label: lkey("tech.label"),
                     });
                 },
             ),

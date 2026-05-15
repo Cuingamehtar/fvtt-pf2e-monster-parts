@@ -21,6 +21,7 @@
         "rootDir": "src",
         "outDir": "scripts",
         "types": [
+            "foundry-pf2e",
             "foundry-pf2e/foundry",
             "foundry-pf2e/pf2e",
             "foundry-pf2e/lib-wrapper",

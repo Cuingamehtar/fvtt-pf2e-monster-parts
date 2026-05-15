@@ -1,7 +1,8 @@
 import { RefinedItem } from "@src/refined-item";
 import { BaseMaterialEffect } from "../material";
 import { ItemCastSource, RuleElementEffectSource } from "../data-types";
-import { dcByLevel, getSettingSafe } from "@src/utils";
+import { Utils, getSettingSafe } from "@src/utils";
+import { SpellPF2e } from "foundry-pf2e";
 
 export type RuleElementEffect = BaseMaterialEffect & {
     type: "RuleElement";
@@ -32,8 +33,10 @@ export class RuleElementEffectHandler {
             if (!getSettingSafe("pf2e-toolbelt", "actionable.cast")) {
                 return;
             }
-            const newRule = { ...(await prepareSpellRE(rule)) };
-            newRule.dc ??= dcByLevel(materialLevel);
+            const newRule = await prepareSpellRE(rule);
+            if (!newRule) return;
+            newRule.dc ??= Utils.dcByLevel(materialLevel);
+            newRule.rank ??= newRule.data?.spell.system.level.value;
             const oldRule = item.item.system.rules.find(
                 (r) => isItemCastRE(r) && r.uuid == newRule.uuid,
             );
@@ -52,13 +55,24 @@ export class RuleElementEffectHandler {
     }
 }
 
-async function prepareSpellRE(rule: ItemCastSource) {
-    const spell = await foundry.utils.fromUuid(rule.uuid);
-    if (!spell) return rule;
+async function prepareSpellRE(
+    rule: ItemCastSource,
+): Promise<(ItemCastSource & ItemCastData) | undefined> {
+    const spell = await foundry.utils.fromUuid<SpellPF2e>(rule.uuid);
+    if (!spell) return undefined;
     return (
         game.toolbelt?.api.actionable.generateItemCastRuleSource?.(
             spell,
             rule,
         ) ?? rule
     );
+}
+
+interface ItemCastData {
+    data: {
+        entryId: string;
+        sourceId: string;
+        spell: SpellPF2e["_source"];
+        value?: number;
+    };
 }

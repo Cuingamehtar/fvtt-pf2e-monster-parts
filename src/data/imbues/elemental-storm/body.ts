@@ -3,6 +3,7 @@ import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
 import { PredicateStatement } from "foundry-pf2e";
+import { Spells } from "@data/spells";
 
 export function createImbueBody(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.body" as const);
@@ -124,7 +125,7 @@ export function createImbueBody(): MaterialData[] {
                 ),
                 ...helpers.leveledEffects([8, 16, 20], [3, 5, 7], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.Xt8LGrPSYf7TPXqX", // Pummeling Shockwave
+                        uuid: Spells.PummellingShockwave,
                         max: 1,
                         rank,
                     }),

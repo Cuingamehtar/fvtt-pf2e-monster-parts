@@ -2,6 +2,7 @@ import { lkeygen } from "@src/utils";
 import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
+import { Spells } from "@data/spells";
 
 export function createImbueAir(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.air" as const);
@@ -97,7 +98,7 @@ export function createImbueAir(): MaterialData[] {
                         }),
                 ),
                 ...helpers.cantripActivation({
-                    uuid: "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.oWtpcZ8aq5qQdKri", // Rushing Gust
+                    uuid: Spells.RushingGust,
                 }),
                 {
                     levelMin: 4,
@@ -125,7 +126,7 @@ export function createImbueAir(): MaterialData[] {
                 },
                 ...helpers.leveledEffects([12, 16], [4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.W86Tb9T5YUsIHqPO", // Launching Vortex
+                        uuid: Spells.LaunchingVortex,
                         max: 1,
                         rank,
                     }),

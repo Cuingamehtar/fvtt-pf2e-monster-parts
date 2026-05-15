@@ -2,6 +2,7 @@ import { lkeygen } from "@src/utils";
 import { helpers } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
+import { Spells } from "@data/spells";
 
 export function createImbuePoison(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.poison" as const);
@@ -119,7 +120,6 @@ export function createImbuePoison(): MaterialData[] {
                     levelMin: 4,
                     ...helpers.spellActivation({
                         uuid: "Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw", // Spider Sting
-                        max: 1,
                         rank: 1,
                     }),
                 },
@@ -129,22 +129,19 @@ export function createImbuePoison(): MaterialData[] {
                     (rank) =>
                         helpers.spellActivation({
                             uuid: "Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv", // Noxious Vapors
-                            max: 1,
                             rank,
                         }),
                 ),
                 ...helpers.leveledEffects([8, 12, 16], [2, 4, 6], (rank) =>
                     helpers.spellActivation({
                         uuid: "Compendium.pf2e.spells-srd.Item.3VxVbZqIRvpKkg3O", // Fungal Infestation
-                        max: 1,
                         rank,
                     }),
                 ),
                 {
                     levelMin: 20,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.FVwXmCx6xPQwAQYc", // Toxify Blood
-                        max: 1,
+                        uuid: Spells.ToxifyBlood,
                         rank: 9,
                     }),
                 },

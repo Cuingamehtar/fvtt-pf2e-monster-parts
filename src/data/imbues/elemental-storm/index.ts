@@ -8,6 +8,7 @@ import { createImbueBody } from "./body";
 import { createImbuePoison } from "./poison";
 import { createImbueMind } from "./mind";
 import { createImbueDarkness } from "./darkness";
+import { createImbueHoly } from "./holy";
 
 export function createElementalStormImbues() {
     return [
@@ -18,6 +19,7 @@ export function createElementalStormImbues() {
         ...createImbueElectricity(),
         ...createImbueFire(),
         ...createImbueForce(),
+        ...createImbueHoly(),
         ...createImbueLife(),
         ...createImbueMind(),
         ...createImbuePoison(),

@@ -1,6 +1,9 @@
-import { t } from "@src/utils";
+import { Utils, t } from "@src/utils";
 import { MonsterPart } from "@src/monster-part";
-import { MaterialValue } from "@src/material";
+import { Material, MaterialValue } from "@src/material";
+import { HTMLRangePickerElement } from "foundry-pf2e/foundry/client/applications/elements/_module";
+import { SkipSliderButtons } from "@src/app/elements";
+import { RefinedItem } from "@src/refined-item";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -24,10 +27,6 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
     static override DEFAULT_OPTIONS: DeepPartial<foundry.applications.ApplicationConfiguration> =
         {
             tag: "form",
-            actions: {
-                nextLevel: AssignMaterialDialog.#onClickNextLevel,
-                nextWhole: AssignMaterialDialog.#onClickNextWhole,
-            },
             form: {
                 submitOnChange: false,
                 closeOnSubmit: true,
@@ -52,19 +51,88 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
     };
 
     monsterPart: MonsterPart;
-    nextLevelValue?: MaterialValue;
+    refinedItem: RefinedItem;
+    material: Material;
     maxValue: MaterialValue;
     resolve: AssignMaterialDialogOptions["resolve"];
+
+    skipButtonsLevel?: SkipSliderButtons;
+    skipButtonsWhole: SkipSliderButtons;
 
     constructor(
         options: DeepPartial<foundry.applications.ApplicationConfiguration> &
             AssignMaterialDialogOptions,
     ) {
         options.uniqueId = `assign-material-dialog-${options.monsterPart.item.id}`;
-        super(options);
+        const { monsterPart, refinedItem, material } = options;
+
+        const currentLevel = material.getLevel(refinedItem).value;
+        const maxLevel = Material.fromKey(
+            material.key,
+            material.value.add(monsterPart.getValue()).gp,
+        ).getLevel(refinedItem).value;
+
+        const skipButtonsLevel =
+            maxLevel > currentLevel
+                ? new SkipSliderButtons(
+                      "level",
+                      "Skip to Level",
+                      Array.fromRange(
+                          maxLevel - currentLevel,
+                          currentLevel + 1,
+                      ).map((l) =>
+                          material
+                              .getThresholdForLevel(refinedItem, l)
+                              .toSystemCurrency(),
+                      ),
+                  )
+                : undefined;
+
+        const skipButtonsWhole = new SkipSliderButtons(
+            "whole",
+            "Skip to Whole",
+            Array.fromRange(monsterPart.quantity + 1, 0).map(
+                (n) => monsterPart.getValue(n).gp,
+            ),
+        );
+
+        super(
+            foundry.utils.mergeObject(
+                {
+                    actions: {
+                        levelSkip: function (
+                            this: AssignMaterialDialog,
+                            event: PointerEvent,
+                        ) {
+                            skipButtonsLevel?.onButtonClick(
+                                this.element,
+                                event,
+                            );
+                        },
+                        wholeSkip: function (
+                            this: AssignMaterialDialog,
+                            event: PointerEvent,
+                        ) {
+                            skipButtonsWhole?.onButtonClick(
+                                this.element,
+                                event,
+                            );
+                        },
+                    },
+                },
+                options,
+                { inplace: false },
+            ),
+        );
+
         this.monsterPart = options.monsterPart;
-        this.nextLevelValue = options.nextLevelValue;
+        this.refinedItem = options.refinedItem;
+        this.material = options.material;
         this.maxValue = this.monsterPart.getValue();
+
+        this.skipButtonsWhole = skipButtonsWhole;
+        this.skipButtonsLevel = skipButtonsLevel;
+
         this.resolve = options.resolve;
     }
 
@@ -77,18 +145,18 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
                 label: "Confirm",
             },
         ];
+        const maxValue = this.maxValue.toSystemCurrency();
         return {
-            canReachNextLevel:
-                typeof this.nextLevelValue !== "undefined" &&
-                this.maxValue.gp >= this.nextLevelValue.gp,
-            maxValue: this.maxValue.toSystemCurrency(),
-            step: this.maxValue.toSystemCurrency() < 5 ? 0.01 : 1,
+            maxValue: maxValue,
+            step: Utils.currencyStep,
             buttons,
-            hintText: AssignMaterialDialog.#prepareHintStrings(
+            skipButtonsLevel:
+                (await this.skipButtonsLevel?.getTemplate(maxValue)) ?? "",
+            skipButtonsWhole: await this.skipButtonsWhole.getTemplate(maxValue),
+            hintText: AssignMaterialDialog.#prepareHintStrings.bind(this)(
                 this.maxValue,
                 this.monsterPart.quantity,
                 this.monsterPart.getValue(1),
-                this.nextLevelValue,
             ),
         };
     }
@@ -99,14 +167,16 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
     ) {
         super._onChangeForm(formConfig, event);
 
+        this.skipButtonsWhole.onFormChange(this.element);
+        this.skipButtonsLevel?.onFormChange(this.element);
+
         const slider = this.#getSlider();
         const hintDiv = this.element.querySelector('[id="hint-strings"]')!;
 
-        hintDiv.innerHTML = AssignMaterialDialog.#prepareHintStrings(
+        hintDiv.innerHTML = AssignMaterialDialog.#prepareHintStrings.bind(this)(
             MaterialValue.fromSystemCurrency(Number(slider.value)),
             this.monsterPart.quantity,
             this.monsterPart.getValue(1),
-            this.nextLevelValue,
         );
     }
 
@@ -146,35 +216,14 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
     #getSlider() {
         return this.element.querySelector(
             '[name="value"]',
-        )! as HTMLInputElement;
-    }
-
-    static #onClickNextLevel(this: AssignMaterialDialog, _event: PointerEvent) {
-        if (typeof this.nextLevelValue === "undefined") return;
-        const slider = this.#getSlider();
-        slider.value = this.nextLevelValue.toSystemCurrency().toString();
-    }
-    static #onClickNextWhole(this: AssignMaterialDialog, _event: PointerEvent) {
-        const slider = this.#getSlider();
-        const current = MaterialValue.fromSystemCurrency(Number(slider.value));
-        const singleValue = this.monsterPart.getValue(1);
-        slider.value = current
-            .map((cur) =>
-                Math.clamp(
-                    Math.ceil(cur / singleValue.gp) * singleValue.gp,
-                    0,
-                    this.maxValue.gp,
-                ),
-            )
-            .toSystemCurrency()
-            .toString();
+        )! as HTMLRangePickerElement;
     }
 
     static #prepareHintStrings(
+        this: AssignMaterialDialog,
         value: MaterialValue,
         nItems: number,
         valueSingle: MaterialValue,
-        nextLevel?: MaterialValue,
     ) {
         const { consumedItems, valueRemaining } =
             AssignMaterialDialog.#calculateConsumedItems({
@@ -182,29 +231,44 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
                 nItems,
                 valueConsumed: value,
             });
-        return [
-            value.gp > 0
-                ? (t("dialog.assign-material-dialog.add-value", {
-                      value: value.toCoins().toString(),
-                  }) as string) +
-                  (nextLevel && value > nextLevel
-                      ? (t(
-                            "dialog.assign-material-dialog.increase-level",
-                        ) as string)
-                      : "") +
-                  "."
-                : "",
-            consumedItems == nItems
-                ? t("dialog.assign-material-dialog.remove-full-stack")
-                : t("dialog.assign-material-dialog.remove-n", {
-                      n: String(consumedItems),
-                  }),
-            valueRemaining.gp > 0
-                ? t("dialog.assign-material-dialog.value-remaining", {
-                      value: valueRemaining.toCoins().toString(),
-                  })
-                : undefined,
-        ]
+        const text = [];
+        if (value.gp > 0) {
+            const par = t("dialog.assign-material-dialog.add-value", {
+                value: value.toCoins().toString(),
+            });
+            const addedLevels =
+                (this.skipButtonsLevel?.values.findLastIndex(
+                    (v) => v < value.toSystemCurrency(),
+                ) ?? -1) + 1;
+            if (addedLevels > 0) {
+                const addendum = t(
+                    "dialog.assign-material-dialog.increase-level",
+                    { level: String(addedLevels) },
+                );
+                text.push([par, addendum].join(" "));
+            } else {
+                text.push(par);
+            }
+        }
+        if (consumedItems > 0) {
+            if (consumedItems == nItems) {
+                text.push(t("dialog.assign-material-dialog.remove-full-stack"));
+            } else {
+                text.push(
+                    t("dialog.assign-material-dialog.remove-n", {
+                        n: String(consumedItems),
+                    }),
+                );
+            }
+        }
+        if (valueRemaining.gp > 0) {
+            text.push(
+                t("dialog.assign-material-dialog.value-remaining", {
+                    value: valueRemaining.toCoins().toString(),
+                }),
+            );
+        }
+        return text
             .filter((s) => typeof s !== "undefined")
             .map((s) => `<p>${s}</p>`)
             .join("");
@@ -237,7 +301,8 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
 
 interface AssignMaterialDialogOptions {
     monsterPart: MonsterPart;
-    nextLevelValue?: MaterialValue;
+    refinedItem: RefinedItem;
+    material: Material;
     resolve: (args: {
         value: MaterialValue;
         remainder: MaterialValue;
@@ -246,9 +311,10 @@ interface AssignMaterialDialogOptions {
 }
 
 interface AssignMaterialContext {
-    canReachNextLevel: boolean;
     maxValue: number;
     step: number;
+    skipButtonsLevel: string;
+    skipButtonsWhole: string;
     hintText: string;
     buttons: {
         type: string;

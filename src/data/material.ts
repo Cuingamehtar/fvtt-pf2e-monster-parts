@@ -1,4 +1,4 @@
-import { PredicateStatement } from "foundry-pf2e";
+import { MagicTradition, PredicateStatement } from "foundry-pf2e";
 import { effectField } from "./effect-handlers";
 import { RuleElementEffect } from "./effect-handlers/rule-element";
 import { AlterationEffect } from "./effect-handlers/alteration";
@@ -73,6 +73,7 @@ export type MaterialData = {
     description?: I18nEntry;
     itemPredicate: PredicateStatement[];
     monsterPredicate: PredicateStatement[];
+    spellTraditions?: MagicTradition[];
     header: {
         description?: I18nEntry;
         labels?: HeaderLabel[];
@@ -90,6 +91,14 @@ export const materialDataSchema = new f.SchemaField({
     description: new I18EntryField({ required: false }),
     itemPredicate: new PredicateField({ required: true }),
     monsterPredicate: new PredicateField({ required: true }),
+    spellTraditions: new f.ArrayField(
+        new f.StringField({
+            required: true,
+            blank: false,
+            choices: ["arcane", "divine", "occult", "primal"],
+        }),
+        { min: 0, max: 4, required: false },
+    ),
     header: new f.SchemaField({
         description: new I18EntryField({ required: false }),
         labels: new f.ArrayField(

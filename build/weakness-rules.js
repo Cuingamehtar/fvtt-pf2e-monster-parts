@@ -45,6 +45,10 @@ const weaknessTypes = {
         label: "PF2E.TraitForce",
         imbuements: ["imbue:force:might"],
     },
+    holy: {
+        label: "PF2E.TraitHoly",
+        imbuements: ["imbue:holy:might"],
+    },
     mental: {
         label: "PF2E.TraitMental",
         imbuements: ["imbue:mind:might"],

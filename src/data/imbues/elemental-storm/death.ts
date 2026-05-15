@@ -2,6 +2,7 @@ import { lkeygen } from "@src/utils";
 import { helpers } from "../../helpers";
 import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
+import { Spells } from "@data/spells";
 
 export function createImbueDeath(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.death" as const);
@@ -132,7 +133,7 @@ export function createImbueDeath(): MaterialData[] {
                 {
                     levelMin: 16,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.hJpXtpxUoKwQmJTr", // Raise the Reaper's Scythe
+                        uuid: Spells.RaiseTheReapersScythe,
                         max: 1,
                         rank: 5,
                     }),

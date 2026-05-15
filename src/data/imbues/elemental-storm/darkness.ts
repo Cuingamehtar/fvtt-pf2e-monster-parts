@@ -2,6 +2,7 @@ import { lkeygen } from "@src/utils";
 import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
+import { Spells } from "@data/spells";
 
 export function createImbueDarkness(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.darkness" as const);
@@ -109,7 +110,7 @@ export function createImbueDarkness(): MaterialData[] {
                 ),
                 ...helpers.leveledEffects([4, 12, 16], [2, 4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.5OgFM3D89UdFpKjb", // Eye-Biting Shadow
+                        uuid: Spells.EyeBitingShadow,
                         max: 1,
                         rank,
                     }),

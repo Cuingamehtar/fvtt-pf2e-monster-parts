@@ -312,19 +312,11 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                             .find((m) => m.key == selectedMaterial) ??
                         Material.fromKey(selectedMaterial);
                     if (!existingMaterial) return;
-                    const nextLevelValue = existingMaterial
-                        .getThresholdForLevel(
-                            this.data.item,
-                            existingMaterial.getLevel(this.data.item).value + 1,
-                        )
-                        .sub(existingMaterial.value);
                     const { value, remainder, goneFromStack } =
                         await AssignMaterialDialog.create({
                             monsterPart,
-                            nextLevelValue:
-                                nextLevelValue.gp <= 0
-                                    ? undefined
-                                    : nextLevelValue,
+                            refinedItem: this.data.item,
+                            material: existingMaterial,
                         });
                     if (!value || value.gp == 0) return;
                     if (expectedMaterial === "") {

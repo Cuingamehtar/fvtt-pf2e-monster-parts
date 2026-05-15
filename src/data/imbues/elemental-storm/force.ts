@@ -2,6 +2,7 @@ import { lkeygen } from "@src/utils";
 import { helpers } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
+import { Spells } from "@data/spells";
 
 export function createImbueForce(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.force" as const);
@@ -133,7 +134,7 @@ export function createImbueForce(): MaterialData[] {
                 {
                     levelMin: 20,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.ty07K2w88LGu9FC7", // Telekinetic Storm
+                        uuid: Spells.TelekineticStorm,
                         max: 1,
                         rank: 9,
                     }),

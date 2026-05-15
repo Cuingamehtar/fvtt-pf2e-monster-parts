@@ -184,6 +184,25 @@
             ]
           },
           {
+            "label": "PF2E.TraitHoly",
+            "value": "holy",
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:holy:might",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "label": "PF2E.TraitMental",
             "value": "mental",
             "predicate": [
@@ -327,6 +346,7 @@
               "might-path-weakness:electricity",
               "might-path-weakness:fire",
               "might-path-weakness:force",
+              "might-path-weakness:holy",
               "might-path-weakness:mental",
               "might-path-weakness:poison",
               "might-path-weakness:sonic",

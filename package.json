@@ -4,7 +4,7 @@
   "description": "Monster parts module for PF2e system",
   "scripts": {
     "build": "esbuild src/module.ts --bundle --keep-names --minify --sourcemap --outdir=scripts --define:DEBUG=false",
-    "dev": "node ./build/watch.js",
+    "dev": "node build/watch.js",
     "pack": "node ./build/pack.js",
     "extract": "node ./build/extract.js",
     "mightWeakness": "node ./build/weakness-rules.js"
@@ -29,7 +29,12 @@
     "yaml": "^2.8.1"
   },
   "devDependencies": {
-    "prettier": "3.5.3"
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.3.0",
+    "globals": "^17.6.0",
+    "jiti": "^2.7.0",
+    "prettier": "3.5.3",
+    "typescript-eslint": "^8.59.3"
   },
   "type": "module"
 }

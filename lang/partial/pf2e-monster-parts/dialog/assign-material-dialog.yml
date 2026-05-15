@@ -1,9 +1,8 @@
 title: Assign Material
-add-value: This will add {value} to the material's value
-increase-level: >-
-  , increasing it's level
+add-value: This will add **{value}** to the material's value.
+increase-level: The level of the material will increase by **{level}**.
 remove-full-stack: This will remove the entire stack of monster parts.
-remove-n: This will remove {n} items from the stack.
+remove-n: This will remove **{n} item(s)** from the stack.
 value-remaining: The remaining value ({value}) will be split into another stack.
 contents: Choose how much material you want to assign to the Refined Item
 next-level: Next Level

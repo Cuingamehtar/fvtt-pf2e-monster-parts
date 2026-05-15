@@ -5,7 +5,7 @@ import {
     SkillSlug,
 } from "foundry-pf2e";
 import { ItemAlterationSource } from "./data-types";
-import { HeaderLabel, MaterialEffect } from "./material";
+import { HeaderLabel, MaterialData, MaterialEffect } from "./material";
 import { RollString } from "../../types/global";
 import { RuleElementEffect } from "./effect-handlers/rule-element";
 
@@ -104,6 +104,7 @@ const damage = {
         label,
         predicate,
         selector,
+        hideIfDisabled,
     }: {
         type?: ValueOf<typeof DAMAGE_TYPES>;
         category?: "persistent" | "splash";
@@ -111,6 +112,7 @@ const damage = {
         label: I18nKey | I18nString;
         predicate?: PredicateStatement[];
         selector?: string;
+        hideIfDisabled?: boolean;
     }): Omit<RuleElementEffect, "levelMin" | "levelMax"> {
         if (
             typeof value === "undefined" ||
@@ -127,6 +129,7 @@ const damage = {
                     value: value ?? 1,
                     predicate,
                     label: label as string,
+                    hideIfDisabled,
                 },
             };
         } else {
@@ -142,6 +145,7 @@ const damage = {
                     diceNumber: m?.[1] ?? 1,
                     predicate,
                     label: label as string,
+                    hideIfDisabled,
                 },
             };
         }
@@ -204,7 +208,7 @@ function spellActivation({
         rule: {
             key: "ItemCast",
             uuid,
-            max,
+            max: max ?? 1,
             dc,
             rank,
         },
@@ -265,12 +269,54 @@ function leveledLabels<T>(
         }));
 }
 
-function sequentialData(arr: Record<string, any>[]) {
-    return arr.reduce((acc: Record<string, any>[], d) => {
+function sequentialData<T>(...arr: Record<string, T>[]) {
+    return arr.reduce((acc: Record<string, T>[], d) => {
         const e = { ...(acc[acc.length - 1] ?? {}), ...d };
         acc.push(e);
         return acc;
     }, []);
+}
+
+function addEffects(effects: MaterialEffect | MaterialEffect[]) {
+    return (m: MaterialData) => {
+        if (typeof m.effects === "undefined") m.effects = [];
+        if (!Array.isArray(effects)) effects = [effects];
+        for (const effect of effects) {
+            m.effects.push(effect);
+        }
+        return m;
+    };
+}
+function addLabels(labels: HeaderLabel | HeaderLabel[]) {
+    return (m: MaterialData) => {
+        if (typeof m.header.labels === "undefined") m.header.labels = [];
+        if (!Array.isArray(labels)) labels = [labels];
+        for (const label of labels) {
+            m.header.labels.push(label);
+        }
+        return m;
+    };
+}
+
+function addGroup({
+    labels,
+    effects,
+}: {
+    labels?: Parameters<typeof addLabels>[0];
+    effects?: Parameters<typeof addEffects>[0];
+}) {
+    return (m: MaterialData) => {
+        if (labels) addLabels(labels)(m);
+        if (effects) addEffects(effects)(m);
+        return m;
+    };
+}
+
+export enum Selector {
+    ItemAttack = "{item|id}-attack",
+    ItemDamage = "{item|id}-damage",
+    UnarmedAttack = "unarmed-attack",
+    UnarmedDamage = "unarmed-damage",
 }
 
 export const helpers = {
@@ -281,4 +327,7 @@ export const helpers = {
     sequentialData,
     spellActivation,
     cantripActivation,
+    addEffects,
+    addLabels,
+    addGroup,
 };

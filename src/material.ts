@@ -2,7 +2,7 @@ import { ItemPF2e, NPCPF2e, Predicate } from "foundry-pf2e";
 import { getExtendedNPCRollOptions } from "./actor-utils";
 import { getConfig } from "./config";
 import { RefinedItem } from "./refined-item";
-import { i18nFormat, isSF2e } from "./utils";
+import { i18nFormat, Utils } from "./utils";
 import { MaterialData } from "@data/material";
 import { MODULE_ID } from "./module";
 
@@ -204,7 +204,7 @@ export class MaterialValue {
     static fromSystemCurrency(value: number | string) {
         value = Number(value);
         if (isNaN(value)) throw new Error("Material value is not a number");
-        const norm = isSF2e() ? value / 10 : value;
+        const norm = Utils.isSF ? value / 10 : value;
         return new MaterialValue(norm);
     }
 
@@ -220,7 +220,7 @@ export class MaterialValue {
     }
 
     toSystemCurrency() {
-        return this.gp * (isSF2e() ? 10 : 1);
+        return this.gp * (Utils.isSF ? 10 : 1);
     }
 
     add(rhs: MaterialValue) {

@@ -29,7 +29,7 @@ export function i18nFormat(
     if (typeof m === "undefined") return "" as I18nString;
     if (typeof m === "number") return String(m) as I18nString;
     if (typeof (m as string) == "string")
-        return (isSF2e() ? sf2eUuidRemap(m as string) : m) as I18nString;
+        return (Utils.isSF ? sf2eUuidRemap(m as string) : m) as I18nString;
     if ("type" in m && m.type === "resolve") {
         if (typeof data === "undefined") {
             console.warn(`Couldn't evaluate string ${m.value}: no data`);
@@ -38,18 +38,18 @@ export function i18nFormat(
         const s = String(
             Roll.replaceFormulaData(i18nFormat(m.value, data) as string, data),
         );
-        return (isSF2e() ? sf2eUuidRemap(s) : s) as I18nString;
+        return (Utils.isSF ? sf2eUuidRemap(s) : s) as I18nString;
     }
     if ("type" in m && m.type == "key") {
         let s = game.i18n.localize(m.key as string);
         if (!m.parameters)
-            return (isSF2e() ? sf2eUuidRemap(s) : s) as I18nString;
+            return (Utils.isSF ? sf2eUuidRemap(s) : s) as I18nString;
         for (const k in m.parameters) {
             const f = `{${k}}`;
             const v = i18nFormat(m.parameters[k], data) as string;
             s = s.replaceAll(f, v);
         }
-        return (isSF2e() ? sf2eUuidRemap(s) : s) as I18nString;
+        return (Utils.isSF ? sf2eUuidRemap(s) : s) as I18nString;
     }
     return "" as I18nString;
 }
@@ -118,33 +118,30 @@ export async function getDroppedItem(event: DragEvent, type?: string) {
     return fromUuid(dropData.uuid);
 }
 
-export function slugToCamelCase(s: string) {
-    return s
-        .split("-")
-        .map((w) => w[0].toUpperCase() + s.slice(1))
-        .join("");
-}
-
 export function hash(s: string) {
     for (var i = 0, h = 9; i < s.length; )
         h = Math.imul(h ^ s.charCodeAt(i++), 9 ** 9);
     return h ^ (h >>> 9);
 }
 
-export function isSF2e() {
-    return game.system.id === "sf2e";
-}
-
-export function dcByLevel(level: number) {
-    const l = Math.clamp(level, 0, 25);
-    return (
-        14 +
-        l +
-        Math.floor(l / 3) +
-        Math.max(l - 21, 0) -
-        Math.max(l - 23, 0) +
-        Math.max(l - 24, 0)
-    );
+export class Utils {
+    static get isSF() {
+        return game.system.id === "sf2e";
+    }
+    static get currencyStep() {
+        return this.isSF ? 0.1 : 0.01;
+    }
+    static dcByLevel(level: number) {
+        const l = Math.clamp(level, 0, 25);
+        return (
+            14 +
+            l +
+            Math.floor(l / 3) +
+            Math.max(l - 21, 0) -
+            Math.max(l - 23, 0) +
+            Math.max(l - 24, 0)
+        );
+    }
 }
 
 export function getSettingSafe(module: string, setting: string) {
