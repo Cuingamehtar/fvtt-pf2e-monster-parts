@@ -31,4 +31,7 @@ export enum Spells {
     DivineWrath = "Compendium.pf2e.spells-srd.Item.hVU9msO9yGkxKZ3J",
     DivineDecree = "Compendium.pf2e.spells-srd.Item.sX2o0HH4RjJDAZ8C",
     WeaponOfJudgement = "Compendium.pf2e.spells-srd.Item.ZqmP9gijBmK7y8Xy",
+
+    // Unholy
+    ChillingDarkness = "Compendium.pf2e.spells-srd.Item.sRfSBHWHdbIa0aGc",
 }

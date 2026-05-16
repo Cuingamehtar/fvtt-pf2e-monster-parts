@@ -5,5 +5,5 @@ remove-full-stack: This will remove the entire stack of monster parts.
 remove-n: This will remove **{n} item(s)** from the stack.
 value-remaining: The remaining value ({value}) will be split into another stack.
 contents: Choose how much material you want to assign to the Refined Item
-next-level: Next Level
-next-whole: Next Whole
+skip-to-level: Skip to Level
+skip-to-whole: Skip to Whole

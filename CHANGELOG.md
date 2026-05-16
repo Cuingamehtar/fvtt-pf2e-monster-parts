@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.7.2] - 2026-05-16
+
+### Added
+- Add Holy and Unholy imbued properties.
+
+### Changed
+- Improved rounding buttons when transferring material value from monster part to a refined item and extracting material from a refined item.
+
 ## [0.7.1] - 2026-05-11
 
 ### Added

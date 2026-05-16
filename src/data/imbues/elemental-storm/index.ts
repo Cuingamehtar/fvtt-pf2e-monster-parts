@@ -9,6 +9,7 @@ import { createImbuePoison } from "./poison";
 import { createImbueMind } from "./mind";
 import { createImbueDarkness } from "./darkness";
 import { createImbueHoly } from "./holy";
+import { createImbueUnholy } from "./unholy";
 
 export function createElementalStormImbues() {
     return [
@@ -23,5 +24,6 @@ export function createElementalStormImbues() {
         ...createImbueLife(),
         ...createImbueMind(),
         ...createImbuePoison(),
+        ...createImbueUnholy(),
     ];
 }

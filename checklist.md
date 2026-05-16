@@ -1,3 +1,6 @@
+❌ - Still on the todo list
+🚫 - not going to do it as it was replaced by another
+
 | Imbuement        | Source | Status | 
 |:-----------------|--------|--------|
 | Acid             | BB     | ✔      |
@@ -24,7 +27,7 @@
 | Force            | BB/ES  | ✔      |
 | Fortification    | BB     | ✔      |
 | Good*            | BB     | 🚫     |
-| Holy             | ES     | ❌      |
+| Holy             | ES     | ✔      |
 | Ice              | ES     | ❌      |
 | Intelligence     | BB     | ✔      |
 | Lawful*          | BB     | 🚫     |
@@ -53,7 +56,7 @@
 | Tangle Shield    | ES     | ❌      |
 | Throwing         | SU     | ❌      |
 | Time             | ES     | ❌      |
-| Unholy           | ES     | ❌      |
+| Unholy           | ES     | ✔      |
 | Wild             | BB     | ✔      |
 | Water            | SU/ES  | ❌      |
 | Winged           | BB     | ✔      |

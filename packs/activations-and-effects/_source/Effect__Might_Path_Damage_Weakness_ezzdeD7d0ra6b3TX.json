@@ -285,6 +285,25 @@
             ]
           },
           {
+            "label": "PF2E.TraitUnholy",
+            "value": "unholy",
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:holy:unholy",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "label": "PF2E.TraitVitality",
             "value": "vitality",
             "predicate": [
@@ -350,6 +369,7 @@
               "might-path-weakness:mental",
               "might-path-weakness:poison",
               "might-path-weakness:sonic",
+              "might-path-weakness:unholy",
               "might-path-weakness:vitality",
               "might-path-weakness:void"
             ]

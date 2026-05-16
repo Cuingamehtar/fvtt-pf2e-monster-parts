@@ -4,6 +4,7 @@ import { Material, MaterialValue } from "@src/material";
 import { HTMLRangePickerElement } from "foundry-pf2e/foundry/client/applications/elements/_module";
 import { SkipSliderButtons } from "@src/app/elements";
 import { RefinedItem } from "@src/refined-item";
+import { ApplicationRenderContext } from "foundry-pf2e/foundry/client/applications/_types";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -76,7 +77,7 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
             maxLevel > currentLevel
                 ? new SkipSliderButtons(
                       "level",
-                      "Skip to Level",
+                      t("dialog.assign-material-dialog.skip-to-level"),
                       Array.fromRange(
                           maxLevel - currentLevel,
                           currentLevel + 1,
@@ -90,7 +91,7 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
 
         const skipButtonsWhole = new SkipSliderButtons(
             "whole",
-            "Skip to Whole",
+            t("dialog.assign-material-dialog.skip-to-whole"),
             Array.fromRange(monsterPart.quantity + 1, 0).map(
                 (n) => monsterPart.getValue(n).gp,
             ),
@@ -136,8 +137,9 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
         this.resolve = options.resolve;
     }
 
-    // @ts-expect-error
-    protected override async _prepareContext(): Promise<AssignMaterialContext> {
+    protected override async _prepareContext(): Promise<
+        AssignMaterialContext & ApplicationRenderContext
+    > {
         const buttons = [
             {
                 type: "submit",
@@ -180,8 +182,7 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
         );
     }
 
-    // @ts-expect-error
-    protected override _onSubmitForm(
+    protected override async _onSubmitForm(
         formConfig: fa.ApplicationFormConfiguration,
         event: Event,
     ) {
@@ -190,27 +191,26 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
         const value = MaterialValue.fromSystemCurrency(
             Number(this.#getSlider().value),
         );
-        this.close().then((_) => {
-            if (value.gp == 0) {
-                this.resolve({
-                    value,
-                    remainder: new MaterialValue(0),
-                    goneFromStack: 0,
+        if (value.gp == 0) {
+            this.resolve({
+                value,
+                remainder: new MaterialValue(0),
+                goneFromStack: 0,
+            });
+        } else {
+            const { consumedItems, valueRemaining } =
+                AssignMaterialDialog.#calculateConsumedItems({
+                    valueSingle: this.monsterPart.getValue(1),
+                    nItems: this.monsterPart.quantity,
+                    valueConsumed: value,
                 });
-            } else {
-                const { consumedItems, valueRemaining } =
-                    AssignMaterialDialog.#calculateConsumedItems({
-                        valueSingle: this.monsterPart.getValue(1),
-                        nItems: this.monsterPart.quantity,
-                        valueConsumed: value,
-                    });
-                this.resolve({
-                    value,
-                    remainder: valueRemaining,
-                    goneFromStack: consumedItems,
-                });
-            }
-        });
+            this.resolve({
+                value,
+                remainder: valueRemaining,
+                goneFromStack: consumedItems,
+            });
+        }
+        await this.close();
     }
 
     #getSlider() {

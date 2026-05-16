@@ -105,6 +105,7 @@ const damage = {
         predicate,
         selector,
         hideIfDisabled,
+        critical,
     }: {
         type?: ValueOf<typeof DAMAGE_TYPES>;
         category?: "persistent" | "splash";
@@ -113,6 +114,7 @@ const damage = {
         predicate?: PredicateStatement[];
         selector?: string;
         hideIfDisabled?: boolean;
+        critical?: boolean;
     }): Omit<RuleElementEffect, "levelMin" | "levelMax"> {
         if (
             typeof value === "undefined" ||
@@ -123,13 +125,14 @@ const damage = {
                 type: "RuleElement",
                 rule: {
                     key: "FlatModifier",
-                    selector: selector ?? "{item|_id}-damage",
+                    selector: selector ?? Selector.ItemDamage,
                     damageType: type,
                     damageCategory: category,
                     value: value ?? 1,
                     predicate,
                     label: label as string,
                     hideIfDisabled,
+                    critical: critical,
                 },
             };
         } else {
@@ -138,7 +141,7 @@ const damage = {
                 type: "RuleElement",
                 rule: {
                     key: "DamageDice",
-                    selector: selector ?? "{item|_id}-damage",
+                    selector: selector ?? Selector.ItemDamage,
                     damageType: type,
                     category: category,
                     dieSize: m?.[2] ?? "d4",
@@ -146,6 +149,7 @@ const damage = {
                     predicate,
                     label: label as string,
                     hideIfDisabled,
+                    critical,
                 },
             };
         }

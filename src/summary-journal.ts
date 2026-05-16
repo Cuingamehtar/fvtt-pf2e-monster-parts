@@ -44,22 +44,29 @@ function generatePage(m: MaterialData) {
     let description = i18nFormat(m.description) as string;
 
     if (game.settings.get(MODULE_ID, "show-debug-info")) {
+        const keyLevels = [
+            ...description
+                .matchAll(/<li>(?:<p>)?<strong>(\d+)?/g)
+                .map(([, l]) => Number(l))
+                .filter(Boolean),
+        ];
+
         // debug
         const tableHeader = `<tr><th>Entry</th>${Array.fromRange(21)
             .map(
                 (i) =>
-                    `<th style="width:20px;writing-mode: vertical-lr;padding: 0">${i}</th>`,
+                    `<th style="width:20px;writing-mode: vertical-lr;padding: 0;${thresholdLine(i, keyLevels)}">${i}</th>`,
             )
             .join("")}</tr>`;
 
         const tableRows = m.header?.labels
             ?.sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0))
-            ?.map((l) => debugLine(l))
+            ?.map((l) => debugLine(l, keyLevels))
             .join("");
         const headerTable = `<table style="table-layout: fixed;">${tableHeader}${tableRows}</table>`;
 
         const effectRows =
-            m.effects?.map((l) => debugLineEffect(l)).join("") ?? [];
+            m.effects?.map((l) => debugLineEffect(l, keyLevels)).join("") ?? [];
         const effectTable = `<table style="table-layout: fixed;">${tableHeader}${effectRows}</table>`;
 
         description += `<details><summary>Debug details</summary>${headerTable}${effectTable}</details>`;
@@ -74,20 +81,20 @@ function generatePage(m: MaterialData) {
     };
 }
 
-function debugLine(label: HeaderLabel) {
+function debugLine(label: HeaderLabel, keyLevels: number[]) {
     const name = i18nFormat(label.text);
     const cells = Array.fromRange(21)
         .map((i) =>
             i >= label.levelMin &&
             (typeof label.levelMax == "undefined" || i <= label.levelMax)
-                ? `<td style="vertical-align: middle;padding: 0;width:20px;"><div style="background-color: var(--color-text-primary); height:2em"></div></td>`
-                : `<td></td>`,
+                ? `<td style="vertical-align: middle;padding: 0;width:20px;${thresholdLine(i, keyLevels)}"><div style="background-color: var(--color-text-primary); height:2em"></div></td>`
+                : `<td style="${thresholdLine(i, keyLevels)}"></td>`,
         )
         .join("");
     return `<tr><td style="vertical-align: middle;"><div style="vertical-align: middle;overflow-y: scroll; height:4em">${name}</div></td>${cells}</tr>`;
 }
 
-function debugLineEffect(effect: MaterialEffect) {
+function debugLineEffect(effect: MaterialEffect, keyLevels: number[]) {
     let name = "";
     let tooltip = "";
     if (effect.type == "Alteration") {
@@ -116,9 +123,13 @@ function debugLineEffect(effect: MaterialEffect) {
         .map((i) =>
             i >= effect.levelMin &&
             (typeof effect.levelMax == "undefined" || i <= effect.levelMax)
-                ? `<td style="vertical-align: middle;padding: 0;width:20px;"><div style="background-color: var(--color-text-primary); height:2em;"></div></td>`
-                : `<td></td>`,
+                ? `<td style="vertical-align: middle;padding: 0;width:20px;${thresholdLine(i, keyLevels)}"><div style="background-color: var(--color-text-primary); height:2em;"></div></td>`
+                : `<td style="${thresholdLine(i, keyLevels)}"></td>`,
         )
         .join("");
     return `<tr><td style="vertical-align: middle;"><div style="vertical-align: middle;overflow-y: auto; height:4em" ${tooltip ? `data-tooltip='${tooltip}'` : ""}>${name}</div></td>${cells}</tr>`;
+}
+
+function thresholdLine(level: number, thresholds: number[]) {
+    return thresholds.includes(level) ? "border-left:2px solid" : "";
 }

@@ -1,0 +1,235 @@
+flavor: You imbue the weapon with vile corrupt unholy energy to defeat virtuous foes.
+against-holy: Unholy Imbuement (Against Holy)
+strike-holy-only: >-
+  Strikes with the weapon deal additional {damageHoly} to holy
+  creatures and gain the unholy trait.
+strike-normal-and-holy: >-
+  Strikes with the weapon deal additional {damageHoly} to holy creatures and
+  {damageNormal} to other creatures, and gain the unholy trait.
+persistent-holy-only: >-
+  Strikes with the weapon deal {damageHoly} to holy creatures, and the persistent damage has the unholy trait.
+persistent-normal-and-holy: >-
+  Strikes with the weapon deal {damageHoly} to holy creatures and {damageNormal} to other creatures, and the persistent damage has the unholy trait.
+magic:
+  label: Unholy (Magic)
+  description: >-
+    **Type** Weapon
+
+
+    **Parts** The monster must have an unholy trait or an ability or spell with the unholy trait.
+
+    - - -
+
+    **Effect** You imbue the weapon with vile corrupt unholy energy to defeat virtuous foes.
+
+
+    **Path** Magic; The spells granted by this imbued property are always divine. All sanctified spells from this path cast by the weapon are
+    always sanctified unholy, regardless of the wielder’s sanctification
+    or lack thereof.
+
+    - **2nd** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.qwZBXN6zBoB9BHXE]{Divine Lance} as a
+    cantrip, heightened to half the item’s level rounded up.
+
+    - **4th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.gMODOGamz88rgHuf]{Protection} once per
+    day.
+
+    - **8th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.sRfSBHWHdbIa0aGc]{Chilling Darkness} once per
+    day.
+
+    - **10th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.hVU9msO9yGkxKZ3J]{Divine Wrath} once
+    per day.
+
+    - **12th** Strikes with the weapon deal 1 additional spirit damage to holy
+    creatures and gain the unholy trait.
+
+    - **14th** The additional spirit damage increases to 1d6 against holy
+    creatures, and the weapon deals 1 additional spirit damage against other
+    creatures.
+
+    - **16th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.sX2o0HH4RjJDAZ8C]{Divine Decree} and
+    the weapon’s _divine wrath_ heightens to 5th rank.
+
+    - **18th** The additional spirit damage increases to 1d4, or 2d4 against
+    holy creatures.
+
+    - **20th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.ZqmP9gijBmK7y8Xy]{Weapon of Judgment}
+    and the weapon’s _divine wrath_ heightens to 6th rank.
+  header:
+    level-4-spells: >-
+      The weapon can cast
+      @UUID[Compendium.pf2e.spells-srd.Item.gMODOGamz88rgHuf]{Protection} once
+      per day.
+    level-8-spells: >-
+      The weapon can cast
+      @UUID[Compendium.pf2e.spells-srd.Item.gMODOGamz88rgHuf]{Protection} and
+      @UUID[Compendium.pf2e.spells-srd.Item.sRfSBHWHdbIa0aGc]{Chilling Darkness} once
+      per day each.
+    level-10-spells: >-
+      The weapon can cast
+      @UUID[Compendium.pf2e.spells-srd.Item.gMODOGamz88rgHuf]{Protection},
+      @UUID[Compendium.pf2e.spells-srd.Item.sRfSBHWHdbIa0aGc]{Chilling Darkness} and
+      @UUID[Compendium.pf2e.spells-srd.Item.hVU9msO9yGkxKZ3J]{Divine Wrath} once
+      per day each.
+    level-16-spells: >-
+      The weapon can cast
+      @UUID[Compendium.pf2e.spells-srd.Item.gMODOGamz88rgHuf]{Protection},
+      @UUID[Compendium.pf2e.spells-srd.Item.sRfSBHWHdbIa0aGc]{Chilling Darkness}, 5th
+      rank @UUID[Compendium.pf2e.spells-srd.Item.hVU9msO9yGkxKZ3J]{Divine Wrath}
+      and @UUID[Compendium.pf2e.spells-srd.Item.sX2o0HH4RjJDAZ8C]{Divine Decree}
+      once per day each.
+    level-20-spells: >-
+      The weapon can cast
+      @UUID[Compendium.pf2e.spells-srd.Item.gMODOGamz88rgHuf]{Protection},
+      @UUID[Compendium.pf2e.spells-srd.Item.sRfSBHWHdbIa0aGc]{Chilling Darkness}, 6th
+      rank @UUID[Compendium.pf2e.spells-srd.Item.hVU9msO9yGkxKZ3J]{Divine
+      Wrath}, @UUID[Compendium.pf2e.spells-srd.Item.sX2o0HH4RjJDAZ8C]{Divine
+      Decree} and @UUID[Compendium.pf2e.spells-srd.Item.ZqmP9gijBmK7y8Xy]{Weapon
+      of Judgment} once per day each.
+might:
+  label: Unholy (Might)
+  description: >-
+    **Type** Weapon
+
+
+    **Parts** The monster must have an unholy trait or an ability or spell with
+    the unholy trait.
+
+    - - -
+
+    **Effect** You imbue the weapon with vile corrupt unholy energy to defeat
+    virtuous foes.
+
+
+    **Path** Might
+
+    - **4th** Strikes with the weapon deal 1 additional spirit damage to holy
+    creatures and gain the unholy trait.
+
+    - **8th** The additional spirit damage increases to 1d6 against holy
+    creatures, and the weapon deals 1 additional spirit damage against other
+    creatures.
+
+    - **10th** The additional spirit damage increases to 1d4, or 1d8 against
+    holy creatures.
+
+    - **12th** On a critical hit against a holy creature, you deal 2d8 persistent
+    bleed damage.
+
+    - **14th** The spirit damage dealt by this imbued property ignores
+    resistances.
+
+    - **18th** The additional spirit damage increases to 1d6, or 1d12 against
+    holy creatures.
+
+    - **20th** On a successful Strike with the weapon, before applying spirit
+    damage, a target that isn’t unholy gains weakness 1 to unholy until the
+    beginning of your next turn.
+  effects:
+    level-14-resistance: The spirit damage dealt by this imbued property ignores resistances.
+    level-20-weakness: >-
+      On a successful Strike with the weapon, before applying spirit damage, a
+      target that isn’t holy gains weakness 1 to holy until the beginning of
+      your next turn.
+      @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
+      Might Path Damage Weakness}
+  header:
+    level-12-persistent: >-
+      On a critical hit against a holy creature, you deal 2d8 persistent
+      bleed damage.
+    level-14-resistance: The spirit damage dealt by this imbued property ignores resistances.
+    level-20-weakness: >-
+      On a successful Strike with the weapon, before applying spirit damage, a
+      target that isn’t unholy gains weakness 1 to unholy until the beginning of
+      your next turn.
+tech:
+  label: Unholy (Technique)
+  description: >-
+    **Type** Weapon
+
+
+    **Parts** The monster must have an unholy trait or an ability or spell with
+    the unholy trait.
+
+    - - -
+
+    **Effect** You imbue the weapon with vile corrupt unholy energy to defeat
+    virtuous foes.
+
+
+    **Path** Technique
+
+    - **6th** Strikes with the weapon deal 1 additional spirit damage to unholy
+    creatures and gain the holy trait.
+
+    - **8th** Strikes with the weapon deal 1 persistent spirit damage to unholy
+    creatures, and the persistent damage has the holy trait.
+
+    - **10th** The persistent spirit damage increases to 1d4, or 1d8 against
+    unholy creatures.
+
+    - **12th** On a critical hit against an unholy creature, you protect others
+    from the evildoer’s attacks. They take a –1 status penalty on attack rolls
+    against creatures other than you until the end of your next turn.
+
+    - **14th** The spirit damage dealt by this imbued property (including
+    persistent spirit damage) ignores resistances.
+
+    - **16th** On a critical hit against an unholy creature, you vow to
+    retaliate when the evildoer strikes innocents or allies. If they attack and
+    damage a creature other than you before the end of your next turn, they
+    become
+    @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Off-Guard}
+    against your attacks with the imbued weapon until the end of your next turn.
+
+    - **18th** The persistent spirit damage on a hit increases to 1d8, or 2d8
+    against unholy creatures.
+
+    - **20th** Damaging innocents accelerates the pace of an unholy creature’s
+    persistent damage from the weapon. Each time it attacks and damages a
+    creature other than you, it takes the imbued property’s 2d8 persistent
+    damage and then attempts the flat check to remove the persistent damage that
+    normally happens at the end of its turn.
+  effects:
+    level-12-penalty: >-
+      On a critical hit against an unholy creature, they take a –1 status
+      penalty on attack rolls against creatures other than you until the end of
+      your next turn.
+    level-14-resistance: >-
+      The spirit damage dealt by this imbued property (including persistent
+      spirit damage) ignores resistances.
+    level-16-retaliate: >-
+      On a critical hit against an unholy creature, if they attack and damage a
+      creature other than you before the end of your next turn, they become
+      @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Off-Guard}
+      against your attacks with the imbued weapon until the end of your next
+      turn.
+    level-20-acceleration: >-
+      Each time the damaged enemy attacks and damages a creature other than you,
+      it takes the imbued property’s 2d8 persistent damage and then attempts the
+      flat check to remove the persistent damage that normally happens at the
+      end of its turn.
+  header:
+    level-12-penalty: >-
+      On a critical hit against an unholy creature, they take a –1 status
+      penalty on attack rolls against creatures other than you until the end of
+      your next turn.
+    level-14-resistance: >-
+      The spirit damage dealt by this imbued property (including persistent
+      spirit damage) ignores resistances.
+    level-16-retaliate: >-
+      On a critical hit against an unholy creature, if they attack and damage a
+      creature other than you before the end of your next turn, they become
+      @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Off-Guard}
+      against your attacks with the imbued weapon until the end of your next
+      turn.
+    level-20-acceleration: >-
+      Each time the damaged enemy attacks and damages a creature other than you,
+      it takes the imbued property’s 2d8 persistent damage and then attempts the
+      flat check to remove the persistent damage that normally happens at the
+      end of its turn.

@@ -184,11 +184,8 @@ export class ModuleHooks {
                           const d = new AfterCombatDialog({
                               npcs,
                               form: {
-                                  handler: async (
-                                      _event: Event | SubmitEvent,
-                                      _form: HTMLFormElement,
-                                      _formData: foundry.applications.ux.FormDataExtended,
-                                  ) => resolve(d.npcs),
+                                  handler: async (): Promise<void> =>
+                                      resolve(d.npcs),
                               },
                           });
                           d.render(true);

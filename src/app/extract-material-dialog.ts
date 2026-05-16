@@ -70,7 +70,7 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
 
         const skipButtonsLevel = new SkipSliderButtons(
             "level",
-            "Skip to Level",
+            t("dialog.extract-material-dialog.skip-to-level"),
             Array.fromRange(currentLevel + 1)
                 .map((l) =>
                     material.value
@@ -114,7 +114,9 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
         this.resolve = options.resolve;
     }
 
-    protected override async _prepareContext(): Promise<ExtractMaterialContext> {
+    protected override async _prepareContext(): Promise<
+        ExtractMaterialContext & ApplicationRenderContext
+    > {
         const buttons = [
             {
                 type: "submit",
@@ -136,15 +138,7 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
         event: Event,
     ) {
         super._onChangeForm(formConfig, event);
-
-        const subtracted = MaterialValue.fromSystemCurrency(
-            this.#getSlider().value,
-        );
-
-        const button = this.element.querySelector(
-            'button[data-action="previousLevel"]',
-        ) as HTMLButtonElement;
-        button.disabled = subtracted.gp >= this.maxValue.gp;
+        this.skipButtonsLevel.onFormChange(this.element);
 
         const hintDiv = this.element.querySelector('[id="hint-strings"]')!;
 

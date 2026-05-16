@@ -5,17 +5,17 @@ import { MaterialData } from "../../material";
 import { Spells } from "@data/spells";
 import * as R from "remeda";
 
-export function createImbueHoly(): MaterialData[] {
-    const lkey = lkeygen("data.imbuement.elemental-storm.holy" as const);
+export function createImbueUnholy(): MaterialData[] {
+    const lkey = lkeygen("data.imbuement.elemental-storm.unholy" as const);
 
     const base = {
         type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
-        // The monster must have a holy trait or an ability or spell with the holy trait.
+        // The monster must have an unholy trait or an ability or spell with the unholy trait.
         monsterPredicate: [
             {
                 or: [
-                    "self:trait:holy",
+                    "self:trait:unholy",
                     {
                         and: [
                             {
@@ -26,7 +26,7 @@ export function createImbueHoly(): MaterialData[] {
                                 ],
                             },
                             {
-                                or: ["item:trait:holy"],
+                                or: ["item:trait:unholy"],
                             },
                         ],
                     },
@@ -38,7 +38,7 @@ export function createImbueHoly(): MaterialData[] {
     const magic = R.pipe(
         {
             ...base,
-            key: "imbue:holy:magic",
+            key: "imbue:unholy:magic",
             label: { type: "key", key: lkey("magic.label") },
             description: { type: "key", key: lkey("magic.description") },
             spellTraditions: ["divine"],
@@ -51,22 +51,22 @@ export function createImbueHoly(): MaterialData[] {
                 [12, 14, 18],
                 helpers.sequentialData(
                     {
-                        damageUnholy: "1",
-                        key: lkey("strike-unholy-only"),
+                        damageHoly: "1",
+                        key: lkey("strike-holy-only"),
                     },
                     {
-                        damageUnholy: "1d6",
+                        damageHoly: "1d6",
                         damageNormal: "1",
-                        key: lkey("strike-normal-and-unholy"),
+                        key: lkey("strike-normal-and-holy"),
                     },
-                    { damageUnholy: "2d4", damageNormal: "1d4" },
+                    { damageHoly: "2d4", damageNormal: "1d4" },
                 ),
                 ({
-                    damageUnholy,
+                    damageHoly,
                     damageNormal,
                     key,
                 }: {
-                    damageUnholy: string;
+                    damageHoly: string;
                     damageNormal: string;
                     key: I18nKey;
                 }) => ({
@@ -74,10 +74,10 @@ export function createImbueHoly(): MaterialData[] {
                         type: "key",
                         key: key,
                         parameters: {
-                            damageUnholy: i18nFormat({
+                            damageHoly: i18nFormat({
                                 type: "key",
                                 key: "pf2e-monster-parts.damage.type.spirit",
-                                parameters: { value: damageUnholy },
+                                parameters: { value: damageHoly },
                             }),
                             damageNormal: i18nFormat({
                                 type: "key",
@@ -99,7 +99,7 @@ export function createImbueHoly(): MaterialData[] {
                         type: "spirit",
                         value: damage,
                         label: lkey("magic.label"),
-                        predicate: [{ not: "target:trait:unholy" }],
+                        predicate: [{ not: "target:trait:holy" }],
                     }),
             ),
         ),
@@ -111,8 +111,8 @@ export function createImbueHoly(): MaterialData[] {
                     helpers.damage.effect({
                         type: "spirit",
                         value: damage,
-                        label: lkey("against-unholy"),
-                        predicate: ["target:trait:unholy"],
+                        label: lkey("against-holy"),
+                        predicate: ["target:trait:holy"],
                         hideIfDisabled: true,
                     }),
             ),
@@ -159,7 +159,7 @@ export function createImbueHoly(): MaterialData[] {
             {
                 levelMin: 8,
                 ...helpers.spellActivation({
-                    uuid: Spells.HolyLight,
+                    uuid: Spells.ChillingDarkness,
                 }),
             },
             ...helpers.leveledEffects([10, 16, 20], [undefined, 5, 6], (rank) =>
@@ -186,7 +186,7 @@ export function createImbueHoly(): MaterialData[] {
     const might = R.pipe(
         {
             ...base,
-            key: "imbue:holy:might",
+            key: "imbue:unholy:might",
             label: { type: "key", key: lkey("might.label") },
             description: { type: "key", key: lkey("might.description") },
             header: {
@@ -195,26 +195,26 @@ export function createImbueHoly(): MaterialData[] {
         },
         helpers.addGroup({
             labels: helpers.leveledLabels(
-                [6, 8, 10, 18],
+                [4, 8, 10, 18],
                 helpers.sequentialData(
                     {
-                        damageUnholy: "1",
-                        key: lkey("strike-unholy-only"),
+                        damageHoly: "1",
+                        key: lkey("strike-holy-only"),
                     },
                     {
-                        damageUnholy: "1d6",
+                        damageHoly: "1d6",
                         damageNormal: "1",
-                        key: lkey("strike-normal-and-unholy"),
+                        key: lkey("strike-normal-and-holy"),
                     },
-                    { damageUnholy: "1d8", damageNormal: "1d4" },
-                    { damageUnholy: "1d12", damageNormal: "1d6" },
+                    { damageHoly: "1d8", damageNormal: "1d4" },
+                    { damageHoly: "1d12", damageNormal: "1d6" },
                 ),
                 ({
-                    damageUnholy,
+                    damageHoly,
                     damageNormal,
                     key,
                 }: {
-                    damageUnholy: string;
+                    damageHoly: string;
                     damageNormal: string;
                     key: I18nKey;
                 }) => ({
@@ -222,10 +222,10 @@ export function createImbueHoly(): MaterialData[] {
                         type: "key",
                         key: key,
                         parameters: {
-                            damageUnholy: i18nFormat({
+                            damageHoly: i18nFormat({
                                 type: "key",
                                 key: "pf2e-monster-parts.damage.type.spirit",
-                                parameters: { value: damageUnholy },
+                                parameters: { value: damageHoly },
                             }),
                             damageNormal: i18nFormat({
                                 type: "key",
@@ -246,7 +246,7 @@ export function createImbueHoly(): MaterialData[] {
                             type: "spirit",
                             value: damage,
                             label: lkey("might.label"),
-                            predicate: [{ not: "target:trait:unholy" }],
+                            predicate: [{ not: "target:trait:holy" }],
                             hideIfDisabled: true,
                         }),
                 ),
@@ -257,8 +257,8 @@ export function createImbueHoly(): MaterialData[] {
                         helpers.damage.effect({
                             type: "spirit",
                             value: damage,
-                            label: lkey("against-unholy"),
-                            predicate: ["target:trait:unholy"],
+                            label: lkey("against-holy"),
+                            predicate: ["target:trait:holy"],
                             hideIfDisabled: true,
                         }),
                 ),
@@ -269,21 +269,20 @@ export function createImbueHoly(): MaterialData[] {
                 levelMin: 12,
                 text: {
                     type: "key",
-                    key: lkey("might.header.level-12-penalty"),
+                    key: lkey("might.header.level-12-persistent"),
                 },
                 sort: 1,
             },
             effects: {
                 levelMin: 12,
-                type: "RuleElement",
-                rule: {
-                    key: "Note",
-                    outcome: ["criticalSuccess"],
-                    text: lkey("might.effects.level-12-penalty"),
-                    title: lkey("might.label"),
-                    predicate: ["target:trait:unholy"],
-                    selector: [Selector.ItemAttack],
-                },
+                ...helpers.damage.effect({
+                    type: "bleed",
+                    category: "persistent",
+                    value: "2d8",
+                    label: lkey("might.label"),
+                    critical: true,
+                    selector: Selector.ItemDamage,
+                }),
             },
         }),
         helpers.addGroup({
@@ -333,7 +332,7 @@ export function createImbueHoly(): MaterialData[] {
     const tech = R.pipe(
         {
             ...base,
-            key: "imbue:holy:tech",
+            key: "imbue:unholy:tech",
             label: { type: "key", key: lkey("tech.label") },
             description: { type: "key", key: lkey("tech.description") },
             header: {
@@ -345,9 +344,9 @@ export function createImbueHoly(): MaterialData[] {
                 levelMin: 6,
                 text: {
                     type: "key",
-                    key: lkey("strike-unholy-only"),
+                    key: lkey("strike-holy-only"),
                     parameters: {
-                        damageUnholy: i18nFormat({
+                        damageHoly: i18nFormat({
                             type: "key",
                             key: "pf2e-monster-parts.damage.type.spirit",
                             parameters: { value: 1 },
@@ -362,7 +361,7 @@ export function createImbueHoly(): MaterialData[] {
                     type: "spirit",
                     value: 1,
                     label: lkey("tech.label"),
-                    predicate: [{ not: "target:trait:unholy" }],
+                    predicate: [{ not: "target:trait:holy" }],
                     hideIfDisabled: true,
                 }),
             },
@@ -373,22 +372,22 @@ export function createImbueHoly(): MaterialData[] {
                     [8, 10, 18],
                     helpers.sequentialData(
                         {
-                            damageUnholy: "1",
-                            key: lkey("persistent-unholy-only"),
+                            damageHoly: "1",
+                            key: lkey("persistent-holy-only"),
                         },
                         {
-                            damageUnholy: "d8",
+                            damageHoly: "d8",
                             damageNormal: "d4",
-                            key: lkey("persistent-normal-and-unholy"),
+                            key: lkey("persistent-normal-and-holy"),
                         },
-                        { damageUnholy: "2d8", damageNormal: "d8" },
+                        { damageHoly: "2d8", damageNormal: "d8" },
                     ),
                     ({
-                        damageUnholy,
+                        damageHoly,
                         damageNormal,
                         key,
                     }: {
-                        damageUnholy: string;
+                        damageHoly: string;
                         damageNormal: string;
                         key: I18nKey;
                     }) => ({
@@ -396,10 +395,10 @@ export function createImbueHoly(): MaterialData[] {
                             type: "key",
                             key: key,
                             parameters: {
-                                damageUnholy: i18nFormat({
+                                damageHoly: i18nFormat({
                                     type: "key",
                                     key: "pf2e-monster-parts.damage.type.persistentSpirit",
-                                    parameters: { value: damageUnholy },
+                                    parameters: { value: damageHoly },
                                 }),
                                 damageNormal: i18nFormat({
                                     type: "key",
@@ -422,7 +421,7 @@ export function createImbueHoly(): MaterialData[] {
                             category: "persistent",
                             value: damage,
                             label: lkey("tech.label"),
-                            predicate: [{ not: "target:trait:unholy" }],
+                            predicate: [{ not: "target:trait:holy" }],
                             hideIfDisabled: true,
                         }),
                 ),
@@ -434,14 +433,13 @@ export function createImbueHoly(): MaterialData[] {
                             type: "spirit",
                             category: "persistent",
                             value: damage,
-                            label: lkey("against-unholy"),
-                            predicate: ["target:trait:unholy"],
+                            label: lkey("against-holy"),
+                            predicate: ["target:trait:holy"],
                             hideIfDisabled: true,
                         }),
                 ),
             ],
         }),
-        // TODO: ADD PENALTY EFFECT
         helpers.addGroup({
             labels: {
                 levelMin: 12,
@@ -457,7 +455,7 @@ export function createImbueHoly(): MaterialData[] {
                 rule: {
                     key: "Note",
                     outcome: ["criticalSuccess"],
-                    predicate: ["target:trait:unholy"],
+                    predicate: ["target:trait:holy"],
                     text: lkey("tech.effects.level-12-penalty"),
                     title: lkey("tech.label"),
                     selector: [Selector.ItemAttack],
@@ -498,7 +496,7 @@ export function createImbueHoly(): MaterialData[] {
                 type: "RuleElement",
                 rule: {
                     key: "Note",
-                    predicate: ["target:trait:unholy"],
+                    predicate: ["target:trait:holy"],
                     outcome: ["criticalSuccess"],
                     text: lkey("tech.effects.level-16-retaliate"),
                     title: lkey("tech.label"),
@@ -520,7 +518,7 @@ export function createImbueHoly(): MaterialData[] {
                 type: "RuleElement",
                 rule: {
                     key: "Note",
-                    predicate: ["target:trait:unholy"],
+                    predicate: ["target:trait:holy"],
                     text: lkey("tech.effects.level-20-acceleration"),
                     title: lkey("tech.label"),
                     selector: [Selector.ItemDamage],

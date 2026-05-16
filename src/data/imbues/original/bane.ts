@@ -229,6 +229,7 @@ function baneImbue(creature: string): MaterialData[] {
                     ["1", "d6", "d8", "d10"],
                     (damage: RollString) =>
                         helpers.damage.effect({
+                            type: "bleed",
                             value: damage,
                             category: "persistent",
                             label: labelMight,

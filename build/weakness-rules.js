@@ -67,6 +67,10 @@ const weaknessTypes = {
         imbuements: ["imbue:sonic:might", "imbue:wild:might"],
         wildDamageType: "wild:damage-type:6",
     },
+    unholy: {
+        label: "PF2E.TraitUnholy",
+        imbuements: ["imbue:holy:unholy"],
+    },
     vitality: {
         label: "PF2E.TraitVitality",
         imbuements: ["imbue:life:might"],
@@ -80,8 +84,8 @@ const weaknessTypes = {
 
 function commonWeaknessRE(weaknessTypes) {
     const predicate = Object.entries(weaknessTypes)
-        .filter(([_, v]) => !v.definition)
-        .map(([k, _]) => `might-path-weakness:${k}`);
+        .filter(([, v]) => !v.definition)
+        .map(([k]) => `might-path-weakness:${k}`);
     return {
         key: "Weakness",
         value: 1,
@@ -133,7 +137,7 @@ data.system.rules = [
     choiceRE,
     commonWeaknessRE(weaknessTypes),
     ...Object.entries(weaknessTypes)
-        .filter(([_, v]) => v.definition)
+        .filter(([, v]) => v.definition)
         .map(([type, value]) => weaknessRE(type, value)),
 ];
 
