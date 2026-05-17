@@ -155,11 +155,11 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
             skipButtonsLevel:
                 (await this.skipButtonsLevel?.getTemplate(maxValue)) ?? "",
             skipButtonsWhole: await this.skipButtonsWhole.getTemplate(maxValue),
-            hintText: AssignMaterialDialog.#prepareHintStrings.bind(this)(
+            hintText: AssignMaterialDialog.#prepareHintStrings.apply(this, [
                 this.maxValue,
                 this.monsterPart.quantity,
                 this.monsterPart.getValue(1),
-            ),
+            ]),
         };
     }
 
@@ -175,10 +175,13 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
         const slider = this.#getSlider();
         const hintDiv = this.element.querySelector('[id="hint-strings"]')!;
 
-        hintDiv.innerHTML = AssignMaterialDialog.#prepareHintStrings.bind(this)(
-            MaterialValue.fromSystemCurrency(Number(slider.value)),
-            this.monsterPart.quantity,
-            this.monsterPart.getValue(1),
+        hintDiv.innerHTML = AssignMaterialDialog.#prepareHintStrings.apply(
+            this,
+            [
+                MaterialValue.fromSystemCurrency(Number(slider.value)),
+                this.monsterPart.quantity,
+                this.monsterPart.getValue(1),
+            ],
         );
     }
 

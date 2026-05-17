@@ -1,0 +1,70 @@
+label: Dark Armor
+description: >-
+  **Type** Armor
+
+  **Parts** The monster must have the darkness or shadow trait or an ability or
+  spell with the darkness or shadow trait.
+
+  - - -
+
+  **Effect** You imbue your armor with the shrouded blackness of the night.
+
+  - **6th** Once per day, you can Activate the armor
+  to cast @UUID[Compendium.pf2e.spells-srd.Item.4GE2ZdODgIQtg51c]{Darkness}.
+
+  - **8th** You can use the _darkness_ activation once per hour.
+
+  - **10th** You can use the _darkness_ activation once per 10 minutes
+
+  - **12th** You can Activate the armor once per day for
+  two actions to gain darkvision for 1 hour; this
+  activation has the concentrate and manipulate traits.
+
+  - **14th** Your armor constantly gives you darkvision.
+
+  - **16th** When you use the _darkness_ activation, you can
+  choose to have the armor cast 4th-rank _darkness_ if you prefer.
+
+  - **18th** Your armor constantly gives you greater darkvision.
+
+  - **20th** Your armor constantly shrouds you in darkness and shadow,
+  causing you to be in dim light if you are
+  otherwise surrounded by bright light, darkness if you are
+  otherwise surrounded by dim light, or supernatural darkness as
+  from 4th-rank _darkness_ if you are otherwise surrounded by
+  darkness. Only you are affected by the altered light
+  level, not the rest of the environment. You can Activate
+  the armor for one action to end or reapply this
+  benefit; this activation has the concentrate trait.
+header:
+  flavor: You imbue your armor with the shrouded blackness of the night.
+  level-6-spell: >-
+    You can Activate the armor to cast
+    @UUID[Compendium.pf2e.spells-srd.Item.4GE2ZdODgIQtg51c]{Darkness}.
+  level-12-activation: >-
+    **Activate** <span class="action-glyph">2</span> (concentrate, manipulate)  
+    
+    **Frequency** {frequency}  
+    
+    **Effect** You gain darkvision for 1 hour.
+  level-14-passive: Your armor constantly gives you darkvision.
+  level-16-spell: >-
+    When you use the _darkness_ activation, you can choose to have the armor
+    cast 4th-rank
+    @UUID[Compendium.pf2e.spells-srd.Item.4GE2ZdODgIQtg51c]{Darkness} if you
+    prefer.
+  level-18-passive: Your armor constantly gives you greater darkvision.
+  level-20-passive: >-
+    Your armor constantly shrouds you in darkness and shadow, causing you to be
+    in dim light if you are otherwise surrounded by bright light, darkness if
+    you are otherwise surrounded by dim light, or supernatural darkness as from
+    4th-rank @UUID[Compendium.pf2e.spells-srd.Item.4GE2ZdODgIQtg51c]{Darkness}
+    if you are otherwise surrounded by darkness. Only you are affected by the
+    altered light level, not the rest of the environment.
+  level-20-activation: >-
+    You can Activate the armor for one action to end or reapply this benefit;
+    this activation has the concentrate trait.
+  frequency:
+    per-day: once per day
+    per-hour: once per hour
+    per-10-minutes: once per 10 minutes
