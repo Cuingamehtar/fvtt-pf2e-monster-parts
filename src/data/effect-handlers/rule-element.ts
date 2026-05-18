@@ -1,8 +1,8 @@
-import { RefinedItem } from "@src/refined-item";
 import { BaseMaterialEffect } from "../material";
 import { ItemCastSource, RuleElementEffectSource } from "../data-types";
-import { Utils, getSettingSafe } from "@src/utils";
+import { Utils, getSettingSafe, i18nFormat } from "@src/utils";
 import { SpellPF2e } from "foundry-pf2e";
+import { OwnedMaterial } from "@src/material";
 
 export type RuleElementEffect = BaseMaterialEffect & {
     type: "RuleElement";
@@ -17,15 +17,13 @@ function isItemCastRE(
 
 export class RuleElementEffectHandler {
     static async handleUpdate({
-        item,
         effect,
         changes,
-        materialLevel,
+        material,
     }: {
-        item: RefinedItem;
         effect: RuleElementEffect;
         changes: Record<string, unknown>;
-        materialLevel: number;
+        material: OwnedMaterial;
     }) {
         const property = foundry.utils.getProperty(changes, "system.==rules");
         let rule = effect.rule;
@@ -35,13 +33,21 @@ export class RuleElementEffectHandler {
             }
             const newRule = await prepareSpellRE(rule);
             if (!newRule) return;
-            newRule.dc ??= Utils.dcByLevel(materialLevel);
+            newRule.dc ??= Utils.dcByLevel(material.getLevel().value);
             newRule.rank ??= newRule.data?.spell.system.level.value;
-            const oldRule = item.item.system.rules.find(
+            const oldRule = material.parent.item.system.rules.find(
                 (r) => isItemCastRE(r) && r.uuid == newRule.uuid,
             );
             if (oldRule) newRule.data.value = oldRule.data.value;
             rule = newRule;
+        }
+        if (rule.key == "Note" && "text" in rule) {
+            if (typeof rule.text !== "string") {
+                rule = {
+                    ...rule,
+                    text: i18nFormat(rule.text, material.getRollOptions()),
+                };
+            }
         }
         if (Array.isArray(property)) {
             property.push(rule);

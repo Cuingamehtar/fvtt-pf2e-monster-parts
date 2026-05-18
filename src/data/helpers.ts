@@ -92,8 +92,8 @@ export function predicateAnySense() {
 
 export function skillsOfAttribute(attribute: keyof Abilities): SkillSlug[] {
     return Object.entries(CONFIG.PF2E.skills)
-        .filter(([_, v]) => v.attribute === attribute)
-        .map(([k, _]) => k as SkillSlug);
+        .filter(([, v]) => v.attribute === attribute)
+        .map(([k]) => k as SkillSlug);
 }
 
 const damage = {
@@ -273,8 +273,48 @@ function leveledLabels<T>(
         }));
 }
 
-function sequentialData<T>(...arr: Record<string, T>[]) {
-    return arr.reduce((acc: Record<string, T>[], d) => {
+type Overwrite<A, B> = Omit<A, keyof B> & B;
+
+function sequentialData<A>(a: A): [A];
+function sequentialData<A, B>(a: A, b: B): [A, Overwrite<A, B>];
+function sequentialData<A, B, C>(
+    a: A,
+    b: B,
+    c: C,
+): [A, Overwrite<A, B>, Overwrite<Overwrite<A, B>, C>];
+function sequentialData<A, B, C, D>(
+    a: A,
+    b: B,
+    c: C,
+    d: D,
+): [A, Overwrite<A, B>, Overwrite<Overwrite<Overwrite<A, B>, C>, D>];
+function sequentialData<A, B, C, D, E>(
+    a: A,
+    b: B,
+    c: C,
+    d: D,
+    e: E,
+): [
+    A,
+    Overwrite<A, B>,
+    Overwrite<Overwrite<Overwrite<A, B>, C>, D>,
+    Overwrite<Overwrite<Overwrite<Overwrite<A, B>, C>, D>, E>,
+];
+function sequentialData<A, B, C, D, E, F>(
+    a: A,
+    b: B,
+    c: C,
+    d: D,
+    e: E,
+    f: F,
+): [
+    A,
+    Overwrite<A, B>,
+    Overwrite<Overwrite<Overwrite<A, B>, C>, D>,
+    Overwrite<Overwrite<Overwrite<Overwrite<Overwrite<A, B>, C>, D>, E>, F>,
+];
+function sequentialData(...arr: any[]) {
+    return arr.reduce((acc, d) => {
         const e = { ...(acc[acc.length - 1] ?? {}), ...d };
         acc.push(e);
         return acc;

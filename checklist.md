@@ -7,7 +7,7 @@
 | Air              | SU/ES  | ✔      |
 | Bane             | BB     | ✔      |
 | Body             | ES     | ✔      |
-| Burning Barbs    | ES     | ❌      |
+| Burning Barbs    | ES     | ✔      |
 | Chaotic*         | BB     | 🚫     |
 | Charisma         | BB     | ✔      |
 | Cold*            | BB     | ✔      |
@@ -38,7 +38,7 @@
 | Metal            | ES     | ❌      |
 | Mind             | ES     | ❌      |
 | Mind Shield      | ES     | ❌      |
-| Mirrored         | SU     | ❌      |
+| Mirrored         | SU     | ✔      |
 | Music            | ES     | ❌      |
 | Negative*        | BB     | 🚫     |
 | Poison           | BB/ES  | ❌      |

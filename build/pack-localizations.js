@@ -32,15 +32,44 @@ export function mergeDeep(target, ...sources) {
     return mergeDeep(target, ...sources);
 }
 
-const substitutions = {
-    "’": "'",
-    "dc:resolve(item-level-dc)":
-        "dc:resolve(14 +@item.level +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0) +max(@item.level -24, 0))",
-};
+function getMaterialRollDataPath(key, value) {
+    function getFlagDataName(materialKey, value) {
+        function convertSlug(s) {
+            const parts = s.split("-");
+            return parts
+                .slice(1)
+                .reduce(
+                    (acc, e) => acc + e[0].toUpperCase() + e.slice(1),
+                    parts[0],
+                );
+        }
+        return convertSlug(`${materialKey.replaceAll(":", "-")}-${value}`);
+    }
+    return (
+        "@item.flags.pf2e-monster-parts.values." + getFlagDataName(key, value)
+    );
+}
 
+const substitutions = [
+    ["’", "'"],
+    [
+        "dc:resolve(item-level-dc)",
+        "dc:resolve(14 +@item.level +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0) +max(@item.level -24, 0))",
+    ],
+    [
+        /material-level\(([^)]+)\)/g,
+        (m, mat) => getMaterialRollDataPath(mat, "level") + ".value",
+    ],
+];
+
+/**
+ *
+ * @param {string} text
+ * @returns {string}
+ */
 function replaceSub(text) {
-    return Object.entries(substitutions).reduce(
-        (res, [from, to]) => res.replace(from, to),
+    return substitutions.reduce(
+        (res, [from, to]) => res.replaceAll(from, to),
         text,
     );
 }

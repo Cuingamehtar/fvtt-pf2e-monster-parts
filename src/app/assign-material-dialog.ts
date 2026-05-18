@@ -1,6 +1,6 @@
 import { Utils, t } from "@src/utils";
 import { MonsterPart } from "@src/monster-part";
-import { Material, MaterialValue } from "@src/material";
+import { Material, MaterialValue, OwnedMaterial } from "@src/material";
 import { HTMLRangePickerElement } from "foundry-pf2e/foundry/client/applications/elements/_module";
 import { SkipSliderButtons } from "@src/app/elements";
 import { RefinedItem } from "@src/refined-item";
@@ -53,7 +53,7 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
 
     monsterPart: MonsterPart;
     refinedItem: RefinedItem;
-    material: Material;
+    material: Material | OwnedMaterial;
     maxValue: MaterialValue;
     resolve: AssignMaterialDialogOptions["resolve"];
 
@@ -67,11 +67,14 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
         options.uniqueId = `assign-material-dialog-${options.monsterPart.item.id}`;
         const { monsterPart, refinedItem, material } = options;
 
-        const currentLevel = material.getLevel(refinedItem).value;
-        const maxLevel = Material.fromKey(
-            material.key,
-            material.value.add(monsterPart.getValue()).gp,
-        ).getLevel(refinedItem).value;
+        const currentLevel = Material.getLevel(material, refinedItem).value;
+        const maxLevel = Material.getLevel(
+            Material.fromKey(
+                material.key,
+                material.value.add(monsterPart.getValue()).gp,
+            ),
+            refinedItem,
+        ).value;
 
         const skipButtonsLevel =
             maxLevel > currentLevel
@@ -82,9 +85,11 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
                           maxLevel - currentLevel,
                           currentLevel + 1,
                       ).map((l) =>
-                          material
-                              .getThresholdForLevel(refinedItem, l)
-                              .toSystemCurrency(),
+                          Material.getThresholdForLevel(
+                              material,
+                              refinedItem,
+                              l,
+                          ).toSystemCurrency(),
                       ),
                   )
                 : undefined;
@@ -305,7 +310,7 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
 interface AssignMaterialDialogOptions {
     monsterPart: MonsterPart;
     refinedItem: RefinedItem;
-    material: Material;
+    material: Material | OwnedMaterial;
     resolve: (args: {
         value: MaterialValue;
         remainder: MaterialValue;

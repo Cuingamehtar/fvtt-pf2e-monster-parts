@@ -1,5 +1,5 @@
 import type { NPCPF2e } from "foundry-pf2e";
-import { unique } from "./utils";
+import * as R from "remeda";
 
 export function getExtendedNPCRollOptions(actor: NPCPF2e): string[] {
     const baseRollOptions = actor.getRollOptions();
@@ -38,7 +38,7 @@ export function getExtendedNPCRollOptions(actor: NPCPF2e): string[] {
 function getAbilityRanks(actor: NPCPF2e) {
     const abilities = actor.system.abilities;
     if (!abilities) return [];
-    const values = unique(Object.values(abilities).map((a) => a.mod)).sort(
+    const values = R.unique(Object.values(abilities).map((a) => a.mod)).sort(
         (a, b) => b - a,
     );
     return Object.entries(abilities).map(

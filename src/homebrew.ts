@@ -12,7 +12,7 @@ export async function loadHomebrewMaterials() {
             const json = await foundry.utils
                 .fetchJsonWithTimeout(f)
                 .then((r) => r)
-                .catch((_) => {
+                .catch(() => {
                     ui.notifications.error(
                         t("material.homebrew-file-invalid", { file: f }),
                     );

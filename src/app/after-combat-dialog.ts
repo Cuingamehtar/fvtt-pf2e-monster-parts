@@ -44,10 +44,9 @@ export class AfterCombatDialog extends HandlebarsApplicationMixin(
         },
     };
 
-    override async _onRender(
-        _context: object,
-        _options: foundry.applications.ApplicationRenderOptions,
-    ) {
+    override async _onRender() //        _context: object,
+    //       _options: foundry.applications.ApplicationRenderOptions,
+    {
         (
             this.element.querySelectorAll(
                 "input[type=checkbox]",

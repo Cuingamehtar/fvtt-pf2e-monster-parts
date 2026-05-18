@@ -1,7 +1,7 @@
 import { ItemPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
-import { Material, MaterialValue } from "./material";
+import { Material, MaterialValue, OwnedMaterial } from "./material";
 import { i18nFormat, t } from "./utils";
 import { dialogs } from "./app/dialogs";
 import { ModuleFlags, RefinedItemFlags } from "../types/global";
@@ -104,12 +104,16 @@ export class RefinedItem {
 
     get refinement() {
         const { refinement } = this.getFlag();
-        return Material.fromKey(refinement.key, refinement.value);
+        return Material.fromKey(refinement.key, refinement.value, {
+            parent: this,
+        });
     }
 
     get imbuements() {
         const { imbues } = this.getFlag();
-        return imbues.map((i) => Material.fromKey(i.key, i.value));
+        return imbues.map((i) =>
+            Material.fromKey(i.key, i.value, { parent: this }),
+        );
     }
 
     getFlag() {
@@ -122,13 +126,17 @@ export class RefinedItem {
         const { refinement, imbues } = this.getFlag();
         const m =
             refinement.key === key
-                ? Material.fromKey(refinement.key, refinement.value)
+                ? Material.fromKey(refinement.key, refinement.value, {
+                      parent: this,
+                  })
                 : R.pipe(
                       imbues,
                       R.find((imb) => imb.key === key),
-                      (m) => m && Material.fromKey(m.key, m.value),
+                      (m) =>
+                          m &&
+                          Material.fromKey(m.key, m.value, { parent: this }),
                   );
-        return m?.getLevel(this);
+        return m?.getLevel();
     }
 
     get coinValue() {
@@ -153,11 +161,11 @@ export class RefinedItem {
         };
 
         for (const m of [flag.refinement, ...flag.imbues]) {
-            const mat = Material.fromKey(m.key, m.value);
+            const mat = Material.fromKey(m.key, m.value, { parent: this });
             if (!mat) continue;
             updatedData["flags.pf2e-monster-parts.==values"][
                 Material.getFlagDataName(mat.data.key as string, "level")
-            ] = mat?.getLevel(this);
+            ] = mat.getLevel();
         }
 
         await this.item.update(updatedData);
@@ -165,12 +173,11 @@ export class RefinedItem {
         const effects = this.getEffects();
 
         const changes = { system: { ["==rules"]: [] } };
-        for (const { effect, materialLevel } of effects) {
+        for (const { effect, material } of effects) {
             await EffectHandlers.handleUpdate({
-                item: this,
                 effect,
                 changes,
-                materialLevel,
+                material,
             });
         }
         await this.item.update(changes);
@@ -188,21 +195,19 @@ export class RefinedItem {
     }
 
     getEffects() {
-        return [this.refinement, ...this.imbuements]
-            .filter((m): m is Material => !!m)
-            .flatMap((m: Material) =>
-                m.getEffects(this).map((effect) => ({
-                    materialLevel: m.getLevel(this).value,
-                    effect,
-                })),
-            );
+        return [this.refinement, ...this.imbuements].flatMap((m) =>
+            m.getEffects().map((effect) => ({
+                material: m,
+                effect,
+            })),
+        );
     }
 
     async descriptionHeader() {
-        const prepare = (m?: Material) => {
+        const prepare = (m?: OwnedMaterial) => {
             if (!m) return undefined;
-            const flavor = m.getFlavor(this);
-            const level = m.getLevel(this);
+            const flavor = m.getFlavor();
+            const level = m.getLevel();
 
             return {
                 key: m.data.key,
@@ -216,9 +221,7 @@ export class RefinedItem {
 
         const refinement = prepare(this.refinement);
 
-        const imbues = this.imbuements
-            .filter((m): m is Material => !!m)
-            .map((m) => prepare(m));
+        const imbues = this.imbuements.map((m) => prepare(m));
 
         const templatePath =
             "modules/pf2e-monster-parts/templates/refined-item-header.hbs";
@@ -227,7 +230,11 @@ export class RefinedItem {
                 refinement,
                 imbues,
             })
-            .then((t) => foundry.applications.ux.TextEditor.enrichHTML(t));
+            .then((t) =>
+                foundry.applications.ux.TextEditor.enrichHTML(t, {
+                    rollData: this.item.getRollData(),
+                }),
+            );
     }
 
     configure() {

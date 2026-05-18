@@ -186,8 +186,7 @@ export function registerSettings() {
                     ),
                 ),
             }),
-            // @ts-expect-error
-            { required: true, initial: baneTraitsDefault },
+            { required: true, initial: Array.from(baneTraitsDefault) },
         ),
         config: true,
         requiresReload: true,

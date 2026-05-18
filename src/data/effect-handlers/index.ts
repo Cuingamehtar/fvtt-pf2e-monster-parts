@@ -3,6 +3,7 @@ import { AlterationEffectHandler } from "./alteration";
 import { RefinedItem } from "@src/refined-item";
 import { MaterialEffect } from "../material";
 import { ApexEffectHandler } from "./apex";
+import { OwnedMaterial } from "@src/material";
 
 const f = foundry.data.fields;
 
@@ -54,10 +55,9 @@ export class EffectHandlers {
     };
 
     static async handleUpdate(params: {
-        item: RefinedItem;
         effect: MaterialEffect;
         changes: Record<string, unknown>;
-        materialLevel: number;
+        material: OwnedMaterial;
     }) {
         const handler = this.updateHandlers[params.effect.type];
         if (!handler) return;

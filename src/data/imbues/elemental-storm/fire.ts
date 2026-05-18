@@ -7,7 +7,7 @@ export function createImbueFire(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.fire" as const);
 
     const base = {
-        type: "imbuement" as "imbuement",
+        type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
         // The creature must have the fire trait or have an ability or spell
         // with the fire trait or that deals fire damage.

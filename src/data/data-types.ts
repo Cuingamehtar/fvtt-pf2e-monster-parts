@@ -64,6 +64,7 @@ type RuleElementEffectSource = {
         | DamageDiceSource
         | FlatModifierSource
         | (RollNoteSource & { key: "Note" })
+        | (Omit<RollNoteSource, "text"> & { key: "Note"; text: I18nEntry })
         | RollOptionSource
         | ItemAlterationSource
         | SenseSource

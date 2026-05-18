@@ -12,24 +12,19 @@ const materialAliases: Record<string, MaterialKey> = {
     "imbue:mental:tech": "imbue:mind:tech",
 };
 
-export class Material {
+interface MaterialContext {
+    parent: RefinedItem;
+}
+
+abstract class MaterialBase {
     data: MaterialData;
     value: MaterialValue;
     #itemPredicate?: Predicate;
     #creaturePredicate?: Predicate;
 
-    constructor(data: MaterialData, value: number = 0) {
+    protected constructor(data: MaterialData, value: number = 0) {
         this.data = data;
         this.value = new MaterialValue(value ?? 0);
-    }
-
-    static fromKey(key: MaterialKey, value?: number): Material;
-    static fromKey(key: string, value?: number): Material | undefined;
-    static fromKey(key: string | MaterialKey, value: number = 0) {
-        const config = getConfig();
-        const m = config.materials.get(materialAliases[key as string] ?? key);
-        if (!m) return undefined;
-        return new Material(m, value);
     }
 
     get key(): MaterialKey {
@@ -40,6 +35,10 @@ export class Material {
     }
     get label() {
         return this.data.label;
+    }
+
+    get coinValue() {
+        return this.value.toCoins();
     }
 
     testItem({
@@ -82,14 +81,51 @@ export class Material {
         );
         return false;
     }
+}
 
-    getLevel(item: RefinedItem): { value: number; capped: boolean } {
+export class Material extends MaterialBase {
+    constructor(data: MaterialData, value: number = 0) {
+        super(data, value);
+    }
+
+    static fromKey(key: MaterialKey, value?: number): Material;
+    static fromKey(
+        key: MaterialKey,
+        value: number,
+        context: MaterialContext,
+    ): OwnedMaterial;
+    static fromKey(key: string, value?: number): Material | undefined;
+    static fromKey(
+        key: string,
+        value: number,
+        context: MaterialContext,
+    ): OwnedMaterial | undefined;
+    static fromKey(
+        key: string | MaterialKey,
+        value: number = 0,
+        context?: MaterialContext,
+    ) {
+        const config = getConfig();
+        const m = config.materials.get(materialAliases[key as string] ?? key);
+        if (!m) return undefined;
+        if (context?.parent) return new OwnedMaterial(m, value, context);
+        return new Material(m, value);
+    }
+
+    getLevel(item: RefinedItem) {
+        return Material.getLevel(this, item);
+    }
+
+    static getLevel(
+        material: MaterialBase,
+        item: RefinedItem,
+    ): { value: number; capped: boolean } {
         const isLevelCapped = game.settings.get(
             MODULE_ID,
             "level-capped",
         ) as boolean;
         const config = getConfig();
-        const thresholds = config.thresholds[this.data.type];
+        const thresholds = config.thresholds[material.data.type];
         // get level thresholds from config and default to equipment for unknown item type;
         const itemType = (
             Object.keys(thresholds).includes(item.item.type)
@@ -97,10 +133,10 @@ export class Material {
                 : "equipment"
         ) as keyof typeof thresholds;
         const thr = thresholds[itemType];
-        let level = thr.findLastIndex((e) => this.value.gp >= e);
+        let level = thr.findLastIndex((e) => material.value.gp >= e);
         level = level === -1 ? 0 : level + 1;
         if (!isLevelCapped) return { value: level, capped: false };
-        if (this.type === "refinement") {
+        if (material.type === "refinement") {
             return item.item.parent?.level !== undefined
                 ? {
                       value: Math.min(level, item.item.parent.level),
@@ -108,7 +144,7 @@ export class Material {
                   }
                 : { value: level, capped: false };
         } else {
-            const refinementLevel = item.refinement?.getLevel(item).value ?? 0;
+            const refinementLevel = item.refinement?.getLevel().value ?? 0;
             return {
                 value: Math.min(level, refinementLevel),
                 capped: refinementLevel < level,
@@ -116,13 +152,17 @@ export class Material {
         }
     }
 
-    get coinValue() {
-        return this.value.toCoins();
+    getThresholdForLevel(item: RefinedItem, level: number) {
+        return Material.getThresholdForLevel(this, item, level);
     }
 
-    getThresholdForLevel(item: RefinedItem, level: number): MaterialValue {
+    static getThresholdForLevel(
+        material: MaterialBase,
+        item: RefinedItem,
+        level: number,
+    ): MaterialValue {
         const config = getConfig();
-        const thresholds = config.thresholds[this.data.type];
+        const thresholds = config.thresholds[material.data.type];
         // get level thresholds from config and default to equipment for unknown item type;
         const itemType = (
             Object.keys(thresholds).includes(item.item.type)
@@ -134,24 +174,25 @@ export class Material {
         return new MaterialValue(clampedLevel == 0 ? 0 : thr[clampedLevel - 1]);
     }
 
-    getEffects(item: RefinedItem) {
-        const level = this.getLevel(item).value;
+    static getEffects(material: MaterialBase, item: RefinedItem) {
+        const level = Material.getLevel(material, item).value;
+        if (typeof level === "undefined") return [];
         return (
-            this.data.effects?.filter(
+            material.data.effects?.filter(
                 (e) =>
                     e.levelMin <= level && (!e.levelMax || level <= e.levelMax),
             ) ?? []
         );
     }
 
-    getFlavor(item: RefinedItem) {
-        const level = this.getLevel(item).value;
+    static getFlavor(material: MaterialBase, item: RefinedItem) {
+        const level = Material.getLevel(material, item).value;
         const rollData = item.item.getRollData();
         const rollOptions = item.getRollOptions();
         return {
-            label: i18nFormat(this.data.label, rollData),
-            flavor: i18nFormat(this.data.header.description, rollData),
-            parts: this.data.header.labels
+            label: i18nFormat(material.data.label, rollData),
+            flavor: i18nFormat(material.data.header.description, rollData),
+            parts: material.data.header.labels
                 ?.filter(
                     (e) =>
                         e.levelMin <= level &&
@@ -187,6 +228,44 @@ export class Material {
             "@item.flags.pf2e-monster-parts.values." +
             Material.getFlagDataName(materialKey, value)
         );
+    }
+
+    static getRollOptions(material: MaterialBase, item?: RefinedItem) {
+        const opt: Record<string, unknown> = { value: material.value.gp };
+        if (!item) {
+            return { material: opt };
+        }
+        opt.level = Material.getLevel(material, item).value;
+        return { ...item.item.getRollData(), material: opt };
+    }
+}
+
+export class OwnedMaterial extends MaterialBase {
+    readonly parent: RefinedItem;
+
+    constructor(
+        data: MaterialData,
+        value: number = 0,
+        { parent }: MaterialContext,
+    ) {
+        super(data, value);
+        this.parent = parent;
+    }
+
+    getLevel() {
+        return Material.getLevel(this, this.parent);
+    }
+    getEffects() {
+        return Material.getEffects(this, this.parent);
+    }
+    getFlavor() {
+        return Material.getFlavor(this, this.parent);
+    }
+    getRollOptions() {
+        return Material.getRollOptions(this, this.parent);
+    }
+    getThresholdForLevel(level: number) {
+        return Material.getThresholdForLevel(this, this.parent, level);
     }
 }
 

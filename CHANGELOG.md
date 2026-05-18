@@ -4,10 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [0.7.3] - unreleased
+## [0.7.3] - 2026-05-18
 
 ### Added
-- Add Mirrored imbued property.
+- Add Mirrored and Burning Barbs imbued properties.
+
+### Changed
+- Added support for roll data in refined item headers and material-granted Notes.
 
 ## [0.7.2] - 2026-05-16
 

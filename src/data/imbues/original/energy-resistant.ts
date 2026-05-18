@@ -22,7 +22,7 @@ export function createImbueEnergyResistant(): MaterialData[] {
         return [
             {
                 key: `imbue:energy-resistant:armor:${type}`,
-                type: "imbuement" as "imbuement",
+                type: "imbuement" as const,
                 label: {
                     type: "key",
                     key: lkey("armor-label"),
@@ -52,16 +52,12 @@ export function createImbueEnergyResistant(): MaterialData[] {
                         {
                             levelMin: 1,
                             text: {
-                                type: "key" as "key",
+                                type: "key" as const,
                                 key: lkey("armor-effect"),
                                 parameters: {
                                     level: {
                                         type: "resolve",
-                                        value:
-                                            Material.getRollDataPath(
-                                                `imbue:energy-resistant:armor:${type}`,
-                                                "level",
-                                            ) + ".value",
+                                        value: "@material.level",
                                     },
                                 },
                             },
@@ -70,7 +66,7 @@ export function createImbueEnergyResistant(): MaterialData[] {
                 },
                 effects: [
                     {
-                        type: "RuleElement" as "RuleElement",
+                        type: "RuleElement" as const,
                         levelMin: 1,
                         rule: {
                             key: "Resistance",
@@ -116,7 +112,7 @@ export function createImbueEnergyResistant(): MaterialData[] {
                         {
                             levelMin: 1,
                             text: {
-                                type: "key" as "key",
+                                type: "key" as const,
                                 key: lkey("shield-effect"),
                                 parameters: {
                                     level: {

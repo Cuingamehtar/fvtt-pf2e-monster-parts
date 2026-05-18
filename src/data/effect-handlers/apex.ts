@@ -1,6 +1,7 @@
 import { BaseMaterialEffect } from "../material";
 import { RefinedItem } from "@src/refined-item";
 import { PhysicalItemPF2e } from "foundry-pf2e";
+import { OwnedMaterial } from "@src/material";
 
 export type ApexEffect = BaseMaterialEffect & {
     type: "Apex";
@@ -11,15 +12,15 @@ export type ApexEffect = BaseMaterialEffect & {
 
 export class ApexEffectHandler {
     static async handleUpdate({
-        item,
+        material,
         effect,
         changes,
     }: {
-        item: RefinedItem;
         effect: ApexEffect;
         changes: Record<string, unknown>;
+        material: OwnedMaterial;
     }) {
-        const traits = item.item._source.system.traits.value;
+        const traits = material.parent.item._source.system.traits.value;
         let traitChanges = (foundry.utils.getProperty(
             changes,
             "system.traits.value==",

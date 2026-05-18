@@ -52,6 +52,7 @@ export function createImbueHoly(): MaterialData[] {
                 helpers.sequentialData(
                     {
                         damageUnholy: "1",
+                        damageNormal: "0",
                         key: lkey("strike-unholy-only"),
                     },
                     {
@@ -199,6 +200,7 @@ export function createImbueHoly(): MaterialData[] {
                 helpers.sequentialData(
                     {
                         damageUnholy: "1",
+                        damageNormal: "0",
                         key: lkey("strike-unholy-only"),
                     },
                     {
@@ -209,15 +211,7 @@ export function createImbueHoly(): MaterialData[] {
                     { damageUnholy: "1d8", damageNormal: "1d4" },
                     { damageUnholy: "1d12", damageNormal: "1d6" },
                 ),
-                ({
-                    damageUnholy,
-                    damageNormal,
-                    key,
-                }: {
-                    damageUnholy: string;
-                    damageNormal: string;
-                    key: I18nKey;
-                }) => ({
+                ({ damageUnholy, damageNormal, key }) => ({
                     text: {
                         type: "key",
                         key: key,
@@ -374,6 +368,7 @@ export function createImbueHoly(): MaterialData[] {
                     helpers.sequentialData(
                         {
                             damageUnholy: "1",
+                            damageNormal: "0",
                             key: lkey("persistent-unholy-only"),
                         },
                         {

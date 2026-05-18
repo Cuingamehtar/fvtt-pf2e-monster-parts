@@ -24,7 +24,7 @@ function sf2eUuidRemap(s: string) {
 
 export function i18nFormat(
     m?: I18nEntry,
-    data?: Record<string, unknown>,
+    data: Record<string, unknown> = {},
 ): I18nString {
     if (typeof m === "undefined") return "" as I18nString;
     if (typeof m === "number") return String(m) as I18nString;
@@ -56,14 +56,6 @@ export function i18nFormat(
 
 export function tkey(s: keyof Flatten<I18nKeyType[typeof MODULE_ID]>): I18nKey {
     return `${MODULE_ID}.${s}`;
-}
-
-export function unique<T>(array: T[]) {
-    return Array.from(new Set(array));
-}
-
-export function getRandomInt(max: number) {
-    return Math.floor(Math.random() * max);
 }
 
 export function createElement(
@@ -119,7 +111,8 @@ export async function getDroppedItem(event: DragEvent, type?: string) {
 }
 
 export function hash(s: string) {
-    for (var i = 0, h = 9; i < s.length; )
+    let h = 9;
+    for (let i = 0; i < s.length; )
         h = Math.imul(h ^ s.charCodeAt(i++), 9 ** 9);
     return h ^ (h >>> 9);
 }

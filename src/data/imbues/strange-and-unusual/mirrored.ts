@@ -49,15 +49,7 @@ export function createImbueMirrored(): MaterialData {
                         trigger: lkey("header.trigger.strike-or-spell-miss"),
                     },
                 ),
-                ({
-                    frequency,
-                    trigger,
-                    effect,
-                }: {
-                    frequency: I18nKey;
-                    trigger: I18nKey;
-                    effect: I18nKey;
-                }) => ({
+                ({ frequency, trigger, effect }) => ({
                     text: {
                         type: "key",
                         key: lkey("header.activation"),

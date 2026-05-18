@@ -307,9 +307,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
                         [
                             this.data.item.refinement,
                             ...this.data.item.imbuements,
-                        ]
-                            .filter((m): m is Material => Boolean(m))
-                            .find((m) => m.key == selectedMaterial) ??
+                        ].find((m) => m.key == selectedMaterial) ??
                         Material.fromKey(selectedMaterial);
                     if (!existingMaterial) return;
                     const { value, remainder, goneFromStack } =

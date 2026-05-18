@@ -1,9 +1,9 @@
 import { ActorInventory, CharacterPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { MonsterPart } from "./monster-part";
-import { getRandomInt, hash } from "./utils";
+import { hash } from "./utils";
 import { MODULE_ID } from "./module";
 import { RefinedItem } from "./refined-item";
-import { Material } from "./material";
+import * as R from "remeda";
 
 export class Wrappers {
     static patchSellAllTreasure() {
@@ -101,15 +101,13 @@ export class Wrappers {
                     const item = new RefinedItem(this);
                     const options = [
                         ...res,
-                        ...[item.refinement, ...item.imbuements]
-                            .filter((m): m is Material => !!m)
-                            .map(
-                                (m) =>
-                                    `${prefix}:${m.key}:${m.getLevel(item).value ?? 0}`,
-                            ),
+                        ...[item.refinement, ...item.imbuements].map(
+                            (m) =>
+                                `${prefix}:${m.key}:${m.getLevel().value ?? 0}`,
+                        ),
                     ];
                     if (options.some((o) => o.startsWith("item:imbue:wild"))) {
-                        const r = getRandomInt(6) + 1;
+                        const r = R.randomInteger(1, 6);
                         options.push(`wild:damage-type:${r}`);
                     }
                     return options;
@@ -138,7 +136,7 @@ export class Wrappers {
                     wrapped();
                     const item = new RefinedItem(this);
                     this.system.level.value =
-                        item.refinement?.getLevel(item).value ?? 0;
+                        item.refinement?.getLevel().value ?? 0;
                     this.system.price.value = item.coinValue;
                 } else if (MonsterPart.hasMonsterPartData(this)) {
                     wrapped();
