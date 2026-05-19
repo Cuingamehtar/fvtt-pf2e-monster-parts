@@ -12,6 +12,7 @@ import { createImbueHoly } from "./holy";
 import { createImbueUnholy } from "./unholy";
 import { createImbueBurningBarbs } from "./burning-barbs";
 import { createImbueDarkArmor } from "./dark-armor";
+import { createImbueEarthArmor } from "./earth-armor";
 
 export function createElementalStormImbues() {
     return [
@@ -21,6 +22,7 @@ export function createElementalStormImbues() {
         createImbueDarkArmor(),
         ...createImbueDarkness(),
         ...createImbueDeath(),
+        createImbueEarthArmor(),
         ...createImbueElectricity(),
         ...createImbueFire(),
         ...createImbueForce(),
