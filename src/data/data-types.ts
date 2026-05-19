@@ -51,7 +51,7 @@ type ItemAlterationSource = {
 // PF2e Toolbelt ItemCast
 export type ItemCastSource = {
     key: "ItemCast";
-    uuid: "string";
+    uuid: `Compendium.${string}.Item.${string}`;
     rank?: number;
     dc?: number;
     max?: number;

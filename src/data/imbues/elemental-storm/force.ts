@@ -8,7 +8,7 @@ export function createImbueForce(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.force" as const);
 
     const base = {
-        type: "imbuement" as "imbuement",
+        type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
         // The monster must have the force trait or an ability or spell that
         // deals force damage.

@@ -4,7 +4,7 @@ import {
     PredicateStatement,
     SkillSlug,
 } from "foundry-pf2e";
-import { ItemAlterationSource } from "./data-types";
+import { ItemAlterationSource, ItemCastSource } from "./data-types";
 import { HeaderLabel, MaterialData, MaterialEffect } from "./material";
 import { RollString } from "../../types/global";
 import { RuleElementEffect } from "./effect-handlers/rule-element";
@@ -207,7 +207,7 @@ function spellActivation({
     max?: number | null;
     tradition?: "arcane" | "divine" | "occult" | "primal";
 }) {
-    const rule = {
+    const rule: Partial<ItemCastSource> = {
         key: "ItemCast",
         uuid,
         dc,

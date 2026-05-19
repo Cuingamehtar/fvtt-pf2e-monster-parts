@@ -40,6 +40,10 @@ declare module "foundry-pf2e" {
             key: "baneTraits",
         ): (keyof typeof CONFIG.PF2E.creatureTraits)[];
         get(m: typeof MODULE_ID, key: "homebrew-folder"): string | undefined;
+        get(
+            m: typeof MODULE_ID,
+            key: "auto-monster-parts",
+        ): "none" | "nonhumanoid" | "all";
     }
 
     export interface GamePF2e {

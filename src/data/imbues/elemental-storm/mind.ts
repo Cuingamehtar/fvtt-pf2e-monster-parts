@@ -7,7 +7,7 @@ export function createImbueMind(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.mind" as const);
 
     const base = {
-        type: "imbuement" as "imbuement",
+        type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
         // The monster must have the astral or mental trait or an attack,
         // spell, or ability with the astral or mental traits.

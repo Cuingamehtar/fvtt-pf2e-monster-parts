@@ -1,4 +1,5 @@
 import {
+    ActorPF2e,
     CreaturePF2e,
     CreatureSheetPF2e,
     EncounterPF2e,
@@ -31,6 +32,9 @@ export class ModuleHooks {
                 "none"
         )
             this.registerEndCombatDialog();
+
+        if (game.settings.get(MODULE_ID, "auto-monster-parts") !== "none")
+            this.addMonsterPartsOnNPCCreation();
     }
 
     static addMonsterPartButton() {
@@ -197,5 +201,30 @@ export class ModuleHooks {
                 .filter((e) => e.checked)
                 .forEach((e) => MonsterPart.fromCreature(e.actor));
         });
+    }
+
+    static addMonsterPartsOnNPCCreation() {
+        Hooks.on(
+            "createActor",
+            (
+                actor: ActorPF2e,
+                { fromCompendium }: { fromCompendium: boolean },
+            ) => {
+                if (!actor.isOfType("npc") || !fromCompendium) return;
+                if (
+                    actor.itemTypes.treasure.some((t) =>
+                        MonsterPart.hasMonsterPartData(t),
+                    )
+                )
+                    return;
+                if (
+                    game.settings.get(MODULE_ID, "auto-monster-parts") ===
+                        "nonhumanoid" &&
+                    actor.traits.has("humanoid")
+                )
+                    return;
+                MonsterPart.fromCreature(actor);
+            },
+        );
     }
 }

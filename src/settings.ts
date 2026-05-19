@@ -49,6 +49,27 @@ export function registerSettings() {
         requiresReload: false,
     });
 
+    game.settings.register(MODULE_ID, "auto-monster-parts", {
+        name: tkey("settings.auto-monster-parts.name") as string,
+        hint: tkey("settings.auto-monster-parts.hint") as string,
+        scope: "world",
+        type: new foundry.data.fields.StringField({
+            choices: {
+                none: tkey("settings.auto-monster-parts.none") as string,
+                nonhumanoid: tkey(
+                    "settings.auto-monster-parts.nonhumanoid",
+                ) as string,
+                all: tkey("settings.auto-monster-parts.all") as string,
+            },
+            nullable: false,
+            blank: false,
+            initial: "none",
+            required: true,
+        }),
+        config: true,
+        requiresReload: true,
+    });
+
     game.settings.register(MODULE_ID, "monster-parts-after-combat", {
         name: tkey("settings.monster-parts-after-combat.name") as string,
         hint: tkey("settings.monster-parts-after-combat.hint") as string,

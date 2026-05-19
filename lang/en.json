@@ -194,6 +194,13 @@
         "none": "None",
         "default": "10% (default)",
         "half": "50%"
+      },
+      "auto-monster-parts": {
+        "name": "Automatic monster parts",
+        "hint": "When an actor is imported from compendium, automatically creates monster parts in its inventory and makes it lootable is that setting is enabled.",
+        "none": "None",
+        "nonhumanoid": "Non-humanoid only",
+        "all": "All"
       }
     },
     "data": {
