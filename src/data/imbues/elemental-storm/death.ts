@@ -8,7 +8,7 @@ export function createImbueDeath(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.death" as const);
 
     const base = {
-        type: "imbuement" as "imbuement",
+        type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
         monsterPredicate: [
             {
@@ -61,7 +61,7 @@ export function createImbueDeath(): MaterialData[] {
                             type: "key",
                             key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN]" as I18nString,
+                                spell: `@UUID[${Spells.VoidWarp}]`,
                             },
                         },
                         sort: 1,
@@ -104,28 +104,28 @@ export function createImbueDeath(): MaterialData[] {
                         }),
                 ),
                 ...helpers.cantripActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN", // Void Warp
+                    uuid: Spells.VoidWarp,
                 }),
                 ...helpers.leveledEffects(
                     [4, 6, 8, 12, 16],
                     [1, 2, 3, 4, 6],
                     (rank) =>
                         helpers.spellActivation({
-                            uuid: "Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz", // Harm
+                            uuid: Spells.Harm,
                             max: 1,
                             rank,
                         }),
                 ),
                 ...helpers.leveledEffects([6, 8, 12, 16], [2, 3, 4], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP", // Sudden Blight
+                        uuid: Spells.SuddenBlight,
                         max: 1,
                         rank,
                     }),
                 ),
                 ...helpers.leveledEffects([12, 16], [4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt", // Vampiric Maiden
+                        uuid: Spells.VampiricMaiden,
                         max: 1,
                         rank,
                     }),
@@ -141,7 +141,7 @@ export function createImbueDeath(): MaterialData[] {
                 {
                     levelMin: 20,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.FEsuyf203wTNE2et", // Wails of the Damned
+                        uuid: Spells.WailsOfTheDamned, // Wails of the Damned
                         max: 1,
                         rank: 9,
                     }),

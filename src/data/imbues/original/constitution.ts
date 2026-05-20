@@ -2,6 +2,7 @@ import { SkillSlug } from "foundry-pf2e";
 import { lkeygen } from "@src/utils";
 import { MaterialData } from "../../material";
 import { helpers } from "@data/helpers";
+import { Spells } from "@data/spells";
 
 export function createImbueConstitution(): MaterialData {
     const skills = Object.keys(CONFIG.PF2E.skills) as SkillSlug[];
@@ -57,7 +58,7 @@ export function createImbueConstitution(): MaterialData {
         effects: [
             ...helpers.leveledEffects([8, 14, 18], [3, 6, 7], (rank) =>
                 helpers.spellActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs", // Heal
+                    uuid: Spells.Heal,
                     rank,
                     max: 1,
                     tradition: "divine",
@@ -66,7 +67,7 @@ export function createImbueConstitution(): MaterialData {
             {
                 levelMin: 18,
                 ...helpers.spellActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF", // Regeneration
+                    uuid: Spells.Regenerate,
                     rank: 7,
                     max: 1,
                     tradition: "divine",

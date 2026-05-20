@@ -201,7 +201,7 @@ function spellActivation({
     dc,
     max,
 }: {
-    uuid: `Compendium.${string}.Item.${string}`;
+    uuid: ItemCastSource["uuid"];
     rank?: number;
     dc?: number;
     max?: number | null;

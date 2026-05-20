@@ -1,6 +1,7 @@
 import { lkeygen } from "@src/utils";
 import { helpers, skillsOfAttribute } from "../../helpers";
 import { MaterialData } from "../../material";
+import { Spells } from "@data/spells";
 
 export function createImbueWisdom(): MaterialData {
     const skills = skillsOfAttribute("wis");
@@ -61,7 +62,7 @@ export function createImbueWisdom(): MaterialData {
             {
                 levelMin: 8,
                 ...helpers.spellActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X",
+                    uuid: Spells.Augury,
                     rank: 2,
                     tradition: "divine",
                 }),
@@ -69,7 +70,7 @@ export function createImbueWisdom(): MaterialData {
             {
                 levelMin: 20,
                 ...helpers.spellActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.qsNeG9KZpODSACMq",
+                    uuid: Spells.Foresight,
                     rank: 9,
                     tradition: "divine",
                 }),

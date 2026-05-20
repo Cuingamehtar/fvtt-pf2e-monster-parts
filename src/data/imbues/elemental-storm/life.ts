@@ -2,12 +2,13 @@ import { lkeygen } from "@src/utils";
 import { helpers } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
+import { Spells } from "@data/spells";
 
 export function createImbueLife(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.life" as const);
 
     const base = {
-        type: "imbuement" as "imbuement",
+        type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
         // The monster must have the vitality trait or an ability or spell that
         // deals vitality damage.
@@ -56,7 +57,7 @@ export function createImbueLife(): MaterialData[] {
                             type: "key",
                             key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.kcelf6IHl3L9VXXg]" as I18nString,
+                                spell: `@UUID[${Spells.VitalityLash}]`,
                             },
                         },
                         sort: 1,
@@ -90,21 +91,21 @@ export function createImbueLife(): MaterialData[] {
                         }),
                 ),
                 ...helpers.cantripActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.kcelf6IHl3L9VXXg", // Vitality Lash
+                    uuid: Spells.VitalityLash,
                 }),
                 ...helpers.leveledEffects(
                     [4, 6, 12, 16, 20],
                     [1, 2, 4, 5, 8],
                     (rank) =>
                         helpers.spellActivation({
-                            uuid: "Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs", // Heal
+                            uuid: Spells.Heal,
                             max: 1,
                             rank,
                         }),
                 ),
                 ...helpers.leveledEffects([8, 16], [3, 5], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3", // Infuse Vitality
+                        uuid: Spells.InfuseVitality,
                         max: 1,
                         rank,
                     }),
@@ -112,14 +113,14 @@ export function createImbueLife(): MaterialData[] {
                 {
                     levelMin: 12,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm", // Breath of Life
+                        uuid: Spells.BreathOfLife,
                         max: 1,
                         rank: 5,
                     }),
                 },
                 ...helpers.leveledEffects([16, 20], [7, 8], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF", // Regenerate
+                        uuid: Spells.Regenerate,
                         max: 1,
                         rank,
                     }),

@@ -2,6 +2,7 @@ import { lkeygen } from "@src/utils";
 import { helpers } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
+import { Spells } from "@data/spells";
 
 export function createImbueMind(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.mind" as const);
@@ -62,7 +63,7 @@ export function createImbueMind(): MaterialData[] {
                             type: "key",
                             key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.4gBIw4IDrSfFHik4]",
+                                spell: `@UUID[${Spells.Daze}]`,
                             },
                         },
                         sort: 1,
@@ -103,28 +104,28 @@ export function createImbueMind(): MaterialData[] {
                         }),
                 ),
                 ...helpers.cantripActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.4gBIw4IDrSfFHik4", // Daze
+                    uuid: Spells.Daze,
                 }),
                 ...helpers.leveledEffects(
                     [4, 6, 8, 12, 16],
                     [1, 2, 3, 4],
                     (rank) =>
                         helpers.spellActivation({
-                            uuid: "Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD", // Phantom Pain
+                            uuid: Spells.PhantomPain,
                             max: 1,
                             rank,
                         }),
                 ),
                 ...helpers.leveledEffects([6, 16], [2, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.Mkbq9xlAUxHUHyR2", // Paranoia
+                        uuid: Spells.Paranoia,
                         max: 1,
                         rank,
                     }),
                 ),
                 ...helpers.leveledEffects([12, 16], [4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.Jmxru8zMdYMRuO5n", // Vision of Death
+                        uuid: Spells.VisionOfDeath,
                         max: 1,
                         rank,
                     }),
@@ -132,7 +133,7 @@ export function createImbueMind(): MaterialData[] {
                 {
                     levelMin: 16,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.0XP2XOxT9VSiXFDr", // Phantasmal Calamity
+                        uuid: Spells.PhantasmalCalamity,
                         max: 1,
                         rank: 6,
                     }),
@@ -140,7 +141,7 @@ export function createImbueMind(): MaterialData[] {
                 {
                     levelMin: 20,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.MJx7DmjsWYzDZ3a4", // Phantasmagoria
+                        uuid: Spells.Phantasmagoria,
                         max: 1,
                         rank: 9,
                     }),

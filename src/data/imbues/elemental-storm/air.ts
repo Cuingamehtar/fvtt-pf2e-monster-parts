@@ -103,7 +103,7 @@ export function createImbueAir(): MaterialData[] {
                 {
                     levelMin: 4,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.g8QqHpv2CWDwmIm1", // Gust of Wind
+                        uuid: Spells.GustOfWind,
                         max: 1,
                         rank: 1,
                     }),
@@ -111,7 +111,7 @@ export function createImbueAir(): MaterialData[] {
                 {
                     levelMin: 8,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.it4ZsAi6XgvGcodc", // Wall of Wind
+                        uuid: Spells.WallOfWind,
                         max: 1,
                         rank: 3,
                     }),
@@ -119,7 +119,7 @@ export function createImbueAir(): MaterialData[] {
                 {
                     levelMin: 10,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.V8wXOsoejQhe6CyG", // Vapor Form
+                        uuid: Spells.VaporForm,
                         max: 1,
                         rank: 4,
                     }),
@@ -134,7 +134,7 @@ export function createImbueAir(): MaterialData[] {
                 {
                     levelMin: 20,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.yLJROsQtyrPIKcDx", // Wrathful Storm
+                        uuid: Spells.WrathfulStorm,
                         max: 1,
                         rank: 9,
                     }),

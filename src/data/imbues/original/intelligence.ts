@@ -1,6 +1,7 @@
 import { lkeygen } from "@src/utils";
 import { helpers, skillsOfAttribute } from "../../helpers";
 import { MaterialData } from "../../material";
+import { Spells } from "@data/spells";
 
 export function createImbueIntelligence(): MaterialData {
     const skills = skillsOfAttribute("int");
@@ -51,7 +52,7 @@ export function createImbueIntelligence(): MaterialData {
         effects: [
             ...helpers.leveledEffects([8, 14], [1, undefined], (max) =>
                 helpers.spellActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.ZYoC630tNGutgbE0",
+                    uuid: Spells.Hypercognition,
                     rank: 3,
                     max,
                     tradition: "occult",

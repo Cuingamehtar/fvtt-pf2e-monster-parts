@@ -9,7 +9,7 @@ description: >-
   
   **Effect** You imbue the item with brilliant _intelligence_.
 
-  - **8th** The item can cast _hypercognition_ once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness
+  - **8th** The item can cast @UUID[Compendium.pf2e.spells-srd.Item.ZYoC630tNGutgbE0]{Hypercognition} once per day as an occult spell, as your inner Charisma inspires you or an ally to greatness
 
   - **14th** The item can cast _hypercognition_ once per hour instead of once per day
 

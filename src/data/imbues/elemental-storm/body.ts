@@ -9,7 +9,7 @@ export function createImbueBody(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.body" as const);
 
     const base = {
-        type: "imbuement" as "imbuement",
+        type: "imbuement" as const,
         itemPredicate: ["item:tag:handwraps-of-mighty-blows"],
         monsterPredicate: [
             {
@@ -63,7 +63,7 @@ export function createImbueBody(): MaterialData[] {
                             type: "key",
                             key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.MPxbKoR54gkYkqLO]" as I18nString,
+                                spell: `@UUID[${Spells.GougingClaw}]`,
                             },
                         },
                         sort: 2,
@@ -106,19 +106,19 @@ export function createImbueBody(): MaterialData[] {
                         }),
                 ),
                 ...helpers.cantripActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.MPxbKoR54gkYkqLO", // Gouging Claw
+                    uuid: Spells.GougingClaw,
                 }),
                 {
                     levelMin: 4,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.aEM2cttJ2eYcLssW", // Fleet Step
+                        uuid: Spells.FleetStep,
                         max: 1,
                         rank: 1,
                     }),
                 },
                 ...helpers.leveledEffects([6, 12, 16], [2, 4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.wzctak6BxOW8xvFV", // Enlarge
+                        uuid: Spells.Enlarge, // Enlarge
                         max: 1,
                         rank,
                     }),
@@ -132,14 +132,14 @@ export function createImbueBody(): MaterialData[] {
                 ),
                 ...helpers.leveledEffects([12, 20], [4, 9], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.8M03UxGXjYyDFAoy", // Weapon Storm
+                        uuid: Spells.WeaponStorm,
                         max: 1,
                         rank,
                     }),
                 ),
                 ...helpers.leveledEffects([16, 20], [5, 7], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.ZLLY6ThJXCCrO0rL", // Wall of Flesh
+                        uuid: Spells.WallOfFlesh,
                         max: 1,
                         rank,
                     }),

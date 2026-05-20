@@ -1,6 +1,7 @@
 import { lkeygen } from "@src/utils";
 import { MaterialData } from "../../material";
 import { helpers } from "@data/helpers";
+import { Spells } from "@data/spells";
 
 export function createImbueWinged(): MaterialData {
     const lkey = lkeygen("data.imbuement.battlezoo-bestiary.winged" as const);
@@ -59,14 +60,13 @@ export function createImbueWinged(): MaterialData {
             {
                 levelMin: 6,
                 ...helpers.spellActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH",
+                    uuid: Spells.GentleLanding,
                     rank: 1,
                 }),
             },
-            ...helpers.leveledEffects([10, 14], [1, undefined], (max) =>
+            ...helpers.leveledEffects([10, 14], [1, null], (max) =>
                 helpers.spellActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8",
-                    rank: 4,
+                    uuid: Spells.Fly,
                     max,
                 }),
             ),

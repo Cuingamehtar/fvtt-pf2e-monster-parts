@@ -1,5 +1,5 @@
 import { lkeygen } from "@src/utils";
-import { helpers } from "../../helpers";
+import { helpers, Selector } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
 import { Spells } from "@data/spells";
@@ -8,7 +8,7 @@ export function createImbuePoison(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.poison" as const);
 
     const base = {
-        type: "imbuement" as "imbuement",
+        type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
         // The monster must have the acid or poison trait or an ability or
         // spell that deals acid or poison damage.
@@ -62,7 +62,7 @@ export function createImbuePoison(): MaterialData[] {
                             type: "key",
                             key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.D7ZEhTNIDWDLC2J4]",
+                                spell: `@UUID[${Spells.PuffOfPoison}]`,
                             },
                         },
                         sort: 1,
@@ -110,16 +110,16 @@ export function createImbuePoison(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("acid-damage"),
                         title: lkey("magic.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 ...helpers.cantripActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.D7ZEhTNIDWDLC2J4", // Puff of Poison
+                    uuid: Spells.PuffOfPoison,
                 }),
                 {
                     levelMin: 4,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw", // Spider Sting
+                        uuid: Spells.SpiderSting,
                         rank: 1,
                     }),
                 },
@@ -128,13 +128,13 @@ export function createImbuePoison(): MaterialData[] {
                     [2, 3, 4, 6],
                     (rank) =>
                         helpers.spellActivation({
-                            uuid: "Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv", // Noxious Vapors
+                            uuid: Spells.NoxiousVapors,
                             rank,
                         }),
                 ),
                 ...helpers.leveledEffects([8, 12, 16], [2, 4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.3VxVbZqIRvpKkg3O", // Fungal Infestation
+                        uuid: Spells.FungalInfestation,
                         rank,
                     }),
                 ),

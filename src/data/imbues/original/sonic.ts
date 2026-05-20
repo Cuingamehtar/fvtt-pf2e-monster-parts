@@ -7,7 +7,7 @@ export function createImbueSonic(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.battlezoo-bestiary.sonic" as const);
 
     const base = {
-        type: "imbuement" as "imbuement",
+        type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
         monsterPredicate: [
             {

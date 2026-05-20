@@ -10,7 +10,7 @@ description: >-
 
   **Effect** You imbue the item with sagacious _wisdom_.
 
-  - **8th** The item can cast _augury_ once per day as a divine spell, as you
+  - **8th** The item can cast @UUID[Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X]{Augury} once per day as a divine spell, as you
   wisely deduce the future through your own instincts rather than an external
   source
 
@@ -21,7 +21,7 @@ description: >-
   1 or increase it to +4, whichever would give you a higher value. The item
   gains the apex trait
 
-  - **20th** You can choose to have the item cast _foresight_ once per day instead
+  - **20th** You can choose to have the item cast @UUID[Compendium.pf2e.spells-srd.Item.qsNeG9KZpODSACMq]{Foresight} once per day instead
   of _augury_
 flavor: You imbue the item with sagacious _wisdom_.
 level-8-spell: >-

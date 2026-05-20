@@ -2,12 +2,13 @@ import { lkeygen } from "@src/utils";
 import { helpers } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
+import { Spells } from "@data/spells";
 
 export function createImbueCold(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.battlezoo-bestiary.cold" as const);
 
     const base = {
-        type: "imbuement" as "imbuement",
+        type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
         monsterPredicate: [
             {
@@ -61,7 +62,7 @@ export function createImbueCold(): MaterialData[] {
                             type: "key",
                             key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.gYjPm7YwGtEa1oxh]" as I18nString,
+                                spell: `@UUID[${Spells.RayOfFrost}]`,
                             },
                         },
                         sort: 1,
@@ -102,28 +103,28 @@ export function createImbueCold(): MaterialData[] {
                         }),
                 ),
                 ...helpers.cantripActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.gYjPm7YwGtEa1oxh", // Ray of Frost
+                    uuid: Spells.RayOfFrost,
                 }),
                 ...helpers.leveledEffects(
                     [4, 6, 12, 16],
                     [1, 2, 3, 6],
                     (rank) =>
                         helpers.spellActivation({
-                            uuid: "Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0", // Chilling Spray
+                            uuid: Spells.ChillingSpray,
                             max: 1,
                             rank,
                         }),
                 ),
                 ...helpers.leveledEffects([10, 16], [4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx", // Ice Storm
+                        uuid: Spells.IceStorm,
                         max: 1,
                         rank,
                     }),
                 ),
                 ...helpers.leveledEffects([12, 16], [5, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k", // Cone of Cold
+                        uuid: Spells.ConeOfCold,
                         max: 1,
                         rank,
                     }),
@@ -131,7 +132,7 @@ export function createImbueCold(): MaterialData[] {
                 {
                     levelMin: 20,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.BKIet436snMNcnez",
+                        uuid: Spells.PolarRay,
                         max: 1,
                         rank: 9,
                     }),

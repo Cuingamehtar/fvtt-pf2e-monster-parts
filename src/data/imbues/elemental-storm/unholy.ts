@@ -124,7 +124,7 @@ export function createImbueUnholy(): MaterialData[] {
                 type: "key",
                 key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                 parameters: {
-                    spell: `@UUID[${Spells.DivineLance}]` as I18nString,
+                    spell: `@UUID[${Spells.DivineLance}]`,
                 },
             },
             sort: 1,

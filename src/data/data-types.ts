@@ -5,6 +5,7 @@ import {
     RollOptionSource,
     RuleElementSource,
 } from "foundry-pf2e";
+import { Spells } from "@data/spells";
 
 type ItemAlterationSource = {
     key: "ItemAlteration";
@@ -51,7 +52,7 @@ type ItemAlterationSource = {
 // PF2e Toolbelt ItemCast
 export type ItemCastSource = {
     key: "ItemCast";
-    uuid: `Compendium.${string}.Item.${string}`;
+    uuid: Spells;
     rank?: number;
     dc?: number;
     max?: number;

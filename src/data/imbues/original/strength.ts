@@ -1,6 +1,7 @@
 import { lkeygen } from "@src/utils";
 import { helpers, skillsOfAttribute } from "../../helpers";
 import { MaterialData } from "../../material";
+import { Spells } from "@data/spells";
 
 export function createImbueStrength(): MaterialData {
     const skills = skillsOfAttribute("str");
@@ -49,7 +50,7 @@ export function createImbueStrength(): MaterialData {
         effects: [
             ...helpers.leveledEffects([8, 14], [1, undefined], (max) =>
                 helpers.spellActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H",
+                    uuid: Spells.Earthbind,
                     rank: 3,
                     max,
                     tradition: "primal",

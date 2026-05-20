@@ -2,12 +2,13 @@ import { lkeygen } from "@src/utils";
 import { helpers } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
+import { Spells } from "@data/spells";
 
 export function createImbueElectricity(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.electricity" as const);
 
     const base = {
-        type: "imbuement" as "imbuement",
+        type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
         // The monster must have the electricity trait or an attack or spell
         // that deals electricity damage.
@@ -54,7 +55,7 @@ export function createImbueElectricity(): MaterialData[] {
                             type: "key",
                             key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf]",
+                                spell: `@UUID[${Spells.ElectricArc}]`,
                             },
                         },
                         sort: 1,
@@ -88,35 +89,35 @@ export function createImbueElectricity(): MaterialData[] {
                         }),
                 ),
                 ...helpers.cantripActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf", // Electric Arc
+                    uuid: Spells.ElectricArc,
                 }),
                 ...helpers.leveledEffects(
                     [4, 6, 16, 20],
                     [1, 2, 6, 7],
                     (rank) =>
                         helpers.spellActivation({
-                            uuid: "Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn", // Shocking Grasp
+                            uuid: Spells.ShockingGrasp,
                             max: 1,
                             rank,
                         }),
                 ),
                 ...helpers.leveledEffects([8, 12, 16], [3, 4], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2", // Lightning Bolt
+                        uuid: Spells.LightningBolt,
                         max: 1,
                         rank,
                     }),
                 ),
                 ...helpers.leveledEffects([12, 16, 20], [5, 6, 7], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV", // Lightning Storm
+                        uuid: Spells.LightningStorm,
                         max: 1,
                         rank,
                     }),
                 ),
                 ...helpers.leveledEffects([16, 20], [6, 9], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.TDNlDWbYb58Y55Da", // Chain Lightning
+                        uuid: Spells.ChainLightning,
                         max: 1,
                         rank,
                     }),

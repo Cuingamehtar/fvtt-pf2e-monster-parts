@@ -2,12 +2,13 @@ import { lkeygen } from "@src/utils";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
 import { RollString } from "@localTypes/global";
+import { Spells } from "@data/spells";
 
 export function createImbueAcid(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.battlezoo-bestiary.acid" as const);
 
     const base = {
-        type: "imbuement" as "imbuement",
+        type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
         monsterPredicate: [
             {
@@ -64,7 +65,7 @@ export function createImbueAcid(): MaterialData[] {
                         type: "key",
                         key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                         parameters: {
-                            spell: "@UUID[Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt]",
+                            spell: `@UUID[${Spells.AcidSplash}]`,
                         },
                     },
                     sort: 1,
@@ -135,25 +136,25 @@ export function createImbueAcid(): MaterialData[] {
                     }),
             ),
             ...helpers.cantripActivation({
-                uuid: "Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt",
+                uuid: Spells.AcidSplash,
             }),
             ...helpers.leveledEffects([4, 6, 8], [1, 2, 3], (rank) =>
                 helpers.spellActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws",
+                    uuid: Spells.AcidicBurst,
                     max: 1,
                     rank,
                 }),
             ),
             ...helpers.leveledEffects([6, 12, 16], [2, 4, 6], (rank) =>
                 helpers.spellActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0",
+                    uuid: Spells.AcidArrow,
                     max: 1,
                     rank,
                 }),
             ),
             ...helpers.leveledEffects([12, 16], [5, 7], (rank) =>
                 helpers.spellActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3",
+                    uuid: Spells.AcidStorm,
                     max: 1,
                     rank,
                 }),
@@ -161,7 +162,7 @@ export function createImbueAcid(): MaterialData[] {
             {
                 levelMin: 20,
                 ...helpers.spellActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl",
+                    uuid: Spells.StormOfVengeance,
                     max: 1,
                     rank: 9,
                 }),

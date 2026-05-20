@@ -2,6 +2,7 @@ import { lkeygen } from "@src/utils";
 import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
+import { Spells } from "@data/spells";
 
 export function createImbueFire(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.fire" as const);
@@ -60,7 +61,7 @@ export function createImbueFire(): MaterialData[] {
                             type: "key",
                             key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq]",
+                                spell: `@UUID[${Spells.Ignition}]`,
                             },
                         },
                         sort: 1,
@@ -101,32 +102,32 @@ export function createImbueFire(): MaterialData[] {
                         }),
                 ),
                 ...helpers.cantripActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq", // Ignition
+                    uuid: Spells.Ignition,
                 }),
                 ...helpers.leveledEffects([4, 8], [1], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t", // Breathe Fire
+                        uuid: Spells.BreatheFire,
                         max: 1,
                         rank,
                     }),
                 ),
                 ...helpers.leveledEffects([8, 12, 16], [2, 4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG", // Floating Flame
+                        uuid: Spells.FloatingFlame,
                         max: 1,
                         rank,
                     }),
                 ),
                 ...helpers.leveledEffects([8, 12, 16], [3, 4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd", // Fireball
+                        uuid: Spells.Fireball,
                         max: 1,
                         rank,
                     }),
                 ),
                 ...helpers.leveledEffects([12, 16], [4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu", // Wall of Fire
+                        uuid: Spells.WallOfFire,
                         max: 1,
                         rank,
                     }),
@@ -134,7 +135,7 @@ export function createImbueFire(): MaterialData[] {
                 {
                     levelMin: 20,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.jrBa9deU2ULFWvSl", // Falling Stars
+                        uuid: Spells.FallingStars,
                         max: 1,
                         rank: 9,
                     }),

@@ -1,4 +1,4 @@
-import { lkeygen } from "@src/utils";
+import { I18n, lkeygen } from "@src/utils";
 import { MaterialData } from "../../material";
 
 export function createImbueSturdy(): MaterialData {
@@ -28,11 +28,7 @@ export function createImbueSturdy(): MaterialData {
                     {
                         levelMin: l,
                         levelMax: l == 20 ? undefined : l,
-                        text: {
-                            type: "key" as "key",
-                            key: lkey("effect"),
-                            parameters: { hardness: 3 },
-                        },
+                        text: I18n.key(lkey("effect"), { hardness: 3 }),
                         predicate: [
                             { lte: ["item:level", l] as [string, number] },
                         ],
@@ -40,11 +36,7 @@ export function createImbueSturdy(): MaterialData {
                     {
                         levelMin: l,
                         levelMax: l == 20 ? undefined : l,
-                        text: {
-                            type: "key" as "key",
-                            key: lkey("effect"),
-                            parameters: { hardness: 2 },
-                        },
+                        text: I18n.key(lkey("effect"), { hardness: 2 }),
                         predicate: [
                             { eq: ["item:level", l + 1] as [string, number] },
                         ],
@@ -52,11 +44,7 @@ export function createImbueSturdy(): MaterialData {
                     {
                         levelMin: l,
                         levelMax: l == 20 ? undefined : l,
-                        text: {
-                            type: "key" as "key",
-                            key: lkey("effect"),
-                            parameters: { hardness: 1 },
-                        },
+                        text: I18n.key(lkey("effect"), { hardness: 1 }),
                         predicate: [
                             { eq: ["item:level", l + 2] as [string, number] },
                         ],
@@ -64,7 +52,7 @@ export function createImbueSturdy(): MaterialData {
                     {
                         levelMin: l,
                         levelMax: l == 20 ? undefined : l,
-                        text: { type: "key" as "key", key: lkey("no-effect") },
+                        text: I18n.key(lkey("no-effect")),
                         predicate: [
                             { gt: ["item:level", l + 2] as [string, number] },
                         ],
@@ -74,25 +62,25 @@ export function createImbueSturdy(): MaterialData {
         },
         effects: [
             {
-                type: "RuleElement" as "RuleElement",
+                type: "RuleElement",
                 levelMin: 1,
                 rule: {
                     key: "ItemAlteration",
                     property: "hardness",
                     mode: "add",
-                    value: "clamp(@item.flags.pf2e-monster-parts.values.imbueSturdyLevel -@item.flags.pf2e-monster-parts.values.refinementShieldLevel +3, 0,3)",
+                    value: "clamp(@item.flags.pf2e-monster-parts.values.imbueSturdyLevel.value -@item.flags.pf2e-monster-parts.values.refinementShieldLevel.value +3, 0,3)",
                     itemId: "{item|id}",
                     priority: 200,
                 },
             },
             {
-                type: "RuleElement" as "RuleElement",
+                type: "RuleElement",
                 levelMin: 1,
                 rule: {
                     key: "ItemAlteration",
                     property: "hp-max",
                     mode: "upgrade",
-                    value: "@item.hitPoints.max+ ternary(lte(@item.flags.pf2e-monster-parts.values.refinementShieldLevel, @item.flags.pf2e-monster-parts.values.imbueSturdyLevel +2), @item.hardness *2,0)",
+                    value: "@item.hitPoints.max+ ternary(lte(@item.flags.pf2e-monster-parts.values.refinementShieldLevel.value, @item.flags.pf2e-monster-parts.values.imbueSturdyLevel.value +2), @item.hardness *2,0)",
                     itemId: "{item|id}",
                     priority: 300,
                 },

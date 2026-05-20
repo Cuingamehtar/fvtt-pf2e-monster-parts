@@ -1,6 +1,7 @@
 import { lkeygen } from "@src/utils";
 import { helpers, skillsOfAttribute } from "../../helpers";
 import { MaterialData } from "../../material";
+import { Spells } from "@data/spells";
 
 export function createImbueCharisma(): MaterialData {
     const skills = skillsOfAttribute("cha");
@@ -49,7 +50,7 @@ export function createImbueCharisma(): MaterialData {
         effects: [
             ...helpers.leveledEffects([8, 14, 20], [3, 6, 9], (rank) =>
                 helpers.spellActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv", // Heroism
+                    uuid: Spells.Heroism,
                     rank,
                     max: 1,
                     tradition: "occult",

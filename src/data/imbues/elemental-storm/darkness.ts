@@ -8,7 +8,7 @@ export function createImbueDarkness(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.darkness" as const);
 
     const base = {
-        type: "imbuement" as "imbuement",
+        type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
         // The monster must have the darkness or shadow trait or an ability or spell with the darkness or shadow trait.
         monsterPredicate: [
@@ -117,14 +117,14 @@ export function createImbueDarkness(): MaterialData[] {
                 ),
                 ...helpers.leveledEffects([6, 12, 16], [2, 5, 7], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.4GE2ZdODgIQtg51c", // Darkness
+                        uuid: Spells.Darkness,
                         max: 1,
                         rank,
                     }),
                 ),
                 ...helpers.leveledEffects([8, 12, 16], [3, 4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.sRfSBHWHdbIa0aGc", // Chilling Darkness
+                        uuid: Spells.ChillingDarkness,
                         max: 1,
                         rank,
                     }),
@@ -132,7 +132,7 @@ export function createImbueDarkness(): MaterialData[] {
                 {
                     levelMin: 4,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.0jadeyQIItIuRgeH", // Eclipse Burst
+                        uuid: Spells.EclipseBurst,
                         max: 1,
                         rank: 9,
                     }),

@@ -56,7 +56,7 @@ export function createImbueForce(): MaterialData[] {
                             type: "key",
                             key: "pf2e-monster-parts.data.imbuement.add-cantrip",
                             parameters: {
-                                spell: "@UUID[Compendium.pf2e.spells-srd.Item.TVKNbcgTee19PXZR]",
+                                spell: `@UUID[${Spells.Shield}]`,
                             },
                         },
                         sort: 1,
@@ -99,11 +99,11 @@ export function createImbueForce(): MaterialData[] {
                         }),
                 ),
                 ...helpers.cantripActivation({
-                    uuid: "Compendium.pf2e.spells-srd.Item.TVKNbcgTee19PXZR", // Shield
+                    uuid: Spells.Shield,
                 }),
                 ...helpers.leveledEffects([4, 8, 16], [1, 3, 5], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM", // Force Barrage
+                        uuid: Spells.ForceBarrage,
                         max: 1,
                         rank,
                     }),
@@ -111,14 +111,14 @@ export function createImbueForce(): MaterialData[] {
                 {
                     levelMin: 6,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.mrDi3v933gsmnw25", // Telekinetic Maneuver
+                        uuid: Spells.TelekineticManeuver,
                         max: 1,
                         rank: 2,
                     }),
                 },
                 ...helpers.leveledEffects([12, 16], [4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.qJQADktwD0x8kLAy", // Containment
+                        uuid: Spells.Containment,
                         max: 1,
                         rank,
                     }),
@@ -126,7 +126,7 @@ export function createImbueForce(): MaterialData[] {
                 {
                     levelMin: 6,
                     ...helpers.spellActivation({
-                        uuid: "Compendium.pf2e.spells-srd.Item.7Iela4GgVeO3LfAo", // Wall of Force
+                        uuid: Spells.WallOfForce,
                         max: 1,
                         rank: 6,
                     }),
