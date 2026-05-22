@@ -1,5 +1,5 @@
 import { i18nFormat, lkeygen, tkey } from "@src/utils";
-import { helpers } from "@src/data/helpers";
+import { helpers, Selector } from "@src/data/helpers";
 import { MaterialData } from "@src/data/material";
 import { RollString } from "@localTypes/global";
 
@@ -46,26 +46,23 @@ export function createImbueWild(): MaterialData {
             ],
         },
         effects: [
-            ...damages.flatMap((type, i) => {
-                return helpers.leveledEffects(
+            ...damages.flatMap((type, i) =>
+                helpers.leveledEffects(
                     [4, 6, 8, 18],
                     ["1", "d4", "d6", "d8"],
-                    (damage: RollString) => {
-                        const rule = helpers.damage.effect({
+                    (damage: RollString) =>
+                        helpers.damage.effect({
                             type,
                             value: damage,
                             predicate: [`wild:damage-type:${i + 1}`],
                             label: lkey("label"),
-                        });
-                        //@ts-expect-error
-                        rule.rule.hideIfDisabled = true;
-                        return rule;
-                    },
-                );
-            }),
+                            hideIfDisabled: true,
+                        }),
+                ),
+            ),
             ...damages.map((type, i) => ({
                 levelMin: 20,
-                type: "RuleElement" as "RuleElement",
+                type: "RuleElement" as const,
                 rule: {
                     key: "Note",
                     selector: "strike-damage",
@@ -88,7 +85,7 @@ export function createImbueWild(): MaterialData {
                     outcome: ["success", "criticalSuccess"],
                     text: lkey("might.effects.level-20-note"),
                     title: lkey("label"),
-                    selector: ["{item|id}-damage"],
+                    selector: [Selector.ItemDamage],
                 },
             },
         ],

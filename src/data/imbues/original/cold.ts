@@ -1,5 +1,5 @@
 import { lkeygen } from "@src/utils";
-import { helpers } from "../../helpers";
+import { helpers, Selector } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
 import { Spells } from "@data/spells";
@@ -235,7 +235,7 @@ export function createImbueCold(): MaterialData[] {
                         key: "Note",
                         text: lkey("might.effects.level-12-resistance"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -246,7 +246,7 @@ export function createImbueCold(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("might.effects.level-20-weakness"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
             ],

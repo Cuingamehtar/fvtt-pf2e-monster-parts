@@ -130,7 +130,7 @@ export function createImbueEnergyResistant(): MaterialData[] {
                 },
                 effects: [
                     {
-                        type: "RuleElement" as "RuleElement",
+                        type: "RuleElement",
                         levelMin: 1,
                         rule: {
                             key: "Resistance",

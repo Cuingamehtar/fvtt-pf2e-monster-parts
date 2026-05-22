@@ -183,8 +183,3 @@ export function getConfig() {
         MODULE_ID
     ];
 }
-
-export function getMaterialLabel(material: string) {
-    const config = getConfig();
-    return config.materials.get(material)?.label;
-}

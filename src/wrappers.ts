@@ -71,11 +71,8 @@ export class Wrappers {
             "CONFIG.PF2E.Item.documentClasses.equipment.__proto__.prototype.getDescription",
             async function (
                 this: PhysicalItemPF2e,
-                wrapped: (options: any) => Promise<{
-                    value: string;
-                    gm: string;
-                }>,
-                args: any,
+                wrapped: PhysicalItemPF2e["getDescription"],
+                args: Parameters<PhysicalItemPF2e["getDescription"]>[0],
             ) {
                 if (DEBUG)
                     console.debug(`Run Wrapper PhysicalItem.getDescription`);

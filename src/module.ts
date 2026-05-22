@@ -2,14 +2,12 @@ import { createConfig } from "./config";
 import { registerSettings } from "./settings";
 import { MonsterPart } from "./monster-part";
 import { RefinedItem } from "./refined-item";
-import { renderSummaryJournal } from "./summary-journal";
-import { Material } from "./material";
-import { getExtendedNPCRollOptions } from "./actor-utils";
 import { AutomaticRefinementProgression } from "./automatic-refinement-progression";
 import { Wrappers } from "./wrappers";
 import { ModuleHooks } from "./hooks";
 import { ActorPF2e } from "foundry-pf2e";
 import { registerSF2eUuidRedirects } from "@src/uuid-redirect";
+import { API } from "@src/api";
 
 export const MODULE_ID = "pf2e-monster-parts";
 
@@ -56,12 +54,9 @@ Hooks.once("init", () => {
         Hooks.once("ready", registerSF2eUuidRedirects);
     }
 
-    // @ts-expect-error
-    game.modules.get(MODULE_ID).api = {
-        renderSummaryJournal,
-        Material,
-        MonsterPart,
-        RefinedItem,
-        getExtendedNPCRollOptions,
-    };
+    (
+        game.modules.get(MODULE_ID) as ReturnType<typeof game.modules.get> & {
+            api: API;
+        }
+    ).api = API;
 });

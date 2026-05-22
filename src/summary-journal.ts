@@ -2,6 +2,8 @@ import { getConfig } from "./config";
 import { i18nFormat } from "./utils";
 import { HeaderLabel, MaterialData, MaterialEffect } from "@data/material";
 import { MODULE_ID } from "./module";
+import { DamageDiceSource, FlatModifierSource } from "foundry-pf2e";
+import { ItemCastSource } from "@data/data-types";
 
 let journal: JournalEntry | undefined = undefined;
 
@@ -95,30 +97,8 @@ function debugLine(label: HeaderLabel, keyLevels: number[]) {
 }
 
 function debugLineEffect(effect: MaterialEffect, keyLevels: number[]) {
-    let name = "";
-    let tooltip = "";
-    if (effect.type == "Alteration") {
-        name = `Alteration (${effect.property}: ${effect.value})`;
-    } else if (effect.type === "RuleElement") {
-        const { value, damageCategory, damageType, dieSize, category } =
-            effect.rule;
-        tooltip = JSON.stringify(effect.rule, null, 2);
-        switch (effect.rule.key) {
-            case "DamageDice":
-                name = `Damage Dice (${dieSize}${typeof category == "undefined" ? "" : ` ${category}`}${typeof damageType == "undefined" ? "" : ` ${damageType}`})`;
-                break;
-            case "FlatModifier":
-                name = `Flat Modifier (${value}${typeof damageCategory == "undefined" ? "" : ` ${damageCategory}`}${typeof damageType == "undefined" ? "" : ` ${damageType}`})`;
-                break;
-            case "ItemCast":
-                name = `${foundry.utils.fromUuidSync(effect.rule.uuid)?.name} (Rank ${effect.rule.rank})`;
-                break;
-            default:
-                name = effect.rule.key;
-        }
-    } else if (effect.type === "Apex") {
-        name = `Apex ${effect.attribute ? `(${effect.attribute})` : "(unset)"}`;
-    }
+    const { contents, tooltip } = getEffectRowLabel(effect);
+
     const cells = Array.fromRange(21)
         .map((i) =>
             i >= effect.levelMin &&
@@ -127,9 +107,45 @@ function debugLineEffect(effect: MaterialEffect, keyLevels: number[]) {
                 : `<td style="${thresholdLine(i, keyLevels)}"></td>`,
         )
         .join("");
-    return `<tr><td style="vertical-align: middle;"><div style="vertical-align: middle;overflow-y: auto; height:4em" ${tooltip ? `data-tooltip='${tooltip}'` : ""}>${name}</div></td>${cells}</tr>`;
+    return `<tr><td style="vertical-align: middle;"><div style="vertical-align: middle;overflow-y: auto; height:4em" ${tooltip ? `data-tooltip='${tooltip}'` : ""}>${contents}</div></td>${cells}</tr>`;
 }
 
 function thresholdLine(level: number, thresholds: number[]) {
     return thresholds.includes(level) ? "border-left:2px solid" : "";
+}
+
+function getEffectRowLabel(effect: MaterialEffect): {
+    contents: string;
+    tooltip?: string;
+} {
+    if (effect.type === "Alteration") {
+        return { contents: `Alteration (${effect.property}: ${effect.value})` };
+    }
+    if (effect.type === "Apex") {
+        return {
+            contents: `Apex ${effect.attribute ? `(${effect.attribute})` : "(unset)"}`,
+        };
+    }
+    if (effect.type === "RuleElement") {
+        const rule = effect.rule;
+        const tooltip = JSON.stringify(rule, null, 2);
+        if (rule.key == "DamageDice") {
+            return (({ dieSize, category, damageType }) => ({
+                contents: `Damage Dice (${dieSize}${typeof category == "undefined" ? "" : ` ${category}`}${typeof damageType == "undefined" ? "" : ` ${damageType}`})`,
+                tooltip,
+            }))(rule as DamageDiceSource);
+        }
+        if (rule.key == "FlatModifier")
+            return (({ value, damageCategory, damageType }) => ({
+                contents: `Flat Modifier (${value}${typeof damageCategory == "undefined" ? "" : ` ${damageCategory}`}${typeof damageType == "undefined" ? "" : ` ${damageType}`})`,
+                tooltip,
+            }))(rule as FlatModifierSource);
+        if (rule.key == "ItemCast")
+            return (({ uuid, rank }) => ({
+                contents: `${foundry.utils.fromUuidSync(uuid)?.name}${rank ? ` (Rank ${rank})` : ""}`,
+                tooltip,
+            }))(rule as ItemCastSource);
+        return { contents: rule.key, tooltip };
+    }
+    return { contents: "" };
 }

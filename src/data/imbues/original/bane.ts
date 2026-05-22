@@ -1,6 +1,6 @@
 import { getConfig } from "@src/config";
 import { i18nFormat, lkeygen } from "@src/utils";
-import { helpers } from "@data/helpers";
+import { helpers, Selector } from "@data/helpers";
 import { MaterialData } from "@data/material";
 import { PredicateStatement } from "foundry-pf2e";
 import { RollString } from "@localTypes/global";
@@ -278,7 +278,7 @@ function baneImbue(creature: string): MaterialData[] {
                         key: "Note",
                         text: lkey("tech.effects.level-10-note"),
                         title: labelMight as string,
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
             ],
