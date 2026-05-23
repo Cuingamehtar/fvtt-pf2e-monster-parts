@@ -33,3 +33,7 @@ Please see the instructions and the example workflow on the [Wiki page](https://
 3. By default the module will try to consume the full value of the part. In the Assign Material window, you can set how much is consumed manually, or to consume only enough to hit a certain level on the imbuement.
 
 By default, the subsystem allows for the refinement of monster parts into weapons, handwraps, armor, and skill items. If you ever try to create a refined item with the method below and it returns an error, that means the subsystem doesn't have rules for refining that type of item and so there is no official implementation in this module. You can add your own refinements and imbuements using homebrew, see the link at the top of this ReadMe.
+
+## Interaction with other modules
+
+- **PF2e Toolbelt** When Item Spell Casting feature is enabled, imbued properties provide spells in the Spellcasting-Activations tab on the character sheet.
