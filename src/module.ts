@@ -8,10 +8,12 @@ import { ModuleHooks } from "./hooks";
 import { ActorPF2e } from "foundry-pf2e";
 import { registerSF2eUuidRedirects } from "@src/uuid-redirect";
 import { API } from "@src/api";
+import { Compatibility } from "@src/compatibility";
 
 export const MODULE_ID = "pf2e-monster-parts";
 
 Hooks.once("init", () => {
+    Compatibility.isV14 = foundry.utils.isNewerVersion(game.version, 14);
     registerSettings();
     Hooks.once("ready", async () => {
         await createConfig();

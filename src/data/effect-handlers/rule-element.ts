@@ -25,7 +25,7 @@ export class RuleElementEffectHandler {
         changes: Record<string, unknown>;
         material: OwnedMaterial;
     }) {
-        const property = foundry.utils.getProperty(changes, "system.==rules");
+        const property = foundry.utils.getProperty(changes, "system.rules");
         let rule = effect.rule;
         if (isItemCastRE(rule)) {
             if (!getSettingSafe("pf2e-toolbelt", "actionable.cast")) {
@@ -68,7 +68,7 @@ export class RuleElementEffectHandler {
         } else {
             foundry.utils.mergeObject(
                 changes,
-                { ["system.==rules"]: [rule] },
+                { ["system.rules"]: [rule] },
                 { inplace: true },
             );
         }

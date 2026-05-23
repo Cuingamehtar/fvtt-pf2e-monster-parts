@@ -10,6 +10,7 @@ import { MonsterPart } from "./monster-part";
 import { EffectHandlers } from "@data/effect-handlers";
 import { configureRefinedItem } from "@src/app/refined-item-editor";
 import * as R from "remeda";
+import { replaceKey } from "@src/compatibility";
 
 type HasRefinedData<T extends PhysicalItemPF2e> = T & {
     flags: {
@@ -156,23 +157,26 @@ export class RefinedItem {
         }
 
         const flag = this.getFlag();
-        let updatedData = {
-            ["flags.pf2e-monster-parts.==values"]: {} as Record<string, any>,
-        };
+        let values = {} as Record<string, unknown>;
 
         for (const m of [flag.refinement, ...flag.imbues]) {
             const mat = Material.fromKey(m.key, m.value, { parent: this });
             if (!mat) continue;
-            updatedData["flags.pf2e-monster-parts.==values"][
-                Material.getFlagDataName(mat.data.key as string, "level")
-            ] = mat.getLevel();
+            values[Material.getFlagDataName(mat.data.key as string, "level")] =
+                mat.getLevel();
         }
+
+        const updatedData = {
+            flags: {
+                "pf2e-monster-parts": { ...replaceKey("values", values) },
+            },
+        };
 
         await this.item.update(updatedData);
 
         const effects = this.getEffects();
 
-        const changes = { system: { ["==rules"]: [] } };
+        const changes = { system: { rules: [] } };
         for (const { effect, material } of effects) {
             await EffectHandlers.handleUpdate({
                 effect,

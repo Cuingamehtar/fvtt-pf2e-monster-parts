@@ -1,7 +1,7 @@
 import { BaseMaterialEffect } from "../material";
-import { RefinedItem } from "@src/refined-item";
 import { PhysicalItemPF2e } from "foundry-pf2e";
 import { OwnedMaterial } from "@src/material";
+import { replaceKey } from "@src/compatibility";
 
 export type ApexEffect = BaseMaterialEffect & {
     type: "Apex";
@@ -23,7 +23,7 @@ export class ApexEffectHandler {
         const traits = material.parent.item._source.system.traits.value;
         let traitChanges = (foundry.utils.getProperty(
             changes,
-            "system.traits.value==",
+            "system.traits.value",
         ) ?? traits) as string[];
         if (effect.attribute === null) {
             traitChanges = traitChanges.filter((t) => t !== "apex");
@@ -32,7 +32,7 @@ export class ApexEffectHandler {
         }
         foundry.utils.mergeObject(
             changes,
-            { ["system.traits.value=="]: traitChanges },
+            { ["system.traits"]: replaceKey("value", traitChanges) },
             { inplace: true },
         );
         foundry.utils.mergeObject(
