@@ -18,7 +18,13 @@ export class I18n {
             ? { type: "key" as const, key, parameters }
             : { type: "key" as const, key };
     }
-    static resolve(value: string) {
+    static resolve(value: string, evalFormula = false) {
+        if (evalFormula)
+            return {
+                type: "resolve" as const,
+                value,
+                options: { eval: evalFormula },
+            };
         return { type: "resolve" as const, value };
     }
 }
@@ -47,7 +53,14 @@ export function i18nFormat(
             return m.value as I18nString;
         }
         const s = String(Roll.replaceFormulaData(m.value, data));
-        return (Utils.isSF ? sf2eUuidRemap(s) : s) as I18nString;
+        if (m.options?.eval) {
+            try {
+                return String(Roll.safeEval(s)) as I18nString;
+            } catch {
+                return s as I18nString;
+            }
+        }
+        return s as I18nString;
     }
     if ("type" in m && m.type == "key") {
         let s = game.i18n.localize(m.key as string);

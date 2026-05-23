@@ -1,7 +1,7 @@
 import { lkeygen } from "@src/utils";
 import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
-import { helpers } from "../../helpers";
+import { helpers, Selector } from "../../helpers";
 import { Spells } from "@data/spells";
 
 export function createImbueFire(): MaterialData[] {
@@ -212,7 +212,7 @@ export function createImbueFire(): MaterialData[] {
                         type: "RuleElement",
                         rule: {
                             key: "DamageDice",
-                            selector: "{item|_id}-damage",
+                            selector: Selector.ItemDamage,
                             damageType: "fire",
                             category: "persistent",
                             dieSize: "d10",
@@ -229,7 +229,7 @@ export function createImbueFire(): MaterialData[] {
                         key: "Note",
                         text: lkey("might.effects.level-12-resistance"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -240,7 +240,7 @@ export function createImbueFire(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("might.effects.level-20-weakness"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
             ],
@@ -329,7 +329,7 @@ export function createImbueFire(): MaterialData[] {
                     type: "RuleElement",
                     rule: {
                         key: "DamageDice",
-                        selector: "{item|_id}-damage",
+                        selector: Selector.ItemDamage,
                         damageType: "fire",
                         category: "persistent",
                         dieSize: "d10",
@@ -345,7 +345,7 @@ export function createImbueFire(): MaterialData[] {
                         key: "Note",
                         text: lkey("tech.effects.level-12-resistance"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -356,7 +356,7 @@ export function createImbueFire(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("tech.effects.level-16-off-guard"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
             ],

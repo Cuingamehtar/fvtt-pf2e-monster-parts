@@ -15,5 +15,15 @@ for (const pack of packs) {
         fs.rmSync(sourceDir, { recursive: true, force: true });
     }
     fs.mkdirSync(sourceDir);
-    await extractPack(dir, sourceDir);
+    await extractPack(dir, sourceDir, {
+        log: true,
+        transformEntry: (source, { documentType }) => {
+            if (documentType !== "Item") return source;
+            source.system.slug = source.name
+                .replaceAll(/[^A-Za-z \d]/g, "")
+                .replaceAll(" ", "-")
+                .toLowerCase();
+            return source;
+        },
+    });
 }

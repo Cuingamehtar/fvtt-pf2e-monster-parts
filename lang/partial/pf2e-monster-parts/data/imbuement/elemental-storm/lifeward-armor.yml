@@ -1,0 +1,79 @@
+label: Lifeward Armor
+buffer-label: Lifeward Armor Buffer
+description: >-
+  **Type** Armor
+
+  **Parts** The monster must have the vitality trait or an ability or spell that
+  deals vitality damage.
+
+  - - -
+
+  **Effect** You imbue your armor with a buffer of overflowing vitality.
+
+  - **6th** During your daily preparations, the armor gains a buffer of vitality
+  equal to 1–1/2 times the imbued property’s item level (minimum 9 at 6th level,
+  maximum 30 at 20th level). You can choose to lose Hit Points from the armor’s
+  buffer instead of your own Hit Points if you wish; until you gain later
+  benefits to help replenish the buffer, usually it works best to save the
+  buffer for when it would prevent you from being reduced to 0 Hit Points.
+
+  - **10th** The armor’s buffer of vitality replenishes up to 1 Hit Point per
+  hour when it’s below its maximum, in addition to refilling during your daily
+  preparations.
+
+  - **12th** If the armor’s life buffer is large enough to absorb all of the
+  damage from an attack with additional effects that depend on the attack
+  dealing damage (such as an injury poison on a viper’s fangs) and you choose to
+  lose all the Hit Points from that attack from your life buffer, you don’t take
+  the additional effect.
+
+  - **14th** The armor’s buffer of vitality replenishes up to 1 Hit Point per 10
+  minutes when it’s below its maximum instead of 1 Hit Point per hour.
+
+  - **16th** The armor protects your life force from being snuffed out. As long
+  as the armor’s buffer has at least 1 Hit Point in it, the armor’s item bonus
+  to saving throws increases by 1 (minimum +1 if the armor didn't have an item
+  bonus to saving throws, maximum +4 if the armor had a +3 item bonus to saving
+  throws) against effects with the death or void trait.
+
+  - **18th** Once per day, you can Activate the armor for one action to refill
+  the buffer completely; this activation has the concentrate trait.
+
+  - **20th** As long as the armor’s buffer has at least 10 Hit Points in it and
+  you have the dying value, whenever your dying value would increase, you can
+  choose to instead lose 10 Hit Points from the buffer to prevent your dying
+  value from increasing. This can’t be used to prevent you from gaining the
+  dying condition in the first place.
+header:
+  flavor: You imbue your armor with a buffer of overflowing vitality.
+  level-6-buffer: >-
+    During your daily preparations, the armor gains a buffer of vitality equal
+    to *{buffer}* Hit Points. You can choose to lose Hit Points from the armor's
+    buffer instead of your own Hit Points if you wish.
+  level-10-recovery: >-
+    The armor’s buffer of vitality replenishes up to 1 Hit Point per hour when
+    it’s below its maximum, in addition to refilling during your daily
+    preparations.
+  level-12-negation: >-
+    If the armor’s life buffer is large enough to absorb all of the damage from
+    an attack and you choose to lose all the Hit Points from that attack from
+    your life buffer, you don’t take the additional effect.
+  level-14-recovery: >-
+    The armor’s buffer of vitality replenishes up to 1 Hit Point per 10 minutes
+    when it’s below its maximum, in addition to refilling during your daily
+    preparations.
+  level-16-bonus: >-
+    As long as the armor’s buffer has at least 1 Hit Point in it, the armor’s
+    item bonus to saving throws increases by 1 (minimum +1 if the armor didn't
+    have an item bonus to saving throws, maximum +4 if the armor had a +3 item
+    bonus to saving throws) against effects with the death or void trait.
+  level-18-activation: |-
+    **Activate** (concentrate)  
+    **Frequency** once per day  
+    **Effect** You completely refill the buffer.
+  level-20-dying: >-
+    As long as the armor’s buffer has at least 10 Hit Points in it and you have
+    the dying value, whenever your dying value would increase, you can choose to
+    instead lose 10 Hit Points from the buffer to prevent your dying value from
+    increasing. This can’t be used to prevent you from gaining the dying
+    condition in the first place.

@@ -43,6 +43,7 @@ declare global {
     type ResolvableParameter = {
         type: "resolve";
         value: string;
+        options?: { eval?: boolean };
     };
     type I18nEntry =
         | I18nString

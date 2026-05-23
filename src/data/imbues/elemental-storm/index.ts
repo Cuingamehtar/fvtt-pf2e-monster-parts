@@ -13,6 +13,7 @@ import { createImbueUnholy } from "./unholy";
 import { createImbueBurningBarbs } from "./burning-barbs";
 import { createImbueDarkArmor } from "./dark-armor";
 import { createImbueEarthArmor } from "./earth-armor";
+import { createImbueLifewardArmor } from "./lifeward-armor";
 
 export function createElementalStormImbues() {
     return [
@@ -28,6 +29,7 @@ export function createElementalStormImbues() {
         ...createImbueForce(),
         ...createImbueHoly(),
         ...createImbueLife(),
+        createImbueLifewardArmor(),
         ...createImbueMind(),
         ...createImbuePoison(),
         ...createImbueUnholy(),

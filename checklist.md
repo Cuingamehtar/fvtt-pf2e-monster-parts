@@ -1,4 +1,4 @@
-❌ - Still on the todo list
+❌ - Still on the todo list  
 🚫 - not going to do it as it was replaced by another
 
 | Imbuement        | Source | Status | 
@@ -32,7 +32,7 @@
 | Intelligence     | BB     | ✔      |
 | Lawful*          | BB     | 🚫     |
 | Life             | ES     | ✔      |
-| Lifeward         | ES     | ❌      |
+| Lifeward Armor   | ES     | ✔      |
 | Light            | SU/ES  | ❌      |
 | Mental*          | BB     | ✔      |
 | Metal            | ES     | ❌      |

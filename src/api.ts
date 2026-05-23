@@ -2,7 +2,7 @@ import * as R from "remeda";
 import { getConfig } from "@src/config";
 import { renderSummaryJournal } from "@src/summary-journal";
 import { getExtendedNPCRollOptions } from "@src/actor-utils";
-import { ActorPF2e, NPCPF2e } from "foundry-pf2e";
+import { ActorPF2e } from "foundry-pf2e";
 import { MonsterPart } from "@src/monster-part";
 
 export class API {

@@ -45,8 +45,22 @@ export class RuleElementEffectHandler {
             if (typeof rule.text !== "string") {
                 rule = {
                     ...rule,
-                    text: i18nFormat(rule.text, material.getRollOptions()),
+                    text: i18nFormat(rule.text, material.getRollData()),
                 };
+            }
+        }
+        if (rule.key == "SpecialResource" && "max" in rule) {
+            if (typeof rule.max !== "string" && typeof rule.max !== "number") {
+                rule = {
+                    ...rule,
+                    max: i18nFormat(rule.max, material.getRollData()),
+                };
+            }
+            const oldRule = material.parent.item.system.rules.find(
+                (r) => r.key === "SpecialResource" && r.slug == rule.slug,
+            );
+            if (oldRule && "value" in oldRule) {
+                rule.value = Math.min(Number(oldRule.value), Number(rule.max));
             }
         }
         if (Array.isArray(property)) {

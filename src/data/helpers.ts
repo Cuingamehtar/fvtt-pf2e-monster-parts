@@ -316,12 +316,17 @@ function sequentialData<A, B, C, D, E, F>(
     Overwrite<Overwrite<Overwrite<A, B>, C>, D>,
     Overwrite<Overwrite<Overwrite<Overwrite<Overwrite<A, B>, C>, D>, E>, F>,
 ];
-function sequentialData(...arr: any[]) {
-    return arr.reduce((acc, d) => {
-        const e = { ...(acc[acc.length - 1] ?? {}), ...d };
-        acc.push(e);
-        return acc;
-    }, []);
+function sequentialData(
+    ...arr: Record<string, string | number>[]
+): Record<string, string | number>[] {
+    return arr.reduce(
+        (acc, d) => {
+            const e = { ...(acc[acc.length - 1] ?? {}), ...d };
+            acc.push(e);
+            return acc;
+        },
+        [] as Record<string, string | number>[],
+    );
 }
 
 function addEffects(effects: MaterialEffect | MaterialEffect[]) {

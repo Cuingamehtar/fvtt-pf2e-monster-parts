@@ -49,11 +49,11 @@ export function createImbueEarthArmor(): MaterialData {
                 type: "RuleElement",
                 rule: {
                     key: "FlatModifier",
-                    selector: ["fortitude-dc", "reflex-dc", "will-dc"],
+                    selector: ["saving-throw"],
                     predicate: [{ or: ["forced-movement", "inflics:prone"] }],
                     type: "item",
                     value: `@item.system.runes.resilient +${bonus}`,
-                    label: I18n.key(lkey("label")),
+                    label: lkey("label"),
                 },
             })),
         }),

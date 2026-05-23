@@ -187,7 +187,7 @@ export class Material extends MaterialBase {
 
     static getFlavor(material: MaterialBase, item: RefinedItem) {
         const level = Material.getLevel(material, item).value;
-        const rollData = item.item.getRollData();
+        const rollData = Material.getRollData(material, item);
         const rollOptions = item.getRollOptions();
         return {
             label: i18nFormat(material.data.label, rollData),
@@ -230,7 +230,7 @@ export class Material extends MaterialBase {
         );
     }
 
-    static getRollOptions(material: MaterialBase, item?: RefinedItem) {
+    static getRollData(material: MaterialBase, item?: RefinedItem) {
         const opt: Record<string, unknown> = { value: material.value.gp };
         if (!item) {
             return { material: opt };
@@ -261,8 +261,8 @@ export class OwnedMaterial extends MaterialBase {
     getFlavor() {
         return Material.getFlavor(this, this.parent);
     }
-    getRollOptions() {
-        return Material.getRollOptions(this, this.parent);
+    getRollData() {
+        return Material.getRollData(this, this.parent);
     }
     getThresholdForLevel(level: number) {
         return Material.getThresholdForLevel(this, this.parent, level);

@@ -63,7 +63,7 @@ type RuleElementEffectSource = {
     key: "RuleElement";
     rule:
         | DamageDiceSource
-        | FlatModifierSource
+        | (Omit<FlatModifierSource, "label"> & { label: I18nKey })
         | (RollNoteSource & { key: "Note" })
         | (Omit<RollNoteSource, "text"> & { key: "Note"; text: I18nEntry })
         | RollOptionSource

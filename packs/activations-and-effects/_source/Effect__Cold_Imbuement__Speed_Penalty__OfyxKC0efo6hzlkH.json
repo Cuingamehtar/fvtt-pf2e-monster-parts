@@ -109,7 +109,7 @@
         "value": "@item.flags.pf2e.rulesSelections.speedPenalty"
       }
     ],
-    "slug": null,
+    "slug": "effect-cold-imbuement-speed-penalty",
     "traits": {
       "otherTags": [],
       "value": []
