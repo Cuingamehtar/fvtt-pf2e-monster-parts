@@ -1,6 +1,6 @@
 import { BaseMaterialEffect } from "../material";
 import { PhysicalItemPF2e } from "foundry-pf2e";
-import { OwnedMaterial } from "@src/material";
+import { AttachedMaterial } from "@src/material";
 import { replaceKey } from "@src/compatibility";
 
 export type ApexEffect = BaseMaterialEffect & {
@@ -18,7 +18,7 @@ export class ApexEffectHandler {
     }: {
         effect: ApexEffect;
         changes: Record<string, unknown>;
-        material: OwnedMaterial;
+        material: AttachedMaterial;
     }) {
         const traits = material.parent.item._source.system.traits.value;
         let traitChanges = (foundry.utils.getProperty(

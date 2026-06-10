@@ -1,10 +1,9 @@
 import { Utils, t } from "@src/utils";
 import { MonsterPart } from "@src/monster-part";
-import { Material, MaterialValue, OwnedMaterial } from "@src/material";
-import { HTMLRangePickerElement } from "foundry-pf2e/foundry/client/applications/elements/_module";
+import { Material, MaterialValue, AttachedMaterial } from "@src/material";
 import { SkipSliderButtons } from "@src/app/elements";
 import { RefinedItem } from "@src/refined-item";
-import { ApplicationRenderContext } from "foundry-pf2e/foundry/client/applications/_types";
+import { ApplicationRenderContext } from "foundry-pf2e";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -53,7 +52,7 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
 
     monsterPart: MonsterPart;
     refinedItem: RefinedItem;
-    material: Material | OwnedMaterial;
+    material: Material | AttachedMaterial;
     maxValue: MaterialValue;
     resolve: AssignMaterialDialogOptions["resolve"];
 
@@ -67,14 +66,14 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
         options.uniqueId = `assign-material-dialog-${options.monsterPart.item.id}`;
         const { monsterPart, refinedItem, material } = options;
 
-        const currentLevel = Material.getLevel(material, refinedItem).value;
+        const currentLevel = Material.getLevel(material, refinedItem);
         const maxLevel = Material.getLevel(
             Material.fromKey(
                 material.key,
                 material.value.add(monsterPart.getValue()).gp,
             ),
             refinedItem,
-        ).value;
+        );
 
         const skipButtonsLevel =
             maxLevel > currentLevel
@@ -143,7 +142,12 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
     }
 
     protected override async _prepareContext(): Promise<
-        AssignMaterialContext & ApplicationRenderContext
+        AssignMaterialContext &
+            Awaited<
+                ReturnType<
+                    foundry.applications.api.ApplicationV2["_prepareContext"]
+                >
+            >
     > {
         const buttons = [
             {
@@ -224,7 +228,7 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
     #getSlider() {
         return this.element.querySelector(
             '[name="value"]',
-        )! as HTMLRangePickerElement;
+        )! as foundry.applications.elements.HTMLRangePickerElement;
     }
 
     static #prepareHintStrings(
@@ -310,7 +314,7 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
 interface AssignMaterialDialogOptions {
     monsterPart: MonsterPart;
     refinedItem: RefinedItem;
-    material: Material | OwnedMaterial;
+    material: Material | AttachedMaterial;
     resolve: (args: {
         value: MaterialValue;
         remainder: MaterialValue;
@@ -318,7 +322,7 @@ interface AssignMaterialDialogOptions {
     }) => void;
 }
 
-interface AssignMaterialContext {
+interface AssignMaterialContext extends ApplicationRenderContext {
     maxValue: number;
     step: number;
     skipButtonsLevel: string;

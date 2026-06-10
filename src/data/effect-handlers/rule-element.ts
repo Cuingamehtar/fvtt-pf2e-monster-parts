@@ -2,7 +2,7 @@ import { BaseMaterialEffect } from "../material";
 import { ItemCastSource, RuleElementEffectSource } from "../data-types";
 import { Utils, getSettingSafe, i18nFormat } from "@src/utils";
 import { SpellPF2e } from "foundry-pf2e";
-import { OwnedMaterial } from "@src/material";
+import { AttachedMaterial } from "@src/material";
 
 export type RuleElementEffect = BaseMaterialEffect & {
     type: "RuleElement";
@@ -23,7 +23,7 @@ export class RuleElementEffectHandler {
     }: {
         effect: RuleElementEffect;
         changes: Record<string, unknown>;
-        material: OwnedMaterial;
+        material: AttachedMaterial;
     }) {
         const property = foundry.utils.getProperty(changes, "system.rules");
         let rule = effect.rule;

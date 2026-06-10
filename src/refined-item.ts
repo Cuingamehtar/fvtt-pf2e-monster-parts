@@ -1,11 +1,10 @@
 import { ItemPF2e, PhysicalItemPF2e } from "foundry-pf2e";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
-import { Material, MaterialValue, OwnedMaterial } from "./material";
+import { Material, AttachedMaterial } from "./material";
 import { i18nFormat, t } from "./utils";
 import { dialogs } from "./app/dialogs";
 import { ModuleFlags, RefinedItemFlags } from "../types/global";
-import { AutomaticRefinementProgression } from "./automatic-refinement-progression";
 import { MonsterPart } from "./monster-part";
 import { EffectHandlers } from "@data/effect-handlers";
 import { configureRefinedItem } from "@src/app/refined-item-editor";
@@ -32,8 +31,12 @@ export class RefinedItem {
     }
 
     static async fromItem(item: ItemPF2e): Promise<RefinedItem | null> {
-        // @ts-expect-error
-        if (item.collection?.metadata && item.isOfType("physical")) {
+        if (
+            item.collection &&
+            "metadata" in item.collection &&
+            item.collection.metadata &&
+            item.isOfType("physical")
+        ) {
             // item is in a compendium
             item = (await Item.create(item.toObject())) as PhysicalItemPF2e;
             ui.notifications.info(t("refined-item.imported-from-compendium"));
@@ -50,7 +53,7 @@ export class RefinedItem {
                     item: item.name,
                 }),
             );
-            return this.constructor(item);
+            return new RefinedItem(item);
         }
         if (MonsterPart.hasMonsterPartData(item)) {
             ui.notifications.error(
@@ -112,9 +115,9 @@ export class RefinedItem {
 
     get imbuements() {
         const { imbues } = this.getFlag();
-        return imbues.map((i) =>
-            Material.fromKey(i.key, i.value, { parent: this }),
-        );
+        return imbues
+            .map((i) => Material.fromKey(i.key, i.value, { parent: this }))
+            .filter(R.isTruthy);
     }
 
     getFlag() {
@@ -123,47 +126,39 @@ export class RefinedItem {
         );
     }
 
-    getMaterialLevel(key: string) {
-        const { refinement, imbues } = this.getFlag();
-        const m =
-            refinement.key === key
-                ? Material.fromKey(refinement.key, refinement.value, {
-                      parent: this,
-                  })
-                : R.pipe(
-                      imbues,
-                      R.find((imb) => imb.key === key),
-                      (m) =>
-                          m &&
-                          Material.fromKey(m.key, m.value, { parent: this }),
-                  );
-        return m?.getLevel();
-    }
-
     get coinValue() {
-        const flag = this.getFlag();
-        const value = flag.imbues.reduce(
-            (acc, imb) => acc.add(new MaterialValue(imb.value)),
-            new MaterialValue(flag.refinement.value),
+        const value = this.imbuements.reduce(
+            (acc, imb) => acc.add(imb.effectiveValue.value),
+            this.refinement.effectiveValue.value,
         );
         return value.toCoins();
     }
 
-    async updateItem(flagData?: RefinedItemFlags) {
-        if (flagData)
+    async updateItem(flagData?: DeepPartial<RefinedItemFlags>) {
+        flagData = foundry.utils.mergeObject(this.getFlag(), flagData, {
+            inplace: false,
+        });
+        if (flagData) {
+            if (flagData.refinement?.key === "") {
+                ui.notifications.error(
+                    "Attempted to set empty refinement key - reverting",
+                );
+                flagData.refinement.key = this.getFlag().refinement.key;
+            }
+            if (flagData.imbues?.some((imb) => imb.key === "")) {
+                ui.notifications.error(
+                    "Attempted to set empty imbuement key - reverting",
+                );
+                flagData.imbues = this.getFlag().imbues;
+            }
             await this.item.setFlag(MODULE_ID, "refined-item", flagData);
-        if (AutomaticRefinementProgression.isEnabled) {
-            await AutomaticRefinementProgression.adjustRefinementValue(this);
         }
 
-        const flag = this.getFlag();
-        let values = {} as Record<string, unknown>;
+        const values = {} as Record<string, unknown>;
 
-        for (const m of [flag.refinement, ...flag.imbues]) {
-            const mat = Material.fromKey(m.key, m.value, { parent: this });
-            if (!mat) continue;
-            values[Material.getFlagDataName(mat.data.key as string, "level")] =
-                mat.getLevel();
+        for (const m of [this.refinement, ...this.imbuements]) {
+            values[Material.getFlagDataName(m.key as string, "level")] =
+                m.getLevel();
         }
 
         const updatedData = {
@@ -208,15 +203,15 @@ export class RefinedItem {
     }
 
     async descriptionHeader() {
-        const prepare = (m?: OwnedMaterial) => {
-            if (!m) return undefined;
+        const prepare = (m: AttachedMaterial) => {
             const flavor = m.getFlavor();
-            const level = m.getLevel();
+            const level = m.effectiveLevel;
+            const value = m.effectiveValue.value.toCoins();
 
             return {
                 key: m.data.key,
                 label: flavor.label,
-                value: m.coinValue,
+                value,
                 level: level,
                 flavor: flavor.flavor,
                 notes: flavor.parts,

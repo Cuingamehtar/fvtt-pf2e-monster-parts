@@ -1,8 +1,10 @@
 import { getConfig } from "../config";
-import { i18nFormat, t } from "../utils";
+import { i18nFormat, t, Utils } from "../utils";
 import { MODULE_ID } from "../module";
 import { MonsterPart } from "../monster-part";
 import { MaterialValue } from "@src/material";
+import * as R from "remeda";
+import { ApplicationRenderContext } from "foundry-pf2e";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -15,6 +17,7 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         },
     ) {
         options.form = { handler: MonsterPartEditor.submitForm(options.item) };
+        options.uniqueId = `monster-part-editor-${options.item.item.id}`;
         super(options);
         this.item = options.item;
     }
@@ -40,43 +43,36 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         },
     };
 
-    // @ts-expect-error
-    override async _prepareContext() {
+    override async _prepareContext(): Promise<MonsterPartEditorContext> {
         const config = getConfig();
         const flags = this.item.getFlag() ?? {
             materials: [],
             value: 0,
         };
 
-        const refinements = [...config.materials.values()]
-            .filter((m) => m.type === "refinement")
-            .map((m) => ({
+        const [refinements, imbuements] = R.pipe(
+            Array.from(config.materials.values()),
+            R.map((m) => ({
+                type: m.type,
                 key: m.key,
                 label: i18nFormat(m.label),
                 checked: flags.materials.includes(m.key),
-            }))
-            .sort((a, b) => a.label.localeCompare(b.label));
-        const imbues = [...config.materials.values()]
-            .filter((m) => m.type === "imbuement")
-            .map((m) => ({
-                key: m.key,
-                label: i18nFormat(m.label),
-                checked: flags.materials.includes(m.key),
-            }))
-            .sort((a, b) => a.label.localeCompare(b.label));
+            })),
+            R.sort((a, b) => a.label.localeCompare(b.label)),
+            R.partition((m) => m.type === "refinement"),
+        );
 
         return {
-            settings: {
-                value: new MaterialValue(flags.value).toSystemCurrency(),
-                refinements,
-                imbues,
-            },
+            value: new MaterialValue(flags.value).toSystemCurrency(),
+            refinements,
+            imbuements,
+            currencyLabel: Utils.currencyLabel,
         };
     }
     static submitForm(item: MonsterPart) {
         return async function (
-            event: Event | SubmitEvent,
-            form: HTMLFormElement,
+            _event: Event | SubmitEvent,
+            _form: HTMLFormElement,
             formData: foundry.applications.ux.FormDataExtended,
         ) {
             const data = formData.object;
@@ -101,4 +97,13 @@ export async function configureMonsterPart(item: MonsterPart) {
             title: t("material.editor.title") as string,
         },
     }).render(true);
+}
+
+type MaterialEntry = { key: MaterialKey; label: I18nString; checked: boolean };
+
+interface MonsterPartEditorContext extends ApplicationRenderContext {
+    value: number;
+    refinements: MaterialEntry[];
+    imbuements: MaterialEntry[];
+    currencyLabel: I18nString;
 }

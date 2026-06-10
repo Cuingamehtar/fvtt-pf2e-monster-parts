@@ -100,7 +100,7 @@ export class Wrappers {
                         ...res,
                         ...[item.refinement, ...item.imbuements].map(
                             (m) =>
-                                `${prefix}:${m.key}:${m.getLevel().value ?? 0}`,
+                                `${prefix}:${m.key}:${m.effectiveLevel.value ?? 0}`,
                         ),
                     ];
                     if (options.some((o) => o.startsWith("item:imbue:wild"))) {
@@ -133,7 +133,7 @@ export class Wrappers {
                     wrapped();
                     const item = new RefinedItem(this);
                     this.system.level.value =
-                        item.refinement?.getLevel().value ?? 0;
+                        item.refinement.effectiveLevel.value ?? 0;
                     this.system.price.value = item.coinValue;
                 } else if (MonsterPart.hasMonsterPartData(this)) {
                     wrapped();

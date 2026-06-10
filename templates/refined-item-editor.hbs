@@ -1,33 +1,41 @@
 <div style="max-height: 600px;overflow-y: scroll">
-    <fieldset class="droppable refinement">
+    <fieldset class="{{#unless refinement.disabled}}droppable{{/unless}} refinement">
         <legend>{{localize "pf2e-monster-parts.dialog.refined-item-editor.refinement"}}</legend>
         <div class="form-group">
             <label for="refinement-type">{{localize
                 "pf2e-monster-parts.dialog.refined-item-editor.type"}}</label>
             <select name="refinement-type" id="refinement-type" class="refinement-type">
-                {{#each data.possibleRefinements }}
+                {{#each possibleRefinements }}
                     <option value="{{this.key}}"
-                            {{#if (eq this.key ../data.refinement.selected)}}selected{{/if}}>{{this.label}}
+                            {{#if (eq this.key ../refinement.key)}}selected{{/if}}>{{this.label}}
                     </option>
                 {{/each}}
             </select>
         </div>
         <div class="form-group">
             <label for="refinement-value">{{localize "pf2e-monster-parts.dialog.refined-item-editor.value"}}</label>
-            <input type="number" name="refinement-value" id="refinement-value" value="{{data.refinement.value}}"
-                   step="0.01" {{disabled data.refinement.isDisabled}}/>
-            {{#if (gt data.refinement.value 0)}}
-                <button id="refinement-extract" data-action="extractMaterial" style="flex:0.01"
-                        data-material-key="{{data.refinement.selected}}"
-                        data-tooltip="{{localize
-                            "pf2e-monster-parts.dialog.refined-item-editor.extract-button-tooltip"}}">
-                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
-                </button>
+            {{#if refinement.disabled}}
+                <p>Handled by ARP</p>
+                <input style="display:none" type="number" name="refinement-value" id="refinement-value" value="{{refinement.value}}"
+                       step="0.01"/>
+            {{else}}
+                <input type="number" name="refinement-value" id="refinement-value" value="{{refinement.value}}"
+                       step="0.01"/>
+                <p style="flex-grow: 0">{{localize currencyLabel}}</p>
+                {{#if (gt refinement.value 0)}}
+                    <button id="refinement-extract" data-action="extractMaterial" style="flex-grow:0;"
+                            data-material-key="{{refinement.key}}"
+                            data-tooltip="{{localize
+                                "pf2e-monster-parts.dialog.refined-item-editor.extract-button-tooltip"}}">
+                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                    </button>
+                {{/if}}
             {{/if}}
+
         </div>
     </fieldset>
 
-    {{#each data.imbues as | imbue |}}
+    {{#each imbuements as | imbue |}}
         <fieldset class="droppable imbue">
             <legend>{{localize "pf2e-monster-parts.dialog.refined-item-editor.imbuement"}}</legend>
             <div class="form-group">
@@ -37,7 +45,7 @@
                     <option value=""></option>
                     {{#each imbue.allowed }}
                         <option value="{{this.key}}"
-                                {{#if (eq this.key ../this.selected)}}selected{{/if}}>{{this.label}}</option>
+                                {{#if (eq this.key ../this.key)}}selected{{/if}}>{{this.label}}</option>
                     {{/each}}
                 </select></div>
             <div class="form-group">
@@ -47,9 +55,10 @@
                        data-imbue-index="{{@index}}"
                        class="imbue-value"
                        value="{{this.value}}" step="0.01" />
+                <p style="flex-grow: 0">{{localize ../currencyLabel}}</p>
                 {{#if (gt this.value 0)}}
-                    <button id="refinement-{{@index}}-extract" data-action="extractMaterial" style="flex:0.01"
-                            data-material-key="{{this.selected}}"
+                    <button id="refinement-{{@index}}-extract" data-action="extractMaterial" style="flex-grow:0;"
+                            data-material-key="{{this.key}}"
                             data-tooltip="{{localize
                                 "pf2e-monster-parts.dialog.refined-item-editor.extract-button-tooltip"}}">
                         <i class="fa-solid fa-arrow-up-from-bracket"></i>
@@ -59,7 +68,7 @@
         </fieldset>
     {{/each}}
 
-    {{#if (gt data.newImbues.length 0)}}
+    {{#if (gt newImbuements.length 0)}}
         <fieldset class="droppable new-imbue">
             <legend>{{localize "pf2e-monster-parts.dialog.refined-item-editor.new-imbuement"}}</legend>
             <div class="form-group">
@@ -67,10 +76,16 @@
                     "pf2e-monster-parts.dialog.refined-item-editor.type"}}</label>
                 <select name="new-imbue-type" id="new-imbue-type">
                     <option value=""></option>
-                    {{#each data.newImbues }}
+                    {{#each newImbuements }}
                         <option value="{{this.key}}">{{this.label}}</option>
                     {{/each}}
                 </select></div>
+            <div style="display: none" class="form-group">
+                <label for="new-imbue-value">{{localize
+                    "pf2e-monster-parts.dialog.refined-item-editor.value"}}</label>
+                <input type="number" name="new-imbue-value" id="new-imbue-value"
+                       value="0" step="0.01" />
+            </div>
         </fieldset>
     {{/if}}
 </div>

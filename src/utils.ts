@@ -146,6 +146,13 @@ export class Utils {
     static get currencyStep() {
         return this.isSF ? 0.1 : 0.01;
     }
+    static get currencyLabel(): I18nKey {
+        return (
+            this.isSF
+                ? "PF2E.CurrencyAbbreviations.credits"
+                : "PF2E.CurrencyAbbreviations.gp"
+        ) as I18nKey;
+    }
     static dcByLevel(level: number) {
         const l = Math.clamp(level, 0, 25);
         return (

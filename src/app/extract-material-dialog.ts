@@ -1,10 +1,8 @@
 import { t, Utils } from "@src/utils";
-import { Material, MaterialValue } from "@src/material";
-import { RefinedItem } from "@src/refined-item";
+import { AttachedMaterial, Material, MaterialValue } from "@src/material";
 import { MODULE_ID } from "@src/module";
 import { SkipSliderButtons } from "@src/app/elements";
-import { HTMLRangePickerElement } from "foundry-pf2e/foundry/client/applications/elements/_module";
-import { ApplicationRenderContext } from "foundry-pf2e/foundry/client/applications/_types";
+import { ApplicationRenderContext } from "foundry-pf2e";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -51,8 +49,7 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
         },
     };
 
-    refinedItem: RefinedItem;
-    material: Material;
+    material: AttachedMaterial;
     maxValue: MaterialValue;
     skipButtonsLevel: SkipSliderButtons;
     transferScale: number;
@@ -63,10 +60,10 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
         options: DeepPartial<foundry.applications.ApplicationConfiguration> &
             ExtractMaterialDialogOptions,
     ) {
-        options.uniqueId = `extract-material-dialog-${options.refinedItem.item.id}`;
-        const { material, refinedItem } = options;
+        const { material } = options;
+        options.uniqueId = `extract-material-dialog-${material.parent.item.id}-${material.key}`;
 
-        const currentLevel = material.getLevel(refinedItem).value;
+        const currentLevel = material.getLevel();
 
         const skipButtonsLevel = new SkipSliderButtons(
             "level",
@@ -74,7 +71,7 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
             Array.fromRange(currentLevel + 1)
                 .map((l) =>
                     material.value
-                        .sub(material.getThresholdForLevel(refinedItem, l))
+                        .sub(material.getThresholdForLevel(l))
                         .toSystemCurrency(),
                 )
                 .reverse(),
@@ -97,7 +94,6 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
             ),
         );
         this.skipButtonsLevel = skipButtonsLevel;
-        this.refinedItem = options.refinedItem;
         this.material = options.material;
         this.maxValue = this.material.value;
         switch (game.settings.get(MODULE_ID, "transfer-tax")) {
@@ -114,9 +110,7 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
         this.resolve = options.resolve;
     }
 
-    protected override async _prepareContext(): Promise<
-        ExtractMaterialContext & ApplicationRenderContext
-    > {
+    protected override async _prepareContext(): Promise<ExtractMaterialContext> {
         const buttons = [
             {
                 type: "submit",
@@ -165,9 +159,9 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
     }
 
     #getSlider() {
-        return this.element.querySelector<HTMLRangePickerElement>(
+        return this.element.querySelector<foundry.applications.elements.HTMLRangePickerElement>(
             `[name="value"]`,
-        );
+        )!;
     }
 
     #prepareHintStrings(this: ExtractMaterialDialog) {
@@ -175,11 +169,11 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
             this.#getSlider().value,
         );
         const extracted = subtracted.mul(this.transferScale).round();
-        const currentLevel = this.material.getLevel(this.refinedItem).value;
+        const currentLevel = this.material.getLevel();
         const newLevel = Material.fromKey(
             this.material.key,
             this.material.value.sub(subtracted).gp,
-        ).getLevel(this.refinedItem).value;
+        ).getLevel(this.material.parent);
 
         return [
             extracted.gp > 0
@@ -205,8 +199,7 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
 }
 
 interface ExtractMaterialDialogOptions {
-    refinedItem: RefinedItem;
-    material: Material;
+    material: AttachedMaterial;
     resolve: (args: {
         subtracted: MaterialValue;
         extracted: MaterialValue;

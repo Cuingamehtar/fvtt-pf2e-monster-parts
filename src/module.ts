@@ -2,7 +2,6 @@ import { createConfig } from "./config";
 import { registerSettings } from "./settings";
 import { MonsterPart } from "./monster-part";
 import { RefinedItem } from "./refined-item";
-import { AutomaticRefinementProgression } from "./automatic-refinement-progression";
 import { Wrappers } from "./wrappers";
 import { ModuleHooks } from "./hooks";
 import { ActorPF2e } from "foundry-pf2e";
@@ -18,7 +17,6 @@ Hooks.once("init", () => {
     Hooks.once("ready", async () => {
         await createConfig();
 
-        AutomaticRefinementProgression.registerHooks();
         if (
             game.settings.get(MODULE_ID, "handle-monster-parts-selling") !==
             "treasure"

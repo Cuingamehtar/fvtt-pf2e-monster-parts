@@ -54,4 +54,8 @@ declare module "foundry-pf2e" {
         };
         compendiumUUIDRedirects: StringTree<string[]>;
     }
+
+    type ApplicationRenderContext = Awaited<
+        ReturnType<foundry.applications.api.ApplicationV2["_prepareContext"]>
+    >;
 }

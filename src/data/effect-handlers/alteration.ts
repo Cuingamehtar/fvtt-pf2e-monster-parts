@@ -1,6 +1,6 @@
 import { BaseMaterialEffect } from "../material";
 import { RefinedItem } from "@src/refined-item";
-import { OwnedMaterial } from "@src/material";
+import { AttachedMaterial } from "@src/material";
 
 export type AlterationEffect = BaseMaterialEffect & {
     type: "Alteration";
@@ -15,7 +15,7 @@ export class AlterationEffectHandler {
         effect,
         changes,
     }: {
-        material: OwnedMaterial;
+        material: AttachedMaterial;
         effect: AlterationEffect;
         changes: Record<string, unknown>;
     }) {
