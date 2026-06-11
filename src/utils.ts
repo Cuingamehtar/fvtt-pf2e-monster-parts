@@ -125,7 +125,7 @@ export async function getDroppedItem(
 export async function getDroppedItem(event: DragEvent, type?: string) {
     const dropData =
         foundry.applications.ux.TextEditor.implementation.getDragEventData(
-            event as DragEvent,
+            event,
         ) as { type: string; uuid: string; fromInventory: boolean } | null;
     if (!dropData) return null;
     if (type && dropData.type !== type) return null;

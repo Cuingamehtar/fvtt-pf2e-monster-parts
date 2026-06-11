@@ -1,9 +1,10 @@
 .monster-part-header, .refined-item-header {
-    h3{
+    h3 {
         text-align: center;
     }
+
     table {
-        border:none;
+        border: none;
     }
 }
 
@@ -18,4 +19,34 @@
     color: var(--color-pf-alternate-darker);
     padding: var(--space-4);
     margin: 0 0 var(--space-8);
+}
+
+@keyframes blinking-border {
+    50% {
+        border-color: transparent;
+    }
+}
+
+
+.highlighted-material-form-group {
+    animation: 3s ease-in infinite blinking-border;
+}
+
+
+@keyframes highlighted-text {
+    0% {
+        text-shadow: 0 0 0 var(--color-shadow-highlight);
+    }
+
+    50% {
+        text-shadow: 0 0 5px var(--color-shadow-highlight);
+    }
+
+    100% {
+        text-shadow: 0 0 0 var(--color-shadow-highlight);
+    }
+ }
+
+.highlighted-item-glow {
+    animation: 2s ease-in-out infinite highlighted-text alternate;
 }

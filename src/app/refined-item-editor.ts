@@ -10,6 +10,7 @@ import { AssignMaterialDialog } from "@src/app/assign-material-dialog";
 import { ExtractMaterialDialog } from "@src/app/extract-material-dialog";
 import * as R from "remeda";
 import { ApplicationRenderContext } from "foundry-pf2e";
+import { DynamicStyles } from "@src/modules/dynamic-styles";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -183,6 +184,17 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         this.element
             .querySelectorAll("fieldset.droppable")
             .forEach((element) => {
+                const value = element.querySelector("select")?.value || "";
+
+                DynamicStyles.highlightElementOnHover(
+                    element,
+                    value !== ""
+                        ? [value]
+                        : Array.from(element.querySelectorAll("option"))
+                              .map((opt) => opt.value)
+                              .filter(Boolean),
+                    "monster-part",
+                );
                 element.addEventListener("drop", async (e) => {
                     const select = element.querySelector("select");
                     if (!select) return;
