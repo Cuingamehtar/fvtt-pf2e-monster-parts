@@ -11,8 +11,12 @@ export class AutomaticRefinementProgression {
     }
 
     static effectiveRefinementValue(item: RefinedItem, owner: CharacterPF2e) {
-        const level = owner.system.details.level.value;
-        const pct = Math.clamp(owner.system.details.xp.pct / 100, 0, 1);
+        const level = this.effectiveRefinementLevel(owner);
+        const pct = Math.clamp(
+            owner.system.details.xp.value / owner.system.details.xp.max,
+            0,
+            0.995,
+        );
 
         const m = item.refinement;
         const thresholdCurrent = m.getThresholdForLevel(level);
@@ -20,5 +24,9 @@ export class AutomaticRefinementProgression {
         return thresholdCurrent
             .add(thresholdNext.sub(thresholdCurrent).mul(pct))
             .map(Math.floor);
+    }
+
+    static effectiveRefinementLevel(owner: CharacterPF2e) {
+        return owner.system.details.level.value;
     }
 }

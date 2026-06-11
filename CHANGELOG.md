@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.7.7] - 2026-06-11
+
+### Changed
+- Automatic Refinement Progression no longer affects item data - with this setting set, ways to add or subtract material value from refinement are disabled.
+- Refine item updates are now done in one pass instead of three .
+ 
 ## [0.7.6] - 2026-05-23
 
 ### Added

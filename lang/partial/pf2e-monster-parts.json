@@ -55,7 +55,8 @@
       "type": "Type",
       "value": "Value",
       "button": "Edit Refined Item",
-      "extract-button-tooltip": "Extract material"
+      "extract-button-tooltip": "Extract material",
+      "handled-by-arp": "Handled by ARP"
     },
     "after-combat-dialog": {
       "title": "Assign Monster Parts",

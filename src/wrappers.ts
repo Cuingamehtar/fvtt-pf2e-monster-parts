@@ -90,8 +90,6 @@ export class Wrappers {
                 wrapped: typeof PhysicalItemPF2e.prototype.getRollOptions,
                 ...args
             ): ReturnType<typeof PhysicalItemPF2e.prototype.getRollOptions> {
-                if (DEBUG)
-                    console.debug(`Run Wrapper PhysicalItem.getRollOptions`);
                 const res: string[] = wrapped(...args);
                 if (RefinedItem.hasRefinedItemData(this)) {
                     const [prefix] = args;
@@ -109,7 +107,6 @@ export class Wrappers {
                     }
                     return options;
                 }
-
                 return res;
             },
             "MIXED",
@@ -124,10 +121,6 @@ export class Wrappers {
                 this: PhysicalItemPF2e,
                 wrapped: typeof PhysicalItemPF2e.prototype.prepareDerivedData,
             ) {
-                if (DEBUG)
-                    console.debug(
-                        `Run Wrapper PhysicalItem.prepareDerivedData`,
-                    );
                 if (RefinedItem.hasRefinedItemData(this)) {
                     new RefinedItem(this).prepareDerivedData();
                     wrapped();

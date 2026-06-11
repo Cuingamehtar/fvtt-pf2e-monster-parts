@@ -33,7 +33,7 @@ export class RuleElementEffectHandler {
             }
             const newRule = await prepareSpellRE(rule);
             if (!newRule) return;
-            newRule.dc ??= Utils.dcByLevel(material.getLevel().value);
+            newRule.dc ??= Utils.dcByLevel(material.effectiveLevel.value);
             newRule.rank ??= newRule.data?.spell.system.level.value;
             const oldRule = material.parent.item.system.rules.find(
                 (r) => isItemCastRE(r) && r.uuid == newRule.uuid,

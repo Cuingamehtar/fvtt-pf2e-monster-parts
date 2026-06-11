@@ -150,17 +150,6 @@ export class Material extends MaterialBase {
         return new MaterialValue(clampedLevel == 0 ? 0 : thr[clampedLevel - 1]);
     }
 
-    static getEffects(material: MaterialBase, item: RefinedItem) {
-        const level = Material.getLevel(material, item);
-        if (typeof level === "undefined") return [];
-        return (
-            material.data.effects?.filter(
-                (e) =>
-                    e.levelMin <= level && (!e.levelMax || level <= e.levelMax),
-            ) ?? []
-        );
-    }
-
     static getFlagDataName(materialKey: string, value: string) {
         function convertSlug(s: string) {
             const parts = s.split("-");
@@ -228,6 +217,18 @@ export class AttachedMaterial extends MaterialBase {
     }
 
     get effectiveLevel() {
+        if (
+            this.type === "refinement" &&
+            AutomaticRefinementProgression.isEnabled &&
+            this.owningActor?.isOfType("character")
+        ) {
+            return {
+                value: AutomaticRefinementProgression.effectiveRefinementLevel(
+                    this.owningActor,
+                ),
+                capped: false,
+            };
+        }
         const baseLevel = this.getLevel();
         if (!LevelCap.isEnabled) {
             return { value: baseLevel, capped: false };
@@ -239,7 +240,14 @@ export class AttachedMaterial extends MaterialBase {
     }
 
     getEffects() {
-        return Material.getEffects(this, this.parent);
+        const level = this.effectiveLevel.value;
+        if (typeof level === "undefined") return [];
+        return (
+            this.data.effects?.filter(
+                (e) =>
+                    e.levelMin <= level && (!e.levelMax || level <= e.levelMax),
+            ) ?? []
+        );
     }
     getFlavor() {
         const level = this.effectiveLevel.value;

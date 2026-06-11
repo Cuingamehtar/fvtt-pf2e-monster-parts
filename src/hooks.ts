@@ -1,5 +1,6 @@
 import {
     ActorPF2e,
+    CharacterPF2e,
     CreaturePF2e,
     CreatureSheetPF2e,
     EncounterPF2e,
@@ -14,6 +15,7 @@ import { RefinedItem } from "./refined-item";
 import { createRefinedItemDialog } from "./app/refined-item-create";
 import { MODULE_ID } from "./module";
 import { AfterCombatDialog } from "./app/after-combat-dialog";
+import { AutomaticRefinementProgression } from "@src/modules/automatic-refinement-progression";
 
 export class ModuleHooks {
     static registerAllHandlers() {
@@ -35,6 +37,10 @@ export class ModuleHooks {
 
         if (game.settings.get(MODULE_ID, "auto-monster-parts") !== "none")
             this.addMonsterPartsOnNPCCreation();
+
+        if (AutomaticRefinementProgression.isEnabled) {
+            this.updateItemsOnLevelChangeARP();
+        }
     }
 
     static addMonsterPartButton() {
@@ -224,6 +230,34 @@ export class ModuleHooks {
                 )
                     return;
                 MonsterPart.fromCreature(actor);
+            },
+        );
+    }
+
+    static updateItemsOnLevelChangeARP() {
+        Hooks.on(
+            "updateActor",
+            (
+                actor: ActorPF2e,
+                diff: DeepPartial<CharacterPF2e>,
+                _options,
+                user: string,
+            ) => {
+                if (game.user.id !== user) return;
+                if (!actor.isOfType("character")) return;
+                const newLevel = diff.system?.details?.level?.value as
+                    | number
+                    | undefined;
+                if (typeof newLevel !== "number") return;
+                actor.items.forEach((i) => {
+                    if (
+                        i.isOfType("physical") &&
+                        RefinedItem.hasRefinedItemData(i)
+                    ) {
+                        const ri = new RefinedItem(i);
+                        ri.updateItem();
+                    }
+                });
             },
         );
     }

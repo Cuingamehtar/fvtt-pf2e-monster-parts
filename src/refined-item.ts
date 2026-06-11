@@ -135,7 +135,7 @@ export class RefinedItem {
     }
 
     async updateItem(flagData?: DeepPartial<RefinedItemFlags>) {
-        flagData = foundry.utils.mergeObject(this.getFlag(), flagData, {
+        const flag = foundry.utils.mergeObject(this.getFlag(), flagData, {
             inplace: false,
         });
         if (flagData) {
@@ -151,27 +151,33 @@ export class RefinedItem {
                 );
                 flagData.imbues = this.getFlag().imbues;
             }
-            await this.item.setFlag(MODULE_ID, "refined-item", flagData);
         }
 
         const values = {} as Record<string, unknown>;
 
-        for (const m of [this.refinement, ...this.imbuements]) {
+        const materials = [flag.refinement, ...flag.imbues].map((m) =>
+            Material.fromKey(m.key, m.value, { parent: this }),
+        );
+        for (const m of materials) {
             values[Material.getFlagDataName(m.key as string, "level")] =
-                m.getLevel();
+                m.effectiveLevel.value;
         }
 
-        const updatedData = {
-            flags: {
-                "pf2e-monster-parts": { ...replaceKey("values", values) },
+        const updatedFlags = {
+            "pf2e-monster-parts": {
+                ...replaceKey("refined-item", flag),
+                ...replaceKey("values", values),
             },
         };
 
-        await this.item.update(updatedData);
+        const effects = materials.flatMap((m) =>
+            m.getEffects().map((effect) => ({
+                material: m,
+                effect,
+            })),
+        );
 
-        const effects = this.getEffects();
-
-        const changes = { system: { rules: [] } };
+        const changes = { flags: updatedFlags, system: { rules: [] } };
         for (const { effect, material } of effects) {
             await EffectHandlers.handleUpdate({
                 effect,

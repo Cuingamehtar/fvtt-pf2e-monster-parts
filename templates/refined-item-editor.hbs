@@ -15,7 +15,7 @@
         <div class="form-group">
             <label for="refinement-value">{{localize "pf2e-monster-parts.dialog.refined-item-editor.value"}}</label>
             {{#if refinement.disabled}}
-                <p>Handled by ARP</p>
+                <p>{{localize "pf2e-monster-parts.dialog.refined-item-editor.handled-by-arp"}}</p>
                 <input style="display:none" type="number" name="refinement-value" id="refinement-value" value="{{refinement.value}}"
                        step="0.01"/>
             {{else}}
