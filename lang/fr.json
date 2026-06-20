@@ -31,9 +31,7 @@
       },
       "confirm-apply-material": {
         "title": "Confirmer l'application du matériau",
-        "content": "Cela ajoutera <strong>{value}</strong> à <strong>{material}</strong> matériaux de l'objet.",
-        "consume": "Cela consommera {quantity} parties de monstre.",
-        "remainder": "La valeur d'une des parties de monstre sera réduite par <strong>{remainder}</strong>."
+        "content": "Cela ajoutera <strong>{value}</strong> à <strong>{material}</strong> matériaux de l'objet."
       },
       "slider": {
         "value": "Valeur"
@@ -54,12 +52,25 @@
         "new-imbuement": "Nouvelle imprégnation",
         "type": "Type",
         "value": "Valeur",
-        "button": "Modifier l'élément raffiné"
+        "button": "Modifier l'élément raffiné",
+        "extract-button-tooltip": "Extraction de matériau"
       },
       "after-combat-dialog": {
         "title": "Attribuer des parties de monstre",
         "value": "Valeur : {value}",
         "total": "Valeur totale : {value}"
+      },
+      "assign-material-dialog": {
+        "title": "Assigner un matériau",
+        "remove-full-stack": "Cela retirera la totalité de la pile de parties du monstre.",
+        "value-remaining": "La valeur restante ({value}) sera divisée en une autre pile.",
+        "contents": "Choisissez la quantité de matière que vous souhaitez attribuer à l'objet raffiné"
+      },
+      "extract-material-dialog": {
+        "title": "Transfert de matériau",
+        "contents": "Choisissez la quantité de matériau que vous souhaitez extraire de l'objet raffiné",
+        "subtract-note": "Cela soustraira <strong>{value}</strong> de la valeur du matériau.",
+        "level-decrease-note": "Le niveau du matériau diminuera de <strong>{difference}</strong>."
       }
     },
     "material": {
@@ -68,10 +79,12 @@
       "value": "Valeur",
       "item": {
         "name-owned": "Parties de monstre de {actor}",
+        "name-partial": "{name} (Partiel)",
+        "name-pure": "Parties pures ({material})",
         "name": "Parties de monstre"
       },
       "editor": {
-        "title": "Modifier les matériaux fournis"
+        "title": "Modifier les matériaux contenus"
       },
       "duplicate-key": "Le matériel portant la clé {key} existe déjà. Il sera remplacé.",
       "validation-failure-notification": "Échec de la validation du matériel {key}. Voir la console (F12) pour plus de détails.",
@@ -82,23 +95,29 @@
       "strikes": "Les frappes avec l'arme infligent {damage} supplémentaires.",
       "type": {
         "acid": "{value} dégât(s) d'acide",
+        "bludgeoning": "{value} dégât(s) contondant(s)",
         "cold": "{value} dégât(s) de froid",
         "electricity": "{value} dégât(s) d'électricité",
         "fire": "{value} dégât(s) de feu",
         "force": "{value} dégât(s) de force",
         "mental": "{value} dégât(s) mentaux",
         "poison": "{value} dégât(s) de poison",
+        "slashing": "{value} dégât(s) tranchant(s)",
+        "spirit": "{value} dégât(s) spirituel(s)",
         "sonic": "{value} dégât(s) de son",
         "vitality": "{value} dégât(s) de vitalité",
         "void": "{value} dégât(s) de vide",
         "precision": "{value} dégât(s) de précision",
         "persistentAcid": "{value} dégâts d'acide persistants",
+        "persistentBludgeoning": "{value} dégât(s) contondant(s) persistant(s)",
         "persistentCold": "{value} dégât(s) de froid persistants",
         "persistentElectricity": "{value} dégât(s) d'électricité persistants",
         "persistentFire": "{value} dégât(s) de feu persistants",
         "persistentForce": "{value} dégât(s) de force persistants",
         "persistentMental": "{value} dégât(s) mentaux persistants",
         "persistentPoison": "{value} dégât(s) de poison persistants",
+        "persistentSlashing": "{value} dégâts tranchants persistants",
+        "persistentSpirit": "{value} dégât(s) spirituel(s) persistant(s)",
         "persistentSonic": "{value} dégât(s) de son persistants",
         "persistentVitality": "{value} dégât(s) de vitalité persistants",
         "persistentVoid": "{value} dégât(s) de vide persistants"
@@ -156,6 +175,20 @@
       "level-capped": {
         "name": "Plafonner par les niveaux de matériau",
         "hint": "Les raffinements seront plafonnés par le niveau de l'acteur, les imprégnations seront limitées par le niveau de raffinement de l'objet."
+      },
+      "transfer-tax": {
+        "name": "Taxe de transfert",
+        "hint": "La valeur perdue en extrayant le matériau d'un objet raffiné.",
+        "none": "Aucune",
+        "default": "10 % (par défaut)",
+        "half": "50 %"
+      },
+      "auto-monster-parts": {
+        "name": "Parties de monstre automatiques",
+        "hint": "Lorsqu'un acteur est importé depuis un compendium, des parties de monstre sont automatiquement créées dans son inventaire et deviennent pillables si cette option est activée.",
+        "none": "Aucun",
+        "nonhumanoid": "Non-humanoïdes uniquement",
+        "all": "Tous"
       }
     },
     "data": {
@@ -167,19 +200,11 @@
             "header-description": "Vous imprégnez l'arme d'<em>acide</em> vitriolique.",
             "magic": {
               "label": "Acide (Magie)",
-              "description": "<p><strong>Type</strong> Arme</p><p><strong>Parties</strong> Le monstre doit avoir le trait acide ou une attaque ou un sort qui inflige des dégâts d'acide.</p><p><strong>Effet</strong> Vous imprégnez l'arme d'acide vitriolique.</p><hr><p><strong>Chemin</strong> Magie ; Choisissez quand vous imprégnez l'arme pour la première fois si les sorts accordés sont arcaniques ou primordiaux</p><ul><li><p><strong>2e</strong> L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt]{Aspersion d'acide} comme tour de magie, intensifié à la moitié du niveau de l'objet arrondi au supérieur</p></li><li><p><strong>4e</strong> L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Explosion d'acide} une fois par jour</p></li><li><p><strong>6e</strong> L'<em>explosion d'acide</em> de l'arme est intensifié au rang 2 et elle peut lancer soit @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0]{Flèche acide} ou <em>explosion acide</em> une fois par jour, mais pas les deux</p></li><li><p><strong>8e</strong> L'<em>explosion d'acide</em> de l'arme passe au rang 3 et elle peut lancer <em>flèche acide</em> et <em>explosion d'acide</em> chacun une fois par jour</p></li><li><p><strong>10e</strong> Les frappes avec l'arme infligent 1 point de dégât d'acide supplémentaire</p></li><li><p><strong>12e</strong> L'<em>flèche acide</em> de l'arme passe au rang 4 et l'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]{Tempête d'acide} une fois par jour</p></li><li><p><strong>14e</strong> Les dégâts d'acide supplémentaires passent à 1d4</p></li><li><p><strong>16e</strong> La <em>flèche acide</em> de l'arme est intensifiée au rang 6 et la <em>tempête d'acide</em> est intensifiée au rang 7</p></li><li><p><strong>18e</strong> Les dégâts d'acide supplémentaires passent à 1d6</p></li><li><p><strong>20e</strong> L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl]{Tempête vengeresse} une fois par jour, mais vous ne pouvez choisir que l'effet pluie acide. Vous pouvez choisir l'effet pluie acide deux fois de suite</p></li></ul>",
               "header": {
-                "level-4-spells": "L'arme peut lancer un sort @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Explosion d'acide} au rang 1 une fois par jour.",
-                "level-6-spells": "L'arme peut lancer soit un sort de @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0]{Flèche acide} au rang 2, soit un sort de @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Explosion d'acide} au rang 2 une fois par jour, mais pas les deux.",
-                "level-8-spells": "L'armre peut lancer @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0]{Flèche acide} au rang 2 et @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws]{Explosion d'acide} au rang 3 chacun une fois par jour.",
-                "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] au rang 4, @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] au rang 3 et @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]{Tempête d'acide} au rang 5 chacun une fois par jour.",
-                "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.f8hRqLJaxBVhF1u0] au rang 6, @UUID[Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws] au rang 3 et @UUID[Compendium.pf2e.spells-srd.Item.ZW8ovbu1etdfMre3]{Tempête d'acide} au rang 7, chacun une fois par jour.",
-                "level-20-spell": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.r4HLQcYwB62bTayl] une fois par jour, mais vous ne pouvez choisir que l'effet pluie acide. Vous pouvez choisir l'effet de pluie acide deux fois de suite."
               }
             },
             "might": {
               "label": "Acide (Puissance)",
-              "description": "<p><strong>Type</strong> Arme</p>\n<p><strong>Parties</strong> Le monstre doit avoir le trait acide ou une attaque ou un sort qui inflige des dégâts d'acide.</p>\n<p><strong>Effet</strong> Vous imprégnez l'arme d'acide vitriolique.</p>\n<hr />\n<p><strong>Voie</strong> Puissance</p>\n<ul>\n<li><strong>4e</strong> Les Frappes avec l'arme infligent 1 dégât d'acide supplémentaire</li>\n<li><strong>6e</strong> Les dégâts d'acide supplémentaires passent à 1d4</li>\n<li><strong>8e</strong> Les dégâts d'acide supplémentaires passent à 1d6. Sur un coup critique, l'armure de la cible (si elle en a une) subit 3d6 dégâts d'acide (avant d'appliquer la Solidité). Si la cible a un bouclier levé, c'est le bouclier qui subit ces dégâts</li>\n<li><strong>12e</strong> Les dégâts infligés par cette propriété imprégnée ignorent les résistances</li>\n<li><strong>14e</strong> Les dégâts d'acide infligés à l'armure ou au bouclier sur un coup critique passent à 6d6</li>\n<li><strong>18e</strong> Les dégâts d'acide suppléemntaires passent à 1d8</li>\n<li><strong>20e</strong> Sur une Frappe réussie avec l'arme, avant d'appliquer les dégâts d'acide, la cible obtient une faiblesse 1 contre l'acide jusqu'au début de votre prochain tour.</li>\n</ul>",
               "effects": {
                 "level-8-note": "L'armure de la cible (le cas échéant) subit @Damage[3d6[acid]]{3d6 dégâts d'acide} (avant application de la Solidité). si la cible a un bouclier levé, c'est le bouclier qui subit ces dégâts.",
                 "level-12-note": "Les dégâts d'acide infligés par cette propriété imprégnée ignorent les résistances.",
@@ -195,9 +220,9 @@
             },
             "tech": {
               "label": "Acide (Technique)",
-              "description": "<p><strong>Type</strong> Arme</p>\n<p><strong>Parties</strong> Le monstre doit avoir le trait acide ou une attaque ou un sort qui inflige des dégâts d'acide.</p>\n<p><strong>Effet</strong> Vous imprégnez l'arme avec de l'acide vitriolique.</p>\n<hr />\n<p><strong>Voie</strong> Technique</p>\n<ul>\n<li><strong>4e</strong> Les Frappes avec l'arme infligent 1 dégât d'acide persistant</li>\n<li><strong>6e</strong> Le Frappes avec l'arme infligent 1 dégât d'acide supplémentaire</li>\n<li><strong>8e</strong> Les dégâts d'acide persistants passent à 1d6. Sur un coup critique, l'armure de la cible (si elle en a une) subit 3d6 dégâts d'acide (avant d'appliquer la Solidité). Si la cible a un bouclier levé, c'est le bouclier qui subit ces dégâts</li>\n<li><strong>12e</strong> Les dégâts d'acide infligés par cette propriété imprégnée (y compris les dégâts d'acide persistants) ignorent les résistances</li>\n<li><strong>14e</strong> Les dégâts d'acide persistants passent à 1d8 si elle touche</li>\n<li><strong>16e</strong> Les dégâts d'acide persistants de la propriété imprégnée ronge les résistances d'un ennemi. Chaque fois qu'un ennemi, son bouclier ou son armure subit des dégâts provoqués par les dégâts d'acide persistants à la fin de son tour, toutes les résistances et la Solidité décroissent de 1 pendant 1 minute. Cet effet est cumulable (pas automatisé)</li>\n<li><strong>18e</strong> Les dégâts d'acide persistants passent à 1d10 si elle touche</li>\n<li><strong>20e</strong> Sur un coup critique, l'acide ronge les entrailles de l'ennemi qui est Drainé 1</li>\n</ul>",
               "effects": {
                 "level-8-note": "L'armure de la cible (le cas échéant) subit @Damage[3d6[acid]]{3d6 dégâts d'acide} (avant application de la dureté). Si la cible a un bouclier levé, c'est le bouclier qui subit ces dégâts.",
+                "level-12-note": "Les dégâts provoqués par l'acide grâce à cette propriété imprégnée (y compris les dégâts persistants provoqués par l'acide) ignorent les résistances.",
                 "level-20-note": "L'ennemi est @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drainé 1}."
               },
               "header": {
@@ -213,12 +238,10 @@
             "persistent": "Les Frappes portées avec l'arme provoquent une hémorragie externe ou interne chez les créatures de type {créature}. Contre ces créatures, les Frappes portées avec l'arme infligent {damage} dégâts de saignement.",
             "flavor": "Vous imprégnez l'arme d'énergies générées par votre précédente défaite des créatures dont les parties se trouvent à l'intérieur ou d'énergies anathèmes contre un certain type de créature, afin de rendre l'arme particulièrement efficace contre un type spécifique de créature.",
             "effects": {
-              "level-6-note": "La cible est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1} jusqu'à la fin de votre prochain tour.",
-              "level-14-note": "La cible doit tenter un jet de @Check[fortitude]. En cas de succès critique, elle est@UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1}jusqu'à la fin de votre prochain tour. En cas de succès, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 2} jusqu'à la fin de votre prochain tour. En cas d'échec, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 3} jusqu'à la fin de votre prochain tour et en cas d'échec critique elle est détruite. Cet effet possède le trait mise hors de combat."
+              "level-6-note": "La cible est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1} jusqu'à la fin de votre prochain tour."
             },
             "might": {
               "label": "Tueur ({creature}, Puissance)",
-              "description": "<p><strong>Type</strong> Arme</p>\n<p><strong>Parties</strong> Le monstre doit être de type {creature}.</p>\n<hr />\n<p><strong>Effet</strong> Vous imprégnez l'arme avec les énergies produites par la défaite précédente des créatures dont les parties se trouvent à l'intérieur ou des énergies qui sont anathèmes à un certain type de créature, en vue de rendre l'arme particulièrement effective contre un type spécifique de créature.</p>\n<hr />\n<p><strong>Voie</strong> Puissance</p>\n<ul>\n<li><strong>2e</strong> Les Frappes avec l'arme infligent 1 dégâts supplémentaire du type de dégât de base de l'arme aux créatures de type {creature}</li>\n<li><strong>4e</strong> Les dégâts supplémentaires contre les créatures de type {creature} passent à 1d4</li>\n<li><strong>6e</strong> Les dégâts supplémentaires contre les créatures de type {creature} passent à 1d6. En cas de coup critique, vous sapez les forces d'une créature de type {creature}, qui devient Affaiblie 1 jusqu'à la fin de votre prochain tour</li>\n<li><strong>10e</strong> Contre une créature de type {creature}, les dégâts de base de l'arme ignorent les 5 premiers points de résistance de la cible</li>\n<li><strong>14e</strong> L'arme peut directement tuer les créature de type {creature}. En cas de coup critique, au lieu d'être Affaiblie 1 jusqu'à la fin de votre prochain tour, une créature detype {creature} doit tenter un jet de Vigueur. Sur un succès critique, elle est Affaiblie 1 jusqu'à la fin de votre prochain tour. En cas de succès, elle est Affaiblie 2 jusqu'à la fin de votre prochain tour. En cas d'échec, elle est Affaiblie 3 jusqu'à la fin de votre prochain tour et en cas d'échec critique, elle est détruite. Cet effet possède le trait mise hors de combat</li>\n<li><strong>16e</strong> Les dégâts supplémentaires contre les créatures de type {creature} passent à 1d8</li>\n<li><strong>20e</strong> Les dégâts supplémentaires contre les créatures de type {creature} passent à 1d10</li>\n</ul>",
               "level-6-enfeebled": "Lors d'un coup critique, vous sapez la force d'une créature de type {creature}, la rendant @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1} jusqu'à la fin de votre prochain tour.",
               "level-10-resistance": "Contre une créature de type {creature}, les dégâts de base de l'arme ignorent les 5 premiers points de résistance de la cible.",
               "level-14-enfeebled": "L'arme peut tuer directement les créatures de type {creature}. Sur un coup critique, une créature de type {creature} doit effectuer un jet de Vigueur. En cas de succès critique, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1} jusqu'à la fin de votre prochain tour. En cas de succès, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 2} jusqu'à la fin de votre prochain tour. En cas d'échec, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 3} jusqu'à la fin de votre prochain tour. En cas d'échec critique, elle est détruite. Cet effet possède le trait mise hors de combat.",
@@ -228,20 +251,17 @@
             },
             "tech": {
               "label": "Tueur ({creature}, Technique)",
-              "description": "<p><strong>Type</strong> Arme</p>\n<p><strong>Parties</strong> Le monstre doit être de type {creature}.</p>\n<hr />\n<p><strong>Effet</strong> Vous imprégnez l'arme avec les énergies produites par la défaite précédente des créatures dont les parties se trouvent à l'intérieur ou des énergies qui sont anathèmes à un certain type de créature, en vue de rendre l'arme particulièrement effective contre un type spécifique de créature.</p>\n<hr />\n<p><strong>Voie</strong> Technique</p>\n<ul>\n<li><strong>2e</strong> Les Frappes avec l'arme provoque une hémorragie interne ou externe contre les créatures de type {creature}. Contre de telles créatures, les Frappes avec l'arme infligent 1 dégât de saignement</li>\n<li><strong>4e</strong> Les Frappes avec l'arme infligent 1 dégât supplémentaire du type de dégâts de base de l'arme aux créatures de type {creature}</li>\n<li><strong>6e</strong> Les dégâts de saignement passent 1d6. Sur un coup critique, vous sapez les forces d'une créature de type {creature}, qui devient Affaiblie 1 jusqu'à la fin de votre prochain tour</li>\n<li><strong>10e</strong> Contre une créature de type {creature}, les dégâts de base de l'arme ignorent les 5 premiers points de la résistance de la cible et les dégâts de saignement de cette propriété ignorent la résistance de la cible</li>\n<li><strong>12e</strong> Les dégâts de saignement si elle touche une créature de type {creature} passent à 1d8</li>\n<li><strong>14e</strong> L'arme peut carrément tuer des créatures de type {creature}. En cas de coup critique, une créature de type {creature} est Affaiblie 2 jusqu'à la fin de votre prochain tour. Elle doit également tenter un jet de Vigueur. En cas d'échec, elle est Affaiblie 3 jusqu'à la fin de votre prochain tour au lieu d'être Affaiblie 2 et sur un échec critique, elle est détruite. Cet effet possède le trait mise hors de combat</li>\n<li><strong>16e</strong> Les dégâts de saignement si elle touche une créature de type {creature} passent à 1d10</li>\n<li><strong>20e</strong> La perte de sang continue à saper les forces des créatures de type {creature}. L'état Affaibli d'un coup critique durent tant que dure l'état de saignement ou jusqu'à la fin de votre prochain tour, selon ce qui se produit en dernier</li>\n</ul>",
               "level-6-enfeebled": "En cas de coup critique, vous sapez la force d'une créature de type {créature}, la rendant @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1} jusqu'à la fin de votre prochain tour.",
               "level-10-resistance": "Contre une créature du type {creature}, les dégâts de base de l'arme ignorent les 5 premiers points de résistance de la cible et les dégâts de saignement de cette propriété imprégnée ignorent la résistance de la cible.",
               "level-14-enfeebled": "L'arme peut tuer directement les créatures de type {creature}. En cas de coup critique, une créature de type {creature} est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 2} jusqu'à la fin de votre prochain tour. Elle doit également effectuer un jet de Vigueur. En cas d'échec, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 3} jusqu'à la fin de votre prochain tour et en cas d'échec critique, elle est détruite. Cet effet possède le trait mise hors de combat.",
               "level-20-enfeebled": "L'arme peut tuer directement les créatures de type {creature}. Sur un coup critique, une créature de type {creature} est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 2}. Elle doit également tenter un jet de Vigueur. En cas d'échec, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 3} et en cas d'échec critique, elle est détruite. Cet effet possède le trait mise hors de combat. L'état Affaibli dû à un coup critique dure aussi longtemps que les dégâts de saignement ou jusqu'à la fin de votre prochain tour, selon la durée la plus longue.",
               "effects": {
-                "level-10-note": "Les dégâts de base de l'arme ignorent les 5 premiers points de résistance de la cible et les dégâts de saignement de cette propriété imprégnée ignorent la résistance de la cible.",
-                "level-20-note": "La cible doit tenter un jet de @Check[fortitude]. En cas de succès critique, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1}. En cas de succès, elle est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 2}. En cas d'échec, elles t @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 3} et en cas d'échec critique, elle est détruite. Cet effet possède le trait mise hors de combat. L'état Affaibli d'un coup critique persiste tant que les dégâts de saignement persistent ou jusqu'à la fin de votre prochain tour, selon ce qui se produit en dernier."
+                "level-10-note": "Les dégâts de base de l'arme ignorent les 5 premiers points de résistance de la cible et les dégâts de saignement de cette propriété imprégnée ignorent la résistance de la cible."
               }
             }
           },
           "charisma": {
             "label": "Charisme",
-            "description": "<p><strong>Type</strong> Objet de compétence (compétence basée sur le Charisme)</p>\n<p><strong>Parties</strong> Le Charisme doit être le modificateur d'attribut le plus élevé de la créature ou le second</p>\n<hr />\n<p><strong>Effet</strong> Vous imprégnez l'objet d'un  <em>charisme</em> impressionnant.</p>\n<ul>\n<li><strong>8e</strong> L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Héroïsme} une fois par jour comme un sort occulte, car votre charisme intérieur vous inspire ou un allié à accomplir des exploits</li>\n<li><strong>14e</strong> Le sort <em>Héroïsme</em> est intensifié au rang 6</li>\n<li><strong>17e</strong> Lorsque vous investissez l'objet, soit vous augmentez de +1 votre modificateur de Charisme, soit vous le passez à +4, selon ce qui vous procure le modificateur le plus élevé. L'objet obtient le trait apogée</li>\n<li><strong>20e</strong> Le sort <em>Héroïsme</em> est intensifié au rang 9</li>\n</ul>",
             "flavor": "Vous imprégnez l'objet d'un <em>charisme</em> éblouissant.",
             "level-8-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Héroïsme} une fois par jour en tant que sort occulte car votre charisme intérieur vous inspire ou inspire un allié vers la grandeur.",
             "level-14-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.KqvqNAfGIE5a9wSv]{Héroïsme} comme un sort occulte de rang 6 une fois par jour car votre charisme intérieur vous inspire ou inspire un allié vers la grandeur.",
@@ -252,33 +272,38 @@
             "flavor": "Vous imprégnez l'arme d'un <em>froid</em> glacial.",
             "magic": {
               "label": "Froid (Magie)",
-              "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Aspersion de froid} au rang 1 une fois par jour.",
-              "level-6-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Aspersion de froid} au rang 2 une fois par jour.",
-              "level-10-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Aspersion de froid} et @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx]{Tempête de glace} au rang 2 une fois par jour chacun.",
-              "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Aspersion de froid} au rang 3, @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx]{Tempête de glace} et @UUID[Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k]{Cône de froid} une fois par jour chacun.",
-              "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Aspersion de froid} au rang 6, @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx]{Tempête de glace} au rang 6 et @UUID[Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k]{Cône de froid au rang 6} une fois par jour chacun.",
-              "level-20-polar-ray": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.BKIet436snMNcnez]{Rayon polaire} au rang 9 une fois par jour."
+              "header": {
+                "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Aspersion de froid} au rang 1 une fois par jour.",
+                "level-6-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Aspersion de froid} au rang 2 une fois par jour.",
+                "level-10-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Aspersion de froid} au rang 2 et  @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx]{Tempête de glace} une fois par jour chacun.",
+                "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Aspersion de froid} au rang 2 et   @UUID[Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k]{Cône de froid} une fois par jour chacun.",
+                "level-20-polar-ray": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.BKIet436snMNcnez]{Rayon polaire} au rang 9 une fois par jour."
+              }
             },
             "might": {
               "label": "Froid (Puissance)",
-              "level-8-slowed": "Sur un coup critique, la cible est aussi @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Ralentie 1} jusqu'à la fin de votre prochain tour à moins de réussir un jet de Vigueur contre le DD de l'arme.",
-              "level-12-resistance": "Les dégâts de froid infligés par cette propriété imprégnée ignorent les résistances.",
-              "level-14-slowed": "Sur un coup critique, la cible est aussi @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Ralentie 1} jusqu'à la fin de votre prochain tour à moins de réussir un jet de Vigueur contre le DD de l'arme et subit une pénalité de statut de -3 mètres à ses Vitesses pendant 1 round.",
-              "level-20-weakness": "Lors d'une Frappe réussie avec l'arme, avant d'appliquer des dégâts de froid, la cible obtient une faiblesse 1 contre le froid jusqu'au début de votre prochain tour."
+              "effects": {
+                "level-8-slow": "La cible est également  @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Ralentie 1} jusqu'à la fin de votre prochain tour à moins qu'elle ne réussisse un jet de Vigueur contre le DD de l'arme.",
+                "level-12-resistance": "Les dégâts provoqués par le froid grâce à cette propriété imprégnée ignorent les résistances.",
+                "level-14-slow": "La cible est également  @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Ralentie 1} jusqu'à la fin de votre prochain tour à moins qu'elle ne réussisse un jet de Vigueur contre le DD de l'arme et subit une pénalité de statut de -3 mètres à ses Vitesses pendant 1 round."
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts de froid infligés par cette propriété imprégnée ignorent les résistances."
+              }
             },
             "tech": {
               "label": "Froid (Technique)",
-              "level-6-slow": "Lors d'une Frappe réussie avec l'arme, la cible subit une pénalité de statut de -1,50 mètre à ses Vitesses pendant 1 round.",
-              "level-8-slow": "En cas de Frappe réussie avec l'arme, la cible subit un malus de statut de -3 mètres à sa Vitesse pendant 1 round. En cas de coup critique, la cible est également @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Ralentie 1} jusqu'à la fin de votre prochain tour, à moins de réussir un jet de Vigueur contre le DD de l'arme.",
-              "level-12-resistance": "Les dégâts de froid persistants infligés par cette propriété imprégnée ignorent les résistances.",
-              "level-14-thaw": "Une créature dont les Vitesses ont été diminuées par la propriété imprégnée dégèle plus lentement. La pénalité dure aussi longtemps que les dégâts de froid persistants.",
-              "level-16-surface": "Les ennemis adjacents à une surface qui obtiennent un échec critique au jet de sauvegarde contre l'effet de ralentissement gèlent sur cette surface (généralement le sol), devenant @UUID[Compendium.pf2e.conditionitems.Item.eIcWbB5o3pP6OIMe]{Immobilisée} jusqu'à ce qu'ils [[/act escape]]{S'Échappent} contre le DD de l'objet.",
-              "level-20-slow": "Sur une Frappe réussie avec l'arme, la cible subit une pénalité de statut de -4,50 mètres à ses Vitesses pendant 1 round. Sur un coup critique, la cible est aussi @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Ralentie 1} jusqu'à la fin de votre prochain tour à moins qu'elle ne réussisse un jet de Vigueur contre le DD de l'arme."
+              "effects": {
+                "level-12-resistance": "Les dégâts de froid persistants infligés par cette propriété imprégnée ignorent les résistances."
+              },
+              "header": {
+                "level-6-slow": "Sur une Frappe réussie avec l'arme, la cible subit une pénalité de statut de -1,50 mètre à ses Vitesses pendant 1 round.",
+                "level-12-resistance": "Les dégâts de froid persistants infligés par cette propriété imprégnée ignorent les résistances."
+              }
             }
           },
           "constitution": {
             "label": "Constitution",
-            "description": "<p><strong>Type</strong> Objet de compétence (compétence basée sur le Constitution)</p>\n<p><strong>Parties</strong> La Constitution doit être le modificateur d'attribut le plus élevé de la créature ou le second.</p>\n<hr /><p><strong>Effet</strong> Vous imprégnez l'objet d'une <em>constitution</em> résiliente.</p>\n<ul>\n<li><strong>8e</strong> L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 3, sur vous uniquement, une fois par jour en tant que sort divin</li>\n<li><strong>14e</strong> Le sort de <em>Guérison</em> de l'objet est intensifié au rang 6</li>\n<li><strong>17e</strong> Lorsque vous investissez l'objet, soit vous augmentez votre score de Constitution de 1 soit vous le passez à +4, selon ce qui vous accorde le modificateur le plus élevé. L'objet obtient le trait apogée</li>\n<li><strong>18e</strong> Le sort <em>Guérison</em> de l'objet est intensifié au rang 7et chaque jour, vous can choisir que l'objet lance @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Régénération} sur vous une fois par jour à la place de <em>Guérison</em></li>\n<li><strong>20e</strong> Si vous vous reposez pendant 10 minutes, vous récupérez 100 Points de vie</li>\n</ul>",
             "flavor": "Vous imprégnez l'objet d'une <em>constitution</em> résiliente.",
             "level-8-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 3, sur vous uniquement, une fois par jour en tant que sort divin.",
             "level-14-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 6, sur vous uniquement, une fois par jour comme un sort divin.",
@@ -288,38 +313,11 @@
           },
           "dexterity": {
             "label": "Dextérité",
-            "description": "<p><strong>Type</strong> Objet de compétence (compétence basée sur le Dextérité)</p>\n<p><strong>Parties</strong> La Dextérité doit être le modificateur d'attribut le plus élevé de la créature ou le second.</p>\n<hr /><p>\n<p><strong>Effet</strong> Vous imprégnez l'objet d'une dextérité adroite.</p>\n<ul>\n<li><strong>8e</strong> Une fois par jour, vous pouvez utiliser une unique action Interagir à l'activer pour obtenir un bonus de staut de +3 mètres à toutes vos Vitesses pendant 10 minutes</li>\n<li><strong>14e</strong> Le bonus d'objet à vos Vitesses venant de l'activation passe à +6 mètres et tant qu'elle est activée, vous obtenez les effets de @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Marche sur l'eau}</li>\n<li><strong>17e</strong> Lorsque vous investissez l'objet, soit vous augmentez votre modificateur de Dextérité de +1, soit vous le passez à +4 selon ce qui vous procure le modificateur le plus élevé. L'objet obtient le trait apogée</li>\n<li><strong>20e</strong> Le bonus d'objet à vos Vitesses lié à l'activation passe à +9 mètres et tant qu'elle est activée, vous obtenez les effets à la fois de <em>Marche sur l'eau</em> et @UUID[Compendium.pf2e.spells-srd.Item.b5sGjGlBf58f8jn0]{MArche dans les airs}</li>\n</ul>",
             "flavor": "Vous imprégnez l'objet d'une <em>Dextérité</em> adroite.",
             "level-8-speed": "Une fois par jour, vous pouvez utiliser une unique action d'activation avec le trait manipulation pour obtenir un bonus de statut de +3 mètres à toutes vos vitesses pendant 10 minutes.",
             "level-14-speed": "Une fois par jour, vous pouvez utiliser une unique action d'activation avec le trait manipulation pour obtenir un bonus de statut de +6 mètres à toutes vos Vitesses pendant 10 minutes. Pendant l'activation, vous bénéficiez des effets de @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Marche sur l'eau}.",
             "level-17-apex": "Lorsque vous investissez l'objet, vous augmentez votre Dextérité de +1 ou la passez à +4 si la valeur est plus élevée. L'objet acquiert le trait apogée.",
             "level-20-speed": "Une fois par jour, vous pouvez utiliser une unique action d'activation avec le trait manipulation pour obtenir un bonus de statut de +9 mètres à toutes vos Vitesses pendant 10 minutes. Pendant l'activation, vous bénéficiez des effets de @UUID[Compendium.pf2e.spells-srd.Item.Seaah9amXg70RKw2]{Marche sur l'eau} et @UUID[Compendium.pf2e.spells-srd.Item.b5sGjGlBf58f8jn0]{Marche dans les airs}."
-          },
-          "electricity": {
-            "flavor": "Vous imprégnez l'arme d'une <em>électricité</em> bouleversante.",
-            "magic": {
-              "label": "Électricité (Magie)",
-              "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Décharge électrique} au rang 1 une fois par jour.",
-              "level-6-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Décharge électrique} au rang 2 une fois par jour.",
-              "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Décharge électrique} au rang 2 et @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2]{Éclair} une fois par jour chacun.",
-              "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Shocking Grasp} au rang 2, @UUID[Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2]{Éclair} au rang 4 et @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Tempête d'éclairs} une fois par jour chacun.",
-              "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Décharge électrique} au rang 6, @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Tempête d'éclairs} au rang 6 et @UUID[Compendium.pf2e.spells-srd.Item.TDNlDWbYb58Y55Da]{Chaîne d'éclairs} au rang 6 une fois par jour chacun.",
-              "level-20-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn]{Décharge électrique} au rang 7, @UUID[Compendium.pf2e.spells-srd.Item.JyT346VmGtRLsDnV]{Tempête d'éclairs} au rang 7 et @UUID[Compendium.pf2e.spells-srd.Item.TDNlDWbYb58Y55Da]{Chaîne d'éclairs} au rang 9 une fois par jour chacun."
-            },
-            "might": {
-              "label": "Électricité (Puissance)",
-              "level-8-arc": "Sur un coup critique, des arcs électriques se forment pour infliger une quantité égale de dégâts d'électricité à deux autres créatures de votre choix dans un rayon de 3 mètres de la cible.",
-              "level-12-resistance": "Les dégâts électriques infligés par cette propriété imprégnée ignorent les résistances.",
-              "level-14-arc": "Sur un coup critique, des arcs électriques se forment et infligent une quantité égale de dégâts d'électricité à deux autres créatures de votre choix dans un rayon de 6 mètres autour de la cible.",
-              "level-20-weakness": "Sur une Frappe réussie avec l'arme, avant d'appliquer des dégâts d'électricité, la cible obtient une faiblesse de 1 contre l'électricité jusqu'au début de votre prochain tour."
-            },
-            "tech": {
-              "label": "Électricité (Technique)",
-              "level-8-arc": "Sur un coup critique, des arcs électriques se forment pour infliger une quantité égale de dégâts d'électricité et de dégâts d'électricité persistants à un maximum de deux autres créatures de votre choix à moins de 3 mètres de la cible.",
-              "level-12-resistance": "Les dégâts d'électricité infligés par cette propriété imprégnée (y compris les dégâts d'électricité persistants) ignorent les résistances.",
-              "level-16-arc": "Sur un coup critique, des arcs électriques se forment pour infliger un montant égal de dégâts d'électricité et de dégâts d'électricité persistants à un maximum de quatre autres créatures de votre choix dans un rayon de 6 mètres de la cible.",
-              "level-20-magnetized": "Les créatures subissant des dégâts d'électricité persistants dus à cette propriété imprégnée deviennent magnétisées, attirant les armes métalliques. Les Frappes avec des armes métalliques bénéficient d'un bonus de circonstances de +1 pour les toucher tant qu'elles subissent des dégâts d'électricité persistants."
-            }
           },
           "energy-resistant": {
             "armor-label": "Résistant à l'énergie (Armure, {damage})",
@@ -328,60 +326,6 @@
             "shield-flavor": "Vous imprégnez le bouclier pour vous protéger d'un type particulier d'énergie.",
             "armor-effect": "Lorsque vous portez l'armure, vous obtenez une résistance {level} contre le type de dégâts d'énergie choisis. De plus, l'armure elle-même obtient la même résistance.",
             "shield-effect": "En utilisant le bouclier, vous obtenez une résistance {level} contre le type de dégâts d'énergie choisi. De plus, le bouclier lui-même obtient la même résistance (appliquée après avoir réduit les dégâts de la Solidité du bouclier). Vous pouvez utiliser Blocage au bouclier à chaque fois que vous devriez subir le type de dégâts choisi, en plus de son déclencheur habituel."
-          },
-          "fire": {
-            "flavor": "Vous imprégnez l'arme d'un <em>feu</em> brûlant.",
-            "magic": {
-              "label": "Feu (Magie)",
-              "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t]{Cracher du feu} au rang 1 une fois par jour.",
-              "level-6-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.y6rAdMK6EFlV6U0t]{Cracher du feu} au rang 2 une fois par jour.",
-              "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Flamme flottante} et @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Boule de feu} une fois par jour chacun.",
-              "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Flamme flottante}, au rang 4 @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Boule de feu} et @UUID[Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu]{Mur de feu} une fois par jour chacun.",
-              "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.2ZdHjnpEQJuqOYSG]{Flamme flottante}, @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Boule de feu} et @UUID[Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu]{Mur de feu} au rang 6 une fois par jour chacun.",
-              "level-20-falling-stars": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.jrBa9deU2ULFWvSl]{Chute d'étoiles} une fois par jour."
-            },
-            "might": {
-              "label": "Feu (Puissance)",
-              "level-8-persistent": "Sur un coup critique, les Frappes avec l'arme infligent 1d10 dégâts de feu persistants.",
-              "level-12-resistance": "Les dégâts de feu infligés par cette propriété imprégnée (y compris les dégâts de feu persistants) ignorent les résistances.",
-              "level-14-persistent": "Sur un coup critique, les Frappes avec l'arme infligent 2d10 dégâts de feu persistants.",
-              "level-20-weakness": "Sur une Frappe réussie avec l'arme, avant d'appliquer des dégâts de feu, la cible obtient une faiblesse 1 contre le feu jusqu'au début de votre prochain tour."
-            },
-            "tech": {
-              "label": "Feu (Technique)",
-              "level-8-persistent": "Sur un coup critique, l'arme inflige 1d10 dégâts de feu persistants supplémentaires. (Ces dégâts de feu persistants supplémentaires en cas de coup critique sont cumulables avec les dégâts de feu persistants habituels et, comme à l'ordinaire, vous ne les ajoutez qu'après avoir doublé les dégâts de feu persistants habituels).",
-              "level-12-resistance": "Les dégâts de feu infligés par cette propriété imprégnée (y compris les dégâts de feu persistants) ignorent les résistances.",
-              "level-16-off-guard": "Les ennemis actuellement affectés par des dégâts de feu persistants provenant de la propriété imprégnée sont distraits pendant qu'ils brûlent, ce qui les rend @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Pris au dépourvu}.",
-              "level-20-weakness": "À la fin du tour d'un ennemi en feu, lorsqu'il subit des dégâts dus aux dégâts de feu persistants de la propriété imprégnée, tous les ennemis adjacents à cet ennemi sont également incendiés, subissant le même montant de dégâts de feu persistants."
-            }
-          },
-          "force": {
-            "flavor": "Vous imprégnez l'arme de <em>force</em> pure.",
-            "magic": {
-              "label": "Force (Magie)",
-              "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Salve de force} une fois par jour.",
-              "level-6-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Salve de force} ou @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw]{Arme Spirituelle} une fois par jour, mais pas les deux.",
-              "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Salve de force} au rang 3 et @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw]{Arme Spirituelle} une fois par jour chacun.",
-              "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Salve de force} au rang 3, @UUID[Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw]{Arme spirituelle} au rang 4 et @UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U]{Gardien spirituel} une fois par jour chacun.",
-              "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Salve de Force} au rang 5, @UUID[Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U]{Gardien spirituel} au rang 6 et @UUID[Compendium.pf2e.spells-srd.Item.PHVHBbdHeQRfjLmE]{Explosion spirituelle} une fois par jour chacun.",
-              "level-20-spirit-song": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.Ht35SDf9PDStJfoC]{Chant spirituel} au rang 9 une fois par jour."
-            },
-            "might": {
-              "label": "Force (Puissance)",
-              "level-10-push": "En cas de coup critique, si vous le souhaitez, vous pouvez forcer la cible à réussir un jet de Vigueur ou à être repoussée à 1,50 mètre de vous.",
-              "level-12-resistance": "Les dégâts de force infligés par cette propriété imprégnée ignorent les résistances.",
-              "level-16-push": "En cas de coup critique, si vous le souhaitez, vous pouvez forcer la cible à réussir un jet de Vigueur ou être à repoussée à 3 mètres de vous.",
-              "level-20-weakness": "Lors d'une Frappe réussie avec l'arme, avant d'appliquer des dégâts de force, la cible obtient une faiblesse 1 contre la force jusqu'au début de votre prochain tour."
-            },
-            "tech": {
-              "label": "Force (Technique)",
-              "level-8-push": "En cas de coup critique, si vous le souhaitez, vous pouvez forcer la cible à réussir un jet de Vigueur ou à être repoussée à 1,50 mètre de vous.",
-              "level-12-resistance": "Les dégâts de force infligés par cette propriété imprégnée (y compris les dégâts de force persistants) ignorent les résistances.",
-              "level-14-push": "En cas de coup critique, si vous le souhaitez, vous pouvez forcer la cible à réussir un jet de Vigueur ou à être repoussée à 3 mètres de vous.",
-              "level-16-off-guard": "Les ennemis actuellement affectés par les dégâts de force persistants de cette propriété imprégnée sont frappés de toutes les directions, ce qui les rend @UUID[Compendium.pf2e.conditionitems.Item.AJh5ex99aV6VTggg]{Pris au dépourvu}.",
-              "level-18-push": "En cas de coup critique, si vous le souhaitez, vous pouvez forcer la cible à réussir un jet de Vigueur ou à être repoussée à 6 mètres de vous.",
-              "level-20-prone": "À la fin du tour d'un ennemi, s'il ne parvient pas à supprimer les dégâts de force persistants de cette propriété imprégnée, il doit réussir un jet de Vigueur ou être mis @UUID[Compendium.pf2e.conditionitems.Item.j91X7x0XSomq8d60]{À terre}."
-            }
           },
           "fortification": {
             "label": "Fortification",
@@ -396,58 +340,6 @@
             "level-14-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.ZYoC630tNGutgbE0]{Hypercognition} une fois par heure comme un sort occulte.",
             "level-17-apex": "Lorsque vous investissez l'objet, vous augmentez votre Intelligence de +1 ou de +4, selon ce qui vous accorde la valeur la plus élevée. L'objet acquiert le trait apogée.",
             "level-20-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.ZYoC630tNGutgbE0]{Hypercognition} une fois par minute comme un sort occulte."
-          },
-          "mental": {
-            "flavor": "Vous imprégnez l'arme d'un pouvoir psychique.",
-            "magic": {
-              "label": "Mental (Magie)",
-              "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Douleur fantôme} une fois par jour.",
-              "level-6-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Douleur fantôme} ou @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM]{Regret du combattant} au rang 2 une fois par jour, mais pas les deux.",
-              "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Douleur fantôme} au rang 3 et @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM]{Regret du combattant} au rang 3 une fois par jour chacun.",
-              "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Douleur fantôme} au rang 4, @UUID[Compendium.pf2e.spells-srd.Item.kIwA7kwp5E0AC3yM]{Regret du combattant} au rang 4 et @UUID[Compendium.pf2e.spells-srd.Item.tlcrVRqW1MSKJ5IC]{Assassin imaginaire} une fois par jour chacun.",
-              "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Douleur fantôme} au rang 6, @UUID[Compendium.pf2e.spells-srd.Item.tlcrVRqW1MSKJ5IC]{Assassin imaginaire} au rang 6 et @UUID[Compendium.pf2e.spells-srd.Item.0XP2XOxT9VSiXFDr]{Calamité imaginaire} au rang 6 une fois par jour chacun.",
-              "level-20-weird": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.qDjeG6dxT4aEEC6J]{Ennemi subconscient} une fois par jour."
-            },
-            "might": {
-              "label": "Mental (Puissance)",
-              "level-10-stupefied": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupéfiée 1} pendant 1 round.",
-              "level-12-resistance": "Les dégâts mentaux infligés par cette propriété imprégnée ignorent les résistances.",
-              "level-16-stupefied": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupéfiée 2} pendant 1 round.",
-              "level-20-weakness": "Lors d'une Frappe réussie avec l'arme, avant d'appliquer les dégâts mentaux, la cible obtient une faiblesse 1 contre le mental jusqu'au début de votre prochain tour."
-            },
-            "tech": {
-              "label": "Mental (Technique)",
-              "level-8-stupefied": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupéfiée 1} pendant 1 round.",
-              "level-12-resistance": "Les dégâts mentaux infligés par cette propriété imprégnée (incluant les dégâts mentaux persistants) ignorent les résistances.",
-              "level-16-stupefied": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupéfiée 2} pendant 1 round.",
-              "level-20-weakness": "Tant que l'ennemi subit des dégâts mentaux persistants à cause de la propriété imprégnée, l'état Stupéfié du coup critique dure jusqu'à ce que les dégâts persistants finissent ou pendant 1 round, selon ce qui est le plus long."
-            }
-          },
-          "poison": {
-            "flavor": "Vous imprégnez l'arme d'un venin toxique.",
-            "magic": {
-              "label": "Poison (Magie)",
-              "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Morsure d'araignée} une fois par jour. ",
-              "level-6-spells": "L'arme peut lancer soit @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Vapeurs nocives} au rang 2, soit @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Morsure d'araignée} une fois par jour, mais pas les deux.",
-              "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Vapeurs nocives} au rang 2, @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Dard de diablotin} au rang 2, @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Morsure d'araignée} une fois par jour chacun.",
-              "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Vapeurs nocives} au rang 4, @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Dard de diablotin} au rang 2, @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Morsure d'araignée} au rang 2 et @UUID[Compendium.pf2e.spells-srd.Item.LVwmAH5NGvTuuQSU]{Nuée de dards de guêpes} une fois par jour chacun.",
-              "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv]{Vapeurs nocives} au rang 6, @UUID[Compendium.pf2e.spells-srd.Item.oryfsRK27jAUnziw]{Dard de diablotin} au rang 2, @UUID[Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw]{Morsure d'araignée} au rang 2, @UUID[Compendium.pf2e.spells-srd.Item.LVwmAH5NGvTuuQSU]{Nuée de dards de guêpes} et @UUID[Compendium.pf2e.spells-srd.Item.ayRXv0wQH00TTNZe]{Dard du ver des cavernes} une fois par jour chacun.",
-              "level-20-linnorm-sting": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.ZMY58Yk5hnyfeE3q]{Piqûre de linnorm} une fois par jour."
-            },
-            "might": {
-              "label": "Poison (Puissance)",
-              "level-8-persistent": "En cas de coup critique, la cible subit @Damage[1d10[persistent,poison]] dégâts de poison persistants.",
-              "level-12-resistance": "Les dégâts de poison infligés par cette propriété imprégnée ignorent les résistances.",
-              "level-14-persistent": "En cas de coup critique, la cible subit @Damage[2d10[persistent,poison]] dégâts de poison persistants.",
-              "level-20-weakness": "Lors d'une Frappe réussie avec l'arme, avant d'appliquer les dégâts de poison, la cible obtient une faiblesse 1 contre le poison jusqu'au début de votre prochain tour."
-            },
-            "tech": {
-              "label": "Poison (Technique)",
-              "level-8-persistent": "En cas de coup critique, la cible subit @Damage[1d10[persistent,poison]] dégâts de poison persistants supplémentaires (Comme à l'ordinaire, les dégâts de poison persistants supplémentaire en cas de coup critique sont cumulatifs avec les dégâts de poisons persistants normaux mais vous ne les ajoutez qu'après avoir doublé les dégâts de poisons persistants normaux).",
-              "level-12-resistance": "Les dégâts de poison infligés par cette propriété imprégnée (incluant les dégâts de poison persistants) ignorent les resistances.",
-              "level-16-condition": "À la fin du tour de la créature, si elle n'est pas parvenue à retirer les dégâts de poison persistants infligés par cette propriété imprégnée, choisissez entre @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Maladroit}, @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli}, ou @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupéfié}. La créature subit cet état avec une valeur de 1 ou augmente la valeur de son état de 1 si elle avait déjà cet état, jusqu'à un maximum de 3. Si la créature parvient à retirer les dégâts de poison persistants infligés par cette propriété, ces états se termine immédiatement. Si vous appliquez de nouveau le poison plus tard, la valeur de l'état repart de 0.",
-              "level-20-drained": "En cas de coup critique, le poison érode la capacité de votre ennemi à résister davantage à l'empoisonnement. Il est @UUID[Compendium.pf2e.conditionitems.Item.4D2KBtexWXa6oUMR]{Drainé 1}."
-            }
           },
           "sensory": {
             "label": "Sensoriel",
@@ -465,26 +357,28 @@
             "flavor": "Vous imprégnez l'arme avec des ondes sonores retentissantes.",
             "might": {
               "label": "Son (Puissance)",
-              "level-8-deafened": "En cas de coup critique, la cible doit réussir un jet de Vigueur ou être @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Sourde} pendant 1 minute ou 1 heure en cas d'échec critique.",
-              "level-12-resistance": "Les dégâts de son infligés par cette propriété imprégnée ignorent les résistances.",
-              "level-14-deafened": "En cas de coup critique, la cible doit réussir un jet de Vigueur ou être @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Sourde} pendant 1 minute ou de manière permanente en cas d'échec critique.",
-              "level-20-weakness": "Lors d'une Frappe réussie avec l'arme, avant d'appliquer les dégâts de son, la cible obtient une faiblesse 1 contre le son jusqu'au début de votre prochain tour."
+              "effects": {
+                "level-12-resistance": "Les dégâts de son infligés par cette propriété imprégnée ignorent les résistances."
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts de son infligés par cette propriété imprégnée ignorent les résistances."
+              }
             },
             "tech": {
               "label": "Son (Technique)",
-              "level-8-deafened": "En cas de coup critique, la cible doit réussir un jet de Vigueur ou être @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Sourde} pendant 1 minute ou 1 heure en cas d'échec critique.",
-              "level-12-resistance": "Les dégâts de son infligés par cette propriété imprégnée (incluant les dégâts de son persistants) ignorent les résistances.",
-              "level-16-deafened": "En cas de coup critique, la cible doit réussir un jet de Vigueur ou être @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]{Sourde} pendant 1 minute ou de manière permanente en cas d'échec critique. En cas d'échec comme d'échec critique, elle est @UUID[Compendium.pf2e.conditionitems.Item.dfCMdR4wnpbYNTix]{Étourdie 1}.",
-              "level-20-boom": "Les dégât de son et les dégâts de son persistants créent un bang supersonique, touchant toutes les créatures adjacentes à la cible qui possèdent une CA inférieure ou égale à votre jet d'attaque. En cas de coup critique, toutes les créatures qui subissent des dégâts de son de cette manière doivent effectuer un jet de Vigueur pour éviter d'être Sourdes et Étourdies."
+              "effects": {
+                "level-12-resistance": "Les dégâts de son infligés par cette propriété imprégnée (y compris les dégâts de son persistants) ignorent les résistances."
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts de son infligés par cette propriété imprégnée (y compris les dégâts de son persistants) ignorent les résistances."
+              }
             }
           },
           "strength": {
             "label": "Force",
             "flavor": "Vous imprégnez l'objet d'une <em>force</em> féroce.",
-            "level-8-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Cloué à terre} une fois par jour comme un sort primordial.",
-            "level-14-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Cloué à terre} une fois par heure comme un sort primordial.",
-            "level-17-apex": "Lorsque vous investissez l'objet, votre Force augmente de +1 ou passe à +4, si la valeur est plus élevée. L'objet obtient le trait apogée.",
-            "level-20-spell": "L'objet peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H]{Cloué à terre} une fois par minute comme un sort primordial."
+            "header": {
+            }
           },
           "sturdy": {
             "label": "Robuste",
@@ -525,63 +419,372 @@
           }
         },
         "elemental-storm": {
+          "air": {
+            "flavor": "Vous imprégnez l'arme avec des lames de vent tranchantes.",
+            "air-trait": "Les dégâts tranchants supplémentaires de cette arme possèdent le trait air.",
+            "magic": {
+              "label": "Air (Magie)",
+              "header": {
+                "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.g8QqHpv2CWDwmIm1]{Bourrasque de vent} une fois par jour.",
+                "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.g8QqHpv2CWDwmIm1]{Bourrasque de vent} et @UUID[Compendium.pf2e.spells-srd.Item.it4ZsAi6XgvGcodc]{Mur de vent} une fois par jour chacun.",
+                "level-10-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.g8QqHpv2CWDwmIm1]{Bourrasque de vent}, @UUID[Compendium.pf2e.spells-srd.Item.it4ZsAi6XgvGcodc]{Mur de vent} et @UUID[Compendium.pf2e.spells-srd.Item.V8wXOsoejQhe6CyG]{Forme vaporeuse} une fois par jour chacun.",
+                "level-20-wrathful-storm": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.yLJROsQtyrPIKcDx]{tempête courroucée} au rang 9 une fois par jour, mais le seul effet que vous créez est une tornade et la tempête peut créer cet effet plusieurs fois d'affilée."
+              }
+            },
+            "might": {
+              "label": "Air (Puissance)",
+              "effects": {
+                "level-8-push": "Vous pouvez repousser la cible à 1,50 mètre de vous.",
+                "level-14-push": "Vous pouvez repousser la cible à 3 mètres de vous."
+              },
+              "header": {
+              }
+            },
+            "tech": {
+              "label": "Air (Technique)",
+              "effects": {
+                "level-8-push": "Vous pouvez repousser la cible à 1,50 mètre de vous.",
+                "level-16-push": "Vous pouvez repousser la cible à 3 mètres de vous.",
+                "level-20-push": "Vous pouvez repousser la cible à 6 mètres de vous."
+              },
+              "header": {
+                "level-8-push": "En cas de coup critique porté avec cette arme, vous pouvez repousser la cible à 1,50 mètre de vous.",
+                "level-16-push": "En cas de coup critique porté avec cette arme, vous pouvez repousser la cible à 3 mètres de vous.",
+                "level-20-push": "En cas de coup critique porté avec cette arme, vous pouvez repousser la cible à 6 mètres de vous."
+              }
+            }
+          },
+          "body": {
+            "flavor": "Vous imprégnez les bandelettes de la maîtrise sur le corps et sa forme.",
+            "morph-trait": "Les dégâts contondants supplémentaires de cette arme possèdent le trait transformation.",
+            "magic": {
+              "label": "Corps (Magie)",
+              "header": {
+                "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.aEM2cttJ2eYcLssW]{Pas rapide} une fois par jour.",
+                "level-12-weapon-storm": "<em>tempête d'arme</em> lancé par cette arme utilise une de vos attaques à mains nues à la place d'une arme et n'est pas sanctifié saint ou impie quelle que soit votre propre sanctification",
+                "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.aEM2cttJ2eYcLssW]{Pas rapide}, @UUID[Compendium.pf2e.spells-srd.Item.wzctak6BxOW8xvFV]{Agrandissement} au rang 6, @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.Xt8LGrPSYf7TPXqX]{Onde de choc puissante} rang 5, @UUID[Compendium.pf2e.spells-srd.Item.8M03UxGXjYyDFAoy]{Tempête d'Armes} et @UUID[Compendium.pf2e.spells-srd.Item.ZLLY6ThJXCCrO0rL]{Mur de chair} une fois par jour chacun."
+              }
+            },
+            "might": {
+              "label": "Corps (Puissance)",
+              "effects": {
+              },
+              "header": {
+              }
+            },
+            "tech": {
+              "label": "Corps (Technique)",
+              "effects": {
+              },
+              "header": {
+              }
+            }
+          },
+          "burning-barbs": {
+            "header": {
+              "frequency": {
+                "per-day": "Une fois par jour",
+                "per-hour": "Une fois par heure",
+                "per-10-minutes": "Une fois toutes les 10 minutes"
+              }
+            },
+            "effects": {
+            }
+          },
+          "dark-armor": {
+            "header": {
+              "frequency": {
+                "per-day": "Une fois par jour",
+                "per-hour": "Une fois par heure",
+                "per-10-minutes": "Une fois toutes les 10 minutes"
+              }
+            }
+          },
+          "darkness": {
+            "magic": {
+              "label": "Ténèbres (Magie)",
+              "header": {
+              }
+            },
+            "might": {
+              "label": "Ténèbres (Puissance)",
+              "effects": {
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts de froid supplémentaires ignorent les résistances."
+              }
+            },
+            "tech": {
+              "label": "Ténèbres (Technique)",
+              "effects": {
+                "level-12-resistance": "Les dégâts de froid supplémentaires ignorent les résistances."
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts de froid supplémentaires ignorent les résistances."
+              }
+            }
+          },
           "death": {
             "flavor": "Vous imprégnez l'arme de l'énergie du vide de la mort.",
             "magic": {
               "label": "Mort (Magie)",
-              "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Mise à mal} un fois par jour.",
-              "level-6-spells": "L'arme peut lancer soit @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Mise à mal} au rang 2, soit @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Dégradation soudaine} une fois par jour, mais pas les deux.",
-              "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Mise à mal} au rang 3 et @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Dégradation soudaine} au rang 3 une fois par jour chacun.",
-              "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Mise à mal} au rang 4, @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Dégradation soudaine} au rang 4 et @UUID[Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt]{Vierge vampirique} une fois par jour chacun.",
-              "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Mise à mal} au rang 6, @UUID[Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt]{Vierge vampirique} au rang 6 et <em>Lever la faux de la Faucheuse</em> (source : Battlezoo Bestiary Elemental Storm) (l'imprégnation négative originale utilisait @UUID[Compendium.pf2e.spells-srd.Item.6lO6uMQxbqmYho0e]{Nécroser}) une fois par jour chacun.",
-              "level-20-wails-of-the-damned": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.FEsuyf203wTNE2et]{Plainte des damnés} une fois par jour."
+              "header": {
+                "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Mise à mal} une fois par jour.",
+                "level-6-spells": "L'arme peut lancer soit le sort @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{mise à mal} au rang 2 soit @UUID[Compendium.pf2e.spells-srd.Item.XFtO4BBI22Uox2QP]{Dégradation soudaine} une fois par jour, mais pas les deux."
+              }
             },
             "might": {
               "label": "Mort (Puissance)",
-              "level-10-enfeebled": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 1} pendant 1 round.",
-              "level-12-resistance": "Les dégâts du vide infligés par cette propriété imprégnée ignorent les resistances.",
-              "level-16-enfeebled": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 2} pendant 1 round.",
-              "level-20-weakness": "Lors d'une Frappe réussie avec l'arme, avant d'appliquer les dégâts du vide, la cible obtient une faiblesse 1 contre le vide jusqu'au début de votre prochain tour."
+              "effects": {
+                "level-12-resistance": "Les dégâts de vide infligés par cette propriété imprégnée ignorent les résistances."
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts de vide infligés par cette propriété imprégnée ignorent les résistances."
+              }
             },
             "tech": {
               "label": "Mort (Technique)",
-              "level-8-enfeebled": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 1} pendant 1 round.",
-              "level-12-resistance": "Les dégâts du vide infligés par cette propriété imprégnée (incluant les dégâts du vide persistants) ignorent les resistances.",
-              "level-16-enfeebled": "En cas de coup critique, la cible est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaiblie 2} pendant 1 round.",
-              "level-20-weakness": "Tant que l'ennemi subit des dégâts du vide persistants à cause de la propriété imprégnée, l'état Affaibli du coup critique dure jusqu'à ce que les dégâts persistants se terminent ou pendant 1 round, selon ce qui est le plus long."
+              "effects": {
+              },
+              "header": {
+              }
+            }
+          },
+          "earth-armor": {
+            "header": {
+            }
+          },
+          "electricity": {
+            "magic": {
+              "label": "Électricité (Magie)",
+              "header": {
+              }
+            },
+            "might": {
+              "label": "Électricité (Puissance)",
+              "effects": {
+                "level-12-resistance": "Les dégâts d'électricité infligés par cette propriété imprégnée ignorent les résistances."
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts d'électricité infligés par cette propriété imprégnée ignorent les résistances."
+              }
+            },
+            "tech": {
+              "label": "Électricité (Technique)",
+              "effects": {
+                "level-12-resistance": "Les dégâts d'électricité infligés par cette propriété imprégnée (y compris les dégâts d'électricité persistants) ignorent les résistances.",
+                "strike-with-metal-weapon": "Frappe avec une arme métallique"
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts d'électricité infligés par cette propriété imprégnée (y compris les dégâts d'électricité persistants) ignorent les résistances."
+              }
+            }
+          },
+          "fire": {
+            "flavor": "Vous imprégnez l'arme d'un <em>feu</em> brûlant.",
+            "magic": {
+              "label": "Feu (Magie)",
+              "header": {
+              }
+            },
+            "might": {
+              "label": "Feu (Puissance)",
+              "effects": {
+                "level-12-resistance": "Les dégâts de feu infligés par cette propriété imprégnée (y compris les dégâts de feu persistants) ignorent les résistances."
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts de feu infligés par cette propriété imprégnée (y compris les dégâts de feu persistants) ignorent les résistances."
+              }
+            },
+            "tech": {
+              "label": "Feu (Technique)",
+              "effects": {
+                "level-12-resistance": "Les dégâts de feu infligés par cette propriété imprégnée (y compris les dégâts de feu persistants) ignorent les résistances."
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts de feu infligés par cette propriété imprégnée (y compris les dégâts de feu persistants) ignorent les résistances."
+              }
+            }
+          },
+          "force": {
+            "flavor": "Vous imprégnez l'arme de <em>force</em> pure.",
+            "magic": {
+              "label": "Force (Magie)",
+              "header": {
+                "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.gKKqvLohtrSJj3BM]{Salve de force} une fois par jour."
+              }
+            },
+            "might": {
+              "label": "Force (Puissance)",
+              "effects": {
+                "level-12-resistance": "Les dégâts de force infligés par cette propriété imprégnée ignorent les résistances."
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts de force infligés par cette propriété imprégnée ignorent les résistances."
+              }
+            },
+            "tech": {
+              "label": "Force (Technique)",
+              "effects": {
+                "level-12-resistance": "Les dégâts de force infligés par cette propriété imprégnée ignorent les résistances."
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts de force infligés par cette propriété imprégnée (y compris les dégâts de force persistants) ignorent les résistances."
+              }
+            }
+          },
+          "holy": {
+            "magic": {
+              "label": "Saint (Magique)",
+              "header": {
+              }
+            },
+            "might": {
+              "label": "Saint (Puissance)",
+              "effects": {
+              },
+              "header": {
+              }
+            },
+            "tech": {
+              "label": "Saint (Technique)",
+              "effects": {
+              },
+              "header": {
+              }
             }
           },
           "life": {
             "flavor": "Vous imprégnez l'arme avec le pouvoir purifiant de l'énergie vitale afin de blesser les morts-vivants. Comme à l'ordinaire, les dégâts de vitalité ne blesse que les mort-vivants et les autres créatures avec Guérison du vide, tels que les dhampirs.",
             "magic": {
               "label": "Vie (Magie)",
-              "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} une fois par jour.",
-              "level-6-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 2 une fois par jour.",
-              "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 2 et @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 3 une fois par jour chacun.",
-              "level-12-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 4, @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 3, et @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Souffle de vie} une fois par jour chacun.",
-              "level-16-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 5, @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 5, @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Souffle de vie} et @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Régénération} une fois par jour chacun.",
-              "level-20-spells": "L'arme peut lancer@UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 8, @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 5, @UUID[Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm]{Souffle de vie} et @UUID[Compendium.pf2e.spells-srd.Item.2Vkd1IxylPceUAAF]{Régénération} au rang 8 une fois par jour chacun."
+              "header": {
+                "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} une fois par jour.",
+                "level-6-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 2 une fois par jour.",
+                "level-8-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs]{Guérison} au rang 2 et @UUID[Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3]{Infusion de vitalité} au rang 3 une fois par jour chacun."
+              }
             },
             "might": {
               "label": "Vie (Puissance)",
-              "level-6-enfeebled": "En cas de coup critique, le mort-vivant est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 1} jusqu'à la fin de votre prochain tour.",
-              "level-10-resistance": "Les dégâts de vitalité infligés par cette propriété imprégnée ignorent les resistances.",
-              "level-14-enfeebled": "Sur un coup critique, le mort-vivant doit effectuer un jet de Vigueur.\nEn cas de succès critique, il est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 1} jusqu'à la fin de votre prochain tour. En cas de succès, il est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 2} pendant la même durée. En cas d'échec, il est  @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 3} pendant la même durée et en cas d'échec critique, il est détruit. Cet effet possède le trait mise hors de combat.",
-              "level-20-weakness": "Lors d'une Frappe réussie avec l'arme, avant d'appliquer les dégâts de vitalité, la cible obtient une faiblesse 1 contre la vitalité jusqu'au début de votre prochain tour."
+              "effects": {
+                "level-10-resistance": "Les dégâts de vitalité infligés par cette propriété imprégnée ignorent les résistances."
+              },
+              "header": {
+                "level-10-resistance": "Les dégâts de vitalité infligés par cette propriété imprégnée ignorent les résistances."
+              }
             },
             "tech": {
               "label": "Vie (Technique)",
-              "level-6-enfeebled": "Sur un coup critique, le mort-vivant est aussi @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 1} jusqu'à la fin de votre prochain tour.",
-              "level-10-resistance": "Les dégâts de vitalité infligés par cette propriété imprégnée (incluant les dégâts de vitalité persistants) ignorent les resistances.",
-              "level-14-enfeebled": "En cas de coup critique, le mort-vivant est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 2} jusqu'à la fin de votre prochain tour. Il doit aussi effectuer un jet de Vigueur. En cas d'échec, il est @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Affaibli 3}  jusqu'à la fin de votre prochain tour au lieu d'être Affaibli 2, et en cas d'échec critique, il est détruit. Cet effet a le trait mise hors de combat.",
-              "level-20-counteract": "Les créatures subissant des dégâts de vitalité persistants dus à cette propriété imprégnée ont des difficultés pour guérir à partir de l'énergie du vide en raison de l'énergie vitale scintillante qui émerge à travers elles. Si un effet du vide devrait permettre à la créature de récupérer de Points de Vie, il doit tout d'abord réussir un jet pour contrer la propriété imprégnée de rang 10 avec un DD 43. Même sur un jet réussi pour contrer l'effet, les Points de vie récupérés sont réduits de 1d10. Sur une succès critique, la créature récupère la totalité du montant."
+              "effects": {
+                "level-10-resistance": "Les dégâts de vitalité infligés par cette propriété imprégnée (y compris les dégâts de vitalité persistants) ignorent les résistances."
+              },
+              "header": {
+                "level-10-resistance": "Les dégâts de vitalité infligés par cette propriété imprégnée (y compris les dégâts de vitalité persistants) ignorent les résistances."
+              }
+            }
+          },
+          "lifeward-armor": {
+            "header": {
+            }
+          },
+          "mind": {
+            "flavor": "Vous imprégnez l'arme de pouvoir psychique.",
+            "magic": {
+              "label": "Esprit (Magie)",
+              "header": {
+                "level-4-spells": "L'arme peut lancer @UUID[Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD]{Douleur fantomatique} une fois par jour."
+              }
+            },
+            "might": {
+              "label": "Esprit (Puissance)",
+              "effects": {
+                "level-12-resistance": "Les dégâts mentaux infligés par cette propriété imprégnée ignorent les résistances."
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts mentaux infligés par cette propriété imprégnée ignorent les résistances."
+              }
+            },
+            "tech": {
+              "label": "Esprit (Technique)",
+              "effects": {
+                "level-12-resistance": "Les dégâts mentaux infligés par cette propriété imprégnée (y compris les dégâts mentaux persistants) ignorent les résistances."
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts mentaux infligés par cette propriété imprégnée (y compris les dégâts mentaux persistants) ignorent les résistances."
+              }
+            }
+          },
+          "poison": {
+            "magic": {
+              "label": "Poison (Magie)",
+              "header": {
+              }
+            },
+            "might": {
+              "label": "Poison (Puissance)",
+              "effects": {
+                "level-12-resistance": "Les dégâts de poison infligés par cette propriété imprégnée ignorent les résistances."
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts de poison infligés par cette propriété imprégnée ignorent les résistances."
+              }
+            },
+            "tech": {
+              "label": "Poison (Technique)",
+              "effects": {
+                "level-12-resistance": "Les dégâts de poison infligés par cette propriété imprégnée (y compris les dégâts mentaux persistants) ignorent les résistances."
+              },
+              "header": {
+                "level-12-resistance": "Les dégâts de poison infligés par cette propriété imprégnée (y compris les dégâts mentaux persistants) ignorent les résistances."
+              }
+            }
+          },
+          "unholy": {
+            "magic": {
+              "label": "Impie (Magie)",
+              "header": {
+              }
+            },
+            "might": {
+              "label": "Impie (Puissance)",
+              "effects": {
+              },
+              "header": {
+              }
+            },
+            "tech": {
+              "label": "Impie (Technique)",
+              "effects": {
+              },
+              "header": {
+              }
             }
           }
         },
         "strange-and-unusual": {
+          "mirrored": {
+            "header": {
+              "effect": {
+              },
+              "frequency": {
+                "per-day": "Une fois par jour",
+                "per-hour": "Une fois par heure",
+                "per-10-minutes": "Une fois toutes les 10 minutes"
+              },
+              "trigger": {
+              }
+            }
+          },
           "spiked": {
-            "flavor": "Vous ornez l'armure de pointes acérées.",
-            "label": "Pointu"
+            "label": "À Pointes",
+            "header": {
+              "flavor": "Vous imprégnez l'armure de pointes vicieuses.",
+              "frequency": {
+                "per-day": "Une fois par jour",
+                "per-hour": "Une fois par heure",
+                "per-10-minutes": "Une fois toutes les 10 minutes"
+              }
+            }
           }
         }
       },
@@ -620,6 +823,11 @@
           "greater-striking+2": "C'est une arme de frappe supérieure +2. Elle accorde un bonus d'objet de +2 aux jets d'attaque, inflige 3 dés de dégâts et peut être imprégnée deux fois.",
           "greater-striking+3": "C'est une arme de frappe supérieure +3. Elle accorde un bonus d'objet de +3 aux jets d'attaque, inflige 3 dés de dégâts et peut être imprégnée 3 fois.",
           "major-striking+3": "C'est une arme de frappe majeure +3. Elle confère un bonus d'objet de +3 aux jets d'attaque, inflige 4 dés de dégâts et peut être imprégnée 3 fois."
+        },
+        "staff": {
+          "label": "Bâton (Raffinage)",
+          "cantrip": "Cet objet permet de lancer un tour de magie.",
+          "spells": "Ce bâton contient 2 sorts de chaque rang jusqu'au rang {rang}."
         }
       }
     }
