@@ -74,8 +74,8 @@ export function createImbueEnergyResistant(): MaterialData[] {
                             value:
                                 Material.getRollDataPath(
                                     `imbue:energy-resistant:armor:${type}`,
-                                    "level",
-                                ) + ".value",
+                                    "level"
+                                )
                         },
                     },
                 ],
@@ -120,8 +120,8 @@ export function createImbueEnergyResistant(): MaterialData[] {
                                         value:
                                             Material.getRollDataPath(
                                                 `imbue:energy-resistant:shield:${type}`,
-                                                "level",
-                                            ) + ".value",
+                                                "level"
+                                            )
                                     },
                                 },
                             },
@@ -139,7 +139,7 @@ export function createImbueEnergyResistant(): MaterialData[] {
                                 Material.getRollDataPath(
                                     `imbue:energy-resistant:shield:${type}`,
                                     "level",
-                                ) + ".value",
+                                )
                         },
                     },
                 ],

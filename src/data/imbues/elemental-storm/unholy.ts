@@ -196,7 +196,7 @@ export function createImbueUnholy(): MaterialData[] {
         },
         helpers.addGroup({
             labels: helpers.leveledLabels(
-                [4, 8, 10, 18],
+                [6, 8, 10, 18],
                 helpers.sequentialData(
                     {
                         damageHoly: "1",
