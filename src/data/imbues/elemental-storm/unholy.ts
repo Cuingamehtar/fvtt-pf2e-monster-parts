@@ -196,7 +196,7 @@ export function createImbueUnholy(): MaterialData[] {
         },
         helpers.addGroup({
             labels: helpers.leveledLabels(
-                [6, 8, 10, 18],
+                [4, 8, 10, 18],
                 helpers.sequentialData(
                     {
                         damageHoly: "1",
@@ -253,7 +253,7 @@ export function createImbueUnholy(): MaterialData[] {
                         }),
                 ),
                 ...helpers.leveledEffects(
-                    [6, 8, 10, 18],
+                    [4, 8, 10, 18],
                     ["1", "d6", "d8", "d12"],
                     (damage: RollString) =>
                         helpers.damage.effect({
