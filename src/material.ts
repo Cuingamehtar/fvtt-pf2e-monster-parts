@@ -167,9 +167,8 @@ export class Material extends MaterialBase {
 
     static getRollDataPath(materialKey: string, value: string) {
         return (
-            "{item|flags.pf2e-monster-parts.values." +
+            "@item.flags.pf2e-monster-parts.values." +
             Material.getFlagDataName(materialKey, value)
-            + "}"
         );
     }
 }
