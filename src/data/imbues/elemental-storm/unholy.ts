@@ -253,7 +253,7 @@ export function createImbueUnholy(): MaterialData[] {
                         }),
                 ),
                 ...helpers.leveledEffects(
-                    [6, 8, 10, 18],
+                    [4, 8, 10, 18],
                     ["1", "d6", "d8", "d12"],
                     (damage: RollString) =>
                         helpers.damage.effect({
