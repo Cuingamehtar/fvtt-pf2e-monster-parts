@@ -2,12 +2,13 @@ import { MaterialData } from "../material";
 import { MODULE_ID } from "@src/module";
 import { ArmorCategory } from "foundry-pf2e";
 import { helpers } from "../helpers";
+import { never } from "@src/utils";
 
 export function addArmorRefinements(): MaterialData[] {
     const monsterPredicate =
         game.settings.get(MODULE_ID, "armor-refinements") === "all"
             ? []
-            : ["never"];
+            : never;
     const armorTypes = ["unarmored", "light", "medium", "heavy"] as Exclude<
         ArmorCategory,
         "light-barding" | "heavy-barding"

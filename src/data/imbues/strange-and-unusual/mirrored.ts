@@ -1,4 +1,4 @@
-import { lkeygen } from "@src/utils";
+import { lkeygen, never } from "@src/utils";
 import { MaterialData } from "../../material";
 import * as R from "remeda";
 import { helpers } from "@data/helpers";
@@ -17,7 +17,7 @@ export function createImbueMirrored(): MaterialData {
         },
         description: { type: "key", key: lkey("description") },
         itemPredicate: ["item:type:shield"],
-        monsterPredicate: ["never"],
+        monsterPredicate: never,
         header: {
             description: {
                 type: "key",

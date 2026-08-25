@@ -28,7 +28,7 @@ class RefinedItemEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         options: DeepPartial<foundry.applications.ApplicationConfiguration> &
             RefinedItemEditorData,
     ) {
-        options.uniqueId = `refined-item-editor-${options.item.item.id}`;
+        options.id = `refined-item-editor-${options.item.item.id}`;
         super(options);
         this.item = options.item;
 

@@ -1,6 +1,6 @@
 import { MaterialData } from "../material";
 import { addTraits, helpers } from "../helpers";
-import { I18n } from "@src/utils";
+import { I18n, never } from "@src/utils";
 import * as R from "remeda";
 
 export function createStaffRefinement(): MaterialData {
@@ -15,7 +15,7 @@ export function createStaffRefinement(): MaterialData {
             "item:type:weapon",
             { not: "item:tag:handwraps-of-mighty-blows" },
         ],
-        monsterPredicate: ["never"],
+        monsterPredicate: never,
         header: {},
     };
     return R.pipe(

@@ -1,5 +1,5 @@
 import { lkeygen } from "@src/utils";
-import { helpers } from "../../helpers";
+import { helpers, Selector } from "../../helpers";
 import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
 import { Spells } from "@data/spells";
@@ -224,7 +224,7 @@ export function createImbueDeath(): MaterialData[] {
                             outcome: ["criticalSuccess"],
                             text: lkey(k),
                             title: lkey("might.label"),
-                            selector: ["{item|id}-attack"],
+                            selector: [Selector.ItemAttack],
                         },
                     }),
                 ),
@@ -235,7 +235,7 @@ export function createImbueDeath(): MaterialData[] {
                         key: "Note",
                         text: lkey("might.effects.level-12-resistance"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -246,7 +246,7 @@ export function createImbueDeath(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("might.effects.level-20-weakness"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
             ],
@@ -346,7 +346,7 @@ export function createImbueDeath(): MaterialData[] {
                             outcome: ["criticalSuccess"],
                             text: lkey(k),
                             title: lkey("tech.label"),
-                            selector: ["{item|id}-attack"],
+                            selector: [Selector.ItemAttack],
                         },
                     }),
                 ),
@@ -357,7 +357,7 @@ export function createImbueDeath(): MaterialData[] {
                         key: "Note",
                         text: lkey("tech.effects.level-12-resistance"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -368,7 +368,7 @@ export function createImbueDeath(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("tech.effects.level-20-enfeebled-duration"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
             ],

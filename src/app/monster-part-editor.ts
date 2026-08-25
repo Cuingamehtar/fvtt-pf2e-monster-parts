@@ -17,7 +17,7 @@ class MonsterPartEditor extends HandlebarsApplicationMixin(ApplicationV2) {
         },
     ) {
         options.form = { handler: MonsterPartEditor.submitForm(options.item) };
-        options.uniqueId = `monster-part-editor-${options.item.item.id}`;
+        options.id = `monster-part-editor-${options.item.item.id}`;
         super(options);
         this.item = options.item;
     }

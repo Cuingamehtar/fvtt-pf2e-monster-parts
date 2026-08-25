@@ -9,7 +9,6 @@ import { MonsterPart } from "./monster-part";
 import { EffectHandlers } from "@data/effect-handlers";
 import { configureRefinedItem } from "@src/app/refined-item-editor";
 import * as R from "remeda";
-import { replaceKey } from "@src/compatibility";
 
 type HasRefinedData<T extends PhysicalItemPF2e> = T & {
     flags: {
@@ -165,8 +164,8 @@ export class RefinedItem {
 
         const updatedFlags = {
             "pf2e-monster-parts": {
-                ...replaceKey("refined-item", flag),
-                ...replaceKey("values", values),
+                "refined-item": _replace(flag),
+                values: _replace(values),
             },
         };
 

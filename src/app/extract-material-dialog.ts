@@ -61,7 +61,7 @@ export class ExtractMaterialDialog extends HandlebarsApplicationMixin(
             ExtractMaterialDialogOptions,
     ) {
         const { material } = options;
-        options.uniqueId = `extract-material-dialog-${material.parent.item.id}-${material.key}`;
+        options.id = `extract-material-dialog-${material.parent.item.id}-${material.key}`;
 
         const currentLevel = material.getLevel();
 

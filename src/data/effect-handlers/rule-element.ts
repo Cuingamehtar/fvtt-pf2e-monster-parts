@@ -3,6 +3,8 @@ import { ItemCastSource, RuleElementEffectSource } from "../data-types";
 import { Utils, getSettingSafe, i18nFormat } from "@src/utils";
 import { SpellPF2e } from "foundry-pf2e";
 import { AttachedMaterial } from "@src/material";
+import { isArray } from "remeda";
+import { Selector } from "@data/helpers";
 
 export type RuleElementEffect = BaseMaterialEffect & {
     type: "RuleElement";
@@ -27,6 +29,30 @@ export class RuleElementEffectHandler {
     }) {
         const property = foundry.utils.getProperty(changes, "system.rules");
         let rule = effect.rule;
+
+        if (
+            "selector" in rule &&
+            material.parent.item.system.traits.otherTags.includes(
+                "handwraps-of-mighty-blows",
+            )
+        ) {
+            // replace item attack/damage with unarmed attack/damage for handwraps
+            const itemToUnarmed = (s: JSONValue) =>
+                s == Selector.ItemAttack
+                    ? Selector.UnarmedAttack
+                    : s == Selector.ItemDamage
+                      ? Selector.UnarmedDamage
+                      : s;
+
+            const selector = isArray(rule.selector)
+                ? (rule.selector as string[]).map(itemToUnarmed)
+                : itemToUnarmed(rule.selector);
+
+            rule = {
+                ...rule,
+                selector,
+            };
+        }
         if (isItemCastRE(rule)) {
             if (!getSettingSafe("pf2e-toolbelt", "actionable.cast")) {
                 return;

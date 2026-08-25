@@ -1,7 +1,7 @@
 import { lkeygen } from "@src/utils";
 import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
-import { helpers } from "../../helpers";
+import { helpers, Selector } from "../../helpers";
 import { Spells } from "@data/spells";
 
 export function createImbueDarkness(): MaterialData[] {
@@ -217,7 +217,7 @@ export function createImbueDarkness(): MaterialData[] {
                             outcome: ["criticalSuccess"],
                             text: lkey(l),
                             title: lkey("might.label"),
-                            selector: ["{item|id}-attack"],
+                            selector: [Selector.ItemAttack],
                         },
                     }),
                 ),
@@ -228,7 +228,7 @@ export function createImbueDarkness(): MaterialData[] {
                         key: "Note",
                         text: lkey("might.effects.level-12-resistance"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -239,7 +239,7 @@ export function createImbueDarkness(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("might.effects.level-20-weakness"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
             ],
@@ -339,7 +339,7 @@ export function createImbueDarkness(): MaterialData[] {
                             outcome: ["criticalSuccess"],
                             text: lkey(l),
                             title: lkey("tech.label"),
-                            selector: ["{item|id}-attack"],
+                            selector: [Selector.ItemAttack],
                         },
                     }),
                 ),
@@ -350,7 +350,7 @@ export function createImbueDarkness(): MaterialData[] {
                         key: "Note",
                         text: lkey("tech.effects.level-12-resistance"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -360,7 +360,7 @@ export function createImbueDarkness(): MaterialData[] {
                         key: "Note",
                         text: lkey("tech.effects.level-20-counteract"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
             ],

@@ -1,5 +1,5 @@
 import { lkeygen } from "@src/utils";
-import { helpers } from "../../helpers";
+import { helpers, Selector } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
 
@@ -106,7 +106,7 @@ export function createImbueSonic(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("might.effects.level-8-deafened"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -117,7 +117,7 @@ export function createImbueSonic(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("might.effects.level-14-deafened"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -127,7 +127,7 @@ export function createImbueSonic(): MaterialData[] {
                         key: "Note",
                         text: lkey("might.effects.level-12-resistance"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -138,7 +138,7 @@ export function createImbueSonic(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("might.effects.level-20-weakness"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
             ],
@@ -232,7 +232,7 @@ export function createImbueSonic(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("tech.effects.level-8-deafened"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -243,7 +243,7 @@ export function createImbueSonic(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("tech.effects.level-16-deafened"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -253,7 +253,7 @@ export function createImbueSonic(): MaterialData[] {
                         key: "Note",
                         text: lkey("tech.effects.level-12-resistance"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -264,7 +264,7 @@ export function createImbueSonic(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("tech.effects.level-20-boom"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
             ],

@@ -1,5 +1,5 @@
 import { lkeygen } from "@src/utils";
-import { helpers } from "../../helpers";
+import { helpers, Selector } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
 import { Spells } from "@data/spells";
@@ -220,7 +220,7 @@ export function createImbueMind(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("might.effects.level-10-stupefied"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                         type: "key",
                     },
                 },
@@ -232,7 +232,7 @@ export function createImbueMind(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("might.effects.level-16-stupefied"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                         type: "key",
                     },
                 },
@@ -243,7 +243,7 @@ export function createImbueMind(): MaterialData[] {
                         key: "Note",
                         text: lkey("might.effects.level-12-resistance"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -254,7 +254,7 @@ export function createImbueMind(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("might.effects.level-20-weakness"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
             ],
@@ -350,7 +350,7 @@ export function createImbueMind(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("tech.effects.level-8-stupefied"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                         type: "key",
                     },
                 },
@@ -362,7 +362,7 @@ export function createImbueMind(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("tech.effects.level-16-stupefied"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                         type: "key",
                     },
                 },
@@ -373,7 +373,7 @@ export function createImbueMind(): MaterialData[] {
                         key: "Note",
                         text: lkey("might.effects.level-12-resistance"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -384,7 +384,7 @@ export function createImbueMind(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("tech.effects.level-20-stupefied-duration"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
             ],

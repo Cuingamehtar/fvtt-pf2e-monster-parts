@@ -1,7 +1,6 @@
 import { BaseMaterialEffect } from "../material";
 import { PhysicalItemPF2e } from "foundry-pf2e";
 import { AttachedMaterial } from "@src/material";
-import { replaceKey } from "@src/compatibility";
 
 export type ApexEffect = BaseMaterialEffect & {
     type: "Apex";
@@ -32,7 +31,7 @@ export class ApexEffectHandler {
         }
         foundry.utils.mergeObject(
             changes,
-            { ["system.traits"]: replaceKey("value", traitChanges) },
+            { ["system.traits"]: { value: _replace(traitChanges) } },
             { inplace: true },
         );
         foundry.utils.mergeObject(

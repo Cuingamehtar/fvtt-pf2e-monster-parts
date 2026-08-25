@@ -63,7 +63,7 @@ export class AssignMaterialDialog extends HandlebarsApplicationMixin(
         options: DeepPartial<foundry.applications.ApplicationConfiguration> &
             AssignMaterialDialogOptions,
     ) {
-        options.uniqueId = `assign-material-dialog-${options.monsterPart.item.id}`;
+        options.id = `assign-material-dialog-${options.monsterPart.item.id}`;
         const { monsterPart, refinedItem, material } = options;
 
         const currentLevel = Material.getLevel(material, refinedItem);

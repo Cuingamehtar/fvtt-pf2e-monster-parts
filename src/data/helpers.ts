@@ -367,7 +367,7 @@ function addGroup({
 export enum Selector {
     ItemAttack = "{item|_id}-attack",
     ItemDamage = "{item|_id}-damage",
-    UnarmedAttack = "unarmed-attack",
+    UnarmedAttack = "unarmed-attack-roll",
     UnarmedDamage = "unarmed-damage",
 }
 

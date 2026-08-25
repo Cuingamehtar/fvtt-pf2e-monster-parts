@@ -180,3 +180,5 @@ export function lkeygen<
         k: keyof Flatten<Nested<I18nKeyType, Join<typeof MODULE_ID, T>>>,
     ): I18nKey => `${MODULE_ID}.${t}.${String(k)}` as I18nKey;
 }
+
+export const never = ["never", { not: "never" }];

@@ -26,6 +26,11 @@ const weaknessTypes = {
         imbuements: ["imbue:cold:might", "imbue:ice:might", "imbue:wild:might"],
         wildDamageType: "wild:damage-type:2",
     },
+    earth: {
+        label: "PF2E.TraitEarth",
+        imbuements: ["imbue:earth:might"],
+        definition: ["item:trait:earth"],
+    },
     electricity: {
         label: "PF2E.TraitElectricity",
         imbuements: ["imbue:electricity:might", "imbue:wild:might"],

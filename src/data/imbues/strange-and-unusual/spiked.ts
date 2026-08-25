@@ -1,4 +1,4 @@
-import { i18nFormat, lkeygen } from "@src/utils";
+import { i18nFormat, lkeygen, never } from "@src/utils";
 import { MaterialData } from "../../material";
 import { helpers } from "../../helpers";
 
@@ -14,7 +14,7 @@ export function createImbueSpiked(): MaterialData {
         },
         description: { type: "key", key: lkey("description") },
         itemPredicate: ["item:type:armor"],
-        monsterPredicate: ["never"],
+        monsterPredicate: never,
         /*monsterPredicate: [
             { or: ["item:damage:type:piercing", "item:damage:type:slashing"] },
             "item:type:melee",

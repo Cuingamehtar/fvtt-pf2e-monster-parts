@@ -235,7 +235,7 @@ export function createImbuePoison(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("acid-damage"),
                         title: lkey("magic.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -245,7 +245,7 @@ export function createImbuePoison(): MaterialData[] {
                         key: "Note",
                         text: lkey("might.effects.level-12-resistance"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -256,7 +256,7 @@ export function createImbuePoison(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("might.effects.level-20-weakness"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
             ],
@@ -362,7 +362,7 @@ export function createImbuePoison(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("acid-damage"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -372,7 +372,7 @@ export function createImbuePoison(): MaterialData[] {
                         key: "Note",
                         text: lkey("tech.effects.level-12-resistance"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -382,7 +382,7 @@ export function createImbuePoison(): MaterialData[] {
                         key: "Note",
                         text: lkey("tech.effects.level-16-condition"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -393,7 +393,7 @@ export function createImbuePoison(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("tech.effects.level-20-drained"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
             ],

@@ -11,6 +11,7 @@ const materialAliases: Record<string, MaterialKey> = {
     "imbue:mental:magic": "imbue:mind:magic",
     "imbue:mental:might": "imbue:mind:might",
     "imbue:mental:tech": "imbue:mind:tech",
+    "refinement:handwraps": "refinement:weapon:bludgeoning",
 };
 
 interface MaterialContext {

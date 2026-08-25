@@ -1,5 +1,5 @@
 import { lkeygen } from "@src/utils";
-import { helpers } from "../../helpers";
+import { helpers, Selector } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
 import { Spells } from "@data/spells";
@@ -199,7 +199,7 @@ export function createImbueElectricity(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("might.effects.level-8-arc"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -210,7 +210,7 @@ export function createImbueElectricity(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("might.effects.level-14-arc"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -220,7 +220,7 @@ export function createImbueElectricity(): MaterialData[] {
                         key: "Note",
                         text: lkey("might.effects.level-12-resistance"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -231,7 +231,7 @@ export function createImbueElectricity(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("might.effects.level-20-weakness"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
             ],
@@ -328,7 +328,7 @@ export function createImbueElectricity(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("tech.effects.level-8-arc"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -339,7 +339,7 @@ export function createImbueElectricity(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("tech.effects.level-16-arc"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -349,7 +349,7 @@ export function createImbueElectricity(): MaterialData[] {
                         key: "Note",
                         text: lkey("tech.effects.level-12-resistance"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -360,7 +360,7 @@ export function createImbueElectricity(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("tech.effects.level-20-magnetized"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
             ],

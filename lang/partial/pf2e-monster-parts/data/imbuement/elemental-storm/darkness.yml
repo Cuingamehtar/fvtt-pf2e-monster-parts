@@ -156,14 +156,14 @@ might:
   header:
     level-12-resistance: The additional cold damage ignores resistances.
     level-8-concealed: >-
-      On a critical hit, the target's vision is shrouded in darkness. 
-      Everything is concealed to the target unless they have darkvision.
+      On a critical hit, the target's vision is shrouded in darkness. Everything
+      is concealed to the target unless they have darkvision.
     level-14-concealed: >-
-      On a critical hit with the weapon, the target must attempt a
-      Fortitude save against the weapon’s DC. On a failure, it’s blinded for 1
-      round by magical darkness unless it has greater darkvision; even on a
-      success or critical success, everything around it is concealed to it unless
-      it has greater darkvision.
+      On a critical hit with the weapon, the target must attempt a Fortitude
+      save against the weapon’s DC. On a failure, it’s blinded for 1 round by
+      magical darkness unless it has greater darkvision; even on a success or
+      critical success, everything around it is concealed to it unless it has
+      greater darkvision.
     level-20-weakness: >-
       On a successful Strike with the weapon, before applying force damage, the
       target gains weakness 1 to cold damage until the beginning of your next
@@ -225,7 +225,8 @@ tech:
     level-12-resistance: The cold damage dealt by this imbued property ignores resistances.
     level-16-persistent: >-
       While taking persistent damage from this imbue property, everything is
-      @UUID[Compendium.pf2e.conditionitems.Item.DmAIPqOBomZ7H95W]{Concealed} to the target unless they have greater darkvision.
+      @UUID[Compendium.pf2e.conditionitems.Item.DmAIPqOBomZ7H95W]{Concealed} to
+      the target unless they have greater darkvision.
     level-16-concealed: >-
       On a critical hit, the target must succeed on a
       @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:blinded] save

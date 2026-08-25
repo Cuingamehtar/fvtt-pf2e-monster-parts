@@ -14,9 +14,10 @@ export class Wrappers {
         globalThis.__tempActor = actor;
 
         // literally copy the system function and add a custom check
-        const systemFunctionHash = -1192268445;
+        const systemFunctionHash = -1703853730;
         const h = hash(actor.inventory.sellAllTreasure.toString());
         if (DEBUG && h !== systemFunctionHash) {
+            console.log(actor.inventory.sellAllTreasure.toString());
             ui.notifications.warn(
                 `Sell all treasure function text mismatch (expected ${systemFunctionHash}, found ${h}). Patching might result in the unexpected behavior.`,
             );
@@ -91,9 +92,29 @@ export class Wrappers {
                 ...args
             ): ReturnType<typeof PhysicalItemPF2e.prototype.getRollOptions> {
                 const res: string[] = wrapped(...args);
-                if (RefinedItem.hasRefinedItemData(this)) {
+                const item = RefinedItem.hasRefinedItemData(this)
+                    ? new RefinedItem(this)
+                    : ((item: PhysicalItemPF2e) => {
+                          if (
+                              !item.isOfType("weapon") ||
+                              item.system.category !== "unarmed"
+                          )
+                              return null;
+                          const actor = item.parent;
+                          if (!actor) return null;
+                          const handwraps = actor.itemTypes.weapon
+                              .filter((w) => RefinedItem.hasRefinedItemData(w))
+                              .find(
+                                  (w) =>
+                                      w.isEquipped &&
+                                      w.system.traits.otherTags.includes(
+                                          "handwraps-of-mighty-blows",
+                                      ),
+                              );
+                          return handwraps ? new RefinedItem(handwraps) : null;
+                      })(this);
+                if (item) {
                     const [prefix] = args;
-                    const item = new RefinedItem(this);
                     const options = [
                         ...res,
                         ...[item.refinement, ...item.imbuements].map(

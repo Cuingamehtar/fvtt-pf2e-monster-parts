@@ -96,6 +96,25 @@
             ]
           },
           {
+            "label": "PF2E.TraitEarth",
+            "value": "earth",
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:earth:might",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "label": "PF2E.TraitElectricity",
             "value": "electricity",
             "predicate": [
@@ -386,6 +405,18 @@
         ],
         "predicate": [
           "might-path-weakness:air"
+        ]
+      },
+      {
+        "key": "Weakness",
+        "label": "PF2E.TraitEarth",
+        "value": 1,
+        "type": "custom",
+        "definition": [
+          "item:trait:earth"
+        ],
+        "predicate": [
+          "might-path-weakness:earth"
         ]
       },
       {

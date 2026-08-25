@@ -111,7 +111,7 @@ function baneImbue(creature: string): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("effects.level-6-note"),
                         title: labelMight as string,
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
                 {
@@ -122,7 +122,7 @@ function baneImbue(creature: string): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("effects.level-14-note"),
                         title: labelMight as string,
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
                 {
@@ -132,7 +132,7 @@ function baneImbue(creature: string): MaterialData[] {
                         key: "Note",
                         text: lkey("might.effects.level-10-note"),
                         title: labelMight as string,
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
             ],
@@ -245,7 +245,7 @@ function baneImbue(creature: string): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("effects.level-6-note"),
                         title: labelMight as string,
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
                 {
@@ -257,7 +257,7 @@ function baneImbue(creature: string): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("effects.level-14-note"),
                         title: labelMight as string,
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
                 {
@@ -268,7 +268,7 @@ function baneImbue(creature: string): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("tech.effects.level-20-note"),
                         title: labelMight as string,
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
                 {

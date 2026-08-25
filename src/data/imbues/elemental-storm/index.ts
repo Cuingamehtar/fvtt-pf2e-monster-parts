@@ -14,6 +14,7 @@ import { createImbueBurningBarbs } from "./burning-barbs";
 import { createImbueDarkArmor } from "./dark-armor";
 import { createImbueEarthArmor } from "./earth-armor";
 import { createImbueLifewardArmor } from "./lifeward-armor";
+import { createImbueEarth } from "@data/imbues/elemental-storm/earth";
 
 export function createElementalStormImbues() {
     return [
@@ -23,6 +24,7 @@ export function createElementalStormImbues() {
         createImbueDarkArmor(),
         ...createImbueDarkness(),
         ...createImbueDeath(),
+        ...createImbueEarth(),
         createImbueEarthArmor(),
         ...createImbueElectricity(),
         ...createImbueFire(),

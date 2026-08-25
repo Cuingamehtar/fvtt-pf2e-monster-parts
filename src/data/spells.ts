@@ -71,6 +71,12 @@ export enum Spells {
     VampiricMaiden = "Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt",
     WailsOfTheDamned = "Compendium.pf2e.spells-srd.Item.FEsuyf203wTNE2et",
 
+    // Earth
+    ScatterScree = "Compendium.pf2e.spells-srd.Item.zA0jNIBRgLsyTpbm",
+    PummelingRubble = "Compendium.pf2e.spells-srd.Item.Rn2LkoSq1XhLsODV",
+    MountainResilience = "Compendium.pf2e.spells-srd.Item.2BV2yYPfVJ5zirZt",
+    Earthquake = "Compendium.pf2e.spells-srd.Item.x7SPrsRxGb2Vy2nu",
+
     // Electricity
     ElectricArc = "Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf",
     ShockingGrasp = "Compendium.pf2e.spells-srd.Item.r3NeUnsgt9mS03Sn",

@@ -1,6 +1,6 @@
 import { lkeygen } from "@src/utils";
 import { MaterialData } from "../../material";
-import { helpers } from "../../helpers";
+import { helpers, Selector } from "../../helpers";
 import { RollString } from "@localTypes/global";
 import { Spells } from "@data/spells";
 
@@ -237,7 +237,7 @@ export function createImbueAcid(): MaterialData[] {
                     return helpers.damage.effect({
                         type: "acid",
                         value: damage,
-                        label: "pf2e-monster-parts.damage.type.acid",
+                        label: lkey("might.label"),
                     });
                 },
             ),
@@ -250,7 +250,7 @@ export function createImbueAcid(): MaterialData[] {
                     outcome: ["criticalSuccess"],
                     text: lkey("might.effects.level-8-note"),
                     title: lkey("might.label"),
-                    selector: ["{item|id}-attack"],
+                    selector: [Selector.ItemAttack],
                 },
             },
             {
@@ -261,7 +261,7 @@ export function createImbueAcid(): MaterialData[] {
                     outcome: ["criticalSuccess"],
                     text: lkey("might.effects.level-14-note"),
                     title: lkey("might.label"),
-                    selector: ["{item|id}-attack"],
+                    selector: [Selector.ItemAttack],
                 },
             },
             {
@@ -271,7 +271,7 @@ export function createImbueAcid(): MaterialData[] {
                     key: "Note",
                     text: lkey("might.effects.level-12-note"),
                     title: lkey("might.label"),
-                    selector: ["{item|id}-damage"],
+                    selector: [Selector.ItemDamage],
                 },
             },
             {
@@ -282,7 +282,7 @@ export function createImbueAcid(): MaterialData[] {
                     outcome: ["success", "criticalSuccess"],
                     text: lkey("might.effects.level-20-note"),
                     title: lkey("might.label"),
-                    selector: ["{item|id}-attack"],
+                    selector: [Selector.ItemAttack],
                 },
             },
         ],
@@ -385,7 +385,7 @@ export function createImbueAcid(): MaterialData[] {
                     outcome: ["criticalSuccess"],
                     text: lkey("tech.effects.level-8-note"),
                     title: lkey("tech.label"),
-                    selector: ["{item|id}-attack"],
+                    selector: [Selector.ItemAttack],
                 },
             },
             {
@@ -395,7 +395,7 @@ export function createImbueAcid(): MaterialData[] {
                     key: "Note",
                     text: lkey("tech.effects.level-12-note"),
                     title: lkey("tech.label"),
-                    selector: ["{item|id}-damage"],
+                    selector: [Selector.ItemDamage],
                 },
             },
             {
@@ -406,7 +406,7 @@ export function createImbueAcid(): MaterialData[] {
                     outcome: ["criticalSuccess"],
                     text: lkey("tech.effects.level-20-note"),
                     title: lkey("tech.label"),
-                    selector: ["{item|id}-attack"],
+                    selector: [Selector.ItemAttack],
                 },
             },
         ],

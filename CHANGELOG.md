@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.8.0] - 2026-08-26
+
+### Removed
+- V13 support - unfortunately, but some changes to better handle handwraps required fixes introduced in 8.3.0
+- Handwraps refinement - now handled by Weapon (Bludgeoning)
+
+### Added
+- Weapon imbuements should now automatically apply to unarmed Strikes when added to handwraps. This also includes the random Wild imbuement. 
+- Earth imbued property
+
+### Fixed
+- Fixed damage label for Unholy imbuement (by **FrijDom**)
+- Fixed resistance value of Energy Resistant imbuement (by **FrijDom**)
+
 ## [0.7.8] - 2026-06-11
 
 ### Added

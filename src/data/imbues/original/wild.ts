@@ -65,7 +65,7 @@ export function createImbueWild(): MaterialData {
                 type: "RuleElement" as const,
                 rule: {
                     key: "Note",
-                    selector: Selector.ItemDamage,
+                    selector: [Selector.ItemDamage],
                     text: i18nFormat({
                         type: "key",
                         key: tkey("data.imbuement.vulnerability-before-strike"),

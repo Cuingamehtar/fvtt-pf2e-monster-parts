@@ -1,5 +1,5 @@
 import { lkeygen } from "@src/utils";
-import { helpers } from "../../helpers";
+import { helpers, Selector } from "../../helpers";
 import { MaterialData } from "../../material";
 import { RollString } from "@localTypes/global";
 import { Spells } from "@data/spells";
@@ -213,7 +213,7 @@ export function createImbueForce(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("might.effects.level-10-push"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -224,7 +224,7 @@ export function createImbueForce(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("might.effects.level-16-push"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -234,7 +234,7 @@ export function createImbueForce(): MaterialData[] {
                         key: "Note",
                         text: lkey("might.effects.level-12-resistance"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -245,7 +245,7 @@ export function createImbueForce(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("might.effects.level-20-weakness"),
                         title: lkey("might.label"),
-                        selector: ["{item|id}-attack"],
+                        selector: [Selector.ItemAttack],
                     },
                 },
             ],
@@ -361,7 +361,7 @@ export function createImbueForce(): MaterialData[] {
                             outcome: ["criticalSuccess"],
                             text: lkey(k),
                             title: lkey("tech.label"),
-                            selector: ["{item|id}-damage"],
+                            selector: [Selector.ItemDamage],
                         },
                     }),
                 ),
@@ -373,7 +373,7 @@ export function createImbueForce(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("tech.effects.level-16-off-guard"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
                 {
@@ -383,7 +383,7 @@ export function createImbueForce(): MaterialData[] {
                         key: "Note",
                         text: lkey("tech.effects.level-12-resistance"),
                         title: lkey("tech.label"),
-                        selector: ["{item|id}-damage"],
+                        selector: [Selector.ItemDamage],
                     },
                 },
             ],

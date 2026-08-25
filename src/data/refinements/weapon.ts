@@ -14,11 +14,7 @@ export function addWeaponRefinements(): MaterialData[] {
             type: "key",
             key: `pf2e-monster-parts.data.refinement.${damage}`,
         },
-        itemPredicate: [
-            "item:type:weapon",
-            `item:damage:type:${damage}`,
-            { not: "item:tag:handwraps-of-mighty-blows" },
-        ],
+        itemPredicate: ["item:type:weapon", `item:damage:type:${damage}`],
         monsterPredicate: ["item:type:melee", `item:damage:type:${damage}`],
         header: {
             labels: [

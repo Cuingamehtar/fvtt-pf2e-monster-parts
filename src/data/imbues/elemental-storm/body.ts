@@ -1,7 +1,7 @@
 import { lkeygen } from "@src/utils";
 import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
-import { helpers } from "../../helpers";
+import { helpers, Selector } from "../../helpers";
 import { PredicateStatement } from "foundry-pf2e";
 import { Spells } from "@data/spells";
 
@@ -102,7 +102,7 @@ export function createImbueBody(): MaterialData[] {
                             type: "bludgeoning",
                             value: damage,
                             label: lkey("magic.label"),
-                            selector: "unarmed-damage",
+                            selector: Selector.UnarmedDamage,
                         }),
                 ),
                 ...helpers.cantripActivation({
@@ -210,7 +210,7 @@ export function createImbueBody(): MaterialData[] {
                             type: "bludgeoning",
                             value: damage,
                             label: lkey("might.label"),
-                            selector: "unarmed-damage",
+                            selector: Selector.UnarmedDamage,
                         }),
                 ),
                 ...helpers.leveledEffects(
@@ -226,7 +226,7 @@ export function createImbueBody(): MaterialData[] {
                             outcome: ["criticalSuccess"],
                             text: lkey(l),
                             title: lkey("might.label"),
-                            selector: ["unarmed-attack-roll"],
+                            selector: [Selector.UnarmedAttack],
                         },
                     }),
                 ),
@@ -237,7 +237,7 @@ export function createImbueBody(): MaterialData[] {
                         key: "Note",
                         text: lkey("might.effects.level-12-resistance"),
                         title: lkey("might.label"),
-                        selector: ["unarmed-damage"],
+                        selector: [Selector.UnarmedDamage],
                     },
                 },
                 {
@@ -248,7 +248,7 @@ export function createImbueBody(): MaterialData[] {
                         outcome: ["success", "criticalSuccess"],
                         text: lkey("might.effects.level-20-weakness"),
                         title: lkey("might.label"),
-                        selector: ["unarmed-attack-roll"],
+                        selector: [Selector.UnarmedAttack],
                     },
                 },
             ],
@@ -329,7 +329,7 @@ export function createImbueBody(): MaterialData[] {
                         type: "bludgeoning",
                         value: 1,
                         label: lkey("tech.label"),
-                        selector: "unarmed-damage",
+                        selector: Selector.UnarmedDamage,
                     }),
                 },
                 ...helpers.leveledEffects(
@@ -341,7 +341,7 @@ export function createImbueBody(): MaterialData[] {
                             category: "persistent",
                             value: damage,
                             label: lkey("tech.label"),
-                            selector: "unarmed-damage",
+                            selector: Selector.UnarmedDamage,
                         }),
                 ),
                 {
@@ -352,7 +352,7 @@ export function createImbueBody(): MaterialData[] {
                         outcome: ["criticalSuccess"],
                         text: lkey("tech.effects.level-8-weak-point"),
                         title: lkey("tech.label"),
-                        selector: ["unarmed-attack-roll"],
+                        selector: [Selector.UnarmedAttack],
                     },
                 },
                 {
@@ -362,7 +362,7 @@ export function createImbueBody(): MaterialData[] {
                         key: "Note",
                         text: lkey("tech.effects.level-12-resistance"),
                         title: lkey("tech.label"),
-                        selector: ["unarmed-damage"],
+                        selector: [Selector.UnarmedDamage],
                     },
                 },
                 {
@@ -372,7 +372,7 @@ export function createImbueBody(): MaterialData[] {
                         key: "Note",
                         text: lkey("tech.effects.level-16-damage-penalty"),
                         title: lkey("tech.label"),
-                        selector: ["unarmed-damage"],
+                        selector: [Selector.UnarmedDamage],
                     },
                 },
                 {
@@ -382,7 +382,7 @@ export function createImbueBody(): MaterialData[] {
                         key: "Note",
                         text: lkey("tech.effects.level-20-reduced-reach"),
                         title: lkey("tech.label"),
-                        selector: ["unarmed-damage"],
+                        selector: [Selector.UnarmedDamage],
                     },
                 },
             ],
