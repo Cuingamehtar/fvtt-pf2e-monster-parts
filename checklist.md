@@ -16,7 +16,7 @@
 | Darkness         | SU/ES  | ✔      |
 | Dexterity        | BB     | ✔      |
 | Death            | ES     | ✔      |
-| Earth            | SU/ES  | ❌      |
+| Earth            | SU/ES  | ✔      |
 | Earth Armor      | ES     | ✔      |
 | Electricity      | BB/ES  | ✔      |
 | Elongating       | SU     | ❌      |
