@@ -2,7 +2,10 @@ import { getConfig } from "./config";
 import { i18nFormat } from "./utils";
 import { HeaderLabel, MaterialData, MaterialEffect } from "@data/material";
 import { MODULE_ID } from "./module";
-import { DamageDiceSource, FlatModifierSource } from "foundry-pf2e";
+import {
+    DamageDiceSource,
+    FlatModifierSource,
+} from "@7h3laughingman/pf2e-types";
 import { ItemCastSource } from "@data/data-types";
 
 let journal: JournalEntry | undefined = undefined;

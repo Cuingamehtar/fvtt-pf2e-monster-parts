@@ -1,4 +1,4 @@
-import { Size } from "foundry-pf2e";
+import { Size } from "@7h3laughingman/pf2e-types";
 import { createDefaultRefinements } from "@data/refinements";
 import { MODULE_ID } from "./module";
 import { createDefaultImbues } from "@data/imbues";

@@ -1,5 +1,5 @@
 import i18nKeys from "../lang/en.json";
-import { CharacterPF2e } from "foundry-pf2e";
+import { CharacterPF2e } from "@7h3laughingman/pf2e-types";
 
 declare global {
     // Helper fields

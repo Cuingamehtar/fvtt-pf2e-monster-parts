@@ -6,6 +6,7 @@ import { Spells } from "@data/spells";
 
 export function createImbueDarkness(): MaterialData[] {
     const lkey = lkeygen("data.imbuement.elemental-storm.darkness" as const);
+    const damageType = "cold";
 
     const base = {
         type: "imbuement" as const,
@@ -51,7 +52,7 @@ export function createImbueDarkness(): MaterialData[] {
                         ["1", "d4", "d6"],
                         (damage: RollString) =>
                             helpers.damage.label({
-                                type: "cold",
+                                type: damageType,
                                 value: damage,
                             }),
                     ),
@@ -103,7 +104,7 @@ export function createImbueDarkness(): MaterialData[] {
                     ["1", "d4", "d6"],
                     (damage: RollString) =>
                         helpers.damage.effect({
-                            type: "cold",
+                            type: damageType,
                             value: damage,
                             label: lkey("magic.label"),
                         }),
@@ -152,7 +153,7 @@ export function createImbueDarkness(): MaterialData[] {
                         ["1", "d4", "d6", "d8"],
                         (damage: RollString) =>
                             helpers.damage.label({
-                                type: "cold",
+                                type: damageType,
                                 value: damage,
                             }),
                     ),
@@ -199,7 +200,7 @@ export function createImbueDarkness(): MaterialData[] {
                     ["1", "d4", "d6", "d8"],
                     (damage: RollString) =>
                         helpers.damage.effect({
-                            type: "cold",
+                            type: damageType,
                             value: damage,
                             label: lkey("might.label"),
                         }),
@@ -255,7 +256,7 @@ export function createImbueDarkness(): MaterialData[] {
                     {
                         levelMin: 6,
                         ...helpers.damage.label({
-                            type: "bludgeoning",
+                            type: damageType,
                             value: 1,
                         }),
                     },
@@ -264,7 +265,7 @@ export function createImbueDarkness(): MaterialData[] {
                         ["1", "d6", "d8", "d10"],
                         (damage: RollString) =>
                             helpers.damage.label({
-                                type: "bludgeoning",
+                                type: damageType,
                                 category: "persistent",
                                 value: damage,
                             }),
@@ -310,7 +311,7 @@ export function createImbueDarkness(): MaterialData[] {
                 {
                     levelMin: 6,
                     ...helpers.damage.effect({
-                        type: "bludgeoning",
+                        type: damageType,
                         value: 1,
                         label: lkey("tech.label"),
                     }),
@@ -320,7 +321,7 @@ export function createImbueDarkness(): MaterialData[] {
                     ["1", "d6", "d8", "d10"],
                     (damage: RollString) =>
                         helpers.damage.effect({
-                            type: "bludgeoning",
+                            type: damageType,
                             category: "persistent",
                             value: damage,
                             label: lkey("tech.label"),

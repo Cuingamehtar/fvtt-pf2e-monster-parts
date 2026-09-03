@@ -1,4 +1,4 @@
-import { MagicTradition, PredicateStatement } from "foundry-pf2e";
+import { MagicTradition, PredicateStatement } from "@7h3laughingman/pf2e-types";
 import { effectField } from "./effect-handlers";
 import { RuleElementEffect } from "./effect-handlers/rule-element";
 import { AlterationEffect } from "./effect-handlers/alteration";

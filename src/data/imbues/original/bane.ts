@@ -2,7 +2,7 @@ import { getConfig } from "@src/config";
 import { i18nFormat, lkeygen } from "@src/utils";
 import { helpers, Selector } from "@data/helpers";
 import { MaterialData } from "@data/material";
-import { PredicateStatement } from "foundry-pf2e";
+import { PredicateStatement } from "@7h3laughingman/pf2e-types";
 import { RollString } from "@localTypes/global";
 
 export function createImbueBane(): MaterialData[] {

@@ -9,7 +9,7 @@ import { ModuleFlags, RefinedItemFlags } from "../../types/global";
 import { AssignMaterialDialog } from "@src/app/assign-material-dialog";
 import { ExtractMaterialDialog } from "@src/app/extract-material-dialog";
 import * as R from "remeda";
-import { ApplicationRenderContext } from "foundry-pf2e";
+import { ApplicationRenderContext } from "@7h3laughingman/pf2e-types";
 import { DynamicStyles } from "@src/modules/dynamic-styles";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;

@@ -2,8 +2,8 @@ import * as R from "remeda";
 import { getConfig } from "@src/config";
 import { renderSummaryJournal } from "@src/summary-journal";
 import { getExtendedNPCRollOptions } from "@src/actor-utils";
-import { ActorPF2e } from "foundry-pf2e";
 import { MonsterPart } from "@src/monster-part";
+import { ActorPF2e } from "@7h3laughingman/pf2e-types";
 
 export class API {
     static updateEachMaterial(...rules: StrReplFunc[]) {

@@ -1,6 +1,6 @@
 import { MaterialData } from "../material";
 import { MODULE_ID } from "@src/module";
-import { ArmorCategory } from "foundry-pf2e";
+import { ArmorCategory } from "@7h3laughingman/pf2e-types";
 import { helpers } from "../helpers";
 import { never } from "@src/utils";
 

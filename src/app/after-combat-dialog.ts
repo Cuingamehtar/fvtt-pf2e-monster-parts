@@ -1,4 +1,4 @@
-import { NPCPF2e, TokenDocumentPF2e } from "foundry-pf2e";
+import { NPCPF2e, TokenDocumentPF2e } from "@7h3laughingman/pf2e-types";
 import { MaterialValue } from "@src/material";
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -44,8 +44,7 @@ export class AfterCombatDialog extends HandlebarsApplicationMixin(
         },
     };
 
-    override async _onRender() //        _context: object,
-    //       _options: foundry.applications.ApplicationRenderOptions,
+    override async _onRender() //       _options: foundry.applications.ApplicationRenderOptions, //        _context: object,
     {
         (
             this.element.querySelectorAll(

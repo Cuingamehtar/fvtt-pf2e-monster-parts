@@ -201,9 +201,7 @@ export function registerSettings() {
                 label: tkey("settings.bane-traits.name") as string,
                 choices: Object.fromEntries(
                     Object.entries(CONFIG.PF2E.creatureTraits).sort((a, b) =>
-                        game.i18n
-                            .localize(a[1])
-                            .localeCompare(game.i18n.localize(b[1])),
+                        _loc(a[1]).localeCompare(_loc(b[1])),
                     ),
                 ),
             }),

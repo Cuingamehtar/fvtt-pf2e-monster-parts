@@ -3,7 +3,7 @@ import {
     EquipmentPF2e,
     NPCPF2e,
     PhysicalItemPF2e,
-} from "foundry-pf2e";
+} from "@7h3laughingman/pf2e-types";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
 import { i18nFormat, t } from "./utils";

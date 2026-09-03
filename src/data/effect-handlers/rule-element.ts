@@ -1,7 +1,7 @@
 import { BaseMaterialEffect } from "../material";
 import { ItemCastSource, RuleElementEffectSource } from "../data-types";
 import { Utils, getSettingSafe, i18nFormat } from "@src/utils";
-import { SpellPF2e } from "foundry-pf2e";
+import { SpellPF2e } from "@7h3laughingman/pf2e-types";
 import { AttachedMaterial } from "@src/material";
 import { isArray } from "remeda";
 import { Selector } from "@data/helpers";

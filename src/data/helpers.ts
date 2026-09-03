@@ -3,7 +3,7 @@ import {
     DAMAGE_TYPES,
     PredicateStatement,
     SkillSlug,
-} from "foundry-pf2e";
+} from "@7h3laughingman/pf2e-types";
 import { ItemAlterationSource, ItemCastSource } from "./data-types";
 import { HeaderLabel, MaterialData, MaterialEffect } from "./material";
 import { RollString } from "../../types/global";

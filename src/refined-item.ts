@@ -1,4 +1,4 @@
-import { ItemPF2e, PhysicalItemPF2e } from "foundry-pf2e";
+import { ItemPF2e, PhysicalItemPF2e } from "@7h3laughingman/pf2e-types";
 import { MODULE_ID } from "./module";
 import { getConfig } from "./config";
 import { Material, AttachedMaterial } from "./material";

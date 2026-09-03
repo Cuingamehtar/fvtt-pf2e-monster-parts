@@ -1,5 +1,5 @@
 import { BaseMaterialEffect } from "../material";
-import { PhysicalItemPF2e } from "foundry-pf2e";
+import { PhysicalItemPF2e } from "@7h3laughingman/pf2e-types";
 import { AttachedMaterial } from "@src/material";
 
 export type ApexEffect = BaseMaterialEffect & {

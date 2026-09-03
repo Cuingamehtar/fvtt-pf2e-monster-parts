@@ -4,7 +4,7 @@ import { MonsterPart } from "./monster-part";
 import { RefinedItem } from "./refined-item";
 import { Wrappers } from "./wrappers";
 import { ModuleHooks } from "./hooks";
-import { ActorPF2e, ScenePF2e } from "foundry-pf2e";
+import { ActorPF2e, ScenePF2e } from "@7h3laughingman/pf2e-types";
 import { registerSF2eUuidRedirects } from "@src/uuid-redirect";
 import { API } from "@src/api";
 

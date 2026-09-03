@@ -1,4 +1,4 @@
-import { SkillSlug } from "foundry-pf2e";
+import { SkillSlug } from "@7h3laughingman/pf2e-types";
 import { lkeygen } from "@src/utils";
 import { MaterialData } from "../../material";
 import { helpers } from "@data/helpers";

@@ -2,7 +2,7 @@ import { t, Utils } from "@src/utils";
 import { AttachedMaterial, Material, MaterialValue } from "@src/material";
 import { MODULE_ID } from "@src/module";
 import { SkipSliderButtons } from "@src/app/elements";
-import { ApplicationRenderContext } from "foundry-pf2e";
+import { ApplicationRenderContext } from "@7h3laughingman/pf2e-types";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 

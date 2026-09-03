@@ -4,7 +4,7 @@ import {
     RollNoteSource,
     RollOptionSource,
     RuleElementSource,
-} from "foundry-pf2e";
+} from "@7h3laughingman/pf2e-types";
 import { Spells } from "@data/spells";
 
 type ItemAlterationSource = {

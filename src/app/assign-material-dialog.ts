@@ -3,7 +3,6 @@ import { MonsterPart } from "@src/monster-part";
 import { Material, MaterialValue, AttachedMaterial } from "@src/material";
 import { SkipSliderButtons } from "@src/app/elements";
 import { RefinedItem } from "@src/refined-item";
-import { ApplicationRenderContext } from "foundry-pf2e";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 

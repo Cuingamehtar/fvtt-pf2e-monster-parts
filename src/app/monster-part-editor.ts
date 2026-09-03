@@ -4,7 +4,7 @@ import { MODULE_ID } from "../module";
 import { MonsterPart } from "../monster-part";
 import { MaterialValue } from "@src/material";
 import * as R from "remeda";
-import { ApplicationRenderContext } from "foundry-pf2e";
+import { ApplicationRenderContext } from "@7h3laughingman/pf2e-types";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 

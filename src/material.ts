@@ -1,4 +1,4 @@
-import { ItemPF2e, NPCPF2e, Predicate } from "foundry-pf2e";
+import { ItemPF2e, NPCPF2e, Predicate } from "@7h3laughingman/pf2e-types";
 import { getExtendedNPCRollOptions } from "./actor-utils";
 import { getConfig } from "./config";
 import { RefinedItem } from "./refined-item";

@@ -1,12 +1,12 @@
 import { ModuleFlags, ModuleManifestFlags } from "./global";
-import * as FoundryPF2e from "foundry-pf2e";
+import * as FoundryPF2e from "@7h3laughingman/pf2e-types";
 import { MODULE_ID } from "@src/module";
 import { MonsterPartsConfig } from "@src/config";
-import StringTree from "foundry-pf2e/foundry/common/utils/string-tree";
+import StringTree from "@7h3laughingman/pf2e-types/foundry/common/utils/string-tree";
 
 type Currency = FoundryPF2e.CoinDenomination | "credits" | "upb";
 
-declare module "foundry-pf2e" {
+declare module "@7h3laughingman/pf2e-types" {
     export interface ItemPF2e {
         getFlag(
             scope: "pf2e-monster-parts",

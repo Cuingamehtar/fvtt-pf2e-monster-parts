@@ -1,5 +1,5 @@
 import { MaterialData } from "../material";
-import { PredicateStatement, SkillSlug } from "foundry-pf2e";
+import { PredicateStatement, SkillSlug } from "@7h3laughingman/pf2e-types";
 import { predicateAnySense } from "../helpers";
 
 function skillEffects(

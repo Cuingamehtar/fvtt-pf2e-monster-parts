@@ -1,4 +1,4 @@
-import type { NPCPF2e } from "foundry-pf2e";
+import type { NPCPF2e } from "@7h3laughingman/pf2e-types";
 import * as R from "remeda";
 
 export function getExtendedNPCRollOptions(actor: NPCPF2e): string[] {

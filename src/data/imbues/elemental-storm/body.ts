@@ -2,7 +2,7 @@ import { lkeygen } from "@src/utils";
 import { RollString } from "@localTypes/global";
 import { MaterialData } from "../../material";
 import { helpers, Selector } from "../../helpers";
-import { PredicateStatement } from "foundry-pf2e";
+import { PredicateStatement } from "@7h3laughingman/pf2e-types";
 import { Spells } from "@data/spells";
 
 export function createImbueBody(): MaterialData[] {

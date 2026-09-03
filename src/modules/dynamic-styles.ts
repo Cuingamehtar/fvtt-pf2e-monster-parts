@@ -1,6 +1,6 @@
 import { getDroppedItem } from "@src/utils";
 import { MonsterPart } from "@src/monster-part";
-import { ItemPF2e } from "foundry-pf2e";
+import { ItemPF2e } from "@7h3laughingman/pf2e-types";
 import { RefinedItem } from "@src/refined-item";
 import { AutomaticRefinementProgression } from "@src/modules/automatic-refinement-progression";
 

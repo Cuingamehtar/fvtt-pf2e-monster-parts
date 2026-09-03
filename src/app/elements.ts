@@ -1,4 +1,4 @@
-import type HTMLRangePickerElement from "foundry-pf2e/foundry/client/applications/elements/_module";
+import type HTMLRangePickerElement from "@7h3laughingman/pf2e-types/foundry/client/applications/elements/_module";
 
 export class SkipSliderButtons {
     key: string;

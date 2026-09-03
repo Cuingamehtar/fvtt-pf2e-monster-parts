@@ -1,5 +1,5 @@
 import { MODULE_ID } from "./module";
-import { ActorPF2e, ItemPF2e } from "foundry-pf2e";
+import { ActorPF2e, ItemPF2e } from "@7h3laughingman/pf2e-types";
 
 export function t(
     m: keyof Flatten<I18nKeyType["pf2e-monster-parts"]>,
@@ -63,7 +63,7 @@ export function i18nFormat(
         return s as I18nString;
     }
     if ("type" in m && m.type == "key") {
-        let s = game.i18n.localize(m.key as string);
+        let s = _loc(m.key as string);
         if (!m.parameters)
             return (Utils.isSF ? sf2eUuidRemap(s) : s) as I18nString;
         for (const k in m.parameters) {
