@@ -117,7 +117,7 @@ might:
 
     - **20th** On a successful Strike with the weapon, before applying
     electricity damage, the target gains weakness 1 to electricity until the
-    beginning of your next turn
+    beginning of your next turn.
   effects:
     level-8-arc: >-
       Electricity arcs out to deal an equal amount of electricity damage to up

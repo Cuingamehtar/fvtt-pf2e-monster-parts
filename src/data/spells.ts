@@ -115,6 +115,10 @@ export enum Spells {
     InfuseVitality = "Compendium.pf2e.spells-srd.Item.2iQKhCQBijhj5Rf3",
     BreathOfLife = "Compendium.pf2e.spells-srd.Item.Hnc7eGi7vyZenAIm",
 
+    // Light
+    Light = "Compendium.pf2e.spells-srd.Item.WBmvzNDfpwka3qT4",
+    RevealingLight = "Compendium.pf2e.spells-srd.Item.0qaqksrGGDj74HXE",
+
     // Mind
     Daze = "Compendium.pf2e.spells-srd.Item.4gBIw4IDrSfFHik4",
     PhantomPain = "Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD",

@@ -33,7 +33,7 @@
 | Lawful*          | BB     | 🚫     |
 | Life             | ES     | ✔      |
 | Lifeward Armor   | ES     | ✔      |
-| Light            | SU/ES  | ❌      |
+| Light            | SU/ES  | ✔      |
 | Mental*          | BB     | ✔      |
 | Metal            | ES     | ❌      |
 | Mind             | ES     | ❌      |

@@ -17,27 +17,27 @@ magic:
     spells to be either arcane or primal
 
     - **2nd** The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.gYjPm7YwGtEa1oxh]{Ray of Frost} as a cantrip, heightened to
-    half the item's level rounded up
+    half the item's level rounded up.
 
-    - **4th** The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Chilling Spray} once per day
+    - **4th** The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0]{Chilling Spray} once per day.
 
-    - **6th** The weapon's _chilling spray_ heightens to 2nd rank
+    - **6th** The weapon's _chilling spray_ heightens to 2nd rank.
 
-    - **8th** Strikes with the weapon deal 1 additional cold damage
+    - **8th** Strikes with the weapon deal 1 additional cold damage.
 
-    - **10th** The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx]{Ice Storm} once per day
+    - **10th** The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx]{Ice Storm} once per day.
 
     - **12th** The weapon's _chilling spray_ heightens to 3rd rank, and the
-    weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k]{Cone of Cold} once per day
+    weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.3puDanGfpEt6jK5k]{Cone of Cold} once per day.
 
-    - **14th** The additional cold damage increases to 1d4
+    - **14th** The additional cold damage increases to 1d4.
 
     - **16th** The weapon's _chilling spray_, _cone of cold_, and _ice storm_
-    heighten to 6th rank
+    heighten to 6th rank.
 
-    - **18th** The additional cold damage increases to 1d6
+    - **18th** The additional cold damage increases to 1d6.
 
-    - **20th** The weapon can cast 9th rank @UUID[Compendium.pf2e.spells-srd.Item.BKIet436snMNcnez]{Polar Ray} once per day
+    - **20th** The weapon can cast 9th rank @UUID[Compendium.pf2e.spells-srd.Item.BKIet436snMNcnez]{Polar Ray} once per day.
   header:
     level-4-spells: >-
       The weapon can cast 1st rank
@@ -85,24 +85,24 @@ might:
 
     **Path** Might
 
-    - **4th** Strikes with the weapon deal 1 additional cold damage
+    - **4th** Strikes with the weapon deal 1 additional cold damage.
 
-    - **6th** The additional cold damage increases to 1d4
+    - **6th** The additional cold damage increases to 1d4.
 
     - **8th** The additional cold damage increases to 1d6. On a critical hit,
     the target is also slowed 1 until the end of your next turn unless it
-    succeeds at a Fortitude save against the weapon's DC
+    succeeds at a Fortitude save against the weapon's DC.
 
-    - **12th** The cold damage dealt by this imbued property ignores resistances
+    - **12th** The cold damage dealt by this imbued property ignores resistances.
 
     - **14th** On a critical hit with the weapon, the target also takes a
-    –10-foot status penalty to its Speeds for 1 round
+    –10-foot status penalty to its Speeds for 1 round.
 
-    - **18th** The additional cold damage increases to 1d8
+    - **18th** The additional cold damage increases to 1d8.
 
     - **20th** On a successful Strike with the weapon, before applying cold
     damage, the target gains weakness 1 to cold until the beginning of your next
-    turn
+    turn.
   effects:
     level-8-slow: >-
       The target is also
@@ -152,29 +152,29 @@ tech:
 
     **Path** Technique
 
-    - **4th** Strikes with the weapon deal 1 persistent cold damage
+    - **4th** Strikes with the weapon deal 1 persistent cold damage.
 
     - **6th** On a successful Strike with the weapon, the target takes a –5-foot
-    status penalty to its Speeds for 1 round
+    status penalty to its Speeds for 1 round.
 
     - **8th** On a critical hit, the target is also slowed 1 until the end of
     your next turn unless it succeeds at a Fortitude save against the weapon's
-    DC. The status penalty to a target's Speeds increases to –10
+    DC. The status penalty to a target's Speeds increases to –10.
 
     - **12th** The persistent cold damage dealt by this imbued property ignores
-    resistances
+    resistances.
 
     - **14th** A creature with their Speeds decreased by the imbued property
     thaws more slowly. The penalty lasts as long as the persistent cold damage
-    does
+    does.
 
     - **16th** Foes adjacent to a surface who critically fail the save against
     the slow effect freeze to that surface (usually the ground), becoming
-    immobilized until they Escape against the item's DC
+    immobilized until they Escape against the item's DC.
 
-    - **18th** The persistent cold damage on a hit increases to 1d4
+    - **18th** The persistent cold damage on a hit increases to 1d4.
 
-    - **20th** The status penalty to a target's Speeds increases to –15
+    - **20th** The status penalty to a target's Speeds increases to –15.
   effects:
     level-6-slow: >-
       The target takes a –5-foot status penalty to its Speeds for 1 round.

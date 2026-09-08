@@ -165,7 +165,7 @@ might:
       critical success, everything around it is concealed to it unless it has
       greater darkvision.
     level-20-weakness: >-
-      On a successful Strike with the weapon, before applying force damage, the
+      On a successful Strike with the weapon, before applying cold damage, the
       target gains weakness 1 to cold damage until the beginning of your next
       turn.
 tech:

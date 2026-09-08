@@ -236,6 +236,36 @@ function cantripActivation({
     );
 }
 
+function addCantrip(
+    uuid: Parameters<typeof spellActivation>[0]["uuid"],
+    { sort }: { sort?: number } = {},
+) {
+    return (m: MaterialData) => {
+        if (typeof m.header.labels === "undefined") m.header.labels = [];
+        if (typeof m.effects === "undefined") m.effects = [];
+
+        m.header.labels.push({
+            levelMin: 2,
+            text: {
+                type: "key",
+                key: "pf2e-monster-parts.data.imbuement.add-cantrip",
+                parameters: {
+                    spell: `@UUID[${uuid}]`,
+                },
+            },
+            sort: sort ?? 1,
+        });
+
+        for (const e of helpers.cantripActivation({
+            uuid,
+        })) {
+            m.effects.push(e);
+        }
+
+        return m;
+    };
+}
+
 function leveledEffects<T>(
     levels: number[],
     values: T[],
@@ -374,6 +404,7 @@ export enum Selector {
 export const helpers = {
     damage,
     shield,
+    addCantrip,
     leveledEffects,
     leveledLabels,
     sequentialData,

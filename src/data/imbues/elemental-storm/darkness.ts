@@ -41,7 +41,7 @@ export function createImbueDarkness(): MaterialData[] {
     return [
         {
             ...base,
-            key: "imbue:dakness:magic",
+            key: "imbue:darkness:magic",
             label: { type: "key", key: lkey("magic.label") },
             description: { type: "key", key: lkey("magic.description") },
             header: {
@@ -131,7 +131,7 @@ export function createImbueDarkness(): MaterialData[] {
                     }),
                 ),
                 {
-                    levelMin: 4,
+                    levelMin: 20,
                     ...helpers.spellActivation({
                         uuid: Spells.EclipseBurst,
                         max: 1,

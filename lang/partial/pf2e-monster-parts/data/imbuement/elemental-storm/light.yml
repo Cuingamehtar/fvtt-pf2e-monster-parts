@@ -1,0 +1,255 @@
+flavor: You imbue the weapon with shining light.
+light-trait: Additional fire damage from this weapon has the light trait.
+magic:
+  label: Light (Magic)
+  description: >-
+    **Type** Weapon
+
+
+    **Parts** The monster must have an ability or spell with the light trait.
+
+    - - -
+
+    **Effect** You imbue the weapon with shining light.
+
+
+    **Path** Magic; Choose when you first imbue the weapon for the granted 
+    spells to be either arcane or divine.
+
+    - **2nd** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.WBmvzNDfpwka3qT4]{Light} as a cantrip,
+    heightened to half the item's level rounded up.
+
+    - **4th** Strikes with the weapon deal 1 additional fire damage as the light
+    warms from within; this additional damage has the light trait.
+
+    - **6th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.0qaqksrGGDj74HXE]{Revealing Light}
+    once per day.
+
+    - **8th** The weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.DyiD239dNS7RIxZE]{Holy Light} once per
+    day.
+
+    - **10th** The weapon's _holy light_ heightens to 4th rank.
+
+    - **12th** The weapon’s _revealing light_ heightens to 4th rank, and it can
+    cast
+    @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.jfGQl8QxZc5Arg86]{Targeting
+    Beacon} once per day.
+
+    - **14th** The fire damage increases to 1d4.
+
+    - **16th** The weapon's _holy light_, _revealing light_, and _targeting
+    beacon_ heighten to 6th rank.
+
+    - **18th** The fire damage increases to 1d6.
+
+    - **20th** The weapon can cast 9th-rank
+    @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.iVLXQ0j4ofeOhx2y]{Radiant
+    Aurora} once per day.
+  header:
+    level-6-spells: >-
+      The weapon can cast
+      @UUID[Compendium.pf2e.spells-srd.Item.0qaqksrGGDj74HXE]{Revealing Light}
+      once per day.
+    level-8-spells: >-
+      The weapon can cast
+      @UUID[Compendium.pf2e.spells-srd.Item.0qaqksrGGDj74HXE]{Revealing Light}
+      and @UUID[Compendium.pf2e.spells-srd.Item.DyiD239dNS7RIxZE]{Holy Light}
+      once per day each.
+    level-10-spells: >-
+      The weapon can cast
+      @UUID[Compendium.pf2e.spells-srd.Item.0qaqksrGGDj74HXE]{Revealing Light}
+      and 4th rank @UUID[Compendium.pf2e.spells-srd.Item.DyiD239dNS7RIxZE]{Holy
+      Light} once per day each.
+    level-12-spells: >-
+      The weapon can cast 4th rank
+      @UUID[Compendium.pf2e.spells-srd.Item.0qaqksrGGDj74HXE]{Revealing Light}
+      and 4th rank @UUID[Compendium.pf2e.spells-srd.Item.DyiD239dNS7RIxZE]{Holy
+      Light}, and
+      @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.jfGQl8QxZc5Arg86]{Targeting
+      Beacon} once per day each.
+    level-16-spells: >-
+      The weapon can cast 6th rank
+      @UUID[Compendium.pf2e.spells-srd.Item.0qaqksrGGDj74HXE]{Revealing Light}
+      and 6th rank @UUID[Compendium.pf2e.spells-srd.Item.DyiD239dNS7RIxZE]{Holy
+      Light}, and 6th rank
+      @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.jfGQl8QxZc5Arg86]{Targeting
+      Beacon} once per day each.
+    level-20-radiant-aurora: >-
+      The weapon can cast 9th-rank
+      @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.iVLXQ0j4ofeOhx2y]{Radiant
+      Aurora} once per day.
+might:
+  label: Light (Might)
+  description: >-
+    **Type** Weapon
+
+
+    **Parts** The monster must have an ability or spell with the light trait.
+
+    - - -
+
+    **Effect** You imbue the weapon with shining light.
+
+
+    **Path** Might
+
+
+    - **4th** Strikes with the weapon deal 1 additional fire damage as the light
+    warms from within; this additional damage has the light trait.
+
+    - **6th** The additional fire damage increases to 1d4.
+
+    - **8th** The additional fire damage increases to 1d6. On a critical hit,
+    the target must attempt a Fortitude save against the weapon’s DC. On a
+    failure, it’s
+    @UUID[Compendium.pf2e.conditionitems.Item.XgEqL1kFApUbl5Z2]{Blinded} by the
+    light for 1 round.
+
+    - **12th** The additional fire damage dealt by this imbued property ignores
+    resistances.
+
+    - **14th** On a critical hit with the weapon, the target is
+    @UUID[Compendium.pf2e.conditionitems.Item.XgEqL1kFApUbl5Z2]{Dazzled} for 1
+    round by the light even on a success or critical success on its Fortitude
+    save.
+
+    - **18th** The additional fire damage increases to 1d8.
+
+    - **20th** On a successful Strike with the weapon, before applying the
+    additional fire damage, the target gains weakness 1 to light until the
+    beginning of your next turn.
+  effects:
+    level-12-resistance: >-
+      The additional fire damage dealt by this imbued property ignores
+      resistances.
+    level-8-blinded: >-
+      On a critical hit, the target must attempt a
+      @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:blinded] save
+      against the weapon’s DC. On a failure, it’s
+      @UUID[Compendium.pf2e.conditionitems.Item.XgEqL1kFApUbl5Z2]{Blinded} by
+      for 1 round.
+    level-14-blinded: >-
+      On a critical hit, the target is
+      @UUID[Compendium.pf2e.conditionitems.Item.XgEqL1kFApUbl5Z2]{Dazzled} for 1
+      round and must attempt a
+      @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:blinded] save
+      against the weapon’s DC. On a failure, it’s
+      @UUID[Compendium.pf2e.conditionitems.Item.XgEqL1kFApUbl5Z2]{Blinded} by
+      for 1 round.
+    level-20-weakness: >-
+      On a successful Strike with the weapon, before applying the additional
+      fire damage, the target gains weakness 1 to light until the beginning of
+      your next turn.
+      @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
+       Might Path Damage Weakness}
+  header:
+    level-12-resistance: >-
+      The additional fire damage dealt by this imbued property ignores
+      resistances.
+    level-8-blinded: >-
+      On a critical hit, the target must attempt a
+      @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:blinded] save
+      against the weapon’s DC. On a failure, it’s
+      @UUID[Compendium.pf2e.conditionitems.Item.XgEqL1kFApUbl5Z2]{Blinded} by
+      for 1 round.
+    level-14-blinded: >-
+      On a critical hit, the target is
+      @UUID[Compendium.pf2e.conditionitems.Item.XgEqL1kFApUbl5Z2]{Dazzled} for 1
+      round and must attempt a
+      @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:blinded] save
+      against the weapon’s DC. On a failure, it’s
+      @UUID[Compendium.pf2e.conditionitems.Item.XgEqL1kFApUbl5Z2]{Blinded} by
+      for 1 round.
+    level-20-weakness: >-
+      On a successful Strike with the weapon, before applying fire damage, the
+      target gains weakness 1 to fire damage until the beginning of your next
+      turn.
+tech:
+  label: Light (Technique)
+  description: >-
+    **Type** Weapon
+
+
+    **Parts** The monster must have an ability or spell with the light trait.
+
+    - - -
+
+    **Effect** You imbue the weapon with shining light.
+
+
+    **Path** Technique
+
+    - **4th** Strikes with the weapon deal 1 persistent fire damage as the light
+    continues to sear them; this additional damage has the light trait.
+
+    - **6th** Strikes with the weapon deal 1 additional fire damage as the light
+    warms from within; this additional damage has the light trait.
+
+    - **8th** The persistent fire damage on a hit increases to 1d6. On a
+    critical hit, the target must attempt a Fortitude save against the weapon’s
+    DC. On a failure, it’s
+    @UUID[Compendium.pf2e.conditionitems.Item.XgEqL1kFApUbl5Z2]{Blinded} by the
+    light for 1 round.
+
+    - **12th** The additional damage and persistent fire damage dealt by this
+    imbued property ignores resistances.
+
+    - **14th** The persistent fire damage on a hit increases to 1d8.
+
+    - **16th** While suffering from the persistent fire damage, the light limns
+    the creature, outlining it and preventing it from becoming concealed or
+    becoming invisible. A visible creature can’t be concealed while suffering
+    from the persistent fire damage; if the creature is invisible, it’s
+    concealed while suffering from the persistent fire damage, rather than being
+    undetected.
+
+    - **18th** The persistent fire damage on a hit increases to 1d10.
+
+    - **20th** The persistent light cancels out the darkness. Each time the
+    target takes the persistent fire damage from this property, the light
+    attempts to counteract one darkness effect on the target or the target’s
+    belongings with a counteract rank of 10 and a counteract modifier of +33.
+  effects:
+    level-8-blinded: >-
+      On a critical hit, the target must attempt a Fortitude save against the
+      weapon’s DC. On a failure, it’s
+      @UUID[Compendium.pf2e.conditionitems.Item.XgEqL1kFApUbl5Z2]{Blinded} by
+      the light for 1 round.
+    level-12-resistance: The fire damage dealt by this imbued property ignores resistances.
+    level-16-persistent: >-
+      While suffering from the persistent fire damage, the light limns the
+      creature, outlining it and preventing it from becoming
+      @UUID[Compendium.pf2e.conditionitems.Item.DmAIPqOBomZ7H95W]{Concealed} or
+      becoming
+      @UUID[Compendium.pf2e.conditionitems.Item.zJxUflt9np0q4yML]{Invisible}. A
+      visible creature can’t be concealed while suffering from the persistent
+      fire damage; if the creature is invisible, it’s concealed while suffering
+      from the persistent fire damage, rather than being undetected.
+    level-20-counteract: >-
+      Each time the target takes the persistent fire damage from this property,
+      the light attempts to counteract one darkness effect on the target or the
+      target’s belongings. (Counteract rank 10, +33 counteract modifier)
+  header:
+    level-8-blinded: >-
+      On a critical hit, the target must attempt a
+      @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:blinded]  save
+      against the weapon’s DC. On a failure, it’s
+      @UUID[Compendium.pf2e.conditionitems.Item.XgEqL1kFApUbl5Z2]{Blinded} by
+      the light for 1 round.
+    level-12-resistance: The fire damage dealt by this imbued property ignores resistances.
+    level-16-persistent: >-
+      While suffering from the persistent fire damage, the light limns the
+      creature, outlining it and preventing it from becoming
+      @UUID[Compendium.pf2e.conditionitems.Item.DmAIPqOBomZ7H95W]{Concealed} or
+      becoming
+      @UUID[Compendium.pf2e.conditionitems.Item.zJxUflt9np0q4yML]{Invisible}. A
+      visible creature can’t be concealed while suffering from the persistent
+      fire damage; if the creature is invisible, it’s concealed while suffering
+      from the persistent fire damage, rather than being undetected.
+    level-20-counteract: >-
+      Each time the target takes the persistent fire damage from this property,
+      the light attempts to counteract one darkness effect on the target or the
+      target’s belongings. (Counteract rank 10, +33 counteract modifier)

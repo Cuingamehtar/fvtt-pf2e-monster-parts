@@ -15,6 +15,7 @@ import { createImbueDarkArmor } from "./dark-armor";
 import { createImbueEarthArmor } from "./earth-armor";
 import { createImbueLifewardArmor } from "./lifeward-armor";
 import { createImbueEarth } from "@data/imbues/elemental-storm/earth";
+import { createImbueLight } from "@data/imbues/elemental-storm/light";
 
 export function createElementalStormImbues() {
     return [
@@ -31,6 +32,7 @@ export function createElementalStormImbues() {
         ...createImbueForce(),
         ...createImbueHoly(),
         ...createImbueLife(),
+        ...createImbueLight(),
         createImbueLifewardArmor(),
         ...createImbueMind(),
         ...createImbuePoison(),
