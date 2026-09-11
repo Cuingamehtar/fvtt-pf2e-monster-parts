@@ -237,7 +237,9 @@ tech:
       piercing damage, this benefit only applies to the piercing damage from this
       imbued property.
     level-16-shield: >-
-      While a target is suffering from the persistent piercing damage, whenever they hit you with a Strike, you
+      While a target is suffering from the persistent piercing damage,
+      the earth spikes growing on the target transform into an earthen shield that
+      blocks their attacks against you. Whenever they hit you with a Strike, you
       gain resistance to physical damage (except adamantine) to that Strike with a
       value equal to the persistent piercing damage.
     level-20-clumsy: >-

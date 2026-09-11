@@ -5,26 +5,77 @@ import { helpers, Selector } from "../../helpers";
 import { Spells } from "@data/spells";
 import { pipe } from "remeda";
 
-export function createImbueLight(): MaterialData[] {
-    const lkey = lkeygen("data.imbuement.elemental-storm.light" as const);
-    const damageType = "fire";
+export function createImbueMetal(): MaterialData[] {
+    const lkey = lkeygen("data.imbuement.elemental-storm.metal" as const);
+
+    const damageFunction = (
+        damage: RollString,
+        label: ReturnType<typeof lkey>,
+    ) => [
+        helpers.damage.effect({
+            type: "bludgeoning",
+            value: damage,
+            predicate: ["item:damage:type:bludgeoning"],
+            label,
+            hideIfDisabled: true,
+        }),
+        helpers.damage.effect({
+            type: "piercing",
+            value: damage,
+            predicate: ["item:damage:type:piercing"],
+            label,
+            hideIfDisabled: true,
+        }),
+        helpers.damage.effect({
+            type: "slashing",
+            value: damage,
+            predicate: ["item:damage:type:slashing"],
+            label,
+            hideIfDisabled: true,
+        }),
+    ];
 
     const base = {
         type: "imbuement" as const,
-        itemPredicate: ["item:type:weapon"],
-        // The monster must have an ability or spell with the light trait.
+        // Weapon (the weapon must be made of metal and must deal bludgeoning, piercing, or slashing damage)
+        itemPredicate: [
+            "item:type:weapon",
+            {
+                or: [
+                    "item:damage:type:bludgeoning",
+                    "item:damage:type:piercing",
+                    "item:damage:type:slashing",
+                ],
+            },
+        ],
+        // The monster must have the metal trait or an ability or spell that
+        // deals metal damage, or they must have a significant amount of metal in
+        // their composition.
         monsterPredicate: [
             {
-                or: ["item:type:action", "item:type:spell", "item:type:melee"],
+                or: [
+                    "self:trait:metal",
+                    {
+                        and: [
+                            {
+                                or: [
+                                    "item:type:action",
+                                    "item:type:spell",
+                                    "item:type:melee",
+                                ],
+                            },
+                            "item:trait:metal",
+                        ],
+                    },
+                ],
             },
-            "item:trait:light",
         ],
     };
 
     const magic = pipe(
         {
             ...base,
-            key: "imbue:light:magic",
+            key: "imbue:metal:magic",
             label: { type: "key", key: lkey("magic.label") },
             description: { type: "key", key: lkey("magic.description") },
             header: {
@@ -34,43 +85,42 @@ export function createImbueLight(): MaterialData[] {
 
         helpers.addGroup({
             labels: helpers.leveledLabels(
-                [4, 14, 18],
-                ["1", "d4", "d6"],
-                (damage: RollString) =>
-                    helpers.damage.label({
-                        type: damageType,
-                        value: damage,
-                    }),
+                [8, 14, 18],
+                ["1", "1d4", "1d6"],
+                (damage: RollString) => ({
+                    text: {
+                        type: "key",
+                        key: lkey("damage"),
+                        parameters: { damage },
+                    },
+                    sort: 3,
+                }),
             ),
             effects: helpers.leveledEffects(
-                [4, 14, 18],
+                [8, 14, 18],
                 ["1", "d4", "d6"],
                 (damage: RollString) =>
-                    helpers.damage.effect({
-                        type: damageType,
-                        value: damage,
-                        label: lkey("magic.label"),
-                    }),
+                    damageFunction(damage, lkey("magic.label")),
             ),
         }),
 
         helpers.addLabels({
-            levelMin: 4,
+            levelMin: 8,
             text: {
                 type: "key",
-                key: lkey("light-trait"),
+                key: lkey("metal-trait"),
             },
             sort: 1,
         }),
 
-        helpers.addCantrip(Spells.Light, { sort: 2 }),
+        helpers.addCantrip(Spells.CascadingCaltrops, { sort: 2 }),
 
         helpers.addGroup({
             labels: helpers.leveledLabels(
-                [6, 8, 10, 12, 16],
+                [4, 6, 10, 12, 16],
                 [
+                    "magic.header.level-4-spells",
                     "magic.header.level-6-spells",
-                    "magic.header.level-8-spells",
                     "magic.header.level-10-spells",
                     "magic.header.level-12-spells",
                     "magic.header.level-16-spells",
@@ -81,23 +131,23 @@ export function createImbueLight(): MaterialData[] {
                 }),
             ),
             effects: [
-                ...helpers.leveledEffects([6, 12, 16], [2, 4, 6], (rank) =>
+                ...helpers.leveledEffects([4, 12, 16], [1, 3, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: Spells.RevealingLight,
+                        uuid: Spells.Buzzsaw,
                         max: 1,
                         rank,
                     }),
                 ),
-                ...helpers.leveledEffects([8, 10, 16], [2, 4, 6], (rank) =>
+                ...helpers.leveledEffects([6, 10, 16], [2, 4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: Spells.HolyLight,
+                        uuid: Spells.ReforgeWeapon,
                         max: 1,
                         rank,
                     }),
                 ),
-                ...helpers.leveledEffects([12, 16], [4, 6], (rank) =>
+                ...helpers.leveledEffects([12, 16], [5, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: Spells.TargetingBeacon,
+                        uuid: Spells.ImpalingSpike,
                         max: 1,
                         rank,
                     }),
@@ -110,14 +160,14 @@ export function createImbueLight(): MaterialData[] {
                 levelMin: 20,
                 text: {
                     type: "key",
-                    key: lkey("magic.header.level-20-radiant-aurora"),
+                    key: lkey("magic.header.level-20-iron-deathtrap"),
                 },
                 sort: 4,
             },
             effects: {
                 levelMin: 20,
                 ...helpers.spellActivation({
-                    uuid: Spells.RadiantAurora,
+                    uuid: Spells.IronDeathtrap,
                     max: 1,
                     rank: 9,
                 }),
@@ -128,32 +178,32 @@ export function createImbueLight(): MaterialData[] {
     const might = pipe(
         {
             ...base,
-            key: "imbue:light:might",
+            key: "imbue:metal:might",
             label: { type: "key", key: lkey("might.label") },
             description: { type: "key", key: lkey("might.description") },
             header: {
                 description: { type: "key", key: lkey("flavor") },
             },
         },
+
         helpers.addGroup({
             labels: helpers.leveledLabels(
                 [4, 6, 8, 18],
-                ["1", "d4", "d6", "d8"],
-                (damage: RollString) =>
-                    helpers.damage.label({
-                        type: damageType,
-                        value: damage,
-                    }),
+                ["1", "1d4", "1d6", "1d8"],
+                (damage: RollString) => ({
+                    text: {
+                        type: "key",
+                        key: lkey("damage"),
+                        parameters: { damage },
+                    },
+                    sort: 3,
+                }),
             ),
             effects: helpers.leveledEffects(
                 [4, 6, 8, 18],
                 ["1", "d4", "d6", "d8"],
                 (damage: RollString) =>
-                    helpers.damage.effect({
-                        type: damageType,
-                        value: damage,
-                        label: lkey("might.label"),
-                    }),
+                    damageFunction(damage, lkey("might.label")),
             ),
         }),
 
@@ -161,40 +211,31 @@ export function createImbueLight(): MaterialData[] {
             levelMin: 4,
             text: {
                 type: "key",
-                key: lkey("light-trait"),
+                key: lkey("metal-trait"),
             },
             sort: 1,
         }),
 
         helpers.addGroup({
-            labels: helpers.leveledLabels(
-                [8, 14],
-                [
-                    "might.header.level-8-blinded",
-                    "might.header.level-14-blinded",
-                ],
-                (key: Parameters<typeof lkey>[0]) => ({
-                    text: { type: "key", key: lkey(key) },
-                    sort: 2,
-                }),
-            ),
-            effects: helpers.leveledEffects(
-                [8, 14],
-                [
-                    "might.effects.level-8-blinded",
-                    "might.effects.level-14-blinded",
-                ],
-                (l: Parameters<typeof lkey>[0]) => ({
-                    type: "RuleElement",
-                    rule: {
-                        key: "Note",
-                        outcome: ["criticalSuccess"],
-                        text: lkey(l),
-                        title: lkey("might.label"),
-                        selector: [Selector.ItemAttack],
-                    },
-                }),
-            ),
+            labels: {
+                levelMin: 8,
+                text: {
+                    type: "key",
+                    key: lkey("might.header.level-8-damage-type"),
+                },
+                sort: 2,
+            },
+            effects: {
+                levelMin: 8,
+                type: "RuleElement",
+                rule: {
+                    key: "Note",
+                    outcome: ["criticalSuccess"],
+                    text: lkey("might.effects.level-8-damage-type"),
+                    title: lkey("might.label"),
+                    selector: [Selector.ItemAttack],
+                },
+            },
         }),
 
         helpers.addGroup({
@@ -220,12 +261,33 @@ export function createImbueLight(): MaterialData[] {
 
         helpers.addGroup({
             labels: {
+                levelMin: 14,
+                text: {
+                    type: "key",
+                    key: lkey("might.header.level-14-material"),
+                },
+                sort: 4,
+            },
+            effects: {
+                levelMin: 14,
+                type: "RuleElement",
+                rule: {
+                    key: "Note",
+                    outcome: ["criticalSuccess"],
+                    text: lkey("might.effects.level-14-material"),
+                    title: lkey("might.label"),
+                    selector: [Selector.ItemAttack],
+                },
+            },
+        }),
+        helpers.addGroup({
+            labels: {
                 levelMin: 20,
                 text: {
                     type: "key",
                     key: lkey("might.header.level-20-weakness"),
                 },
-                sort: 4,
+                sort: 5,
             },
             effects: {
                 levelMin: 20,
@@ -244,7 +306,7 @@ export function createImbueLight(): MaterialData[] {
     const tech = pipe(
         {
             ...base,
-            key: "imbue:light:tech",
+            key: "imbue:metal:tech",
             label: { type: "key", key: lkey("tech.label") },
             description: { type: "key", key: lkey("tech.description") },
             header: {
@@ -255,19 +317,17 @@ export function createImbueLight(): MaterialData[] {
         helpers.addGroup({
             labels: {
                 levelMin: 6,
-                ...helpers.damage.label({
-                    type: damageType,
-                    value: 1,
-                }),
+                text: {
+                    type: "key",
+                    key: lkey("damage"),
+                    parameters: { damage: "1" },
+                },
+                sort: 3,
             },
-            effects: {
+            effects: damageFunction("1", lkey("tech.label")).map((e) => ({
                 levelMin: 6,
-                ...helpers.damage.effect({
-                    type: damageType,
-                    value: 1,
-                    label: lkey("tech.label"),
-                }),
-            },
+                ...e,
+            })),
         }),
 
         helpers.addGroup({
@@ -276,7 +336,7 @@ export function createImbueLight(): MaterialData[] {
                 ["1", "d6", "d8", "d10"],
                 (damage: RollString) =>
                     helpers.damage.label({
-                        type: damageType,
+                        type: "piercing",
                         category: "persistent",
                         value: damage,
                     }),
@@ -286,7 +346,7 @@ export function createImbueLight(): MaterialData[] {
                 ["1", "d6", "d8", "d10"],
                 (damage: RollString) =>
                     helpers.damage.effect({
-                        type: damageType,
+                        type: "piercing",
                         category: "persistent",
                         value: damage,
                         label: lkey("tech.label"),
@@ -298,7 +358,7 @@ export function createImbueLight(): MaterialData[] {
             levelMin: 4,
             text: {
                 type: "key",
-                key: lkey("light-trait"),
+                key: lkey("metal-trait"),
             },
             sort: 1,
         }),
@@ -308,7 +368,7 @@ export function createImbueLight(): MaterialData[] {
                 levelMin: 8,
                 text: {
                     type: "key",
-                    key: lkey("tech.header.level-8-blinded"),
+                    key: lkey("tech.header.level-8-effective"),
                 },
                 sort: 2,
             },
@@ -318,7 +378,7 @@ export function createImbueLight(): MaterialData[] {
                 rule: {
                     key: "Note",
                     outcome: ["criticalSuccess"],
-                    text: lkey("tech.effects.level-8-blinded"),
+                    text: lkey("tech.effects.level-8-effective"),
                     title: lkey("tech.label"),
                     selector: [Selector.ItemAttack],
                 },
@@ -351,7 +411,7 @@ export function createImbueLight(): MaterialData[] {
                 levelMin: 16,
                 text: {
                     type: "key",
-                    key: lkey("tech.header.level-16-persistent"),
+                    key: lkey("tech.header.level-16-material"),
                 },
                 sort: 4,
             },
@@ -361,7 +421,7 @@ export function createImbueLight(): MaterialData[] {
                 rule: {
                     key: "Note",
                     outcome: ["criticalSuccess"],
-                    text: lkey("tech.effects.level-16-persistent"),
+                    text: lkey("tech.effects.level-16-material"),
                     title: lkey("tech.label"),
                     selector: [Selector.ItemAttack],
                 },
@@ -372,7 +432,7 @@ export function createImbueLight(): MaterialData[] {
                 levelMin: 20,
                 text: {
                     type: "key",
-                    key: lkey("tech.header.level-20-counteract"),
+                    key: lkey("tech.header.level-20-dc"),
                 },
                 sort: 4,
             },
@@ -381,7 +441,7 @@ export function createImbueLight(): MaterialData[] {
                 type: "RuleElement",
                 rule: {
                     key: "Note",
-                    text: lkey("tech.effects.level-20-counteract"),
+                    text: lkey("tech.effects.level-20-dc"),
                     title: lkey("tech.label"),
                     selector: [Selector.ItemDamage],
                 },

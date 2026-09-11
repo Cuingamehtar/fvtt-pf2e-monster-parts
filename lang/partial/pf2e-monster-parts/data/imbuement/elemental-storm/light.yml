@@ -214,7 +214,7 @@ tech:
     belongings with a counteract rank of 10 and a counteract modifier of +33.
   effects:
     level-8-blinded: >-
-      On a critical hit, the target must attempt a Fortitude save against the
+      On a critical hit, the target must attempt a @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:blinded] save against the
       weapon’s DC. On a failure, it’s
       @UUID[Compendium.pf2e.conditionitems.Item.XgEqL1kFApUbl5Z2]{Blinded} by
       the light for 1 round.
@@ -234,8 +234,7 @@ tech:
       target’s belongings. (Counteract rank 10, +33 counteract modifier)
   header:
     level-8-blinded: >-
-      On a critical hit, the target must attempt a
-      @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:blinded]  save
+      On a critical hit, the target must attempt a @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:blinded] save
       against the weapon’s DC. On a failure, it’s
       @UUID[Compendium.pf2e.conditionitems.Item.XgEqL1kFApUbl5Z2]{Blinded} by
       the light for 1 round.

@@ -54,9 +54,19 @@ const weaknessTypes = {
         label: "PF2E.TraitHoly",
         imbuements: ["imbue:holy:might"],
     },
+    light: {
+        label: "PF2E.TraitLight",
+        imbuements: ["imbue:light:might"],
+        definition: ["item:trait:light"],
+    },
     mental: {
         label: "PF2E.TraitMental",
         imbuements: ["imbue:mind:might"],
+    },
+    metal: {
+        label: "PF2E.TraitMetal",
+        imbuements: ["imbue:metal:might"],
+        definition: ["item:trait:metal"],
     },
     morph: {
         label: "PF2E.TraitMorph",

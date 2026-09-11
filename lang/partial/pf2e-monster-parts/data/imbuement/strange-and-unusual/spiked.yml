@@ -14,9 +14,9 @@ description: >-
 
   **Effect** You imbue the armor with vicious spikes.
 
-  - **2nd** The armor gains the following activation:    
-    **Activate** <span class="action-glyph">2</span> Interact      
-    **Frequency** once per day    
+  - **2nd** The armor gains the following activation:  
+    **Activate** <span class="action-glyph">2</span> Interact  
+    **Frequency** once per day  
     **Effect** You cause vicious spikes to protrude from the armor. For 1 minute, adjacent creatures that hit you with a melee attack, as well as creatures that touch you or hit you with an unarmed attack, take 1 piercing damage each time they do. If they Grab or Grapple you, the damage increases to 1d4 piercing damage instead.
 
   - **4th** The damage from the activation increases to 1d4, or 2d4 when

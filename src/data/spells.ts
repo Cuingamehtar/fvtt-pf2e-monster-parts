@@ -119,6 +119,9 @@ export enum Spells {
     Light = "Compendium.pf2e.spells-srd.Item.WBmvzNDfpwka3qT4",
     RevealingLight = "Compendium.pf2e.spells-srd.Item.0qaqksrGGDj74HXE",
 
+    // Metal
+    ImpalingSpike = "Compendium.pf2e.spells-srd.Item.oXeEbcUdgJGWHGEJ",
+
     // Mind
     Daze = "Compendium.pf2e.spells-srd.Item.4gBIw4IDrSfFHik4",
     PhantomPain = "Compendium.pf2e.spells-srd.Item.R8bqnYiThB6MYTxD",

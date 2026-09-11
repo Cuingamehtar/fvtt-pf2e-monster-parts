@@ -52,6 +52,7 @@ function getMaterialRollDataPath(key, value) {
 
 const substitutions = [
     ["’", "'"],
+    [/ {2}(?!\n)/g, " "],
     [
         "dc:resolve(item-level-dc)",
         "dc:resolve(14 +@item.level +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0) +max(@item.level -24, 0))",
@@ -117,7 +118,8 @@ function parsePartialLocalizations(dir) {
                     return mergeDeep(acc, { [cur.name]: data });
             } else {
                 return mergeDeep(acc, {
-                    [cur.name.split(".").slice(0, -1).join(".")]: parseFile(p),
+                    [cur.name.split(".").slice(0, -1).join(".")]:
+                        stripTemplatedEntries(entrySubstitution(parseFile(p))),
                 });
             }
             return acc;
@@ -130,6 +132,41 @@ function parsePartialLocalizations(dir) {
         );
         return {};
     }
+}
+
+function getNestedValue(obj, path) {
+    return path.split(".").reduce((acc, part) => acc?.[part], obj);
+}
+
+function eachEndPoint(obj, f, path = []) {
+    if (typeof obj === "string" || typeof obj === "number") return f(obj, path);
+    if (!obj) return obj;
+    if (Array.isArray(obj))
+        return obj.map((e, i) => eachEndPoint(e, f, [...path, String(i)]));
+    return Object.fromEntries(
+        Object.entries(obj).map(([k, v]) => [
+            k,
+            eachEndPoint(v, f, [...path, k]),
+        ]),
+    );
+}
+
+function entrySubstitution(data) {
+    let tryAgain = false;
+    const res = eachEndPoint(data, (value) => {
+        if (typeof value !== "string") return value;
+        return value.replaceAll(/\{\{([^}]+)}}/g, (_, inner) => {
+            tryAgain = true;
+            return getNestedValue(data, inner);
+        });
+    });
+    return tryAgain ? entrySubstitution(res) : res;
+}
+
+function stripTemplatedEntries(data) {
+    return eachEndPoint(data, (value, path) =>
+        path[path.length - 1].startsWith("$") ? undefined : value,
+    );
 }
 
 function debounce(func, delay) {
@@ -150,7 +187,7 @@ function combineLocalizationsInner() {
     const partial = parsePartialLocalizations("./lang/partial");
     fs.writeFileSync(
         "./lang/en.json",
-        JSON.stringify(mergeDeep({}, partial), null, 2).replaceAll("’", "'"),
+        JSON.stringify(mergeDeep({}, partial), null, 2),
     );
     console.log(
         `(${new Date(Date.now()).toLocaleTimeString()}) Localizations combined`,

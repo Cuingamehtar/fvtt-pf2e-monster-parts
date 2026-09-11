@@ -8,6 +8,7 @@ import { ItemAlterationSource, ItemCastSource } from "./data-types";
 import { HeaderLabel, MaterialData, MaterialEffect } from "./material";
 import { RollString } from "../../types/global";
 import { RuleElementEffect } from "./effect-handlers/rule-element";
+import { isArray } from "remeda";
 
 export function selfAlteration(
     property: ItemAlterationSource["property"],
@@ -269,7 +270,11 @@ function addCantrip(
 function leveledEffects<T>(
     levels: number[],
     values: T[],
-    f: (v: T) => Omit<MaterialEffect, "levelMin" | "levelMax">,
+    f: (
+        v: T,
+    ) =>
+        | Omit<MaterialEffect, "levelMin" | "levelMax">
+        | Omit<MaterialEffect, "levelMin" | "levelMax">[],
 ): MaterialEffect[] {
     return Array.fromRange(values.length)
         .map((i) => ({
@@ -277,14 +282,21 @@ function leveledEffects<T>(
             levelMax: levels[i + 1] ? levels[i + 1] - 1 : undefined,
             value: values[i],
         }))
-        .map(
-            ({ levelMin, levelMax, value }) =>
-                ({
-                    ...f(value),
-                    levelMin,
-                    levelMax,
-                }) as MaterialEffect,
-        );
+        .flatMap(({ levelMin, levelMax, value }) => {
+            const result = (() => {
+                const r = f(value);
+                return isArray(r) ? r : [r];
+            })();
+
+            return result.map(
+                (r) =>
+                    ({
+                        ...r,
+                        levelMin,
+                        levelMax,
+                    }) as MaterialEffect,
+            );
+        });
 }
 
 function leveledLabels<T>(

@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.8.3] - 2026-09-11
+
+### Added
+- Add Metal imbued property
+
 ## [0.8.2] - 2026-09-08
 
 ### Added
