@@ -35,7 +35,7 @@
 | Lifeward Armor   | ES     | ✔      |
 | Light            | SU/ES  | ✔      |
 | Mental*          | BB     | ✔      |
-| Metal            | ES     | ❌      |
+| Metal            | ES     | ✔      |
 | Mind             | ES     | ❌      |
 | Mind Shield      | ES     | ❌      |
 | Mirrored         | SU     | ✔      |
