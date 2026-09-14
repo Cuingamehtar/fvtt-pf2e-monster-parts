@@ -5,26 +5,39 @@ import { helpers, Selector } from "../../helpers";
 import { Spells } from "@data/spells";
 import { pipe } from "remeda";
 
-export function createImbueLight(): MaterialData[] {
-    const lkey = lkeygen("data.imbuement.elemental-storm.light" as const);
-    const damageType = "fire";
+export function createImbueWater(): MaterialData[] {
+    const lkey = lkeygen("data.imbuement.elemental-storm.water" as const);
+    const damageType = "bludgeoning";
 
     const base = {
         type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
-        // The monster must have an ability or spell with the light trait.
+        // The monster must have the water trait or an ability or spell with the water trait.
         monsterPredicate: [
             {
-                or: ["item:type:action", "item:type:spell", "item:type:melee"],
+                or: [
+                    "self:trait:water",
+                    {
+                        and: [
+                            {
+                                or: [
+                                    "item:type:action",
+                                    "item:type:spell",
+                                    "item:type:melee",
+                                ],
+                            },
+                            "item:trait:water",
+                        ],
+                    },
+                ],
             },
-            "item:trait:light",
         ],
     };
 
     const magic = pipe(
         {
             ...base,
-            key: "imbue:light:magic",
+            key: "imbue:water:magic",
             label: { type: "key", key: lkey("magic.label") },
             description: { type: "key", key: lkey("magic.description") },
             header: {
@@ -34,7 +47,7 @@ export function createImbueLight(): MaterialData[] {
 
         helpers.addGroup({
             labels: helpers.leveledLabels(
-                [4, 14, 18],
+                [10, 14, 18],
                 ["1", "d4", "d6"],
                 (damage: RollString) =>
                     helpers.damage.label({
@@ -43,7 +56,7 @@ export function createImbueLight(): MaterialData[] {
                     }),
             ),
             effects: helpers.leveledEffects(
-                [4, 14, 18],
+                [10, 14, 18],
                 ["1", "d4", "d6"],
                 (damage: RollString) =>
                     helpers.damage.effect({
@@ -55,23 +68,23 @@ export function createImbueLight(): MaterialData[] {
         }),
 
         helpers.addLabels({
-            levelMin: 4,
+            levelMin: 10,
             text: {
                 type: "key",
-                key: lkey("light-trait"),
+                key: lkey("water-trait"),
             },
             sort: 1,
         }),
 
-        helpers.addCantrip(Spells.Light, { sort: 2 }),
+        helpers.addCantrip(Spells.Spout, { sort: 2 }),
 
         helpers.addGroup({
             labels: helpers.leveledLabels(
-                [6, 8, 10, 12, 16],
+                [4, 6, 8, 12, 16],
                 [
+                    "magic.header.level-4-spells",
                     "magic.header.level-6-spells",
                     "magic.header.level-8-spells",
-                    "magic.header.level-10-spells",
                     "magic.header.level-12-spells",
                     "magic.header.level-16-spells",
                 ],
@@ -81,23 +94,26 @@ export function createImbueLight(): MaterialData[] {
                 }),
             ),
             effects: [
-                ...helpers.leveledEffects([6, 12, 16], [2, 4, 6], (rank) =>
-                    helpers.spellActivation({
-                        uuid: Spells.RevealingLight,
-                        max: 1,
-                        rank,
-                    }),
+                ...helpers.leveledEffects(
+                    [4, 6, 12, 16],
+                    [1, 2, 4, 6],
+                    (rank) =>
+                        helpers.spellActivation({
+                            uuid: Spells.HydraulicPush,
+                            max: 1,
+                            rank,
+                        }),
                 ),
-                ...helpers.leveledEffects([8, 10, 16], [2, 4, 6], (rank) =>
+                ...helpers.leveledEffects([8, 12, 16], [3, 4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: Spells.HolyLight,
+                        uuid: Spells.CrashingWave,
                         max: 1,
                         rank,
                     }),
                 ),
                 ...helpers.leveledEffects([12, 16], [4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: Spells.TargetingBeacon,
+                        uuid: Spells.HydraulicTorrent,
                         max: 1,
                         rank,
                     }),
@@ -110,14 +126,14 @@ export function createImbueLight(): MaterialData[] {
                 levelMin: 20,
                 text: {
                     type: "key",
-                    key: lkey("magic.header.level-20-radiant-aurora"),
+                    key: lkey("magic.header.level-20-desiccate"),
                 },
                 sort: 4,
             },
             effects: {
                 levelMin: 20,
                 ...helpers.spellActivation({
-                    uuid: Spells.RadiantAurora,
+                    uuid: Spells.Desiccate,
                     max: 1,
                     rank: 9,
                 }),
@@ -128,7 +144,7 @@ export function createImbueLight(): MaterialData[] {
     const might = pipe(
         {
             ...base,
-            key: "imbue:light:might",
+            key: "imbue:water:might",
             label: { type: "key", key: lkey("might.label") },
             description: { type: "key", key: lkey("might.description") },
             header: {
@@ -162,7 +178,7 @@ export function createImbueLight(): MaterialData[] {
             levelMin: 4,
             text: {
                 type: "key",
-                key: lkey("light-trait"),
+                key: lkey("water-trait"),
             },
             sort: 1,
         }),
@@ -170,10 +186,7 @@ export function createImbueLight(): MaterialData[] {
         helpers.addGroup({
             labels: helpers.leveledLabels(
                 [8, 14],
-                [
-                    "might.header.level-8-blinded",
-                    "might.header.level-14-blinded",
-                ],
+                ["might.header.level-8-prone", "might.header.level-14-prone"],
                 (key: Parameters<typeof lkey>[0]) => ({
                     text: { type: "key", key: lkey(key) },
                     sort: 2,
@@ -181,10 +194,7 @@ export function createImbueLight(): MaterialData[] {
             ),
             effects: helpers.leveledEffects(
                 [8, 14],
-                [
-                    "might.effects.level-8-blinded",
-                    "might.effects.level-14-blinded",
-                ],
+                ["might.effects.level-8-prone", "might.effects.level-14-prone"],
                 (l: Parameters<typeof lkey>[0]) => ({
                     type: "RuleElement",
                     rule: {
@@ -226,7 +236,7 @@ export function createImbueLight(): MaterialData[] {
                     type: "key",
                     key: lkey("might.header.level-20-weakness"),
                 },
-                sort: 4,
+                sort: 5,
             },
             effects: {
                 levelMin: 20,
@@ -245,7 +255,7 @@ export function createImbueLight(): MaterialData[] {
     const tech = pipe(
         {
             ...base,
-            key: "imbue:light:tech",
+            key: "imbue:water:tech",
             label: { type: "key", key: lkey("tech.label") },
             description: { type: "key", key: lkey("tech.description") },
             header: {
@@ -299,7 +309,7 @@ export function createImbueLight(): MaterialData[] {
             levelMin: 4,
             text: {
                 type: "key",
-                key: lkey("light-trait"),
+                key: lkey("water-trait"),
             },
             sort: 1,
         }),
@@ -309,7 +319,7 @@ export function createImbueLight(): MaterialData[] {
                 levelMin: 8,
                 text: {
                     type: "key",
-                    key: lkey("tech.header.level-8-blinded"),
+                    key: lkey("tech.header.level-8-prone"),
                 },
                 sort: 2,
             },
@@ -319,7 +329,7 @@ export function createImbueLight(): MaterialData[] {
                 rule: {
                     key: "Note",
                     outcome: ["criticalSuccess"],
-                    text: lkey("tech.effects.level-8-blinded"),
+                    text: lkey("tech.effects.level-8-prone"),
                     title: lkey("tech.label"),
                     selector: [Selector.ItemAttack],
                 },
@@ -352,7 +362,7 @@ export function createImbueLight(): MaterialData[] {
                 levelMin: 16,
                 text: {
                     type: "key",
-                    key: lkey("tech.header.level-16-persistent"),
+                    key: lkey("tech.header.level-16-difficult-terrain"),
                 },
                 sort: 4,
             },
@@ -362,9 +372,9 @@ export function createImbueLight(): MaterialData[] {
                 rule: {
                     key: "Note",
                     outcome: ["criticalSuccess"],
-                    text: lkey("tech.effects.level-16-persistent"),
+                    text: lkey("tech.effects.level-16-difficult-terrain"),
                     title: lkey("tech.label"),
-                    selector: [Selector.ItemAttack],
+                    selector: [Selector.ItemDamage],
                 },
             },
         }),
@@ -373,7 +383,7 @@ export function createImbueLight(): MaterialData[] {
                 levelMin: 20,
                 text: {
                     type: "key",
-                    key: lkey("tech.header.level-20-counteract"),
+                    key: lkey("tech.header.level-20-flat-check"),
                 },
                 sort: 4,
             },
@@ -382,7 +392,7 @@ export function createImbueLight(): MaterialData[] {
                 type: "RuleElement",
                 rule: {
                     key: "Note",
-                    text: lkey("tech.effects.level-20-counteract"),
+                    text: lkey("tech.effects.level-20-flat-check"),
                     title: lkey("tech.label"),
                     selector: [Selector.ItemDamage],
                 },

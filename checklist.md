@@ -48,7 +48,7 @@
 | Sonic*           | BB     | ✔      |
 | Space            | ES     | ❌      |
 | Space Shield     | ES     | ❌      |
-| Spell            | BB     | ❌      |
+| Spell            | BB     | 🚫     |
 | Spiked Armor     | SU     | ✔      |
 | Spirit Weapon    | ES     | ❌      |
 | Strength         | BB     | ✔      |
@@ -58,7 +58,7 @@
 | Time             | ES     | ❌      |
 | Unholy           | ES     | ✔      |
 | Wild             | BB     | ✔      |
-| Water            | SU/ES  | ❌      |
+| Water            | SU/ES  | ✔      |
 | Winged           | BB     | ✔      |
 | Wisdom           | BB     | ✔      |
-| Wood             | SU     | ❌      |
+| Wood             | SU/ES  | ❌      |

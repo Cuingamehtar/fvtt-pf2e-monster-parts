@@ -142,6 +142,13 @@ export enum Spells {
     // Unholy
     ChillingDarkness = "Compendium.pf2e.spells-srd.Item.sRfSBHWHdbIa0aGc",
 
+    // Water
+    Spout = "Compendium.pf2e.spells-srd.Item.eSL5hVT9gXrnRLtd",
+    HydraulicPush = "Compendium.pf2e.spells-srd.Item.jfVCuOpzC6mUrf6f",
+    CrashingWave = "Compendium.pf2e.spells-srd.Item.T4QKmtYPeCgYxVGe",
+    HydraulicTorrent = "Compendium.pf2e.spells-srd.Item.Y3G6Y6EDgCY0s3fq",
+    Desiccate = "Compendium.pf2e.spells-srd.Item.M0jQlpQYUr0pp2Sv",
+
     // Winged
     GentleLanding = "Compendium.pf2e.spells-srd.Item.TTwOKGqmZeKSyNMH",
     Fly = "Compendium.pf2e.spells-srd.Item.A2JfEKe6BZcTG1S8",

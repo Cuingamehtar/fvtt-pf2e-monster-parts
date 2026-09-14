@@ -148,6 +148,12 @@ function getEffectRowLabel(effect: MaterialEffect): {
                 contents: `${foundry.utils.fromUuidSync(uuid)?.name}${rank ? ` (Rank ${rank})` : ""}`,
                 tooltip,
             }))(rule as ItemCastSource);
+        if (rule.key == "Note") {
+            return {
+                contents: _loc(i18nFormat(rule.text) as string),
+                tooltip,
+            };
+        }
         return { contents: rule.key, tooltip };
     }
     return { contents: "" };

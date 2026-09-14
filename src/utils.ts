@@ -45,7 +45,7 @@ export function i18nFormat(
 ): I18nString {
     if (typeof m === "undefined") return "" as I18nString;
     if (typeof m === "number") return String(m) as I18nString;
-    if (typeof (m as string) == "string")
+    if (typeof m == "string")
         return (Utils.isSF ? sf2eUuidRemap(m as string) : m) as I18nString;
     if ("type" in m && m.type === "resolve") {
         if (typeof data === "undefined") {

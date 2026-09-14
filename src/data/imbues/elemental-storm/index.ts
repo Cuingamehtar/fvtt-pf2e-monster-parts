@@ -17,6 +17,7 @@ import { createImbueLifewardArmor } from "./lifeward-armor";
 import { createImbueEarth } from "./earth";
 import { createImbueLight } from "./light";
 import { createImbueMetal } from "./metal";
+import { createImbueWater } from "./water";
 
 export function createElementalStormImbues() {
     return [
@@ -39,5 +40,6 @@ export function createElementalStormImbues() {
         ...createImbueMind(),
         ...createImbuePoison(),
         ...createImbueUnholy(),
+        ...createImbueWater(),
     ];
 }

@@ -222,6 +222,25 @@
             ]
           },
           {
+            "label": "PF2E.TraitLight",
+            "value": "light",
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:light:might",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "label": "PF2E.TraitMental",
             "value": "mental",
             "predicate": [
@@ -230,6 +249,25 @@
                   {
                     "gte": [
                       "parent:origin:item:imbue:mind:might",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "label": "PF2E.TraitMetal",
+            "value": "metal",
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:metal:might",
                       20
                     ]
                   },
@@ -365,6 +403,25 @@
                 ]
               }
             ]
+          },
+          {
+            "label": "PF2E.TraitWater",
+            "value": "water",
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:water:might",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
           }
         ],
         "rollOption": "might-path-weakness",
@@ -433,6 +490,30 @@
       },
       {
         "key": "Weakness",
+        "label": "PF2E.TraitLight",
+        "value": 1,
+        "type": "custom",
+        "definition": [
+          "item:trait:light"
+        ],
+        "predicate": [
+          "might-path-weakness:light"
+        ]
+      },
+      {
+        "key": "Weakness",
+        "label": "PF2E.TraitMetal",
+        "value": 1,
+        "type": "custom",
+        "definition": [
+          "item:trait:metal"
+        ],
+        "predicate": [
+          "might-path-weakness:metal"
+        ]
+      },
+      {
+        "key": "Weakness",
         "label": "PF2E.TraitMorph",
         "value": 1,
         "type": "custom",
@@ -441,6 +522,18 @@
         ],
         "predicate": [
           "might-path-weakness:morph"
+        ]
+      },
+      {
+        "key": "Weakness",
+        "label": "PF2E.TraitWater",
+        "value": 1,
+        "type": "custom",
+        "definition": [
+          "item:trait:water"
+        ],
+        "predicate": [
+          "might-path-weakness:water"
         ]
       }
     ],

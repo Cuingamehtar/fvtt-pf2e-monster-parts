@@ -95,6 +95,11 @@ const weaknessTypes = {
         imbuements: ["imbue:death:might", "imbue:wild:might"],
         wildDamageType: "wild:damage-type:5",
     },
+    water: {
+        label: "PF2E.TraitWater",
+        imbuements: ["imbue:water:might"],
+        definition: ["item:trait:water"],
+    },
 };
 
 function commonWeaknessRE(weaknessTypes) {
