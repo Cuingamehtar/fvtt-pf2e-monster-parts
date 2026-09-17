@@ -1,23 +1,24 @@
 import { createImbueAir } from "./air";
-import { createImbueDeath } from "./death";
-import { createImbueLife } from "./life";
-import { createImbueFire } from "./fire";
-import { createImbueElectricity } from "./electricity";
-import { createImbueForce } from "./force";
 import { createImbueBody } from "./body";
-import { createImbuePoison } from "./poison";
-import { createImbueMind } from "./mind";
-import { createImbueDarkness } from "./darkness";
-import { createImbueHoly } from "./holy";
-import { createImbueUnholy } from "./unholy";
 import { createImbueBurningBarbs } from "./burning-barbs";
 import { createImbueDarkArmor } from "./dark-armor";
+import { createImbueDarkness } from "./darkness";
+import { createImbueDeath } from "./death";
 import { createImbueEarthArmor } from "./earth-armor";
-import { createImbueLifewardArmor } from "./lifeward-armor";
 import { createImbueEarth } from "./earth";
+import { createImbueElectricity } from "./electricity";
+import { createImbueFire } from "./fire";
+import { createImbueForce } from "./force";
+import { createImbueHoly } from "./holy";
+import { createImbueLife } from "./life";
+import { createImbueLifewardArmor } from "./lifeward-armor";
 import { createImbueLight } from "./light";
 import { createImbueMetal } from "./metal";
+import { createImbueMind } from "./mind";
+import { createImbuePoison } from "./poison";
+import { createImbueUnholy } from "./unholy";
 import { createImbueWater } from "./water";
+import { createImbueWood } from "./wood";
 
 export function createElementalStormImbues() {
     return [
@@ -41,5 +42,6 @@ export function createElementalStormImbues() {
         ...createImbuePoison(),
         ...createImbueUnholy(),
         ...createImbueWater(),
+        ...createImbueWood(),
     ];
 }

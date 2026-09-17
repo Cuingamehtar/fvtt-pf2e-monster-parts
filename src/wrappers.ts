@@ -18,9 +18,18 @@ export class Wrappers {
         globalThis.__tempActor = actor;
 
         // literally copy the system function and add a custom check
-        const systemFunctionHash = -1703853730;
+        const systemFunctionHash = 228256481;
         const h = hash(actor.inventory.sellAllTreasure.toString());
         if (DEBUG && h !== systemFunctionHash) {
+            const _verifiedFunctionVersion = "8.5.1";
+            const verifiedFunction =
+                "async sellAllTreasure() {\n" +
+                "\t\tlet e = this.actor.itemTypes.treasure.filter((e) => !e.isCurrency), t = e.map((e) => e.id), n = e.map((e) => e.assetValue).reduce((e, t) => e.plus(t), new W());\n" +
+                "\t\tawait this.actor.deleteEmbeddedDocuments(`Item`, t), await this.actor.inventory.addCurrency(n);\n" +
+                "\t}";
+            console.log("Verified function");
+            console.log(verifiedFunction);
+            console.log("Current function");
             console.log(actor.inventory.sellAllTreasure.toString());
             ui.notifications.warn(
                 `Sell all treasure function text mismatch (expected ${systemFunctionHash}, found ${h}). Patching might result in the unexpected behavior.`,

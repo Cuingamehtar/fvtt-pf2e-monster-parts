@@ -422,6 +422,25 @@
                 ]
               }
             ]
+          },
+          {
+            "label": "pf2e-monster-parts.data.imbuement.elemental-storm.wood.weakness-label",
+            "value": "wood",
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:wood:might",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
           }
         ],
         "rollOption": "might-path-weakness",
@@ -534,6 +553,23 @@
         ],
         "predicate": [
           "might-path-weakness:water"
+        ]
+      },
+      {
+        "key": "Weakness",
+        "label": "pf2e-monster-parts.data.imbuement.elemental-storm.wood.weakness-label",
+        "value": 1,
+        "type": "custom",
+        "definition": [
+          {
+            "or": [
+              "item:trait:plant",
+              "item:trait:wood"
+            ]
+          }
+        ],
+        "predicate": [
+          "might-path-weakness:wood"
         ]
       }
     ],

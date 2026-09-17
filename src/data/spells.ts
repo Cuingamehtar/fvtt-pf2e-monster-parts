@@ -22,7 +22,7 @@ export enum Spells {
     BlackHole = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.zHIyTSrtCp8F2Vfp",
     ReverberatingPain = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.PWU2c0OTU1p4DCB8",
     Desynchronize = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.5IoDdtJlll2ibMtj",
-    AutumnsHowl = "@UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.7JgdSTJfI0arGAeF",
+    AutumnsHowl = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.7JgdSTJfI0arGAeF",
 
     // Acid
     AcidSplash = "Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt",
@@ -156,4 +156,11 @@ export enum Spells {
     // Wisdom
     Augury = "Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X",
     Foresight = "Compendium.pf2e.spells-srd.Item.qsNeG9KZpODSACMq",
+
+    // Wood
+    TangleVine = "Compendium.pf2e.spells-srd.Item.uZK2BYzPnxUBnDjr",
+    ProtectorTree = "Compendium.pf2e.spells-srd.Item.K9gI08enGtmih5X1",
+    EntanglingFlora = "Compendium.pf2e.spells-srd.Item.J6vNvrUT3b1hx2iA",
+    TanglingCreepers = "Compendium.pf2e.spells-srd.Item.JbAcSLu62TU1OgNF",
+    NaturesEnmity = "Compendium.pf2e.spells-srd.Item.Tc5NLaMu71vrGTJQ",
 }

@@ -61,7 +61,7 @@ magic:
     level-6-spells: >-
       The weapon can cast 2nd rank
       @UUID[Compendium.pf2e.spells-srd.Item.jfVCuOpzC6mUrf6f]{Hydraulic Push}
-      once per day each.
+      once per day.
     level-8-spells: >-
       The weapon can cast 2nd rank
       @UUID[Compendium.pf2e.spells-srd.Item.jfVCuOpzC6mUrf6f]{Hydraulic Push}

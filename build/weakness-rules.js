@@ -100,6 +100,11 @@ const weaknessTypes = {
         imbuements: ["imbue:water:might"],
         definition: ["item:trait:water"],
     },
+    wood: {
+        label: "pf2e-monster-parts.data.imbuement.elemental-storm.wood.weakness-label",
+        imbuements: ["imbue:wood:might"],
+        definition: [{ or: ["item:trait:plant", "item:trait:wood"] }],
+    },
 };
 
 function commonWeaknessRE(weaknessTypes) {

@@ -61,4 +61,4 @@
 | Water            | SU/ES  | ✔      |
 | Winged           | BB     | ✔      |
 | Wisdom           | BB     | ✔      |
-| Wood             | SU/ES  | ❌      |
+| Wood             | SU/ES  | ✔      |
