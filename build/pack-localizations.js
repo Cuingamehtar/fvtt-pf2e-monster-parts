@@ -151,16 +151,25 @@ function eachEndPoint(obj, f, path = []) {
     );
 }
 
-function entrySubstitution(data) {
+function entrySubstitution(data, depth = 3) {
+    if (depth === 0) {
+        console.warn("Possible infinite loop reached. Aborting");
+        return data;
+    }
     let tryAgain = false;
     const res = eachEndPoint(data, (value) => {
         if (typeof value !== "string") return value;
         return value.replaceAll(/\{\{([^}]+)}}/g, (_, inner) => {
-            tryAgain = true;
-            return getNestedValue(data, inner);
+            const r = getNestedValue(data, inner);
+            if (!r) {
+                console.warn(`Unknown key "${inner}"`);
+            } else {
+                tryAgain = true;
+            }
+            return r;
         });
     });
-    return tryAgain ? entrySubstitution(res) : res;
+    return tryAgain ? entrySubstitution(res, depth - 1) : res;
 }
 
 function stripTemplatedEntries(data) {

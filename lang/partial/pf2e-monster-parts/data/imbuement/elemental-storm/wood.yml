@@ -110,8 +110,7 @@ might:
 
     - **6th** The additional piercing damage increases to 1d4.
 
-    - **8th** The additional piercing damage increases to 1d6.
-    {{might.header.level-8.immobilized}}
+    - **8th** The additional piercing damage increases to 1d6. {{might.header.level-8-immobilized}}
 
     - **12th** {{might.header.level-12-resistance}}
 
@@ -185,8 +184,7 @@ tech:
     - **6th** Strikes with the weapon deal 1 additional piercing damage from
     thorns and pointed branches; this additional damage has the plant trait.
 
-    - **8th** The persistent piercing damage on a hit increases to 1d6.
-    {{might.header.level-8.immobilized}}
+    - **8th** The persistent piercing damage on a hit increases to 1d6. {{might.header.level-8-immobilized}}
 
     - **12th** {{tech.header.level-12-resistance}}
 

@@ -140,7 +140,7 @@
             ]
           },
           {
-            "label": "PF2E.TraitDarkess",
+            "label": "PF2E.TraitDarkness",
             "value": "darkness",
             "predicate": [
               {
@@ -342,6 +342,25 @@
             ]
           },
           {
+            "label": "PF2E.TraitTeleportation",
+            "value": "space",
+            "predicate": [
+              {
+                "or": [
+                  {
+                    "gte": [
+                      "parent:origin:item:imbue:space:might",
+                      20
+                    ]
+                  },
+                  {
+                    "not": "parent:origin:item"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "label": "PF2E.TraitUnholy",
             "value": "unholy",
             "predicate": [
@@ -497,7 +516,7 @@
       },
       {
         "key": "Weakness",
-        "label": "PF2E.TraitDarkess",
+        "label": "PF2E.TraitDarkness",
         "value": 1,
         "type": "custom",
         "definition": [
@@ -541,6 +560,18 @@
         ],
         "predicate": [
           "might-path-weakness:morph"
+        ]
+      },
+      {
+        "key": "Weakness",
+        "label": "PF2E.TraitTeleportation",
+        "value": 1,
+        "type": "custom",
+        "definition": [
+          "item:trait:teleportation"
+        ],
+        "predicate": [
+          "might-path-weakness:space"
         ]
       },
       {

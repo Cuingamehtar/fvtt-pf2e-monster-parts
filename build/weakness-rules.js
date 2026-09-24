@@ -37,7 +37,7 @@ const weaknessTypes = {
         wildDamageType: "wild:damage-type:3",
     },
     darkness: {
-        label: "PF2E.TraitDarkess",
+        label: "PF2E.TraitDarkness",
         imbuements: ["imbue:darkness:might"],
         definition: ["item:trait:darkness"],
     },
@@ -81,6 +81,11 @@ const weaknessTypes = {
         label: "PF2E.TraitSonic",
         imbuements: ["imbue:sonic:might", "imbue:wild:might"],
         wildDamageType: "wild:damage-type:6",
+    },
+    space: {
+        label: "PF2E.TraitTeleportation",
+        imbuements: ["imbue:space:might"],
+        definition: ["item:trait:teleportation"],
     },
     unholy: {
         label: "PF2E.TraitUnholy",

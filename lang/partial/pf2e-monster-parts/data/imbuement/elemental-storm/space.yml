@@ -1,0 +1,198 @@
+$basename: Space
+$item-type: Weapon
+$parts: >-
+  The monster must be associated with space or have an ability or spell with the
+  teleportation trait (monsters with the teleportation trait also work, but they
+  usually don’t have that trait).
+flavor: You imbue the weapon with the vastness of space.
+teleportation-trait: Additional slashing damage from this weapon has the teleportation trait.
+magic:
+  label: '{{$basename}} (Magic)'
+  description: >-
+    **Type** {{$item-type}}
+
+
+    **Parts** {{$parts}}
+
+    - - -
+
+    **Effect** {{flavor}}
+
+
+    **Path** Magic; Choose when you first imbue the weapon for the granted
+    spells to be either arcane or occult.
+
+    - **2nd** The weapon can cast @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.gKSBj8iDLnptOvDy]{Internal Distortion} as a cantrip, heightened
+    to half the item’s level rounded up.
+
+    - **4th** The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.qTr2oCgIXl703Whb]{Thoughtful Gift} once per day.
+
+    - **6th** The weapon can cast @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.2yYLYGpeHyBMqckc]{Agonizing Relocation} once per day.
+
+    - **8th** The weapon’s _thoughtful gift_ heightens to 3rd rank.
+
+    - **10th** Strikes with the weapon deal 1 additional slashing damage by
+    transporting portions of the foe’s body in different directions. This damage
+    has the teleportation trait.
+
+    - **12th** The weapon’s _agonizing relocation_ heightens to 4th rank, and
+    the weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.VlNcjmYyu95vOUe8]{Translocate} once per day.
+
+    - **14th** The additional slashing damage increases to 1d4.
+
+    - **16th** The weapon’s _agonizing relocation_ heightens to 6th rank, the
+    weapon’s _translocate_ heightens to 5th rank, and the weapon can cast
+    @UUID[Compendium.pf2e.spells-srd.Item.c3XygMbzrZMgV1y3]{Collective Transposition} once per day.
+
+    - **18th** The additional slashing damage increases to 1d6.
+
+    - **20th** The weapon can cast 9th-rank @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.zHIyTSrtCp8F2Vfp]{Black Hole} once per day.
+  header:
+    level-4-spells: >-
+      The weapon can cast
+      @UUID[Compendium.pf2e.spells-srd.Item.qTr2oCgIXl703Whb]{Thoughtful Gift}
+      once per day.
+    level-6-spells: >-
+      The weapon can cast @UUID[Compendium.pf2e.spells-srd.Item.qTr2oCgIXl703Whb]{Thoughtful Gift}
+      and @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.2yYLYGpeHyBMqckc]{Agonizing Relocation} once per day each.
+    level-8-spells: >-
+      The weapon can cast 3rd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.qTr2oCgIXl703Whb]{Thoughtful Gift} 
+      and @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.2yYLYGpeHyBMqckc]{Agonizing Relocation} once per day each.
+    level-12-spells: >-
+      The weapon can cast 3rd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.qTr2oCgIXl703Whb]{Thoughtful Gift},
+      4th rank
+      @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.2yYLYGpeHyBMqckc]{Agonizing Relocation},
+      and
+      @UUID[Compendium.pf2e.spells-srd.Item.VlNcjmYyu95vOUe8]{Translocate} once per day each.
+    level-16-spells: >-
+      The weapon can cast 3rd rank
+      @UUID[Compendium.pf2e.spells-srd.Item.qTr2oCgIXl703Whb]{Thoughtful Gift},
+      6th rank
+      @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.2yYLYGpeHyBMqckc]{Agonizing Relocation},
+      5th rank @UUID[Compendium.pf2e.spells-srd.Item.VlNcjmYyu95vOUe8]{Translocate}, and
+      @UUID[Compendium.pf2e.spells-srd.Item.c3XygMbzrZMgV1y3]{Collective Transposition}
+      once per day each.
+    level-20-natures-enmity: >-
+      The weapon can cast
+      9th-rank @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.zHIyTSrtCp8F2Vfp]{Black Hole}
+      once per day.
+might:
+  label: '{{$basename}} (Might)'
+  description: >-
+    **Type** {{$item-type}}
+
+
+    **Parts** {{$parts}}
+
+    - - -
+
+    **Effect** {{flavor}}
+
+
+    **Path** Might
+
+    - **4th** Strikes with the weapon deal 1 additional slashing damage by
+    transporting portions of the foe’s body in different directions. This damage
+    has the teleportation trait.
+
+    - **6th** The additional slashing damage increases to 1d4.
+
+    - **8th** The additional slashing damage increases to 1d6.
+    {{might.header.level-8-teleport}}
+
+    - **12th** {{might.header.level-12-resistance}}
+
+    - **14th** On a critical hit, you can teleport to a space within 20 feet of
+    the foe for a melee attack or your location for a ranged attack.
+
+    - **18th** The additional slashing damage increases to 1d8.
+
+    - **20th** {{might.header.level-20-weakness}}
+  effects:
+    level-8-teleport: '{{might.header.level-8-teleport}}'
+    level-12-resistance: '{{might.header.level-12-resistance}}'
+    level-14-teleport: '{{might.header.level-14-teleport}}'
+    level-20-weakness: >-
+      {{might.header.level-20-weakness}}
+      @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
+      Might Path Damage Weakness}
+  header:
+    level-8-teleport: >-
+      On a critical hit against a foe, you can teleport to a space within 10
+      feet of the foe for a melee attack or 10 feet of your location for a
+      ranged attack, though you must have line of effect and line of sight to
+      the location you teleport.
+    level-12-resistance: >-
+      The slashing damage dealt by this imbued property ignores resistances.
+      Even if the main weapon deals slashing damage, this benefit only applies
+      to the additional damage.
+    level-14-teleport: >-
+      On a critical hit against a foe, you can teleport to a space within 20
+      feet of the foe for a melee attack or 20 feet of your location for a
+      ranged attack, though you must have line of effect and line of sight to
+      the location you teleport.
+    level-20-weakness: >-
+      On a successful Strike with the weapon, before applying the additional
+      slashing damage, the target gains weakness 1 to teleportation until the
+      beginning of your next turn.
+tech:
+  label: '{{$basename}} (Technique)'
+  description: >-
+    **Type** {{$item-type}}
+
+
+    **Parts** {{$parts}}
+
+    - - -
+
+    **Effect** {{flavor}}
+
+
+    **Path** Technique
+
+    - **4th** Strikes with the weapon deal 1 persistent slashing damage as the
+    spatial energies warp across the foe’s body. This persistent damage has the
+    teleportation trait.
+
+    - **6th** Strikes with the weapon deal 1 additional slashing damage by
+    transporting portions of the foe’s body in different directions. This damage
+    has the teleportation trait.
+
+    - **8th** The persistent slashing damage increases to 1d6.
+    {{might.header.level-8-teleport}}
+
+    - **12th** {{tech.header.level-12-resistance}}
+
+    - **14th** The persistent slashing damage on a hit increases to 1d8.
+
+    - **16th** The teleportation from the persistent slashing damage subtly
+    shifts the creature’s positioning and stance, making it harder for them to
+    stay on guard. A creature is off-guard while it has the persistent slashing
+    damage from this property.
+
+    - **18th** The persistent slashing damage on a hit increases to 1d10.
+
+    - **20th** Creatures with the persistent slashing damage make minor
+    uncontrollable hops through space at inconvenient times. At the beginning of
+    their turn, a creature with the persistent slashing damage from this
+    property teleports 10 feet in a random direction, as determined by the GM.
+  effects:
+    level-8-teleport: '{{might.effects.level-8-teleport}}'
+    level-12-resistance: '{{tech.header.level-12-resistance}}'
+    level-16-off-guard: '{{tech.header.level-16-off-guard}}'
+    level-20-hopping: '{{tech.header.level-20-hopping}}'
+  header:
+    level-8-teleport: '{{might.header.level-8-teleport}}'
+    level-12-resistance: >-
+      The slashing damage dealt by this imbued property ignores resistances,
+      including the persistent slashing damage. Even if the main weapon deals
+      slashing damage, this benefit only applies to the additional damage.
+    level-16-off-guard: >-
+      A creature is off-guard while it has the persistent slashing damage from
+      this property.
+    level-20-hopping: >-
+      At the beginning of their turn, a creature with the persistent slashing
+      damage from this property teleports 10 feet in a random direction, as
+      determined by the GM.

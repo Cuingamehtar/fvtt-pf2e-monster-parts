@@ -18,7 +18,7 @@ export enum Spells {
     Dissonance = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.M2uQp36xa8fzsyAZ",
     ToxifyBlood = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.FVwXmCx6xPQwAQYc",
     InternalDistortion = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.gKSBj8iDLnptOvDy",
-    AgnonizingRelocation = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.2yYLYGpeHyBMqckc",
+    AgonizingRelocation = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.2yYLYGpeHyBMqckc",
     BlackHole = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.zHIyTSrtCp8F2Vfp",
     ReverberatingPain = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.PWU2c0OTU1p4DCB8",
     Desynchronize = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.5IoDdtJlll2ibMtj",
@@ -135,6 +135,11 @@ export enum Spells {
     SpiderSting = "Compendium.pf2e.spells-srd.Item.DYdvMZ8G2LiSLVWw",
     NoxiousVapors = "Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv",
     FungalInfestation = "Compendium.pf2e.spells-srd.Item.3VxVbZqIRvpKkg3O",
+
+    // Space
+    ThoughtfulGift = "Compendium.pf2e.spells-srd.Item.qTr2oCgIXl703Whb",
+    Translocate = "Compendium.pf2e.spells-srd.Item.VlNcjmYyu95vOUe8",
+    CollectiveTransposition = "Compendium.pf2e.spells-srd.Item.c3XygMbzrZMgV1y3",
 
     // Strength
     Earthbind = "Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H",

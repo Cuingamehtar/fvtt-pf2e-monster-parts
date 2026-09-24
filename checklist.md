@@ -46,7 +46,7 @@
 | Positive*        | BB     | 🚫     |
 | Sensory          | BB     | ✔      |
 | Sonic*           | BB     | ✔      |
-| Space            | ES     | ❌      |
+| Space            | ES     | ✔      |
 | Space Shield     | ES     | ❌      |
 | Spell            | BB     | 🚫     |
 | Spiked Armor     | SU     | ✔      |

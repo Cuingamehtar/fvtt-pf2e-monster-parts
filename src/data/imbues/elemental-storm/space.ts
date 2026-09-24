@@ -5,20 +5,20 @@ import { helpers, Selector } from "../../helpers";
 import { Spells } from "@data/spells";
 import { pipe } from "remeda";
 
-export function createImbueWood(): MaterialData[] {
-    const lkey = lkeygen("data.imbuement.elemental-storm.wood" as const);
-    const damageType = "piercing";
+export function createImbueSpace(): MaterialData[] {
+    const lkey = lkeygen("data.imbuement.elemental-storm.space" as const);
+    const damageType = "slashing";
 
     const base = {
         type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
-        // The monster must have the plant or wood trait or an ability or
-        // spell with the plant or wood trait.
+        // The monster must be associated with space or have an ability or spell with the
+        // teleportation trait (monsters with the teleportation trait also work, but they
+        // usually don’t have that trait).
         monsterPredicate: [
             {
                 or: [
-                    "self:trait:plant",
-                    "self:trait:wood",
+                    "self:trait:teleportation",
                     {
                         and: [
                             {
@@ -28,7 +28,7 @@ export function createImbueWood(): MaterialData[] {
                                     "item:type:melee",
                                 ],
                             },
-                            { or: ["item:trait:plant", "item:trait:wood"] },
+                            "item:trait:teleportation",
                         ],
                     },
                 ],
@@ -39,7 +39,7 @@ export function createImbueWood(): MaterialData[] {
     const magic = pipe(
         {
             ...base,
-            key: "imbue:wood:magic",
+            key: "imbue:space:magic",
             label: { type: "key", key: lkey("magic.label") },
             description: { type: "key", key: lkey("magic.description") },
             header: {
@@ -73,12 +73,12 @@ export function createImbueWood(): MaterialData[] {
             levelMin: 10,
             text: {
                 type: "key",
-                key: lkey("plant-trait"),
+                key: lkey("teleportation-trait"),
             },
             sort: 1,
         }),
 
-        helpers.addCantrip(Spells.TangleVine, { sort: 2 }),
+        helpers.addCantrip(Spells.InternalDistortion, { sort: 2 }),
 
         helpers.addGroup({
             labels: helpers.leveledLabels(
@@ -96,26 +96,23 @@ export function createImbueWood(): MaterialData[] {
                 }),
             ),
             effects: [
-                ...helpers.leveledEffects(
-                    [4, 6, 8, 12, 16],
-                    [1, 2, 3, 4, 6],
-                    (rank) =>
-                        helpers.spellActivation({
-                            uuid: Spells.ProtectorTree,
-                            max: 1,
-                            rank,
-                        }),
-                ),
-                ...helpers.leveledEffects([8, 12, 16], [2, 4], (rank) =>
+                ...helpers.leveledEffects([4, 8], [1, 3], (rank) =>
                     helpers.spellActivation({
-                        uuid: Spells.EntanglingFlora,
+                        uuid: Spells.ThoughtfulGift,
                         max: 1,
                         rank,
                     }),
                 ),
-                ...helpers.leveledEffects([12, 16], [2, 6], (rank) =>
+                ...helpers.leveledEffects([6, 12, 16], [2, 4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: Spells.AutumnsHowl,
+                        uuid: Spells.AgonizingRelocation,
+                        max: 1,
+                        rank,
+                    }),
+                ),
+                ...helpers.leveledEffects([12, 16], [4, 5], (rank) =>
+                    helpers.spellActivation({
+                        uuid: Spells.Translocate,
                         max: 1,
                         rank,
                     }),
@@ -123,7 +120,7 @@ export function createImbueWood(): MaterialData[] {
                 {
                     levelMin: 16,
                     ...helpers.spellActivation({
-                        uuid: Spells.TanglingCreepers,
+                        uuid: Spells.CollectiveTransposition,
                         max: 1,
                         rank: 6,
                     }),
@@ -143,7 +140,7 @@ export function createImbueWood(): MaterialData[] {
             effects: {
                 levelMin: 20,
                 ...helpers.spellActivation({
-                    uuid: Spells.NaturesEnmity,
+                    uuid: Spells.BlackHole,
                     max: 1,
                     rank: 9,
                 }),
@@ -154,7 +151,7 @@ export function createImbueWood(): MaterialData[] {
     const might = pipe(
         {
             ...base,
-            key: "imbue:wood:might",
+            key: "imbue:space:might",
             label: { type: "key", key: lkey("might.label") },
             description: { type: "key", key: lkey("might.description") },
             header: {
@@ -188,7 +185,7 @@ export function createImbueWood(): MaterialData[] {
             levelMin: 4,
             text: {
                 type: "key",
-                key: lkey("plant-trait"),
+                key: lkey("teleportation-trait"),
             },
             sort: 1,
         }),
@@ -197,8 +194,8 @@ export function createImbueWood(): MaterialData[] {
             labels: helpers.leveledLabels(
                 [8, 14],
                 [
-                    "might.header.level-8-immobilized",
-                    "might.header.level-14-immobilized",
+                    "might.header.level-8-teleport",
+                    "might.header.level-14-teleport",
                 ],
                 (key: Parameters<typeof lkey>[0]) => ({
                     text: { type: "key", key: lkey(key) },
@@ -208,8 +205,8 @@ export function createImbueWood(): MaterialData[] {
             effects: helpers.leveledEffects(
                 [8, 14],
                 [
-                    "might.effects.level-8-immobilized",
-                    "might.effects.level-14-immobilized",
+                    "might.effects.level-8-teleport",
+                    "might.effects.level-14-teleport",
                 ],
                 (l: Parameters<typeof lkey>[0]) => ({
                     type: "RuleElement",
@@ -271,7 +268,7 @@ export function createImbueWood(): MaterialData[] {
     const tech = pipe(
         {
             ...base,
-            key: "imbue:wood:tech",
+            key: "imbue:space:tech",
             label: { type: "key", key: lkey("tech.label") },
             description: { type: "key", key: lkey("tech.description") },
             header: {
@@ -325,40 +322,31 @@ export function createImbueWood(): MaterialData[] {
             levelMin: 4,
             text: {
                 type: "key",
-                key: lkey("plant-trait"),
+                key: lkey("teleportation-trait"),
             },
             sort: 1,
         }),
 
         helpers.addGroup({
-            labels: helpers.leveledLabels(
-                [8, 16],
-                [
-                    "tech.header.level-8-immobilized",
-                    "tech.header.level-16-immobilized",
-                ],
-                (key: Parameters<typeof lkey>[0]) => ({
-                    text: { type: "key", key: lkey(key) },
-                    sort: 2,
-                }),
-            ),
-            effects: helpers.leveledEffects(
-                [8, 16],
-                [
-                    "tech.effects.level-8-immobilized",
-                    "tech.effects.level-16-immobilized",
-                ],
-                (l: Parameters<typeof lkey>[0]) => ({
-                    type: "RuleElement",
-                    rule: {
-                        key: "Note",
-                        outcome: ["criticalSuccess"],
-                        text: lkey(l),
-                        title: lkey("tech.label"),
-                        selector: [Selector.ItemAttack],
-                    },
-                }),
-            ),
+            labels: {
+                levelMin: 8,
+                text: {
+                    type: "key",
+                    key: lkey("tech.header.level-8-teleport"),
+                },
+                sort: 3,
+            },
+            effects: {
+                levelMin: 8,
+                type: "RuleElement",
+                rule: {
+                    key: "Note",
+                    outcome: ["criticalSuccess"],
+                    text: lkey("tech.effects.level-8-teleport"),
+                    title: lkey("tech.label"),
+                    selector: [Selector.ItemAttack],
+                },
+            },
         }),
 
         helpers.addGroup({
@@ -387,7 +375,7 @@ export function createImbueWood(): MaterialData[] {
                 levelMin: 16,
                 text: {
                     type: "key",
-                    key: lkey("tech.header.level-16-speed-penalty"),
+                    key: lkey("tech.header.level-16-off-guard"),
                 },
                 sort: 4,
             },
@@ -396,10 +384,9 @@ export function createImbueWood(): MaterialData[] {
                 type: "RuleElement",
                 rule: {
                     key: "Note",
-                    outcome: ["success"],
-                    text: lkey("tech.effects.level-16-speed-penalty"),
+                    text: lkey("tech.effects.level-16-off-guard"),
                     title: lkey("tech.label"),
-                    selector: [Selector.ItemAttack],
+                    selector: [Selector.ItemDamage],
                 },
             },
         }),
@@ -408,7 +395,7 @@ export function createImbueWood(): MaterialData[] {
                 levelMin: 20,
                 text: {
                     type: "key",
-                    key: lkey("tech.header.level-20-spread"),
+                    key: lkey("tech.header.level-20-hopping"),
                 },
                 sort: 4,
             },
@@ -417,7 +404,7 @@ export function createImbueWood(): MaterialData[] {
                 type: "RuleElement",
                 rule: {
                     key: "Note",
-                    text: lkey("tech.effects.level-20-spread"),
+                    text: lkey("tech.effects.level-20-hopping"),
                     title: lkey("tech.label"),
                     selector: [Selector.ItemDamage],
                 },
