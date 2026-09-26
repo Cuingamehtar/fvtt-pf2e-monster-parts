@@ -5,41 +5,21 @@ import { helpers, Selector } from "../../helpers";
 import { Spells } from "@data/spells";
 import { pipe } from "remeda";
 
-export function createImbueSpace(): MaterialData[] {
-    const lkey = lkeygen("data.imbuement.elemental-storm.space" as const);
-    const damageType = "slashing";
+export function createImbueTime(): MaterialData[] {
+    const lkey = lkeygen("data.imbuement.elemental-storm.time" as const);
+    const damageType = "bludgeoning";
 
     const base = {
         type: "imbuement" as const,
         itemPredicate: ["item:type:weapon"],
-        // The monster must be associated with space or have an ability or spell with the
-        // teleportation trait (monsters with the teleportation trait also work, but they
-        // usually don’t have that trait).
-        monsterPredicate: [
-            {
-                or: [
-                    "self:trait:teleportation",
-                    {
-                        and: [
-                            {
-                                or: [
-                                    "item:type:action",
-                                    "item:type:spell",
-                                    "item:type:melee",
-                                ],
-                            },
-                            "item:trait:teleportation",
-                        ],
-                    },
-                ],
-            },
-        ],
+        // The monster must have the time trait (substituted for the original)
+        monsterPredicate: ["self:trait:time"],
     };
 
     const magic = pipe(
         {
             ...base,
-            key: "imbue:space:magic",
+            key: "imbue:time:magic",
             label: { type: "key", key: lkey("magic.label") },
             description: { type: "key", key: lkey("magic.description") },
             header: {
@@ -49,7 +29,7 @@ export function createImbueSpace(): MaterialData[] {
 
         helpers.addGroup({
             labels: helpers.leveledLabels(
-                [10, 14, 18],
+                [6, 14, 18],
                 ["1", "d4", "d6"],
                 (damage: RollString) =>
                     helpers.damage.label({
@@ -58,7 +38,7 @@ export function createImbueSpace(): MaterialData[] {
                     }),
             ),
             effects: helpers.leveledEffects(
-                [10, 14, 18],
+                [6, 14, 18],
                 ["1", "d4", "d6"],
                 (damage: RollString) =>
                     helpers.damage.effect({
@@ -69,24 +49,15 @@ export function createImbueSpace(): MaterialData[] {
             ),
         }),
 
-        helpers.addLabels({
-            levelMin: 10,
-            text: {
-                type: "key",
-                key: lkey("teleportation-trait"),
-            },
-            sort: 1,
-        }),
-
-        helpers.addCantrip(Spells.InternalDistortion, { sort: 2 }),
+        helpers.addCantrip(Spells.ReverberatingPain, { sort: 2 }),
 
         helpers.addGroup({
             labels: helpers.leveledLabels(
-                [4, 6, 8, 12, 16],
+                [4, 8, 10, 12, 16],
                 [
                     "magic.header.level-4-spells",
-                    "magic.header.level-6-spells",
                     "magic.header.level-8-spells",
+                    "magic.header.level-10-spells",
                     "magic.header.level-12-spells",
                     "magic.header.level-16-spells",
                 ],
@@ -96,23 +67,24 @@ export function createImbueSpace(): MaterialData[] {
                 }),
             ),
             effects: [
-                ...helpers.leveledEffects([4, 8], [1, 3], (rank) =>
+                ...helpers.leveledEffects([4, 12, 16], [1, 5], (rank) =>
                     helpers.spellActivation({
-                        uuid: Spells.ThoughtfulGift,
+                        uuid: Spells.TimeSkip,
                         max: 1,
                         rank,
                     }),
                 ),
-                ...helpers.leveledEffects([6, 12, 16], [2, 4, 6], (rank) =>
-                    helpers.spellActivation({
-                        uuid: Spells.AgonizingRelocation,
+                {
+                    levelMin: 8,
+                    ...helpers.spellActivation({
+                        uuid: Spells.Haste,
                         max: 1,
-                        rank,
+                        rank: 3,
                     }),
-                ),
-                ...helpers.leveledEffects([12, 16], [4, 5], (rank) =>
+                },
+                ...helpers.leveledEffects([10, 16], [4, 6], (rank) =>
                     helpers.spellActivation({
-                        uuid: Spells.Translocate,
+                        uuid: Spells.CurseOfLostTime,
                         max: 1,
                         rank,
                     }),
@@ -120,7 +92,15 @@ export function createImbueSpace(): MaterialData[] {
                 {
                     levelMin: 16,
                     ...helpers.spellActivation({
-                        uuid: Spells.CollectiveTransposition,
+                        uuid: Spells.Slow,
+                        max: 1,
+                        rank: 6,
+                    }),
+                },
+                {
+                    levelMin: 16,
+                    ...helpers.spellActivation({
+                        uuid: Spells.WallOfTime,
                         max: 1,
                         rank: 6,
                     }),
@@ -133,14 +113,14 @@ export function createImbueSpace(): MaterialData[] {
                 levelMin: 20,
                 text: {
                     type: "key",
-                    key: lkey("magic.header.level-20-black-hole"),
+                    key: lkey("magic.header.level-20-desynchronize"),
                 },
                 sort: 4,
             },
             effects: {
                 levelMin: 20,
                 ...helpers.spellActivation({
-                    uuid: Spells.BlackHole,
+                    uuid: Spells.Desynchronize,
                     max: 1,
                     rank: 9,
                 }),
@@ -151,7 +131,7 @@ export function createImbueSpace(): MaterialData[] {
     const might = pipe(
         {
             ...base,
-            key: "imbue:space:might",
+            key: "imbue:time:might",
             label: { type: "key", key: lkey("might.label") },
             description: { type: "key", key: lkey("might.description") },
             header: {
@@ -181,21 +161,12 @@ export function createImbueSpace(): MaterialData[] {
             ),
         }),
 
-        helpers.addLabels({
-            levelMin: 4,
-            text: {
-                type: "key",
-                key: lkey("teleportation-trait"),
-            },
-            sort: 1,
-        }),
-
         helpers.addGroup({
             labels: helpers.leveledLabels(
                 [8, 14],
                 [
-                    "might.header.level-8-teleport",
-                    "might.header.level-14-teleport",
+                    "might.header.level-8-quickened",
+                    "might.header.level-14-quickened",
                 ],
                 (key: Parameters<typeof lkey>[0]) => ({
                     text: { type: "key", key: lkey(key) },
@@ -205,8 +176,8 @@ export function createImbueSpace(): MaterialData[] {
             effects: helpers.leveledEffects(
                 [8, 14],
                 [
-                    "might.effects.level-8-teleport",
-                    "might.effects.level-14-teleport",
+                    "might.effects.level-8-quickened",
+                    "might.effects.level-14-quickened",
                 ],
                 (l: Parameters<typeof lkey>[0]) => ({
                     type: "RuleElement",
@@ -268,7 +239,7 @@ export function createImbueSpace(): MaterialData[] {
     const tech = pipe(
         {
             ...base,
-            key: "imbue:space:tech",
+            key: "imbue:time:tech",
             label: { type: "key", key: lkey("tech.label") },
             description: { type: "key", key: lkey("tech.description") },
             header: {
@@ -318,21 +289,12 @@ export function createImbueSpace(): MaterialData[] {
             ),
         }),
 
-        helpers.addLabels({
-            levelMin: 4,
-            text: {
-                type: "key",
-                key: lkey("teleportation-trait"),
-            },
-            sort: 1,
-        }),
-
         helpers.addGroup({
             labels: {
                 levelMin: 8,
                 text: {
                     type: "key",
-                    key: lkey("tech.header.level-8-teleport"),
+                    key: lkey("tech.header.level-8-quickened"),
                 },
                 sort: 3,
             },
@@ -342,7 +304,7 @@ export function createImbueSpace(): MaterialData[] {
                 rule: {
                     key: "Note",
                     outcome: ["criticalSuccess"],
-                    text: lkey("tech.effects.level-8-teleport"),
+                    text: lkey("tech.effects.level-8-quickened"),
                     title: lkey("tech.label"),
                     selector: [Selector.ItemAttack],
                 },
@@ -375,7 +337,7 @@ export function createImbueSpace(): MaterialData[] {
                 levelMin: 16,
                 text: {
                     type: "key",
-                    key: lkey("tech.header.level-16-off-guard"),
+                    key: lkey("tech.header.level-16-slowed"),
                 },
                 sort: 4,
             },
@@ -384,7 +346,7 @@ export function createImbueSpace(): MaterialData[] {
                 type: "RuleElement",
                 rule: {
                     key: "Note",
-                    text: lkey("tech.effects.level-16-off-guard"),
+                    text: lkey("tech.effects.level-16-slowed"),
                     title: lkey("tech.label"),
                     selector: [Selector.ItemDamage],
                 },
@@ -395,7 +357,7 @@ export function createImbueSpace(): MaterialData[] {
                 levelMin: 20,
                 text: {
                     type: "key",
-                    key: lkey("tech.header.level-20-hopping"),
+                    key: lkey("tech.header.level-20-reaction"),
                 },
                 sort: 4,
             },
@@ -404,7 +366,7 @@ export function createImbueSpace(): MaterialData[] {
                 type: "RuleElement",
                 rule: {
                     key: "Note",
-                    text: lkey("tech.effects.level-20-hopping"),
+                    text: lkey("tech.effects.level-20-reaction"),
                     title: lkey("tech.label"),
                     selector: [Selector.ItemDamage],
                 },

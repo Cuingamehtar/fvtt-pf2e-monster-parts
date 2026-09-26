@@ -21,6 +21,7 @@ export enum Spells {
     AgonizingRelocation = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.2yYLYGpeHyBMqckc",
     BlackHole = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.zHIyTSrtCp8F2Vfp",
     ReverberatingPain = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.PWU2c0OTU1p4DCB8",
+    WallOfTime = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.1IYGRNtv0Y3blKdB",
     Desynchronize = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.5IoDdtJlll2ibMtj",
     AutumnsHowl = "Compendium.battlezoo-bestiary-es-pf2e.spells.Item.7JgdSTJfI0arGAeF",
 
@@ -143,6 +144,12 @@ export enum Spells {
 
     // Strength
     Earthbind = "Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H",
+
+    // Time
+    TimeSkip = "Compendium.pf2e.spells-srd.Item.LbqunTurwXB3u9Vp",
+    Haste = "Compendium.pf2e.spells-srd.Item.o6YCGx4lycsYpww4",
+    CurseOfLostTime = "Compendium.pf2e.spells-srd.Item.B3eLlbaPxOYHcs1o",
+    Slow = "Compendium.pf2e.spells-srd.Item.WsUwpfmhKrKwoIe3",
 
     // Unholy
     ChillingDarkness = "Compendium.pf2e.spells-srd.Item.sRfSBHWHdbIa0aGc",

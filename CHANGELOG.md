@@ -4,29 +4,28 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.8.7] - 2026-09-26
+
+- Add Time imbued property
+
 ## [0.8.6] - 2026-09-24
 
-### Added
 - Add Space imbued property
 
 ## [0.8.5] - 2026-09-17
 
-### Added
 - Add Wood imbued property
 
 ## [0.8.4] - 2026-09-14
 
-### Added
 - Add Water imbued property
 
 ## [0.8.3] - 2026-09-11
 
-### Added
 - Add Metal imbued property
 
 ## [0.8.2] - 2026-09-08
 
-### Added
 - Add Light imbued property
 
 ## [0.8.1] - 2026-09-04

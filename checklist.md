@@ -55,7 +55,7 @@
 | Sturdy           | BB     | ✔      |
 | Tangle Shield    | ES     | ❌      |
 | Throwing         | SU     | ❌      |
-| Time             | ES     | ❌      |
+| Time             | ES     | ✔      |
 | Unholy           | ES     | ✔      |
 | Wild             | BB     | ✔      |
 | Water            | SU/ES  | ✔      |

@@ -5,6 +5,8 @@ import * as path from "path";
 
 const mdConverter = new showdown.Converter();
 
+let spells = null;
+
 /**
  * Simple object check.
  * @param item
@@ -60,6 +62,10 @@ const substitutions = [
     [
         /material-level\(([^)]+)\)/g,
         (m, mat) => getMaterialRollDataPath(mat, "level") + ".value",
+    ],
+    [
+        /@Spell\[([^\]]+)]/g,
+        (m, inner) => (spells?.has(inner) ? `@UUID[${spells.get(inner)}]` : m),
     ],
 ];
 
@@ -193,6 +199,7 @@ function debounce(func, delay) {
 }
 
 function combineLocalizationsInner() {
+    spells = getSpells();
     const partial = parsePartialLocalizations("./lang/partial");
     fs.writeFileSync(
         "./lang/en.json",
@@ -201,6 +208,16 @@ function combineLocalizationsInner() {
     console.log(
         `(${new Date(Date.now()).toLocaleTimeString()}) Localizations combined`,
     );
+}
+
+function getSpells() {
+    const t = fs.readFileSync("src/data/spells.ts", "utf-8");
+    const pattern = /(\w+) = "([^"]+)"/g;
+    const spells = new Map();
+    for (const m of t.matchAll(pattern)) {
+        spells.set(m[1], m[2]);
+    }
+    return spells;
 }
 
 export const combineLocalizations = debounce(combineLocalizationsInner, 2000);

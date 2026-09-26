@@ -1,0 +1,237 @@
+$basename: Time
+$item-type: Weapon
+$parts: >-
+  The monster must have the time trait or an ability or spell that is associated
+  with time (since only creatures can normally have the time trait, this
+  requires a judgment call, but at minimum spells with time in their name,
+  spells that mention using time in their description, spells granted by the
+  time magic path, and spells that grant the quickened condition are almost
+  always associated with time, and spells that grant the slowed condition are
+  sometimes associated with time).
+$dev-note: >-
+  The following requirement is used instead: "_The monster must have the time
+  trait_."
+flavor: You imbue the weapon with the shifting flow of time.
+magic:
+  label: '{{$basename}} (Magic)'
+  description: >-
+    **Type** {{$item-type}}
+
+
+    **Parts** {{$parts}}
+
+
+    **Developer's note** {{$dev-note}}
+
+    - - -
+
+    **Effect** {{flavor}}
+
+
+    **Path** Magic; Choose when you first imbue the weapon for the granted
+    spells to be either arcane or occult.
+
+    - **2nd** The weapon can cast
+    @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.PWU2c0OTU1p4DCB8]{Reverberating
+    Pain} as a cantrip, heightened to half the item’s level rounded up.
+
+    - **4th** The weapon can cast @Spell[TimeSkip]{Time Skip} once per day.
+
+    - **6th** Strikes with the weapon deal 1 additional bludgeoning damage from
+    the weight of time.
+
+    - **8th** The weapon can cast @Spell[Haste]{Haste} once per day.
+
+    - **10th** The weapon can cast 4th-rank @Spell[CurseOfLostTime]{Curse of
+    Lost Time} once per day.
+
+    - **12th** The weapon’s _time skip_ heightens to 5th rank.
+
+    - **14th** The additional bludgeoning damage increases to 1d4.
+
+    - **16th** The weapon’s _curse of lost time_ heightens to 6th rank, and the
+    weapon can cast 6th-rank @Spell[Slow]{Slow} and @Spell[WallOfTime]{Wall of
+    Time} once per day, but it can no longer cast _time skip_.
+
+    - **18th** The additional bludgeoning damage increases to 1d6.
+
+    - **20th** The weapon can cast 9th-rank @Spell[Desynchronize]{Desynchronize}
+    once per day.
+  header:
+    level-4-spells: 'The weapon can cast @Spell[TimeSkip]{Time Skip} once per day.'
+    level-8-spells: >-
+      The weapon can cast @Spell[TimeSkip]{Time Skip} and @Spell[Haste]{Haste}
+      once per day each.
+    level-10-spells: >-
+      The weapon can cast @Spell[TimeSkip]{Time Skip}, @Spell[Haste]{Haste}  and
+      4th-rank @Spell[CurseOfLostTime]{Curse of Lost Time} once per day each.
+    level-12-spells: >-
+      The weapon can cast 5th-rank @Spell[TimeSkip]{Time Skip},
+      @Spell[Haste]{Haste}  and 4th-rank @Spell[CurseOfLostTime]{Curse of Lost
+      Time} once per day each.
+    level-16-spells: >-
+      The weapon can cast @Spell[Haste]{Haste}, 6th-rank
+      @Spell[CurseOfLostTime]{Curse of Lost Time}, 6th-rank @Spell[Slow]{Slow}
+      and @Spell[WallOfTime]{Wall of Time} once per day each.
+    level-20-desynchronize: >-
+      The weapon can cast 9th-rank @Spell[Desynchronize]{Desynchronize} once per
+      day.
+might:
+  label: '{{$basename}} (Might)'
+  description: >-
+    **Type** {{$item-type}}
+
+
+    **Parts** {{$parts}}
+
+
+    **Developer's note** {{$dev-note}}
+
+    - - -
+
+    **Effect** {{flavor}}
+
+
+    **Path** Might
+
+    - **4th** Strikes with the weapon deal 1 additional bludgeoning damage from
+    the weight of time.
+
+    - **6th** The additional bludgeoning damage increases to 1d4.
+
+    - **8th** The additional bludgeoning damage increases to 1d6. On a critical
+    hit, you are quickened until the end of your next turn, and you can use the
+    additional action only to Strike the target of the critical hit with the
+    weapon imbued with time (if you critically hit several creatures on the same
+    turn, you can use the action to Strike any one of them). As normal for the
+    quickened condition, this grants you an action on your next turn, not this
+    turn.
+
+    - **12th** {{might.header.level-12-resistance}}
+
+    - **14th** You can use the quickened action from a critical hit against a
+    foe to Strike any target with the weapon imbued with time, rather than being
+    limited to the target of the critical hit.
+
+    - **18th** The additional bludgeoning damage increases to 1d8.
+
+    - **20th** On a successful Strike with the weapon, before applying the
+    additional bludgeoning damage, the target gains weakness 1 to damage and
+    effects associated with time until the beginning of your next turn. This
+    includes the additional bludgeoning damage from the weapon, and see the
+    parts entry for a discussion on what effects are associated with time.
+  effects:
+    level-8-quickened: >-
+      On a critical hit, you are quickened until the end of your next turn, and
+      you can use the additional action only to Strike this target with the
+      weapon imbued with time.
+    level-12-resistance: '{{might.header.level-12-resistance}}'
+    level-14-quickened: >-
+      On a critical hit, you are quickened until the end of your next turn, and
+      you can use the additional action only to Strike with the weapon imbued
+      with time.
+    level-20-weakness: >-
+      On a successful Strike with the weapon, before applying the additional
+      bludgeoning damage, the target gains weakness 1 to damage and effects
+      associated with time until the beginning of your next turn.
+      @UUID[Compendium.pf2e-monster-parts.activations-and-effects.Item.ezzdeD7d0ra6b3TX]{Effect:
+      Might Path Damage Weakness}
+  header:
+    level-8-quickened: >-
+      On a critical hit, you are quickened until the end of your next turn, and
+      you can use the additional action only to Strike the target of the
+      critical hit with the weapon imbued with time.
+    level-12-resistance: >-
+      The bludgeoning damage dealt by this imbued property ignores the target’s
+      resistances. Even if the main weapon deals bludgeoning damage, this
+      benefit only applies to the additional damage.
+    level-14-quickened: >-
+      On a critical hit, you are quickened until the end of your next turn, and
+      you can use the additional action only to Strike with the weapon imbued
+      with time.
+    level-20-weakness: >-
+      On a successful Strike with the weapon, before applying the additional
+      bludgeoning damage, the target gains weakness 1 to damage and effects
+      associated with time until the beginning of your next turn.
+tech:
+  label: '{{$basename}} (Technique)'
+  description: >-
+    **Type** {{$item-type}}
+
+
+    **Parts** {{$parts}}
+
+
+    **Developer's note** {{$dev-note}}
+
+    - - -
+
+    **Effect** {{flavor}}
+
+
+    **Path** Technique
+
+    - **4th** Strikes with the weapon deal 1 persistent bludgeoning damage as
+    they grind the creature under multiple time streams.
+
+    - **6th** Strikes with the weapon deal 1 additional bludgeoning damage from
+    the weight of time.
+
+    - **8th** The persistent bludgeoning damage increases to 1d6. On a critical
+    hit, you are quickened until the end of your next turn, and you can use the
+    additional action only to Strike the target of the critical hit with the
+    weapon imbued with time (if you critically hit several creatures on the same
+    turn, you can use the action to Strike any one of them). As normal for the
+    quickened condition, this grants you an action on your next turn, not this
+    turn.
+
+    - **12th** {{tech.header.level-12-resistance}}
+
+    - **14th** The persistent bludgeoning damage on a hit increases to 1d8.
+
+    - **16th** {{tech.header.level-16-slowed}}
+
+    - **18th** The persistent bludgeoning damage on a hit increases to 1d10.
+
+    - **20th** Creatures with the persistent bludgeoning damage are stuttering
+    in time, making it hard for them to react. Whenever one of their reactions
+    is triggered and they wish to use the reaction, they must attempt a Reflex
+    save against the weapon’s DC. On a success, they use the reaction, and on a
+    failure, they can’t use the reaction but they don’t waste it and can try
+    again on the next trigger. On a critical failure, they spend the reaction
+    with no effect.
+  effects:
+    level-8-quickened: '{{might.effects.level-8-quickened}}'
+    level-12-resistance: '{{tech.header.level-12-resistance}}'
+    level-16-slowed: >-
+      At the end of a creature’s turn, if it has failed to remove the persistent
+      bludgeoning damage from this imbued property, it must succeed at a
+      @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:slowed] save
+      or be slowed 1 until the end of its next turn.
+    level-20-reaction: >-
+      Creatures with the persistent bludgeoning damage are stuttering in time,
+      making it hard for them to react. Whenever one of their reactions is
+      triggered and they wish to use the reaction, they must attempt a
+      @Check[reflex|dc:resolve(item-level-dc)] save. On a success, they use the
+      reaction, and on a failure, they can’t use the reaction but they don’t
+      waste it and can try again on the next trigger. On a critical failure,
+      they spend the reaction with no effect.
+  header:
+    level-8-quickened: '{{might.header.level-8-quickened}}'
+    level-12-resistance: >-
+      The bludgeoning damage dealt by this imbued property ignores resistances,
+      including the persistent bludgeoning damage. Even if the main weapon deals
+      bludgeoning damage, this benefit only applies to the additional damage.
+    level-16-slowed: >-
+      At the end of a creature’s turn, if it has failed to remove the persistent
+      bludgeoning damage from this imbued property, it must succeed at a
+      Fortitude save against the weapon’s DC or be slowed 1 until the end of its
+      next turn.
+    level-20-reaction: >-
+      Creatures with the persistent bludgeoning damage are stuttering in time,
+      making it hard for them to react. Whenever one of their reactions is
+      triggered and they wish to use the reaction, they must attempt a Reflex
+      save against the weapon’s DC. On a success, they use the reaction, and on
+      a failure, they can’t use the reaction but they don’t waste it and can try
+      again on the next trigger. On a critical failure, they spend the reaction
+      with no effect.
