@@ -65,7 +65,14 @@ const substitutions = [
     ],
     [
         /@Spell\[([^\]]+)]/g,
-        (m, inner) => (spells?.has(inner) ? `@UUID[${spells.get(inner)}]` : m),
+        (m, inner) => {
+            const s = spells.get(inner);
+            if (!s) {
+                console.warn(`Unknown spell "${inner}"`);
+                return m;
+            }
+            return `@UUID[${s}]`;
+        },
     ],
 ];
 

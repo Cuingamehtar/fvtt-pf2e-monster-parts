@@ -50,7 +50,7 @@
 | Space Shield     | ES     | ❌      |
 | Spell            | BB     | 🚫     |
 | Spiked Armor     | SU     | ✔      |
-| Spirit Weapon    | ES     | ❌      |
+| Spirit           | ES     | ✔      |
 | Strength         | BB     | ✔      |
 | Sturdy           | BB     | ✔      |
 | Tangle Shield    | ES     | ❌      |

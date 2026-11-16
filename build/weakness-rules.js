@@ -87,6 +87,10 @@ const weaknessTypes = {
         imbuements: ["imbue:space:might"],
         definition: ["item:trait:teleportation"],
     },
+    spirit: {
+        label: "PF2E.TraitSpirit",
+        imbuements: ["imbue:spirit:might"],
+    },
     unholy: {
         label: "PF2E.TraitUnholy",
         imbuements: ["imbue:holy:unholy"],

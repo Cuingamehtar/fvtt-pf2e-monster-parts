@@ -17,6 +17,7 @@ import { createImbueMetal } from "./metal";
 import { createImbueMind } from "./mind";
 import { createImbuePoison } from "./poison";
 import { createImbueSpace } from "./space";
+import { createImbueSpirit } from "./spirit";
 import { createImbueTime } from "./time";
 import { createImbueUnholy } from "./unholy";
 import { createImbueWater } from "./water";
@@ -43,6 +44,7 @@ export function createElementalStormImbues() {
         ...createImbueMind(),
         ...createImbuePoison(),
         ...createImbueSpace(),
+        ...createImbueSpirit(),
         ...createImbueTime(),
         ...createImbueUnholy(),
         ...createImbueWater(),

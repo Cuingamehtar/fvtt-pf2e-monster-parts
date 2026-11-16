@@ -38,6 +38,7 @@ type ItemAlterationSource = {
         | "material-type"
         | "pd-recovery-dc"
         | "persistent-damage"
+        | "property-runes"
         | "rarity"
         | "range-increment"
         | "name"

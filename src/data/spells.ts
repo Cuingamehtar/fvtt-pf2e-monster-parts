@@ -142,6 +142,13 @@ export enum Spells {
     Translocate = "Compendium.pf2e.spells-srd.Item.VlNcjmYyu95vOUe8",
     CollectiveTransposition = "Compendium.pf2e.spells-srd.Item.c3XygMbzrZMgV1y3",
 
+    // Spirit
+    SpiritLink = "Compendium.pf2e.spells-srd.Item.yHujiDQPdtXW797e",
+    SpiritualArmament = "Compendium.pf2e.spells-srd.Item.WPu3UE3kTXSLqO40",
+    SpiritualGuardian = "Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U",
+    SpiritBlast = "Compendium.pf2e.spells-srd.Item.PHVHBbdHeQRfjLmE",
+    SpiritSong = "Compendium.pf2e.spells-srd.Item.Ht35SDf9PDStJfoC",
+
     // Strength
     Earthbind = "Compendium.pf2e.spells-srd.Item.gPvtmKMRpg9I9D7H",
 
