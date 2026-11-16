@@ -23,7 +23,7 @@
 | Energy Resistant | BB     | ✔      |
 | Evil*            | BB     | 🚫     |
 | Fire             | BB/ES  | ✔      |
-| Fire Shield      | ES     | ❌      |
+| Fire Shield      | ES     | ✔      |
 | Force            | BB/ES  | ✔      |
 | Fortification    | BB     | ✔      |
 | Good*            | BB     | 🚫     |

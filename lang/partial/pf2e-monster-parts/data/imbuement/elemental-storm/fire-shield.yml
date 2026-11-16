@@ -1,0 +1,88 @@
+label: Fire Shield
+$flavor: 'You imbue your shield with the elemental power of fire to protect from extreme temperatures and burn your foes.'
+description: >-
+  **Type** Shield
+  
+  
+  **Parts** The creature must have the fire trait or have an ability or spell
+  with the fire trait or that deals fire damage.
+
+  - - -
+
+  **Effect** {{$flavor}}
+
+  - **4th** You can use Shield Block against cold and fire damage. The shield
+  gains resistance 5 to fire damage and weakness 5 to cold damage.
+
+  - **6th** Once per hour, on a Shield Block against a melee attack, the
+  shield burns your foe. The triggering foe must succeed on a
+  basic Reflex save against the shield’s DC or take fire damage
+  equal to the shield’s Hardness. On a critical failure, the foe takes
+  persistent fire damage equal to half the shield’s Hardness.
+
+  - **8th** While you have the shield raised, you gain its circumstance bonus
+  (maximum +2) to your saving throws against cold and fire effects.
+
+  - **10th** The shield can burn foes on a Shield Block once per 10 minutes.
+
+  - **12th** While the shield is raised, you are protected against severe
+  or extreme environmental cold. Since you can keep the shield
+  raised with the defending exploration activity, this can allow you
+  to remain protected against severe or extreme cold as long as
+  you are defending.
+
+  - **14th** The shield becomes more resilient to fire and it can share
+  its resistance when you raise it. The shield’s resistance to fire
+  damage increases from 5 to 10. While you have the shield raised,
+  you also gain the shield’s resistance 10 to fire damage; as normal,
+  this is applied before triggering the Shield Block.
+
+  - **16th** The shield can burn foes on a Shield Block once per minute.
+
+  - **18th** Your shield becomes a bastion that protects nearby allies.
+  As long as your shield is raised, allies within 30 feet gain a
+  +1 circumstance bonus to saving throws against fire effects
+  and resistance to fire damage equal to half the resistance the
+  shield gained from this property (5 at 18th level, and 10 at 20th
+  level). Additionally, they are protected from severe and extreme
+  environmental cold.
+
+  - **20th** The shield’s resistance to fire damage increases to 20, which
+  increases the resistance the shield provides you to 20 and the
+  resistance it provides your nearby allies to 10. The shield can
+  burn foes on a Shield Block without a frequency limit.
+header:
+  flavor: '{{$flavor}}'
+  level-4-shield-block: >-
+    You can use Shield Block against cold and fire damage. The shield
+    gains resistance {resistance} to fire damage and weakness 5 to cold damage.
+  level-6-fire-damage: >-
+    Once per hour, on {{$fire-damage-partial}}
+  level-8-bonus: >-
+    While you have the shield raised, you gain +{bonus} circumstance bonus to your saving throws against cold and fire effects.
+  level-10-fire-damage: >-
+    Once per 10 minutes, on {{$fire-damage-partial}}
+  level-12-temperature: >-
+    While the shield is raised, you are protected against severe
+    or extreme environmental cold. Since you can keep the shield
+    raised with the defending exploration activity, this can allow you
+    to remain protected against severe or extreme cold as long as
+    you are defending.
+  level-14-resistance: >-
+    While you have the shield raised,
+    you also gain the shield’s resistance {resistance} to fire damage; as normal,
+    this is applied before triggering the Shield Block.
+  level-16-fire-damage: >-
+    Once per minute, on {{$fire-damage-partial}}
+  level-18-aura: >-
+    As long as your shield is raised, allies within 30 feet gain a
+    +1 circumstance bonus to saving throws against fire effects
+    and resistance {halfResistance} to fire damage. Additionally, they are protected from severe and extreme
+    environmental cold.
+  level-20-fire-damage: >-
+    On {{$fire-damage-partial}}
+$fire-damage-partial: >-
+  a Shield Block against a melee attack, the
+  shield burns your foe. The triggering foe must succeed on a
+  @Check[reflex|dc:resolve(item-level-dc)|basic] save against the shield’s DC or take @Damage[(@item.hardness)[fire]] damage. On a critical failure, the foe takes
+  @Damage[(floor(@item.hardness /2))[persistent,fire]] damage.

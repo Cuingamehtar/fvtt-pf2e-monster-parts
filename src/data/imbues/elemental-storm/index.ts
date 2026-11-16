@@ -22,6 +22,7 @@ import { createImbueTime } from "./time";
 import { createImbueUnholy } from "./unholy";
 import { createImbueWater } from "./water";
 import { createImbueWood } from "./wood";
+import { createImbueFireShield } from "@data/imbues/elemental-storm/fire-shield";
 
 export function createElementalStormImbues() {
     return [
@@ -35,6 +36,7 @@ export function createElementalStormImbues() {
         createImbueEarthArmor(),
         ...createImbueElectricity(),
         ...createImbueFire(),
+        createImbueFireShield(),
         ...createImbueForce(),
         ...createImbueHoly(),
         ...createImbueLife(),
