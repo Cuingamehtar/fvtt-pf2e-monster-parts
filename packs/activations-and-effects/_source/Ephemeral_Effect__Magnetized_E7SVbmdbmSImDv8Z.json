@@ -60,7 +60,7 @@
   "_id": "E7SVbmdbmSImDv8Z",
   "img": "systems/pf2e/icons/spells/magnetic-attraction.webp",
   "folder": null,
-  "sort": 500000,
+  "sort": 800000,
   "ownership": {
     "default": 0,
     "My4TCMjLEU7yUq2Y": 3
@@ -70,11 +70,11 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.369",
     "systemId": "pf2e",
     "systemVersion": "7.7.4",
     "createdTime": 1763969912184,
-    "modifiedTime": 1767971320550,
+    "modifiedTime": 1794870273348,
     "lastModifiedBy": "My4TCMjLEU7yUq2Y"
   },
   "_key": "!items!E7SVbmdbmSImDv8Z"

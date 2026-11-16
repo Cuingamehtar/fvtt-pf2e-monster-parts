@@ -52,7 +52,7 @@
   "_id": "CIkNgSsMQ9AWqsVp",
   "img": "systems/pf2e/icons/equipment/cursed-items/barbed-vest.webp",
   "folder": null,
-  "sort": 200000,
+  "sort": 500000,
   "ownership": {
     "default": 0,
     "My4TCMjLEU7yUq2Y": 3
@@ -62,11 +62,11 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.369",
     "systemId": "pf2e",
     "systemVersion": "7.8.0",
     "createdTime": 1767966980786,
-    "modifiedTime": 1767972317802,
+    "modifiedTime": 1794870273347,
     "lastModifiedBy": "My4TCMjLEU7yUq2Y"
   },
   "_key": "!items!CIkNgSsMQ9AWqsVp"

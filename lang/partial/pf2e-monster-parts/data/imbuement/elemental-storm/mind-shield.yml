@@ -1,0 +1,101 @@
+label: Mind Shield
+$flavor: 'You imbue your shield with the elemental power of mind to allow it to make your mind a bastion as well as your body.'
+description: >-
+  **Type** Shield
+  
+  
+  **Parts** The creature must have the astral or mental trait or have an attack, spell, or ability with the astral or mental traits.
+
+  - - -
+
+  **Effect** {{$flavor}}
+
+  - **4th** You can use Shield Block against mental damage. While the
+  shield has a semblance of a magical mind in order to buffer you
+  from the mental damage, it’s still a mindless shield and so mental
+  damage is much less effective against it. When you Shield Block mental damage, after subtracting Hardness, when you and the
+  shield both take the remaining mental damage, the shield takes only half damage.
+
+  - **6th** Once per 10 minutes, on a Shield Block against mental damage,
+  the shield reflects some of the mental energy back on the foe
+  who intruded into your mind. The triggering foe must succeed on
+  a basic Will save against the shield’s DC or take mental damage
+  equal to the shield’s Hardness. On a failure, the foe is stupefied 1
+  for 1 round, and on a critical failure, they’re stupefied 2 for 1 round.
+
+  - **8th** While you have the shield raised, you gain its circumstance bonus
+  (maximum +2) to your saving throws against mental effects.
+
+  - **10th** The shield can reflect mental damage on a Shield Block once per minute.
+
+  - **12th** While the shield is raised, it makes your mental processes
+  almost impossible to perceive, rendering you effectively invisible
+  to thoughtsense (though it doesn’t change whether you are
+  visible to sight).
+
+  - **14th** The shield becomes more resilient to mental energy and it can
+  share its resistance when you raise it. The shield gains resistance
+  10 to mental damage; as normal, this is applied after halving the
+  remaining damage the shield would take after you Shield Block.
+  While you have the shield raised, you also gain the shield’s
+  resistance 10 to mental damage; as normal, this is applied before
+  triggering the Shield Block.
+
+  - **16th** The shield can reflect mental damage on a Shield Block without a frequency limit.
+
+  - **18th** Your shield becomes a bastion that protects the minds of
+  nearby allies. As long as your shield is raised, allies within 30
+  feet gain a +1 circumstance bonus to saving throws against
+  mental effects and resistance to mental damage equal to half the
+  resistance the shield gained from this property (5 at 18th level,
+  and 10 at 20th level).
+
+  - **20th** The shield’s resistance to mental damage increases to 20,
+  which increases the resistance the shield provides you to 20 and
+  the resistance it provides your nearby allies to 10. While the shield
+  is raised it fully shrouds your mind and attempts to counteract any
+  detection, revelation, and scrying effects (counteract modifier
+  equals item DC – 10). On a success, the effect functions normally
+  except that it detects nothing about you and your possessions.
+  For instance, detect magic would still detect other magic in the
+  area, but not any magic on you or your possessions.
+header:
+  flavor: '{{$flavor}}'
+  level-4-shield-block: >-
+    You can use Shield Block against mental damage. When you Shield Block mental damage, after subtracting Hardness, when you and the
+    shield both take the remaining mental damage, the shield takes only half damage.
+  level-6-mental-damage: >-
+    Once 10 minutes, on {{$mental-damage-partial}}
+  level-8-bonus: >-
+    While you have the shield raised, you gain +{bonus} circumstance bonus to your saving throws against mental effects.
+  level-10-mental-damage: >-
+    Once per minute, on {{$mental-damage-partial}}
+  level-12-thoughtsense: >-
+    While the shield is raised, you are effectively invisible
+    to thoughtsense.
+  level-14-resistance: >-
+    The shield gains resistance
+    {resistance} to mental damage; as normal, this is applied after halving the
+    remaining damage the shield would take after you Shield Block.
+    While you have the shield raised, you also gain the shield’s
+    resistance {resistance} to mental damage; as normal, this is applied before
+    triggering the Shield Block.
+  level-16-mental-damage: >-
+    On {{$mental-damage-partial}}
+  level-18-aura: >-
+    As long as your shield is raised, allies within 30 feet gain a
+    +1 circumstance bonus to saving throws against mental effects
+    and resistance {halfResistance} to mental damage.
+  level-20-counteract: >-
+    While the shield
+    is raised it fully shrouds your mind and attempts to counteract any
+    detection, revelation, and scrying effects (counteract modifier +{mod}). On a success, the effect functions normally
+    except that it detects nothing about you and your possessions.
+    For instance, detect magic would still detect other magic in the
+    area, but not any magic on you or your possessions.
+$mental-damage-partial: >-
+  a Shield Block against mental damage,
+  the shield reflects some of the mental energy back on the foe
+  who intruded into your mind. The triggering foe must succeed on
+  a @Check[will|dc:resolve(item-level-dc)|basic] save or take @Damage[(@item.hardness)[mental]] damage. On a failure, the foe is @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 1}
+  for 1 round, and on a critical failure, they’re @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied 2} for 1 round.

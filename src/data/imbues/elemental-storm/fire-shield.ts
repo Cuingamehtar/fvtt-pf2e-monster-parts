@@ -135,6 +135,7 @@ export function createImbueFireShield(): MaterialData {
                     levelMin: 14,
                     rule: {
                         key: "Resistance",
+                        predicate: ["self:shield:raised"],
                         value: "@actor.flags.system.fireShieldImbuementResistance",
                         type: "fire",
                         label: lkey("label"),
@@ -145,6 +146,7 @@ export function createImbueFireShield(): MaterialData {
                     levelMin: 14,
                     rule: {
                         key: "Resistance",
+                        predicate: ["self:shield:raised"],
                         value: "@actor.flags.system.fireShieldImbuementResistance",
                         type: "cold",
                         label: lkey("label"),

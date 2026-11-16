@@ -52,18 +52,18 @@
   "_id": "aCbf4Qrn98sRX3Vv",
   "img": "systems/pf2e/icons/spells/darkvision.webp",
   "folder": null,
-  "sort": 0,
+  "sort": 100000,
   "ownership": {
     "default": 0,
     "My4TCMjLEU7yUq2Y": 3
   },
   "flags": {},
   "_stats": {
-    "coreVersion": "14.361",
+    "coreVersion": "14.369",
     "systemId": "pf2e",
     "systemVersion": "8.1.2",
     "createdTime": 1779174633429,
-    "modifiedTime": 1779174934084,
+    "modifiedTime": 1794870273346,
     "lastModifiedBy": "My4TCMjLEU7yUq2Y",
     "compendiumSource": null,
     "duplicateSource": null,

@@ -138,7 +138,7 @@
   "_id": "OfyxKC0efo6hzlkH",
   "img": "systems/pf2e/icons/spells/clinging-ice.webp",
   "folder": null,
-  "sort": 600000,
+  "sort": 900000,
   "ownership": {
     "default": 0,
     "My4TCMjLEU7yUq2Y": 3
@@ -148,11 +148,11 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.369",
     "systemId": "pf2e",
     "systemVersion": "7.8.0",
     "createdTime": 1763675196132,
-    "modifiedTime": 1776100697846,
+    "modifiedTime": 1794870273348,
     "lastModifiedBy": "My4TCMjLEU7yUq2Y"
   },
   "_key": "!items!OfyxKC0efo6hzlkH"

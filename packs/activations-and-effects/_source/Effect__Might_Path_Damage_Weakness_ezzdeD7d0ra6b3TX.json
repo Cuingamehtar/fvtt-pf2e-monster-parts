@@ -653,7 +653,7 @@
   "_id": "ezzdeD7d0ra6b3TX",
   "img": "icons/skills/melee/shield-damaged-broken-gold.webp",
   "folder": null,
-  "sort": 700000,
+  "sort": 1000000,
   "ownership": {
     "default": 0,
     "My4TCMjLEU7yUq2Y": 3
@@ -663,11 +663,11 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.369",
     "systemId": "pf2e",
     "systemVersion": "7.8.0",
     "createdTime": 1762703302161,
-    "modifiedTime": 1767971320550,
+    "modifiedTime": 1794870273349,
     "lastModifiedBy": "My4TCMjLEU7yUq2Y"
   },
   "_key": "!items!ezzdeD7d0ra6b3TX"

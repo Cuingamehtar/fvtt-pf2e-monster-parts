@@ -8,6 +8,7 @@ import { createImbueEarthArmor } from "./earth-armor";
 import { createImbueEarth } from "./earth";
 import { createImbueElectricity } from "./electricity";
 import { createImbueFire } from "./fire";
+import { createImbueFireShield } from "./fire-shield";
 import { createImbueForce } from "./force";
 import { createImbueHoly } from "./holy";
 import { createImbueLife } from "./life";
@@ -15,6 +16,7 @@ import { createImbueLifewardArmor } from "./lifeward-armor";
 import { createImbueLight } from "./light";
 import { createImbueMetal } from "./metal";
 import { createImbueMind } from "./mind";
+import { createImbueMindShield } from "./mind-shield";
 import { createImbuePoison } from "./poison";
 import { createImbueSpace } from "./space";
 import { createImbueSpirit } from "./spirit";
@@ -22,7 +24,6 @@ import { createImbueTime } from "./time";
 import { createImbueUnholy } from "./unholy";
 import { createImbueWater } from "./water";
 import { createImbueWood } from "./wood";
-import { createImbueFireShield } from "@data/imbues/elemental-storm/fire-shield";
 
 export function createElementalStormImbues() {
     return [
@@ -42,6 +43,7 @@ export function createElementalStormImbues() {
         ...createImbueLife(),
         ...createImbueLight(),
         createImbueLifewardArmor(),
+        createImbueMindShield(),
         ...createImbueMetal(),
         ...createImbueMind(),
         ...createImbuePoison(),

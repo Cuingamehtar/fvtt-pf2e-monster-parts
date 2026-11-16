@@ -165,7 +165,7 @@
   "_id": "1lUHqV3uBeRsuSpl",
   "img": "systems/pf2e/icons/features/classes/heightened-senses.webp",
   "folder": null,
-  "sort": 300000,
+  "sort": 600000,
   "ownership": {
     "default": 0,
     "My4TCMjLEU7yUq2Y": 3
@@ -175,11 +175,11 @@
     "compendiumSource": null,
     "duplicateSource": null,
     "exportSource": null,
-    "coreVersion": "13.351",
+    "coreVersion": "14.369",
     "systemId": "pf2e",
     "systemVersion": "7.6.4",
     "createdTime": 1762612440682,
-    "modifiedTime": 1767971320550,
+    "modifiedTime": 1794870273348,
     "lastModifiedBy": "My4TCMjLEU7yUq2Y"
   },
   "_key": "!items!1lUHqV3uBeRsuSpl"

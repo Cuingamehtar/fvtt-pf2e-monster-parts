@@ -37,7 +37,7 @@
 | Mental*          | BB     | ✔      |
 | Metal            | ES     | ✔      |
 | Mind             | ES     | ❌      |
-| Mind Shield      | ES     | ❌      |
+| Mind Shield      | ES     | ✔      |
 | Mirrored         | SU     | ✔      |
 | Music            | ES     | ❌      |
 | Negative*        | BB     | 🚫     |

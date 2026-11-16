@@ -17,11 +17,11 @@ magic:
     to be either divine or primal.
 
     - **2nd** The weapon can cast
-    @UUID[Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN]{Void Warp} as a
+    @Spell[VoidWarp]{Void Warp} as a
     cantrip, heightened to half the item’s level rounded up.
 
     - **4th** The weapon can cast
-    @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm} once per day.
+    @Spell[Harm]{Harm} once per day.
 
     - **6th** The weapon’s *harm* is heightened to 2nd rank, and the weapon can
     cast either *harm* or
