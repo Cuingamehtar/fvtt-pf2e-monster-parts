@@ -19,6 +19,7 @@ import { createImbueMind } from "./mind";
 import { createImbueMindShield } from "./mind-shield";
 import { createImbuePoison } from "./poison";
 import { createImbueSpace } from "./space";
+import { createImbueSpaceShield } from "./space-shield";
 import { createImbueSpirit } from "./spirit";
 import { createImbueTime } from "./time";
 import { createImbueUnholy } from "./unholy";
@@ -48,6 +49,7 @@ export function createElementalStormImbues() {
         ...createImbueMind(),
         ...createImbuePoison(),
         ...createImbueSpace(),
+        createImbueSpaceShield(),
         ...createImbueSpirit(),
         ...createImbueTime(),
         ...createImbueUnholy(),

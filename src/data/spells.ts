@@ -137,6 +137,9 @@ export enum Spells {
     NoxiousVapors = "Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv",
     FungalInfestation = "Compendium.pf2e.spells-srd.Item.3VxVbZqIRvpKkg3O",
 
+    // Sensory
+    Truesight = "Compendium.pf2e.spells-srd.Item.uqlxMQQeSGWEVjki",
+
     // Space
     ThoughtfulGift = "Compendium.pf2e.spells-srd.Item.qTr2oCgIXl703Whb",
     Translocate = "Compendium.pf2e.spells-srd.Item.VlNcjmYyu95vOUe8",
