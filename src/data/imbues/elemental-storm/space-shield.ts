@@ -91,7 +91,7 @@ export function createImbueSpaceShield(): MaterialData {
                             true,
                         ),
                         mod: I18n.resolve(
-                            "@actor.flags.system.spaceShieldImbuementRedirectMod",
+                            "14 +@item.flags.pf2e-monster-parts.values.refinementLevel +floor(@item.flags.pf2e-monster-parts.values.refinementLevel /3) +max(@item.flags.pf2e-monster-parts.values.refinementLevel -21,0) -max(@item.flags.pf2e-monster-parts.values.refinementLevel -23, 0) +max(@item.flags.pf2e-monster-parts.values.refinementLevel -24, 0) -10",
                             true,
                         ),
                     }),
@@ -113,10 +113,19 @@ export function createImbueSpaceShield(): MaterialData {
                     levelMin: 8,
                     type: "RuleElement",
                     rule: {
-                        key: "ActiveEffectLike",
-                        mode: "override",
-                        path: "flags.system.spaceShieldImbuementRedirectMod",
-                        value: "14 +@item.level +floor(@item.level /3) +max(@item.level -21,0) -max(@item.level -23, 0) +max(@item.level -24, 0) -10",
+                        key: "SpecialStatistic",
+                        label: lkey("label"),
+                        slug: "space-shield-attack",
+                        type: "attack-roll",
+                    },
+                },
+                {
+                    levelMin: 8,
+                    type: "RuleElement",
+                    rule: {
+                        key: "FlatModifier",
+                        selector: "space-shield-attack",
+                        value: "14 +@item.flags.pf2e-monster-parts.values.refinementLevel +floor(@item.flags.pf2e-monster-parts.values.refinementLevel /3) +max(@item.flags.pf2e-monster-parts.values.refinementLevel -21,0) -max(@item.flags.pf2e-monster-parts.values.refinementLevel -23, 0) +max(@item.flags.pf2e-monster-parts.values.refinementLevel -24, 0) -10",
                     },
                 },
             ],

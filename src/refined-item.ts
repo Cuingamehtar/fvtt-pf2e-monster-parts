@@ -158,8 +158,11 @@ export class RefinedItem {
             Material.fromKey(m.key, m.value, { parent: this }),
         );
         for (const m of materials) {
+            const effectiveLevel = m.effectiveLevel.value;
             values[Material.getFlagDataName(m.key as string, "level")] =
-                m.effectiveLevel.value;
+                effectiveLevel;
+            if (m.type === "refinement")
+                values["refinementLevel"] = effectiveLevel;
         }
 
         const updatedFlags = {

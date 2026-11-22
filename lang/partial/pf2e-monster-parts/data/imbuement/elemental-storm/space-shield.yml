@@ -1,40 +1,43 @@
 label: Space Shield
-$flavor: 'You imbue your shield with the elemental power of space to warp attacks.'
+$flavor: You imbue your shield with the elemental power of space to warp attacks.
 description: >-
   **Type** Shield
-  
-  
-  **Parts** The creature must be associated with space or have an ability or spell with the teleportation trait (creatures with the teleportation trait also work, but they usually don’t have that trait).
+
+
+  **Parts** The creature must be associated with space or have an ability or
+  spell with the teleportation trait (creatures with the teleportation trait
+  also work, but they usually don’t have that trait).
 
   - - -
 
   **Effect** {{$flavor}}
 
-  - **4th** Because the shield can warp space, you can use Shield Block
-  against any damaging attack that requires an attack roll, even if
-  it doesn’t deal physical damage. When you block a non-physical attack, the shield warps the space around the attack to throw off the angle or warp out some of the hostile magic at the expense of the shield’s own integrity.
+  - **4th** Because the shield can warp space, you can use Shield Block against
+  any damaging attack that requires an attack roll, even if it doesn’t deal
+  physical damage. When you block a non-physical attack, the shield warps the
+  space around the attack to throw off the angle or warp out some of the hostile
+  magic at the expense of the shield’s own integrity.
 
-  - **6th** On a Shield Block against a foe’s melee or ranged attack, you
-  can teleport up to 10 feet to a space to which you have both line
-  of sight and line of effect; if the triggering attack was a melee
-  attack, you must remain within the attacker’s reach, and if it was a
-  ranged attack, you must remain within the attacker’s line of sight
-  and line of effect.
+  - **6th** On a Shield Block against a foe’s melee or ranged attack, you can
+  teleport up to 10 feet to a space to which you have both line of sight and
+  line of effect; if the triggering attack was a melee attack, you must remain
+  within the attacker’s reach, and if it was a ranged attack, you must remain
+  within the attacker’s line of sight and line of effect.
 
-  - **8th** Once per hour, when your shield is raised and a foe critically fails an
-  attack roll against you, you can Activate the shield as a reaction to
-  change the shield into a portal for a brief instant, causing the attack
-  to enter the portal and redirect to a second portal, causing it to
-  attack a different target within 30 feet (whether or not the new target
-  is within reach or line of effect of the original attack). The shield rolls
-  the new attack roll, with a modifier equal to the item DC – 10.
+  - **8th** Once per hour, when your shield is raised and a foe critically fails
+  an attack roll against you, you can Activate the shield as a reaction to
+  change the shield into a portal for a brief instant, causing the attack to
+  enter the portal and redirect to a second portal, causing it to attack a
+  different target within 30 feet (whether or not the new target is within reach
+  or line of effect of the original attack). The shield rolls the new attack
+  roll, with a modifier equal to the item DC – 10.
 
-  - **10th** Whenever you Raise the Shield, you can teleport up to 10 feet
-  to a space to which you have both line of sight and line of effect.
+  - **10th** Whenever you Raise the Shield, you can teleport up to 10 feet to a
+  space to which you have both line of sight and line of effect.
 
-  - **12th** When you teleport on a Shield Block, you can teleport up to 20
-  feet instead of 10 (though the other restrictions might prevent you
-  from teleporting to any spaces that far).
+  - **12th** When you teleport on a Shield Block, you can teleport up to 20 feet
+  instead of 10 (though the other restrictions might prevent you from
+  teleporting to any spaces that far).
 
   - **14th** The shield can redirect attacks through a portal once per 10
   minutes.
@@ -44,44 +47,37 @@ description: >-
 
   - **18th** The shield can redirect attacks through a portal once per minute.
 
-  - **20th** The shield’s spatial warping effects all become stronger. If
-  you ever Shield Block and reduce the damage to 0, you can use
-  the shield’s redirection ability automatically without spending a
-  reaction or using up your one activation per minute. Additionally,
-  the redirections can redirect to a target within 60 feet, and you
-  can teleport up to 30 feet instead of 20 both when you Shield
-  Block and when you Raise your Shield.
+  - **20th** The shield’s spatial warping effects all become stronger. If you
+  ever Shield Block and reduce the damage to 0, you can use the shield’s
+  redirection ability automatically without spending a reaction or using up your
+  one activation per minute. Additionally, the redirections can redirect to a
+  target within 60 feet, and you can teleport up to 30 feet instead of 20 both
+  when you Shield Block and when you Raise your Shield.
 header:
   flavor: '{{$flavor}}'
   level-4-shield-block: >-
-    You can use Shield Block
-    against any damaging attack that requires an attack roll, even if
-    it doesn’t deal physical damage.
+    You can use Shield Block against any damaging attack that requires an attack
+    roll, even if it doesn’t deal physical damage.
   level-6-block-teleport: >-
-    On a Shield Block against a foe’s melee or ranged attack, you
-    can teleport up to {distance} feet to a space to which you have both line
-    of sight and line of effect; if the triggering attack was a melee
-    attack, you must remain within the attacker’s reach, and if it was a
-    ranged attack, you must remain within the attacker’s line of sight
-    and line of effect.
-  level-8-redirect: >-
-    Once per hour, {{$redirect-partial}}.
+    On a Shield Block against a foe’s melee or ranged attack, you can teleport
+    up to {distance} feet to a space to which you have both line of sight and
+    line of effect; if the triggering attack was a melee attack, you must remain
+    within the attacker’s reach, and if it was a ranged attack, you must remain
+    within the attacker’s line of sight and line of effect.
+  level-8-redirect: 'Once per hour, {{$redirect-partial}}.'
   level-10-raised-teleport: >-
-    Whenever you Raise the Shield, you can teleport up to {distance} feet
-    to a space to which you have both line of sight and line of effect.
-  level-14-redirect: >-
-    Once per 10 minutes, {{$redirect-partial}}.
-  level-18-redirect: >-
-    Once per minute, {{$redirect-partial}}.
+    Whenever you Raise the Shield, you can teleport up to {distance} feet to a
+    space to which you have both line of sight and line of effect.
+  level-14-redirect: 'Once per 10 minutes, {{$redirect-partial}}.'
+  level-18-redirect: 'Once per minute, {{$redirect-partial}}.'
   level-20-free-redirect: >-
-    If you ever Shield Block and reduce the damage to 0, you can use
-    the shield’s redirection ability automatically without spending a
-    reaction or using up your one activation per minute.
+    If you ever Shield Block and reduce the damage to 0, you can use the
+    shield’s redirection ability automatically without spending a reaction or
+    using up your one activation per minute.
 $redirect-partial: >-
-  when your shield is raised and a foe critically fails an
-  attack roll against you, you can Activate the shield as a reaction to
-  change the shield into a portal for a brief instant, causing the attack
-  to enter the portal and redirect to a second portal, causing it to
-  attack a different target within {distance} feet (whether or not the new target
-  is within reach or line of effect of the original attack). The shield rolls
-  the new attack roll, with a modifier of [[/r 1d20+{mod}]]{+{mod}}
+  when your shield is raised and a foe critically fails an attack roll against
+  you, you can Activate the shield as a reaction to change the shield into a
+  portal for a brief instant, causing the attack to enter the portal and
+  redirect to a second portal, causing it to @Check[space-shield-attack|against:ac|traits:attack]{Attack (+{mod})} a different target within
+  {distance} feet (whether or not the new target is within reach or line of
+  effect of the original attack)

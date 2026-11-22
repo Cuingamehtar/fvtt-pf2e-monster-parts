@@ -91,6 +91,7 @@ type MaterialValue = {
 export type RefinedItemFlags = {
     refinement: MaterialValue;
     imbues: MaterialValue[];
+    values?: Record<string, unknown>;
 };
 
 export type MonsterPartFlags = {

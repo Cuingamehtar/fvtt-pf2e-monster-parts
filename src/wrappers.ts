@@ -148,6 +148,8 @@ export class Wrappers {
     }
 
     static extendDerivedData() {
+        // first run of system's prepareDerivedData happens before 'ready' hook, so these adjustments are not ready when the world is loaded.
+        // TODO: Either store extra data on the item, or have it ready before 'ready'
         libWrapper.register(
             MODULE_ID,
             "CONFIG.PF2E.Item.documentClasses.weapon.__proto__.prototype.prepareDerivedData",

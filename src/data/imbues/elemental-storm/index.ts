@@ -25,6 +25,7 @@ import { createImbueTime } from "./time";
 import { createImbueUnholy } from "./unholy";
 import { createImbueWater } from "./water";
 import { createImbueWood } from "./wood";
+import { createImbueTangleShield } from "@data/imbues/elemental-storm/tangle-shield";
 
 export function createElementalStormImbues() {
     return [
@@ -51,6 +52,7 @@ export function createElementalStormImbues() {
         ...createImbueSpace(),
         createImbueSpaceShield(),
         ...createImbueSpirit(),
+        createImbueTangleShield(),
         ...createImbueTime(),
         ...createImbueUnholy(),
         ...createImbueWater(),

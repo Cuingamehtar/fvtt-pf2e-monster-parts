@@ -12,6 +12,7 @@ export const MODULE_ID = "pf2e-monster-parts";
 
 Hooks.once("init", () => {
     registerSettings();
+
     Hooks.once("ready", async () => {
         await createConfig();
 

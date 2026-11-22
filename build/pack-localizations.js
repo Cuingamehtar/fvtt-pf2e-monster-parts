@@ -206,14 +206,16 @@ function debounce(func, delay) {
 }
 
 function combineLocalizationsInner() {
+    const t = Date.now();
     spells = getSpells();
     const partial = parsePartialLocalizations("./lang/partial");
     fs.writeFileSync(
         "./lang/en.json",
         JSON.stringify(mergeDeep({}, partial), null, 2),
     );
+    const dt = Date.now() - t;
     console.log(
-        `(${new Date(Date.now()).toLocaleTimeString()}) Localizations combined`,
+        `(${new Date(Date.now()).toLocaleTimeString()}, elapsed: ${Math.floor(dt / 1000)}.${dt % 1000} s) Localizations combined`,
     );
 }
 

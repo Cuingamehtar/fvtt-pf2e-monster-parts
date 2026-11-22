@@ -47,13 +47,13 @@
 | Sensory          | BB     | ✔      |
 | Sonic*           | BB     | ✔      |
 | Space            | ES     | ✔      |
-| Space Shield     | ES     | ❌      |
+| Space Shield     | ES     | ✔      |
 | Spell            | BB     | 🚫     |
 | Spiked Armor     | SU     | ✔      |
 | Spirit           | ES     | ✔      |
 | Strength         | BB     | ✔      |
 | Sturdy           | BB     | ✔      |
-| Tangle Shield    | ES     | ❌      |
+| Tangle Shield    | ES     | ✔      |
 | Throwing         | SU     | ❌      |
 | Time             | ES     | ✔      |
 | Unholy           | ES     | ✔      |
