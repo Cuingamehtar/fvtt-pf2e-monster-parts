@@ -108,7 +108,7 @@ might:
 
     - **6th** The additional vitality damage increases to 1d6. On a critical
     hit, the undead is also
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
+    @Effect[Enfeebled]{Enfeebled 1}
     until the end of your next turn.
 
     - **10th** The vitality damage dealt by this imbued property ignores
@@ -129,17 +129,17 @@ might:
   effects:
     level-6-enfeebled: >-
       On a critical hit, the undead is also
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
+      @Effect[Enfeebled]{Enfeebled 1}
       until the end of your next turn.
     level-10-resistance: The vitality damage dealt by this imbued property ignores resistances.
     level-14-enfeebled: >-
       On a critical hit, the undead must attempt a Fortitude save. On a critical
       success, it's
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
+      @Effect[Enfeebled]{Enfeebled 1}
       until the end of your next turn, on a success, it's
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}
+      @Effect[Enfeebled]{Enfeebled 2}
       until then, on a failure, it's
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3}
+      @Effect[Enfeebled]{Enfeebled 3}
       until then, and on a critical failure, it's destroyed. This effect has the
       incapacitation trait.
     level-20-weakness: >-
@@ -149,17 +149,17 @@ might:
   header:
     level-6-enfeebled: >-
       On a critical hit, the undead is also
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
+      @Effect[Enfeebled]{Enfeebled 1}
       until the end of your next turn.
     level-10-resistance: The vitality damage dealt by this imbued property ignores resistances.
     level-14-enfeebled: >-
       On a critical hit, the undead must attempt a Fortitude save. On a critical
       success, it's
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
+      @Effect[Enfeebled]{Enfeebled 1}
       until the end of your next turn, on a success, it's
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}
+      @Effect[Enfeebled]{Enfeebled 2}
       until then, on a failure, it's
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3}
+      @Effect[Enfeebled]{Enfeebled 3}
       until then, and on a critical failure, it's destroyed. This effect has the
       incapacitation trait.
     level-20-weakness: >-
@@ -192,7 +192,7 @@ tech:
 
     - **6th** The persistent vitality damage increases to 1d6. On a critical
     hit, the undead is also
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
+    @Effect[Enfeebled]{Enfeebled 1}
     until the end of your next turn.
 
     - **10th** The vitality damage dealt by this imbued property (including
@@ -217,17 +217,17 @@ tech:
   effects:
     level-6-enfeebled: >-
       On a critical hit, the undead is also
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
+      @Effect[Enfeebled]{Enfeebled 1}
       until the end of your next turn.
     level-10-resistance: >-
       The vitality damage dealt by this imbued property (including persistent
       vitality damage) ignores resistances.
     level-14-enfeebled: >-
       On a critical hit, the undead is
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}
+      @Effect[Enfeebled]{Enfeebled 2}
       until the end of your next turn. It must also attempt a Fortitude save. On
       a failure, it's
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3}
+      @Effect[Enfeebled]{Enfeebled 3}
       until the end of your next turn instead of enfeebled 2, and on a critical
       failure, it's destroyed. This effect has the incapacitation trait.
     level-20-counteract: >-
@@ -241,17 +241,17 @@ tech:
   header:
     level-6-enfeebled: >-
       On a critical hit, the undead is also
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
+      @Effect[Enfeebled]{Enfeebled 1}
       until the end of your next turn.
     level-10-resistance: >-
       The vitality damage dealt by this imbued property (including persistent
       vitality damage) ignores resistances.
     level-14-enfeebled: >-
       On a critical hit, the undead is
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}
+      @Effect[Enfeebled]{Enfeebled 2}
       until the end of your next turn. It must also attempt a Fortitude save. On
       a failure, it's
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3}
+      @Effect[Enfeebled]{Enfeebled 3}
       until the end of your next turn instead of enfeebled 2, and on a critical
       failure, it's destroyed. This effect has the incapacitation trait.
     level-20-counteract: >-

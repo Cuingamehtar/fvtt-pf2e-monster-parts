@@ -6,6 +6,7 @@ import * as path from "path";
 const mdConverter = new showdown.Converter();
 
 let spells = null;
+let effects = null;
 
 /**
  * Simple object check.
@@ -74,18 +75,37 @@ const substitutions = [
             return `@UUID[${s}]`;
         },
     ],
+    [
+        /@Effect\[([^\]]+)]/g,
+        (m, inner) => {
+            const s = effects.get(inner);
+            if (!s) {
+                console.warn(`Unknown effect "${inner}"`);
+                return m;
+            }
+            return `@UUID[${s}]`;
+        },
+    ],
 ];
 
 /**
  *
  * @param {string} text
+ * @param {string} filename
  * @returns {string}
  */
-function replaceSub(text) {
-    return substitutions.reduce(
-        (res, [from, to]) => res.replaceAll(from, to),
-        text,
-    );
+function replaceSub(text, { filename } = {}) {
+    const subs = [
+        ...substitutions,
+        [
+            "@imbue.level",
+            `@item.flags.pf2e-monster-parts.values.imbue${filename
+                .split("-")
+                .map((e) => e[0].toLocaleUpperCase() + e.slice(1))
+                .join("")}Level`,
+        ],
+    ];
+    return subs.reduce((res, [from, to]) => res.replaceAll(from, to), text);
 }
 
 function parseFile(filePath) {
@@ -93,13 +113,16 @@ function parseFile(filePath) {
     if (content === "") return undefined;
     try {
         const ext = path.extname(filePath);
+        const filename = path.basename(filePath, ext);
         switch (ext) {
             case ".json":
-                return JSON.parse(replaceSub(content));
+                return JSON.parse(replaceSub(content, { filename }));
             case ".yml":
                 return yaml.parse(content, (_k, v) => {
                     if (typeof v === "string") {
-                        const html = mdConverter.makeHtml(replaceSub(v));
+                        const html = mdConverter.makeHtml(
+                            replaceSub(v, { filename }),
+                        );
                         const noP = html.replace(/<\/?p>/g, "");
                         return `<p>${noP}</p>` === html ? noP : html;
                     } else {
@@ -208,6 +231,7 @@ function debounce(func, delay) {
 function combineLocalizationsInner() {
     const t = Date.now();
     spells = getSpells();
+    effects = getEffects();
     const partial = parsePartialLocalizations("./lang/partial");
     fs.writeFileSync(
         "./lang/en.json",
@@ -227,6 +251,16 @@ function getSpells() {
         spells.set(m[1], m[2]);
     }
     return spells;
+}
+
+function getEffects() {
+    const t = fs.readFileSync("src/data/effects.ts", "utf-8");
+    const pattern = /(\w+) = "([^"]+)"/g;
+    const effects = new Map();
+    for (const m of t.matchAll(pattern)) {
+        effects.set(m[1], m[2]);
+    }
+    return effects;
 }
 
 export const combineLocalizations = debounce(combineLocalizationsInner, 2000);

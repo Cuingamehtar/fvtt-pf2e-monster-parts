@@ -1,0 +1,151 @@
+label: Poisonous Armor
+$flavor: You imbue your armor with deadly poison.
+buffer-label: Lifeward Armor Buffer
+description: >-
+  **Type** Armor
+
+
+  **Parts** The monster must have the poison trait or an ability or spell with
+  the poison trait.
+
+  - - -
+
+  **Effect** {{$flavor}}
+
+  - **6th** Your armor is poisonous, and creatures that eat you live to regret
+  it. If a creature Swallows you Whole, Engulfs you, or otherwise eats you
+  entirely, they gain persistent poison damage equal to the imbued property’s
+  item level with a basic Fortitude save; on a critical failure, they’re also
+  @Effect[Sickened]{Sickened 1}. They can’t make a check to recover from the persistent poison
+  damage as long as they are still eating you.
+
+  - **8th** The armor’s poison is intense enough to affect a creature with just
+  a little taste. Any time a creature hits you with a jaws, fangs, beak,
+  mandibles, or similar Strike using the creature’s mouth, they must attempt the
+  Fortitude save against the armor’s persistent poison damage. As long as they
+  haven’t also eaten you entirely, they can make checks to recover from the
+  persistent poison damage as normal.
+
+  - **10th** Whenever a creature eats you entirely and attempts the Fortitude
+  save against the armor’s poison, they are sickened 1 on a failed Fortitude
+  save and sickened 2 on a critical failure.
+
+  - **12th** The poison becomes more dangerous the more often a creature is
+  exposed. Each time a creature bites you again while they already have the
+  persistent poison damage, if their Fortitude save isn’t a critical success,
+  the persistent poison damage increases by 1; the persistent poison damage
+  automatically increases by 1 at the end of their turn if they’ve eaten you
+  entirely. The persistent poison damage from these increases is cumulative in
+  this way to a maximum of twice the imbued property’s level (so at 20th level,
+  the maximum persistent damage is 40). If the creature ever removes the
+  persistent poison damage, all the increases cease and if it becomes poisoned
+  again, it starts at the minimum amount.
+
+  - **14th** When a creature bites you and attempts the Fortitude save against
+  the armor’s poison, they are sickened 1 on a failed Fortitude save and
+  sickened 2 on a critical failure.
+
+  - **16th** The armor’s poison mutates to affect foes who attack you on contact
+  instead of only ingestion. Allies who touch you aren’t poisoned and you don’t
+  poison other creatures by touching them; the armor only retaliates when your
+  foes attack you, and it keeps your allies safe. When a foe attacks you with a
+  melee unarmed attack that isn’t one of the unarmed attacks from the 8th level
+  benefit, Grapples or Grabs you, or uses a spell on you that requires the foe
+  to touch you, they are exposed to the poison and must attempt the Fortitude
+  save against the armor’s persistent poison damage. They are sickened 1 on a
+  critical failure.
+
+  - **18th** When a creature eats you entirely and attempts the Fortitude save
+  against the armor’s poison, they are sickened 1 on a successful save, sickened
+  2 on a failure, and sickened 3 on a critical failure. If they take an action
+  retching to attempt to recover from sickened, you can immediately Escape as a
+  reaction.
+
+  - **20th** When a creature attacks you in a way that exposes themselves to the
+  armor’s contact poison and attempts the Fortitude save against the armor’s
+  poison, they are sickened 1 on a failed Fortitude save and sickened 2 on a
+  critical failure.
+header:
+  flavor: '{{$flavor}}'
+  level-6-swallow-whole: >-
+    If a creature Swallows you Whole, Engulfs you, or otherwise eats you
+    entirely, they take
+    @Damage[@imbue.level[persistent,poison]]
+    damage with a basic
+    @Check[fortitude|dc:resolve(item-level-dc)|basic|options:inflicts:sickened] save.
+    They can’t make a check to recover from the persistent poison damage as long
+    as they are still eating you.  
+
+    **Critical Failure** The creature is @Effect[Sickened]{Sickened 1}.
+  level-8-bitten: >-
+    Any time a creature hits you with a jaws, fangs, beak, mandibles, or similar
+    Strike using the creature’s mouth, they take
+    @Damage[@imbue.level[persistent,poison]]
+    damage with a basic
+    @Check[fortitude|dc:resolve(item-level-dc)|basic] save. As long as they haven’t also
+    eaten you entirely, they can make checks to recover from the persistent
+    poison damage as normal.
+  level-10-swallow-whole: >-
+    If a creature Swallows you Whole, Engulfs you, or otherwise eats you
+    entirely, they take
+    @Damage[@imbue.level[persistent,poison]]
+    damage with a basic
+    @Check[fortitude|dc:resolve(item-level-dc)|basic|options:inflicts:sickened]
+    save. They can’t make a check to recover from the persistent poison damage as long
+    as they are still eating you.  
+
+    **Failure** The creature is @Effect[Sickened]{Sickened 1}.  
+    
+    **Critical Failure** The creature is @Effect[Sickened]{Sickened 2}.
+  level-12-increase: >-
+    Each time a creature bites you again while they already have the
+    persistent poison damage, if their Fortitude save isn’t a critical success,
+    the persistent poison damage increases by 1; the persistent poison damage
+    automatically increases by 1 at the end of their turn if they’ve eaten you
+    entirely. The persistent poison damage increases that way up to {max} poison damage. If the creature ever removes the
+    persistent poison damage, all the increases cease and if it becomes poisoned
+    again, it starts at the minimum amount.
+  level-14-bitten: >-
+    Any time a creature hits you with a jaws, fangs, beak, mandibles, or similar
+    Strike using the creature’s mouth, they take
+    @Damage[@imbue.level[persistent,poison]]
+    damage with a basic
+    @Check[fortitude|dc:resolve(item-level-dc)|basic|options:inflicts:sickened] save. As long as they haven’t also
+    eaten you entirely, they can make checks to recover from the persistent
+    poison damage as normal.  
+
+    **Failure** The creature is @Effect[Sickened]{Sickened 1}.  
+    
+    **Critical Failure** The creature is @Effect[Sickened]{Sickened 2}.
+  level-16-contact: >-
+    When a foe attacks you with a melee
+    unarmed attack that isn’t one of the unarmed attacks from the 8th
+    level benefit, Grapples or Grabs you, or uses a spell on you that
+    requires the foe to touch you, they are exposed to the poison and
+    must attempt the @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:sickened] save.  
+
+    **Critical Failure** The creature is sickened 1.
+  level-18-swallow-whole: >-
+    If a creature Swallows you Whole, Engulfs you, or otherwise eats you
+    entirely, they take
+    @Damage[@imbue.level[persistent,poison]]
+    damage with a basic
+    @Check[fortitude|dc:resolve(item-level-dc)|basic|options:inflicts:sickened]
+    save. They can’t make a check to recover from the persistent poison damage as long
+    as they are still eating you.  
+
+    **Success** The creature is @Effect[Sickened]{Sickened 1}.  
+    
+    **Failure** The creature is @Effect[Sickened]{Sickened 2}.  
+    
+    **Critical Failure** The creature is @Effect[Sickened]{Sickened 3}.
+  level-20-contact: >-
+    When a foe attacks you with a melee
+    unarmed attack that isn’t one of the unarmed attacks from the 8th
+    level benefit, Grapples or Grabs you, or uses a spell on you that
+    requires the foe to touch you, they are exposed to the poison and
+    must attempt the @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:sickened] save.  
+
+    **Failure** The creature is @Effect[Sickened]{Sickened 1}.  
+    
+    **Critical Failure** The creature is @Effect[Sickened]{Sickened 2}.

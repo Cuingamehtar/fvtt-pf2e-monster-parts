@@ -13,16 +13,16 @@ flavor: >-
 effects:
   level-6-note: >-
     The target is
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
+    @Effect[Enfeebled]{Enfeebled 1}
     until the end of your next turn.
   level-14-note: >-
     The target must attempt a @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:enfeebled] save. On a critical
     success, it's
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
+    @Effect[Enfeebled]{Enfeebled 1}
     until the end of your next turn, on a success, it's
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}
+    @Effect[Enfeebled]{Enfeebled 2}
     until the end of your next turn, on a failure, it's
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3}
+    @Effect[Enfeebled]{Enfeebled 3}
     until the end of your next turn, and on a critical failure, it's destroyed.
     This effect has the incapacitation trait.
 might:
@@ -73,7 +73,7 @@ might:
   level-6-enfeebled: >-
     On a critical hit, you sap the strength of a creature of type {creature},
     causing it to be
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
+    @Effect[Enfeebled]{Enfeebled 1}
     until the end of your next turn.
   level-10-resistance: >-
     Against a creature of type {creature}, the weapon's base damage ignores the
@@ -82,11 +82,11 @@ might:
     The weapon can outright slay creatures of type {creature}. On a critical
     hit, a creature of type {creature} must attempt a Fortitude save. On a
     critical success, it's
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
+    @Effect[Enfeebled]{Enfeebled 1}
     until the end of your next turn, on a success, it's
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}
+    @Effect[Enfeebled]{Enfeebled 2}
     until the end of your next turn, on a failure, it's
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3}
+    @Effect[Enfeebled]{Enfeebled 3}
     until the end of your next turn, and on a critical failure, it's destroyed.
     This effect has the incapacitation trait.
   effects:
@@ -145,7 +145,7 @@ tech:
   level-6-enfeebled: >-
     On a critical hit, you sap the strength of a creature of type {creature},
     causing it to be
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
+    @Effect[Enfeebled]{Enfeebled 1}
     until the end of your next turn.
   level-10-resistance: >-
     Against a creature of type {creature}, the weapon's base damage ignores the
@@ -154,18 +154,18 @@ tech:
   level-14-enfeebled: >-
     The weapon can outright slay creatures of type {creature}. On a critical
     hit, a creature of type {creature} is
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}
+    @Effect[Enfeebled]{Enfeebled 2}
     until the end of your next turn. It must also attempt a Fortitude save. On a
     failure, it's
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3}
+    @Effect[Enfeebled]{Enfeebled 3}
     until the end of your next turn, and on a critical failure, it's destroyed.
     This effect has the incapacitation trait.
   level-20-enfeebled: >-
     The weapon can outright slay creatures of type {creature}. On a critical
     hit, a creature of type {creature} is
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}. It
+    @Effect[Enfeebled]{Enfeebled 2}. It
     must also attempt a Fortitude save. On a failure, it's
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3},
+    @Effect[Enfeebled]{Enfeebled 3},
     and on a critical failure, it's destroyed. This effect has the
     incapacitation trait. The enfeebled condition from a critical hit lasts as
     long as the persistent bleed damage lasts, or until the end of your next
@@ -178,11 +178,11 @@ tech:
     level-20-note: >-
       The target must attempt a @Check[fortitude|dc:resolve(item-level-dc)|options:inflicts:enfeebled] save. On a critical
       success, it's
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1},
+      @Effect[Enfeebled]{Enfeebled 1},
       on a success, it's
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2},
+      @Effect[Enfeebled]{Enfeebled 2},
       on a failure, it's
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 3},
+      @Effect[Enfeebled]{Enfeebled 3},
       and on a critical failure, it's destroyed. This effect has the
       incapacitation trait. The enfeebled condition from a critical hit lasts as
       long as the persistent bleed damage lasts, or until the end of your next

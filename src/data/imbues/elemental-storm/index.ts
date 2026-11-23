@@ -18,14 +18,15 @@ import { createImbueMetal } from "./metal";
 import { createImbueMind } from "./mind";
 import { createImbueMindShield } from "./mind-shield";
 import { createImbuePoison } from "./poison";
+import { createImbuePoisonousArmor } from "./poisonous-armor";
 import { createImbueSpace } from "./space";
 import { createImbueSpaceShield } from "./space-shield";
 import { createImbueSpirit } from "./spirit";
+import { createImbueTangleShield } from "./tangle-shield";
 import { createImbueTime } from "./time";
 import { createImbueUnholy } from "./unholy";
 import { createImbueWater } from "./water";
 import { createImbueWood } from "./wood";
-import { createImbueTangleShield } from "@data/imbues/elemental-storm/tangle-shield";
 
 export function createElementalStormImbues() {
     return [
@@ -49,6 +50,7 @@ export function createElementalStormImbues() {
         ...createImbueMetal(),
         ...createImbueMind(),
         ...createImbuePoison(),
+        createImbuePoisonousArmor(),
         ...createImbueSpace(),
         createImbueSpaceShield(),
         ...createImbueSpirit(),

@@ -10,18 +10,16 @@ magic:
 
     - - -
 
-    **Effect** You imbue the weapon with the void energy of death.
+    **Effect** {{flavor}}
 
 
-    **Path** Magic; Choose when you first imbue the weapon for the granted spells
-    to be either divine or primal.
+    **Path** Magic; Choose when you first imbue the weapon for the granted
+    spells to be either divine or primal.
 
-    - **2nd** The weapon can cast
-    @Spell[VoidWarp]{Void Warp} as a
-    cantrip, heightened to half the item’s level rounded up.
+    - **2nd** The weapon can cast @Spell[VoidWarp]{Void Warp} as a cantrip,
+    heightened to half the item’s level rounded up.
 
-    - **4th** The weapon can cast
-    @Spell[Harm]{Harm} once per day.
+    - **4th** The weapon can cast @Spell[Harm]{Harm} once per day.
 
     - **6th** The weapon’s *harm* is heightened to 2nd rank, and the weapon can
     cast either *harm* or
@@ -41,8 +39,8 @@ magic:
     - **14th** The additional void damage increases to 1d4.
 
     - **16th** The weapon’s *harm* and *vampiric maiden* heighten to 6th rank,
-    and the weapon can cast 6th-rank @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.hJpXtpxUoKwQmJTr]{Raise the Reaper's Scythe}
-    once per day, but it can no longer cast *sudden blight*.
+    and the weapon can cast 6th-rank @Spell[RaiseTheReapersScythe]{Raise the
+    Reaper's Scythe} once per day, but it can no longer cast *sudden blight*.
 
     - **18th** The additional void damage increases to 1d6.
 
@@ -74,7 +72,8 @@ magic:
       The weapon can cast 6th rank
       @UUID[Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz]{Harm}, 6th rank
       @UUID[Compendium.pf2e.spells-srd.Item.07xYlmGX32XtHGEt]{Vampiric Maiden}
-      and @UUID[Compendium.battlezoo-bestiary-es-pf2e.spells.Item.hJpXtpxUoKwQmJTr]{Raise the Reaper's Scythe} once per day each.
+      and @Spell[RaiseTheReapersScythe]{Raise the Reaper's Scythe} once per day
+      each.
     level-20-wails-of-the-damned: >-
       The weapon can cast
       @UUID[Compendium.pf2e.spells-srd.Item.FEsuyf203wTNE2et]{Wails of the
@@ -90,7 +89,7 @@ might:
 
     - - -
 
-    **Effect** You imbue the weapon with the void energy of death.
+    **Effect** {{flavor}}
 
 
     **Path** Might
@@ -101,16 +100,14 @@ might:
 
     - **8th** The additional void damage increases to 1d6.
 
-    - **10th** On a critical hit, the target is
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} for
-    1 round.
+    - **10th** On a critical hit, the target is @Effect[Enfeebled]{Enfeebled 1}
+    for 1 round.
 
     - **12th** The void damage dealt by this imbued property ignores
     resistances.
 
-    - **16th** On a critical hit, the target is
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} for
-    1 round.
+    - **16th** On a critical hit, the target is @Effect[Enfeebled]{Enfeebled 2}
+    for 1 round.
 
     - **18th** The additional void damage increases to 1d8.
 
@@ -119,14 +116,12 @@ might:
     turn.
   effects:
     level-10-enfeebled: >-
-      On a critical hit, the target is
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
-      for 1 round.
+      On a critical hit, the target is @Effect[Enfeebled]{Enfeebled 1} for 1
+      round.
     level-12-resistance: The void damage dealt by this imbued property ignores resistances.
     level-16-enfeebled: >-
-      On a critical hit, the target is
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}
-      for 1 round.
+      On a critical hit, the target is @Effect[Enfeebled]{Enfeebled 2} for 1
+      round.
     level-20-weakness: >-
       On a successful Strike with the weapon, before applying void damage, the
       target gains weakness 1 to void until the beginning of your next turn.
@@ -134,14 +129,12 @@ might:
       Might Path Damage Weakness}
   header:
     level-10-enfeebled: >-
-      On a critical hit, the target is
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
-      for 1 round.
+      On a critical hit, the target is @Effect[Enfeebled]{Enfeebled 1} for 1
+      round.
     level-12-resistance: The void damage dealt by this imbued property ignores resistances.
     level-16-enfeebled: >-
-      On a critical hit, the target is
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}
-      for 1 round.
+      On a critical hit, the target is @Effect[Enfeebled]{Enfeebled 2} for 1
+      round.
     level-20-weakness: >-
       On a successful Strike with the weapon, before applying void damage, the
       target gains weakness 1 to void until the beginning of your next turn.
@@ -156,7 +149,7 @@ tech:
 
     - - -
 
-    **Effect** You imbue the weapon with the void energy of death.
+    **Effect** {{flavor}}
 
 
     **Path** Technique
@@ -165,9 +158,8 @@ tech:
 
     - **6th** Strikes with the weapon deal 1 additional void damage.
 
-    - **8th** On a critical hit, the target is
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1} for
-    1 round.
+    - **8th** On a critical hit, the target is @Effect[Enfeebled]{Enfeebled 1}
+    for 1 round.
 
     - **10th** The persistent void damage on a hit increases to 1d6.
 
@@ -176,9 +168,8 @@ tech:
 
     - **14th** The persistent void damage on a hit increases to 1d8.
 
-    - **16th** On a critical hit, the target is
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2} for
-    1 round.
+    - **16th** On a critical hit, the target is @Effect[Enfeebled]{Enfeebled 2}
+    for 1 round.
 
     - **18th** The persistent void damage on a hit increases to 1d10.
 
@@ -187,32 +178,28 @@ tech:
     persistent damage ends or for 1 round, whichever is longer.
   effects:
     level-8-enfeebled: >-
-      On a critical hit, the target is
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
-      for 1 round.
+      On a critical hit, the target is @Effect[Enfeebled]{Enfeebled 1} for 1
+      round.
     level-12-resistance: >-
       The void damage dealt by this imbued property (including persistent void
       damage) ignores resistances.
     level-16-enfeebled: >-
-      On a critical hit, the target is
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}
-      for 1 round.
+      On a critical hit, the target is @Effect[Enfeebled]{Enfeebled 2} for 1
+      round.
     level-20-enfeebled-duration: >-
       While the foe has persistent void damage from the imbued property, the
       enfeebled condition from a critical hit lasts until the persistent damage
       ends or for 1 round, whichever is longer.
   header:
     level-8-enfeebled: >-
-      On a critical hit, the target is
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 1}
-      for 1 round.
+      On a critical hit, the target is @Effect[Enfeebled]{Enfeebled 1} for 1
+      round.
     level-12-resistance: >-
       The void damage dealt by this imbued property (including persistent void
       damage) ignores resistances.
     level-16-enfeebled: >-
-      On a critical hit, the target is
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled 2}
-      for 1 round.
+      On a critical hit, the target is @Effect[Enfeebled]{Enfeebled 2} for 1
+      round.
     level-20-enfeebled-duration: >-
       While the foe has persistent void damage from the imbued property, the
       enfeebled condition from a critical hit lasts until the persistent damage

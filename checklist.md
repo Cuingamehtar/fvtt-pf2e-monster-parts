@@ -42,7 +42,7 @@
 | Music            | ES     | ❌      |
 | Negative*        | BB     | 🚫     |
 | Poison           | BB/ES  | ❌      |
-| Poisonous Armor  | ES     | ❌      |
+| Poisonous Armor  | ES     | ✔      |
 | Positive*        | BB     | 🚫     |
 | Sensory          | BB     | ✔      |
 | Sonic*           | BB     | ✔      |

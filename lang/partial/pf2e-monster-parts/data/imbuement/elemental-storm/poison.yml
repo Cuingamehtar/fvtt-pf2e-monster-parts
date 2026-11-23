@@ -176,7 +176,7 @@ tech:
     - **16th** At the end of a creature’s turn, if it has failed to remove the
     persistent poison damage from this imbued property, choose
     @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Clumsy}
-    @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled}, or
+    @Effect[Enfeebled]{Enfeebled}, or
     @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied}. The
     creature gains that condition with a condition value of 1, or increases the
     condition value by 1 if it already had that condition, to a maximum of 3. If
@@ -197,7 +197,7 @@ tech:
       At the end of a creature's turn, if it has failed to remove the persistent
       poison damage from this imbued property, choose
       @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Clumsy},
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled}, or
+      @Effect[Enfeebled]{Enfeebled}, or
       @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied}.
       The creature gains that condition with a condition value of 1, or
       increases the condition value by 1 if it already had that condition, to a
@@ -222,7 +222,7 @@ tech:
       At the end of a creature's turn, if it has failed to remove the persistent
       poison damage from this imbued property, choose
       @UUID[Compendium.pf2e.conditionitems.Item.i3OJZU2nk64Df3xm]{Clumsy},
-      @UUID[Compendium.pf2e.conditionitems.Item.MIRkyAjyBeXivMa7]{Enfeebled}, or
+      @Effect[Enfeebled]{Enfeebled}, or
       @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{Stupefied}.
       The creature gains that condition with a condition value of 1, or
       increases the condition value by 1 if it already had that condition, to a
