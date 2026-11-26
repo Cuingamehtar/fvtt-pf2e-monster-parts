@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.8.8] - 2026-11-27
+
+- Add Mind Shield, Poisonous Armor, Space Shield, Spirit, and Tangle Shield imbued properties
+- Prevent Refined Item and Monster Parts header from being shown for mystified items
+
 ## [0.8.7] - 2026-09-26
 
 - Add Time imbued property

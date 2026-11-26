@@ -67,15 +67,17 @@ export class Wrappers {
             item: PhysicalItemPF2e,
             description: { value: string; gm: string },
         ) {
-            if (MonsterPart.hasMonsterPartData(item)) {
-                description.value =
-                    (await new MonsterPart(item).descriptionHeader()) +
-                    description.value;
-            }
-            if (RefinedItem.hasRefinedItemData(item)) {
-                description.value =
-                    (await new RefinedItem(item).descriptionHeader()) +
-                    description.value;
+            if (item.isIdentified) {
+                if (MonsterPart.hasMonsterPartData(item)) {
+                    description.value =
+                        (await new MonsterPart(item).descriptionHeader()) +
+                        description.value;
+                }
+                if (RefinedItem.hasRefinedItemData(item)) {
+                    description.value =
+                        (await new RefinedItem(item).descriptionHeader()) +
+                        description.value;
+                }
             }
             return description;
         }
@@ -102,7 +104,9 @@ export class Wrappers {
             function (
                 this: PhysicalItemPF2e,
                 wrapped: typeof PhysicalItemPF2e.prototype.getRollOptions,
-                ...args
+                ...args: Parameters<
+                    typeof PhysicalItemPF2e.prototype.getRollOptions
+                >
             ): ReturnType<typeof PhysicalItemPF2e.prototype.getRollOptions> {
                 const res: string[] = wrapped(...args);
                 const item = RefinedItem.hasRefinedItemData(this)

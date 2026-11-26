@@ -86,6 +86,7 @@ export class ModuleHooks {
             "getItemSheetPF2eHeaderButtons",
             (sheet: ItemSheetPF2e<PhysicalItemPF2e>, buttons) => {
                 const item = sheet.object;
+                if (!item.isIdentified && !game.user.isGM) return;
                 if (MonsterPart.hasMonsterPartData(item)) {
                     buttons.unshift({
                         icon: "fas fa-skull",
